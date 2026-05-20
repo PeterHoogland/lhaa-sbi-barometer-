@@ -26,6 +26,9 @@ def _fetch_timelinetone(target_date: date) -> tuple[bool, float | None]:
         f"&startdatetime={start}&enddatetime={end}"
     )
     ok, body = safe_request(url, timeout=30)
+    # GDELT serveert rate-limit als plain-text body met "Please limit" tekst
+    if ok and isinstance(body, str) and "limit requests" in body.lower():
+        return False, None
     if not ok or not isinstance(body, dict):
         return False, None
     timeline = body.get("timeline", [])

@@ -85,7 +85,8 @@
       "Bash(curl -sI \"https://www.vrt.be/vrtnws/nl/rss\" -H \"User-Agent: Mozilla/5.0\")",
       "Bash(curl -sI \"https://www.hln.be/binnenland.rss\" -H \"User-Agent: Mozilla/5.0\")",
       "Bash(curl -sI \"https://carbu.com\" -H \"User-Agent: Mozilla/5.0\")",
-      "Bash(curl -s \"https://carbu.com/belgie/Brussel/euro95/0/\" -H \"User-Agent: Mozilla/5.0\")"
+      "Bash(curl -s \"https://carbu.com/belgie/Brussel/euro95/0/\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -s \"https://stooq.com/q/d/l/?s=cl.f&i=d\")"
     ]
   }
 }
