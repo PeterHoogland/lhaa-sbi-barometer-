@@ -16,6 +16,7 @@ import { IndicatorList } from "./components/IndicatorList";
 import { HeroBanner } from "./components/HeroBanner";
 import { LHALogo } from "./components/LHALogo";
 import { AllSources } from "./components/AllSources";
+import { IndicatorZView } from "./components/IndicatorZView";
 import { MEDIA_DIAGNOSTIC } from "./components/Sections";
 import { FOOTER_NOTES } from "./copy";
 
@@ -99,6 +100,8 @@ export function App() {
         <TopInfluences breakdown={data.indicator_breakdown} />
 
         <IndicatorList breakdown={data.indicator_breakdown} />
+
+        <IndicatorZView breakdown={data.indicator_breakdown} />
 
         <section className="panel sparkline-panel">
           <h2>Hoe was het de laatste 60 dagen?</h2>
