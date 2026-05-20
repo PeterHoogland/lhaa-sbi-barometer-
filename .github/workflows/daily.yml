@@ -9,6 +9,15 @@ on:
 permissions:
   contents: read
 
+# Voorkom dat twee runs tegelijk surge proberen te updaten
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+# Opt-in Node 24 runtime voor alle JS-actions (deprecation Node 20 vanaf juni 2026)
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   fetch-build-deploy:
     runs-on: ubuntu-latest
@@ -24,10 +33,10 @@ jobs:
           cache: "pip"
           cache-dependency-path: app/pipeline/requirements.txt
 
-      - name: Set up Node 20
+      - name: Set up Node 22 LTS
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
 
       - name: Install Python deps
         working-directory: app/pipeline
