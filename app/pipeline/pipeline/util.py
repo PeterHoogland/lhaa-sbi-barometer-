@@ -75,8 +75,15 @@ def write_json(path: Path, payload: dict | list) -> None:
         json.dump(payload, f, indent=2, ensure_ascii=False, default=str)
 
 
-def safe_request(url: str, timeout: int = 15, headers: dict | None = None) -> tuple[bool, str | dict | None]:
-    """HTTP-GET met fail-safe — geeft (ok, body|err). Geen exceptions naar caller.
+def safe_request(
+    url: str,
+    timeout: int = 15,
+    headers: dict | None = None,
+    retries: int = 2,
+    retry_delay: float = 3.0,
+) -> tuple[bool, str | dict | None]:
+    """HTTP-GET met fail-safe + auto-retry voor transient failures.
+
     Parseert JSON wanneer:
       - content-type bevat 'json' (vangt application/json, application/vnd.sdmx.data+json, etc.)
       - of body lijkt op JSON (begint met { of [)
@@ -84,24 +91,32 @@ def safe_request(url: str, timeout: int = 15, headers: dict | None = None) -> tu
     try:
         import requests
         import json as _json
+        import time as _time
     except ImportError:
         return False, "requests not installed"
-    try:
-        r = requests.get(url, timeout=timeout, headers=headers or {})
-        r.raise_for_status()
-        ct = r.headers.get("content-type", "").lower()
-        if "json" in ct:
-            try:
-                return True, r.json()
-            except _json.JSONDecodeError:
-                return True, r.text
-        text = r.text
-        stripped = text.lstrip()
-        if stripped.startswith(("{", "[")):
-            try:
-                return True, _json.loads(text)
-            except _json.JSONDecodeError:
-                pass
-        return True, text
-    except Exception as e:  # noqa: BLE001
-        return False, str(e)
+
+    last_err = "no attempts"
+    for attempt in range(retries + 1):
+        if attempt > 0:
+            _time.sleep(retry_delay * attempt)
+        try:
+            r = requests.get(url, timeout=timeout, headers=headers or {})
+            r.raise_for_status()
+            ct = r.headers.get("content-type", "").lower()
+            if "json" in ct:
+                try:
+                    return True, r.json()
+                except _json.JSONDecodeError:
+                    return True, r.text
+            text = r.text
+            stripped = text.lstrip()
+            if stripped.startswith(("{", "[")):
+                try:
+                    return True, _json.loads(text)
+                except _json.JSONDecodeError:
+                    pass
+            return True, text
+        except Exception as e:  # noqa: BLE001
+            last_err = str(e)
+            continue
+    return False, last_err
