@@ -87,11 +87,7 @@ export function App() {
       )}
 
       <main>
-        <ConditionLevelDisplay
-          level={data.condition_level}
-          daysInTier={data.tier.days_in_tier}
-          percentile={data.percentile.short_24m}
-        />
+        <ConditionLevelDisplay data={data} />
 
         <PlainExplainer data={data} />
 

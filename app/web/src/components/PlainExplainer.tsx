@@ -1,44 +1,40 @@
 import type { DailyOutput } from "../types";
+import { buildContext, buildHeadline, buildBody } from "../lib/explainer";
 
 /**
- * Korte uitleg, 15-jarig niveau.
- * Eén alinea, geen jargon. Geen "u bent gestrest".
+ * Context-bewust uitleg-blok.
+ * Headline + body worden dynamisch gebouwd uit:
+ *  - condition_level (1-5)
+ *  - percentile (24m baseline)
+ *  - aantal indicatoren in elke zone (lager/gemiddeld/hoger/extreem)
+ *  - top-bijdragende indicatoren
+ *  - brand-safety-vlag
+ *
+ * Taalregister: neutraal informerend, 15-jarig niveau.
  */
-
-const EXPLAINER_BY_CN: Record<number, { headline: string; body: string }> = {
-  1: {
-    headline: "Vandaag rustig.",
-    body: "Niets bijzonders aan de hand. Weer, economie, nieuws en kalender zitten allemaal in een rustige toestand.",
-  },
-  2: {
-    headline: "Vandaag gewoon.",
-    body: "Een doodgewone dag. Niet ongewoon druk, niet ongewoon rustig, gewoon zoals de meeste dagen van de laatste twee jaar.",
-  },
-  3: {
-    headline: "Vandaag komt er veel tegelijk op ons af.",
-    body: "Verschillende dingen lopen tegelijk een ongunstige kant op, bijvoorbeeld slecht weer + duurder leven + zwaar nieuws. Dat duurt al minstens drie dagen.",
-  },
-  4: {
-    headline: "Vandaag is écht ongewoon druk.",
-    body: "We zitten in de zwaarste 10% van de laatste twee jaar, en dat al meerdere dagen op rij. Dit gebeurt zelden.",
-  },
-  5: {
-    headline: "Even op pauze.",
-    body: "Er speelt iets gevoeligs, bijvoorbeeld een ramp of nationale rouw. We zetten de reclame-boodschap stop. De meting loopt door, maar we verkopen geen vakantie als er net iets ergs gebeurd is.",
-  },
-};
-
 export function PlainExplainer({ data }: { data: DailyOutput }) {
-  const cn = data.condition_level.value;
-  const e = EXPLAINER_BY_CN[cn];
+  const ctx = buildContext(data);
+  const headline = buildHeadline(ctx);
+  const body = buildBody(ctx);
+
   return (
     <section className="plain-explainer">
-      <h2>{e.headline}</h2>
-      <p>{e.body}</p>
+      <h2>{headline}</h2>
+      <p dangerouslySetInnerHTML={{ __html: formatMarkdownBold(body) }} />
       <p className="plain-explainer-context">
         Hieronder zie je precies <strong>welke 20 dingen we vandaag bekijken</strong>,
         en hoe ze er nu voor staan vergeleken met gewoonlijk.
       </p>
     </section>
   );
+}
+
+/** Simpele **bold** rendering — buildBody returns markdown-light met **name**. */
+function formatMarkdownBold(text: string): string {
+  // Escape HTML eerst
+  const escaped = text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+  return escaped.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 }

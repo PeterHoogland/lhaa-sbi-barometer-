@@ -1,12 +1,5 @@
 import type { ConditionLevel, DailyOutput } from "../types";
-
-const LEVEL_DESC: Record<ConditionLevel, string> = {
-  1: "Geen verhoogde druk op de hele bevolking vandaag.",
-  2: "Een doodgewone dag, niets ongewoons aan de hand.",
-  3: "Veel dingen lopen tegelijk een ongunstige kant op, al drie dagen of meer.",
-  4: "Zwaarste 10% van de laatste twee jaar, al meerdere dagen op rij.",
-  5: "Iets gevoeligs is gaande (ramp, rouw). Reclame staat op pauze, de meting loopt door.",
-};
+import { buildContext, buildCnDescription, buildPercentileLine } from "../lib/explainer";
 
 const LEVEL_KICKER: Record<ConditionLevel, string> = {
   1: "LAAG",
@@ -17,15 +10,15 @@ const LEVEL_KICKER: Record<ConditionLevel, string> = {
 };
 
 export function ConditionLevelDisplay({
-  level,
-  daysInTier,
-  percentile,
+  data,
 }: {
-  level: DailyOutput["condition_level"];
-  daysInTier: number;
-  percentile: number;
+  data: DailyOutput;
 }) {
-  const cn = level.value;
+  const cn = data.condition_level.value;
+  const ctx = buildContext(data);
+  const cnDescription = buildCnDescription(ctx);
+  const percentileLine = buildPercentileLine(ctx);
+
   return (
     <section className={`cn-display cn-level-${cn}`}>
       <div className="cn-label">STRESS-CIJFER VAN VANDAAG</div>
@@ -45,15 +38,13 @@ export function ConditionLevelDisplay({
         <div className="cn-side">
           <div className="cn-kicker">{LEVEL_KICKER[cn]}</div>
           <div className="cn-meta">
-            {cn >= 3 && cn <= 4 ? `Dag ${daysInTier} op rij` : "—"}
+            {cn >= 3 && cn <= 4 ? `Dag ${data.tier.days_in_tier} op rij` : "—"}
           </div>
         </div>
       </div>
-      <p className="cn-description">{LEVEL_DESC[cn]}</p>
+      <p className="cn-description">{cnDescription}</p>
       <div className="cn-secondary">
-        <span>
-          Hoger dan op <strong>{percentile}%</strong> van de dagen van de laatste twee jaar.
-        </span>
+        <span>{percentileLine}</span>
       </div>
     </section>
   );
