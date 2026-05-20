@@ -100,7 +100,8 @@
       "Bash(git pull *)",
       "Bash(sed -i.bak 's/\\) — /\\): /g' app/engine/src/indicators/plain-language.ts)",
       "Bash(sed -i '' 's/STATBEL — Werkloosheid/STATBEL: Werkloosheid/g' app/engine/src/indicators/plain-language.ts)",
-      "Bash(rm app/engine/src/indicators/plain-language.ts.bak)"
+      "Bash(rm app/engine/src/indicators/plain-language.ts.bak)",
+      "Bash(dd if=/tmp/sbi-bundle.js bs=1 skip=171030 count=200)"
     ]
   }
 }

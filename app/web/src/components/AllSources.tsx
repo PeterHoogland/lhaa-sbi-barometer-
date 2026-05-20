@@ -55,7 +55,7 @@ export function AllSources({ breakdown }: { breakdown: IndicatorBreakdown[] }) {
 
       <p className="muted small all-sources-note">
         De volledige methodologie (lagen 1 tot 8) is open en publiek beschikbaar.
-        Alle keuzes — drempels, gewichten, formules — staan vooraf vast en kunnen
+        Alle keuzes, drempels, gewichten en formules staan vooraf vast en kunnen
         niet achteraf bijgestuurd worden.
       </p>
     </section>
