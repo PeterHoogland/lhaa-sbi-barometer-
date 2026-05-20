@@ -983,44 +983,71 @@ main {
 
 /* ============================================================
    Expert-view: Z-thermometer per indicator
+   Opvallende rode accent-rand om de expert-laag visueel te onderscheiden
+   van de publieke barometer-laag.
    ============================================================ */
 .zview-panel {
   padding: 0;
   overflow: hidden;
+  border: 2px solid var(--st-alert);
+  background: var(--lha-snow);
+  box-shadow: 0 6px 24px rgba(176, 58, 58, 0.10), 0 1px 2px var(--c-shadow);
+  position: relative;
+}
+.zview-panel::before {
+  content: "EXPERT";
+  position: absolute;
+  top: -1px;
+  right: 24px;
+  background: var(--st-alert);
+  color: var(--lha-snow);
+  font-family: var(--f-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 0 0 6px 6px;
+  z-index: 2;
 }
 .zview-toggle {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 18px 28px;
-  background: var(--lha-sky-pale);
+  padding: 22px 28px 22px 28px;
+  background: #fdf6f6;
   border: none;
   cursor: pointer;
   text-align: left;
   font-family: inherit;
-  transition: background 120ms;
-  border-bottom: 1px solid var(--c-line);
+  transition: background 150ms;
+  border-bottom: 1px solid var(--st-alert);
+  border-left: 4px solid var(--st-alert);
 }
-.zview-toggle:hover { background: #e0ecf3; }
+.zview-toggle:hover { background: #f8e9e9; }
 .zview-toggle[aria-expanded="false"] { border-bottom-color: transparent; }
 .zview-toggle-icon {
   font-family: var(--f-mono);
-  font-size: 1.4rem;
-  color: var(--lha-blue-deep);
-  width: 24px;
+  font-size: 1.6rem;
+  color: var(--st-alert);
+  width: 28px;
   text-align: center;
+  font-weight: 600;
 }
-.zview-toggle-text { display: flex; flex-direction: column; gap: 2px; }
+.zview-toggle-text { display: flex; flex-direction: column; gap: 4px; flex: 1; }
 .zview-toggle-text strong {
   font-family: var(--f-sans);
   font-weight: 600;
-  color: var(--lha-blue-deep);
-  font-size: 0.92rem;
+  color: var(--st-alert);
+  font-size: 1rem;
+  letter-spacing: 0.01em;
 }
-.zview-toggle-sub { font-size: 0.82rem; color: var(--lha-stone-soft); }
+.zview-toggle-sub { font-size: 0.85rem; color: var(--lha-stone); }
 
-.zview-body { padding: 24px 28px 28px; }
+.zview-body {
+  padding: 24px 28px 28px;
+  border-left: 4px solid var(--st-alert);
+}
 .zview-lead {
   font-size: 0.92rem;
   color: var(--c-ink-soft);
