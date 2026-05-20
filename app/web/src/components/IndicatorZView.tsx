@@ -128,13 +128,8 @@ export function IndicatorZView({ breakdown }: { breakdown: IndicatorBreakdown[] 
         <span className="zview-toggle-icon">{open ? "−" : "+"}</span>
         <span className="zview-toggle-text">
           <strong>Expert-view: bijdrage per indicator</strong>
-          <span className="zview-toggle-sub">
-            {activeContributors === 0
-              ? "Geen indicator draagt vandaag bij aan banner-activatie"
-              : `${activeContributors} indicator${activeContributors === 1 ? "" : "en"} ${activeContributors === 1 ? "draagt" : "dragen"} actief bij`}
-            {heavyContributors > 0 && ` · ${heavyContributors} in extreem-zone`}
-          </span>
         </span>
+        <span className="zview-toggle-icon zview-toggle-icon-right" aria-hidden="true">{open ? "−" : "+"}</span>
       </button>
 
       {open && (

@@ -1014,11 +1014,11 @@ main {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 22px 28px 22px 28px;
+  padding: 22px 28px;
   background: #fdf6f6;
   border: none;
   cursor: pointer;
-  text-align: left;
+  text-align: center;
   font-family: inherit;
   transition: background 150ms;
   border-bottom: 1px solid var(--st-alert);
@@ -1033,16 +1033,23 @@ main {
   width: 28px;
   text-align: center;
   font-weight: 600;
+  flex-shrink: 0;
 }
-.zview-toggle-text { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.zview-toggle-icon-right { visibility: hidden; }
+.zview-toggle-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  text-align: center;
+}
 .zview-toggle-text strong {
   font-family: var(--f-sans);
   font-weight: 600;
   color: var(--st-alert);
-  font-size: 1rem;
-  letter-spacing: 0.01em;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
 }
-.zview-toggle-sub { font-size: 0.85rem; color: var(--lha-stone); }
 
 .zview-body {
   padding: 24px 28px 28px;
