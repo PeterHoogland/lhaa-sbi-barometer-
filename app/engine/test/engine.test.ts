@@ -1,0 +1,218 @@
+/**
+ * Engine unit tests — reproduceren voorbeelden uit de methodologie-documenten.
+ *
+ * Bronnen:
+ *  • doc 04_Laag-5 §7 — voorbeeld-Z-scores (hitte, file, energie, nieuwsneg., dagen-tot-vakantie)
+ *  • doc 05_Laag-6 Annex A — Schema 2 definitieve gewichten
+ *  • doc 06_Laag-7 §3 — drempels (70, 90) en 3-dagen-sustained-regel
+ */
+
+import { describe, it, expect } from "vitest";
+import {
+  computeBaseline,
+  zscore,
+  winsorize,
+  computeComposite,
+  computeTier,
+  domainWeight,
+  verifyWeightsSumToOne,
+  SCHEMA_2_DOMAIN_WEIGHTS,
+  daylightHours,
+  percentileRank,
+  computeConditionLevel,
+} from "../src/index.js";
+
+describe("Z-scoring (doc 04 §7)", () => {
+  // Helper: bouw een baseline direct uit median + sigma
+  const baselineFromMedSigma = (median: number, sigma: number) => ({ median, sigma, n: 100 });
+
+  it("Hitte: (34.2 - 22.1) / 5.4 ≈ +2.24", () => {
+    const z = zscore(34.2, baselineFromMedSigma(22.1, 5.4));
+    expect(z).toBeCloseTo(2.24, 1);
+  });
+
+  it("Filezwaarte: (8400 - 6200) / 1100 = +2.00", () => {
+    const z = zscore(8400, baselineFromMedSigma(6200, 1100));
+    expect(z).toBeCloseTo(2.0, 2);
+  });
+
+  it("Energie: (95 - 78) / 12 ≈ +1.42", () => {
+    const z = zscore(95, baselineFromMedSigma(78, 12));
+    expect(z).toBeCloseTo(1.42, 1);
+  });
+
+  it("Nieuwsneg STL-residu: 3.1 / 1.8 ≈ +1.72", () => {
+    const z = zscore(3.1, baselineFromMedSigma(0, 1.8));
+    expect(z).toBeCloseTo(1.72, 1);
+  });
+
+  it("Dagen tot vakantie: (41 - 28) / 19 ≈ +0.68", () => {
+    const z = zscore(41, baselineFromMedSigma(28, 19));
+    expect(z).toBeCloseTo(0.68, 1);
+  });
+});
+
+describe("Winsorization (doc 04 §4)", () => {
+  it("clipt op +3", () => {
+    expect(winsorize(4.5).value).toBe(3);
+    expect(winsorize(4.5).clipped).toBe(true);
+  });
+  it("clipt op -3", () => {
+    expect(winsorize(-3.7).value).toBe(-3);
+  });
+  it("laat normale waarden ongemoeid", () => {
+    expect(winsorize(1.5).value).toBe(1.5);
+    expect(winsorize(1.5).clipped).toBe(false);
+  });
+});
+
+describe("Wegingen (doc 05 Annex A)", () => {
+  it("Schema 2 gewichten exact zoals pre-geregistreerd", () => {
+    expect(SCHEMA_2_DOMAIN_WEIGHTS.D1).toBe(0.211);
+    expect(SCHEMA_2_DOMAIN_WEIGHTS.D2).toBe(0.135);
+    expect(SCHEMA_2_DOMAIN_WEIGHTS.D3).toBe(0.223);
+    expect(SCHEMA_2_DOMAIN_WEIGHTS.D4).toBe(0.108);
+    expect(SCHEMA_2_DOMAIN_WEIGHTS.D5).toBe(0.155);
+    expect(SCHEMA_2_DOMAIN_WEIGHTS.D6).toBe(0.172);
+  });
+
+  it("Schema 1 gewichten zijn 1/6 per domein", () => {
+    expect(domainWeight("equal", "D1")).toBeCloseTo(1 / 6, 5);
+    expect(domainWeight("equal", "D6")).toBeCloseTo(1 / 6, 5);
+  });
+
+  it("Schema 2 sommeert tot ~1.0 (rounding-tolerantie)", () => {
+    expect(verifyWeightsSumToOne("evidence")).toBeCloseTo(1.0, 2);
+  });
+
+  it("Schema 1 sommeert exact tot 1.0", () => {
+    expect(verifyWeightsSumToOne("equal")).toBeCloseTo(1.0, 5);
+  });
+});
+
+describe("Tier-logica (doc 06 §3)", () => {
+  it("Eén dag boven 90 ≠ rood (sustained-regel)", () => {
+    const result = computeTier([50, 50, 50, 95, 50, 50]);
+    expect(result.tier).toBe("green");
+  });
+
+  it("Drie opeenvolgende dagen ≥90 → rood", () => {
+    const result = computeTier([50, 50, 92, 93, 95]);
+    expect(result.tier).toBe("red");
+  });
+
+  it("Drie opeenvolgende dagen tussen 70-90 → oranje", () => {
+    const result = computeTier([60, 75, 80, 78]);
+    expect(result.tier).toBe("amber");
+  });
+
+  it("Decay: 3 dagen onder drempel verlaagt tier", () => {
+    const result = computeTier([95, 95, 95, 95, 50, 50, 50]);
+    expect(result.tier).toBe("green");
+  });
+
+  it("Decay vereist 3 opeenvolgende dagen onder — 2 niet genoeg", () => {
+    const result = computeTier([95, 95, 95, 50, 50]);
+    expect(result.tier).toBe("red"); // nog steeds rood na 2 dagen herstel
+  });
+});
+
+describe("Percentile rank", () => {
+  it("Mediaan = 50e percentiel", () => {
+    expect(percentileRank(5, [1, 2, 3, 4, 5, 6, 7, 8, 9])).toBeCloseTo(50, 0);
+  });
+
+  it("Hoogste waarde > 90e percentiel", () => {
+    expect(percentileRank(10, [1, 2, 3, 4, 5, 6, 7, 8, 9])).toBeGreaterThan(90);
+  });
+});
+
+describe("Daglichturen — NOAA Solar (Brussel 50.85°N)", () => {
+  it("Zomerzonnewende (21 juni) ≈ 16+ uur", () => {
+    const h = daylightHours(new Date("2026-06-21T12:00:00Z"));
+    expect(h).toBeGreaterThan(16);
+    expect(h).toBeLessThan(17);
+  });
+
+  it("Winterzonnewende (21 dec) ≈ 7-8 uur", () => {
+    const h = daylightHours(new Date("2026-12-21T12:00:00Z"));
+    expect(h).toBeGreaterThan(7);
+    expect(h).toBeLessThan(8.5);
+  });
+
+  it("Lente-equinox (20 mrt) ≈ 12 uur", () => {
+    const h = daylightHours(new Date("2026-03-20T12:00:00Z"));
+    expect(h).toBeGreaterThan(11.5);
+    expect(h).toBeLessThan(12.5);
+  });
+});
+
+describe("Conditie-Niveau (publieke 5-bands)", () => {
+  it("CN 1 — green + P<50", () => {
+    const cn = computeConditionLevel("green", 30, "normal");
+    expect(cn.level).toBe(1);
+    expect(cn.bannerActive).toBe(false);
+  });
+
+  it("CN 2 — green + 50≤P<70", () => {
+    const cn = computeConditionLevel("green", 60, "normal");
+    expect(cn.level).toBe(2);
+    expect(cn.bannerActive).toBe(false);
+  });
+
+  it("CN 3 — amber (banner aan)", () => {
+    const cn = computeConditionLevel("amber", 75, "normal");
+    expect(cn.level).toBe(3);
+    expect(cn.bannerActive).toBe(true);
+    expect(cn.copyKey).toBe("venster_opent");
+  });
+
+  it("CN 4 — red (banner aan, verhoogd)", () => {
+    const cn = computeConditionLevel("red", 95, "normal");
+    expect(cn.level).toBe(4);
+    expect(cn.bannerActive).toBe(true);
+    expect(cn.copyKey).toBe("conditie_piek");
+  });
+
+  it("CN 5 — brand-safety override OVER-RIJDT andere tier (banner UIT)", () => {
+    const cn = computeConditionLevel("red", 95, "elevated");
+    expect(cn.level).toBe(5);
+    expect(cn.bannerActive).toBe(false);
+    expect(cn.copyKey).toBe("brand_safety");
+  });
+
+  it("CN 5 — block ook override", () => {
+    expect(computeConditionLevel("amber", 75, "block").level).toBe(5);
+    expect(computeConditionLevel("green", 30, "block").level).toBe(5);
+  });
+});
+
+describe("Composite met Schema 1", () => {
+  it("Berekent gewogen som over alle domeinen", () => {
+    const z = {
+      "I-D1-001": 0.5,
+      "I-D1-002": 1.0,
+      "I-D1-003": 0.0,
+      "I-D1-004": 0.5,
+      "I-D2-001": 1.5,
+      "I-D2-004": 0.5,
+      "I-D3-001": 1.0,
+      "I-D3-002": 1.0,
+      "I-D3-003": 1.0,
+      "I-D3-005": 1.0,
+      "I-D3-006": 1.0,
+      "I-D4-001": 0.5,
+      "I-D4-002": 0.5,
+      "I-D5-001": 0.8,
+      "I-D5-002": 0.8,
+      "I-D5-003": 0.8,
+      "I-D6-001": 0.3,
+      "I-D6-002": 0.3,
+      "I-D6-003": 0.3,
+      "I-D6-005": 0.3,
+    } as const;
+    const result = computeComposite(z, "equal");
+    expect(result.composite).toBeGreaterThan(0);
+    expect(result.domainContributions).toHaveLength(6);
+  });
+});

@@ -1,0 +1,10 @@
+node_modules/
+.vite/
+src/
+test/
+*.ts
+*.tsx
+!vite.config.ts
+!tsconfig*.json
+tsconfig*.json
+package-lock.json

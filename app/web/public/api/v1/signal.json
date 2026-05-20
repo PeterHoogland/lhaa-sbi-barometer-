@@ -1,0 +1,15 @@
+{
+  "timestamp": "2026-05-20T20:20:58.139Z",
+  "week_iso": "2026-W21",
+  "condition_level": {
+    "value": 1,
+    "name": "Rust",
+    "banner_active": false,
+    "copy_key": "rust"
+  },
+  "tier": "green",
+  "percentile_24m": 0,
+  "brand_safety_flag": "normal",
+  "valid_until": "2026-05-21T20:20:58.144Z",
+  "methodology_version": "0.2.0"
+}
