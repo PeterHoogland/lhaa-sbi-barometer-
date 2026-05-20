@@ -248,7 +248,7 @@ main {
 .cn-main {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 28px;
+  gap: 36px;
   align-items: center;
   position: relative;
   z-index: 1;
@@ -257,6 +257,7 @@ main {
   .cn-main { grid-template-columns: auto 1fr; gap: 18px; }
   .cn-side { grid-column: 1 / -1; text-align: left; }
 }
+.cn-main .cn-scale { justify-content: center; }
 
 .cn-number {
   font-family: var(--f-display);
@@ -271,28 +272,38 @@ main {
 
 .cn-scale {
   display: flex;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
-  padding: 0 8px;
+  padding: 0 12px;
 }
 .cn-dot {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--c-line);
   border: 1px solid var(--c-fog, #d8e1ec);
-  transition: all 200ms;
+  transition: all 220ms;
+  opacity: 0.4;
 }
-.cn-dot.active { background: var(--lha-blue-deep); border-color: var(--lha-blue-deep); }
-.cn-dot.current {
-  transform: scale(1.4);
-  box-shadow: 0 0 0 5px rgba(10, 61, 107, 0.12);
-}
-.cn-level-3 .cn-dot.active { background: var(--lha-sun); border-color: var(--lha-sun); }
-.cn-level-3 .cn-dot.current { box-shadow: 0 0 0 5px rgba(232, 168, 84, 0.22); }
-.cn-level-4 .cn-dot.active { background: var(--st-alert); border-color: var(--st-alert); }
-.cn-level-4 .cn-dot.current { box-shadow: 0 0 0 5px rgba(176, 58, 58, 0.20); }
-.cn-level-5 .cn-dot.active { background: var(--lha-stone-soft); border-color: var(--lha-stone-soft); }
+
+/* Vaste kleur per positie — gradiënt groen → rood. Toont visueel
+   wat 'minder erg' (1) vs 'meest erg' (5) betekent, ook bij inactieve dots. */
+.cn-dot-pos-1 { background: var(--st-rust); border-color: var(--st-rust); }
+.cn-dot-pos-2 { background: var(--lha-blue-soft); border-color: var(--lha-blue-soft); }
+.cn-dot-pos-3 { background: var(--lha-sun); border-color: var(--lha-sun); }
+.cn-dot-pos-4 { background: var(--st-alert); border-color: var(--st-alert); }
+.cn-dot-pos-5 { background: var(--lha-stone-soft); border-color: var(--lha-stone-soft); }
+
+/* Actieve dots (tot en met huidig niveau) krijgen volle opaciteit */
+.cn-dot.active { opacity: 1; }
+
+/* Huidige dot krijgt zachte glow in dezelfde positie-kleur */
+.cn-dot.current { transform: scale(1.45); }
+.cn-dot-pos-1.current { box-shadow: 0 0 0 5px rgba(74, 124, 89, 0.22); }
+.cn-dot-pos-2.current { box-shadow: 0 0 0 5px rgba(45, 109, 165, 0.22); }
+.cn-dot-pos-3.current { box-shadow: 0 0 0 5px rgba(232, 168, 84, 0.26); }
+.cn-dot-pos-4.current { box-shadow: 0 0 0 5px rgba(176, 58, 58, 0.24); }
+.cn-dot-pos-5.current { box-shadow: 0 0 0 5px rgba(74, 90, 115, 0.22); }
 
 .cn-side { text-align: right; }
 .cn-kicker {

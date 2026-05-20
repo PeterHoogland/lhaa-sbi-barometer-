@@ -77,20 +77,20 @@ export function buildBody(ctx: ExplainerContext): string {
 
   if (ctx.cn === 1) {
     if (ctx.percentile === 0) {
-      return `Geen van de ${ctx.totalAvailable} indicatoren staat hoger dan gewoonlijk. Sinds twee jaar zijn er geen kalmere dagen geregistreerd. Ver onder de drempel voor banner-activatie.`;
+      return `Geen van de ${ctx.totalAvailable} indicatoren staat hoger dan gewoonlijk. Sinds twee jaar zijn er geen kalmere dagen geregistreerd.`;
     }
     if (ctx.percentile < 30) {
       return `${ctx.lowerCount} signalen onder gemiddeld, geen enkele hoger dan gewoonlijk. We zitten lager dan op ${100 - ctx.percentile}% van de afgelopen twee jaar.`;
     }
-    return `Geen van de ${ctx.totalAvailable} indicatoren staat hoger dan gewoonlijk. We zitten lager dan op ${100 - ctx.percentile}% van de afgelopen twee jaar. Ver onder de drempel voor banner-activatie.`;
+    return `Geen van de ${ctx.totalAvailable} indicatoren staat hoger dan gewoonlijk. We zitten lager dan op ${100 - ctx.percentile}% van de afgelopen twee jaar.`;
   }
 
   if (ctx.cn === 2) {
     if (ctx.elevatedCount === 0) {
-      return `Niets bijzonders te melden. ${ctx.totalAvailable} signalen blijven binnen de gemiddelde zone. Ver onder de drempel voor banner-activatie.`;
+      return `Niets bijzonders te melden. ${ctx.totalAvailable} signalen blijven binnen de gemiddelde zone.`;
     }
     const lead = describeTop(ctx.topContributors, 1);
-    return `${lead} Voor banner-activatie zouden meerdere signalen tegelijk hoger moeten staan, drie dagen op rij. Op dit moment niet aan de orde.`;
+    return `${lead} Voor banner-activatie zouden meerdere signalen tegelijk hoger moeten staan, drie dagen op rij.`;
   }
 
   if (ctx.cn === 3) {

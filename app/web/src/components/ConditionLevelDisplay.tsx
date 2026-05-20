@@ -30,16 +30,16 @@ export function ConditionLevelDisplay({
           {[1, 2, 3, 4, 5].map((n) => (
             <span
               key={n}
-              className={`cn-dot ${n <= cn ? "active" : ""} ${n === cn ? "current" : ""}`}
+              className={`cn-dot cn-dot-pos-${n} ${n <= cn ? "active" : ""} ${n === cn ? "current" : ""}`}
               aria-hidden="true"
             />
           ))}
         </div>
         <div className="cn-side">
           <div className="cn-kicker">{LEVEL_KICKER[cn]}</div>
-          <div className="cn-meta">
-            {cn >= 3 && cn <= 4 ? `Dag ${data.tier.days_in_tier} op rij` : "—"}
-          </div>
+          {cn >= 3 && cn <= 4 && (
+            <div className="cn-meta">Dag {data.tier.days_in_tier} op rij</div>
+          )}
         </div>
       </div>
       <p className="cn-description">{cnDescription}</p>
