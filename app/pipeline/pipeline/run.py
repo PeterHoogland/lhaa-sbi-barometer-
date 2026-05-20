@@ -14,7 +14,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from .util import FetchBatch, DATA_DIR, write_json, daterange, iso
-from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, entsoe, fod_waso, nbb, gdelt, google_trends, events
+from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, google_trends, events
 
 
 def fetch_one_day(d: date) -> FetchBatch:
@@ -33,7 +33,7 @@ def fetch_one_day(d: date) -> FetchBatch:
 
     # D3 — Economie
     batch.add(statbel.fetch_cpi(d))
-    batch.add(entsoe.fetch_energy_prices(d))
+    batch.add(energy_charts.fetch_energy_prices(d))
     batch.add(fod_waso.fetch_collective_layoffs(d))
     batch.add(statbel.fetch_unemployment(d))
     batch.add(nbb.fetch_mortgage_rate(d))

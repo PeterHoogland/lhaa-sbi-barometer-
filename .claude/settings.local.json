@@ -66,7 +66,26 @@
       "Bash(curl -s \"https://data-api.ecb.europa.eu/service/data/ICP/M.BE.N.000000.4.ANR?format=jsondata&lastNObservations=1\" -H \"Accept: application/json\")",
       "Bash(curl -s \"https://data-api.ecb.europa.eu/service/data/MIR/M.BE.B.A2C.A.R.A.2250.EUR.N?format=jsondata&lastNObservations=1\" -H \"Accept: application/json\")",
       "Bash(curl -s \"https://api.gdeltproject.org/api/v2/doc/doc?query=sourcecountry:BE%20sourcelang:dut&mode=tonechart&format=json&startdatetime=20260513000000&enddatetime=20260520235959\" -H \"Accept: application/json\")",
-      "Bash(curl -sI \"https://data-api.ecb.europa.eu/service/data/ICP/M.BE.N.000000.4.ANR?format=jsondata&lastNObservations=1\" -H \"Accept: application/json\")"
+      "Bash(curl -sI \"https://data-api.ecb.europa.eu/service/data/ICP/M.BE.N.000000.4.ANR?format=jsondata&lastNObservations=1\" -H \"Accept: application/json\")",
+      "Bash(curl -s \"https://api.energy-charts.info/price?bzn=BE&start=2026-05-19&end=2026-05-20\")",
+      "Bash(curl -s \"https://api.gdeltproject.org/api/v2/doc/doc?query=sourcecountry:BE%20sourcelang:dut&mode=timelinetone&format=json&timespan=7d\")",
+      "Bash(curl -sI \"https://miv.opendata.belfla.be/miv-api/v3/configuredmeasurements/\")",
+      "Bash(curl -sI \"https://opendata.vlaanderen.be/api/v3/action/datastore_search?resource_id=fil&limit=1\")",
+      "Bash(curl -sL \"https://miv.opendata.belfla.be/miv-api/v3/configuredmeasurements/\")",
+      "Bash(curl -s \"https://economie.fgov.be/nl/themas/energie/energieprijzen/brandstofprijzen\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(grep -oE \"Euro 95.{0,80}|euro95.{0,80}|maximum prijs.{0,100}|Diesel.{0,80}\")",
+      "Bash(curl -sI \"https://werk.belgie.be/nl/themas/herstructureringen\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -s \"https://www.verkeerscentrum.be\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(grep -oE \"totaal.{0,80}|file.{0,80}km|km file|filedruk.{0,80}\")",
+      "Bash(curl -sI \"https://www.verkeerscentrum.be/api/trafficinfo\")",
+      "Bash(curl -s \"https://www.verkeerscentrum.be/home/getlivedata\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -s \"https://www.verkeerscentrum.be/api/v1/widget/621c70ad-a8c5-482c-8a62-d9ff5c706d95/embed\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -s \"https://www.verkeerscentrum.be/api/v1/widget/df0b7ac2-70e4-49d8-926e-2f97ac3f8680/embed\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -sI \"https://www.vrt.be/vrtnws/nl.rss.articles.xml\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -sI \"https://www.vrt.be/vrtnws/nl/rss\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -sI \"https://www.hln.be/binnenland.rss\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -sI \"https://carbu.com\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -s \"https://carbu.com/belgie/Brussel/euro95/0/\" -H \"User-Agent: Mozilla/5.0\")"
     ]
   }
 }
