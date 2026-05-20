@@ -97,7 +97,10 @@
       "Bash(curl -s \"https://data-api.ecb.europa.eu/service/dataflow/ECB/LFSI?detail=referencestubs\" -H \"Accept: application/xml\")",
       "Bash(curl -s \"https://data-api.ecb.europa.eu/service/data/LFSI/M.BE.S.UNEHRT.TOTAL0.15_74.T?format=jsondata&lastNObservations=2\" -H \"Accept: application/json\")",
       "Bash(grep -v \"node_modules\\\\|\\\\.json$\")",
-      "Bash(git pull *)"
+      "Bash(git pull *)",
+      "Bash(sed -i.bak 's/\\) — /\\): /g' app/engine/src/indicators/plain-language.ts)",
+      "Bash(sed -i '' 's/STATBEL — Werkloosheid/STATBEL: Werkloosheid/g' app/engine/src/indicators/plain-language.ts)",
+      "Bash(rm app/engine/src/indicators/plain-language.ts.bak)"
     ]
   }
 }

@@ -75,8 +75,8 @@ function ZThermometer({ ind }: { ind: IndicatorBreakdown }) {
         <div className="zth-zone zth-zone-alert" style={{ left: `${zToPercent(2)}%`, width: `${100 - zToPercent(2)}%` }} />
 
         {/* Drempel-markers */}
-        <div className="zth-marker zth-marker-threshold" style={{ left: `${zToPercent(1)}%` }} title="Z = +1 — banner-bijdrage" />
-        <div className="zth-marker zth-marker-extreme" style={{ left: `${zToPercent(2)}%` }} title="Z = +2 — zware bijdrage" />
+        <div className="zth-marker zth-marker-threshold" style={{ left: `${zToPercent(1)}%` }} title="Z = +1: banner-bijdrage" />
+        <div className="zth-marker zth-marker-extreme" style={{ left: `${zToPercent(2)}%` }} title="Z = +2: zware bijdrage" />
 
         {/* Huidige positie */}
         <div className="zth-dot" style={{ left: `${pct}%`, background: color }} />

@@ -26,6 +26,6 @@ export function stateIcon(s: IndicatorState): string {
     case "normaal": return "●";
     case "verhoogd": return "▲";
     case "extreem": return "▲▲";
-    case "ontbreekt": return "—";
+    case "ontbreekt": return "·";
   }
 }

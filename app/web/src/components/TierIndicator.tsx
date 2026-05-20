@@ -15,9 +15,9 @@ export function TierIndicator({ tier, daysInTier }: { tier: Tier; daysInTier: nu
         </div>
         <h1 className="tier-headline">{TIER_HEADLINE[tier]}</h1>
         <p className="tier-subline">{TIER_SUBLINE[tier]}</p>
-        <div className="tier-meta">
-          {tier === "green" ? "—" : `Dag ${daysInTier} in deze tier.`}
-        </div>
+        {tier !== "green" && (
+          <div className="tier-meta">Dag {daysInTier} in deze tier.</div>
+        )}
       </div>
     </div>
   );
