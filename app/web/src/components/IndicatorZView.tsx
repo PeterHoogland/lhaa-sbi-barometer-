@@ -141,8 +141,8 @@ export function IndicatorZView({ breakdown }: { breakdown: IndicatorBreakdown[] 
         <div className="zview-body">
           <p className="zview-lead">
             Hoe ver staat elk onderdeel van de drempel waarboven het meedraagt aan
-            banner-activatie? Z = 0 is "gewoon voor dit seizoen", Z ≥ +1 is "drukker
-            dan gewoonlijk en draagt bij", Z ≥ +2 is "uitzonderlijk druk".
+            banner-activatie? Z = 0 is "gemiddeld voor dit seizoen", Z ≥ +1 is "hoger
+            dan gewoonlijk en draagt bij", Z ≥ +2 is "uitzonderlijk hoog".
           </p>
 
           <div className="zview-sort">
@@ -162,10 +162,10 @@ export function IndicatorZView({ breakdown }: { breakdown: IndicatorBreakdown[] 
           </div>
 
           <div className="zview-legend">
-            <span><i className="lg-cold" /> rustiger (Z &lt; −1)</span>
-            <span><i className="lg-normal" /> gewoon (−1 tot +1)</span>
-            <span><i className="lg-warn" /> draagt bij aan banner (Z ≥ +1)</span>
-            <span><i className="lg-alert" /> extreem (Z ≥ +2)</span>
+            <span><i className="lg-cold" /> lager dan gewoonlijk (Z &lt; −1)</span>
+            <span><i className="lg-normal" /> gemiddeld (−1 tot +1)</span>
+            <span><i className="lg-warn" /> hoger dan gewoonlijk (Z ≥ +1)</span>
+            <span><i className="lg-alert" /> uitzonderlijk hoog (Z ≥ +2)</span>
           </div>
 
           <div className="zview-list">

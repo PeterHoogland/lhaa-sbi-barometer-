@@ -95,7 +95,8 @@
       "Bash(curl -s \"https://werk.belgie.be/nl/zoeken?keys=collectief+ontslag\" -H \"User-Agent: Mozilla/5.0\")",
       "Bash(curl -s \"https://data-api.ecb.europa.eu/service/data/LFSI/M.BE.S.UNEHPT.TOTAL.A?format=jsondata&lastNObservations=2\" -H \"Accept: application/json\")",
       "Bash(curl -s \"https://data-api.ecb.europa.eu/service/dataflow/ECB/LFSI?detail=referencestubs\" -H \"Accept: application/xml\")",
-      "Bash(curl -s \"https://data-api.ecb.europa.eu/service/data/LFSI/M.BE.S.UNEHRT.TOTAL0.15_74.T?format=jsondata&lastNObservations=2\" -H \"Accept: application/json\")"
+      "Bash(curl -s \"https://data-api.ecb.europa.eu/service/data/LFSI/M.BE.S.UNEHRT.TOTAL0.15_74.T?format=jsondata&lastNObservations=2\" -H \"Accept: application/json\")",
+      "Bash(grep -v \"node_modules\\\\|\\\\.json$\")"
     ]
   }
 }

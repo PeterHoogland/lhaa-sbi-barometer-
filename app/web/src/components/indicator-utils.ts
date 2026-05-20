@@ -2,10 +2,10 @@ import type { IndicatorState } from "../types";
 
 export function stateLabel(s: IndicatorState): string {
   switch (s) {
-    case "rustig": return "rustiger dan gewoonlijk";
-    case "normaal": return "gewoon";
-    case "verhoogd": return "drukker dan gewoonlijk";
-    case "extreem": return "uitzonderlijk druk";
+    case "rustig": return "lager dan gewoonlijk";
+    case "normaal": return "gemiddeld";
+    case "verhoogd": return "hoger dan gewoonlijk";
+    case "extreem": return "uitzonderlijk hoog";
     case "ontbreekt": return "geen data";
   }
 }

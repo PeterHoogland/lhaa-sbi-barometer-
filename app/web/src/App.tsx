@@ -106,9 +106,10 @@ export function App() {
         <section className="panel sparkline-panel">
           <h2>Hoe was het de laatste 60 dagen?</h2>
           <p className="panel-lead">
-            Elke stip is één dag. Hoe hoger op de grafiek, hoe drukker.
-            De gekleurde banden tonen de drempels: <strong>rustig</strong>,
-            <strong> druk</strong> (vanaf 70%), <strong>uitzonderlijk druk</strong> (vanaf 90%).
+            Elke stip is één dag. Hoe hoger op de grafiek, hoe meer signalen tegelijk hoog staan.
+            De gekleurde banden tonen de drempels: <strong>gemiddeld</strong>,
+            <strong> hoger dan gewoonlijk</strong> (vanaf 70%),
+            <strong> uitzonderlijk hoog</strong> (vanaf 90%).
           </p>
           <Sparkline points={sparkline} />
         </section>

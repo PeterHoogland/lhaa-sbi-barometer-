@@ -9,10 +9,10 @@ const LEVEL_DESC: Record<ConditionLevel, string> = {
 };
 
 const LEVEL_KICKER: Record<ConditionLevel, string> = {
-  1: "RUSTIG",
-  2: "GEWOON",
+  1: "LAAG",
+  2: "GEMIDDELD",
   3: "VEEL TEGELIJK",
-  4: "UITZONDERLIJK DRUK",
+  4: "UITZONDERLIJK HOOG",
   5: "EVEN OP PAUZE",
 };
 
@@ -52,10 +52,7 @@ export function ConditionLevelDisplay({
       <p className="cn-description">{LEVEL_DESC[cn]}</p>
       <div className="cn-secondary">
         <span>
-          Drukker dan op <strong>{percentile}%</strong> van de dagen van de laatste twee jaar.
-        </span>
-        <span className="cn-banner-status">
-          Reclame-banner: <strong>{level.banner_active ? "aan" : "uit"}</strong>
+          Hoger dan op <strong>{percentile}%</strong> van de dagen van de laatste twee jaar.
         </span>
       </div>
     </section>

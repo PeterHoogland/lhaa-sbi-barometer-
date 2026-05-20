@@ -257,8 +257,8 @@ export function zToState(z: number): IndicatorState {
 }
 
 export const STATE_LABELS: Record<IndicatorState, string> = {
-  rustig: "rustiger dan gewoonlijk",
-  normaal: "gewoon",
-  verhoogd: "drukker dan gewoonlijk",
-  extreem: "uitzonderlijk druk",
+  rustig: "lager dan gewoonlijk",
+  normaal: "gemiddeld",
+  verhoogd: "hoger dan gewoonlijk",
+  extreem: "uitzonderlijk hoog",
 };

@@ -119,16 +119,16 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
       <footer className="indicator-list-footer">
         <p>
           <strong>Hoe lees je dit?</strong>{" "}
-          <span style={{ color: "var(--c-green)" }}>○ rustiger</span>
+          <span style={{ color: "var(--c-green)" }}>○ lager dan gewoonlijk</span>
           {" · "}
-          <span style={{ color: "var(--c-ink-mute)" }}>● gewoon</span>
+          <span style={{ color: "var(--c-ink-mute)" }}>● gemiddeld</span>
           {" · "}
-          <span style={{ color: "var(--c-amber)" }}>▲ drukker</span>
+          <span style={{ color: "var(--c-amber)" }}>▲ hoger dan gewoonlijk</span>
           {" · "}
-          <span style={{ color: "var(--c-red)" }}>▲▲ uitzonderlijk druk</span>
+          <span style={{ color: "var(--c-red)" }}>▲▲ uitzonderlijk hoog</span>
         </p>
         <p className="muted small">
-          Met "gewoon" bedoelen we: vergeleken met dezelfde periode in de afgelopen twee jaar.
+          Met "gemiddeld" bedoelen we: vergeleken met dezelfde periode in de afgelopen twee jaar.
           Een aantal metingen draait nog op test-data, die zijn gemarkeerd met <em>demo-data</em>.
           Echte data komt er stap voor stap bij.
         </p>

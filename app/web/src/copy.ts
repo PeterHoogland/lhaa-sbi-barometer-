@@ -7,7 +7,7 @@
 export const TIER_HEADLINE = {
   green: "Vandaag is een gewone dag.",
   amber: "Vandaag komt er veel tegelijk op ons af.",
-  red: "Vandaag is uitzonderlijk druk.",
+  red: "Vandaag staan veel signalen uitzonderlijk hoog.",
 } as const;
 
 export const TIER_SUBLINE = {
