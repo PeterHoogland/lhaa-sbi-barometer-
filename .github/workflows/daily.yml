@@ -2,20 +2,20 @@ name: Daily SBI Update
 
 on:
   schedule:
-    # 07:00 UTC = 09:00 CEST (zomer, april-oktober) / 08:00 CET (winter)
-    # Vroege voormiddag-update voor BE gebruikers
+    # Twee crons: 07:00 UTC = 09:00 CEST (zomer),
+    #             08:00 UTC = 09:00 CET  (winter).
+    # Time-guard hieronder zorgt dat alleen de "9:00 BE-tijd"-firing daadwerkelijk uitvoert.
     - cron: "0 7 * * *"
+    - cron: "0 8 * * *"
   workflow_dispatch: {}
 
 permissions:
   contents: write
 
-# Voorkom dat twee runs tegelijk surge proberen te updaten
 concurrency:
   group: deploy-${{ github.ref }}
   cancel-in-progress: false
 
-# Opt-in Node 24 runtime voor alle JS-actions (deprecation Node 20 vanaf juni 2026)
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
@@ -24,10 +24,25 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - name: Time-guard (alleen door bij 09:00 BE-tijd of bij handmatige trigger)
+        id: timecheck
+        run: |
+          BE_HOUR=$(TZ='Europe/Brussels' date +%H)
+          echo "Belgian local hour: $BE_HOUR"
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$BE_HOUR" != "09" ]; then
+            echo "Skip — schedule firing maar BE-uur is $BE_HOUR, niet 09."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Proceed — BE-uur $BE_HOUR (manual trigger telt altijd)."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Checkout
+        if: steps.timecheck.outputs.skip != 'true'
         uses: actions/checkout@v4
 
       - name: Set up Python 3.11
+        if: steps.timecheck.outputs.skip != 'true'
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -35,36 +50,44 @@ jobs:
           cache-dependency-path: app/pipeline/requirements.txt
 
       - name: Set up Node 22 LTS
+        if: steps.timecheck.outputs.skip != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: "22"
 
       - name: Install Python deps
+        if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/pipeline
         run: pip install -r requirements.txt
 
       - name: Fetch real data (Python pipeline)
+        if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/pipeline
         run: python -m pipeline.run
         continue-on-error: true
 
       - name: Install engine deps
+        if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/engine
         run: npm install
 
       - name: Generate daily output (hybrid real + synthetic)
+        if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/engine
         run: npm run generate-fixture
 
       - name: Install web deps
+        if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/web
         run: npm install
 
       - name: Build web production bundle
+        if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/web
         run: npm run build
 
       - name: Deploy to Surge.sh
+        if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/web
         env:
           SURGE_LOGIN: peter@hoogland.be
@@ -74,10 +97,10 @@ jobs:
           surge ./dist les-hautes-alpes-sbi.surge.sh
 
       - name: Persist cache (sbi-cache.json + pending_events.json)
+        if: steps.timecheck.outputs.skip != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # Forceer-add ook bestanden die in .gitignore staan (cache files horen in repo)
           git add -f app/data/sbi-cache.json app/pipeline/pending_events.json 2>/dev/null || true
           if ! git diff --cached --quiet; then
             git commit -m "chore: persist daily fetch cache [skip ci]"
