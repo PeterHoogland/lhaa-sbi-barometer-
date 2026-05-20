@@ -7,7 +7,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: read
+  contents: write
 
 # Voorkom dat twee runs tegelijk surge proberen te updaten
 concurrency:
@@ -71,3 +71,17 @@ jobs:
         run: |
           npm install -g surge
           surge ./dist les-hautes-alpes-sbi.surge.sh
+
+      - name: Persist cache (sbi-cache.json + pending_events.json)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Forceer-add ook bestanden die in .gitignore staan (cache files horen in repo)
+          git add -f app/data/sbi-cache.json app/pipeline/pending_events.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: persist daily fetch cache [skip ci]"
+            git pull --rebase origin main || true
+            git push origin main || true
+          else
+            echo "No cache changes to commit"
+          fi

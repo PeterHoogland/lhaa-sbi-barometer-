@@ -29,6 +29,12 @@ EUROSTAT_UE_URL = (
     "?geo=BE&sex=T&age=TOTAL&unit=PC_ACT&s_adj=SA&format=JSON&lastTimePeriod=1"
 )
 
+# Fallback: ECB LFSI BE unemployment rate (bewezen stabiel)
+ECB_UNEMPLOYMENT_URL = (
+    "https://data-api.ecb.europa.eu/service/data/LFSI/M.BE.S.UNEHRT.TOTAL0.15_74.T"
+    "?format=jsondata&lastNObservations=1"
+)
+
 
 def _parse_ecb_latest(body) -> float | None:
     """ECB SDW JSON-data format heeft genest series-pad. Pak de laatste observatie."""
@@ -73,6 +79,17 @@ def fetch_cpi(target_date: date) -> FetchResult:
 
 
 def fetch_unemployment(target_date: date) -> FetchResult:
+    # Primair: ECB LFSI (zelfde ECB-infrastructuur als ons hypotheek/ontslagen-pad)
+    ok, body = safe_request(ECB_UNEMPLOYMENT_URL, timeout=20, headers={"Accept": "application/json"})
+    if ok and isinstance(body, dict):
+        val = _parse_ecb_latest(body)
+        if val is not None:
+            return FetchResult(
+                "I-D3-005", val, target_date.isoformat(),
+                simulated=False, source="ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
+            )
+
+    # Fallback: Eurostat
     ok, body = safe_request(EUROSTAT_UE_URL, timeout=20, headers={"Accept": "application/json"})
     if ok and isinstance(body, dict):
         val = _parse_eurostat_latest(body)
@@ -81,8 +98,9 @@ def fetch_unemployment(target_date: date) -> FetchResult:
                 "I-D3-005", val, target_date.isoformat(),
                 simulated=False, source="Eurostat (BE werkloosheid, seizoens-gecorrigeerd)",
             )
+
     value = 6.2 + seasonal_noise(target_date, 0, 0, 0.3, 0.0)
     return FetchResult(
         "I-D3-005", value, target_date.isoformat(),
-        simulated=True, source="mock (Eurostat endpoint faalde)",
+        simulated=True, source="mock (ECB + Eurostat beide faalden)",
     )

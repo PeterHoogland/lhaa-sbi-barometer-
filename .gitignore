@@ -36,6 +36,9 @@ app/data/raw-values.json
 app/data/raw-history.json
 app/data/composite-history.json
 
+# sbi-cache.json hoort WEL in de repo (workflow commit-back) maar mag lokaal vrij muteren
+# (force-add in workflow, lokaal niet committen tenzij expliciet)
+
 # Surge upload state
 app/web/.surge
 .claude/
