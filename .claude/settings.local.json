@@ -86,7 +86,16 @@
       "Bash(curl -sI \"https://www.hln.be/binnenland.rss\" -H \"User-Agent: Mozilla/5.0\")",
       "Bash(curl -sI \"https://carbu.com\" -H \"User-Agent: Mozilla/5.0\")",
       "Bash(curl -s \"https://carbu.com/belgie/Brussel/euro95/0/\" -H \"User-Agent: Mozilla/5.0\")",
-      "Bash(curl -s \"https://stooq.com/q/d/l/?s=cl.f&i=d\")"
+      "Bash(curl -s \"https://stooq.com/q/d/l/?s=cl.f&i=d\")",
+      "Bash(curl -sL \"https://carbu.com/belgie/index.php/Brussel/euro95\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(grep -oE \"€\\\\s*[01][,.]\\\\d+|\\\\d[,.]\\\\d{3}\\\\s*EUR\")",
+      "Bash(curl -sI \"https://www.carbubel.be\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -sI \"https://energy.ec.europa.eu/system/files/2026-05/Oil_Bulletin_Prices_History.xlsx\")",
+      "Bash(curl -s \"https://datahub.io/core/oil-prices/r/wti-daily.csv\")",
+      "Bash(curl -s \"https://werk.belgie.be/nl/zoeken?keys=collectief+ontslag\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -s \"https://data-api.ecb.europa.eu/service/data/LFSI/M.BE.S.UNEHPT.TOTAL.A?format=jsondata&lastNObservations=2\" -H \"Accept: application/json\")",
+      "Bash(curl -s \"https://data-api.ecb.europa.eu/service/dataflow/ECB/LFSI?detail=referencestubs\" -H \"Accept: application/xml\")",
+      "Bash(curl -s \"https://data-api.ecb.europa.eu/service/data/LFSI/M.BE.S.UNEHRT.TOTAL0.15_74.T?format=jsondata&lastNObservations=2\" -H \"Accept: application/json\")"
     ]
   }
 }

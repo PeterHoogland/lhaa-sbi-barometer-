@@ -1,36 +1,58 @@
 """
-Brandstofprijs — Belgische Euro95 maximumprijs.
-Doc 03_Laag-4 §2.2: I-D2-004.
+Brandstof-fetcher voor BE (I-D2-004).
+Doc 03_Laag-4 §2.2.
 
-Strategie:
-1. Probeer FOD Economie HTML scrape (Drupal — kan JS-only zijn)
-2. Probeer carbu.be (Belgian fuel-aggregator)
-3. Probeer Stooq Brent crude futures als proxy met conversie
-4. Conservative fallback met seizoens-modulatie
+Primaire bron: **ECB SDW HICP CP0722** (Fuels and lubricants for personal transport,
+yoy %, BE). Dit is methodologisch sterker dan een losse Euro95-spotprijs omdat
+het de *verandering* in brandstofkosten meet, wat het stress-relevante signaal is.
 
-Stooq-proxy verklaring: Brent crude (USD/barrel) → Euro95 retail BE
-heeft een lineaire relatie. Typische conversie: 1 USD Brent ≈ €0.02 Euro95
-retail-impact. Baseline: Brent €70/bbl ≈ Euro95 €1.85/l. Met aanpassing
-voor accijns + BTW (vast deel ~€1.20) en variabel deel (~€0.65/l aan
-brent-€70). Disclosed in source.
+We rapporteren de yoy % als "implicit Euro95 €/l" via:
+  baseline €1.85 × (1 + yoy/100)
+Dat geeft een €/l-equivalent die de indicator (eenheid €/l in doc 03)
+respecteert terwijl de onderliggende data ECB-officieel is.
+
+Fallback cascade: HICP → FOD scrape → carbu scrape → mock.
 """
 from __future__ import annotations
 import re
 from datetime import date
 from ..util import FetchResult, safe_request, seasonal_noise
+from .statbel import _parse_ecb_latest
 
+
+# ECB HICP key voor "Fuels and lubricants for personal transport equipment"
+# Coicop 07.2.2, BE, monthly, annual rate of change
+ECB_FUEL_HICP_URL = (
+    "https://data-api.ecb.europa.eu/service/data/ICP/M.BE.N.072200.4.ANR"
+    "?format=jsondata&lastNObservations=1"
+)
 
 FOD_URL = "https://economie.fgov.be/nl/themas/energie/energieprijzen/brandstofprijzen"
 CARBU_URL = "https://carbu.com/belgie/index.php/laagsteprijs/EUROPE_95/-/-"
-STOOQ_URL = "https://stooq.com/q/d/l/?s=cl.f&i=d"  # WTI crude futures daily CSV (proxy)
 
 EURO95_PATTERN = re.compile(
     r"(?:Euro\s*95|euro95|E95)\D{0,40}?(\d[,.]\d{2,3})",
     re.IGNORECASE,
 )
+EURO95_BASELINE_PER_L = 1.85  # 2024-baseline voor BE Euro95
 
 
-def _try_scrape(url: str, target_pattern: re.Pattern) -> float | None:
+def _try_ecb_fuel_hicp() -> tuple[float | None, float | None]:
+    """Return (yoy_pct, eur_per_l_estimate) or (None, None)."""
+    ok, body = safe_request(
+        ECB_FUEL_HICP_URL, timeout=20,
+        headers={"Accept": "application/json"},
+    )
+    if not ok or not isinstance(body, dict):
+        return None, None
+    yoy = _parse_ecb_latest(body)
+    if yoy is None:
+        return None, None
+    estimate = EURO95_BASELINE_PER_L * (1 + yoy / 100)
+    return yoy, round(estimate, 3)
+
+
+def _try_scrape(url: str) -> float | None:
     ok, body = safe_request(
         url, timeout=20,
         headers={
@@ -40,66 +62,42 @@ def _try_scrape(url: str, target_pattern: re.Pattern) -> float | None:
     )
     if not ok or not isinstance(body, str):
         return None
-    match = target_pattern.search(body)
-    if not match:
+    m = EURO95_PATTERN.search(body)
+    if not m:
         return None
     try:
-        val = float(match.group(1).replace(",", "."))
-        if 0.5 < val < 5.0:  # sanity bounds
+        val = float(m.group(1).replace(",", "."))
+        if 0.5 < val < 5.0:
             return val
     except ValueError:
         pass
     return None
 
 
-def _try_stooq_proxy() -> float | None:
-    """WTI/Brent crude futures → Euro95 retail proxy."""
-    ok, body = safe_request(STOOQ_URL, timeout=15)
-    if not ok or not isinstance(body, str):
-        return None
-    # CSV header + recente regels. Pak de laatste close-prijs.
-    lines = [l for l in body.strip().split("\n") if l]
-    if len(lines) < 2:
-        return None
-    try:
-        last = lines[-1].split(",")
-        # CSV: Date,Open,High,Low,Close,Volume
-        close = float(last[4])
-        # Brent USD/barrel → Euro95 €/l proxy
-        # Approx: 1 USD Brent ≈ €0.013 Euro95 retail impact
-        # Baseline: $70 ≈ €1.85, scaling +/- $1 ≈ +/- €0.013
-        euro95_estimate = 1.85 + (close - 70) * 0.013
-        if 1.0 < euro95_estimate < 3.5:
-            return round(euro95_estimate, 3)
-    except (ValueError, IndexError):
-        pass
-    return None
-
-
 def fetch_fuel_prices(target_date: date) -> FetchResult:
-    # 1) FOD Economie direct
-    val = _try_scrape(FOD_URL, EURO95_PATTERN)
+    # 1) ECB HICP CP0722 — methodologisch sterkste
+    yoy, estimate = _try_ecb_fuel_hicp()
+    if estimate is not None:
+        return FetchResult(
+            "I-D2-004", estimate, target_date.isoformat(),
+            simulated=False,
+            source=f"ECB HICP brandstof yoy {yoy:+.1f}% → €{estimate}/l geschat",
+        )
+
+    # 2) FOD Economie direct scrape
+    val = _try_scrape(FOD_URL)
     if val is not None:
         return FetchResult(
             "I-D2-004", val, target_date.isoformat(),
             simulated=False, source="FOD Economie maximumprijzen",
         )
 
-    # 2) carbu.be aggregator
-    val = _try_scrape(CARBU_URL, EURO95_PATTERN)
+    # 3) carbu.com fallback
+    val = _try_scrape(CARBU_URL)
     if val is not None:
         return FetchResult(
             "I-D2-004", val, target_date.isoformat(),
-            simulated=False, source="carbu.com Belgische pomp-prijzen",
-        )
-
-    # 3) Stooq crude oil proxy
-    val = _try_stooq_proxy()
-    if val is not None:
-        return FetchResult(
-            "I-D2-004", val, target_date.isoformat(),
-            simulated=False,
-            source="Stooq WTI crude futures (proxy voor BE Euro95)",
+            simulated=False, source="carbu.com (BE pomp-prijzen)",
         )
 
     # 4) Conservative mock
@@ -107,5 +105,5 @@ def fetch_fuel_prices(target_date: date) -> FetchResult:
     return FetchResult(
         "I-D2-004", value, target_date.isoformat(),
         simulated=True,
-        source="mock (FOD + carbu + Stooq alle drie faalden)",
+        source="mock (ECB HICP + FOD + carbu alle drie faalden)",
     )
