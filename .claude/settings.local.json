@@ -48,7 +48,25 @@
       "Bash(curl -s https://les-hautes-alpes-sbi.surge.sh/data/latest.json)",
       "Bash(python3 -c ' *)",
       "Bash(chmod +x /tmp/sx-token.exp)",
-      "Bash(/tmp/sx-token.exp)"
+      "Bash(/tmp/sx-token.exp)",
+      "Bash(git rm *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git remote *)",
+      "Bash(git branch *)",
+      "Bash(git push *)",
+      "Bash(chmod +x /tmp/gh-login.exp)",
+      "Bash(/tmp/gh-login.exp)",
+      "Bash(awk '{print $2}')",
+      "Bash(xargs kill)",
+      "Bash(gh auth *)",
+      "Bash(gh secret *)",
+      "Bash(gh workflow *)",
+      "Bash(gh run *)",
+      "Bash(curl -s \"https://data-api.ecb.europa.eu/service/data/ICP/M.BE.N.000000.4.ANR?format=jsondata&lastNObservations=1\" -H \"Accept: application/json\")",
+      "Bash(curl -s \"https://data-api.ecb.europa.eu/service/data/MIR/M.BE.B.A2C.A.R.A.2250.EUR.N?format=jsondata&lastNObservations=1\" -H \"Accept: application/json\")",
+      "Bash(curl -s \"https://api.gdeltproject.org/api/v2/doc/doc?query=sourcecountry:BE%20sourcelang:dut&mode=tonechart&format=json&startdatetime=20260513000000&enddatetime=20260520235959\" -H \"Accept: application/json\")",
+      "Bash(curl -sI \"https://data-api.ecb.europa.eu/service/data/ICP/M.BE.N.000000.4.ANR?format=jsondata&lastNObservations=1\" -H \"Accept: application/json\")"
     ]
   }
 }

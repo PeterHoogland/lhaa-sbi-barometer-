@@ -76,17 +76,32 @@ def write_json(path: Path, payload: dict | list) -> None:
 
 
 def safe_request(url: str, timeout: int = 15, headers: dict | None = None) -> tuple[bool, str | dict | None]:
-    """HTTP-GET met fail-safe — geeft (ok, body|err). Geen exceptions naar caller."""
+    """HTTP-GET met fail-safe — geeft (ok, body|err). Geen exceptions naar caller.
+    Parseert JSON wanneer:
+      - content-type bevat 'json' (vangt application/json, application/vnd.sdmx.data+json, etc.)
+      - of body lijkt op JSON (begint met { of [)
+    """
     try:
         import requests
+        import json as _json
     except ImportError:
         return False, "requests not installed"
     try:
         r = requests.get(url, timeout=timeout, headers=headers or {})
         r.raise_for_status()
-        ct = r.headers.get("content-type", "")
-        if "application/json" in ct:
-            return True, r.json()
-        return True, r.text
+        ct = r.headers.get("content-type", "").lower()
+        if "json" in ct:
+            try:
+                return True, r.json()
+            except _json.JSONDecodeError:
+                return True, r.text
+        text = r.text
+        stripped = text.lstrip()
+        if stripped.startswith(("{", "[")):
+            try:
+                return True, _json.loads(text)
+            except _json.JSONDecodeError:
+                pass
+        return True, text
     except Exception as e:  # noqa: BLE001
         return False, str(e)
