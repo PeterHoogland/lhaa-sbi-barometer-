@@ -1,9 +1,9 @@
 {
   "I-D5-001": {
     "date": "2026-05-21",
-    "fetched_at": "2026-05-21T09:33:13.692035",
-    "source": "NL valentie-lexicon (299 woorden, nl-valence-0.1) op 333 artikels uit 8 BE-nieuwsbronnen; toon-methode Young & Soroka 2012",
-    "value": 0.6362498952547067
+    "fetched_at": "2026-05-21T10:22:50.759860",
+    "source": "NL valentie-lexicon (299 woorden, nl-valence-0.1) op 328 artikels uit 8 BE-nieuwsbronnen; toon-methode Young & Soroka 2012",
+    "value": 0.5409471412727488
   },
   "I-D5-002": {
     "date": "2026-05-20",
