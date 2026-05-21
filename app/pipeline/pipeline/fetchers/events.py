@@ -99,13 +99,19 @@ def _parse_rss(xml_text: str) -> list[dict]:
     return items
 
 
-def _scan_rss_for_candidates(target_date: date) -> list[dict]:
+def _scan_rss_for_candidates(target_date: date) -> tuple[list[dict], bool]:
+    """Return (candidates, rss_reachable).
+    rss_reachable = True wanneer minstens één feed succesvol opgehaald is.
+    Dat onderscheidt 'geen gebeurtenissen gemeten' (echte 0) van
+    'kon niet meten' (feeds onbereikbaar)."""
     candidates = []
     seen_titles = set()
+    rss_reachable = False
     for source, url in RSS_FEEDS.items():
         ok, body = safe_request(url, timeout=15, headers={"User-Agent": "Mozilla/5.0 (SBI-pipeline)"})
         if not ok or not isinstance(body, str):
             continue
+        rss_reachable = True
         items = _parse_rss(body)
         for it in items:
             mag = _classify(it["title"], it["description"])
@@ -123,7 +129,7 @@ def _scan_rss_for_candidates(target_date: date) -> list[dict]:
                 "auto_detected": True,
                 "review_status": "pending",
             })
-    return candidates
+    return candidates, rss_reachable
 
 
 def _read_confirmed_events() -> list[dict]:
@@ -155,7 +161,7 @@ def _write_pending(candidates: list[dict]) -> None:
 
 def fetch_collective_events(target_date: date) -> FetchResult:
     # Stap 1: scan RSS feeds en schrijf candidates voor admin review
-    candidates = _scan_rss_for_candidates(target_date)
+    candidates, rss_reachable = _scan_rss_for_candidates(target_date)
     if candidates:
         _write_pending(candidates)
 
@@ -172,12 +178,19 @@ def fetch_collective_events(target_date: date) -> FetchResult:
             magnitude = ev.get("magnitude", 1)
             total += magnitude * math.exp(-delta / 3)
 
-    source_label = (
-        f"events.json ({len(confirmed)} bevestigd) + RSS-monitor "
-        f"({len(candidates)} candidates voor review)"
-    )
+    # RSS bereikbaar = echte meting, ook wanneer er 0 gebeurtenissen zijn.
+    # Alleen wanneer geen enkele feed bereikbaar was kunnen we niet meten.
+    if rss_reachable:
+        return FetchResult(
+            "I-D5-003", min(total, 15.0), target_date.isoformat(),
+            simulated=False,
+            source=(f"RSS-monitor (VRT NWS + De Standaard) + events.json "
+                    f"({len(confirmed)} bevestigd, {len(candidates)} candidates voor review)"),
+        )
+
+    # Geen enkele RSS-feed bereikbaar: we konden niet meten.
     return FetchResult(
         "I-D5-003", min(total, 15.0), target_date.isoformat(),
-        simulated=False if confirmed or candidates else True,
-        source=source_label if (confirmed or candidates) else "RSS-feeds onbereikbaar, conservatief 0",
+        simulated=True,
+        source="mock (RSS-feeds onbereikbaar, score uit events.json)",
     )
