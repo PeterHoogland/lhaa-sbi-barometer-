@@ -159,15 +159,8 @@ export function App() {
       <footer className="footer">
         <div className="footer-inner">
           <div className="footer-mark">
-            <span className="lha-mark-mini" style={{ color: "#fcfeff" }}>
-              <LHALogo size={42} />
-            </span>
-            <div>
-              <div style={{ fontFamily: "var(--f-sans)", fontWeight: 600, letterSpacing: "0.18em", marginBottom: 4 }}>
-                LES HAUTES ALPES
-              </div>
-              <div className="footer-mark-text">{FOOTER_NOTES.tagline}</div>
-            </div>
+            <LHALogo size={52} />
+            <div className="footer-mark-text">{FOOTER_NOTES.tagline}</div>
           </div>
           <div className="footer-row">
             <strong>SBI v{data.data_quality.methodology_version}</strong>

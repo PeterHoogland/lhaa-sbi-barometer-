@@ -1,62 +1,64 @@
 /* ============================================================
-   Les Hautes Alpes · Barometer
-   Visueel register: alpine blue, golden hour, snow white.
-   Typografie: Inter (UI) + Fraunces (display, oeil-gevoelig).
-   Discipline: meet-secties blijven sober (doc 09 §1.4).
+   Hautes-Alpes · Barometer
+   Visueel register: minimalistisch, rustig — in lijn met
+   plus.hautes-alpes.net. Wit + zachte grijzen, één alpine-groen
+   accent (#29441f). Typografie: Ubuntu. Pill-vormige knoppen.
    ============================================================ */
 
 :root {
-  /* Alpine palette — gebaseerd op LHA brand-research */
-  --lha-blue-deep:   #0a3d6b;   /* primair alpine blauw (cartouche) */
-  --lha-blue-mid:    #1a5490;   /* hover/accent */
-  --lha-blue-soft:   #2d6da5;   /* secundair */
-  --lha-sky:         #cce5f0;   /* lucht / sneeuw-licht */
-  --lha-sky-pale:    #eef5fa;   /* zachte achtergrond */
-  --lha-snow:        #fcfeff;   /* puur wit */
-  --lha-sun:         #e8a854;   /* golden hour, accent */
-  --lha-sun-soft:    #f5d9a8;   /* zacht goud */
-  --lha-stone:       #2a3548;   /* schaduw, donkere tekst */
-  --lha-stone-soft:  #4a5a73;   /* zachte tekst */
-  --lha-mist:        #8a9aaf;   /* gedempt */
-  --lha-fog:         #d8e1ec;   /* lijn-kleur */
+  /* plus.hautes-alpes.net — palet (variabelenamen behouden voor de
+     bestaande regels; waarden herijkt naar het nieuwe, kalme register) */
+  --lha-blue-deep:   #29441f;   /* alpine-groen — primair accent */
+  --lha-blue-mid:    #1d3216;   /* donkerder groen — hover/header */
+  --lha-blue-soft:   #3c5c2e;   /* mid-groen */
+  --lha-sky:         #eaeee7;   /* zacht groen-getint licht */
+  --lha-sky-pale:    #f7f8f9;   /* zachte sectie-achtergrond */
+  --lha-snow:        #ffffff;   /* puur wit */
+  --lha-sun:         #c98a3c;   /* gedempt amber — secundair accent */
+  --lha-sun-soft:    #e0b375;   /* zacht amber */
+  --lha-stone:       #22252a;   /* inkt, donkere tekst */
+  --lha-stone-soft:  #52565b;   /* zachte tekst */
+  --lha-mist:        #9ca3af;   /* gedempt grijs */
+  --lha-fog:         #e5e7eb;   /* haarlijn-grijs */
 
-  /* Status-kleuren (alpine variant) */
-  --st-rust:   #5a8a6b;         /* sereen groen */
+  /* Status-kleuren — gedempt, kalm */
+  --st-rust:   #4f7a5b;         /* rustig groen */
   --st-norm:   var(--lha-mist);
-  --st-warn:   #d4933a;         /* warm amber, matcht golden hour */
-  --st-alert:  #b03a3a;         /* gedempt rood */
+  --st-warn:   #c98a3c;         /* gedempt amber */
+  --st-alert:  #a64242;         /* gedempt rood */
 
-  /* Aliassen voor de oude code */
+  /* Aliassen voor de bestaande code */
   --c-ink:        var(--lha-stone);
   --c-ink-soft:   var(--lha-stone-soft);
   --c-ink-mute:   var(--lha-mist);
   --c-paper:      var(--lha-snow);
   --c-paper-warm: var(--lha-sky-pale);
   --c-line:       var(--lha-fog);
-  --c-line-soft:  #e8ecf2;
+  --c-line-soft:  #eef0f2;
   --c-deep:       var(--lha-blue-deep);
   --c-ice:        var(--lha-sky);
   --c-mist:       var(--lha-sky-pale);
   --c-sand:       var(--lha-snow);
 
   --c-green:      var(--st-rust);
-  --c-green-bg:   #e8f0eb;
+  --c-green-bg:   #eaf1ec;
   --c-amber:      var(--st-warn);
-  --c-amber-bg:   #faf1de;
+  --c-amber-bg:   #f7efe1;
   --c-red:        var(--st-alert);
-  --c-red-bg:     #f6e3e5;
+  --c-red-bg:     #f3e6e6;
 
-  --c-shadow:     rgba(10, 61, 107, 0.10);
-  --c-shadow-lg:  rgba(10, 61, 107, 0.18);
+  --c-shadow:     rgb(0 0 0 / 0.05);
+  --c-shadow-lg:  rgb(0 0 0 / 0.09);
 
   --rad: 8px;
-  --rad-lg: 14px;
+  --rad-lg: 12px;
+  --rad-pill: 9999px;
 
   --max-w: 1040px;
 
-  --f-display: "Fraunces", Georgia, serif;
-  --f-sans: "Inter", -apple-system, system-ui, "Helvetica Neue", sans-serif;
-  --f-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+  --f-display: "Ubuntu", system-ui, -apple-system, sans-serif;
+  --f-sans: "Ubuntu", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --f-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 * { box-sizing: border-box; }
@@ -82,124 +84,72 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
 }
 
 /* ============================================================
-   HERO BANNER — Alpen-foto, logo, eyebrow, kop
+   SITE-HEADER — slanke groene balk + rustig titelblok
+   minimalistisch, in lijn met plus.hautes-alpes.net
    ============================================================ */
-.hero-banner {
-  position: relative;
-  min-height: 520px;
-  color: var(--lha-snow);
-  overflow: hidden;
-  margin-bottom: 0;
+.site-header { background: var(--lha-snow); }
+
+.site-bar {
+  background: var(--lha-blue-mid);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 32px;
+  min-height: 68px;
 }
-.hero-photo {
-  position: absolute;
-  inset: 0;
-  background-image:
-    url("https://images.unsplash.com/photo-1551524559-8af4e6624178?auto=format&fit=crop&w=2400&q=80");
-  background-size: cover;
-  background-position: center 60%;
-  filter: brightness(0.78) saturate(1.05);
+.site-logo { display: inline-flex; align-items: center; }
+.site-logo img { display: block; height: 46px; width: auto; }
+.site-back {
+  font-family: var(--f-sans);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--rad-pill);
+  padding: 8px 16px;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
 }
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg,
-      rgba(10, 61, 107, 0.45) 0%,
-      rgba(10, 61, 107, 0.25) 40%,
-      rgba(10, 61, 107, 0.85) 100%);
-}
-.hero-content {
-  position: relative;
-  z-index: 1;
+.site-back:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+
+.site-intro {
   max-width: var(--max-w);
   margin: 0 auto;
-  padding: 36px 32px 80px;
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+  padding: 64px 32px 40px;
 }
-.hero-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 24px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-/* LHA logo lockup */
-.lha-logo-large {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  color: var(--lha-blue-deep);
-}
-.lha-logo-large svg { color: var(--lha-blue-deep); }
-.lha-logo-text { color: var(--lha-snow); }
-.lha-logo-name {
-  font-family: var(--f-sans);
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.22em;
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.lha-logo-tagline {
-  font-family: var(--f-display);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 0.92rem;
-  color: var(--lha-sky);
-  letter-spacing: 0.01em;
-}
-
-.hero-meta {
-  text-align: right;
-  font-family: var(--f-mono);
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.78);
-  letter-spacing: 0.08em;
-}
-.hero-meta-date { margin-top: 4px; color: rgba(255, 255, 255, 0.55); }
-
-.hero-eyebrow {
-  font-family: var(--f-sans);
-  font-size: 0.78rem;
-  letter-spacing: 0.28em;
+.intro-eyebrow {
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--lha-sky);
-  margin-top: 60px;
+  color: var(--lha-blue-deep);
+  font-weight: 500;
+  margin-bottom: 16px;
 }
-.hero-title {
+.intro-title {
   font-family: var(--f-display);
-  font-weight: 400;
-  font-size: clamp(2rem, 5vw, 3.6rem);
-  line-height: 1.05;
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--c-ink);
   margin: 0;
-  letter-spacing: -0.02em;
-  max-width: 16ch;
+  max-width: 20ch;
 }
-.hero-lead {
-  font-family: var(--f-sans);
+.intro-lead {
   font-size: 1.05rem;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.88);
-  margin: 0;
-  max-width: 56ch;
+  line-height: 1.6;
+  color: var(--lha-stone-soft);
+  margin: 20px 0 0;
+  max-width: 58ch;
 }
-
-/* Berg-silhouet onderaan de hero */
-.hero-banner::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 60px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0,60 L0,42 L120,18 L220,32 L320,12 L420,30 L520,20 L640,5 L760,28 L860,16 L960,38 L1060,22 L1200,32 L1200,60 Z' fill='%23fcfeff'/%3E%3C/svg%3E") no-repeat bottom;
-  background-size: cover;
-  pointer-events: none;
+.intro-meta {
+  margin-top: 22px;
+  font-size: 0.78rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--lha-mist);
 }
 
 /* ============================================================
@@ -215,7 +165,7 @@ main {
    CONDITIE-NIVEAU — overlapt deels met hero
    ============================================================ */
 .cn-display {
-  margin-top: -56px;
+  margin-top: 12px;
   margin-bottom: 36px;
   padding: 40px 40px 32px;
   border-radius: var(--rad-lg);
@@ -223,7 +173,7 @@ main {
   color: var(--c-ink);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 12px 40px var(--c-shadow-lg), 0 1px 2px var(--c-shadow);
+  box-shadow: 0 1px 3px var(--c-shadow);
   border: 1px solid var(--c-line);
   z-index: 2;
 }
@@ -396,20 +346,9 @@ main {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=1600&q=70");
-  background-size: cover;
-  background-position: center;
-  opacity: 0.22;
-  mix-blend-mode: lighten;
-}
-.cta::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(125deg,
-    rgba(10, 61, 107, 0.92) 0%,
-    rgba(10, 61, 107, 0.65) 60%,
-    rgba(26, 84, 144, 0.4) 100%);
+  background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(0, 0, 0, 0.14) 100%);
   pointer-events: none;
 }
 .cta-inner { position: relative; z-index: 1; max-width: 580px; }
@@ -448,21 +387,20 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 14px 24px;
-  background: var(--lha-sun);
+  padding: 13px 26px;
+  background: var(--lha-snow);
   border: none;
-  border-radius: var(--rad);
+  border-radius: var(--rad-pill);
   color: var(--lha-blue-deep);
   text-decoration: none;
   font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  transition: all 180ms;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: background 160ms ease, transform 160ms ease;
 }
 .cta-action:hover {
-  background: var(--lha-sun-soft);
+  background: var(--lha-sky);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(232, 168, 84, 0.25);
 }
 
 /* ============================================================
@@ -785,13 +723,13 @@ main {
   background: var(--lha-snow);
   border: 1px solid var(--lha-blue-deep);
   color: var(--lha-blue-deep);
-  padding: 12px 26px;
-  border-radius: var(--rad);
+  padding: 11px 24px;
+  border-radius: var(--rad-pill);
   font-family: var(--f-sans);
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 140ms;
+  transition: background 140ms ease, color 140ms ease;
   letter-spacing: 0.02em;
 }
 .technical-toggle-btn:hover { background: var(--lha-blue-deep); color: var(--lha-snow); }

@@ -22,7 +22,7 @@ export function PlainExplainer({ data }: { data: DailyOutput }) {
       <h2>{headline}</h2>
       <p dangerouslySetInnerHTML={{ __html: formatMarkdownBold(body) }} />
       <p className="plain-explainer-context">
-        Hieronder zie je precies <strong>welke 20 dingen we vandaag bekijken</strong>,
+        Hieronder zie je precies <strong>welke 24 dingen we vandaag bekijken</strong>,
         en hoe ze er nu voor staan vergeleken met gewoonlijk.
       </p>
     </section>

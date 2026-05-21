@@ -17,7 +17,7 @@ export function TopInfluences({ breakdown }: { breakdown: IndicatorBreakdown[] }
     <section className="panel top-influences">
       <h2>Wat speelt vandaag het meest mee?</h2>
       <p className="panel-lead">
-        Van de 20 dingen die we bekijken, zijn dit de drie die vandaag de meeste
+        Van de 24 dingen die we bekijken, zijn dit de drie die vandaag de meeste
         invloed hebben op het cijfer.
       </p>
       <ol className="top-list">
