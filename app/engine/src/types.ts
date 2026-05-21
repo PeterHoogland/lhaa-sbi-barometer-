@@ -8,13 +8,17 @@ export type IndicatorCode =
   | "I-D1-002" // Hitte
   | "I-D1-003" // Kou
   | "I-D1-004" // Luchtkwaliteit
+  | "I-D1-009" // Wateroverlast (amendement Laag 3)
+  | "I-D1-010" // Pollen (amendement Laag 3)
   | "I-D2-001" // Filezwaarte
   | "I-D2-004" // Brandstofprijzen
+  | "I-D2-009" // Treinverstoringen (amendement Laag 3)
   | "I-D3-001" // CPI inflatie
   | "I-D3-002" // Energieprijzen
   | "I-D3-003" // Aangekondigde collectieve ontslagen
   | "I-D3-005" // Werkloosheidscijfer
   | "I-D3-006" // Hypotheekrente
+  | "I-D3-009" // Stroomnet-druk (amendement Laag 3)
   | "I-D4-001" // Kalendarische deadlinepieken
   | "I-D4-002" // Schoolvakantie-zonder-opvang
   | "I-D5-001" // Nieuwsnegativiteits-index

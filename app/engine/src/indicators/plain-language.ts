@@ -247,6 +247,50 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
       { label: "Pascoe, Hetrick & Parker (2020): stress bij studenten", url: "https://doi.org/10.1080/02673843.2019.1596823" },
     ],
   },
+  "I-D1-009": {
+    plain: "Staat het water gevaarlijk hoog?",
+    why: "Hoogwater bedreigt huizen en bezit; de dreiging zelf, ook zonder ramp, veroorzaakt al angst en waakzaamheid.",
+    reads: "We kijken naar de waterstanden van meetpunten van de Vlaamse Milieumaatschappij. Staan de hoogste punten ver boven de doorsnee, dan staat het water netbreed hoog.",
+    unit: "hoogwater-index",
+    dataSource: { name: "Waterinfo.be (VMM / HIC)", url: "https://www.waterinfo.be/" },
+    references: [
+      { label: "Fernandez et al. (2019): overstromingen en mentale gezondheid", url: "https://doi.org/10.1016/j.ijdrr.2019.101270" },
+      { label: "WHO: factsheet overstromingen", url: "https://www.who.int/news-room/fact-sheets/detail/floods" },
+    ],
+  },
+  "I-D1-010": {
+    plain: "Hoeveel pollen zit er in de lucht?",
+    why: "Hooikoorts verstoort slaap, concentratie en humeur bij heel veel mensen, een seizoensgebonden maar brede stressor.",
+    reads: "We tellen voor Brussel hoeveel pollenkorrels van vijf plantensoorten in de lucht zweven: els, berk, gras, bijvoet en ambrosia. Meer korrels betekent meer niezen, jeuk en vermoeidheid.",
+    unit: "pollenkorrels/m³",
+    dataSource: { name: "open-meteo Air Quality (CAMS)", url: "https://open-meteo.com/" },
+    references: [
+      { label: "Damialis et al. (2019): pollen en welbevinden", url: "https://doi.org/10.1111/all.13758" },
+      { label: "Copernicus: luchtkwaliteit en allergie", url: "https://atmosphere.copernicus.eu/" },
+    ],
+  },
+  "I-D2-009": {
+    plain: "Hoeveel treinen rijden er in de soep?",
+    why: "Onaangekondigde spoorvertragingen ontnemen pendelaars de controle over hun tijd en aankomst, een directe dagelijkse stressor.",
+    reads: "We tellen via de iRail-dienst hoeveel ongeplande storingen er nu op het Belgische spoornet zijn. Geplande werken tellen niet mee, want die ken je op voorhand.",
+    unit: "aantal verstoringen",
+    dataSource: { name: "iRail API (NMBS/Infrabel)", url: "https://api.irail.be/" },
+    references: [
+      { label: "Chatterjee et al. (2017): pendelen en welzijn", url: "https://doi.org/10.1016/j.trf.2017.08.002" },
+      { label: "APA: controleverlies als stressbron", url: "https://www.apa.org/topics/stress" },
+    ],
+  },
+  "I-D3-009": {
+    plain: "Trekt België meer stroom dan verwacht?",
+    why: "Een stroomnet dat boven de prognose draait is krapper; krapte voedt prijspieken en, zeldzaam, afschakelrisico, een sluimerende collectieve stressor.",
+    reads: "Elia, de netbeheerder, voorspelt elke dag hoeveel stroom België zal verbruiken. Wij delen het echte verbruik door die voorspelling. 1,0 betekent precies zoals verwacht, hoger betekent een drukker net.",
+    unit: "ratio gemeten/voorspeld",
+    dataSource: { name: "Elia Open Data", url: "https://opendata.elia.be/" },
+    references: [
+      { label: "Thomson, Snell & Bouzarovski (2019): energie-onzekerheid en welzijn", url: "https://doi.org/10.1016/j.erss.2019.101216" },
+      { label: "IEA: zekerheid van elektriciteitsvoorziening", url: "https://www.iea.org/reports/security-of-electricity-supply" },
+    ],
+  },
 };
 
 export type IndicatorState = "rustig" | "normaal" | "verhoogd" | "extreem";

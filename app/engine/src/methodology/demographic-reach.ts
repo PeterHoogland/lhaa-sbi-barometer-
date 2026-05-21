@@ -63,6 +63,10 @@ export const DEMOGRAPHIC_REACH: Record<IndicatorCode, ReachEntry> = {
   "I-D6-002": { reach: 0.60, rationale: "Het weekdag-ritme raakt wie werkt of studeert." },
   "I-D6-003": { reach: 1.0, rationale: "Klok-verzetten verstoort ieders biologisch ritme." },
   "I-D6-005": { reach: 0.22, rationale: "Examens raken studenten en hun directe gezinsleden." },
+  "I-D1-009": { reach: 0.15, rationale: "Wateroverlast raakt vooral bewoners van overstromingsgevoelig gebied langs waterlopen (~15%)." },
+  "I-D1-010": { reach: 0.20, rationale: "Pollen raakt mensen met hooikoorts; prevalentie ongeveer 1 op 5, seizoensgebonden." },
+  "I-D2-009": { reach: 0.20, rationale: "Treinverstoringen raken treinpendelaars en scholieren; ~1 op 5 reist regelmatig per trein." },
+  "I-D3-009": { reach: 0.95, rationale: "Stroomnet-druk raakt vrijwel elk huishouden; effect is diffuus maar nagenoeg universeel." },
 };
 
 /** Som van alle reach-waarden — noemer voor de genormaliseerde weging. */

@@ -138,6 +138,14 @@ function syntheticRawValue(code: IndicatorCode, date: Date): number {
       return Math.max(0, 28 + 6 * Math.sin(yearProg) + (Math.random() - 0.5) * 8);
     case "I-D5-003": // Collectieve gebeurtenissen 0-15
       return Math.random() < 0.05 ? Math.floor(Math.random() * 6) : 0;
+    case "I-D1-009": // Wateroverlast-index (~1.0)
+      return Math.max(0, 1.05 + (Math.random() - 0.5) * 0.3);
+    case "I-D1-010": // Pollen (seizoensgebonden, lente-piek)
+      return Math.max(0, 2 + 4 * Math.max(0, Math.sin(yearProg - 1)) + (Math.random() - 0.5) * 2);
+    case "I-D2-009": // Treinverstoringen (aantal)
+      return Math.max(0, 3 + (Math.random() - 0.5) * 4);
+    case "I-D3-009": // Stroomnet-druk (ratio gemeten/voorspeld ~1.0)
+      return Math.max(0, 1.0 + (Math.random() - 0.5) * 0.08);
     default:
       return 0;
   }

@@ -14,7 +14,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from .util import FetchBatch, DATA_DIR, write_json, daterange, iso
-from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar
+from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, elia, waterinfo, pollen
 
 
 def fetch_one_day(d: date) -> FetchBatch:
@@ -26,10 +26,13 @@ def fetch_one_day(d: date) -> FetchBatch:
     batch.add(heat)
     batch.add(cold)
     batch.add(irceline.fetch_air_quality(d))
+    batch.add(waterinfo.fetch_flood_signal(d))
+    batch.add(pollen.fetch_pollen(d))
 
     # D2 — Mobiliteit
     batch.add(verkeerscentrum.fetch_traffic_load(d))
     batch.add(fod_economie.fetch_fuel_prices(d))
+    batch.add(irail.fetch_train_disruptions(d))
 
     # D3 — Economie
     batch.add(statbel.fetch_cpi(d))
@@ -37,6 +40,7 @@ def fetch_one_day(d: date) -> FetchBatch:
     batch.add(fod_waso.fetch_collective_layoffs(d))
     batch.add(statbel.fetch_unemployment(d))
     batch.add(nbb.fetch_mortgage_rate(d))
+    batch.add(elia.fetch_grid_stress(d))
 
     # D5 — Media (D4 + D6 zijn deterministisch en worden in de engine berekend)
     batch.add(gdelt.fetch_news_negativity(d))
