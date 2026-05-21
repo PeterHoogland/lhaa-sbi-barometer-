@@ -26,7 +26,7 @@ export function HeroBanner({ weekIso, today }: { weekIso: string; today: string 
           rel="noopener noreferrer"
           aria-label="Hautes-Alpes"
         >
-          <LHALogo size={66} />
+          <LHALogo size={80} />
         </a>
         <div className="intro-eyebrow">Stressor-Blootstellings-Index</div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
