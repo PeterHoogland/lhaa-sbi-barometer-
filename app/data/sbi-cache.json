@@ -7,9 +7,9 @@
   },
   "I-D5-002": {
     "date": "2026-05-20",
-    "fetched_at": "2026-05-20T20:45:00.000000",
-    "source": "Google Trends (pytrends), seed laatst bekende echte waarde",
-    "value": 33.5
+    "fetched_at": "2026-05-21T14:57:18.772117",
+    "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
+    "value": 23.491
   },
   "I-D5-006S": {
     "date": "2026-05-21",
