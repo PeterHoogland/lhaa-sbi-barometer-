@@ -1,19 +1,37 @@
 {
+  "I-D1-010": {
+    "date": "2026-05-21",
+    "fetched_at": "2026-05-21T16:15:21.286089",
+    "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
+    "value": 2.1250000000000004
+  },
+  "I-D2-009": {
+    "date": "2026-05-21",
+    "fetched_at": "2026-05-21T16:15:24.034925",
+    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
+    "value": 2.0
+  },
   "I-D3-003S": {
     "date": "2026-05-21",
-    "fetched_at": "2026-05-21T15:11:40.018272",
+    "fetched_at": "2026-05-21T16:18:28.962480",
     "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 4.0
   },
+  "I-D3-009": {
+    "date": "2026-05-21",
+    "fetched_at": "2026-05-21T16:16:10.609775",
+    "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
+    "value": 1.0481833856526515
+  },
   "I-D5-001": {
     "date": "2026-05-21",
-    "fetched_at": "2026-05-21T15:10:23.868708",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (299 woorden, nl-valence-0.1, 597 artikels, 10 bronnen, poststratificatie): negativiteit jong +0.22 / midden +0.31 / ouder +0.36",
-    "value": 1.1506
+    "fetched_at": "2026-05-21T16:17:13.029415",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (299 woorden, nl-valence-0.1, 600 artikels, 10 bronnen, poststratificatie): negativiteit jong +0.34 / midden +0.40 / ouder +0.46",
+    "value": 1.1752
   },
   "I-D5-002": {
     "date": "2026-05-20",
-    "fetched_at": "2026-05-21T15:10:25.344900",
+    "fetched_at": "2026-05-21T16:17:13.750238",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 23.491
   },
