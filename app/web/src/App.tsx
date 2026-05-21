@@ -17,6 +17,7 @@ import { HeroBanner } from "./components/HeroBanner";
 import { LHALogo } from "./components/LHALogo";
 import { AllSources } from "./components/AllSources";
 import { IndicatorZView } from "./components/IndicatorZView";
+import { SecondarySignals } from "./components/SecondarySignals";
 import { MEDIA_DIAGNOSTIC } from "./components/Sections";
 import { FOOTER_NOTES } from "./copy";
 
@@ -109,6 +110,8 @@ export function App() {
           </p>
           <Sparkline points={sparkline} />
         </section>
+
+        <SecondarySignals signals={data.secondary_signals} />
 
         <Methodology />
 

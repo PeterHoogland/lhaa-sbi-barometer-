@@ -27,7 +27,7 @@ import xml.etree.ElementTree as ET
 from datetime import date, timedelta
 from ..util import FetchResult, safe_request, seasonal_noise
 from ..cache import get as cache_get, put as cache_put
-from ..lexicon_nl import NEGATIVE, POSITIVE, LEXICON_VERSION, LEXICON_SIZE
+from ..lexicon_nl import LEXICON_VERSION, LEXICON_SIZE, tone_of_text
 
 # Nederlandstalige Belgische nieuwsbronnen — RSS.
 # Brede dwarsdoorsnede van de Vlaamse mainstream-pers:
@@ -44,9 +44,6 @@ RSS_FEEDS = [
     "https://www.bruzz.be/rss.xml",                                                  # Bruzz — Brussel regionaal
     "https://www.knack.be/nieuws/feed/",                                             # Knack — weekblad, duiding/opinie
 ]
-
-_PUNCT = ".,;:!?\"'()[]«»–-…"
-
 
 def _parse_rss_texts(xml_text: str) -> list[str]:
     """Return list van 'titel + samenvatting' strings uit RSS/Atom XML."""
@@ -73,20 +70,6 @@ def _parse_rss_texts(xml_text: str) -> list[str]:
     return items
 
 
-def _article_tone(text: str) -> tuple[float, int] | None:
-    """Toon van één artikel: (pos - neg) / totaal_woorden × 100.
-    Return (tone, n_words) of None wanneer te kort."""
-    words = [w.lower().strip(_PUNCT) for w in text.split()]
-    words = [w for w in words if w]
-    n = len(words)
-    if n < 3:
-        return None
-    pos = sum(1 for w in words if w in POSITIVE)
-    neg = sum(1 for w in words if w in NEGATIVE)
-    tone = (pos - neg) / n * 100
-    return tone, n
-
-
 def _corpus_negativity(target_date: date) -> tuple[bool, float | None, int]:
     """Verzamel alle RSS-artikels, bereken per-artikel toon, gemiddelde.
     Return (rss_reachable, negativity_score, n_articles)."""
@@ -101,7 +84,7 @@ def _corpus_negativity(target_date: date) -> tuple[bool, float | None, int]:
             continue
         rss_reachable = True
         for text in _parse_rss_texts(body):
-            result = _article_tone(text)
+            result = tone_of_text(text)
             if result is not None:
                 article_tones.append(result[0])
     if not article_tones:

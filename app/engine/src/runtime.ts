@@ -15,6 +15,7 @@ import type {
   IndicatorCode,
   DailyOutput,
   IndicatorBreakdown,
+  SecondarySignal,
   Tier,
 } from "./types.js";
 import { INDICATOR_CODES, INDICATORS } from "./indicators/registry.js";
@@ -52,6 +53,8 @@ export interface DailyComputeInput {
   imputedIndicators?: IndicatorCode[];
   /** Per indicator: datum/periode waar de data naar verwijst (uit pipeline). */
   observationDates?: Partial<Record<IndicatorCode, string>>;
+  /** Secundaire signalen (Reddit e.d.) — passthrough, niet in composiet. */
+  secondarySignals?: SecondarySignal[];
   /** Brand-safety override — typisch bij nationale rouw (doc 06 §7). */
   brandSafety?: { flag: "elevated" | "block"; reason: string; expires_estimated: string };
 }
@@ -208,6 +211,10 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       raw_value: b.raw_value === null ? null : Math.round(b.raw_value * 1000) / 1000,
       z_short: b.z_short === null ? null : Math.round(b.z_short * 100) / 100,
       contribution: round2(b.contribution),
+    })),
+    secondary_signals: (input.secondarySignals ?? []).map((s) => ({
+      ...s,
+      value: Math.round(s.value * 1000) / 1000,
     })),
     media_cluster_diagnostic: {
       d5_cross_correlation_7d: round2(d5Cross),

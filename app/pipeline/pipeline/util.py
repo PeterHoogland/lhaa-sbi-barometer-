@@ -36,12 +36,20 @@ class FetchResult:
 
 @dataclass
 class FetchBatch:
-    """Bundel van fetch-resultaten voor één datum."""
+    """Bundel van fetch-resultaten voor één datum.
+    - results:   de 13 primaire (non-deterministische) indicatoren
+    - secondary: secundaire/sensitiviteits-indicatoren die NIET in het
+                 composiet meetellen (bv. Reddit-sentiment)
+    """
     target_date: str
     results: list[FetchResult] = field(default_factory=list)
+    secondary: list[FetchResult] = field(default_factory=list)
 
     def add(self, r: FetchResult) -> None:
         self.results.append(r)
+
+    def add_secondary(self, r: FetchResult) -> None:
+        self.secondary.append(r)
 
     @property
     def simulated_codes(self) -> list[str]:
@@ -55,6 +63,7 @@ class FetchBatch:
         return {
             "target_date": self.target_date,
             "results": [r.__dict__ for r in self.results],
+            "secondary": [r.__dict__ for r in self.secondary],
             "simulated_codes": self.simulated_codes,
             "imputed_codes": self.imputed_codes,
         }

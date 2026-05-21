@@ -38,9 +38,14 @@ interface PipelineResult {
 interface PipelineBatch {
   target_date: string;
   results: PipelineResult[];
+  secondary?: Array<{ code: string; value: number; simulated: boolean; source?: string; observation_date?: string }>;
   simulated_codes: IndicatorCode[];
   imputed_codes: IndicatorCode[];
 }
+
+const SECONDARY_NAMES: Record<string, string> = {
+  "I-D5-006S": "Reddit-sentiment (onderstroom-peiling)",
+};
 
 function loadOrFail(path: string, what: string): string {
   if (!existsSync(path)) {
@@ -81,6 +86,15 @@ function main() {
     ? (JSON.parse(readFileSync(COMPOSITE_HISTORY, "utf-8")) as Array<{ date: string; value: number }>)
     : [];
 
+  const secondarySignals = (today.secondary ?? []).map((s) => ({
+    code: s.code,
+    name: SECONDARY_NAMES[s.code] ?? s.code,
+    value: s.value,
+    source: s.source ?? "",
+    simulated: s.simulated,
+    observation_date: s.observation_date ?? "",
+  }));
+
   const output = computeDaily({
     date: today.target_date,
     rawValues,
@@ -89,6 +103,7 @@ function main() {
     simulatedIndicators: today.simulated_codes,
     imputedIndicators: today.imputed_codes,
     observationDates,
+    secondarySignals,
   });
 
   // Update composite-history

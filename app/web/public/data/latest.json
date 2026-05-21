@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-21T09:31:57.869Z",
+  "timestamp": "2026-05-21T09:46:26.021Z",
   "week_iso": "2026-W21",
   "condition_level": {
     "value": 1,
@@ -8,17 +8,17 @@
     "copy_key": "rust"
   },
   "composite": {
-    "equal": -1.22,
-    "evidence_graded": -1.36,
+    "equal": -1.2,
+    "evidence_graded": -1.34,
     "weight_sensitivity": {
       "correlation_inverse_vs_equal_12w": 0.84,
       "composite_range_with_dropouts": [
-        -1.22,
-        -0.89
+        -1.2,
+        -0.87
       ],
       "bootstrap_95_ci_around_equal": [
-        -1.4,
-        -1.04
+        -1.38,
+        -1.02
       ]
     }
   },
@@ -28,7 +28,7 @@
   },
   "tier": {
     "current": "green",
-    "days_in_tier": 32,
+    "days_in_tier": 61,
     "tier_history_30d": [
       "green",
       "green",
@@ -64,12 +64,12 @@
   },
   "top_contributing_domains": [
     {
-      "domain": "D5",
+      "domain": "D3",
       "contribution": -0.33
     },
     {
-      "domain": "D3",
-      "contribution": -0.33
+      "domain": "D5",
+      "contribution": -0.31
     },
     {
       "domain": "D2",
@@ -143,7 +143,7 @@
       "reads": "Hoeveel graden kouder dan -5°C het vannacht was.",
       "unit": "°C onder -5",
       "raw_value": 0,
-      "z_short": -2.17,
+      "z_short": -2.23,
       "contribution": -0.09,
       "state": "rustig",
       "source": "KMI/RMI Open Data",
@@ -168,7 +168,7 @@
       "reads": "Hoe schoon de lucht is vergeleken met wat de WHO gezond noemt.",
       "unit": "× WHO-grens",
       "raw_value": 1,
-      "z_short": -1.31,
+      "z_short": -1.17,
       "contribution": -0.05,
       "state": "rustig",
       "source": "IRCEL-CELINE",
@@ -226,7 +226,7 @@
       "reads": "De officiële maximumprijs van Euro95.",
       "unit": "€/liter",
       "raw_value": 1.783,
-      "z_short": -0.45,
+      "z_short": -0.44,
       "contribution": -0.04,
       "state": "normaal",
       "source": "FOD Economie maximumprijzen",
@@ -280,8 +280,8 @@
       "reads": "De wekelijkse spotprijs voor gas en elektriciteit.",
       "unit": "€/MWh",
       "raw_value": 106.59,
-      "z_short": -1.28,
-      "contribution": -0.04,
+      "z_short": -1.48,
+      "contribution": -0.05,
       "state": "rustig",
       "source": "ENTSO-E Transparency / Belpex",
       "simulated": false,
@@ -363,8 +363,8 @@
       "reads": "De gemiddelde rente voor nieuwe woonleningen.",
       "unit": "%",
       "raw_value": 3.43,
-      "z_short": 0.39,
-      "contribution": 0.01,
+      "z_short": 0.45,
+      "contribution": 0.02,
       "state": "normaal",
       "source": "Nationale Bank van België",
       "simulated": false,
@@ -441,9 +441,9 @@
       "why": "Veel negatief nieuws beïnvloedt hoe een hele bevolking zich voelt.",
       "reads": "We lezen elke dag alle nieuwsartikels van acht Belgische bronnen: VRT NWS, De Standaard, De Morgen, Het Laatste Nieuws, De Tijd, Het Belang van Limburg, Bruzz en Knack. Een dwarsdoorsnede van openbare omroep, kwaliteitskranten, populaire kranten, economische en regionale pers. Per artikel tellen we positieve en negatieve woorden tegen een vast Nederlands valentie-lexicon, en berekenen we de toon: (positief min negatief) gedeeld door totaal woorden. Methode: Young & Soroka (2012).",
       "unit": "toon-score",
-      "raw_value": -0.071,
-      "z_short": -2.99,
-      "contribution": -0.17,
+      "raw_value": 0.565,
+      "z_short": -2.65,
+      "contribution": -0.15,
       "state": "rustig",
       "source": "GDELT Project v2",
       "simulated": false,
@@ -634,10 +634,20 @@
       "observation_date": "2026-05-21"
     }
   ],
+  "secondary_signals": [
+    {
+      "code": "I-D5-006S",
+      "name": "Reddit-sentiment (onderstroom-peiling)",
+      "value": -0.206,
+      "source": "Reddit r/belgium + r/Vlaanderen, 200 posts, NL valentie-lexicon (299 woorden, nl-valence-0.1); SECUNDAIR, niet-representatief, niet in composiet",
+      "simulated": false,
+      "observation_date": "2026-05-21"
+    }
+  ],
   "media_cluster_diagnostic": {
     "d5_cross_correlation_7d": 0,
     "composite_without_d5": -1.06,
-    "media_contribution_percentile_points": 58
+    "media_contribution_percentile_points": 43
   },
   "brand_safety": {
     "flag": "normal",

@@ -112,3 +112,19 @@ POSITIVE = {
 
 LEXICON_VERSION = "nl-valence-0.1"
 LEXICON_SIZE = len(NEGATIVE) + len(POSITIVE)
+
+_PUNCT = ".,;:!?\"'()[]«»–-…*#>"
+
+
+def tone_of_text(text: str, min_words: int = 3) -> tuple[float, int] | None:
+    """Toon van één tekst-eenheid (artikel, post) volgens Young & Soroka 2012:
+        tone = (pos - neg) / totaal_woorden × 100
+    Return (tone, n_words), of None wanneer de tekst te kort is."""
+    words = [w.lower().strip(_PUNCT) for w in text.split()]
+    words = [w for w in words if w]
+    n = len(words)
+    if n < min_words:
+        return None
+    pos = sum(1 for w in words if w in POSITIVE)
+    neg = sum(1 for w in words if w in NEGATIVE)
+    return (pos - neg) / n * 100, n

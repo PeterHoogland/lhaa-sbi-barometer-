@@ -9,6 +9,15 @@ export interface DomainContribution {
   contribution: number;
 }
 
+export interface SecondarySignal {
+  code: string;
+  name: string;
+  value: number;
+  source: string;
+  simulated: boolean;
+  observation_date: string;
+}
+
 export type IndicatorState = "rustig" | "normaal" | "verhoogd" | "extreem" | "ontbreekt";
 
 export interface IndicatorBreakdown {
@@ -60,6 +69,7 @@ export interface DailyOutput {
   };
   top_contributing_domains: DomainContribution[];
   indicator_breakdown: IndicatorBreakdown[];
+  secondary_signals: SecondarySignal[];
   media_cluster_diagnostic: {
     d5_cross_correlation_7d: number;
     composite_without_d5: number;

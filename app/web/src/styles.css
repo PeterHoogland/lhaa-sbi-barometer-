@@ -1246,6 +1246,88 @@ main {
 }
 .zview-footer-note strong { color: var(--lha-blue-deep); }
 
+/* ============================================================
+   Secundaire signalen — apart, gelabeld, niet in composiet
+   ============================================================ */
+.secondary-panel {
+  border: 1px dashed var(--lha-mist);
+  background: #fbfaf7;
+  position: relative;
+}
+.secondary-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  color: var(--lha-stone-soft);
+  background: var(--c-line-soft);
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+.secondary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.secondary-item {
+  padding: 14px 16px;
+  background: var(--lha-snow);
+  border: 1px solid var(--c-line);
+  border-radius: var(--rad);
+}
+.secondary-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+.secondary-name {
+  font-weight: 600;
+  color: var(--c-ink);
+  font-size: 0.98rem;
+}
+.secondary-value {
+  font-family: var(--f-mono);
+  font-size: 1.2rem;
+  color: var(--lha-stone-soft);
+}
+.secondary-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: var(--lha-mist);
+  margin-bottom: 6px;
+}
+.secondary-code {
+  font-family: var(--f-mono);
+  font-weight: 600;
+  color: var(--lha-stone-soft);
+}
+.secondary-mock {
+  padding: 1px 7px;
+  border-radius: 10px;
+  background: var(--lha-sun-soft);
+  color: var(--lha-stone);
+  font-size: 0.7rem;
+}
+.secondary-source {
+  font-size: 0.8rem;
+  color: var(--c-ink-soft);
+  line-height: 1.5;
+}
+.secondary-disclaimer {
+  font-size: 0.82rem;
+  color: var(--lha-stone-soft);
+  line-height: 1.55;
+  font-style: italic;
+  padding-top: 14px;
+  border-top: 1px solid var(--c-line);
+  margin: 0;
+}
+
 /* Loading / error */
 .loading, .error-state { max-width: 640px; margin: 80px auto; padding: 32px; text-align: center; }
 .error-state h1 { color: var(--lha-blue-deep); }

@@ -18,35 +18,55 @@ import type { IndicatorCode } from "../types.js";
 
 /** Optioneel: pipeline-output kan vandaag's waarden leveren (echt-tijd). */
 interface PipelineResult {
-  code: IndicatorCode;
+  code: string;
   value: number;
   simulated: boolean;
+  source?: string;
   observation_date?: string;
 }
-interface PipelineBatch { target_date: string; results: PipelineResult[]; }
+interface PipelineBatch {
+  target_date: string;
+  results: PipelineResult[];
+  secondary?: PipelineResult[];
+}
+
+/** Vriendelijke namen voor secundaire signalen. */
+const SECONDARY_NAMES: Record<string, string> = {
+  "I-D5-006S": "Reddit-sentiment (onderstroom-peiling)",
+};
 
 function loadPipelineToday(path: string): {
   realValues: Partial<Record<IndicatorCode, number>>;
   realCodes: Set<IndicatorCode>;
   observationDates: Partial<Record<IndicatorCode, string>>;
+  secondarySignals: Array<{ code: string; name: string; value: number; source: string; simulated: boolean; observation_date: string }>;
 } {
   const realValues: Partial<Record<IndicatorCode, number>> = {};
   const realCodes = new Set<IndicatorCode>();
   const observationDates: Partial<Record<IndicatorCode, string>> = {};
-  if (!existsSync(path)) return { realValues, realCodes, observationDates };
+  let secondarySignals: Array<{ code: string; name: string; value: number; source: string; simulated: boolean; observation_date: string }> = [];
+  if (!existsSync(path)) return { realValues, realCodes, observationDates, secondarySignals };
   try {
     const batch = JSON.parse(readFileSync(path, "utf-8")) as PipelineBatch;
     for (const r of batch.results) {
-      if (r.observation_date) observationDates[r.code] = r.observation_date;
+      if (r.observation_date) observationDates[r.code as IndicatorCode] = r.observation_date;
       if (!r.simulated) {
-        realValues[r.code] = r.value;
-        realCodes.add(r.code);
+        realValues[r.code as IndicatorCode] = r.value;
+        realCodes.add(r.code as IndicatorCode);
       }
     }
+    secondarySignals = (batch.secondary ?? []).map((s) => ({
+      code: s.code,
+      name: SECONDARY_NAMES[s.code] ?? s.code,
+      value: s.value,
+      source: s.source ?? "",
+      simulated: s.simulated,
+      observation_date: s.observation_date ?? "",
+    }));
   } catch {
     // pipeline output is corrupt — fallback naar volledig synthetisch
   }
-  return { realValues, realCodes, observationDates };
+  return { realValues, realCodes, observationDates, secondarySignals };
 }
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -153,7 +173,7 @@ function generate(): void {
 
   // Vandaag — eerst synthetisch invullen, dan ECHTE waarden van de pipeline overschrijven
   const todayIso = isoDate(TODAY);
-  const { realValues, realCodes, observationDates } = loadPipelineToday(PIPELINE_OUT);
+  const { realValues, realCodes, observationDates, secondarySignals } = loadPipelineToday(PIPELINE_OUT);
 
   const todayRaw: Partial<Record<IndicatorCode, number>> = {};
   for (const code of simulatedCodes) {
@@ -171,6 +191,7 @@ function generate(): void {
     compositeHistory,
     simulatedIndicators: stillSimulatedToday,
     observationDates,
+    secondarySignals,
   });
 
   if (realCodes.size > 0) {

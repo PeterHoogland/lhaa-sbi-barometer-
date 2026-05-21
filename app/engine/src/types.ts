@@ -96,6 +96,17 @@ export interface IndicatorBreakdown {
 /** Conditie-Niveau (CN) — publieke 5-bands-schaal voor banner-activatie. */
 export type ConditionLevel = 1 | 2 | 3 | 4 | 5;
 
+/** Secundaire / sensitiviteits-indicator. Telt NIET mee in het composiet
+ *  of de banner-logica (doc 02 §10). Apart getoond, expliciet gelabeld. */
+export interface SecondarySignal {
+  code: string;
+  name: string;
+  value: number;
+  source: string;
+  simulated: boolean;
+  observation_date: string;
+}
+
 /** Volledig daily-output-record — conform doc 06 §4.1. */
 export interface DailyOutput {
   timestamp: string; // ISO
@@ -127,6 +138,8 @@ export interface DailyOutput {
   top_contributing_domains: DomainContribution[];
   /** Volledige per-indicator detail — voor publieke transparantie. */
   indicator_breakdown: IndicatorBreakdown[];
+  /** Secundaire signalen (bv. Reddit) — NIET in composiet, apart getoond. */
+  secondary_signals: SecondarySignal[];
   media_cluster_diagnostic: {
     d5_cross_correlation_7d: number;
     composite_without_d5: number;
