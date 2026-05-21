@@ -39,11 +39,13 @@ export function SecondarySignals({ signals }: { signals: SecondarySignal[] }) {
       </div>
 
       <p className="secondary-disclaimer">
-        Een hoger getal betekent een negatievere toon op die sociale media.
-        Waarom apart? Reddit-gebruikers zijn jonger, vaker stedelijk en hoger
-        opgeleid dan de gemiddelde Belg. Een populatie-meting die hierop zou
-        steunen, meet niet wat ze claimt. Daarom: zichtbaar voor wie nieuwsgierig
-        is, maar buiten het officiële cijfer gehouden.
+        Waarom apart? Deze signalen zijn vers en nuttig, maar missen een lange
+        eigen meetlat of een representatieve doorsnede van de bevolking. De
+        Reddit-peiling steunt op een publiek dat jonger, stedelijker en hoger
+        opgeleid is dan de gemiddelde Belg. De ontslag-radar telt nieuwsartikels
+        en kan uitschieten wanneer er veel duiding rond één gebeurtenis is.
+        Daarom: zichtbaar voor wie nieuwsgierig is, maar bewust buiten het
+        officiële cijfer gehouden. Lees per signaal de bronregel hieronder.
       </p>
     </section>
   );

@@ -14,7 +14,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from .util import FetchBatch, DATA_DIR, write_json, daterange, iso
-from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit
+from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar
 
 
 def fetch_one_day(d: date) -> FetchBatch:
@@ -45,6 +45,7 @@ def fetch_one_day(d: date) -> FetchBatch:
 
     # Secundair — NIET in composiet (sensitiviteit, doc 02 §10)
     batch.add_secondary(reddit.fetch_reddit_sentiment(d))
+    batch.add_secondary(layoff_radar.fetch_layoff_radar(d))
 
     return batch
 

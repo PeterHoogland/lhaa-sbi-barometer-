@@ -33,6 +33,7 @@ interface PipelineBatch {
 /** Vriendelijke namen voor secundaire signalen. */
 const SECONDARY_NAMES: Record<string, string> = {
   "I-D5-006S": "Reddit-sentiment (onderstroom-peiling)",
+  "I-D3-003S": "Ontslag-radar (nieuws-detectie)",
 };
 
 function loadPipelineToday(path: string): {
