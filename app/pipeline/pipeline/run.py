@@ -9,12 +9,55 @@ Output: app/data/raw-values.json
 """
 from __future__ import annotations
 import argparse
+import json
+import math
 import sys
 from datetime import date, timedelta
 from pathlib import Path
 
 from .util import FetchBatch, DATA_DIR, write_json, daterange, iso
 from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, elia, waterinfo, pollen
+
+
+# Maximaal aantal punten dat we per indicator in de doorlopende historie houden
+# (~3 jaar dagdata; voorkomt onbegrensd groeiende bestanden).
+_HISTORY_CAP = 1100
+
+
+def append_to_history(batch: FetchBatch) -> None:
+    """Voeg de echte dagwaarden toe aan de doorlopende historie-bestanden in
+    app/data/history/. Zo bouwt ELKE indicator over tijd een echte baseline op,
+    ook indicatoren waarvoor geen historische API bestaat (verkeer, trein,
+    gebeurtenissen). Backfill-snapshots worden er dagelijks mee bijgehouden.
+
+    Gesimuleerde (mock) en ontbrekende waarden komen NIET in de echte historie.
+    """
+    hist_dir = DATA_DIR / "history"
+    hist_dir.mkdir(parents=True, exist_ok=True)
+    for r in batch.results:
+        if r.simulated or r.value is None or not math.isfinite(r.value):
+            continue
+        # observatiedatum normaliseren naar YYYY-MM-DD (maandcijfers → dag 01)
+        obs = (r.observation_date or batch.target_date).strip()
+        if len(obs) == 7:
+            obs = f"{obs}-01"
+        if len(obs) != 10:
+            obs = batch.target_date
+        path = hist_dir / f"{r.code}.json"
+        rows: list[dict] = []
+        if path.exists():
+            try:
+                loaded = json.loads(path.read_text(encoding="utf-8"))
+                if isinstance(loaded, list):
+                    rows = loaded
+            except (ValueError, OSError):
+                rows = []
+        rows = [row for row in rows if row.get("date") != obs]
+        rows.append({"date": obs, "value": round(float(r.value), 4)})
+        rows.sort(key=lambda x: str(x.get("date", "")))
+        if len(rows) > _HISTORY_CAP:
+            rows = rows[-_HISTORY_CAP:]
+        path.write_text(json.dumps(rows, indent=2), encoding="utf-8")
 
 
 def fetch_one_day(d: date) -> FetchBatch:
@@ -82,6 +125,11 @@ def main(argv: list[str] | None = None) -> int:
     write_json(DATA_DIR / "raw-values.json", today_batch.to_dict())
     if args.history_days > 0:
         write_json(DATA_DIR / "raw-history.json", history)
+
+    # Doorlopende historie-opbouw: elke echte dagwaarde wordt bewaard zodat
+    # iedere indicator over tijd tegen ECHTE historie gewogen wordt.
+    append_to_history(today_batch)
+    print(f"✓ historie bijgewerkt in {DATA_DIR / 'history'}", file=sys.stderr)
 
     sim = today_batch.simulated_codes
     print(f"✓ wrote {DATA_DIR / 'raw-values.json'}", file=sys.stderr)

@@ -37,11 +37,14 @@ def _is_number(x) -> bool:
     return isinstance(x, (int, float)) and not isinstance(x, bool)
 
 
-def _extract_ratio(body: dict) -> float | None:
-    """Recentste record met gemeten belasting → ratio gemeten/day-ahead-forecast."""
-    records = body.get("results")
+def aggregate_ratio(records: list) -> float | None:
+    """Geaggregeerde ratio Σ gemeten / Σ day-ahead-forecast over alle records.
+    Aggregeren i.p.v. één kwartier nemen dempt de kwartier-ruis (≈ dagcijfer).
+    Wordt door zowel de dagfetcher als het backfill-script gebruikt."""
     if not isinstance(records, list) or not records:
         return None
+    tl_sum = 0.0
+    fc_sum = 0.0
     for rec in records:
         if not isinstance(rec, dict):
             continue
@@ -51,8 +54,13 @@ def _extract_ratio(body: dict) -> float | None:
         if not _is_number(forecast) or forecast <= 0:
             forecast = rec.get("mostrecentforecast")
         if _is_number(measured) and _is_number(forecast) and forecast > 0 and measured > 0:
-            return float(measured) / float(forecast)
-    return None
+            tl_sum += float(measured)
+            fc_sum += float(forecast)
+    return tl_sum / fc_sum if fc_sum > 0 else None
+
+
+def _extract_ratio(body: dict) -> float | None:
+    return aggregate_ratio(body.get("results"))
 
 
 def fetch_grid_stress(target_date: date) -> FetchResult:

@@ -1,368 +1,368 @@
 [
   {
     "date": "2026-03-22",
-    "composite": 0.31,
+    "composite": 0.18,
     "percentile": 50,
     "tier": "green"
   },
   {
     "date": "2026-03-23",
+    "composite": 0.25,
+    "percentile": 100,
+    "tier": "green"
+  },
+  {
+    "date": "2026-03-24",
+    "composite": 0.34,
+    "percentile": 100,
+    "tier": "green"
+  },
+  {
+    "date": "2026-03-25",
     "composite": 0.15,
     "percentile": 0,
     "tier": "green"
   },
   {
-    "date": "2026-03-24",
-    "composite": 0.09,
-    "percentile": 0,
-    "tier": "green"
-  },
-  {
-    "date": "2026-03-25",
-    "composite": 0.1,
-    "percentile": 33,
-    "tier": "green"
-  },
-  {
     "date": "2026-03-26",
-    "composite": 0,
+    "composite": 0.13,
     "percentile": 0,
     "tier": "green"
   },
   {
     "date": "2026-03-27",
-    "composite": 0,
+    "composite": 0.04,
     "percentile": 0,
     "tier": "green"
   },
   {
     "date": "2026-03-28",
-    "composite": -0.03,
-    "percentile": 0,
+    "composite": 0.09,
+    "percentile": 17,
     "tier": "green"
   },
   {
     "date": "2026-03-29",
-    "composite": 0.05,
-    "percentile": 43,
+    "composite": 0.04,
+    "percentile": 14,
     "tier": "green"
   },
   {
     "date": "2026-03-30",
     "composite": 0.18,
-    "percentile": 88,
+    "percentile": 75,
     "tier": "green"
   },
   {
     "date": "2026-03-31",
-    "composite": 0.14,
-    "percentile": 67,
+    "composite": 0.19,
+    "percentile": 78,
     "tier": "green"
   },
   {
     "date": "2026-04-01",
-    "composite": 0.14,
-    "percentile": 60,
+    "composite": 0.23,
+    "percentile": 80,
     "tier": "green"
   },
   {
     "date": "2026-04-02",
-    "composite": 0.16,
-    "percentile": 82,
+    "composite": 0.13,
+    "percentile": 36,
     "tier": "green"
   },
   {
     "date": "2026-04-03",
-    "composite": 0.32,
-    "percentile": 100,
+    "composite": 0.31,
+    "percentile": 92,
     "tier": "green"
   },
   {
     "date": "2026-04-04",
     "composite": 0.15,
-    "percentile": 69,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-05",
-    "composite": 0.13,
-    "percentile": 43,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-06",
-    "composite": 0.25,
-    "percentile": 87,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-07",
-    "composite": 0.26,
-    "percentile": 88,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-08",
-    "composite": 0.09,
-    "percentile": 24,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-09",
-    "composite": 0.27,
-    "percentile": 89,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-10",
-    "composite": 0.11,
-    "percentile": 37,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-11",
-    "composite": 0.08,
-    "percentile": 20,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-12",
-    "composite": 0.08,
-    "percentile": 24,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-13",
-    "composite": 0.16,
-    "percentile": 73,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-14",
-    "composite": 0.2,
-    "percentile": 78,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-15",
-    "composite": 0.13,
     "percentile": 46,
     "tier": "green"
   },
   {
-    "date": "2026-04-16",
+    "date": "2026-04-05",
+    "composite": 0.02,
+    "percentile": 0,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-06",
+    "composite": 0.06,
+    "percentile": 20,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-07",
     "composite": 0.15,
-    "percentile": 56,
+    "percentile": 44,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-08",
+    "composite": 0.3,
+    "percentile": 88,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-09",
+    "composite": 0.19,
+    "percentile": 72,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-10",
+    "composite": -0.04,
+    "percentile": 0,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-11",
+    "composite": -0.01,
+    "percentile": 5,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-12",
+    "composite": 0.1,
+    "percentile": 33,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-13",
+    "composite": 0.15,
+    "percentile": 59,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-14",
+    "composite": 0.35,
+    "percentile": 100,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-15",
+    "composite": 0.19,
+    "percentile": 67,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-16",
+    "composite": -0.09,
+    "percentile": 0,
     "tier": "green"
   },
   {
     "date": "2026-04-17",
-    "composite": 0.04,
-    "percentile": 12,
+    "composite": 0.02,
+    "percentile": 15,
     "tier": "green"
   },
   {
     "date": "2026-04-18",
-    "composite": 0.06,
+    "composite": 0.03,
     "percentile": 19,
     "tier": "green"
   },
   {
     "date": "2026-04-19",
-    "composite": 0.05,
-    "percentile": 14,
+    "composite": -0.16,
+    "percentile": 0,
     "tier": "green"
   },
   {
     "date": "2026-04-20",
-    "composite": 0.14,
-    "percentile": 52,
+    "composite": 0.03,
+    "percentile": 21,
     "tier": "green"
   },
   {
     "date": "2026-04-21",
-    "composite": 0.31,
-    "percentile": 93,
+    "composite": 0.15,
+    "percentile": 63,
     "tier": "green"
   },
   {
     "date": "2026-04-22",
-    "composite": 0.01,
-    "percentile": 10,
+    "composite": 0.11,
+    "percentile": 42,
     "tier": "green"
   },
   {
     "date": "2026-04-23",
-    "composite": -0.06,
-    "percentile": 0,
+    "composite": 0.17,
+    "percentile": 66,
     "tier": "green"
   },
   {
     "date": "2026-04-24",
-    "composite": 0.07,
-    "percentile": 27,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-25",
-    "composite": 0.22,
-    "percentile": 82,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-26",
-    "composite": 0.19,
-    "percentile": 77,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-27",
-    "composite": -0.06,
+    "composite": -0.11,
     "percentile": 3,
     "tier": "green"
   },
   {
-    "date": "2026-04-28",
-    "composite": 0.12,
-    "percentile": 46,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-29",
-    "composite": 0.15,
-    "percentile": 61,
-    "tier": "green"
-  },
-  {
-    "date": "2026-04-30",
-    "composite": -0.06,
-    "percentile": 5,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-01",
+    "date": "2026-04-25",
     "composite": 0.07,
-    "percentile": 30,
+    "percentile": 35,
     "tier": "green"
   },
   {
-    "date": "2026-05-02",
-    "composite": 0.16,
-    "percentile": 71,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-03",
-    "composite": 0.15,
-    "percentile": 69,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-04",
-    "composite": 0.05,
-    "percentile": 19,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-05",
-    "composite": 0.14,
-    "percentile": 52,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-06",
-    "composite": 0.08,
-    "percentile": 36,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-07",
-    "composite": 0.08,
-    "percentile": 37,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-08",
-    "composite": 0.06,
-    "percentile": 26,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-09",
-    "composite": 0.09,
-    "percentile": 40,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-10",
-    "composite": 0.04,
-    "percentile": 16,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-11",
-    "composite": 0,
-    "percentile": 8,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-12",
-    "composite": 0.05,
-    "percentile": 25,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-13",
-    "composite": -0.07,
-    "percentile": 0,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-14",
-    "composite": -0.03,
-    "percentile": 9,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-15",
-    "composite": 0.12,
-    "percentile": 54,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-16",
-    "composite": 0.05,
-    "percentile": 22,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-17",
-    "composite": 0.27,
-    "percentile": 95,
-    "tier": "green"
-  },
-  {
-    "date": "2026-05-18",
+    "date": "2026-04-26",
     "composite": -0.02,
     "percentile": 11,
     "tier": "green"
   },
   {
-    "date": "2026-05-19",
+    "date": "2026-04-27",
+    "composite": -0.08,
+    "percentile": 8,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-28",
+    "composite": 0.14,
+    "percentile": 54,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-29",
+    "composite": 0.08,
+    "percentile": 39,
+    "tier": "green"
+  },
+  {
+    "date": "2026-04-30",
+    "composite": -0.01,
+    "percentile": 18,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-01",
+    "composite": 0.05,
+    "percentile": 35,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-02",
+    "composite": 0.08,
+    "percentile": 41,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-03",
+    "composite": 0.02,
+    "percentile": 24,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-04",
+    "composite": -0.02,
+    "percentile": 14,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-05",
+    "composite": 0.08,
+    "percentile": 43,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-06",
+    "composite": -0.06,
+    "percentile": 9,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-07",
+    "composite": 0.16,
+    "percentile": 74,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-08",
+    "composite": 0.02,
+    "percentile": 28,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-09",
+    "composite": 0.1,
+    "percentile": 54,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-10",
+    "composite": 0.01,
+    "percentile": 20,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-11",
+    "composite": 0.07,
+    "percentile": 44,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-12",
+    "composite": 0.01,
+    "percentile": 20,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-13",
+    "composite": 0.04,
+    "percentile": 35,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-14",
     "composite": 0.06,
-    "percentile": 34,
+    "percentile": 42,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-15",
+    "composite": -0.08,
+    "percentile": 6,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-16",
+    "composite": 0,
+    "percentile": 20,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-17",
+    "composite": -0.01,
+    "percentile": 20,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-18",
+    "composite": -0.14,
+    "percentile": 2,
+    "tier": "green"
+  },
+  {
+    "date": "2026-05-19",
+    "composite": -0.2,
+    "percentile": 0,
     "tier": "green"
   },
   {
     "date": "2026-05-20",
-    "composite": -0.02,
-    "percentile": 10,
+    "composite": -0.07,
+    "percentile": 12,
     "tier": "green"
   },
   {
     "date": "2026-05-21",
-    "composite": -0.16,
-    "percentile": 0,
+    "composite": -0.15,
+    "percentile": 3,
     "tier": "green"
   }
 ]

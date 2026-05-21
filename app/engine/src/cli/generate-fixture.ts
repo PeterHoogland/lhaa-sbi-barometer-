@@ -188,6 +188,19 @@ function generate(): void {
     history[code] = series;
   }
 
+  // Deterministische indicatoren krijgen een ECHTE historie: hun waarde is een
+  // reproduceerbare functie van de datum (daglicht, kalender), dus we berekenen
+  // ze gewoon voor elke dag in het venster. Zo wegen ook deze indicatoren tegen
+  // echte historie i.p.v. een lege baseline (z=0) zoals voorheen.
+  for (let i = historyDays; i > 0; i--) {
+    const d = new Date(TODAY.getTime() - i * 86400000);
+    const iso = isoDate(d);
+    const det = computeAllDeterministic(d);
+    for (const [code, value] of Object.entries(det)) {
+      (history[code as IndicatorCode] ??= []).push({ date: iso, value });
+    }
+  }
+
   // Bouw composiet-historie laatste 60 dagen door engine ineen-te-roepen per dag
   const compositeHistory: Array<{ date: string; value: number }> = [];
   const sparkline: Array<{ date: string; composite: number; percentile: number; tier: string }> = [];
