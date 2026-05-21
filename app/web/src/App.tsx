@@ -117,7 +117,7 @@ export function App() {
 
         <AllSources breakdown={data.indicator_breakdown} />
 
-        <DataQuality dataQuality={data.data_quality} />
+        <DataQuality dataQuality={data.data_quality} total={data.indicator_breakdown.length} />
 
         <section className="technical-toggle">
           <button

@@ -45,13 +45,13 @@ export const DOMAIN_LABELS = {
 } as const;
 
 export const METHODOLOGY_DISCLAIMER = [
-  "Dit is een teller voor het hele land, niet voor jou persoonlijk. We kijken naar 20 dingen die de hele bevolking onder druk kunnen zetten en tellen hoe ongewoon ze vandaag zijn.",
+  "Dit is een teller voor het hele land, niet voor jou persoonlijk. We kijken naar 24 dingen die de hele bevolking onder druk kunnen zetten en tellen hoe ongewoon ze vandaag zijn.",
   "We meten dus geen mensen, we meten omstandigheden. We zijn geen dokter. We voorspellen niet wat morgen gaat gebeuren. Het is geen wetenschappelijke studie, het is gemaakt met onderzoek dat anderen al gedaan hebben.",
 ] as const;
 
 export const FOOTER_NOTES = {
   implementationStage: "Werkt nu nog in test-modus.",
-  methodologyRef: "Methodologie: SBI v0.2, 20 indicatoren in 6 categorieën.",
+  methodologyRef: "Methodologie: SBI v0.2, 24 indicatoren in 6 categorieën.",
   ondersteunend: "Gebaseerd op onderzoek van McEwen (allostatic load), Marmot (sociale gezondheids-determinanten) en Hobfoll (conservation of resources).",
   tagline: "Natuurlijk in het hart van de Alpen.",
 } as const;

@@ -1,6 +1,12 @@
 import type { DailyOutput } from "../types";
 
-export function DataQuality({ dataQuality }: { dataQuality: DailyOutput["data_quality"] }) {
+export function DataQuality({
+  dataQuality,
+  total,
+}: {
+  dataQuality: DailyOutput["data_quality"];
+  total: number;
+}) {
   const hasSimulated = dataQuality.indicators_simulated.length > 0;
   const hasMissing = dataQuality.indicators_missing.length > 0;
 
@@ -15,7 +21,7 @@ export function DataQuality({ dataQuality }: { dataQuality: DailyOutput["data_qu
       <div className="dq-grid">
         <div className={`dq-row ${hasSimulated ? "warn" : "ok"}`}>
           <span className="dq-label">Nog op test-data</span>
-          <span className="dq-value">{dataQuality.indicators_simulated.length} van 20</span>
+          <span className="dq-value">{dataQuality.indicators_simulated.length} van {total}</span>
           {hasSimulated && (
             <details className="dq-detail">
               <summary>Welke?</summary>
@@ -26,7 +32,7 @@ export function DataQuality({ dataQuality }: { dataQuality: DailyOutput["data_qu
 
         <div className="dq-row ok">
           <span className="dq-label">Echt-tijd live</span>
-          <span className="dq-value">{20 - dataQuality.indicators_simulated.length} van 20</span>
+          <span className="dq-value">{total - dataQuality.indicators_simulated.length} van {total}</span>
         </div>
 
         <div className={`dq-row ${hasMissing ? "warn" : "ok"}`}>

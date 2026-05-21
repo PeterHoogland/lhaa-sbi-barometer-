@@ -1,166 +1,101 @@
 """
-Waterinfo.be — hoogwater-/overstromingssignaal voor Vlaanderen.
-Doc 03_Laag-4: I-D1-009 — overstromingsdruk (domein D1 fysieke leefomgeving).
+Wateroverlast-signaal (I-D1-009).
+Doc 03_Laag-4: domein D1 (omgeving).
 
-Bron: waterinfo.be KIWIS-API (Kisters KiWIS, datasource 0).
-  https://download.waterinfo.be/tsmdownload/KiWIS/KiWIS
-Open, gratis, geen token. Waterinfo.be is het officiële kanaal van de Vlaamse
-Milieumaatschappij (VMM) + De Vlaamse Waterweg voor waterstanden en debieten.
+Bron: open-meteo Flood API (https://flood-api.open-meteo.com/), die de
+GloFAS-rivierafvoer (Global Flood Awareness System, Copernicus/ECMWF)
+ontsluit. Open, gratis, geen sleutel, betrouwbaar vanaf een server-IP,
+en consistent met de andere open-meteo-bronnen in deze pipeline.
 
-⚠ EERLIJKE BEPERKING — LEES DIT
--------------------------------
-De KIWIS-API levert GEEN kant-en-klaar "aantal stations boven alarmdrempel".
-Alarmdrempels zitten verspreid over timeseries-metadata en zijn niet uniform
-ontsloten. Een volledig drempel-overschrijdingsmodel vergt per station een
-aparte metadata-call (honderden calls) — te zwaar voor een dagelijkse
-pipeline-run.
+We meten de dagelijkse rivierafvoer (m³/s) op vier punten in grote
+Belgische stroomgebieden en sommeren die tot één nationaal hoogwater-
+signaal. Hogere afvoer = vollere rivieren = meer overstromingsdruk.
+De Maas weegt het zwaarst, wat strookt met het reële risico: de
+catastrofale overstromingen van 2021 lagen in het Maas/Vesdre-bekken.
 
-Daarom werkt deze fetcher in twee modi:
-  1. LIVE: we vragen de actuele waterstand-timeseries op (parametertype
-     "waterstand"/"WS"), tellen hoeveel stations recent meten, en berekenen
-     een hoogwater-index = mediaan van de procentuele afwijking van elke
-     station-meting tov zijn eigen recente bereik (proxy voor "hoe hoog staat
-     het water nu, netbreed"). Hogere index = meer stations met hoog water.
-  2. MOCK-fallback: als KIWIS onbereikbaar/te traag is, een seizoens-
-     gemoduleerde mock (winter/lente hoger door neerslag), eerlijk gevlagd.
-
-De waarde is dus een hoogwater-INDICATOR (0 = laag, hoger = natter/hoger
-water netbreed), geen exact drempel-telling. Dit staat eerlijk in 'source'.
-
-Hogere waarde = meer hoogwater = meer overstromingsstress.
+Een eerdere versie probeerde de waterinfo.be KIWIS-API; die vergt het
+vooraf opzoeken van station-tijdreeks-id's en bleek niet betrouwbaar
+machine-leesbaar. De GloFAS-afvoer is een robuuste, wetenschappelijk
+gangbare proxy voor overstromingsdruk.
 """
 from __future__ import annotations
-import statistics
-from datetime import date
+from datetime import date, timedelta
 from ..util import FetchResult, safe_request, seasonal_noise
 from ..cache import get as cache_get, put as cache_put
 
-BASE = "https://download.waterinfo.be/tsmdownload/KiWIS/KiWIS"
-USER_AGENT = "SBI-barometer/0.2 (publieke stress-indicator; contact peter@hoogland.be)"
+# Vier punten in grote Belgische stroomgebieden (lat, lon).
+RIVER_POINTS = [
+    ("Maas/Luik", 50.63, 5.57),
+    ("Schelde/Antwerpen", 51.22, 4.40),
+    ("Dijle-Demer/Vlaams-Brabant", 50.88, 4.70),
+    ("Leie/West-Vlaanderen", 50.83, 3.27),
+]
 
-# getTimeseriesList: alle "actuele waterstand" tijdreeksen.
-# returnfields beperkt de payload; ts_name filtert op de standaard
-# 15-minuten-waterstandsreeksen van waterinfo.be.
-_TS_LIST_URL = (
-    f"{BASE}?service=kisters&type=queryServices&request=getTimeseriesList"
-    "&datasource=0&format=json"
-    "&ts_name=*15.*"
-    "&stationparameter_name=waterstand"
-    "&returnfields=ts_id,station_no,station_name"
-)
+FLOOD_URL = "https://flood-api.open-meteo.com/v1/flood"
 
 
-def _fetch_timeseries_ids() -> list[str]:
-    """Haal ts_id's van waterstand-tijdreeksen op (KIWIS getTimeseriesList)."""
-    ok, body = safe_request(_TS_LIST_URL, timeout=25, headers={"User-Agent": USER_AGENT})
-    if not ok or not isinstance(body, list) or len(body) < 2:
-        return []
-    # KIWIS json-format: eerste rij = kolomnamen, daarna data-rijen.
-    header = body[0]
-    try:
-        ts_idx = header.index("ts_id")
-    except (ValueError, AttributeError):
-        return []
-    ids: list[str] = []
-    for row in body[1:]:
-        if isinstance(row, list) and len(row) > ts_idx and row[ts_idx]:
-            ids.append(str(row[ts_idx]))
-    return ids
-
-
-def _fetch_recent_levels(ts_ids: list[str]) -> list[float]:
-    """Voor een batch ts_id's: haal de recentste waterstandwaarde per reeks.
-
-    KIWIS getTimeseriesValues accepteert komma-gescheiden ts_id's. We vragen
-    de laatste dag op en nemen per reeks de hoogste waarde van die dag als
-    proxy voor de actuele waterstand.
-    """
-    if not ts_ids:
-        return []
-    # Batch beperken — KIWIS limiteert URL-lengte; 200 reeksen is ruim genoeg
-    # voor een netbrede schatting.
-    batch = ",".join(ts_ids[:200])
+def discharge_sum_series(start: date, end: date) -> list[tuple[str, float]]:
+    """Som van de rivierafvoer over de vier punten per dag. Chronologisch.
+    Wordt door zowel de dagfetcher als het backfill-script gebruikt."""
+    lats = ",".join(str(lat) for _, lat, _ in RIVER_POINTS)
+    lons = ",".join(str(lon) for _, _, lon in RIVER_POINTS)
     url = (
-        f"{BASE}?service=kisters&type=queryServices&request=getTimeseriesValues"
-        f"&datasource=0&format=json&ts_id={batch}"
-        "&period=P1D&returnfields=Timestamp,Value"
+        f"{FLOOD_URL}?latitude={lats}&longitude={lons}"
+        f"&daily=river_discharge"
+        f"&start_date={start.isoformat()}&end_date={end.isoformat()}"
     )
-    ok, body = safe_request(url, timeout=30, headers={"User-Agent": USER_AGENT})
-    if not ok or not isinstance(body, list):
+    ok, body = safe_request(url, timeout=40, retries=2, retry_delay=3)
+    if not ok:
         return []
-    levels: list[float] = []
-    for series in body:
-        if not isinstance(series, dict):
+    locations = body if isinstance(body, list) else [body]
+    per_day: dict[str, float] = {}
+    counts: dict[str, int] = {}
+    for loc in locations:
+        if not isinstance(loc, dict):
             continue
-        rows = series.get("data")
-        if not isinstance(rows, list) or not rows:
-            continue
-        vals = []
-        for row in rows:
-            # data-rijen zijn [timestamp, value, ...]
-            if isinstance(row, list) and len(row) >= 2 and isinstance(row[1], (int, float)):
-                vals.append(float(row[1]))
-        if vals:
-            # mediaan van de dag = robuuste actuele-stand-proxy per station
-            levels.append(statistics.median(vals))
-    return levels
-
-
-def _highwater_index(levels: list[float]) -> float | None:
-    """Netbrede hoogwater-index uit de verzamelde stationsniveaus.
-
-    We hebben geen per-station referentiebereik binnen één call, dus de index
-    is de variatiecoëfficiënt-vrije spreiding: het 90e-percentiel gedeeld door
-    de mediaan van alle stationsniveaus. Bij hoogwater stijgt de bovenkant van
-    de verdeling sneller dan de mediaan → index > 1 wijst op netbrede pieken.
-    """
-    clean = [v for v in levels if v is not None]
-    if len(clean) < 5:
-        return None
-    clean.sort()
-    median = statistics.median(clean)
-    if median == 0:
-        return None
-    idx_p90 = min(len(clean) - 1, int(round(0.9 * (len(clean) - 1))))
-    p90 = clean[idx_p90]
-    return p90 / median
+        daily = loc.get("daily", {})
+        times = daily.get("time", [])
+        vals = daily.get("river_discharge", [])
+        for t, v in zip(times, vals):
+            if isinstance(v, (int, float)):
+                per_day[t] = per_day.get(t, 0.0) + float(v)
+                counts[t] = counts.get(t, 0) + 1
+    # alleen dagen waarop alle vier de punten data leverden
+    return [
+        (t, round(per_day[t], 2))
+        for t in sorted(per_day)
+        if counts.get(t) == len(RIVER_POINTS)
+    ]
 
 
 def fetch_flood_signal(target_date: date) -> FetchResult:
-    """Netbreed hoogwater-/overstromingssignaal voor Vlaanderen (I-D1-009)."""
-    ts_ids = _fetch_timeseries_ids()
-    if ts_ids:
-        levels = _fetch_recent_levels(ts_ids)
-        index = _highwater_index(levels)
-        if index is not None:
-            source = (
-                f"waterinfo.be KIWIS (VMM, {len(levels)} waterstand-stations; "
-                "hoogwater-index = p90/mediaan, proxy — zie module-docstring)"
-            )
-            cache_put("I-D1-009", index, source, target_date.isoformat())
-            return FetchResult(
-                "I-D1-009", index, target_date.isoformat(),
-                simulated=False, source=source,
-                observation_date=target_date.isoformat(),
-            )
-
-    # Cache-fallback (≤14d)
-    cached = cache_get("I-D1-009")
-    if cached:
-        value, prev_source = cached
+    series = discharge_sum_series(target_date - timedelta(days=10), target_date)
+    if series:
+        latest_date, value = series[-1]
+        source = (
+            "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische "
+            "stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)"
+        )
+        cache_put("I-D1-009", value, source, latest_date)
         return FetchResult(
             "I-D1-009", value, target_date.isoformat(),
-            simulated=False,
-            source=f"cache (laatst succesvol: {prev_source})",
+            simulated=False, source=source, observation_date=latest_date,
+        )
+
+    # Cache-fallback
+    cached = cache_get("I-D1-009")
+    if cached:
+        cval, prev_source = cached
+        return FetchResult(
+            "I-D1-009", cval, target_date.isoformat(),
+            simulated=False, source=f"cache (laatst succesvol: {prev_source})",
             observation_date=target_date.isoformat(),
         )
 
-    # Definitief: mock. Basislijn ~1.4; winter/lente natter → fase verschoven
-    # zodat de piek rond februari-maart valt.
-    value = max(0.0, 1.4 + seasonal_noise(target_date, 0.0, 0.35, 0.15, 1.2))
+    # Mock
+    value = max(0.0, 40.0 + seasonal_noise(target_date, 0.0, 18.0, 10.0, 0.0))
     return FetchResult(
         "I-D1-009", value, target_date.isoformat(),
-        simulated=True,
-        source="mock (waterinfo.be KIWIS onbereikbaar/leeg, geen cache)",
+        simulated=True, source="mock (open-meteo Flood API onbereikbaar)",
         observation_date=target_date.isoformat(),
     )

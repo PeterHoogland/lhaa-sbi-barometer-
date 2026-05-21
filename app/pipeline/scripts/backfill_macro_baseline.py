@@ -128,6 +128,9 @@ def _fetch_ecb_history(url: str, label: str) -> list[tuple[str, float]]:
 
 def _write_history(code: str, rows: list[dict]) -> int:
     """Schrijf rows naar app/data/history/{code}.json en log min/mediaan/max."""
+    if not rows:
+        print(f"  WAARSCHUWING {code}: 0 punten — bestand niet geschreven.", file=sys.stderr)
+        return 0
     if len(rows) < 30:
         print(f"  WAARSCHUWING {code}: slechts {len(rows)} punten "
               f"(<30 — engine gebruikt deze baseline niet).", file=sys.stderr)
@@ -197,10 +200,11 @@ def backfill_energy() -> int:
     start = today - timedelta(days=730)
     by_date: dict[str, list[float]] = {}
 
-    # In jaarblokken ophalen — kleinere responses, robuuster tegen time-outs.
+    # In blokken van 30 dagen ophalen — grote ranges geven 503 op de
+    # Energy-Charts price-API; kleine blokken zijn betrouwbaar.
     block_start = start
     while block_start < today:
-        block_end = min(block_start + timedelta(days=365), today)
+        block_end = min(block_start + timedelta(days=30), today)
         url = (
             f"https://api.energy-charts.info/price"
             f"?bzn=BE&start={block_start.isoformat()}&end={block_end.isoformat()}"
