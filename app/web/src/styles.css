@@ -111,20 +111,34 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
     rgba(29, 50, 22, 0.50) 52%,
     rgba(29, 50, 22, 0.80) 100%);
 }
+.hero-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding: 34px 32px 26px;
+}
+.site-logo { display: inline-flex; }
+.site-logo img { display: block; height: 104px; width: auto; }
+/* dunne scheidingslijn onder het logo, volle breedte */
+.hero-rule {
+  position: relative;
+  z-index: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.32);
+}
 .hero-content {
   position: relative;
   z-index: 1;
   max-width: 760px;
   margin: 0 auto;
-  padding: 44px 32px 96px;
+  padding: 40px 32px 96px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   color: #fff;
 }
-.site-logo { display: inline-flex; margin-bottom: 32px; }
-.site-logo img { display: block; height: 80px; width: auto; }
 
 .site-back {
   position: absolute;
@@ -528,41 +542,73 @@ main {
   font-weight: 600;
 }
 
-.domain-group { margin-bottom: 28px; }
+.domain-group {
+  margin-bottom: 22px;
+  border: 1px solid var(--c-line);
+  border-radius: var(--rad-lg);
+  overflow: hidden;
+  background: var(--lha-snow);
+}
 .domain-group:last-of-type { margin-bottom: 8px; }
+
+/* domein-kop = geblurde fotobanner, een eigen foto per domein */
 .domain-group-header {
+  position: relative;
+  overflow: hidden;
   display: grid;
   grid-template-columns: auto auto 1fr;
   gap: 14px;
-  align-items: baseline;
-  padding-bottom: 10px;
-  margin-bottom: 6px;
-  border-bottom: 1px solid var(--c-line);
+  align-items: center;
+  padding: 22px 24px;
 }
+.domain-group-header::before {
+  content: "";
+  position: absolute;
+  inset: -16px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px);
+  transform: scale(1.09);
+}
+.domain-group-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg,
+    rgba(29, 50, 22, 0.9) 0%, rgba(29, 50, 22, 0.64) 100%);
+}
+.domain-group-header > * { position: relative; z-index: 1; }
+.dh-D1::before { background-image: url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=70"); }
+.dh-D2::before { background-image: url("https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=70"); }
+.dh-D3::before { background-image: url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=70"); }
+.dh-D4::before { background-image: url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=70"); }
+.dh-D5::before { background-image: url("https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1200&q=70"); }
+.dh-D6::before { background-image: url("https://images.unsplash.com/photo-1506784365847-bbad939e9335?auto=format&fit=crop&w=1200&q=70"); }
 .domain-group-code {
   font-family: var(--f-mono);
-  color: var(--lha-blue-deep);
+  color: #fff;
   font-weight: 600;
-  font-size: 0.82rem;
-  padding: 2px 8px;
-  background: var(--lha-sky-pale);
+  font-size: 0.8rem;
+  padding: 3px 9px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.32);
   border-radius: 4px;
 }
 .domain-group-name {
   font-family: var(--f-display);
   font-weight: 500;
-  color: var(--c-ink);
-  font-size: 1.1rem;
+  color: #fff;
+  font-size: 1.18rem;
 }
 .domain-group-sub {
-  color: var(--c-ink-mute);
+  color: rgba(255, 255, 255, 0.82);
   font-size: 0.85rem;
   text-align: right;
   font-style: italic;
 }
 @media (max-width: 640px) { .domain-group-sub { display: none; } }
 
-.ind-rows { display: flex; flex-direction: column; }
+.ind-rows { display: flex; flex-direction: column; padding: 6px 12px 12px; }
 .ind-row { border-bottom: 1px solid var(--c-line-soft); }
 .ind-row:last-child { border-bottom: none; }
 .ind-row-summary {

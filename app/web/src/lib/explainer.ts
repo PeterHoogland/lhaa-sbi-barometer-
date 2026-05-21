@@ -138,13 +138,13 @@ export function buildCnDescription(ctx: ExplainerContext): string {
     if (ctx.percentile === 0) {
       return `Alle ${ctx.totalAvailable} signalen onder of binnen gemiddeld. Historisch lage dag.`;
     }
-    return `Geen van de ${ctx.totalAvailable} indicatoren hoger dan gewoonlijk. Geen banner-activatie.`;
+    return `Geen van de ${ctx.totalAvailable} indicatoren hoger dan gewoonlijk.`;
   }
   if (ctx.cn === 2) {
     if (ctx.elevatedCount === 0) {
-      return `Alle ${ctx.totalAvailable} signalen binnen gemiddeld. Geen banner-activatie.`;
+      return `Alle ${ctx.totalAvailable} signalen binnen gemiddeld.`;
     }
-    return `${ctx.elevatedCount} signaal${ctx.elevatedCount === 1 ? "" : "en"} hoger dan gewoonlijk, ${ctx.totalAvailable - ctx.elevatedCount} binnen gemiddeld. Geen banner-activatie.`;
+    return `${ctx.elevatedCount} signaal${ctx.elevatedCount === 1 ? "" : "en"} hoger dan gewoonlijk, ${ctx.totalAvailable - ctx.elevatedCount} binnen gemiddeld.`;
   }
   if (ctx.cn === 3) {
     return `${ctx.elevatedCount} van de ${ctx.totalAvailable} signalen hoger dan gewoonlijk, ${ctx.daysInTier} dagen op rij. Banner-activatie loopt.`;

@@ -2,8 +2,8 @@ import { LHALogo } from "./LHALogo";
 
 /**
  * Site-header: een licht geblurde alpenfoto over de volle breedte, met het
- * Hautes-Alpes-logo gecentreerd bovenaan en het titelblok eroverheen.
- * In de sfeer van plus.hautes-alpes.net — rustig, fotografie-gedragen.
+ * Hautes-Alpes-logo groot en gecentreerd bovenaan, een dunne scheidingslijn
+ * eronder (zoals op plus.hautes-alpes.net), en daaronder het titelblok.
  */
 export function HeroBanner({ weekIso, today }: { weekIso: string; today: string }) {
   return (
@@ -18,7 +18,7 @@ export function HeroBanner({ weekIso, today }: { weekIso: string; today: string 
       >
         Naar hautes-alpes.net ↗
       </a>
-      <div className="hero-content">
+      <div className="hero-top">
         <a
           className="site-logo"
           href="https://plus.hautes-alpes.net/"
@@ -26,8 +26,11 @@ export function HeroBanner({ weekIso, today }: { weekIso: string; today: string 
           rel="noopener noreferrer"
           aria-label="Hautes-Alpes"
         >
-          <LHALogo size={80} />
+          <LHALogo size={104} />
         </a>
+      </div>
+      <div className="hero-rule" aria-hidden="true" />
+      <div className="hero-content">
         <div className="intro-eyebrow">Stressor-Blootstellings-Index</div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
         <p className="intro-lead">

@@ -122,7 +122,7 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
 
       {byDomain.map(({ domain, indicators }) => (
         <div key={domain} className="domain-group">
-          <div className="domain-group-header">
+          <div className={`domain-group-header dh-${domain}`}>
             <div className="domain-group-code">{domain}</div>
             <div className="domain-group-name">{DOMAIN_LABELS[domain]}</div>
             <div className="domain-group-sub">{DOMAIN_SUBTITLES[domain]}</div>
