@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-21T13:10:46.065Z",
+  "timestamp": "2026-05-21T13:45:57.912Z",
   "week_iso": "2026-W21",
   "condition_level": {
     "value": 1,
@@ -8,18 +8,18 @@
     "copy_key": "rust"
   },
   "composite": {
-    "equal": -0.55,
-    "evidence_graded": -0.61,
-    "demographic": -0.51,
+    "equal": -0.46,
+    "evidence_graded": -0.54,
+    "demographic": -0.41,
     "weight_sensitivity": {
       "correlation_inverse_vs_equal_12w": 0.84,
       "composite_range_with_dropouts": [
-        -0.55,
-        -0.34
+        -0.46,
+        -0.3
       ],
       "bootstrap_95_ci_around_equal": [
-        -0.65,
-        -0.45
+        -0.56,
+        -0.36
       ]
     }
   },
@@ -65,16 +65,16 @@
   },
   "top_contributing_domains": [
     {
-      "domain": "D5",
-      "contribution": -0.22
-    },
-    {
       "domain": "D2",
       "contribution": -0.16
     },
     {
       "domain": "D1",
       "contribution": -0.12
+    },
+    {
+      "domain": "D5",
+      "contribution": -0.11
     }
   ],
   "indicator_breakdown": [
@@ -237,7 +237,7 @@
       "reads": "De officiële maximumprijs van Euro95.",
       "unit": "€/liter",
       "raw_value": 2.015,
-      "z_short": 1.12,
+      "z_short": 1.07,
       "contribution": 0.09,
       "state": "verhoogd",
       "source": "FOD Economie maximumprijzen",
@@ -357,7 +357,7 @@
       "reads": "Het percentage werkzoekenden in de beroepsbevolking.",
       "unit": "%",
       "raw_value": 6.3,
-      "z_short": 0.98,
+      "z_short": 0.79,
       "contribution": 0.03,
       "state": "normaal",
       "source": "STATBEL / Steunpunt Werk",
@@ -384,7 +384,7 @@
       "reads": "De gemiddelde rente voor nieuwe woonleningen.",
       "unit": "%",
       "raw_value": 3.43,
-      "z_short": 0.39,
+      "z_short": 0.42,
       "contribution": 0.01,
       "state": "normaal",
       "source": "Nationale Bank van België",
@@ -468,8 +468,8 @@
       "why": "Veel negatief nieuws beïnvloedt hoe een hele bevolking zich voelt.",
       "reads": "We meten de gemiddelde toon van het Belgische nieuws via GDELT, een wetenschappelijk project dat wereldwijd nieuwsberichten leest en de toon ervan scoort. We kijken naar alle Belgische bronnen samen, Nederlands- én Franstalig. Het grote voordeel: GDELT heeft een echte historie van twee jaar, zodat we vandaag eerlijk kunnen vergelijken met hoe negatief het nieuws gewoonlijk is. Daarnaast lezen we als controle elke dag de artikels van dertien Belgische RSS-bronnen met een Nederlands valentie-lexicon, en wegen we die naar het leeftijdsprofiel van elk publiek. Dat levert de negativiteit per leeftijdsgroep (jong, midden, ouder) die in de bronvermelding staat.",
       "unit": "toon-score",
-      "raw_value": 1.089,
-      "z_short": -0.9,
+      "raw_value": 1.079,
+      "z_short": -0.93,
       "contribution": -0.05,
       "state": "normaal",
       "source": "GDELT Project v2",
@@ -499,31 +499,35 @@
     {
       "code": "I-D5-002",
       "domain": "D5",
-      "plain_name": "Mensen googelen 'stress' meer",
-      "why": "Wat veel mensen zoeken, vertelt iets over wat ze meemaken. (Niet perfect, we weten van Google's eigen waarschuwing dat zoekdata fragiel is.)",
-      "reads": "Hoe vaak mensen woorden als 'stress', 'burn-out', 'slaapproblemen' googelen, in België.",
-      "unit": "index 0–100",
-      "raw_value": 33.5,
-      "z_short": -3,
-      "contribution": -0.17,
+      "plain_name": "Hoeveel mensen lezen over stress?",
+      "why": "Hoe vaak mensen informatie opzoeken over stress, burn-out of slaapproblemen, vertelt iets over wat er leeft. (Niet perfect, maar wel een bruikbare aanwijzing.)",
+      "reads": "We tellen elke dag hoe vaak zes Nederlandstalige Wikipedia-artikels over stress-thema's worden bekeken: Stress, Burn-out, Depressie, Angststoornis, Overspannenheid en Slapeloosheid. We delen dat door het totale Wikipedia-verkeer van die dag, zodat alleen de relatieve aandacht voor stress telt en niet de algemene groei of krimp van Wikipedia. Daarna nemen we het gemiddelde over zeven dagen, zodat het weekendeffect wegvalt. We gebruiken Wikipedia in plaats van Google Trends omdat Google zoekdata blokkeert voor servers, terwijl Wikipedia open, betrouwbaar en reproduceerbaar is.",
+      "unit": "per miljoen weergaven",
+      "raw_value": 23.491,
+      "z_short": -1.12,
+      "contribution": -0.06,
       "state": "rustig",
-      "source": "Google Trends",
+      "source": "Wikipedia-pageviews (Wikimedia REST API)",
       "simulated": false,
       "data_source": {
-        "name": "Google Trends",
-        "url": "https://trends.google.com"
+        "name": "Wikimedia Pageviews API (nl.wikipedia)",
+        "url": "https://wikimedia.org/api/rest_v1/"
       },
       "references": [
         {
-          "label": "Lazer et al. (2014): Science, parable of Google Flu (waarschuwing)",
-          "url": "https://doi.org/10.1126/science.1248506"
+          "label": "Generous et al. (2014): ziektemonitoring via Wikipedia",
+          "url": "https://doi.org/10.1371/journal.pcbi.1003892"
         },
         {
-          "label": "Ayers, Althouse & Dredze (2013): gedrag via webdata",
-          "url": "https://doi.org/10.1016/j.amepre.2014.07.009"
+          "label": "McIver & Brownstein (2014): Wikipedia voor griepmonitoring",
+          "url": "https://doi.org/10.1371/journal.pcbi.1003581"
+        },
+        {
+          "label": "Lazer et al. (2014): Science, parable of Google Flu (waarschuwing)",
+          "url": "https://doi.org/10.1126/science.1248506"
         }
       ],
-      "observation_date": "2026-05-21",
+      "observation_date": "2026-05-20",
       "demographic_reach": 0.9,
       "reach_rationale": "~95% is internetgebruiker; stress-zoekgedrag is breed gespreid."
     },
@@ -679,15 +683,15 @@
     {
       "code": "I-D5-006S",
       "name": "Reddit-sentiment (onderstroom-peiling)",
-      "value": -0.167,
+      "value": -0.239,
       "source": "Reddit r/belgium + r/Vlaanderen, 200 posts, NL valentie-lexicon (299 woorden, nl-valence-0.1); SECUNDAIR, niet-representatief, niet in composiet",
       "simulated": false,
       "observation_date": "2026-05-21"
     }
   ],
   "media_cluster_diagnostic": {
-    "d5_cross_correlation_7d": 0,
-    "composite_without_d5": -0.4,
+    "d5_cross_correlation_7d": -0.21,
+    "composite_without_d5": -0.41,
     "media_contribution_percentile_points": 0
   },
   "brand_safety": {

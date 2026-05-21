@@ -133,8 +133,8 @@ function syntheticRawValue(code: IndicatorCode, date: Date): number {
       return 3.4 + (Math.random() - 0.5) * 0.2;
     case "I-D5-001": // Nieuwsneg (GDELT tone — fallback rond echte mediaan ~1.4)
       return Math.max(0, 1.4 + 0.6 * Math.sin(yearProg * 1.5) + (Math.random() - 0.5) * 0.9);
-    case "I-D5-002": // Google Trends index 0-100
-      return 50 + 10 * Math.sin(yearProg) + (Math.random() - 0.5) * 15;
+    case "I-D5-002": // Wikipedia-aandachts-index (per miljoen, fallback ~28)
+      return Math.max(0, 28 + 6 * Math.sin(yearProg) + (Math.random() - 0.5) * 8);
     case "I-D5-003": // Collectieve gebeurtenissen 0-15
       return Math.random() < 0.05 ? Math.floor(Math.random() * 6) : 0;
     default:

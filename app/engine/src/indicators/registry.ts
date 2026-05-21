@@ -153,12 +153,14 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
   },
   "I-D5-002": {
     code: "I-D5-002",
-    name: "Google Trends stress-termen",
+    name: "Wikipedia-aandacht stress-thema's",
     domain: "D5",
     grade: "B",
     inverseCoded: false,
-    applyStl: true,
-    source: "Google Trends",
+    // Geen STL: het 7d-gemiddelde verwijdert al het weekdag-effect en de
+    // baseline is een recent venster (~11 maanden, drift-gevoelige bron).
+    applyStl: false,
+    source: "Wikipedia-pageviews (Wikimedia REST API)",
     deterministic: false,
   },
   "I-D5-003": {

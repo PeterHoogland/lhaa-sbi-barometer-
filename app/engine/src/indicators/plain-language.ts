@@ -183,14 +183,15 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     ],
   },
   "I-D5-002": {
-    plain: "Mensen googelen 'stress' meer",
-    why: "Wat veel mensen zoeken, vertelt iets over wat ze meemaken. (Niet perfect, we weten van Google's eigen waarschuwing dat zoekdata fragiel is.)",
-    reads: "Hoe vaak mensen woorden als 'stress', 'burn-out', 'slaapproblemen' googelen, in België.",
-    unit: "index 0–100",
-    dataSource: { name: "Google Trends", url: "https://trends.google.com" },
+    plain: "Hoeveel mensen lezen over stress?",
+    why: "Hoe vaak mensen informatie opzoeken over stress, burn-out of slaapproblemen, vertelt iets over wat er leeft. (Niet perfect, maar wel een bruikbare aanwijzing.)",
+    reads: "We tellen elke dag hoe vaak zes Nederlandstalige Wikipedia-artikels over stress-thema's worden bekeken: Stress, Burn-out, Depressie, Angststoornis, Overspannenheid en Slapeloosheid. We delen dat door het totale Wikipedia-verkeer van die dag, zodat alleen de relatieve aandacht voor stress telt en niet de algemene groei of krimp van Wikipedia. Daarna nemen we het gemiddelde over zeven dagen, zodat het weekendeffect wegvalt. We gebruiken Wikipedia in plaats van Google Trends omdat Google zoekdata blokkeert voor servers, terwijl Wikipedia open, betrouwbaar en reproduceerbaar is.",
+    unit: "per miljoen weergaven",
+    dataSource: { name: "Wikimedia Pageviews API (nl.wikipedia)", url: "https://wikimedia.org/api/rest_v1/" },
     references: [
+      { label: "Generous et al. (2014): ziektemonitoring via Wikipedia", url: "https://doi.org/10.1371/journal.pcbi.1003892" },
+      { label: "McIver & Brownstein (2014): Wikipedia voor griepmonitoring", url: "https://doi.org/10.1371/journal.pcbi.1003581" },
       { label: "Lazer et al. (2014): Science, parable of Google Flu (waarschuwing)", url: "https://doi.org/10.1126/science.1248506" },
-      { label: "Ayers, Althouse & Dredze (2013): gedrag via webdata", url: "https://doi.org/10.1016/j.amepre.2014.07.009" },
     ],
   },
   "I-D5-003": {
