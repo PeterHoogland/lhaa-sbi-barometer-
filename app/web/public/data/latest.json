@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-21T09:04:05.470Z",
+  "timestamp": "2026-05-21T09:23:23.298Z",
   "week_iso": "2026-W21",
   "condition_level": {
     "value": 1,
@@ -8,17 +8,17 @@
     "copy_key": "rust"
   },
   "composite": {
-    "equal": -1.22,
-    "evidence_graded": -1.36,
+    "equal": -1.23,
+    "evidence_graded": -1.37,
     "weight_sensitivity": {
       "correlation_inverse_vs_equal_12w": 0.84,
       "composite_range_with_dropouts": [
-        -1.22,
-        -0.89
+        -1.23,
+        -0.9
       ],
       "bootstrap_95_ci_around_equal": [
-        -1.4,
-        -1.03
+        -1.41,
+        -1.05
       ]
     }
   },
@@ -28,7 +28,7 @@
   },
   "tier": {
     "current": "green",
-    "days_in_tier": 42,
+    "days_in_tier": 13,
     "tier_history_30d": [
       "green",
       "green",
@@ -41,12 +41,12 @@
       "green",
       "green",
       "green",
-      "green",
-      "green",
-      "green",
-      "green",
-      "green",
-      "green",
+      "amber",
+      "amber",
+      "amber",
+      "amber",
+      "amber",
+      "amber",
       "green",
       "green",
       "green",
@@ -64,12 +64,12 @@
   },
   "top_contributing_domains": [
     {
-      "domain": "D3",
+      "domain": "D5",
       "contribution": -0.33
     },
     {
-      "domain": "D5",
-      "contribution": -0.32
+      "domain": "D3",
+      "contribution": -0.33
     },
     {
       "domain": "D2",
@@ -143,7 +143,7 @@
       "reads": "Hoeveel graden kouder dan -5°C het vannacht was.",
       "unit": "°C onder -5",
       "raw_value": 0,
-      "z_short": -2.31,
+      "z_short": -2.38,
       "contribution": -0.1,
       "state": "rustig",
       "source": "KMI/RMI Open Data",
@@ -168,7 +168,7 @@
       "reads": "Hoe schoon de lucht is vergeleken met wat de WHO gezond noemt.",
       "unit": "× WHO-grens",
       "raw_value": 1,
-      "z_short": -1.49,
+      "z_short": -1.32,
       "contribution": -0.06,
       "state": "rustig",
       "source": "IRCEL-CELINE",
@@ -226,7 +226,7 @@
       "reads": "De officiële maximumprijs van Euro95.",
       "unit": "€/liter",
       "raw_value": 1.783,
-      "z_short": -0.46,
+      "z_short": -0.43,
       "contribution": -0.04,
       "state": "normaal",
       "source": "FOD Economie maximumprijzen",
@@ -280,8 +280,8 @@
       "reads": "De wekelijkse spotprijs voor gas en elektriciteit.",
       "unit": "€/MWh",
       "raw_value": 106.59,
-      "z_short": -1.3,
-      "contribution": -0.04,
+      "z_short": -1.36,
+      "contribution": -0.05,
       "state": "rustig",
       "source": "ENTSO-E Transparency / Belpex",
       "simulated": false,
@@ -363,7 +363,7 @@
       "reads": "De gemiddelde rente voor nieuwe woonleningen.",
       "unit": "%",
       "raw_value": 3.43,
-      "z_short": 0.42,
+      "z_short": 0.39,
       "contribution": 0.01,
       "state": "normaal",
       "source": "Nationale Bank van België",
@@ -439,19 +439,23 @@
       "domain": "D5",
       "plain_name": "Hoe negatief is het nieuws?",
       "why": "Veel negatief nieuws beïnvloedt hoe een hele bevolking zich voelt.",
-      "reads": "De toon van Nederlandstalige Belgische nieuwsbronnen.",
+      "reads": "We lezen elke dag alle nieuwsartikels van vier Belgische bronnen (VRT NWS, De Standaard, De Tijd, Het Belang van Limburg). Per artikel tellen we positieve en negatieve woorden tegen een vast Nederlands valentie-lexicon, en berekenen we de toon: (positief min negatief) gedeeld door totaal woorden. Methode: Young & Soroka (2012).",
       "unit": "toon-score",
       "raw_value": -0.071,
-      "z_short": -2.67,
-      "contribution": -0.15,
+      "z_short": -3,
+      "contribution": -0.17,
       "state": "rustig",
       "source": "GDELT Project v2",
       "simulated": false,
       "data_source": {
-        "name": "GDELT Project",
-        "url": "https://www.gdeltproject.org"
+        "name": "RSS van 4 BE-nieuwsbronnen + valentie-lexicon",
+        "url": "https://www.vrt.be/vrtnws/"
       },
       "references": [
+        {
+          "label": "Young & Soroka (2012): Affective News, Lexicoder-methode",
+          "url": "https://doi.org/10.1080/10584609.2012.671234"
+        },
         {
           "label": "Soroka, Fournier & Nir (2019): PNAS, negativity bias",
           "url": "https://doi.org/10.1073/pnas.1908369116"
@@ -633,7 +637,7 @@
   "media_cluster_diagnostic": {
     "d5_cross_correlation_7d": 0,
     "composite_without_d5": -1.08,
-    "media_contribution_percentile_points": 38
+    "media_contribution_percentile_points": 32
   },
   "brand_safety": {
     "flag": "normal",

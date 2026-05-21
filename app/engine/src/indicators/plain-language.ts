@@ -173,10 +173,11 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   "I-D5-001": {
     plain: "Hoe negatief is het nieuws?",
     why: "Veel negatief nieuws beïnvloedt hoe een hele bevolking zich voelt.",
-    reads: "De toon van Nederlandstalige Belgische nieuwsbronnen.",
+    reads: "We lezen elke dag alle nieuwsartikels van vier Belgische bronnen (VRT NWS, De Standaard, De Tijd, Het Belang van Limburg). Per artikel tellen we positieve en negatieve woorden tegen een vast Nederlands valentie-lexicon, en berekenen we de toon: (positief min negatief) gedeeld door totaal woorden. Methode: Young & Soroka (2012).",
     unit: "toon-score",
-    dataSource: { name: "GDELT Project", url: "https://www.gdeltproject.org" },
+    dataSource: { name: "RSS van 4 BE-nieuwsbronnen + valentie-lexicon", url: "https://www.vrt.be/vrtnws/" },
     references: [
+      { label: "Young & Soroka (2012): Affective News, Lexicoder-methode", url: "https://doi.org/10.1080/10584609.2012.671234" },
       { label: "Soroka, Fournier & Nir (2019): PNAS, negativity bias", url: "https://doi.org/10.1073/pnas.1908369116" },
       { label: "Boukes et al. (2015): nieuws met attitude", url: "https://doi.org/10.1080/15205436.2014.1001917" },
     ],
