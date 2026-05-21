@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-21T09:46:26.021Z",
+  "timestamp": "2026-05-21T11:01:40.729Z",
   "week_iso": "2026-W21",
   "condition_level": {
     "value": 1,
@@ -28,7 +28,7 @@
   },
   "tier": {
     "current": "green",
-    "days_in_tier": 61,
+    "days_in_tier": 14,
     "tier_history_30d": [
       "green",
       "green",
@@ -43,9 +43,9 @@
       "green",
       "green",
       "green",
-      "green",
-      "green",
-      "green",
+      "amber",
+      "amber",
+      "amber",
       "green",
       "green",
       "green",
@@ -69,7 +69,7 @@
     },
     {
       "domain": "D5",
-      "contribution": -0.31
+      "contribution": -0.32
     },
     {
       "domain": "D2",
@@ -143,7 +143,7 @@
       "reads": "Hoeveel graden kouder dan -5°C het vannacht was.",
       "unit": "°C onder -5",
       "raw_value": 0,
-      "z_short": -2.23,
+      "z_short": -2.12,
       "contribution": -0.09,
       "state": "rustig",
       "source": "KMI/RMI Open Data",
@@ -168,7 +168,7 @@
       "reads": "Hoe schoon de lucht is vergeleken met wat de WHO gezond noemt.",
       "unit": "× WHO-grens",
       "raw_value": 1,
-      "z_short": -1.17,
+      "z_short": -1.13,
       "contribution": -0.05,
       "state": "rustig",
       "source": "IRCEL-CELINE",
@@ -226,7 +226,7 @@
       "reads": "De officiële maximumprijs van Euro95.",
       "unit": "€/liter",
       "raw_value": 1.783,
-      "z_short": -0.44,
+      "z_short": -0.45,
       "contribution": -0.04,
       "state": "normaal",
       "source": "FOD Economie maximumprijzen",
@@ -280,8 +280,8 @@
       "reads": "De wekelijkse spotprijs voor gas en elektriciteit.",
       "unit": "€/MWh",
       "raw_value": 106.59,
-      "z_short": -1.48,
-      "contribution": -0.05,
+      "z_short": -1.34,
+      "contribution": -0.04,
       "state": "rustig",
       "source": "ENTSO-E Transparency / Belpex",
       "simulated": false,
@@ -363,7 +363,7 @@
       "reads": "De gemiddelde rente voor nieuwe woonleningen.",
       "unit": "%",
       "raw_value": 3.43,
-      "z_short": 0.45,
+      "z_short": 0.47,
       "contribution": 0.02,
       "state": "normaal",
       "source": "Nationale Bank van België",
@@ -439,16 +439,16 @@
       "domain": "D5",
       "plain_name": "Hoe negatief is het nieuws?",
       "why": "Veel negatief nieuws beïnvloedt hoe een hele bevolking zich voelt.",
-      "reads": "We lezen elke dag alle nieuwsartikels van acht Belgische bronnen: VRT NWS, De Standaard, De Morgen, Het Laatste Nieuws, De Tijd, Het Belang van Limburg, Bruzz en Knack. Een dwarsdoorsnede van openbare omroep, kwaliteitskranten, populaire kranten, economische en regionale pers. Per artikel tellen we positieve en negatieve woorden tegen een vast Nederlands valentie-lexicon, en berekenen we de toon: (positief min negatief) gedeeld door totaal woorden. Methode: Young & Soroka (2012).",
+      "reads": "We lezen elke dag alle nieuwsartikels van dertien Belgische bronnen: VRT NWS, De Standaard, De Morgen, Het Laatste Nieuws, De Tijd, Het Belang van Limburg, Bruzz, Knack, Sporza, Trends, Business AM, Eos en Newsmonkey. Een brede dwarsdoorsnede: openbare omroep, kwaliteitskranten, populaire pers, economisch, regionaal, sport, wetenschap en jongerennieuws. Per artikel tellen we positieve en negatieve woorden tegen een vast Nederlands valentie-lexicon, en berekenen we de toon: (positief min negatief) gedeeld door totaal woorden. Methode: Young & Soroka (2012). Per dag worden zo ongeveer 600 artikels verwerkt.",
       "unit": "toon-score",
-      "raw_value": 0.565,
-      "z_short": -2.65,
-      "contribution": -0.15,
+      "raw_value": 0.518,
+      "z_short": -2.81,
+      "contribution": -0.16,
       "state": "rustig",
       "source": "GDELT Project v2",
       "simulated": false,
       "data_source": {
-        "name": "RSS van 8 BE-nieuwsbronnen + valentie-lexicon",
+        "name": "RSS van 13 BE-nieuwsbronnen + valentie-lexicon",
         "url": "https://www.vrt.be/vrtnws/"
       },
       "references": [
@@ -638,7 +638,7 @@
     {
       "code": "I-D5-006S",
       "name": "Reddit-sentiment (onderstroom-peiling)",
-      "value": -0.206,
+      "value": -0.167,
       "source": "Reddit r/belgium + r/Vlaanderen, 200 posts, NL valentie-lexicon (299 woorden, nl-valence-0.1); SECUNDAIR, niet-representatief, niet in composiet",
       "simulated": false,
       "observation_date": "2026-05-21"
@@ -646,8 +646,8 @@
   ],
   "media_cluster_diagnostic": {
     "d5_cross_correlation_7d": 0,
-    "composite_without_d5": -1.06,
-    "media_contribution_percentile_points": 43
+    "composite_without_d5": -1.05,
+    "media_contribution_percentile_points": 65
   },
   "brand_safety": {
     "flag": "normal",

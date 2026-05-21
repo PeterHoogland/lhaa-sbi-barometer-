@@ -43,6 +43,11 @@ RSS_FEEDS = [
     "https://www.hbvl.be/rss/section/2146FCFC-EE7A-44FD-AB5C-8FF3973BA15A",           # Het Belang van Limburg — regionaal
     "https://www.bruzz.be/rss.xml",                                                  # Bruzz — Brussel regionaal
     "https://www.knack.be/nieuws/feed/",                                             # Knack — weekblad, duiding/opinie
+    "https://sporza.be/nl.rss.articles.xml",                                         # Sporza — sport
+    "https://trends.knack.be/feed/",                                                 # Trends — business/economie
+    "https://businessam.be/feed/",                                                   # Business AM — business
+    "https://www.eoswetenschap.eu/rss.xml",                                          # Eos — wetenschap
+    "https://newsmonkey.be/feed",                                                    # Newsmonkey — jong/social-native
 ]
 
 def _parse_rss_texts(xml_text: str) -> list[str]:
