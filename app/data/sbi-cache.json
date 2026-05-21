@@ -1,49 +1,49 @@
 {
   "I-D1-009": {
     "date": "2026-05-21",
-    "fetched_at": "2026-05-21T19:34:51.100524",
+    "fetched_at": "2026-05-21T19:44:24.747878",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 36.28
   },
   "I-D1-010": {
     "date": "2026-05-21",
-    "fetched_at": "2026-05-21T19:34:51.756288",
+    "fetched_at": "2026-05-21T19:44:25.396472",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 2.1250000000000004
   },
   "I-D2-009": {
     "date": "2026-05-21",
-    "fetched_at": "2026-05-21T19:34:54.342723",
+    "fetched_at": "2026-05-21T19:44:28.201725",
     "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
     "value": 2.0
   },
   "I-D3-002": {
     "date": "2026-05-21",
-    "fetched_at": "2026-05-21T19:34:56.456155",
+    "fetched_at": "2026-05-21T19:44:30.013656",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 105.12579545454551
   },
   "I-D3-003S": {
     "date": "2026-05-21",
-    "fetched_at": "2026-05-21T19:37:13.574917",
+    "fetched_at": "2026-05-21T19:46:42.306157",
     "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 3.0
   },
   "I-D3-009": {
     "date": "2026-05-21",
-    "fetched_at": "2026-05-21T19:34:59.476929",
+    "fetched_at": "2026-05-21T19:44:35.058151",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0310281936660521
   },
   "I-D5-001": {
     "date": "2026-05-21",
-    "fetched_at": "2026-05-21T19:35:57.332104",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (299 woorden, nl-valence-0.1, 596 artikels, 10 bronnen, poststratificatie): negativiteit jong +0.10 / midden +0.19 / ouder +0.25",
+    "fetched_at": "2026-05-21T19:45:29.710590",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (299 woorden, nl-valence-0.1, 596 artikels, 10 bronnen, poststratificatie): negativiteit jong +0.19 / midden +0.26 / ouder +0.32",
     "value": 1.1901
   },
   "I-D5-002": {
     "date": "2026-05-20",
-    "fetched_at": "2026-05-21T19:35:58.270534",
+    "fetched_at": "2026-05-21T19:45:30.601157",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 23.491
   },
