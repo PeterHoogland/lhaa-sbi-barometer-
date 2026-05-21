@@ -33,6 +33,7 @@ read-only, publieke data.
 from __future__ import annotations
 from datetime import date
 from ..util import FetchResult, safe_request, seasonal_noise
+from ..cache import get as cache_get, put as cache_put
 from ..lexicon_nl import LEXICON_VERSION, LEXICON_SIZE, tone_of_text
 
 SUBREDDITS = ["belgium", "Vlaanderen"]
@@ -76,20 +77,32 @@ def fetch_reddit_sentiment(target_date: date) -> FetchResult:
     if reachable and all_tones:
         mean_tone = sum(all_tones) / len(all_tones)
         negativity = -mean_tone
+        source = (f"Reddit r/belgium + r/Vlaanderen, {posts_total} posts, "
+                  f"NL valentie-lexicon ({LEXICON_SIZE} woorden, {LEXICON_VERSION}); "
+                  f"SECUNDAIR, niet-representatief, niet in composiet")
+        cache_put("I-D5-006S", negativity, source, target_date.isoformat())
         return FetchResult(
             "I-D5-006S", negativity, target_date.isoformat(),
-            simulated=False,
-            source=(f"Reddit r/belgium + r/Vlaanderen, {posts_total} posts, "
-                    f"NL valentie-lexicon ({LEXICON_SIZE} woorden, {LEXICON_VERSION}); "
-                    f"SECUNDAIR, niet-representatief, niet in composiet"),
+            simulated=False, source=source,
             observation_date=target_date.isoformat(),
         )
 
-    # Fallback — mock met eerlijke vlag
+    # Reddit blokkeert datacenter-IP's regelmatig — val terug op cache (≤14d)
+    cached = cache_get("I-D5-006S")
+    if cached:
+        value, prev_source = cached
+        return FetchResult(
+            "I-D5-006S", value, target_date.isoformat(),
+            simulated=False,
+            source=f"cache (laatst succesvol: {prev_source})",
+            observation_date=target_date.isoformat(),
+        )
+
+    # Definitief: mock met eerlijke vlag
     value = seasonal_noise(target_date, 1.0, 1.0, 2.0, 0.0)
     return FetchResult(
         "I-D5-006S", value, target_date.isoformat(),
         simulated=True,
-        source="mock (Reddit onbereikbaar)",
+        source="mock (Reddit onbereikbaar, geen cache)",
         observation_date=target_date.isoformat(),
     )
