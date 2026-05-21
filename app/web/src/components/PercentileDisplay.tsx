@@ -3,9 +3,10 @@ interface Props {
   fixedP: number;
   composite: number;
   evidenceComposite: number;
+  demographicComposite?: number;
 }
 
-export function PercentileDisplay({ shortP, fixedP, composite, evidenceComposite }: Props) {
+export function PercentileDisplay({ shortP, fixedP, composite, evidenceComposite, demographicComposite }: Props) {
   return (
     <div className="percentile-display">
       <div className="percentile-main">
@@ -25,6 +26,12 @@ export function PercentileDisplay({ shortP, fixedP, composite, evidenceComposite
           <span className="meta-key">Composiet (evidence-graded)</span>
           <span className="meta-value">{evidenceComposite.toFixed(2)}</span>
         </div>
+        {demographicComposite !== undefined && (
+          <div className="meta-row">
+            <span className="meta-key">Composiet (demografische weging)</span>
+            <span className="meta-value">{demographicComposite.toFixed(2)}</span>
+          </div>
+        )}
         <div className="meta-row">
           <span className="meta-key">Percentiel · 2010–2019 baseline</span>
           <span className="meta-value">P {fixedP}</span>

@@ -18,8 +18,14 @@ export {
 export {
   computeComposite,
   computeCompositeWithoutD5,
+  computeDemographicComposite,
   pearsonCorrelation,
 } from "./methodology/composite.js";
+export {
+  DEMOGRAPHIC_REACH,
+  TOTAL_REACH,
+  demographicWeight,
+} from "./methodology/demographic-reach.js";
 export { percentileRank } from "./methodology/percentile.js";
 export {
   computeTier,

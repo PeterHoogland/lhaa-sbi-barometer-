@@ -648,6 +648,13 @@ main {
 .ind-meta-value { color: var(--c-ink); font-size: 0.9rem; }
 .ind-meta-value strong { font-family: var(--f-mono); color: var(--lha-blue-deep); }
 .ind-meta-source { font-size: 0.8rem; color: var(--lha-stone-soft); }
+.ind-reach-rationale {
+  margin: 10px 0 0;
+  font-size: 0.82rem;
+  color: var(--lha-stone-soft);
+  font-style: italic;
+  line-height: 1.5;
+}
 .ind-mock-tag {
   margin-left: 8px;
   padding: 2px 8px;

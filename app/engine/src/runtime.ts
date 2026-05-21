@@ -27,9 +27,11 @@ import { winsorize } from "./methodology/winsorize.js";
 import {
   computeComposite,
   computeCompositeWithoutD5,
+  computeDemographicComposite,
   pearsonCorrelation,
   type ZMap,
 } from "./methodology/composite.js";
+import { DEMOGRAPHIC_REACH } from "./methodology/demographic-reach.js";
 import { indicatorWeight, domainWeight } from "./methodology/weights.js";
 import { percentileRank } from "./methodology/percentile.js";
 import { computeTier } from "./methodology/tier.js";
@@ -166,6 +168,8 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       references: plain.references,
       observation_date:
         input.observationDates?.[code] ?? (meta.deterministic ? input.date : input.date),
+      demographic_reach: DEMOGRAPHIC_REACH[code].reach,
+      reach_rationale: DEMOGRAPHIC_REACH[code].rationale,
     };
   });
 
@@ -181,6 +185,7 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     composite: {
       equal: round2(equal.composite),
       evidence_graded: round2(evidence.composite),
+      demographic: round2(computeDemographicComposite(zShort)),
       weight_sensitivity: {
         correlation_inverse_vs_equal_12w: weightSensitivity.correlation_inverse_vs_equal_12w,
         composite_range_with_dropouts: [

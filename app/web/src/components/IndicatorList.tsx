@@ -57,7 +57,15 @@ function IndicatorRow({ ind }: { ind: IndicatorBreakdown }) {
                 {formatObservationDate(ind.observation_date)}
               </div>
             </div>
+            <div className="ind-meta-cell">
+              <div className="ind-meta-label">Raakt naar schatting</div>
+              <div className="ind-meta-value">
+                <strong>{Math.round(ind.demographic_reach * 100)}%</strong> van de bevolking
+              </div>
+            </div>
           </div>
+
+          <p className="ind-reach-rationale">{ind.reach_rationale}</p>
 
           <div className="ind-sources">
             <div className="ind-source-block">

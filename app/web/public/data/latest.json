@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-21T11:01:40.729Z",
+  "timestamp": "2026-05-21T11:32:10.103Z",
   "week_iso": "2026-W21",
   "condition_level": {
     "value": 1,
@@ -8,17 +8,18 @@
     "copy_key": "rust"
   },
   "composite": {
-    "equal": -1.2,
-    "evidence_graded": -1.34,
+    "equal": -1.22,
+    "evidence_graded": -1.36,
+    "demographic": -1.44,
     "weight_sensitivity": {
       "correlation_inverse_vs_equal_12w": 0.84,
       "composite_range_with_dropouts": [
-        -1.2,
-        -0.87
+        -1.22,
+        -0.88
       ],
       "bootstrap_95_ci_around_equal": [
-        -1.38,
-        -1.02
+        -1.4,
+        -1.03
       ]
     }
   },
@@ -28,7 +29,7 @@
   },
   "tier": {
     "current": "green",
-    "days_in_tier": 14,
+    "days_in_tier": 61,
     "tier_history_30d": [
       "green",
       "green",
@@ -43,9 +44,9 @@
       "green",
       "green",
       "green",
-      "amber",
-      "amber",
-      "amber",
+      "green",
+      "green",
+      "green",
       "green",
       "green",
       "green",
@@ -65,7 +66,7 @@
   "top_contributing_domains": [
     {
       "domain": "D3",
-      "contribution": -0.33
+      "contribution": -0.34
     },
     {
       "domain": "D5",
@@ -104,7 +105,9 @@
           "url": "https://doi.org/10.1176/appi.ajp.162.4.656"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 1,
+      "reach_rationale": "Daglicht beïnvloedt het circadiaans ritme van iedereen."
     },
     {
       "code": "I-D1-002",
@@ -133,7 +136,9 @@
           "url": "https://doi.org/10.1016/j.scitotenv.2018.01.121"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 1,
+      "reach_rationale": "Hitte raakt de hele bevolking; kwetsbaarheid skewt naar ouderen."
     },
     {
       "code": "I-D1-003",
@@ -143,7 +148,7 @@
       "reads": "Hoeveel graden kouder dan -5°C het vannacht was.",
       "unit": "°C onder -5",
       "raw_value": 0,
-      "z_short": -2.12,
+      "z_short": -2.22,
       "contribution": -0.09,
       "state": "rustig",
       "source": "KMI/RMI Open Data",
@@ -158,7 +163,9 @@
           "url": "https://doi.org/10.1136/jech-2016-208439"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 1,
+      "reach_rationale": "Koude raakt iedereen; energiekost vergroot de impact."
     },
     {
       "code": "I-D1-004",
@@ -168,7 +175,7 @@
       "reads": "Hoe schoon de lucht is vergeleken met wat de WHO gezond noemt.",
       "unit": "× WHO-grens",
       "raw_value": 1,
-      "z_short": -1.13,
+      "z_short": -1.27,
       "contribution": -0.05,
       "state": "rustig",
       "source": "IRCEL-CELINE",
@@ -187,7 +194,9 @@
           "url": "https://doi.org/10.1001/jamapsychiatry.2019.0056"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 1,
+      "reach_rationale": "Iedereen ademt; luchtkwaliteit skewt naar stedelijke gebieden."
     },
     {
       "code": "I-D2-001",
@@ -216,7 +225,9 @@
           "url": "https://doi.org/10.1080/01441647.2019.1649317"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 0.4,
+      "reach_rationale": "Files raken pendelaars; ~65% van de werkenden pendelt met de auto."
     },
     {
       "code": "I-D2-004",
@@ -226,7 +237,7 @@
       "reads": "De officiële maximumprijs van Euro95.",
       "unit": "€/liter",
       "raw_value": 1.783,
-      "z_short": -0.45,
+      "z_short": -0.46,
       "contribution": -0.04,
       "state": "normaal",
       "source": "FOD Economie maximumprijzen",
@@ -241,7 +252,9 @@
           "url": "https://doi.org/10.1016/j.jbusres.2017.03.013"
         }
       ],
-      "observation_date": "2025-12"
+      "observation_date": "2025-12",
+      "demographic_reach": 0.78,
+      "reach_rationale": "~80% van de Belgische huishoudens beschikt over een wagen."
     },
     {
       "code": "I-D3-001",
@@ -270,7 +283,9 @@
           "url": "https://doi.org/10.2307/1914185"
         }
       ],
-      "observation_date": "2025-12"
+      "observation_date": "2025-12",
+      "demographic_reach": 1,
+      "reach_rationale": "Inflatie raakt elke consument."
     },
     {
       "code": "I-D3-002",
@@ -280,8 +295,8 @@
       "reads": "De wekelijkse spotprijs voor gas en elektriciteit.",
       "unit": "€/MWh",
       "raw_value": 106.59,
-      "z_short": -1.34,
-      "contribution": -0.04,
+      "z_short": -1.42,
+      "contribution": -0.05,
       "state": "rustig",
       "source": "ENTSO-E Transparency / Belpex",
       "simulated": false,
@@ -299,7 +314,9 @@
           "url": "https://doi.org/10.1016/j.enpol.2010.02.037"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 1,
+      "reach_rationale": "Elk huishouden betaalt energie."
     },
     {
       "code": "I-D3-003",
@@ -328,7 +345,9 @@
           "url": "https://doi.org/10.1111/ap.12176"
         }
       ],
-      "observation_date": "2026-03"
+      "observation_date": "2026-03",
+      "demographic_reach": 0.48,
+      "reach_rationale": "Ontslagdreiging raakt werkenden plus hun huishoudens (spillover)."
     },
     {
       "code": "I-D3-005",
@@ -353,7 +372,9 @@
           "url": "https://www.who.int/publications/i/item/WHO-IER-CSDH-08.1"
         }
       ],
-      "observation_date": "2026-03"
+      "observation_date": "2026-03",
+      "demographic_reach": 0.7,
+      "reach_rationale": "Werkloosheid raakt de beroepsbevolking en wie ervan afhangt."
     },
     {
       "code": "I-D3-006",
@@ -363,8 +384,8 @@
       "reads": "De gemiddelde rente voor nieuwe woonleningen.",
       "unit": "%",
       "raw_value": 3.43,
-      "z_short": 0.47,
-      "contribution": 0.02,
+      "z_short": 0.3,
+      "contribution": 0.01,
       "state": "normaal",
       "source": "Nationale Bank van België",
       "simulated": false,
@@ -378,7 +399,9 @@
           "url": "https://doi.org/10.1016/j.jbusres.2017.03.013"
         }
       ],
-      "observation_date": "2026-03"
+      "observation_date": "2026-03",
+      "demographic_reach": 0.32,
+      "reach_rationale": "~30% van de huishoudens heeft een lopende hypotheek."
     },
     {
       "code": "I-D4-001",
@@ -407,7 +430,9 @@
           "url": "https://doi.org/10.1016/j.riob.2018.11.002"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 0.45,
+      "reach_rationale": "Werk-deadlines raken de werkende bevolking (~43%)."
     },
     {
       "code": "I-D4-002",
@@ -432,18 +457,20 @@
           "url": "https://doi.org/10.1093/sf/sos120"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 0.28,
+      "reach_rationale": "Schoolvakantie-druk raakt gezinnen met schoolgaande kinderen."
     },
     {
       "code": "I-D5-001",
       "domain": "D5",
       "plain_name": "Hoe negatief is het nieuws?",
       "why": "Veel negatief nieuws beïnvloedt hoe een hele bevolking zich voelt.",
-      "reads": "We lezen elke dag alle nieuwsartikels van dertien Belgische bronnen: VRT NWS, De Standaard, De Morgen, Het Laatste Nieuws, De Tijd, Het Belang van Limburg, Bruzz, Knack, Sporza, Trends, Business AM, Eos en Newsmonkey. Een brede dwarsdoorsnede: openbare omroep, kwaliteitskranten, populaire pers, economisch, regionaal, sport, wetenschap en jongerennieuws. Per artikel tellen we positieve en negatieve woorden tegen een vast Nederlands valentie-lexicon, en berekenen we de toon: (positief min negatief) gedeeld door totaal woorden. Methode: Young & Soroka (2012). Per dag worden zo ongeveer 600 artikels verwerkt.",
+      "reads": "We lezen elke dag alle nieuwsartikels van dertien Belgische bronnen: VRT NWS, De Standaard, De Morgen, Het Laatste Nieuws, De Tijd, Het Belang van Limburg, Bruzz, Knack, Sporza, Trends, Business AM, Eos en Newsmonkey, samen ongeveer 600 artikels per dag. Per artikel tellen we positieve en negatieve woorden tegen een vast Nederlands valentie-lexicon en berekenen we de toon (methode Young & Soroka 2012). Vervolgens wegen we elke bron naar het bekende leeftijdsprofiel van haar publiek, zodat het cijfer demografisch gebalanceerd is en niet wordt gedomineerd door de bron die toevallig het meest publiceert. Dat heet bron-niveau poststratificatie.",
       "unit": "toon-score",
       "raw_value": 0.518,
-      "z_short": -2.81,
-      "contribution": -0.16,
+      "z_short": -2.77,
+      "contribution": -0.15,
       "state": "rustig",
       "source": "GDELT Project v2",
       "simulated": false,
@@ -465,7 +492,9 @@
           "url": "https://doi.org/10.1080/15205436.2014.1001917"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 0.85,
+      "reach_rationale": "Ongeveer 85% volgt regelmatig nieuws."
     },
     {
       "code": "I-D5-002",
@@ -494,7 +523,9 @@
           "url": "https://doi.org/10.1016/j.amepre.2014.07.009"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 0.9,
+      "reach_rationale": "~95% is internetgebruiker; stress-zoekgedrag is breed gespreid."
     },
     {
       "code": "I-D5-003",
@@ -523,7 +554,9 @@
           "url": "https://doi.org/10.1177/0956797612460406"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 1,
+      "reach_rationale": "Collectieve gebeurtenissen raken het hele land tegelijk."
     },
     {
       "code": "I-D6-001",
@@ -552,7 +585,9 @@
           "url": "https://doi.org/10.1016/j.riob.2018.11.002"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 0.6,
+      "reach_rationale": "Vakantie-anticipatie raakt werkenden en studenten."
     },
     {
       "code": "I-D6-002",
@@ -577,7 +612,9 @@
           "url": "https://doi.org/10.1080/17439760.2012.691980"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 0.6,
+      "reach_rationale": "Het weekdag-ritme raakt wie werkt of studeert."
     },
     {
       "code": "I-D6-003",
@@ -606,7 +643,9 @@
           "url": "https://doi.org/10.1177/0748730419854197"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 1,
+      "reach_rationale": "Klok-verzetten verstoort ieders biologisch ritme."
     },
     {
       "code": "I-D6-005",
@@ -631,7 +670,9 @@
           "url": "https://doi.org/10.1080/02673843.2019.1596823"
         }
       ],
-      "observation_date": "2026-05-21"
+      "observation_date": "2026-05-21",
+      "demographic_reach": 0.22,
+      "reach_rationale": "Examens raken studenten en hun directe gezinsleden."
     }
   ],
   "secondary_signals": [
@@ -645,9 +686,9 @@
     }
   ],
   "media_cluster_diagnostic": {
-    "d5_cross_correlation_7d": 0,
-    "composite_without_d5": -1.05,
-    "media_contribution_percentile_points": 65
+    "d5_cross_correlation_7d": -0.11,
+    "composite_without_d5": -1.08,
+    "media_contribution_percentile_points": 50
   },
   "brand_safety": {
     "flag": "normal",

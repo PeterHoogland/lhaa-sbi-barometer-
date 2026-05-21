@@ -11,8 +11,9 @@
  */
 
 import type { DomainCode, DomainContribution, IndicatorCode } from "../types.js";
-import { allDomains, indicatorsByDomain } from "../indicators/registry.js";
+import { allDomains, indicatorsByDomain, INDICATOR_CODES } from "../indicators/registry.js";
 import { indicatorWeight, domainWeight, type WeightSchema } from "./weights.js";
+import { demographicWeight } from "./demographic-reach.js";
 
 /** Resultaat van per-indicator z-scoring (inverse-coded, winsorized). */
 export type ZMap = Partial<Record<IndicatorCode, number>>;
@@ -81,6 +82,22 @@ export function computeCompositeWithoutD5(zScores: ZMap, schema: WeightSchema): 
     composite += (domainWeight(schema, domain) / totalRemainingWeight) * domainSum;
   }
 
+  return composite;
+}
+
+/**
+ * Schema 3 — demografische reikwijdte-weging.
+ * Weegt elke indicator direct naar het bevolkingsaandeel dat hij raakt
+ * (zie demographic-reach.ts), zonder domein-tussenlaag. Telt NIET mee in
+ * het pre-geregistreerde primaire signaal; parallel berekend en gepubliceerd.
+ */
+export function computeDemographicComposite(zScores: ZMap): number {
+  let composite = 0;
+  for (const code of INDICATOR_CODES) {
+    const z = zScores[code];
+    if (z === undefined) continue;
+    composite += demographicWeight(code) * z;
+  }
   return composite;
 }
 

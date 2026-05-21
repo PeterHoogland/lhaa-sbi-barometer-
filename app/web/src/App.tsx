@@ -141,6 +141,7 @@ export function App() {
                 fixedP={data.percentile.fixed_2010_2019}
                 composite={data.composite.equal}
                 evidenceComposite={data.composite.evidence_graded}
+                demographicComposite={data.composite.demographic}
               />
             </section>
             <section className="panel">

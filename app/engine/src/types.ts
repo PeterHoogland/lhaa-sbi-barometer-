@@ -91,6 +91,10 @@ export interface IndicatorBreakdown {
   /** Datum/periode waar de onderliggende data naar verwijst.
    *  Dagelijkse bron: YYYY-MM-DD. Maandelijkse bron (ECB): YYYY-MM. */
   observation_date: string;
+  /** Geschat aandeel van de bevolking dat deze indicator raakt (0-1). */
+  demographic_reach: number;
+  /** Korte onderbouwing van het reach-percentage. */
+  reach_rationale: string;
 }
 
 /** Conditie-Niveau (CN) — publieke 5-bands-schaal voor banner-activatie. */
@@ -120,6 +124,8 @@ export interface DailyOutput {
   composite: {
     equal: number;
     evidence_graded: number;
+    /** Schema 3 — demografische reikwijdte-weging (parallel, amendement). */
+    demographic: number;
     weight_sensitivity: {
       correlation_inverse_vs_equal_12w: number;
       composite_range_with_dropouts: [number, number];

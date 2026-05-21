@@ -173,7 +173,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   "I-D5-001": {
     plain: "Hoe negatief is het nieuws?",
     why: "Veel negatief nieuws beïnvloedt hoe een hele bevolking zich voelt.",
-    reads: "We lezen elke dag alle nieuwsartikels van dertien Belgische bronnen: VRT NWS, De Standaard, De Morgen, Het Laatste Nieuws, De Tijd, Het Belang van Limburg, Bruzz, Knack, Sporza, Trends, Business AM, Eos en Newsmonkey. Een brede dwarsdoorsnede: openbare omroep, kwaliteitskranten, populaire pers, economisch, regionaal, sport, wetenschap en jongerennieuws. Per artikel tellen we positieve en negatieve woorden tegen een vast Nederlands valentie-lexicon, en berekenen we de toon: (positief min negatief) gedeeld door totaal woorden. Methode: Young & Soroka (2012). Per dag worden zo ongeveer 600 artikels verwerkt.",
+    reads: "We lezen elke dag alle nieuwsartikels van dertien Belgische bronnen: VRT NWS, De Standaard, De Morgen, Het Laatste Nieuws, De Tijd, Het Belang van Limburg, Bruzz, Knack, Sporza, Trends, Business AM, Eos en Newsmonkey, samen ongeveer 600 artikels per dag. Per artikel tellen we positieve en negatieve woorden tegen een vast Nederlands valentie-lexicon en berekenen we de toon (methode Young & Soroka 2012). Vervolgens wegen we elke bron naar het bekende leeftijdsprofiel van haar publiek, zodat het cijfer demografisch gebalanceerd is en niet wordt gedomineerd door de bron die toevallig het meest publiceert. Dat heet bron-niveau poststratificatie.",
     unit: "toon-score",
     dataSource: { name: "RSS van 13 BE-nieuwsbronnen + valentie-lexicon", url: "https://www.vrt.be/vrtnws/" },
     references: [

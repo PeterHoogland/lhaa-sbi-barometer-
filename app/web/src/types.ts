@@ -36,6 +36,8 @@ export interface IndicatorBreakdown {
   data_source: { name: string; url: string };
   references: Array<{ label: string; url: string }>;
   observation_date: string;
+  demographic_reach: number;
+  reach_rationale: string;
 }
 
 export type ConditionLevel = 1 | 2 | 3 | 4 | 5;
@@ -52,6 +54,7 @@ export interface DailyOutput {
   composite: {
     equal: number;
     evidence_graded: number;
+    demographic: number;
     weight_sensitivity: {
       correlation_inverse_vs_equal_12w: number;
       composite_range_with_dropouts: [number, number];
