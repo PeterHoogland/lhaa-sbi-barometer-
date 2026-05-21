@@ -17,7 +17,7 @@ from __future__ import annotations
 import re
 from datetime import date
 from ..util import FetchResult, safe_request, seasonal_noise
-from .statbel import _parse_ecb_latest
+from .statbel import _parse_ecb_latest_with_period
 
 
 # ECB HICP key voor "Fuels and lubricants for personal transport equipment"
@@ -37,19 +37,20 @@ EURO95_PATTERN = re.compile(
 EURO95_BASELINE_PER_L = 1.85  # 2024-baseline voor BE Euro95
 
 
-def _try_ecb_fuel_hicp() -> tuple[float | None, float | None]:
-    """Return (yoy_pct, eur_per_l_estimate) or (None, None)."""
+def _try_ecb_fuel_hicp() -> tuple[float, float, str] | None:
+    """Return (yoy_pct, eur_per_l_estimate, period) of None."""
     ok, body = safe_request(
         ECB_FUEL_HICP_URL, timeout=20,
         headers={"Accept": "application/json"},
     )
     if not ok or not isinstance(body, dict):
-        return None, None
-    yoy = _parse_ecb_latest(body)
-    if yoy is None:
-        return None, None
+        return None
+    result = _parse_ecb_latest_with_period(body)
+    if result is None:
+        return None
+    yoy, period = result
     estimate = EURO95_BASELINE_PER_L * (1 + yoy / 100)
-    return yoy, round(estimate, 3)
+    return yoy, round(estimate, 3), period
 
 
 def _try_scrape(url: str) -> float | None:
@@ -76,12 +77,14 @@ def _try_scrape(url: str) -> float | None:
 
 def fetch_fuel_prices(target_date: date) -> FetchResult:
     # 1) ECB HICP CP0722 — methodologisch sterkste
-    yoy, estimate = _try_ecb_fuel_hicp()
-    if estimate is not None:
+    hicp = _try_ecb_fuel_hicp()
+    if hicp is not None:
+        yoy, estimate, period = hicp
         return FetchResult(
             "I-D2-004", estimate, target_date.isoformat(),
             simulated=False,
-            source=f"ECB HICP brandstof yoy {yoy:+.1f}% → €{estimate}/l geschat",
+            source=f"ECB HICP brandstof yoy {yoy:+.1f}% naar €{estimate}/l geschat",
+            observation_date=period,
         )
 
     # 2) FOD Economie direct scrape
@@ -90,6 +93,7 @@ def fetch_fuel_prices(target_date: date) -> FetchResult:
         return FetchResult(
             "I-D2-004", val, target_date.isoformat(),
             simulated=False, source="FOD Economie maximumprijzen",
+            observation_date=target_date.isoformat(),
         )
 
     # 3) carbu.com fallback
@@ -98,6 +102,7 @@ def fetch_fuel_prices(target_date: date) -> FetchResult:
         return FetchResult(
             "I-D2-004", val, target_date.isoformat(),
             simulated=False, source="carbu.com (BE pomp-prijzen)",
+            observation_date=target_date.isoformat(),
         )
 
     # 4) Conservative mock

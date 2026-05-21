@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { IndicatorBreakdown, DomainCode } from "../types";
 import { DOMAIN_LABELS } from "../copy";
 import { stateColor, stateLabel, stateIcon } from "./indicator-utils";
+import { formatObservationDate, observationGranularity } from "../lib/format-date";
 
 const DOMAIN_SUBTITLES: Record<DomainCode, string> = {
   D1: "Hoe de buitenwereld vandaag aanvoelt",
@@ -40,12 +41,22 @@ function IndicatorRow({ ind }: { ind: IndicatorBreakdown }) {
             </div>
             {ind.raw_value !== null && (
               <div className="ind-meta-cell">
-                <div className="ind-meta-label">Vandaag</div>
+                <div className="ind-meta-label">Gemeten waarde</div>
                 <div className="ind-meta-value">
                   <strong>{formatValue(ind.raw_value, ind.unit)}</strong> {ind.unit}
                 </div>
               </div>
             )}
+            <div className="ind-meta-cell">
+              <div className="ind-meta-label">
+                {observationGranularity(ind.observation_date) === "maand"
+                  ? "Maandcijfer van"
+                  : "Cijfer van"}
+              </div>
+              <div className="ind-meta-value">
+                {formatObservationDate(ind.observation_date)}
+              </div>
+            </div>
           </div>
 
           <div className="ind-sources">

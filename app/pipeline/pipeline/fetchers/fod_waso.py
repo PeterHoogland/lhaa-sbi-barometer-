@@ -34,21 +34,27 @@ ECB_UNEMPLOYED_URL = (
 BE_WORKFORCE = 5_000_000
 
 
-def _parse_ecb_last_two(body) -> tuple[float | None, float | None]:
-    """Return (prev_value, last_value) or (None, None)."""
+def _parse_ecb_last_two(body) -> tuple[float | None, float | None, str]:
+    """Return (prev_value, last_value, last_period)."""
     try:
         ds = body["dataSets"][0]
         series = next(iter(ds["series"].values()))
         observations = series["observations"]
         sorted_keys = sorted(observations.keys(), key=lambda k: int(k))
+        period = ""
+        try:
+            obs_dim = body["structure"]["dimensions"]["observation"][0]["values"]
+            period = obs_dim[int(sorted_keys[-1])]["id"]
+        except (KeyError, IndexError, ValueError, TypeError):
+            period = ""
         if len(sorted_keys) < 2:
             v = float(observations[sorted_keys[-1]][0])
-            return None, v
+            return None, v, period
         prev = float(observations[sorted_keys[-2]][0])
         last = float(observations[sorted_keys[-1]][0])
-        return prev, last
+        return prev, last, period
     except (KeyError, IndexError, ValueError, StopIteration, TypeError):
-        return None, None
+        return None, None, ""
 
 
 def fetch_collective_layoffs(target_date: date) -> FetchResult:
@@ -57,7 +63,7 @@ def fetch_collective_layoffs(target_date: date) -> FetchResult:
         headers={"Accept": "application/json"},
     )
     if ok and isinstance(body, dict):
-        prev_rate, last_rate = _parse_ecb_last_two(body)
+        prev_rate, last_rate, period = _parse_ecb_last_two(body)
         if last_rate is not None:
             # Rate is %, delta_pp = procentpunt verandering
             if prev_rate is not None:
@@ -69,14 +75,16 @@ def fetch_collective_layoffs(target_date: date) -> FetchResult:
                 return FetchResult(
                     "I-D3-003", value, target_date.isoformat(),
                     simulated=False,
-                    source=(f"ECB LFSI werkloosheidsrate-delta (+{delta_pp:+.2f}pp → "
+                    source=(f"ECB LFSI werkloosheidsrate-delta ({delta_pp:+.2f}pp, "
                             f"~{int(effective_workers)} werkzoekenden, proxy voor ontslagen)"),
+                    observation_date=period,
                 )
             # Only last available — baseline 0
             return FetchResult(
                 "I-D3-003", math.log1p(0), target_date.isoformat(),
                 simulated=False,
                 source=f"ECB LFSI werkloosheidsrate {last_rate:.1f}% (baseline)",
+                observation_date=period,
             )
 
     # Conservatief fallback

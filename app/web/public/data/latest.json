@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-20T20:20:58.139Z",
+  "timestamp": "2026-05-21T09:04:05.470Z",
   "week_iso": "2026-W21",
   "condition_level": {
     "value": 1,
@@ -8,17 +8,17 @@
     "copy_key": "rust"
   },
   "composite": {
-    "equal": -1.18,
-    "evidence_graded": -1.38,
+    "equal": -1.22,
+    "evidence_graded": -1.36,
     "weight_sensitivity": {
       "correlation_inverse_vs_equal_12w": 0.84,
       "composite_range_with_dropouts": [
-        -1.18,
-        -0.79
+        -1.22,
+        -0.89
       ],
       "bootstrap_95_ci_around_equal": [
-        -1.36,
-        -1
+        -1.4,
+        -1.03
       ]
     }
   },
@@ -28,7 +28,7 @@
   },
   "tier": {
     "current": "green",
-    "days_in_tier": 61,
+    "days_in_tier": 42,
     "tier_history_30d": [
       "green",
       "green",
@@ -65,15 +65,15 @@
   "top_contributing_domains": [
     {
       "domain": "D3",
-      "contribution": -0.39
-    },
-    {
-      "domain": "D1",
-      "contribution": -0.31
+      "contribution": -0.33
     },
     {
       "domain": "D5",
-      "contribution": -0.26
+      "contribution": -0.32
+    },
+    {
+      "domain": "D2",
+      "contribution": -0.29
     }
   ],
   "indicator_breakdown": [
@@ -84,7 +84,7 @@
       "why": "Als de zon vaker schijnt, voelen mensen zich gemiddeld beter.",
       "reads": "Hoeveel uur het vandaag licht is.",
       "unit": "uur",
-      "raw_value": 15.502,
+      "raw_value": 15.545,
       "z_short": 0,
       "contribution": 0,
       "state": "normaal",
@@ -96,14 +96,15 @@
       },
       "references": [
         {
-          "label": "Rosenthal et al. (1984) — SAD originele beschrijving",
+          "label": "Rosenthal et al. (1984): SAD originele beschrijving",
           "url": "https://doi.org/10.1001/archpsyc.1984.01790120076010"
         },
         {
-          "label": "Golden et al. (2005) — lichttherapie meta-analyse",
+          "label": "Golden et al. (2005): lichttherapie meta-analyse",
           "url": "https://doi.org/10.1176/appi.ajp.162.4.656"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D1-002",
@@ -124,14 +125,15 @@
       },
       "references": [
         {
-          "label": "Hajat et al. (2010) — Lancet, hitte en gezondheid",
+          "label": "Hajat et al. (2010): Lancet, hitte en gezondheid",
           "url": "https://doi.org/10.1016/S0140-6736(09)61711-6"
         },
         {
-          "label": "Thompson et al. (2018) — hitte en mentale gezondheid",
+          "label": "Thompson et al. (2018): hitte en mentale gezondheid",
           "url": "https://doi.org/10.1016/j.scitotenv.2018.01.121"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D1-003",
@@ -141,8 +143,8 @@
       "reads": "Hoeveel graden kouder dan -5°C het vannacht was.",
       "unit": "°C onder -5",
       "raw_value": 0,
-      "z_short": -2.14,
-      "contribution": -0.09,
+      "z_short": -2.31,
+      "contribution": -0.1,
       "state": "rustig",
       "source": "KMI/RMI Open Data",
       "simulated": false,
@@ -152,10 +154,11 @@
       },
       "references": [
         {
-          "label": "Hajat et al. (2017) — koude en mortaliteit",
+          "label": "Hajat et al. (2017): koude en mortaliteit",
           "url": "https://doi.org/10.1136/jech-2016-208439"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D1-004",
@@ -164,26 +167,27 @@
       "why": "Vuile lucht (fijnstof, ozon) hangt samen met meer somberheid en prikkelbaarheid.",
       "reads": "Hoe schoon de lucht is vergeleken met wat de WHO gezond noemt.",
       "unit": "× WHO-grens",
-      "raw_value": 0.69,
-      "z_short": -2.36,
-      "contribution": -0.1,
+      "raw_value": 1,
+      "z_short": -1.49,
+      "contribution": -0.06,
       "state": "rustig",
       "source": "IRCEL-CELINE",
-      "simulated": true,
+      "simulated": false,
       "data_source": {
         "name": "IRCEL-CELINE",
         "url": "https://www.irceline.be"
       },
       "references": [
         {
-          "label": "Braithwaite et al. (2019) — luchtvervuiling en mentale gezondheid",
+          "label": "Braithwaite et al. (2019): luchtvervuiling en mentale gezondheid",
           "url": "https://doi.org/10.1289/EHP4595"
         },
         {
-          "label": "Newbury et al. (2019) — JAMA Psychiatry",
+          "label": "Newbury et al. (2019): JAMA Psychiatry",
           "url": "https://doi.org/10.1001/jamapsychiatry.2019.0056"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D2-001",
@@ -192,26 +196,27 @@
       "why": "Lang in de file staan verhoogt stresshormonen.",
       "reads": "Hoeveel kilometer file × hoeveel minuten ze duurden, in de spits.",
       "unit": "km·min",
-      "raw_value": 5979.726,
+      "raw_value": 110.4,
       "z_short": -3,
       "contribution": -0.25,
       "state": "rustig",
       "source": "Vlaams Verkeerscentrum",
-      "simulated": true,
+      "simulated": false,
       "data_source": {
         "name": "Vlaams Verkeerscentrum",
         "url": "https://www.verkeerscentrum.be"
       },
       "references": [
         {
-          "label": "Novaco, Stokols & Milanesi (1990) — pendel en stress",
+          "label": "Novaco, Stokols & Milanesi (1990): pendel en stress",
           "url": "https://doi.org/10.1007/BF00931303"
         },
         {
-          "label": "Chatterjee et al. (2020) — Transport Reviews",
+          "label": "Chatterjee et al. (2020): Transport Reviews",
           "url": "https://doi.org/10.1080/01441647.2019.1649317"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D2-004",
@@ -220,22 +225,23 @@
       "why": "Wanneer tanken duurder wordt, voelen veel gezinnen dat in hun budget.",
       "reads": "De officiële maximumprijs van Euro95.",
       "unit": "€/liter",
-      "raw_value": 1.916,
-      "z_short": 0.43,
-      "contribution": 0.04,
+      "raw_value": 1.783,
+      "z_short": -0.46,
+      "contribution": -0.04,
       "state": "normaal",
       "source": "FOD Economie maximumprijzen",
-      "simulated": true,
+      "simulated": false,
       "data_source": {
         "name": "FOD Economie",
         "url": "https://economie.fgov.be/nl/themas/energie/energieprijzen"
       },
       "references": [
         {
-          "label": "Brüggen et al. (2017) — financieel welzijn",
+          "label": "Brüggen et al. (2017): financieel welzijn",
           "url": "https://doi.org/10.1016/j.jbusres.2017.03.013"
         }
-      ]
+      ],
+      "observation_date": "2025-12"
     },
     {
       "code": "I-D3-001",
@@ -244,26 +250,27 @@
       "why": "Als alles duurder wordt, valt geld korter, dat geeft druk.",
       "reads": "Hoeveel duurder de gemiddelde boodschap is dan een jaar geleden.",
       "unit": "% per jaar",
-      "raw_value": 3.07,
+      "raw_value": 2.2,
       "z_short": -3,
       "contribution": -0.1,
       "state": "rustig",
       "source": "STATBEL",
-      "simulated": true,
+      "simulated": false,
       "data_source": {
         "name": "STATBEL",
         "url": "https://statbel.fgov.be/nl/themas/consumptieprijzen/consumptieprijsindex"
       },
       "references": [
         {
-          "label": "Brüggen et al. (2017) — financieel welzijn",
+          "label": "Brüggen et al. (2017): financieel welzijn",
           "url": "https://doi.org/10.1016/j.jbusres.2017.03.013"
         },
         {
-          "label": "Kahneman & Tversky (1979) — Prospect Theory",
+          "label": "Kahneman & Tversky (1979): Prospect Theory",
           "url": "https://doi.org/10.2307/1914185"
         }
-      ]
+      ],
+      "observation_date": "2025-12"
     },
     {
       "code": "I-D3-002",
@@ -272,26 +279,27 @@
       "why": "Verwarming en elektriciteit zijn een grote uitgave die je moeilijk kan vermijden.",
       "reads": "De wekelijkse spotprijs voor gas en elektriciteit.",
       "unit": "€/MWh",
-      "raw_value": 62.263,
-      "z_short": -3,
-      "contribution": -0.1,
+      "raw_value": 106.59,
+      "z_short": -1.3,
+      "contribution": -0.04,
       "state": "rustig",
       "source": "ENTSO-E Transparency / Belpex",
-      "simulated": true,
+      "simulated": false,
       "data_source": {
         "name": "ENTSO-E Transparency",
         "url": "https://transparency.entsoe.eu"
       },
       "references": [
         {
-          "label": "Thomson, Snell & Bouzarovski (2017) — energiearmoede Europa",
+          "label": "Thomson, Snell & Bouzarovski (2017): energiearmoede Europa",
           "url": "https://doi.org/10.3390/ijerph14060584"
         },
         {
-          "label": "Liddell & Morris (2010) — fuel poverty en gezondheid",
+          "label": "Liddell & Morris (2010): fuel poverty en gezondheid",
           "url": "https://doi.org/10.1016/j.enpol.2010.02.037"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D3-003",
@@ -300,26 +308,27 @@
       "why": "Als ergens een collectief ontslag wordt aangekondigd, voelt iedereen op die werkplek dat, ook wie niet ontslagen wordt.",
       "reads": "Hoeveel werknemers er deze week in een ontslagprocedure zitten.",
       "unit": "log(werknemers)",
-      "raw_value": 4.074,
+      "raw_value": 0,
       "z_short": -3,
       "contribution": -0.1,
       "state": "rustig",
       "source": "FOD WASO",
-      "simulated": true,
+      "simulated": false,
       "data_source": {
         "name": "FOD WASO",
         "url": "https://werk.belgie.be/nl/themas/herstructureringen"
       },
       "references": [
         {
-          "label": "Brand (2015) — Annual Review of Sociology",
+          "label": "Brand (2015): Annual Review of Sociology",
           "url": "https://doi.org/10.1146/annurev-soc-071913-043237"
         },
         {
-          "label": "De Witte et al. (2016) — job insecurity review",
+          "label": "De Witte et al. (2016): job insecurity review",
           "url": "https://doi.org/10.1111/ap.12176"
         }
-      ]
+      ],
+      "observation_date": "2026-03"
     },
     {
       "code": "I-D3-005",
@@ -328,22 +337,23 @@
       "why": "Hogere werkloosheid betekent dat meer mensen het moeilijk hebben, economische druk op het land.",
       "reads": "Het percentage werkzoekenden in de beroepsbevolking.",
       "unit": "%",
-      "raw_value": 6.207,
+      "raw_value": 6.3,
       "z_short": -3,
       "contribution": -0.1,
       "state": "rustig",
       "source": "STATBEL / Steunpunt Werk",
-      "simulated": true,
+      "simulated": false,
       "data_source": {
-        "name": "STATBEL — Werkloosheid",
+        "name": "STATBEL: Werkloosheid",
         "url": "https://statbel.fgov.be/nl/themas/werk-opleiding/werkloosheid"
       },
       "references": [
         {
-          "label": "WHO Commission on Social Determinants (2008) — Marmot",
+          "label": "WHO Commission on Social Determinants (2008): Marmot",
           "url": "https://www.who.int/publications/i/item/WHO-IER-CSDH-08.1"
         }
-      ]
+      ],
+      "observation_date": "2026-03"
     },
     {
       "code": "I-D3-006",
@@ -352,22 +362,23 @@
       "why": "Een hogere rente maakt een huis kopen of afbetalen duurder.",
       "reads": "De gemiddelde rente voor nieuwe woonleningen.",
       "unit": "%",
-      "raw_value": 3.41,
-      "z_short": 0.21,
+      "raw_value": 3.43,
+      "z_short": 0.42,
       "contribution": 0.01,
       "state": "normaal",
       "source": "Nationale Bank van België",
-      "simulated": true,
+      "simulated": false,
       "data_source": {
         "name": "Nationale Bank van België",
         "url": "https://stat.nbb.be"
       },
       "references": [
         {
-          "label": "Brüggen et al. (2017) — financieel welzijn",
+          "label": "Brüggen et al. (2017): financieel welzijn",
           "url": "https://doi.org/10.1016/j.jbusres.2017.03.013"
         }
-      ]
+      ],
+      "observation_date": "2026-03"
     },
     {
       "code": "I-D4-001",
@@ -388,14 +399,15 @@
       },
       "references": [
         {
-          "label": "Bakker & Demerouti (2007) — JD-R model",
+          "label": "Bakker & Demerouti (2007): JD-R model",
           "url": "https://doi.org/10.1108/02683940710733115"
         },
         {
-          "label": "Sonnentag (2018) — recovery paradox",
+          "label": "Sonnentag (2018): recovery paradox",
           "url": "https://doi.org/10.1016/j.riob.2018.11.002"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D4-002",
@@ -416,10 +428,11 @@
       },
       "references": [
         {
-          "label": "Bianchi et al. (2012) — werk- en gezinsbelasting",
+          "label": "Bianchi et al. (2012): werk- en gezinsbelasting",
           "url": "https://doi.org/10.1093/sf/sos120"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D5-001",
@@ -428,26 +441,27 @@
       "why": "Veel negatief nieuws beïnvloedt hoe een hele bevolking zich voelt.",
       "reads": "De toon van Nederlandstalige Belgische nieuwsbronnen.",
       "unit": "toon-score",
-      "raw_value": 1.036,
-      "z_short": -1.69,
-      "contribution": -0.09,
+      "raw_value": -0.071,
+      "z_short": -2.67,
+      "contribution": -0.15,
       "state": "rustig",
       "source": "GDELT Project v2",
-      "simulated": true,
+      "simulated": false,
       "data_source": {
         "name": "GDELT Project",
         "url": "https://www.gdeltproject.org"
       },
       "references": [
         {
-          "label": "Soroka, Fournier & Nir (2019) — PNAS, negativity bias",
+          "label": "Soroka, Fournier & Nir (2019): PNAS, negativity bias",
           "url": "https://doi.org/10.1073/pnas.1908369116"
         },
         {
-          "label": "Boukes et al. (2015) — nieuws met attitude",
+          "label": "Boukes et al. (2015): nieuws met attitude",
           "url": "https://doi.org/10.1080/15205436.2014.1001917"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D5-002",
@@ -456,26 +470,27 @@
       "why": "Wat veel mensen zoeken, vertelt iets over wat ze meemaken. (Niet perfect, we weten van Google's eigen waarschuwing dat zoekdata fragiel is.)",
       "reads": "Hoe vaak mensen woorden als 'stress', 'burn-out', 'slaapproblemen' googelen, in België.",
       "unit": "index 0–100",
-      "raw_value": 56.705,
+      "raw_value": 33.5,
       "z_short": -3,
       "contribution": -0.17,
       "state": "rustig",
       "source": "Google Trends",
-      "simulated": true,
+      "simulated": false,
       "data_source": {
         "name": "Google Trends",
         "url": "https://trends.google.com"
       },
       "references": [
         {
-          "label": "Lazer et al. (2014) — Science, parable of Google Flu (waarschuwing)",
+          "label": "Lazer et al. (2014): Science, parable of Google Flu (waarschuwing)",
           "url": "https://doi.org/10.1126/science.1248506"
         },
         {
-          "label": "Ayers, Althouse & Dredze (2013) — gedrag via webdata",
+          "label": "Ayers, Althouse & Dredze (2013): gedrag via webdata",
           "url": "https://doi.org/10.1016/j.amepre.2014.07.009"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D5-003",
@@ -489,21 +504,22 @@
       "contribution": 0,
       "state": "normaal",
       "source": "Nieuwsmonitoring + menselijke codering",
-      "simulated": true,
+      "simulated": false,
       "data_source": {
         "name": "Nieuwsmonitoring + menselijke codering",
         "url": "https://www.vrt.be/vrtnws/"
       },
       "references": [
         {
-          "label": "Holman, Garfin & Silver (2014) — PNAS, Boston Marathon",
+          "label": "Holman, Garfin & Silver (2014): PNAS, Boston Marathon",
           "url": "https://doi.org/10.1073/pnas.1316265110"
         },
         {
-          "label": "Silver et al. (2013) — media en collectief trauma",
+          "label": "Silver et al. (2013): media en collectief trauma",
           "url": "https://doi.org/10.1177/0956797612460406"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D6-001",
@@ -512,7 +528,7 @@
       "why": "Weten dat er rust aankomt, helpt mensen om vol te houden.",
       "reads": "Hoeveel dagen tot de eerstvolgende feestdag of schoolvakantie.",
       "unit": "dagen",
-      "raw_value": 5,
+      "raw_value": 4,
       "z_short": 0,
       "contribution": 0,
       "state": "normaal",
@@ -524,14 +540,15 @@
       },
       "references": [
         {
-          "label": "Fritz & Sonnentag (2005) — herstel, gezondheid, werkprestatie",
+          "label": "Fritz & Sonnentag (2005): herstel, gezondheid, werkprestatie",
           "url": "https://doi.org/10.1037/1076-8998.10.3.187"
         },
         {
-          "label": "Sonnentag (2018) — recovery paradox",
+          "label": "Sonnentag (2018): recovery paradox",
           "url": "https://doi.org/10.1016/j.riob.2018.11.002"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D6-002",
@@ -540,7 +557,7 @@
       "why": "Dinsdag-woensdag-donderdag voelen voor veel mensen het zwaarst, zaterdag-zondag het lichtst.",
       "reads": "De dag van de week, vertaald naar een gemiddelde belasting.",
       "unit": "0–1",
-      "raw_value": 1,
+      "raw_value": 0.9,
       "z_short": 0,
       "contribution": 0,
       "state": "normaal",
@@ -552,10 +569,11 @@
       },
       "references": [
         {
-          "label": "Stone, Schneider & Harter (2012) — weekdag stemmingspatroon",
+          "label": "Stone, Schneider & Harter (2012): weekdag stemmingspatroon",
           "url": "https://doi.org/10.1080/17439760.2012.691980"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D6-003",
@@ -576,14 +594,15 @@
       },
       "references": [
         {
-          "label": "Manfredini et al. (2018) — DST en hartinfarcten",
+          "label": "Manfredini et al. (2018): DST en hartinfarcten",
           "url": "https://doi.org/10.3390/jcm8030404"
         },
         {
-          "label": "Roenneberg et al. (2019) — waarom DST afschaffen",
+          "label": "Roenneberg et al. (2019): waarom DST afschaffen",
           "url": "https://doi.org/10.1177/0748730419854197"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     },
     {
       "code": "I-D6-005",
@@ -604,16 +623,17 @@
       },
       "references": [
         {
-          "label": "Pascoe, Hetrick & Parker (2020) — stress bij studenten",
+          "label": "Pascoe, Hetrick & Parker (2020): stress bij studenten",
           "url": "https://doi.org/10.1080/02673843.2019.1596823"
         }
-      ]
+      ],
+      "observation_date": "2026-05-21"
     }
   ],
   "media_cluster_diagnostic": {
     "d5_cross_correlation_7d": 0,
-    "composite_without_d5": -1.1,
-    "media_contribution_percentile_points": 10
+    "composite_without_d5": -1.08,
+    "media_contribution_percentile_points": 38
   },
   "brand_safety": {
     "flag": "normal",
@@ -623,19 +643,7 @@
   "data_quality": {
     "indicators_with_imputed_data": [],
     "indicators_missing": [],
-    "indicators_simulated": [
-      "I-D1-004",
-      "I-D2-001",
-      "I-D2-004",
-      "I-D3-001",
-      "I-D3-002",
-      "I-D3-003",
-      "I-D3-005",
-      "I-D3-006",
-      "I-D5-001",
-      "I-D5-002",
-      "I-D5-003"
-    ],
+    "indicators_simulated": [],
     "pipeline_version": "0.2.0-mvp",
     "methodology_version": "0.2.0",
     "implementation_stage": "minimum_viable_pipeline"

@@ -32,6 +32,7 @@ interface PipelineResult {
   simulated: boolean;
   imputed: boolean;
   source: string;
+  observation_date?: string;
 }
 
 interface PipelineBatch {
@@ -54,10 +55,12 @@ function loadOrFail(path: string, what: string): string {
 function main() {
   const today = JSON.parse(loadOrFail(RAW_VALUES, "raw-values.json")) as PipelineBatch;
 
-  // Bouw rawValues map
+  // Bouw rawValues map + observation-dates
   const rawValues: Partial<Record<IndicatorCode, number>> = {};
+  const observationDates: Partial<Record<IndicatorCode, string>> = {};
   for (const r of today.results) {
     rawValues[r.code] = r.value;
+    if (r.observation_date) observationDates[r.code] = r.observation_date;
   }
 
   // Bouw historische archive per indicator
@@ -85,6 +88,7 @@ function main() {
     compositeHistory,
     simulatedIndicators: today.simulated_codes,
     imputedIndicators: today.imputed_codes,
+    observationDates,
   });
 
   // Update composite-history

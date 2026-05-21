@@ -88,6 +88,9 @@ export interface IndicatorBreakdown {
   simulated: boolean;
   data_source: { name: string; url: string };
   references: Array<{ label: string; url: string }>;
+  /** Datum/periode waar de onderliggende data naar verwijst.
+   *  Dagelijkse bron: YYYY-MM-DD. Maandelijkse bron (ECB): YYYY-MM. */
+  observation_date: string;
 }
 
 /** Conditie-Niveau (CN) — publieke 5-bands-schaal voor banner-activatie. */

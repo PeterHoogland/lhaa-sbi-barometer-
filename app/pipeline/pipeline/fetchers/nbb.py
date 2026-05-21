@@ -14,7 +14,7 @@ Key voor BE woonkredieten:
 from __future__ import annotations
 from datetime import date
 from ..util import FetchResult, safe_request, seasonal_noise
-from .statbel import _parse_ecb_latest
+from .statbel import _parse_ecb_latest_with_period
 
 
 ECB_MORTGAGE_URL = (
@@ -26,11 +26,13 @@ ECB_MORTGAGE_URL = (
 def fetch_mortgage_rate(target_date: date) -> FetchResult:
     ok, body = safe_request(ECB_MORTGAGE_URL, timeout=20, headers={"Accept": "application/json"})
     if ok and isinstance(body, dict):
-        val = _parse_ecb_latest(body)
-        if val is not None:
+        result = _parse_ecb_latest_with_period(body)
+        if result is not None:
+            val, period = result
             return FetchResult(
                 "I-D3-006", val, target_date.isoformat(),
                 simulated=False, source="ECB MIR (BE hypotheekrente, nieuwe contracten)",
+                observation_date=period,
             )
     value = 3.4 + seasonal_noise(target_date, 0, 0, 0.15, 0.0)
     return FetchResult(

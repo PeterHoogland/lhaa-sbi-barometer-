@@ -38,26 +38,51 @@ ECB_UNEMPLOYMENT_URL = (
 
 def _parse_ecb_latest(body) -> float | None:
     """ECB SDW JSON-data format heeft genest series-pad. Pak de laatste observatie."""
+    result = _parse_ecb_latest_with_period(body)
+    return result[0] if result else None
+
+
+def _parse_ecb_latest_with_period(body) -> tuple[float, str] | None:
+    """Pak de laatste ECB-observatie + de periode (bv. '2026-04') waar ze naar verwijst."""
     try:
         ds = body["dataSets"][0]
         series = next(iter(ds["series"].values()))
         observations = series["observations"]
-        # observations is een dict van index→[value, status, ...]
         latest_key = max(observations.keys(), key=lambda k: int(k))
-        return float(observations[latest_key][0])
+        value = float(observations[latest_key][0])
+        # Periode uit structure.dimensions.observation
+        period = ""
+        try:
+            obs_dim = body["structure"]["dimensions"]["observation"][0]["values"]
+            period = obs_dim[int(latest_key)]["id"]
+        except (KeyError, IndexError, ValueError, TypeError):
+            period = ""
+        return value, period
     except (KeyError, IndexError, ValueError, StopIteration, TypeError):
         return None
 
 
-def _parse_eurostat_latest(body) -> float | None:
-    """Eurostat JSON-stat heeft 'value' dict met geïndexeerde observaties."""
+def _parse_eurostat_latest(body) -> tuple[float, str] | None:
+    """Eurostat JSON-stat: laatste waarde + bijhorende tijdsperiode."""
     try:
         values = body.get("value", {})
         if not values:
             return None
-        # Pak de laatste (hoogste) index
         last_idx = max(values.keys(), key=lambda k: int(k))
-        return float(values[last_idx])
+        value = float(values[last_idx])
+        # Periode uit dimension.time.category.index/label
+        period = ""
+        try:
+            time_cat = body["dimension"]["time"]["category"]
+            index_map = time_cat["index"]
+            # vind het label waarvan de index gelijk is aan last_idx
+            for label, idx in index_map.items():
+                if int(idx) == int(last_idx):
+                    period = label
+                    break
+        except (KeyError, ValueError, TypeError):
+            period = ""
+        return value, period
     except (KeyError, ValueError, TypeError):
         return None
 
@@ -65,11 +90,13 @@ def _parse_eurostat_latest(body) -> float | None:
 def fetch_cpi(target_date: date) -> FetchResult:
     ok, body = safe_request(ECB_CPI_URL, timeout=20, headers={"Accept": "application/json"})
     if ok and isinstance(body, dict):
-        val = _parse_ecb_latest(body)
-        if val is not None:
+        result = _parse_ecb_latest_with_period(body)
+        if result is not None:
+            val, period = result
             return FetchResult(
                 "I-D3-001", val, target_date.isoformat(),
                 simulated=False, source="ECB SDW (BE HICP yoy %)",
+                observation_date=period,
             )
     value = 2.5 + seasonal_noise(target_date, 0, 0.5, 0.4, 0.0) / 2
     return FetchResult(
@@ -82,21 +109,25 @@ def fetch_unemployment(target_date: date) -> FetchResult:
     # Primair: ECB LFSI (zelfde ECB-infrastructuur als ons hypotheek/ontslagen-pad)
     ok, body = safe_request(ECB_UNEMPLOYMENT_URL, timeout=20, headers={"Accept": "application/json"})
     if ok and isinstance(body, dict):
-        val = _parse_ecb_latest(body)
-        if val is not None:
+        result = _parse_ecb_latest_with_period(body)
+        if result is not None:
+            val, period = result
             return FetchResult(
                 "I-D3-005", val, target_date.isoformat(),
                 simulated=False, source="ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
+                observation_date=period,
             )
 
     # Fallback: Eurostat
     ok, body = safe_request(EUROSTAT_UE_URL, timeout=20, headers={"Accept": "application/json"})
     if ok and isinstance(body, dict):
-        val = _parse_eurostat_latest(body)
-        if val is not None:
+        result = _parse_eurostat_latest(body)
+        if result is not None:
+            val, period = result
             return FetchResult(
                 "I-D3-005", val, target_date.isoformat(),
                 simulated=False, source="Eurostat (BE werkloosheid, seizoens-gecorrigeerd)",
+                observation_date=period,
             )
 
     value = 6.2 + seasonal_noise(target_date, 0, 0, 0.3, 0.0)

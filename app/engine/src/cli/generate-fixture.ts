@@ -17,16 +17,27 @@ import { computeDaily } from "../runtime.js";
 import type { IndicatorCode } from "../types.js";
 
 /** Optioneel: pipeline-output kan vandaag's waarden leveren (echt-tijd). */
-interface PipelineResult { code: IndicatorCode; value: number; simulated: boolean; }
+interface PipelineResult {
+  code: IndicatorCode;
+  value: number;
+  simulated: boolean;
+  observation_date?: string;
+}
 interface PipelineBatch { target_date: string; results: PipelineResult[]; }
 
-function loadPipelineToday(path: string): { realValues: Partial<Record<IndicatorCode, number>>; realCodes: Set<IndicatorCode> } {
+function loadPipelineToday(path: string): {
+  realValues: Partial<Record<IndicatorCode, number>>;
+  realCodes: Set<IndicatorCode>;
+  observationDates: Partial<Record<IndicatorCode, string>>;
+} {
   const realValues: Partial<Record<IndicatorCode, number>> = {};
   const realCodes = new Set<IndicatorCode>();
-  if (!existsSync(path)) return { realValues, realCodes };
+  const observationDates: Partial<Record<IndicatorCode, string>> = {};
+  if (!existsSync(path)) return { realValues, realCodes, observationDates };
   try {
     const batch = JSON.parse(readFileSync(path, "utf-8")) as PipelineBatch;
     for (const r of batch.results) {
+      if (r.observation_date) observationDates[r.code] = r.observation_date;
       if (!r.simulated) {
         realValues[r.code] = r.value;
         realCodes.add(r.code);
@@ -35,7 +46,7 @@ function loadPipelineToday(path: string): { realValues: Partial<Record<Indicator
   } catch {
     // pipeline output is corrupt — fallback naar volledig synthetisch
   }
-  return { realValues, realCodes };
+  return { realValues, realCodes, observationDates };
 }
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -142,7 +153,7 @@ function generate(): void {
 
   // Vandaag — eerst synthetisch invullen, dan ECHTE waarden van de pipeline overschrijven
   const todayIso = isoDate(TODAY);
-  const { realValues, realCodes } = loadPipelineToday(PIPELINE_OUT);
+  const { realValues, realCodes, observationDates } = loadPipelineToday(PIPELINE_OUT);
 
   const todayRaw: Partial<Record<IndicatorCode, number>> = {};
   for (const code of simulatedCodes) {
@@ -159,6 +170,7 @@ function generate(): void {
     history,
     compositeHistory,
     simulatedIndicators: stillSimulatedToday,
+    observationDates,
   });
 
   if (realCodes.size > 0) {

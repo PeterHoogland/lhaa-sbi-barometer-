@@ -50,6 +50,8 @@ export interface DailyComputeInput {
   simulatedIndicators?: IndicatorCode[];
   /** Indicatoren die imputed waren (LCF/interpolation). */
   imputedIndicators?: IndicatorCode[];
+  /** Per indicator: datum/periode waar de data naar verwijst (uit pipeline). */
+  observationDates?: Partial<Record<IndicatorCode, string>>;
   /** Brand-safety override — typisch bij nationale rouw (doc 06 §7). */
   brandSafety?: { flag: "elevated" | "block"; reason: string; expires_estimated: string };
 }
@@ -159,6 +161,8 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       simulated: (input.simulatedIndicators ?? []).includes(code),
       data_source: plain.dataSource,
       references: plain.references,
+      observation_date:
+        input.observationDates?.[code] ?? (meta.deterministic ? input.date : input.date),
     };
   });
 

@@ -15,7 +15,7 @@ WEB_PUBLIC = ROOT / "web" / "public" / "data"
 
 @dataclass
 class FetchResult:
-    """Eén indicator-fetch — succes of mock-fallback."""
+    """Eén indicator-fetch, succes of mock-fallback."""
     code: str
     value: float
     date: str
@@ -23,6 +23,15 @@ class FetchResult:
     imputed: bool = False
     source: str = ""
     error: str | None = None
+    # observation_date: de datum/periode waar de DATA naar verwijst.
+    # Voor dagelijkse bronnen = de dag zelf (YYYY-MM-DD).
+    # Voor maandelijkse bronnen (ECB) = de maand (YYYY-MM).
+    # Wanneer een fetcher hem niet expliciet zet, valt hij terug op de fetch-datum.
+    observation_date: str = ""
+
+    def __post_init__(self) -> None:
+        if not self.observation_date:
+            self.observation_date = self.date
 
 
 @dataclass

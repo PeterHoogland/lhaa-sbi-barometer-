@@ -26,6 +26,7 @@ export interface IndicatorBreakdown {
   simulated: boolean;
   data_source: { name: string; url: string };
   references: Array<{ label: string; url: string }>;
+  observation_date: string;
 }
 
 export type ConditionLevel = 1 | 2 | 3 | 4 | 5;
