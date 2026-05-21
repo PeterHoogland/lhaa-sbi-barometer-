@@ -173,9 +173,9 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   "I-D5-001": {
     plain: "Hoe negatief is het nieuws?",
     why: "Veel negatief nieuws beïnvloedt hoe een hele bevolking zich voelt.",
-    reads: "We lezen elke dag alle nieuwsartikels van vier Belgische bronnen (VRT NWS, De Standaard, De Tijd, Het Belang van Limburg). Per artikel tellen we positieve en negatieve woorden tegen een vast Nederlands valentie-lexicon, en berekenen we de toon: (positief min negatief) gedeeld door totaal woorden. Methode: Young & Soroka (2012).",
+    reads: "We lezen elke dag alle nieuwsartikels van acht Belgische bronnen: VRT NWS, De Standaard, De Morgen, Het Laatste Nieuws, De Tijd, Het Belang van Limburg, Bruzz en Knack. Een dwarsdoorsnede van openbare omroep, kwaliteitskranten, populaire kranten, economische en regionale pers. Per artikel tellen we positieve en negatieve woorden tegen een vast Nederlands valentie-lexicon, en berekenen we de toon: (positief min negatief) gedeeld door totaal woorden. Methode: Young & Soroka (2012).",
     unit: "toon-score",
-    dataSource: { name: "RSS van 4 BE-nieuwsbronnen + valentie-lexicon", url: "https://www.vrt.be/vrtnws/" },
+    dataSource: { name: "RSS van 8 BE-nieuwsbronnen + valentie-lexicon", url: "https://www.vrt.be/vrtnws/" },
     references: [
       { label: "Young & Soroka (2012): Affective News, Lexicoder-methode", url: "https://doi.org/10.1080/10584609.2012.671234" },
       { label: "Soroka, Fournier & Nir (2019): PNAS, negativity bias", url: "https://doi.org/10.1073/pnas.1908369116" },

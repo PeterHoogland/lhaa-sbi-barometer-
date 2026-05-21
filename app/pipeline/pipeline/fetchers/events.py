@@ -34,7 +34,13 @@ PENDING_FILE = ROOT / "pipeline" / "pending_events.json"
 
 RSS_FEEDS = {
     "VRT NWS": "https://www.vrt.be/vrtnws/nl.rss.articles.xml",
-    "De Standaard binnenland": "https://www.standaard.be/rss/section/F66E3FF1-7AF6-4B95-A98A-43B6C6E7E4C9.rss",
+    "De Standaard": "https://www.standaard.be/rss/section/F66E3FF1-7AF6-4B95-A98A-43B6C6E7E4C9.rss",
+    "De Morgen": "https://www.demorgen.be/rss.xml",
+    "Het Laatste Nieuws": "https://www.hln.be/rss.xml",
+    "De Tijd": "https://www.tijd.be/rss/ondernemen.xml",
+    "Het Belang van Limburg": "https://www.hbvl.be/rss/section/2146FCFC-EE7A-44FD-AB5C-8FF3973BA15A",
+    "Bruzz": "https://www.bruzz.be/rss.xml",
+    "Knack": "https://www.knack.be/nieuws/feed/",
 }
 
 # Magnitude-classificatie via keywords. Doc 03 §2.5 niveaus 1/3/5.

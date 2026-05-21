@@ -29,12 +29,20 @@ from ..util import FetchResult, safe_request, seasonal_noise
 from ..cache import get as cache_get, put as cache_put
 from ..lexicon_nl import NEGATIVE, POSITIVE, LEXICON_VERSION, LEXICON_SIZE
 
-# Nederlandstalige Belgische nieuwsbronnen — RSS, geen cookie-wall
+# Nederlandstalige Belgische nieuwsbronnen — RSS.
+# Brede dwarsdoorsnede van de Vlaamse mainstream-pers:
+#   openbare omroep · kwaliteitskranten · populaire kranten ·
+#   economisch · regionaal · duiding/opinie.
+# Onbereikbare feeds worden door de fetcher stilzwijgend overgeslagen.
 RSS_FEEDS = [
-    "https://www.vrt.be/vrtnws/nl.rss.articles.xml",
-    "https://www.standaard.be/rss/section/F66E3FF1-7AF6-4B95-A98A-43B6C6E7E4C9.rss",
-    "https://www.tijd.be/rss/ondernemen.xml",
-    "https://www.hbvl.be/rss/section/2146FCFC-EE7A-44FD-AB5C-8FF3973BA15A",
+    "https://www.vrt.be/vrtnws/nl.rss.articles.xml",                                 # VRT NWS — openbare omroep
+    "https://www.standaard.be/rss/section/F66E3FF1-7AF6-4B95-A98A-43B6C6E7E4C9.rss",  # De Standaard — kwaliteitskrant
+    "https://www.demorgen.be/rss.xml",                                               # De Morgen — kwaliteitskrant
+    "https://www.hln.be/rss.xml",                                                    # Het Laatste Nieuws — grootste populaire krant
+    "https://www.tijd.be/rss/ondernemen.xml",                                        # De Tijd — economisch
+    "https://www.hbvl.be/rss/section/2146FCFC-EE7A-44FD-AB5C-8FF3973BA15A",           # Het Belang van Limburg — regionaal
+    "https://www.bruzz.be/rss.xml",                                                  # Bruzz — Brussel regionaal
+    "https://www.knack.be/nieuws/feed/",                                             # Knack — weekblad, duiding/opinie
 ]
 
 _PUNCT = ".,;:!?\"'()[]«»–-…"
@@ -140,7 +148,7 @@ def fetch_news_negativity(target_date: date) -> FetchResult:
     if rss_ok and neg is not None and n_articles >= 8:
         source = (
             f"NL valentie-lexicon ({LEXICON_SIZE} woorden, {LEXICON_VERSION}) "
-            f"op {n_articles} artikels uit 4 BE-nieuwsbronnen; "
+            f"op {n_articles} artikels uit {len(RSS_FEEDS)} BE-nieuwsbronnen; "
             f"toon-methode Young & Soroka 2012"
         )
         cache_put("I-D5-001", neg, source, target_date.isoformat())
