@@ -84,9 +84,20 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
 
     const hist = input.history[code] ?? [];
     let effectiveValue = x;
+    let baselineValues = hist.map((h) => h.value);
     if (meta.applyStl && hist.length > 0) {
       const stl = stlResidual(x, input.date, hist);
-      effectiveValue = stl.residual;
+      if (stl.applied) {
+        // STL toegepast: de dagwaarde is gedetrend (residu ~rond 0). De
+        // baseline moet dan OOK uit gedetrende historiepunten komen —
+        // anders weeg je een residu tegen een ruwe niveau-verdeling en
+        // slaat de Z kunstmatig naar de winsor-limiet (-3).
+        effectiveValue = stl.residual;
+        baselineValues = hist
+          .map((h) => stlResidual(h.value, h.date, hist))
+          .filter((r) => r.applied)
+          .map((r) => r.residual);
+      }
     }
 
     if (hist.length < 30) {
@@ -95,7 +106,7 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       continue;
     }
 
-    const baseline = computeBaseline(hist.map((h) => h.value));
+    const baseline = computeBaseline(baselineValues);
     let z = zscore(effectiveValue, baseline);
     if (meta.inverseCoded) z = -z;
     const { value } = winsorize(z);

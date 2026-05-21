@@ -4,28 +4,31 @@ Doc 03_Laag-4 §2.5.
 
 WETENSCHAPPELIJKE METHODE
 -------------------------
-Lexicon-gebaseerde valentie-analyse (Young & Soroka 2012) + bron-niveau
-poststratificatie naar mediapubliek-profielen.
+Primaire meting: **GDELT DOC 2.0 timelinetone** — de gemiddelde nieuwstoon
+van Belgische nieuwsbronnen (sourcecountry:BE, zowel Nederlands- als
+Franstalig). negativity = -AvgTone.
 
-Per bron meten we de toon: tone = (pos - neg) / woorden × 100.
-Per bron kennen we het leeftijdsprofiel van het publiek en het relatieve
-bereik (media_profiles.py, CIM/Digimeter-gegrond). We poststratificeren de
-per-bron-tonen naar de Belgische bevolkingsverdeling, zodat het nationale
-cijfer demografisch gebalanceerd is in plaats van gedomineerd door
-welke bron toevallig de meeste artikels publiceert.
+Waarom GDELT primair (en niet meer het RSS-lexicon):
+GDELT levert ook een ECHTE 24-maanden-historie van exact dezelfde meting
+(zie scripts/backfill_gdelt_baseline.py → data/history/I-D5-001.json).
+Daardoor wordt de dagwaarde tegen een ECHTE mediaan+MAD-meetlat gewogen,
+op dezelfde schaal. Vroeger draaide de baseline op een synthetische
+sinus-reeks; dat is nu opgelost.
 
-negativity = -national_tone.
+Naast GDELT meten we de RSS-corpus-toon nog steeds met het NL-valentielexicon
++ bron-niveau poststratificatie naar mediapubliek-profielen. Dat levert de
+demografisch gesegmenteerde lezing (negativiteit jong/midden/ouder) die in
+de bronvermelding wordt getoond — een controle-meting naast GDELT.
 
-Bron-ladder:
-  1. RSS-corpus (13 BE-nieuwsbronnen) + poststratificatie
-  2. GDELT DOC v2 timelinetone (doc-02-voorgeschreven, vaak rate-limited)
-  3. cache (≤14d)
-  4. mock
+Bron-ladder voor de dagwaarde:
+  1. GDELT DOC v2 timelinetone (zelfde schaal als de 24m-baseline)
+  2. cache (≤14d)
+  3. mock
 """
 from __future__ import annotations
 import time
 import xml.etree.ElementTree as ET
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from ..util import FetchResult, safe_request, seasonal_noise
 from ..cache import get as cache_get, put as cache_put
 from ..lexicon_nl import LEXICON_VERSION, LEXICON_SIZE, tone_of_text
@@ -47,6 +50,8 @@ RSS_FEEDS = [
     ("https://www.eoswetenschap.eu/rss.xml", "eos"),
     ("https://newsmonkey.be/feed", "newsmonkey"),
 ]
+
+GDELT_DOC_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
 
 
 def _parse_rss_texts(xml_text: str) -> list[str]:
@@ -75,7 +80,7 @@ def _parse_rss_texts(xml_text: str) -> list[str]:
 
 
 def _per_source_tones(target_date: date) -> tuple[bool, list[tuple[str, float]], int]:
-    """Meet de toon per bron afzonderlijk.
+    """Meet de toon per bron afzonderlijk (RSS-controle-meting).
     Return (rss_reachable, [(profiel-sleutel, gemiddelde toon), ...], totaal_artikels)."""
     source_tones: list[tuple[str, float]] = []
     total_articles = 0
@@ -99,16 +104,20 @@ def _per_source_tones(target_date: date) -> tuple[bool, list[tuple[str, float]],
     return rss_reachable, source_tones, total_articles
 
 
-def _gdelt_timelinetone(target_date: date) -> float | None:
-    start = (target_date - timedelta(days=7)).strftime("%Y%m%d000000")
-    end = target_date.strftime("%Y%m%d235959")
+def gdelt_tone_series(start: date, end: date) -> list[dict] | None:
+    """Haal de dagelijkse GDELT-nieuwstoon voor BE op tussen start en end.
+
+    Return list van {"date": "YYYY-MM-DD", "value": negativity} of None.
+    negativity = -AvgTone. Eén GDELT-call; gebruikt door zowel de dagelijkse
+    fetcher als het 24m-backfill-script (scripts/backfill_gdelt_baseline.py).
+    """
     url = (
-        "https://api.gdeltproject.org/api/v2/doc/doc"
-        f"?query=sourcecountry:BE%20sourcelang:dut"
+        f"{GDELT_DOC_URL}?query=sourcecountry:BE"
         f"&mode=timelinetone&format=json"
-        f"&startdatetime={start}&enddatetime={end}"
+        f"&startdatetime={start.strftime('%Y%m%d000000')}"
+        f"&enddatetime={end.strftime('%Y%m%d235959')}"
     )
-    ok, body = safe_request(url, timeout=20, retries=1, retry_delay=8)
+    ok, body = safe_request(url, timeout=45, retries=2, retry_delay=8)
     if ok and isinstance(body, str) and "limit requests" in body.lower():
         return None
     if not ok or not isinstance(body, dict):
@@ -116,53 +125,57 @@ def _gdelt_timelinetone(target_date: date) -> float | None:
     timeline = body.get("timeline", [])
     if not timeline:
         return None
-    try:
-        for series in timeline:
-            if series.get("seriesAlias") in ("Average Tone", "AvgTone"):
-                pts = series.get("data", [])
-                if pts:
-                    return -sum(p.get("value", 0) for p in pts) / len(pts)
-        pts = timeline[0].get("data", [])
-        if pts:
-            return -sum(p.get("value", 0) for p in pts) / len(pts)
-    except (KeyError, ValueError, TypeError, ZeroDivisionError):
-        pass
-    return None
+    series = None
+    for s in timeline:
+        if s.get("seriesAlias") in ("Average Tone", "AvgTone"):
+            series = s
+            break
+    if series is None:
+        series = timeline[0]
+    out: list[dict] = []
+    for pt in series.get("data", []):
+        raw_date = str(pt.get("date", ""))
+        try:
+            iso = datetime.strptime(raw_date[:8], "%Y%m%d").strftime("%Y-%m-%d")
+            out.append({"date": iso, "value": round(-float(pt["value"]), 4)})
+        except (ValueError, KeyError, TypeError):
+            continue
+    return out or None
 
 
 def fetch_news_negativity(target_date: date) -> FetchResult:
-    # 1) Per-bron toon + poststratificatie naar mediapubliek-profielen
+    # RSS-controle-meting: demografisch gesegmenteerde lezing (los van de schaal
+    # die de composiet aanstuurt — puur descriptief in de bronvermelding).
+    seg_text = ""
     rss_ok, source_tones, n_articles = _per_source_tones(target_date)
     if rss_ok and source_tones and n_articles >= 8:
         ps = poststratify(source_tones)
         if ps["national"] is not None:
-            negativity = -ps["national"]
             seg = ps["segments"]
-            source = (
-                f"NL valentie-lexicon ({LEXICON_SIZE} woorden, {LEXICON_VERSION}) "
-                f"op {n_articles} artikels uit {ps['n_sources']} BE-nieuwsbronnen; "
-                f"bron-niveau poststratificatie naar mediapubliek-profielen "
-                f"(negativiteit jong {-seg['jong']:+.2f} / midden {-seg['midden']:+.2f} / "
-                f"ouder {-seg['ouder']:+.2f}); methode Young & Soroka 2012"
-            )
-            cache_put("I-D5-001", negativity, source, target_date.isoformat())
-            return FetchResult(
-                "I-D5-001", negativity, target_date.isoformat(),
-                simulated=False, source=source,
+            seg_text = (
+                f"; RSS-lexicon-controle ({LEXICON_SIZE} woorden, {LEXICON_VERSION}, "
+                f"{n_articles} artikels, {ps['n_sources']} bronnen, poststratificatie): "
+                f"negativiteit jong {-seg['jong']:+.2f} / midden {-seg['midden']:+.2f} / "
+                f"ouder {-seg['ouder']:+.2f}"
             )
 
-    # 2) GDELT fallback
-    time.sleep(8)
-    g = _gdelt_timelinetone(target_date)
-    if g is not None:
-        source = "GDELT DOC v2 (timelinetone, 7d gemiddelde)"
-        cache_put("I-D5-001", g, source, target_date.isoformat())
+    # 1) GDELT timelinetone — zelfde schaal als de 24m-baseline
+    time.sleep(8)  # respecteer GDELT rate-limit (1 req / 5s)
+    series = gdelt_tone_series(target_date - timedelta(days=21), target_date)
+    if series:
+        recent = series[-3:]  # lichte stabilisatie tegen ontbrekende laatste dag
+        negativity = round(sum(p["value"] for p in recent) / len(recent), 4)
+        source = (
+            f"GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, "
+            f"sourcecountry:BE, {len(recent)}d-venster){seg_text}"
+        )
+        cache_put("I-D5-001", negativity, source, target_date.isoformat())
         return FetchResult(
-            "I-D5-001", g, target_date.isoformat(),
+            "I-D5-001", negativity, target_date.isoformat(),
             simulated=False, source=source,
         )
 
-    # 3) Cache
+    # 2) Cache (GDELT-schaal)
     cached = cache_get("I-D5-001")
     if cached:
         value, prev_source = cached
@@ -171,9 +184,9 @@ def fetch_news_negativity(target_date: date) -> FetchResult:
             simulated=False, source=f"cache (laatst succesvol: {prev_source})",
         )
 
-    # 4) Mock
-    value = seasonal_noise(target_date, 2.0, 1.5, 2.0, 0.0)
+    # 3) Mock
+    value = seasonal_noise(target_date, 1.4, 0.6, 0.5, 0.0)
     return FetchResult(
         "I-D5-001", value, target_date.isoformat(),
-        simulated=True, source="mock (RSS + GDELT + cache alle leeg)",
+        simulated=True, source="mock (GDELT + cache leeg)",
     )

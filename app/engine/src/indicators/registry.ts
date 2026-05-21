@@ -143,7 +143,11 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     domain: "D5",
     grade: "B",
     inverseCoded: false,
-    applyStl: true,
+    // Geen STL: nieuwsnegativiteit is gebeurtenis-gedreven, niet sterk
+    // seizoensgebonden. De echte GDELT 24m-baseline (data/history/I-D5-001.json)
+    // dient rechtstreeks als MAD-Z-meetlat. De naïeve voorgaande-jaren-STL
+    // produceert bovendien niet-vergelijkbare residuen tussen jaren.
+    applyStl: false,
     source: "GDELT Project v2",
     deterministic: false,
   },

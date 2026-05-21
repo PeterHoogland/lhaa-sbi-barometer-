@@ -2,16 +2,16 @@
 Brandstof-fetcher voor BE (I-D2-004).
 Doc 03_Laag-4 §2.2.
 
-Primaire bron: **ECB SDW HICP CP0722** (Fuels and lubricants for personal transport,
-yoy %, BE). Dit is methodologisch sterker dan een losse Euro95-spotprijs omdat
-het de *verandering* in brandstofkosten meet, wat het stress-relevante signaal is.
+Primaire bron: **be.STAT (Statbel / FOD Economie) — officiele dagelijkse
+maximumprijzen aardolieproducten**. Statbel publiceert elke werkdag de
+officiele maximumprijs (cliquetsysteem / programmaovereenkomst
+petroleumproducten) als machine-leesbare JSON. We lezen "Benzine 95 RON E10"
+(€/l, incl. btw) als de stress-relevante pompprijs.
 
-We rapporteren de yoy % als "implicit Euro95 €/l" via:
-  baseline €1.85 × (1 + yoy/100)
-Dat geeft een €/l-equivalent die de indicator (eenheid €/l in doc 03)
-respecteert terwijl de onderliggende data ECB-officieel is.
+Dit is een upgrade t.o.v. de vorige aanpak (ECB-HICP yoy → €/l-schatting):
+de be.STAT-waarde is de ECHTE prijs van de dag zelf, geen maandschatting.
 
-Fallback cascade: HICP → FOD scrape → carbu scrape → mock.
+Fallback cascade: be.STAT → ECB HICP CP0722 → carbu scrape → mock.
 """
 from __future__ import annotations
 import re
@@ -20,6 +20,15 @@ from ..util import FetchResult, safe_request, seasonal_noise
 from .statbel import _parse_ecb_latest_with_period
 
 
+# be.STAT API — officiele maximumprijzen aardolieproducten (FOD Economie)
+# View-UUID is een mogelijk breekpunt: bij een lege/gewijzigde respons
+# degraderen we netjes naar de ECB-fallback.
+BESTAT_FUEL_URL = (
+    "https://bestat.statbel.fgov.be/bestat/api/views/"
+    "c42c9c16-9330-437b-9608-13781b795ec1/result/JSON"
+)
+BESTAT_PRODUCT = "Benzine 95 RON E10 (€/L)"
+
 # ECB HICP key voor "Fuels and lubricants for personal transport equipment"
 # Coicop 07.2.2, BE, monthly, annual rate of change
 ECB_FUEL_HICP_URL = (
@@ -27,7 +36,6 @@ ECB_FUEL_HICP_URL = (
     "?format=jsondata&lastNObservations=1"
 )
 
-FOD_URL = "https://economie.fgov.be/nl/themas/energie/energieprijzen/brandstofprijzen"
 CARBU_URL = "https://carbu.com/belgie/index.php/laagsteprijs/EUROPE_95/-/-"
 
 EURO95_PATTERN = re.compile(
@@ -35,6 +43,59 @@ EURO95_PATTERN = re.compile(
     re.IGNORECASE,
 )
 EURO95_BASELINE_PER_L = 1.85  # 2024-baseline voor BE Euro95
+
+# Nederlandse maand-afkortingen zoals Statbel ze in het "Dag"-veld zet
+# (bv. "22mei26" → 2026-05-22).
+_NL_MONTHS = {
+    "jan": 1, "feb": 2, "mrt": 3, "maa": 3, "apr": 4, "mei": 5, "jun": 6,
+    "jul": 7, "aug": 8, "sep": 9, "okt": 10, "nov": 11, "dec": 12,
+}
+_DAG_RE = re.compile(r"^(\d{1,2})([a-z]{3})(\d{2})$", re.IGNORECASE)
+
+
+def _parse_bestat_dag(dag: str) -> str | None:
+    """'22mei26' → '2026-05-22'. Return None bij onbekend formaat."""
+    if not isinstance(dag, str):
+        return None
+    m = _DAG_RE.match(dag.strip())
+    if not m:
+        return None
+    day, mon, yy = m.group(1), m.group(2).lower(), m.group(3)
+    month = _NL_MONTHS.get(mon)
+    if month is None:
+        return None
+    try:
+        return f"20{yy}-{month:02d}-{int(day):02d}"
+    except ValueError:
+        return None
+
+
+def _try_bestat() -> tuple[float, str] | None:
+    """Return (euro_per_l, observation_date_iso) of None."""
+    ok, body = safe_request(
+        BESTAT_FUEL_URL, timeout=25,
+        headers={"Accept": "application/json"},
+    )
+    if not ok or not isinstance(body, dict):
+        return None
+    facts = body.get("facts")
+    if not isinstance(facts, list):
+        return None
+    for fact in facts:
+        if not isinstance(fact, dict):
+            continue
+        if fact.get("Product") != BESTAT_PRODUCT:
+            continue
+        price = fact.get("Prijs incl. BTW")
+        try:
+            val = float(price)
+        except (TypeError, ValueError):
+            continue
+        if not (0.5 < val < 5.0):
+            continue
+        obs = _parse_bestat_dag(fact.get("Dag", "")) or None
+        return round(val, 3), obs
+    return None
 
 
 def _try_ecb_fuel_hicp() -> tuple[float, float, str] | None:
@@ -76,24 +137,26 @@ def _try_scrape(url: str) -> float | None:
 
 
 def fetch_fuel_prices(target_date: date) -> FetchResult:
-    # 1) ECB HICP CP0722 — methodologisch sterkste
+    # 1) be.STAT — officiele dagelijkse maximumprijs (FOD Economie)
+    bestat = _try_bestat()
+    if bestat is not None:
+        value, obs = bestat
+        return FetchResult(
+            "I-D2-004", value, target_date.isoformat(),
+            simulated=False,
+            source="Statbel be.STAT — officiele maximumprijs Benzine 95 E10 (FOD Economie)",
+            observation_date=obs or target_date.isoformat(),
+        )
+
+    # 2) ECB HICP CP0722 — methodologisch sterke maand-fallback
     hicp = _try_ecb_fuel_hicp()
     if hicp is not None:
         yoy, estimate, period = hicp
         return FetchResult(
             "I-D2-004", estimate, target_date.isoformat(),
             simulated=False,
-            source=f"ECB HICP brandstof yoy {yoy:+.1f}% naar €{estimate}/l geschat",
+            source=f"ECB HICP brandstof yoy {yoy:+.1f}% naar €{estimate}/l geschat (be.STAT onbereikbaar)",
             observation_date=period,
-        )
-
-    # 2) FOD Economie direct scrape
-    val = _try_scrape(FOD_URL)
-    if val is not None:
-        return FetchResult(
-            "I-D2-004", val, target_date.isoformat(),
-            simulated=False, source="FOD Economie maximumprijzen",
-            observation_date=target_date.isoformat(),
         )
 
     # 3) carbu.com fallback
@@ -110,5 +173,5 @@ def fetch_fuel_prices(target_date: date) -> FetchResult:
     return FetchResult(
         "I-D2-004", value, target_date.isoformat(),
         simulated=True,
-        source="mock (ECB HICP + FOD + carbu alle drie faalden)",
+        source="mock (be.STAT + ECB HICP + carbu alle drie faalden)",
     )

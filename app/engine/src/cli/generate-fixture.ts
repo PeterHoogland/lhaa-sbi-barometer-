@@ -78,8 +78,31 @@ const WEB_SPARKLINE_OUT = resolve(__dirname, "../../../web/public/data/sparkline
 const WEB_SIGNAL_OUT = resolve(__dirname, "../../../web/public/data/signal.json");
 const WEB_API_OUT = resolve(__dirname, "../../../web/public/api/v1/signal.json");
 const PIPELINE_OUT = resolve(__dirname, "../../../data/raw-values.json");
+const HISTORY_DIR = resolve(__dirname, "../../../data/history");
 
 const TODAY = new Date();
+
+/**
+ * Echte historische reeksen per indicator (bv. de GDELT 24m-nieuwstoon-backfill
+ * voor I-D5-001, zie app/pipeline/scripts/backfill_gdelt_baseline.py).
+ * Waar zo'n bestand bestaat, vervangt het de synthetische baseline — de
+ * dagwaarde wordt dan tegen ECHTE historie gewogen op dezelfde schaal.
+ */
+function loadRealHistory(): Partial<Record<IndicatorCode, Array<{ date: string; value: number }>>> {
+  const out: Partial<Record<IndicatorCode, Array<{ date: string; value: number }>>> = {};
+  if (!existsSync(HISTORY_DIR)) return out;
+  for (const code of INDICATOR_CODES) {
+    const p = resolve(HISTORY_DIR, `${code}.json`);
+    if (!existsSync(p)) continue;
+    try {
+      const rows = JSON.parse(readFileSync(p, "utf-8")) as Array<{ date: string; value: number }>;
+      if (Array.isArray(rows) && rows.length > 0) out[code] = rows;
+    } catch {
+      // corrupt historiebestand — negeer, val terug op synthetisch
+    }
+  }
+  return out;
+}
 
 /** Realistische ruw-waarde-generatie met seizoens-modulatie. */
 function syntheticRawValue(code: IndicatorCode, date: Date): number {
@@ -108,8 +131,8 @@ function syntheticRawValue(code: IndicatorCode, date: Date): number {
       return 6.2 + (Math.random() - 0.5) * 0.4;
     case "I-D3-006": // Hypotheekrente %
       return 3.4 + (Math.random() - 0.5) * 0.2;
-    case "I-D5-001": // Nieuwsneg (GDELT tone)
-      return 2.0 + 1.5 * Math.sin(yearProg * 1.5) + (Math.random() - 0.5) * 2;
+    case "I-D5-001": // Nieuwsneg (GDELT tone — fallback rond echte mediaan ~1.4)
+      return Math.max(0, 1.4 + 0.6 * Math.sin(yearProg * 1.5) + (Math.random() - 0.5) * 0.9);
     case "I-D5-002": // Google Trends index 0-100
       return 50 + 10 * Math.sin(yearProg) + (Math.random() - 0.5) * 15;
     case "I-D5-003": // Collectieve gebeurtenissen 0-15
@@ -128,11 +151,26 @@ function generate(): void {
   const historyDays = 730;
   const history: Partial<Record<IndicatorCode, Array<{ date: string; value: number }>>> = {};
 
+  // Echte historische reeksen (GDELT-backfill e.d.) + snelle datum→waarde-lookup
+  const realHistory = loadRealHistory();
+  const realHistMaps: Partial<Record<IndicatorCode, Map<string, number>>> = {};
+  for (const code of INDICATOR_CODES) {
+    const rows = realHistory[code];
+    if (rows) realHistMaps[code] = new Map(rows.map((r) => [r.date, r.value]));
+  }
+
   const simulatedCodes: IndicatorCode[] = [];
+  const realBaselineCodes: IndicatorCode[] = [];
   for (const code of INDICATOR_CODES) {
     const meta = INDICATORS[code];
     if (meta.deterministic) continue;
     simulatedCodes.push(code);
+    const real = realHistory[code];
+    if (real && real.length >= 60) {
+      history[code] = real;
+      realBaselineCodes.push(code);
+      continue;
+    }
     const series: Array<{ date: string; value: number }> = [];
     for (let i = historyDays; i > 0; i--) {
       const d = new Date(TODAY.getTime() - i * 86400000);
@@ -151,7 +189,8 @@ function generate(): void {
 
     const rawValues: Partial<Record<IndicatorCode, number>> = {};
     for (const code of simulatedCodes) {
-      rawValues[code] = syntheticRawValue(code, d);
+      // Echte historie waar beschikbaar, anders synthetisch
+      rawValues[code] = realHistMaps[code]?.get(iso) ?? syntheticRawValue(code, d);
     }
 
     const out = computeDaily({
@@ -196,6 +235,9 @@ function generate(): void {
 
   if (realCodes.size > 0) {
     console.log(`  Real-time overrides van pipeline: ${[...realCodes].join(", ")}`);
+  }
+  if (realBaselineCodes.length > 0) {
+    console.log(`  Echte historische baseline: ${realBaselineCodes.join(", ")}`);
   }
 
   sparkline.push({

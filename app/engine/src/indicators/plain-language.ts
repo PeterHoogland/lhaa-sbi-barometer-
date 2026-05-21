@@ -173,13 +173,13 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   "I-D5-001": {
     plain: "Hoe negatief is het nieuws?",
     why: "Veel negatief nieuws beïnvloedt hoe een hele bevolking zich voelt.",
-    reads: "We lezen elke dag alle nieuwsartikels van dertien Belgische bronnen: VRT NWS, De Standaard, De Morgen, Het Laatste Nieuws, De Tijd, Het Belang van Limburg, Bruzz, Knack, Sporza, Trends, Business AM, Eos en Newsmonkey, samen ongeveer 600 artikels per dag. Per artikel tellen we positieve en negatieve woorden tegen een vast Nederlands valentie-lexicon en berekenen we de toon (methode Young & Soroka 2012). Vervolgens wegen we elke bron naar het bekende leeftijdsprofiel van haar publiek, zodat het cijfer demografisch gebalanceerd is en niet wordt gedomineerd door de bron die toevallig het meest publiceert. Dat heet bron-niveau poststratificatie.",
+    reads: "We meten de gemiddelde toon van het Belgische nieuws via GDELT, een wetenschappelijk project dat wereldwijd nieuwsberichten leest en de toon ervan scoort. We kijken naar alle Belgische bronnen samen, Nederlands- én Franstalig. Het grote voordeel: GDELT heeft een echte historie van twee jaar, zodat we vandaag eerlijk kunnen vergelijken met hoe negatief het nieuws gewoonlijk is. Daarnaast lezen we als controle elke dag de artikels van dertien Belgische RSS-bronnen met een Nederlands valentie-lexicon, en wegen we die naar het leeftijdsprofiel van elk publiek. Dat levert de negativiteit per leeftijdsgroep (jong, midden, ouder) die in de bronvermelding staat.",
     unit: "toon-score",
-    dataSource: { name: "RSS van 13 BE-nieuwsbronnen + valentie-lexicon", url: "https://www.vrt.be/vrtnws/" },
+    dataSource: { name: "GDELT DOC 2.0 nieuwstoon BE + RSS-controle van 13 BE-bronnen", url: "https://www.gdeltproject.org/" },
     references: [
+      { label: "Leetaru (2013): GDELT Global Knowledge Graph", url: "https://www.gdeltproject.org/" },
       { label: "Young & Soroka (2012): Affective News, Lexicoder-methode", url: "https://doi.org/10.1080/10584609.2012.671234" },
       { label: "Soroka, Fournier & Nir (2019): PNAS, negativity bias", url: "https://doi.org/10.1073/pnas.1908369116" },
-      { label: "Boukes et al. (2015): nieuws met attitude", url: "https://doi.org/10.1080/15205436.2014.1001917" },
     ],
   },
   "I-D5-002": {
