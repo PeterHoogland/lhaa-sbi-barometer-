@@ -831,6 +831,9 @@ main {
   padding-bottom: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
+.footer-center { text-align: center; }
+.footer-center .footer-mark { justify-content: center; }
+.footer-center .footer-row { justify-content: center; }
 .footer-mark-text { font-family: var(--f-display); font-style: italic; color: var(--lha-sky); }
 .footer-mark .lha-mark-mini { color: var(--lha-snow); }
 

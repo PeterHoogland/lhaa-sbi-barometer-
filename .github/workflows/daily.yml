@@ -1,11 +1,11 @@
-name: SBI Hourly Update
+name: SBI Daily Update
 
 on:
   schedule:
-    # Elk uur op het hele uur (UTC). v0.4 vraagt "idealiter uurlijks" voor
-    # nieuws/verkeer; trage bronnen (ECB-maanddata) verversen vanzelf alleen
-    # bij hun eigen publicatie-ritme. Geen tijd-guard meer.
-    - cron: "0 * * * *"
+    # Voorlopig één totale check per dag om 08:00 BE-tijd (06:00 UTC zomer /
+    # 07:00 UTC winter — dual cron + tijd-guard, zoals voorheen).
+    - cron: "0 6 * * *"
+    - cron: "0 7 * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -23,12 +23,18 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Stamp run hour (BE-tijd) — puur informatief
+      - name: Time-guard (alleen door bij 08:00 BE-tijd of bij handmatige trigger)
         id: timecheck
         run: |
           BE_HOUR=$(TZ='Europe/Brussels' date +%H)
           echo "Belgian local hour: $BE_HOUR"
-          echo "skip=false" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$BE_HOUR" != "08" ]; then
+            echo "Skip — schedule firing maar BE-uur is $BE_HOUR, niet 08."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Proceed."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Checkout
         if: steps.timecheck.outputs.skip != 'true'

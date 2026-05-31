@@ -107,17 +107,11 @@ export function App() {
       </main>
 
       <footer className="footer">
-        <div className="footer-inner">
+        <div className="footer-inner footer-center">
           <div className="footer-mark">
             <LHALogo size={52} />
             <div className="footer-mark-text">{FOOTER_NOTES.tagline}</div>
           </div>
-          <div className="footer-row">
-            <strong>SBI v{data.data_quality.methodology_version}</strong>
-            <span className="muted">·</span>
-            <span>{FOOTER_NOTES.implementationStage}</span>
-          </div>
-          <div className="footer-row muted">{FOOTER_NOTES.methodologyRef}</div>
           <div className="footer-row muted small">{FOOTER_NOTES.ondersteunend}</div>
           <div className="footer-row muted small">
             Methodologie open. Code: open source. Pre-registratie via OSF.
