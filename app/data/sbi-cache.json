@@ -1,49 +1,49 @@
 {
   "I-D1-009": {
     "date": "2026-05-31",
-    "fetched_at": "2026-05-31T20:46:25.100416",
+    "fetched_at": "2026-05-31T21:00:37.756024",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 8.02
   },
   "I-D1-010": {
     "date": "2026-05-31",
-    "fetched_at": "2026-05-31T20:46:25.487628",
+    "fetched_at": "2026-05-31T21:00:38.204408",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 10.720833333333333
   },
   "I-D2-009": {
     "date": "2026-05-31",
-    "fetched_at": "2026-05-31T20:46:40.124797",
+    "fetched_at": "2026-05-31T21:00:40.356570",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D3-002": {
     "date": "2026-05-31",
-    "fetched_at": "2026-05-31T20:46:44.188607",
+    "fetched_at": "2026-05-31T21:00:45.584320",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 79.1138636363636
   },
   "I-D3-003S": {
     "date": "2026-05-31",
-    "fetched_at": "2026-05-31T20:48:49.277256",
+    "fetched_at": "2026-05-31T21:03:21.849957",
     "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 4.0
   },
   "I-D3-009": {
     "date": "2026-05-31",
-    "fetched_at": "2026-05-31T20:46:48.979307",
+    "fetched_at": "2026-05-31T21:00:50.393047",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0272891624426836
   },
   "I-D5-001": {
     "date": "2026-05-31",
-    "fetched_at": "2026-05-31T20:47:37.118541",
+    "fetched_at": "2026-05-31T21:02:03.577331",
     "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (299 woorden, nl-valence-0.1, 612 artikels, 10 bronnen, poststratificatie): negativiteit jong +0.11 / midden +0.14 / ouder +0.32",
     "value": 1.2904
   },
   "I-D5-002": {
     "date": "2026-05-30",
-    "fetched_at": "2026-05-31T20:47:38.127106",
+    "fetched_at": "2026-05-31T21:02:04.323920",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 29.404
   },
