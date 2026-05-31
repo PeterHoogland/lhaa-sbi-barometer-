@@ -79,11 +79,44 @@ def _parse_rss_texts(xml_text: str) -> list[str]:
     return items
 
 
-def _per_source_tones(target_date: date) -> tuple[bool, list[tuple[str, float]], int]:
-    """Meet de toon per bron afzonderlijk (RSS-controle-meting).
-    Return (rss_reachable, [(profiel-sleutel, gemiddelde toon), ...], totaal_artikels)."""
-    source_tones: list[tuple[str, float]] = []
-    total_articles = 0
+import re as _re
+_WORD_RE = _re.compile(r"\w{3,}", _re.UNICODE)
+
+
+def _tokens(text: str) -> set[str]:
+    return {t.lower() for t in _WORD_RE.findall(text)}
+
+
+def _jaccard(a: set[str], b: set[str]) -> float:
+    if not a or not b:
+        return 0.0
+    return len(a & b) / max(len(a | b), 1)
+
+
+def _dedup_headlines(items: list[tuple[str, str, float]],
+                     threshold: float = 0.8) -> list[tuple[str, str, float]]:
+    """v0.5 §9.1 — near-duplicate-detectie op token-sets (Jaccard ≥ 0.8).
+    Houdt de eerste verschijning per gebeurtenis, gooit copycat-headlines weg."""
+    seen: list[set[str]] = []
+    out: list[tuple[str, str, float]] = []
+    for src, text, tone in items:
+        toks = _tokens(text)
+        if not toks:
+            continue
+        if any(_jaccard(toks, s) >= threshold for s in seen):
+            continue
+        seen.append(toks)
+        out.append((src, text, tone))
+    return out
+
+
+def _per_source_tones(
+    target_date: date,
+) -> tuple[bool, list[tuple[str, float]], int, int, list[tuple[str, str, float]]]:
+    """Meet de toon per bron afzonderlijk (RSS-controle-meting, v0.5 §9).
+    Return (rss_reachable, [(bron, gemiddelde toon)], n_unique, n_raw,
+             top10_negatiefste_headlines)."""
+    raw_headlines: list[tuple[str, str, float]] = []
     rss_reachable = False
     for url, key in RSS_FEEDS:
         ok, body = safe_request(
@@ -93,15 +126,18 @@ def _per_source_tones(target_date: date) -> tuple[bool, list[tuple[str, float]],
         if not ok or not isinstance(body, str):
             continue
         rss_reachable = True
-        tones: list[float] = []
         for text in _parse_rss_texts(body):
             result = tone_of_text(text)
             if result is not None:
-                tones.append(result[0])
-        if tones:
-            source_tones.append((key, sum(tones) / len(tones)))
-            total_articles += len(tones)
-    return rss_reachable, source_tones, total_articles
+                raw_headlines.append((key, text.strip(), result[0]))
+
+    deduped = _dedup_headlines(raw_headlines, threshold=0.8)
+    by_source: dict[str, list[float]] = {}
+    for src, _txt, tone in deduped:
+        by_source.setdefault(src, []).append(tone)
+    source_tones = [(k, sum(v) / len(v)) for k, v in by_source.items()]
+    top_neg = sorted(deduped, key=lambda h: h[2])[:10]
+    return rss_reachable, source_tones, len(deduped), len(raw_headlines), top_neg
 
 
 def gdelt_tone_series(start: date, end: date) -> list[dict] | None:
@@ -147,16 +183,20 @@ def fetch_news_negativity(target_date: date) -> FetchResult:
     # RSS-controle-meting: demografisch gesegmenteerde lezing (los van de schaal
     # die de composiet aanstuurt — puur descriptief in de bronvermelding).
     seg_text = ""
-    rss_ok, source_tones, n_articles = _per_source_tones(target_date)
-    if rss_ok and source_tones and n_articles >= 8:
+    rss_ok, source_tones, n_unique, n_raw, top_neg = _per_source_tones(target_date)
+    if rss_ok and source_tones and n_unique >= 8:
         ps = poststratify(source_tones)
         if ps["national"] is not None:
             seg = ps["segments"]
+            top_titles = " · ".join(
+                _re.sub(r"\s+", " ", t).strip()[:120] for _src, t, _tone in top_neg[:3]
+            )
             seg_text = (
-                f"; RSS-lexicon-controle ({LEXICON_SIZE} woorden, {LEXICON_VERSION}, "
-                f"{n_articles} artikels, {ps['n_sources']} bronnen, poststratificatie): "
+                f"; RSS-lexicon-controle (Pattern.nl {LEXICON_SIZE} woorden, "
+                f"{LEXICON_VERSION}, {n_unique}/{n_raw} unieke artikels na dedup, "
+                f"{ps['n_sources']} bronnen, poststratificatie): "
                 f"negativiteit jong {-seg['jong']:+.2f} / midden {-seg['midden']:+.2f} / "
-                f"ouder {-seg['ouder']:+.2f}"
+                f"ouder {-seg['ouder']:+.2f}. Negatiefste headlines: «{top_titles}»"
             )
 
     # 1) GDELT timelinetone — zelfde schaal als de 24m-baseline

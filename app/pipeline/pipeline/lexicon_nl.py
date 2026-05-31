@@ -110,21 +110,38 @@ POSITIVE = {
     "rust", "kalm", "stabiel", "stabiliteit",
 }
 
-LEXICON_VERSION = "nl-valence-0.1"
-LEXICON_SIZE = len(NEGATIVE) + len(POSITIVE)
+from .lexicon_pattern_nl import POLARITY as _PATTERN_POL, LEXICON_VERSION as _PATTERN_VER
+
+# v0.5 §9.3 Laag 1: Pattern.nl (CLiPS, Universiteit Antwerpen, PDDL) ALS basis
+# (2.7k+ NL-woorden met gevalideerde polariteit), met daarbovenop onze eigen
+# nieuws-domein overrides (NEGATIVE/POSITIVE) die ramp/aanslag/...-termen
+# een sterk signaal geven van ±1.0.
+LEXICON_VERSION = f"{_PATTERN_VER}+nieuws-overlay-1.0"
+LEXICON_SIZE = len(_PATTERN_POL) + len(NEGATIVE) + len(POSITIVE)
 
 _PUNCT = ".,;:!?\"'()[]«»–-…*#>"
 
 
+def _word_polarity(w: str) -> float:
+    """Polariteit ∈ [-1, +1]. Nieuws-overlay slaat Pattern over."""
+    if w in NEGATIVE:
+        return -1.0
+    if w in POSITIVE:
+        return +1.0
+    return _PATTERN_POL.get(w, 0.0)
+
+
 def tone_of_text(text: str, min_words: int = 3) -> tuple[float, int] | None:
-    """Toon van één tekst-eenheid (artikel, post) volgens Young & Soroka 2012:
-        tone = (pos - neg) / totaal_woorden × 100
+    """Toon van één tekst-eenheid (headline + lead) — v0.5 §9.4.
+    Som van per-woord polariteit gedeeld door aantal woorden, × 100.
+    Hogere score = positiever; lagere = negatiever. Zelfde schaal als v0.2,
+    maar nu met continue valenties uit een gevalideerd lexicon (Pattern.nl)
+    in plaats van binaire +1/-1 woorddetectie.
     Return (tone, n_words), of None wanneer de tekst te kort is."""
     words = [w.lower().strip(_PUNCT) for w in text.split()]
     words = [w for w in words if w]
     n = len(words)
     if n < min_words:
         return None
-    pos = sum(1 for w in words if w in POSITIVE)
-    neg = sum(1 for w in words if w in NEGATIVE)
-    return (pos - neg) / n * 100, n
+    total = sum(_word_polarity(w) for w in words)
+    return total / n * 100, n

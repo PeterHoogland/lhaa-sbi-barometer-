@@ -74,6 +74,11 @@ export const SBI_FOUNDATIONS: Array<{ label: string; url?: string }> = [
   },
   {
     label:
+      "De Smedt, T. & Daelemans, W. (2012), CLiPS — Pattern.nl: Nederlands sentiment-lexicon (3.000+ woorden, PDDL). Basis van de Laag-1-toonscoring uit v0.5 §9.3.",
+    url: "https://github.com/clips/pattern/blob/master/pattern/text/nl/nl-sentiment.xml",
+  },
+  {
+    label:
       "Soroka, Fournier & Nir (2019), PNAS — negativity bias in psychofysiologische reactie op nieuws.",
     url: "https://doi.org/10.1073/pnas.1908369116",
   },
