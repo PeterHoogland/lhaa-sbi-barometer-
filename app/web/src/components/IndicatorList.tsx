@@ -115,7 +115,7 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
       <header className="indicator-list-header">
         <h2>Wat we allemaal bekijken</h2>
         <p className="panel-lead">
-          We tellen 24 dingen mee. Klik er één open om te zien wat we precies meten,
+          De index draait op 10 kern-indicatoren; daarnaast lopen 14 secundaire/diagnostische signalen mee. Klik er één open om te zien wat we precies meten,
           waar de data vandaan komt en welke wetenschappelijke onderbouwing erachter zit.
         </p>
       </header>

@@ -1,31 +1,21 @@
 import { useEffect, useState } from "react";
 import type { DailyOutput, SparklinePoint } from "./types";
-import { TierIndicator } from "./components/TierIndicator";
-import { PercentileDisplay } from "./components/PercentileDisplay";
-import { DomainContributions } from "./components/DomainContributions";
 import { Sparkline } from "./components/Sparkline";
 import { CallToAction } from "./components/CallToAction";
 import { BrandSafetyBanner } from "./components/BrandSafetyBanner";
-import { Methodology } from "./components/Methodology";
-import { DataQuality } from "./components/DataQuality";
 import { ConditionLevelDisplay } from "./components/ConditionLevelDisplay";
 import { PreviewPage } from "./components/PreviewPage";
 import { PlainExplainer } from "./components/PlainExplainer";
 import { TopInfluences } from "./components/TopInfluences";
-import { IndicatorList } from "./components/IndicatorList";
 import { HeroBanner } from "./components/HeroBanner";
 import { LHALogo } from "./components/LHALogo";
-import { AllSources } from "./components/AllSources";
-import { IndicatorZView } from "./components/IndicatorZView";
-import { SecondarySignals } from "./components/SecondarySignals";
-import { MEDIA_DIAGNOSTIC } from "./components/Sections";
+import { ButtonPanels } from "./components/ButtonPanels";
 import { FOOTER_NOTES } from "./copy";
 
 export function App() {
   const [data, setData] = useState<DailyOutput | null>(null);
   const [sparkline, setSparkline] = useState<SparklinePoint[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [showTechnical, setShowTechnical] = useState(false);
 
   const isPreview = typeof window !== "undefined" && window.location.pathname.startsWith("/preview");
 
@@ -72,16 +62,22 @@ export function App() {
     return <div className="loading">Barometer laadt…</div>;
   }
 
-  const today = new Date(data.timestamp).toLocaleDateString("nl-BE", {
+  const stamp = new Date(data.timestamp);
+  const today = stamp.toLocaleDateString("nl-BE", {
     weekday: "long",
     day: "numeric",
     month: "long",
     year: "numeric",
   });
+  const lastRunTime = stamp.toLocaleTimeString("nl-BE", {
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Europe/Brussels",
+  });
 
   return (
     <div className={`app tier-${data.tier.current}`}>
-      <HeroBanner weekIso={data.week_iso} today={today} />
+      <HeroBanner weekIso={data.week_iso} today={today} lastRunTime={lastRunTime} />
 
       {data.brand_safety.flag !== "normal" && (
         <BrandSafetyBanner brandSafety={data.brand_safety} />
@@ -96,10 +92,6 @@ export function App() {
 
         <TopInfluences breakdown={data.indicator_breakdown} />
 
-        <IndicatorList breakdown={data.indicator_breakdown} />
-
-        <IndicatorZView breakdown={data.indicator_breakdown} />
-
         <section className="panel sparkline-panel">
           <h2>Hoe was het de laatste 60 dagen?</h2>
           <p className="panel-lead">
@@ -111,49 +103,7 @@ export function App() {
           <Sparkline points={sparkline} />
         </section>
 
-        <SecondarySignals signals={data.secondary_signals} />
-
-        <Methodology />
-
-        <AllSources breakdown={data.indicator_breakdown} />
-
-        <DataQuality dataQuality={data.data_quality} total={data.indicator_breakdown.length} />
-
-        <section className="technical-toggle">
-          <button
-            className="technical-toggle-btn"
-            onClick={() => setShowTechnical(!showTechnical)}
-            aria-expanded={showTechnical}
-          >
-            {showTechnical ? "− Verberg technische details" : "+ Toon technische details"}
-          </button>
-          <p className="muted small technical-toggle-hint">
-            Voor wetenschappers, journalisten en de adversariële reviewer.
-          </p>
-        </section>
-
-        {showTechnical && (
-          <>
-            <section className="hero">
-              <TierIndicator tier={data.tier.current} daysInTier={data.tier.days_in_tier} />
-              <PercentileDisplay
-                shortP={data.percentile.short_24m}
-                fixedP={data.percentile.fixed_2010_2019}
-                composite={data.composite.equal}
-                evidenceComposite={data.composite.evidence_graded}
-                demographicComposite={data.composite.demographic}
-              />
-            </section>
-            <section className="panel">
-              <h2>Domein-bijdragen</h2>
-              <p className="panel-lead">
-                Onder equal-weights (Schema 1), pre-geregistreerd primair schema.
-              </p>
-              <DomainContributions contributions={data.top_contributing_domains} />
-            </section>
-            <MEDIA_DIAGNOSTIC diagnostic={data.media_cluster_diagnostic} />
-          </>
-        )}
+        <ButtonPanels data={data} />
       </main>
 
       <footer className="footer">

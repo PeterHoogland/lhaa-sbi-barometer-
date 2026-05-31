@@ -1380,3 +1380,130 @@ main {
 .preview-back a { color: var(--lha-blue-deep); text-decoration: none; font-size: 0.9rem; }
 .preview-back a:hover { text-decoration: underline; }
 .code-block { background: var(--lha-stone); color: var(--lha-snow); padding: 16px 20px; border-radius: var(--rad); font-family: var(--f-mono); font-size: 0.78rem; overflow-x: auto; line-height: 1.6; }
+
+/* ============================================================
+   HERO — uurlijks bijgewerkt-noot
+   ============================================================ */
+.intro-note {
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.62);
+  font-style: italic;
+}
+
+/* ============================================================
+   BUTTON-PANELS — 5 in-page klap-knoppen (v0.4)
+   ============================================================ */
+.bp-section {
+  margin: 32px 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.bp-row {
+  border: 1px solid var(--c-line);
+  border-radius: var(--rad-lg);
+  background: var(--lha-snow);
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+.bp-row.open { border-color: var(--lha-blue-deep); }
+
+.bp-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 18px 24px;
+  cursor: pointer;
+  font-family: var(--f-sans);
+  color: var(--c-ink);
+  text-align: left;
+  transition: background 0.15s ease;
+}
+.bp-button:hover { background: var(--lha-sky-pale); }
+.bp-row.open .bp-button { background: var(--lha-sky); }
+
+.bp-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.bp-label {
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--lha-blue-deep);
+  letter-spacing: 0;
+}
+.bp-sub {
+  font-size: 0.82rem;
+  color: var(--lha-stone-soft);
+  font-weight: 400;
+}
+.bp-icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--lha-blue-deep);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+
+.bp-panel {
+  padding: 14px 22px 22px;
+  border-top: 1px solid var(--c-line);
+  background: var(--lha-sky-pale);
+}
+/* In het paneel staan al bestaande componenten met hun eigen panel-stijl;
+   we tonen ze niet als geneste witte kaartjes maar laten ze schoon doorlopen. */
+.bp-panel > .panel,
+.bp-panel > .indicator-list,
+.bp-panel > .secondary-panel,
+.bp-panel > .all-sources {
+  background: var(--lha-snow);
+  margin-bottom: 16px;
+}
+.bp-panel > :last-child { margin-bottom: 0; }
+
+.technical-stack { display: flex; flex-direction: column; gap: 16px; }
+.technical-stack > * { background: var(--lha-snow); border: 1px solid var(--c-line); border-radius: var(--rad); padding: 18px 22px; }
+
+/* Wetenschappelijke referenties — compacte lijst */
+.science-refs h3 {
+  font-family: var(--f-display);
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--lha-blue-deep);
+  margin: 18px 0 8px;
+}
+.science-refs h3:first-child { margin-top: 4px; }
+.ref-list { list-style: none; padding: 0; margin: 0; }
+.ref-list li {
+  padding: 8px 0;
+  border-bottom: 1px dotted var(--c-line);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.ref-list li:last-child { border-bottom: none; }
+.ref-list a { color: var(--lha-blue-deep); text-decoration: none; }
+.ref-list a:hover { text-decoration: underline; }
+.ref-tags { display: inline-flex; flex-wrap: wrap; gap: 4px; margin-left: 8px; }
+.ref-tag {
+  font-size: 0.72rem;
+  background: var(--lha-sky-pale);
+  color: var(--lha-stone-soft);
+  padding: 1px 7px;
+  border-radius: var(--rad-pill);
+}
+.ref-note { margin-top: 16px; }
+
+@media (max-width: 640px) {
+  .bp-button { padding: 14px 18px; }
+  .bp-panel { padding: 12px 14px 18px; }
+  .bp-sub { display: none; }
+}
