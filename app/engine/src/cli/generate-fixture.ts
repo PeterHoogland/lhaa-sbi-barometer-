@@ -215,12 +215,17 @@ function generate(): void {
     }
   }
 
-  // Bouw composiet-historie laatste 60 dagen door engine ineen-te-roepen per dag
+  // Bouw composiet-historie door de engine per dag in te roepen. Het venster is
+  // ~2 jaar zodat de percentielen (v0.2 short_24m én v0.4 lang) tegen een ECHTE
+  // 2-jaars-verdeling rekenen — niet tegen 60 dagen (dat overdreef de stand en
+  // botste met de "afgelopen twee jaar"-tekst). De sparkline toont de laatste 60.
+  const PERCENTILE_WINDOW_DAYS = 730;
+  const SPARKLINE_DAYS = 60;
   const compositeHistory: Array<{ date: string; value: number }> = [];
   const compositeMetingHistory: Array<{ date: string; value: number }> = [];
   const sparkline: Array<{ date: string; composite: number; percentile: number; tier: string }> = [];
 
-  for (let i = 60; i > 0; i--) {
+  for (let i = PERCENTILE_WINDOW_DAYS; i > 0; i--) {
     const d = new Date(TODAY.getTime() - i * 86400000);
     const iso = isoDate(d);
 
@@ -242,12 +247,14 @@ function generate(): void {
 
     compositeHistory.push({ date: iso, value: out.composite.equal });
     if (out.v04) compositeMetingHistory.push({ date: iso, value: out.v04.composite.meting });
-    sparkline.push({
-      date: iso,
-      composite: out.composite.equal,
-      percentile: out.percentile.short_24m,
-      tier: out.tier.current,
-    });
+    if (i <= SPARKLINE_DAYS) {
+      sparkline.push({
+        date: iso,
+        composite: out.composite.equal,
+        percentile: out.percentile.short_24m,
+        tier: out.tier.current,
+      });
+    }
   }
 
   // Vandaag — eerst synthetisch invullen, dan ECHTE waarden van de pipeline overschrijven
