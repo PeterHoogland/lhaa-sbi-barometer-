@@ -36,6 +36,12 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
     sub: string;
     render: () => React.ReactNode;
   }> = [
+    {
+      key: "wat",
+      label: "Wat dit is, en wat dit niet is",
+      sub: "De grenzen van de meting, in heldere taal",
+      render: () => <Methodology />,
+    },
     ...(data.v04
       ? [
           {
@@ -63,39 +69,9 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
       ),
     },
     {
-      key: "expert",
-      label: "Expert view",
-      sub: "Alle metingen op een rij: hoe hoog of laag ze vandaag staan, plus de signalen die we apart in de gaten houden.",
-      render: () => (
-        <>
-          <IndicatorList breakdown={data.indicator_breakdown} />
-          <IndicatorZView breakdown={data.indicator_breakdown} />
-          <SecondarySignals signals={data.secondary_signals} />
-        </>
-      ),
-    },
-    {
-      key: "wat",
-      label: "Wat dit is, en wat dit niet is",
-      sub: "De grenzen van de meting, in heldere taal",
-      render: () => <Methodology />,
-    },
-    {
-      key: "bronnen",
-      label: "De databronnen die we gebruiken",
-      sub: "Alle externe bronnen waar de cijfers vandaan komen, aanklikbaar",
-      render: () => <AllSources breakdown={data.indicator_breakdown} />,
-    },
-    {
-      key: "wetenschap",
-      label: "Wetenschappelijke bronnen",
-      sub: "De peer-reviewed onderbouwing waarop de SBI gebouwd is",
-      render: () => <ScienceReferences breakdown={data.indicator_breakdown} />,
-    },
-    {
       key: "technisch",
-      label: "Technische details",
-      sub: "Voor wetenschappers, journalisten en de adversariële reviewer",
+      label: "Inzichten voor wetenschappers, journalisten en adversariële reviewer",
+      sub: "De volledige meet- en trigger-laag, percentielen en diagnostiek",
       render: () => (
         <div className="technical-stack">
           {data.v04 && <V04Technical v04={data.v04} />}
@@ -111,6 +87,30 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
           <MEDIA_DIAGNOSTIC diagnostic={data.media_cluster_diagnostic} />
         </div>
       ),
+    },
+    {
+      key: "expert",
+      label: "Extra Expert view",
+      sub: "Alle metingen op een rij: hoe hoog of laag ze vandaag staan, plus de signalen die we apart in de gaten houden.",
+      render: () => (
+        <>
+          <IndicatorList breakdown={data.indicator_breakdown} />
+          <IndicatorZView breakdown={data.indicator_breakdown} />
+          <SecondarySignals signals={data.secondary_signals} />
+        </>
+      ),
+    },
+    {
+      key: "bronnen",
+      label: "De databronnen die we gebruiken",
+      sub: "Alle externe bronnen waar de cijfers vandaan komen, aanklikbaar",
+      render: () => <AllSources breakdown={data.indicator_breakdown} />,
+    },
+    {
+      key: "wetenschap",
+      label: "Wetenschappelijke bronnen",
+      sub: "De peer-reviewed onderbouwing waarop de SBI gebouwd is",
+      render: () => <ScienceReferences breakdown={data.indicator_breakdown} />,
     },
   ];
 

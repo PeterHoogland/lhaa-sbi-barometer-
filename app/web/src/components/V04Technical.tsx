@@ -68,9 +68,9 @@ export function V04Technical({ v04 }: { v04: V04Output }) {
       </div>
 
       <div className="v04-triggers">
-        <h4>Trigger-status: {v04.triggers.length === 0 ? "rustig" : `${v04.triggers.length} actief`}</h4>
+        <h4>Campagne-triggers (testfase): {v04.triggers.length === 0 ? "geen vandaag" : `${v04.triggers.length} actief`}</h4>
         {v04.triggers.length === 0 ? (
-          <p className="muted small">Geen actieve triggers vandaag.</p>
+          <p className="muted small">Geen campagne-triggers vandaag — de barometer staat laag genoeg.</p>
         ) : (
           <ul className="v04-trigger-list">
             {v04.triggers.map((t, i) => <TriggerRow key={i} t={t} />)}
