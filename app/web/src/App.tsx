@@ -62,12 +62,6 @@ export function App() {
   }
 
   const stamp = new Date(data.timestamp);
-  const today = stamp.toLocaleDateString("nl-BE", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
   const lastRunTime = stamp.toLocaleTimeString("nl-BE", {
     hour: "2-digit",
     minute: "2-digit",
@@ -76,7 +70,7 @@ export function App() {
 
   return (
     <div className={`app tier-${data.tier.current}`}>
-      <HeroBanner weekIso={data.week_iso} today={today} />
+      <HeroBanner />
 
       {data.brand_safety.flag !== "normal" && (
         <BrandSafetyBanner brandSafety={data.brand_safety} />

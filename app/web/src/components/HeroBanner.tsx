@@ -1,10 +1,5 @@
 import { LHALogo } from "./LHALogo";
 
-interface Props {
-  weekIso: string;
-  today: string;
-}
-
 /**
  * Site-header: een licht geblurde alpenfoto over de volle breedte, met het
  * Hautes-Alpes-logo groot en gecentreerd bovenaan, een dunne scheidingslijn
@@ -12,7 +7,7 @@ interface Props {
  *
  * v0.4: spreekt expliciet over 10 kern-indicatoren en uurlijkse bijstelling.
  */
-export function HeroBanner({ weekIso, today }: Props) {
+export function HeroBanner() {
   return (
     <header className="site-header">
       <a
@@ -38,15 +33,15 @@ export function HeroBanner({ weekIso, today }: Props) {
       <div className="hero-rule" aria-hidden="true" />
       <div className="hero-content">
         <div className="intro-eyebrow">Stressor-Blootstellings-Index</div>
+        <div className="intro-subtitle">
+          Een barometer voor collectieve blootstelling aan stressverhogende omstandigheden
+        </div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
         <p className="intro-lead">
           Een dagelijkse meting van de kern-indicatoren die op de hele bevolking inwerken.
           <br />
           Niet voor jou persoonlijk. Voor het hele land.
         </p>
-        <div className="intro-meta">
-          Barometer · {weekIso} · {today}
-        </div>
       </div>
     </header>
   );

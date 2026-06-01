@@ -43,7 +43,7 @@ export function ConditionLevelDisplay({
       <div className="cn-secondary">
         <span>{percentileLine}</span>
         <span className="cn-stamp">
-          De Stressindex werd gecontroleerd en bijgestuurd · laatst om {lastRunTime}
+          De Stressor-Blootstellings-index werd gecontroleerd en bijgestuurd · laatst om {lastRunTime}
         </span>
       </div>
     </section>

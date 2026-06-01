@@ -201,12 +201,12 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
   /* breder + harde regelafbreking in HeroBanner → altijd exact 2 regels */
   max-width: 46rem;
 }
-.intro-meta {
-  margin-top: 22px;
-  font-size: 0.78rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+.intro-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0 auto 18px;
+  max-width: 42rem;
 }
 
 /* ============================================================
