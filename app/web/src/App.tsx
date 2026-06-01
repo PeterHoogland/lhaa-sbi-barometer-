@@ -13,6 +13,9 @@ import { FOOTER_NOTES } from "./copy";
 
 export function App() {
   const [data, setData] = useState<DailyOutput | null>(null);
+  // Volledige output incl. v0.4-testlaag — ALLEEN voor de expliciet als "expert/test"
+  // gelabelde panelen. De publieke weergave gebruikt uitsluitend `data` (v0.2).
+  const [expertData, setExpertData] = useState<DailyOutput | null>(null);
   const [sparkline, setSparkline] = useState<SparklinePoint[]>([]);
   const [error, setError] = useState<string | null>(null);
 
@@ -34,6 +37,14 @@ export function App() {
         ]);
         setData(latest);
         setSparkline(spark);
+        // Expert/test-kanaal (v0.4) — optioneel; faalt stil als het er niet is,
+        // dan tonen de expert-panelen enkel de v0.2-velden.
+        try {
+          const r = await fetch("/data/latest-expert.json");
+          if (r.ok) setExpertData((await r.json()) as DailyOutput);
+        } catch {
+          /* geen expert-data beschikbaar */
+        }
       } catch (e) {
         setError(e instanceof Error ? e.message : "onbekende fout");
       }
@@ -89,7 +100,7 @@ export function App() {
           }
         />
 
-        <ButtonPanels data={data} sparkline={sparkline} />
+        <ButtonPanels data={expertData ?? data} sparkline={sparkline} />
       </main>
 
       <footer className="footer">

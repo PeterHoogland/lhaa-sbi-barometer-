@@ -80,6 +80,8 @@ const WEB_OUT = resolve(__dirname, "../../../web/public/data/latest.json");
 const WEB_SPARKLINE_OUT = resolve(__dirname, "../../../web/public/data/sparkline-30d.json");
 const WEB_SIGNAL_OUT = resolve(__dirname, "../../../web/public/data/signal.json");
 const WEB_API_OUT = resolve(__dirname, "../../../web/public/api/v1/signal.json");
+const EXPERT_OUT = resolve(__dirname, "../../../data/latest-expert.json");
+const WEB_EXPERT_OUT = resolve(__dirname, "../../../web/public/data/latest-expert.json");
 const PIPELINE_OUT = resolve(__dirname, "../../../data/raw-values.json");
 const HISTORY_DIR = resolve(__dirname, "../../../data/history");
 const TRIGGER_STATE_OUT = resolve(__dirname, "../../../data/trigger-state.json");
@@ -316,9 +318,23 @@ async function generate(): Promise<void> {
     tier: todayOutput.tier.current,
   });
 
+  // In test-modus mag de v0.4-laag NIET in de publieke kanalen: latest.json wordt een
+  // v0.2-projectie; de volledige output (incl. v04) gaat naar latest-expert.json — het
+  // expliciete "expert/test"-kanaal (review §0-bis.5 / §1.1). In live-modus is v04 de
+  // hoofdmeting en blijft alles publiek.
+  const isTest = todayOutput.v04?.mode !== "live";
+  const publicOutput = { ...todayOutput };
+  if (isTest) delete publicOutput.v04;
+
   for (const target of [DEFAULT_OUT, WEB_OUT]) {
     mkdirSync(dirname(target), { recursive: true });
-    writeFileSync(target, JSON.stringify(todayOutput, null, 2));
+    writeFileSync(target, JSON.stringify(publicOutput, null, 2));
+  }
+  if (todayOutput.v04) {
+    for (const target of [EXPERT_OUT, WEB_EXPERT_OUT]) {
+      mkdirSync(dirname(target), { recursive: true });
+      writeFileSync(target, JSON.stringify(todayOutput, null, 2));
+    }
   }
   for (const target of [SPARKLINE_OUT, WEB_SPARKLINE_OUT]) {
     mkdirSync(dirname(target), { recursive: true });
@@ -335,10 +351,11 @@ async function generate(): Promise<void> {
     brand_safety_flag: todayOutput.brand_safety.flag,
     valid_until: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
     methodology_version: todayOutput.data_quality.methodology_version,
-    // v0.4 additief (embed-clients kunnen dit negeren tot de UI het toont)
-    composite_meting: todayOutput.v04?.composite.meting ?? null,
-    load_factor: todayOutput.v04?.composite.load_factor ?? null,
-    triggers_count: todayOutput.v04?.triggers.length ?? 0,
+    // v0.4-afgeleide waarden lekken NIET naar de embed in test-modus (review §0-bis.5):
+    // null zolang mode = test; v04_mode blijft als transparantie-vlag staan.
+    composite_meting: isTest ? null : (todayOutput.v04?.composite.meting ?? null),
+    load_factor: isTest ? null : (todayOutput.v04?.composite.load_factor ?? null),
+    triggers_count: isTest ? null : (todayOutput.v04?.triggers.length ?? 0),
     v04_mode: todayOutput.v04?.mode ?? null,
   };
   for (const target of [SIGNAL_OUT, WEB_SIGNAL_OUT, WEB_API_OUT]) {
