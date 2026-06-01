@@ -1683,3 +1683,40 @@ main {
 @media (max-width: 640px) {
   .kern-readout { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   MOBIEL — telefoon-optimalisatie (≤ 640px)
+   ============================================================ */
+@media (max-width: 640px) {
+  /* Header: "Naar hautes-alpes.net" stond absoluut top-right en dekte het
+     gecentreerde logo af. Op telefoon: gecentreerd boven het logo, in de flow. */
+  .site-back {
+    position: static;
+    display: block;
+    width: fit-content;
+    margin: 6px auto 0;
+    font-size: 0.72rem;
+    padding: 6px 14px;
+  }
+  .hero-top { padding: 6px 20px 8px; }
+  .hero-content { padding: 22px 20px 60px; }
+  .intro-eyebrow { font-size: 0.8rem; letter-spacing: 0.13em; }
+  .intro-lead { font-size: 0.98rem; }
+
+  /* Cijfer-blok compacter; kicker links onder het cijfer i.p.v. los rechts. */
+  .cn-display { padding: 26px 20px 22px; }
+  .cn-number { font-size: 5.5rem; }
+  .cn-side { text-align: left; }
+  .cn-kicker { font-size: 0.8rem; }
+  .cn-secondary { font-size: 0.8rem; }
+
+  /* Smallere zijmarges op telefoon (was 32-40px). */
+  main { padding: 0 16px 56px; }
+  .panel { padding: 22px 18px; }
+  .footer { padding: 28px 20px; }
+
+  /* Top-3: "↑/↓ duwt"-kolom onder de tekst i.p.v. ernaast (anders knijpt
+     die de body tot losse woorden op een smal scherm). */
+  .top-item { grid-template-columns: 34px 1fr; gap: 12px; padding: 16px; }
+  .top-direction { grid-column: 2; justify-self: start; margin-top: 8px; }
+}
