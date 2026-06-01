@@ -20,7 +20,7 @@ export function ConditionLevelDisplay({
 
   return (
     <section className={`cn-display cn-level-${cn}`}>
-      <div className="cn-label">STRESS-CIJFER VAN VANDAAG</div>
+      <div className="cn-label">STRESS-CIJFER OP DIT MOMENT</div>
       <div className="cn-main">
         <div className="cn-number" aria-label={`niveau ${cn} van 5`}>
           {cn}
