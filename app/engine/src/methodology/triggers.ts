@@ -22,12 +22,19 @@
 import type { IndicatorCode, DomainCode, BrandSafety } from "../types.js";
 import type { KernKlasse } from "../indicators/kern.js";
 
-// --- Configuratie (vast, publiek; via backtest §8 te kalibreren, daarna bevriezen) ---
+// --- Configuratie (vast, publiek; via backtest §8 gekalibreerd 2026-06) ---
 export const SPIKE_DREMPEL = 1.5; // MAD-eenheden dag-op-dag op de KORTE baseline
-export const P70 = 70;
-export const P90 = 90;
-export const COOLDOWN_H: Record<KernKlasse, number> = { direct: 24, snel: 48, traag: 48 };
-export const COOLDOWN_COMPOSITE_H = 24;
+export const P70 = 70; // composiet-niveau oranje (T3)
+export const P90 = 90; // composiet-niveau rood (T3)
+/**
+ * Per-indicator-rood (T2) vuurt pas vanaf P95, niet P90. Backtest (742 dagen)
+ * gaf 392 indicator.red-triggers op P90 — met 6 actieve kern-codes tegen een
+ * dunne rollende baseline tikt er vrijwel dagelijks één boven P90. P95 + langere
+ * cooldown houdt "rood" écht uitzonderlijk en voorkomt webhook-spam.
+ */
+export const INDICATOR_RED_P = 95;
+export const COOLDOWN_H: Record<KernKlasse, number> = { direct: 48, snel: 72, traag: 72 };
+export const COOLDOWN_COMPOSITE_H = 48;
 /** Boven deze dag-op-dag-sprong krijgt een niet-nieuws-spike severity "hoog". */
 export const ERNST_DREMPEL = 2.5;
 const RECENT_LOG_CAP = 50;
@@ -179,8 +186,8 @@ export function evaluateTriggers(input: EvaluateTriggersInput): EvaluateTriggers
     });
   }
 
-  // --- Trigger 2 — Eén rood onderdeel (LANGE baseline-percentiel) ---
-  const redThreshold = P90 * input.loadFactor;
+  // --- Trigger 2 — Eén rood onderdeel (LANGE baseline-percentiel, P95) ---
+  const redThreshold = INDICATOR_RED_P * input.loadFactor;
   for (const c of input.perCore) {
     if (!(c.percentile_lang >= redThreshold)) continue;
     const key = `indicator.red:${c.code}`;

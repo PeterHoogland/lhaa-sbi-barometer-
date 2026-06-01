@@ -16,11 +16,13 @@ import {
   compositeMeting,
   achtergrond,
   loadFactor,
+  computeV04Tier,
   sliceTrailing,
   spanYears,
   windowedZ,
   evaluateTriggers,
   EMPTY_TRIGGER_STATE,
+  INDICATOR_RED_P,
   computeDaily,
   type ZLangMap,
   type CoreTriggerInput,
@@ -195,19 +197,23 @@ describe("Trigger-engine (v0.4 §4)", () => {
     expect(r.triggers.filter((t) => t.type === "indicator.spike")).toHaveLength(0);
   });
 
-  it("T2 vuurt 'rood' bij percentile_lang ≥ P90 × load_factor", () => {
-    const red: CoreTriggerInput = {
-      code: "I-D3-001",
-      domain: "D3",
-      plain_name: "Inflatie",
-      klasse: "traag",
-      z_kort: 0,
-      z_lang: 3,
-      delta_1d: 0,
-      percentile_lang: 95,
-    };
-    const r = evaluateTriggers({ ...base, perCore: [red] });
-    const t2 = r.triggers.find((t) => t.type === "indicator.red");
+  const redCore = (pct: number): CoreTriggerInput => ({
+    code: "I-D3-001",
+    domain: "D3",
+    plain_name: "Inflatie",
+    klasse: "traag",
+    z_kort: 0,
+    z_lang: 3,
+    delta_1d: 0,
+    percentile_lang: pct,
+  });
+
+  it("T2 vuurt 'rood' pas vanaf P95 (getemd), niet meer op P92", () => {
+    expect(INDICATOR_RED_P).toBe(95);
+    const onder = evaluateTriggers({ ...base, perCore: [redCore(92)] });
+    expect(onder.triggers.find((t) => t.type === "indicator.red")).toBeUndefined();
+    const boven = evaluateTriggers({ ...base, perCore: [redCore(96)] });
+    const t2 = boven.triggers.find((t) => t.type === "indicator.red");
     expect(t2).toBeDefined();
     expect(t2!.severity).toBe("hoog");
   });
@@ -224,6 +230,30 @@ describe("Trigger-engine (v0.4 §4)", () => {
     expect(held.triggers[0].require_manual_approval).toBe(true);
     const free = evaluateTriggers({ ...base, mode: "live", perCore: [newsSpike], brandSafetyFlag: "normal" });
     expect(free.triggers[0].require_manual_approval).toBe(false);
+  });
+});
+
+describe("v0.4 zichtbare tier (gekalibreerd: oranje 1d≥P65, rood 2d≥P90)", () => {
+  it("rustige reeks blijft groen", () => {
+    expect(computeV04Tier([20, 30, 40, 50, 60]).tier).toBe("green");
+  });
+
+  it("één dag ≥ P65 → oranje (sneller dan v0.2)", () => {
+    expect(computeV04Tier([40, 40, 66]).tier).toBe("amber");
+  });
+
+  it("één dag ≥ P90 is nog géén rood, maar wel oranje", () => {
+    expect(computeV04Tier([40, 95]).tier).toBe("amber");
+  });
+
+  it("twee opeenvolgende dagen ≥ P90 → rood", () => {
+    expect(computeV04Tier([40, 92, 93]).tier).toBe("red");
+  });
+
+  it("afschaling na 2 dagen onder de drempel", () => {
+    expect(computeV04Tier([95, 95, 95, 40, 40]).tier).toBe("green");
+    // 1 dag onder is nog niet genoeg
+    expect(computeV04Tier([95, 95, 95, 40]).tier).toBe("red");
   });
 });
 

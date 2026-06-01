@@ -98,6 +98,41 @@ def _try_bestat() -> tuple[float, str] | None:
     return None
 
 
+def bestat_fuel_series() -> list[dict]:
+    """Volledige dag-historie van 'Benzine 95 RON E10' (€/l incl. btw) uit de
+    be.STAT-view — dezelfde officiele FOD-Economie-bron als de dagelijkse fetch.
+
+    De view bevat één rij per dag; we lezen ze allemaal i.p.v. enkel de laatste.
+    Gebruikt voor de eenmalige backfill (scripts/backfill_fuel_baseline.py) zodat
+    I-D2-004 een ECHTE baseline krijgt i.p.v. forward te moeten accumuleren.
+
+    Return [{date, value}], gesorteerd op datum. Lege lijst bij fout/leeg.
+    """
+    ok, body = safe_request(
+        BESTAT_FUEL_URL, timeout=60,
+        headers={"Accept": "application/json"},
+    )
+    if not ok or not isinstance(body, dict):
+        return []
+    facts = body.get("facts")
+    if not isinstance(facts, list):
+        return []
+    rows: dict[str, float] = {}
+    for fact in facts:
+        if not isinstance(fact, dict) or fact.get("Product") != BESTAT_PRODUCT:
+            continue
+        try:
+            val = float(fact.get("Prijs incl. BTW"))
+        except (TypeError, ValueError):
+            continue
+        if not (0.5 < val < 5.0):  # scale-sanity: pompprijs €/l
+            continue
+        iso = _parse_bestat_dag(fact.get("Dag", ""))
+        if iso:
+            rows[iso] = round(val, 3)
+    return [{"date": d, "value": v} for d, v in sorted(rows.items())]
+
+
 def _try_ecb_fuel_hicp() -> tuple[float, float, str] | None:
     """Return (yoy_pct, eur_per_l_estimate, period) of None."""
     ok, body = safe_request(

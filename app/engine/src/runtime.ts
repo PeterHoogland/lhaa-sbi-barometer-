@@ -43,7 +43,7 @@ import { computeConditionLevel } from "./methodology/condition-level.js";
 import { windowedZ, sliceTrailing, spanYears, type HistPoint } from "./methodology/baseline-window.js";
 import { KERN_CODES, klasse } from "./indicators/kern.js";
 import { wMeting, wTrigger } from "./methodology/kern-weights.js";
-import { compositeMeting, achtergrond, loadFactor, type ZLangMap } from "./methodology/kern-composite.js";
+import { compositeMeting, achtergrond, loadFactor, computeV04Tier, type ZLangMap } from "./methodology/kern-composite.js";
 import {
   evaluateTriggers,
   EMPTY_TRIGGER_STATE,
@@ -510,9 +510,9 @@ function computeV04(p: ComputeV04Params): V04Output {
   const pctMetingKort =
     kortDist.length > 0 ? percentileRank(compMeting, [...kortDist, compMeting]) : pctMetingLang;
 
-  // v0.4-tier uit de percentiel-historie van composite_meting (sustained-regel).
+  // v0.4-tier uit de percentiel-historie van composite_meting (eigen snelle regel).
   const metingPercHist = buildPercentileHistory(p.compositeMetingHistory, compMeting);
-  const v04Tier = computeTier(metingPercHist);
+  const v04Tier = computeV04Tier(metingPercHist);
 
   // Bevestigingssignalen voor de trigger-severity (§4 rem B; reddit nooit zelfstandig).
   const confirmedBy: string[] = [];

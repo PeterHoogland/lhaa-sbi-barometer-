@@ -65,9 +65,15 @@ export {
   compositeMeting,
   achtergrond,
   loadFactor,
+  computeV04Tier,
   LOAD_K,
   LOAD_CLAMP_MIN,
   LOAD_CLAMP_MAX,
+  V04_AMBER_P,
+  V04_RED_P,
+  V04_AMBER_SUSTAIN,
+  V04_RED_SUSTAIN,
+  V04_DECAY,
   type ZLangMap,
 } from "./methodology/kern-composite.js";
 export {
@@ -76,6 +82,7 @@ export {
   SPIKE_DREMPEL,
   P70 as TRIGGER_P70,
   P90 as TRIGGER_P90,
+  INDICATOR_RED_P,
   COOLDOWN_H,
   ERNST_DREMPEL,
   type TriggerEvent,

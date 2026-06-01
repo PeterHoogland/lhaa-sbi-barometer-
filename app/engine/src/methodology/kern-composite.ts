@@ -12,7 +12,7 @@
  * drempel waarop een snelle spike vuurt (§3.3).
  */
 
-import type { IndicatorCode } from "../types.js";
+import type { IndicatorCode, Tier } from "../types.js";
 import { KERN_CODES, ACHTERGROND_CODES } from "../indicators/kern.js";
 import { wMeting } from "./kern-weights.js";
 
@@ -51,4 +51,55 @@ export const LOAD_CLAMP_MAX = 1.0;
 export function loadFactor(achtergrondValue: number, k = LOAD_K): number {
   const raw = 1 - k * achtergrondValue;
   return Math.min(LOAD_CLAMP_MAX, Math.max(LOAD_CLAMP_MIN, raw));
+}
+
+/**
+ * v0.4 ZICHTBARE tier-kalibratie (backtest-onderbouwd, 2026-06).
+ *
+ * De pre-geregistreerde v0.2-tier (P70/P90, 3-dagen-sustained) bleek over 742
+ * dagen 97,7% groen — de 3-dagen-regel slikte ~3 op de 4 verhoogde dagen op.
+ * Deze v0.4-tier reageert sneller zodat de bezoeker beweging ziet. Dit is een
+ * kalibratie van de NOG-NIET-bevroren v0.4-laag (spec §8), niet van de
+ * pre-geregistreerde v0.2-tier — die blijft onveranderd meelopen.
+ *
+ *   oranje : na 1 dag  ≥ P65
+ *   rood   : na 2 dagen ≥ P90
+ *   afschaling: na 2 dagen onder de drempel (hysteresis)
+ */
+export const V04_AMBER_P = 65;
+export const V04_AMBER_SUSTAIN = 1;
+export const V04_RED_P = 90;
+export const V04_RED_SUSTAIN = 2;
+export const V04_DECAY = 2;
+
+export function computeV04Tier(percentileHistory: number[]): { tier: Tier; daysInTier: number } {
+  let tier: Tier = "green";
+  let prev: Tier = "green";
+  let redRun = 0;
+  let amberRun = 0;
+  let belowRedRun = 0;
+  let belowAmberRun = 0;
+  let daysInTier = 0;
+
+  for (const p of percentileHistory) {
+    const isRed = p >= V04_RED_P;
+    const isAmber = p >= V04_AMBER_P;
+    redRun = isRed ? redRun + 1 : 0;
+    amberRun = isAmber ? amberRun + 1 : 0;
+    belowRedRun = isRed ? 0 : belowRedRun + 1;
+    belowAmberRun = isAmber ? 0 : belowAmberRun + 1;
+
+    // Escalatie — snel
+    if (redRun >= V04_RED_SUSTAIN) tier = "red";
+    else if (amberRun >= V04_AMBER_SUSTAIN && tier !== "red") tier = "amber";
+
+    // Afschaling — met hysteresis
+    if (tier === "red" && belowRedRun >= V04_DECAY) tier = isAmber ? "amber" : "green";
+    if (tier === "amber" && belowAmberRun >= V04_DECAY) tier = "green";
+
+    daysInTier = tier === prev ? daysInTier + 1 : 1;
+    prev = tier;
+  }
+
+  return { tier, daysInTier };
 }
