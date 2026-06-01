@@ -39,7 +39,7 @@ export {
   type ConditionLevel as MethodologyConditionLevel,
   type ConditionState,
 } from "./methodology/condition-level.js";
-export { computeDaily, type DailyComputeInput } from "./runtime.js";
+export { computeDaily, buildPercentileHistory, type DailyComputeInput } from "./runtime.js";
 
 // --- SBI v0.4 — meet- + trigger-laag ---
 export {

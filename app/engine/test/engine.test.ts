@@ -20,6 +20,7 @@ import {
   daylightHours,
   percentileRank,
   computeConditionLevel,
+  buildPercentileHistory,
 } from "../src/index.js";
 
 describe("Z-scoring (doc 04 §7)", () => {
@@ -214,5 +215,33 @@ describe("Composite met Schema 1", () => {
     const result = computeComposite(z, "equal");
     expect(result.composite).toBeGreaterThan(0);
     expect(result.domainContributions).toHaveLength(6);
+  });
+});
+
+describe("buildPercentileHistory — lookahead-vrij (review §0-bis.2)", () => {
+  it("een bevroren dag verandert niet als er latere data bijkomt", () => {
+    const hist3 = [
+      { date: "2025-01-01", value: 10 },
+      { date: "2025-01-02", value: 20 },
+      { date: "2025-01-03", value: 30 },
+    ];
+    // [10,20,30] + 'vandaag' 40
+    const a = buildPercentileHistory(hist3, 40);
+    // dezelfde dagen, nu met een extra TOEKOMST-dag (50) erachter
+    const b = buildPercentileHistory([...hist3, { date: "2025-01-04", value: 40 }], 50);
+    // de percentielen van dag 0..3 mogen niet wijzigen door de latere dag
+    expect(b.slice(0, 4)).toEqual(a);
+  });
+
+  it("dag t weegt alleen tegen punten t/m t (geen verdunning door latere dagen)", () => {
+    const ph = buildPercentileHistory(
+      [
+        { date: "2025-01-01", value: 1 },
+        { date: "2025-01-02", value: 2 },
+      ],
+      3,
+    );
+    expect(ph[0]).toBe(50); // enige punt → midrank
+    expect(ph[ph.length - 1]).toBeGreaterThan(ph[0]); // laatste = hoogste tot nu
   });
 });

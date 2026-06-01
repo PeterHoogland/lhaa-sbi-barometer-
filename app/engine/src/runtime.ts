@@ -358,15 +358,16 @@ function estimateDropoutRange(z: ZMap): [number, number] {
   return [Math.min(...composites), Math.max(...composites)];
 }
 
-function buildPercentileHistory(
+export function buildPercentileHistory(
   compositeHistory: Array<{ date: string; value: number }>,
   todaysComposite: number,
 ): number[] {
-  // Voor elke datum in compositeHistory: bereken percentiel binnen het hele venster
-  // (vereenvoudigde benadering — in target architecture wordt percentiel per datum
-  // berekend tegen alleen voorafgaande 24m)
-  const allValues = [...compositeHistory.map((h) => h.value), todaysComposite];
-  return allValues.map((v) => percentileRank(v, allValues));
+  // Lookahead-vrij: het percentiel op dag t weegt UITSLUITEND tegen punten t/m t
+  // (geen toekomst). Zo is elke dag identiek aan wat op dat moment berekenbaar was —
+  // cruciaal voor een eerlijke tier-historie én de "lookahead-vrij"-claim van de
+  // backtest (review §0-bis.2). compositeHistory bevat hier al enkel het verleden.
+  const values = [...compositeHistory.map((h) => h.value), todaysComposite];
+  return values.map((v, i) => percentileRank(v, values.slice(0, i + 1)));
 }
 
 // ===================================================================
