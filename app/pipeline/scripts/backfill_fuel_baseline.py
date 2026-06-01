@@ -17,6 +17,7 @@ Run:  python scripts/backfill_fuel_baseline.py
 from __future__ import annotations
 import json
 import sys
+import time
 from pathlib import Path
 
 # pipeline-package importeerbaar maken vanuit scripts/
@@ -25,13 +26,28 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from pipeline.fetchers.fod_economie import bestat_fuel_series  # noqa: E402
 from pipeline.util import DATA_DIR  # noqa: E402
 
+# be.STAT is traag/groot — blijf doorproberen tot we een volwaardige reeks hebben.
+MAX_ROUNDS = 6
+ROUND_DELAY_S = 15
+
 
 def main() -> int:
-    rows = bestat_fuel_series()
+    rows: list[dict] = []
+    for attempt in range(1, MAX_ROUNDS + 1):
+        rows = bestat_fuel_series()
+        if len(rows) >= 30:
+            break
+        print(
+            f"  poging {attempt}/{MAX_ROUNDS}: {len(rows)} rijen — be.STAT traag/onbereikbaar, opnieuw…",
+            file=sys.stderr,
+        )
+        if attempt < MAX_ROUNDS:
+            time.sleep(ROUND_DELAY_S)
+
     if len(rows) < 30:
         print(
-            f"✗ slechts {len(rows)} rijen uit be.STAT — bron onbereikbaar of view "
-            f"gewijzigd. Niets weggeschreven (bestaande historie blijft staan).",
+            f"✗ na {MAX_ROUNDS} pogingen slechts {len(rows)} rijen uit be.STAT — bron "
+            f"onbereikbaar of view gewijzigd. Niets weggeschreven (bestaande historie blijft staan).",
             file=sys.stderr,
         )
         return 1

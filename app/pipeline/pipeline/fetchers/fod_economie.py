@@ -109,7 +109,7 @@ def bestat_fuel_series() -> list[dict]:
     Return [{date, value}], gesorteerd op datum. Lege lijst bij fout/leeg.
     """
     ok, body = safe_request(
-        BESTAT_FUEL_URL, timeout=60,
+        BESTAT_FUEL_URL, timeout=90, retries=2, retry_delay=5.0,
         headers={"Accept": "application/json"},
     )
     if not ok or not isinstance(body, dict):
