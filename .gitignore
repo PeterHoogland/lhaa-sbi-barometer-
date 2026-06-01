@@ -41,4 +41,7 @@ app/data/composite-history.json
 
 # Surge upload state
 app/web/.surge
+
+# Cloudflare Wrangler local state
+.wrangler/
 .claude/
