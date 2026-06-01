@@ -1,37 +1,37 @@
 {
   "I-D1-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:19:24.039360",
+    "fetched_at": "2026-06-01T23:32:37.883538",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 7.85
   },
   "I-D1-010": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:19:24.424051",
+    "fetched_at": "2026-06-01T23:32:38.320910",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 16.129166666666666
   },
   "I-D2-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:19:25.784368",
+    "fetched_at": "2026-06-01T23:32:39.623278",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D3-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:19:27.472763",
+    "fetched_at": "2026-06-01T23:32:41.387582",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 131.92000000000002
   },
   "I-D3-003S": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:22:27.387384",
-    "source": "Ontslag-radar: 9 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen, ~500 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 9.0
+    "fetched_at": "2026-06-01T23:38:00.272494",
+    "source": "Ontslag-radar: 5 artikels met collectief-ontslag-thema in 8 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 5.0
   },
   "I-D3-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:19:30.287954",
+    "fetched_at": "2026-06-01T23:32:44.444339",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.005241141553355
   },
@@ -43,7 +43,7 @@
   },
   "I-D5-002": {
     "date": "2026-05-31",
-    "fetched_at": "2026-06-01T23:21:01.220213",
+    "fetched_at": "2026-06-01T23:34:36.387819",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.124
   },
