@@ -233,17 +233,21 @@ describe("Trigger-engine (v0.4 §4)", () => {
   });
 });
 
-describe("v0.4 zichtbare tier (agressief: oranje 1d≥P60, rood 1d≥P85)", () => {
+describe("v0.4 zichtbare tier (oranje 1d≥P60, rood 2d≥P90)", () => {
   it("rustige reeks blijft groen", () => {
     expect(computeV04Tier([20, 30, 40, 50, 55]).tier).toBe("green");
   });
 
-  it("één dag ≥ P60 → oranje", () => {
+  it("één dag ≥ P60 → oranje (agressief)", () => {
     expect(computeV04Tier([40, 40, 61]).tier).toBe("amber");
   });
 
-  it("één dag ≥ P85 → meteen rood (agressief)", () => {
-    expect(computeV04Tier([40, 88]).tier).toBe("red");
+  it("één dag ≥ P90 is nog géén rood, maar wel oranje", () => {
+    expect(computeV04Tier([40, 95]).tier).toBe("amber");
+  });
+
+  it("twee opeenvolgende dagen ≥ P90 → rood (uitzonderlijk)", () => {
+    expect(computeV04Tier([40, 92, 93]).tier).toBe("red");
   });
 
   it("afschaling na 2 dagen onder de drempel", () => {
