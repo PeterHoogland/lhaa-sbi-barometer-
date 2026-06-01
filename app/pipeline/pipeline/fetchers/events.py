@@ -23,10 +23,13 @@ from __future__ import annotations
 import json
 import math
 import re
+import time
 import xml.etree.ElementTree as ET
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from ..util import FetchResult, ROOT, safe_request
+from ..cache import get as cache_get, put as cache_put
+from .gdelt import gdelt_event_series
 
 
 EVENTS_FILE = ROOT / "pipeline" / "events.json"
@@ -166,37 +169,44 @@ def _write_pending(candidates: list[dict]) -> None:
 
 
 def fetch_collective_events(target_date: date) -> FetchResult:
-    # Stap 1: scan RSS feeds en schrijf candidates voor admin review
-    candidates, rss_reachable = _scan_rss_for_candidates(target_date)
+    """I-D5-003 — sinds de v0.4-herdefinitie (doc 00 §13, grond A2): de score is de
+    GDELT-volume-intensiteit van zware negatieve thema's (oorlog/geweld/ramp/terreur)
+    in BE-nieuws. Dezelfde schaal als de GDELT-backfill-baseline (I-D5-003.json), dus
+    de z-score klopt. De RSS-scan blijft lopen om concrete kandidaat-gebeurtenissen
+    naar pending_events.json te schrijven voor menselijke review (transparantie)."""
+    # Transparantie: scan RSS voor kandidaat-gebeurtenissen → pending_events.json
+    candidates, _rss_reachable = _scan_rss_for_candidates(target_date)
     if candidates:
         _write_pending(candidates)
 
-    # Stap 2: bereken score op basis van door admin BEVESTIGDE events
-    confirmed = _read_confirmed_events()
-    total = 0.0
-    for ev in confirmed:
-        try:
-            ev_date = datetime.fromisoformat(ev["date"]).date()
-        except (KeyError, ValueError):
-            continue
-        delta = (target_date - ev_date).days
-        if 0 <= delta <= 7:
-            magnitude = ev.get("magnitude", 1)
-            total += magnitude * math.exp(-delta / 3)
-
-    # RSS bereikbaar = echte meting, ook wanneer er 0 gebeurtenissen zijn.
-    # Alleen wanneer geen enkele feed bereikbaar was kunnen we niet meten.
-    if rss_reachable:
+    # Score = GDELT-volume-intensiteit (schaal-consistent met de backfill-baseline).
+    time.sleep(8)  # respecteer GDELT rate-limit (komt ná de toon-call in run.py)
+    series = gdelt_event_series(target_date - timedelta(days=21), target_date)
+    if series:
+        recent = series[-3:]  # lichte stabilisatie tegen ontbrekende laatste dag
+        value = round(sum(p["value"] for p in recent) / len(recent), 6)
+        source = (
+            f"GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen "
+            f"(oorlog/geweld/ramp/terreur, sourcecountry:BE, {len(recent)}d-venster); "
+            f"{len(candidates)} RSS-kandidaten naar pending voor menselijke review"
+        )
+        cache_put("I-D5-003", value, source, target_date.isoformat())
         return FetchResult(
-            "I-D5-003", min(total, 15.0), target_date.isoformat(),
-            simulated=False,
-            source=(f"RSS-monitor (VRT NWS + De Standaard) + events.json "
-                    f"({len(confirmed)} bevestigd, {len(candidates)} candidates voor review)"),
+            "I-D5-003", value, target_date.isoformat(),
+            simulated=False, source=source,
         )
 
-    # Geen enkele RSS-feed bereikbaar: we konden niet meten.
+    # Fallback: laatste succesvolle GDELT-waarde (zelfde schaal)
+    cached = cache_get("I-D5-003")
+    if cached:
+        value, prev_source = cached
+        return FetchResult(
+            "I-D5-003", value, target_date.isoformat(),
+            simulated=False, source=f"cache (laatst succesvol: {prev_source})",
+        )
+
+    # Mock (GDELT + cache leeg) — in de GDELT-volume-schaal (~0.05-0.26)
     return FetchResult(
-        "I-D5-003", min(total, 15.0), target_date.isoformat(),
-        simulated=True,
-        source="mock (RSS-feeds onbereikbaar, score uit events.json)",
+        "I-D5-003", 0.1, target_date.isoformat(),
+        simulated=True, source="mock (GDELT timelinevol + cache leeg)",
     )
