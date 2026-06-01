@@ -1,5 +1,5 @@
 import type { ConditionLevel, DailyOutput } from "../types";
-import { buildContext, buildCnDescription, buildPercentileLine } from "../lib/explainer";
+import { buildContext, buildPercentileLine } from "../lib/explainer";
 
 const LEVEL_KICKER: Record<ConditionLevel, string> = {
   1: "LAAG",
@@ -16,7 +16,6 @@ export function ConditionLevelDisplay({
 }) {
   const ctx = buildContext(data);
   const cn = ctx.cn as ConditionLevel;
-  const cnDescription = buildCnDescription(ctx);
   const percentileLine = buildPercentileLine(ctx);
 
   return (
@@ -39,7 +38,6 @@ export function ConditionLevelDisplay({
           <div className="cn-kicker">{LEVEL_KICKER[cn]}</div>
         </div>
       </div>
-      <p className="cn-description">{cnDescription}</p>
       <div className="cn-secondary">
         <span>{percentileLine}</span>
       </div>
