@@ -42,14 +42,14 @@ export function HeroBanner({ weekIso, today, lastRunTime }: Props) {
         <div className="intro-eyebrow">Stressor-Blootstellings-Index</div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
         <p className="intro-lead">
-          Een uurlijkse meting van 10 kern-indicatoren die op de hele bevolking
+          Een dagelijkse meting van de kern-indicatoren die op de hele bevolking
           inwerken. Niet voor jou persoonlijk. Voor het hele land.
         </p>
         <div className="intro-meta">
           Barometer · {weekIso} · {today}
         </div>
         <div className="intro-note">
-          De Stressindex wordt elk uur gecontroleerd en bijgestuurd · laatst om {lastRunTime}
+          De Stressindex wordt elke dag gecontroleerd en bijgestuurd · laatst om {lastRunTime}
         </div>
       </div>
     </header>

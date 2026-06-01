@@ -9,6 +9,7 @@ import { TopInfluences } from "./components/TopInfluences";
 import { HeroBanner } from "./components/HeroBanner";
 import { LHALogo } from "./components/LHALogo";
 import { ButtonPanels } from "./components/ButtonPanels";
+import { enrichKern } from "./lib/explainer";
 import { FOOTER_NOTES } from "./copy";
 
 export function App() {
@@ -89,7 +90,13 @@ export function App() {
 
         <CallToAction tier={data.tier.current} brandSafety={data.brand_safety.flag} />
 
-        <TopInfluences breakdown={data.indicator_breakdown} />
+        <TopInfluences
+          breakdown={
+            data.v04
+              ? data.v04.kern_breakdown.map((k) => enrichKern(k, data.indicator_breakdown))
+              : data.indicator_breakdown
+          }
+        />
 
         <ButtonPanels data={data} sparkline={sparkline} />
       </main>

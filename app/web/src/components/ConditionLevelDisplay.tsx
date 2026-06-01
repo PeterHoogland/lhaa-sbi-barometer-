@@ -14,8 +14,8 @@ export function ConditionLevelDisplay({
 }: {
   data: DailyOutput;
 }) {
-  const cn = data.condition_level.value;
   const ctx = buildContext(data);
+  const cn = ctx.cn as ConditionLevel;
   const cnDescription = buildCnDescription(ctx);
   const percentileLine = buildPercentileLine(ctx);
 
@@ -37,9 +37,6 @@ export function ConditionLevelDisplay({
         </div>
         <div className="cn-side">
           <div className="cn-kicker">{LEVEL_KICKER[cn]}</div>
-          {cn >= 3 && cn <= 4 && (
-            <div className="cn-meta">Dag {data.tier.days_in_tier} op rij</div>
-          )}
         </div>
       </div>
       <p className="cn-description">{cnDescription}</p>

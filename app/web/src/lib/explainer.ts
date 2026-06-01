@@ -2,10 +2,15 @@
  * Context-bewuste tekstgenerator voor de barometer.
  * Bouwt headline + body uit DailyOutput.
  *
- * Taalregister: neutraal informerend, 15-jarig begripbaar.
- * Geen marketing-toon, geen "u/jij" attributies, geen klinische taal (doc 09).
+ * "Kern wordt de kop" (2026-06): de publieke kop draait nu op de v0.4-KERN.
+ * De CN (1-5) komt DIRECT uit het kern-percentiel (instant) — geen sustained-
+ * na-ijling, dus de kop kan niet "verhoogd" tonen op een historisch kalme dag.
+ * De v0.2-24-indicatoren-meting blijft als fallback wanneer er geen v04-blok is.
+ *
+ * Taalregister: neutraal informerend, 15-jarig begripbaar. Geen "u/jij", geen
+ * klinische taal (doc 09).
  */
-import type { DailyOutput, IndicatorBreakdown } from "../types";
+import type { DailyOutput, IndicatorBreakdown, IndicatorState, KernBreakdown } from "../types";
 
 export interface ExplainerContext {
   cn: number;
@@ -20,7 +25,81 @@ export interface ExplainerContext {
   brandSafetyReason: string | null;
 }
 
+/** v0.4-kop: CN 1-5 direct uit het kern-percentiel (instant, geen na-ijling). */
+function v04ConditionLevel(percentile: number, brandSafety: string): number {
+  if (brandSafety !== "normal") return 5;
+  if (percentile >= 90) return 4; // rood — uitzonderlijk
+  if (percentile >= 60) return 3; // oranje — verhoogd
+  if (percentile >= 40) return 2; // gemiddeld
+  return 1; // laag
+}
+
+function kernStateToV02(s: KernBreakdown["state"]): IndicatorState {
+  if (s === "rood") return "extreem";
+  if (s === "verhoogd") return "verhoogd";
+  if (s === "ontbreekt") return "ontbreekt";
+  return "normaal";
+}
+
+/**
+ * Verrijk een kern-indicator met de v0.2-velden (why/reads/references) via code-match,
+ * zodat de bestaande UI-componenten (TopInfluences) er ongewijzigd mee werken.
+ */
+export function enrichKern(k: KernBreakdown, v02: IndicatorBreakdown[]): IndicatorBreakdown {
+  const base = v02.find((b) => b.code === k.code);
+  return {
+    code: k.code,
+    domain: k.domain,
+    plain_name: k.plain_name,
+    why: base?.why ?? "",
+    reads: base?.reads ?? "",
+    unit: base?.unit ?? "",
+    raw_value: k.raw_value,
+    z_short: k.z_lang,
+    contribution: k.contribution_meting,
+    state: kernStateToV02(k.state),
+    source: base?.source ?? k.data_source.name,
+    simulated: k.simulated,
+    data_source: k.data_source,
+    references: base?.references ?? [],
+    observation_date: k.observation_date,
+    demographic_reach: base?.demographic_reach ?? 0,
+    reach_rationale: base?.reach_rationale ?? "",
+  };
+}
+
 export function buildContext(data: DailyOutput): ExplainerContext {
+  if (data.v04) return buildContextV04(data, data.v04);
+  return buildContextV02(data);
+}
+
+/** Kern als hoofd-meting (de publieke kop). */
+function buildContextV04(data: DailyOutput, v04: NonNullable<DailyOutput["v04"]>): ExplainerContext {
+  const kern = v04.kern_breakdown;
+  const available = kern.filter((k) => k.state !== "ontbreekt");
+  const elevated = available.filter((k) => k.state === "verhoogd" || k.state === "rood");
+  const extreme = available.filter((k) => k.state === "rood");
+  const lower = available.filter((k) => (k.percentile_lang ?? 50) < 40);
+  const topContributors = [...available]
+    .sort((a, b) => Math.abs(b.contribution_meting) - Math.abs(a.contribution_meting))
+    .slice(0, 3)
+    .map((k) => enrichKern(k, data.indicator_breakdown));
+  return {
+    cn: v04ConditionLevel(v04.percentile.lang, data.brand_safety.flag),
+    percentile: v04.percentile.lang,
+    daysInTier: v04.tier.days_in_tier,
+    elevatedCount: elevated.length,
+    extremeCount: extreme.length,
+    lowerCount: lower.length,
+    totalAvailable: available.length,
+    topContributors,
+    brandSafety: data.brand_safety.flag,
+    brandSafetyReason: data.brand_safety.reason,
+  };
+}
+
+/** Fallback: de oorspronkelijke v0.2-24-indicatoren-meting. */
+function buildContextV02(data: DailyOutput): ExplainerContext {
   const breakdown = data.indicator_breakdown;
   const available = breakdown.filter((b) => b.state !== "ontbreekt");
   const elevated = available.filter((b) => b.state === "verhoogd" || b.state === "extreem");
@@ -60,10 +139,10 @@ export function buildHeadline(ctx: ExplainerContext): string {
     return `Vandaag staan ${ctx.elevatedCount} signalen iets boven gemiddeld.`;
   }
   if (ctx.cn === 3) {
-    return `Al ${ctx.daysInTier} dagen op rij meerdere signalen hoger dan gewoonlijk.`;
+    return "Meerdere kern-signalen staan hoger dan gewoonlijk.";
   }
   if (ctx.cn === 4) {
-    return `Al ${ctx.daysInTier} dagen op rij in de top-10% van de laatste twee jaar.`;
+    return "De kern-meting staat in de top van de laatste twee jaar.";
   }
   return "Iets gevoeligs is gaande.";
 }
@@ -77,25 +156,25 @@ export function buildBody(ctx: ExplainerContext): string {
 
   if (ctx.cn === 1) {
     if (ctx.percentile === 0) {
-      return `Geen van de ${ctx.totalAvailable} indicatoren staat hoger dan gewoonlijk. Sinds twee jaar zijn er geen kalmere dagen geregistreerd.`;
+      return `Geen van de ${ctx.totalAvailable} kern-signalen staat hoger dan gewoonlijk. Sinds twee jaar zijn er geen kalmere dagen geregistreerd.`;
     }
     if (ctx.percentile < 30) {
       return `${ctx.lowerCount} signalen onder gemiddeld, geen enkele hoger dan gewoonlijk. We zitten lager dan op ${100 - ctx.percentile}% van de afgelopen twee jaar.`;
     }
-    return `Geen van de ${ctx.totalAvailable} indicatoren staat hoger dan gewoonlijk. We zitten lager dan op ${100 - ctx.percentile}% van de afgelopen twee jaar.`;
+    return `Geen van de ${ctx.totalAvailable} kern-signalen staat hoger dan gewoonlijk. We zitten lager dan op ${100 - ctx.percentile}% van de afgelopen twee jaar.`;
   }
 
   if (ctx.cn === 2) {
     if (ctx.elevatedCount === 0) {
-      return `Niets bijzonders te melden. ${ctx.totalAvailable} signalen blijven binnen de gemiddelde zone.`;
+      return `Niets bijzonders te melden. De ${ctx.totalAvailable} kern-signalen blijven binnen de gemiddelde zone.`;
     }
     const lead = describeTop(ctx.topContributors, 1);
-    return `${lead} Voor banner-activatie zouden meerdere signalen tegelijk hoger moeten staan, drie dagen op rij.`;
+    return `${lead} Voor banner-activatie zouden meerdere signalen tegelijk hoger moeten staan.`;
   }
 
   if (ctx.cn === 3) {
     const lead = describeTop(ctx.topContributors, 3);
-    return `${lead} Sinds ${ctx.daysInTier} dagen op rij is dat zo. Banner-activatie loopt: statistisch een geschikt moment voor extra herstel.`;
+    return `${ctx.elevatedCount} van de ${ctx.totalAvailable} kern-signalen staan hoger dan gewoonlijk. ${lead} Statistisch een geschikt moment voor extra herstel.`;
   }
 
   if (ctx.cn === 4) {
@@ -136,18 +215,18 @@ export function buildCnDescription(ctx: ExplainerContext): string {
   }
   if (ctx.cn === 1) {
     if (ctx.percentile === 0) {
-      return `Alle ${ctx.totalAvailable} signalen onder of binnen gemiddeld. Historisch lage dag.`;
+      return `Alle ${ctx.totalAvailable} kern-signalen onder of binnen gemiddeld. Historisch lage dag.`;
     }
-    return `Geen van de ${ctx.totalAvailable} indicatoren hoger dan gewoonlijk.`;
+    return `Geen van de ${ctx.totalAvailable} kern-signalen hoger dan gewoonlijk.`;
   }
   if (ctx.cn === 2) {
     if (ctx.elevatedCount === 0) {
-      return `Alle ${ctx.totalAvailable} signalen binnen gemiddeld.`;
+      return `Alle ${ctx.totalAvailable} kern-signalen binnen gemiddeld.`;
     }
     return `${ctx.elevatedCount} signaal${ctx.elevatedCount === 1 ? "" : "en"} hoger dan gewoonlijk, ${ctx.totalAvailable - ctx.elevatedCount} binnen gemiddeld.`;
   }
   if (ctx.cn === 3) {
-    return `${ctx.elevatedCount} van de ${ctx.totalAvailable} signalen hoger dan gewoonlijk, ${ctx.daysInTier} dagen op rij. Banner-activatie loopt.`;
+    return `${ctx.elevatedCount} van de ${ctx.totalAvailable} kern-signalen hoger dan gewoonlijk. Banner-activatie loopt.`;
   }
   if (ctx.cn === 4) {
     return `${ctx.elevatedCount} signalen hoger dan gewoonlijk, ${ctx.extremeCount} in de hoogste zone. Banner-activatie verhoogd.`;
