@@ -226,10 +226,10 @@ export function buildCnDescription(ctx: ExplainerContext): string {
     return `${ctx.elevatedCount} signaal${ctx.elevatedCount === 1 ? "" : "en"} hoger dan gewoonlijk, ${ctx.totalAvailable - ctx.elevatedCount} binnen gemiddeld.`;
   }
   if (ctx.cn === 3) {
-    return `${ctx.elevatedCount} van de ${ctx.totalAvailable} kern-signalen hoger dan gewoonlijk. Banner-activatie loopt.`;
+    return `${ctx.elevatedCount} van de ${ctx.totalAvailable} kern-signalen hoger dan gewoonlijk.`;
   }
   if (ctx.cn === 4) {
-    return `${ctx.elevatedCount} signalen hoger dan gewoonlijk, ${ctx.extremeCount} in de hoogste zone. Banner-activatie verhoogd.`;
+    return `${ctx.elevatedCount} signalen hoger dan gewoonlijk, ${ctx.extremeCount} in de hoogste zone.`;
   }
   return "";
 }

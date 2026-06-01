@@ -4,7 +4,6 @@ import { CallToAction } from "./components/CallToAction";
 import { BrandSafetyBanner } from "./components/BrandSafetyBanner";
 import { ConditionLevelDisplay } from "./components/ConditionLevelDisplay";
 import { PreviewPage } from "./components/PreviewPage";
-import { PlainExplainer } from "./components/PlainExplainer";
 import { TopInfluences } from "./components/TopInfluences";
 import { HeroBanner } from "./components/HeroBanner";
 import { LHALogo } from "./components/LHALogo";
@@ -85,8 +84,6 @@ export function App() {
 
       <main>
         <ConditionLevelDisplay data={data} />
-
-        <PlainExplainer data={data} />
 
         <CallToAction tier={data.tier.current} brandSafety={data.brand_safety.flag} />
 
