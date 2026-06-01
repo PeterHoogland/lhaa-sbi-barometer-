@@ -1,37 +1,37 @@
 {
   "I-D1-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T13:46:27.459434",
+    "fetched_at": "2026-06-01T14:00:15.450532",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 7.85
   },
   "I-D1-010": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T13:46:27.863000",
+    "fetched_at": "2026-06-01T14:00:16.026384",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 15.887500000000001
   },
   "I-D2-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T13:46:29.783695",
+    "fetched_at": "2026-06-01T14:00:20.867450",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D3-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T13:46:31.244573",
+    "fetched_at": "2026-06-01T14:00:23.863100",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 131.92000000000002
   },
   "I-D3-003S": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T13:51:10.660845",
-    "source": "Ontslag-radar: 10 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen, ~1300 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 10.0
+    "fetched_at": "2026-06-01T14:05:11.059336",
+    "source": "Ontslag-radar: 9 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen, ~1300 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 9.0
   },
   "I-D3-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T13:46:33.817451",
+    "fetched_at": "2026-06-01T14:00:27.466038",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.005241141553355
   },
@@ -43,7 +43,7 @@
   },
   "I-D5-002": {
     "date": "2026-05-31",
-    "fetched_at": "2026-06-01T13:48:07.232136",
+    "fetched_at": "2026-06-01T14:02:09.841304",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.124
   },
