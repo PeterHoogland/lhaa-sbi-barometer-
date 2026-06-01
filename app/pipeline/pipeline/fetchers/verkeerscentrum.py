@@ -17,13 +17,22 @@ Bevestigd via deep-research (juni 2026); de datacatalogus verwijst voor
 automatische toegang naar wegen.verkeer@mow.vlaanderen.be.
 
 De officiële JAARGEMIDDELDEN zijn wél citeerbaar en betrouwbaar. Daarmee wordt
-verkeer een TRAGE grondlast-indicator (niveau, geen dagelijkse spike) — net als
-brandstof en inflatie. Zie kern.ts (klasse "traag" + ACHTERGROND_CODES).
+verkeer een TRAGE grondlast-indicator — net als brandstof en inflatie. Zie
+kern.ts (klasse "traag" + ACHTERGROND_CODES).
 
-EERLIJKE BEPERKING: jaargemiddelden, geen dagwaarden. Tussen jaarrapporten houdt
-de indicator het laatste gekende jaargemiddelde vast (zoals inflatie haar laatste
-maandprint vasthoudt). Methodebreuk in 2024 (nieuwe rekenmethode) — niet 1-op-1
-met 2013-2023; de MAD-normalisatie is robuust tegen dat ene punt.
+YoY-AMENDEMENT (2026-06, pre-registratie doc 00 §13 grond A2): we scoren niet
+langer het NIVEAU maar de JAAR-OP-JAAR-VERANDERING (% t.o.v. vorig jaar). Reden:
+filezwaarte heeft een sterke opwaartse trend (604→952, +58%), en een MAD-Z op het
+niveau veronderstelt een STATIONAIRE reeks. Bij een stijgende reeks is het nieuwste
+jaar bijna altijd het hoogste → permanent "uitzonderlijk hoog" (z_lang ~4,4) — een
+artefact van de trend, geen signaal. De verandering (2024 = +12,7%) is wél eerlijk:
+"groeit de file-druk abnormaal snel?" → z ~0,3 (gewoon). De prijs van deze keuze:
+we meten niet langer het absolute recordniveau als grondlast, enkel de abnormale groei.
+
+EERLIJKE BEPERKING: jaarcijfers, geen dagwaarden. Tussen jaarrapporten houdt de
+indicator de laatst gekende jaar-op-jaar-groei vast (zoals inflatie haar laatste
+maandprint vasthoudt). Methodebreuk in 2024 (nieuwe rekenmethode) — een stuk van de
++12,7% is methode, niet extra file; de MAD-normalisatie is robuust tegen dat punt.
 
 Bron: Jaarrapport Verkeersindicatoren Snelwegen Vlaanderen 2024, Tabel 10
 (jaargemiddelde filezwaarte Vlaanderen, km·uur/werkdag, volledige dag 0-24u).
@@ -63,16 +72,23 @@ def latest_year() -> int:
     return max(ANNUAL_FILEZWAARTE)
 
 
-def fetch_traffic_load(target_date: date) -> FetchResult:
-    """Geef het laatst gekende jaargemiddelde filezwaarte terug.
+def yoy_growth(year: int) -> float:
+    """Jaar-op-jaar % verandering van de filezwaarte voor `year` (t.o.v. year-1)."""
+    prev = ANNUAL_FILEZWAARTE[year - 1]
+    return (ANNUAL_FILEZWAARTE[year] - prev) / prev * 100.0
 
-    Geen netwerk-call: de officiële reeks is niet machine-leesbaar, dus we houden
-    het laatst gepubliceerde jaarcijfer vast tot een nieuw jaarrapport in
-    ANNUAL_FILEZWAARTE wordt ingevoerd. observation_date = het meetjaar, zodat de
-    UI eerlijk toont dat dit een jaarmaat is (niet de dag van vandaag).
+
+def fetch_traffic_load(target_date: date) -> FetchResult:
+    """Geef de laatst gekende JAAR-OP-JAAR-VERANDERING van de filezwaarte terug (%).
+
+    Geen netwerk-call: de officiële reeks is niet machine-leesbaar, dus we houden de
+    laatst gepubliceerde jaargroei vast tot een nieuw jaarrapport in ANNUAL_FILEZWAARTE
+    wordt ingevoerd. We scoren de VERANDERING, niet het niveau (zie YoY-amendement in de
+    module-docstring). observation_date = het meetjaar, zodat de UI eerlijk toont dat dit
+    een jaarcijfer is (niet de dag van vandaag).
     """
     year = latest_year()
-    value = float(ANNUAL_FILEZWAARTE[year])
+    value = yoy_growth(year)
     return FetchResult(
         "I-D2-001",
         value,

@@ -73,10 +73,11 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     domain: "D2",
     grade: "A",
     inverseCoded: false,
-    // Pad A: officiële jaargemiddelde filezwaarte — een jaarmaat heeft geen
-    // sub-jaar-seizoen om weg te corrigeren, dus geen STL.
+    // Pad A v2 (YoY): we scoren de jaar-op-jaar % verandering van de officiële
+    // filezwaarte, niet het niveau (een stijgende reeks maakt het niveau permanent
+    // "extreem"). Geen sub-jaar-seizoen → geen STL.
     applyStl: false,
-    source: "Vlaams Verkeerscentrum (Jaarrapport — filezwaarte, km·uur/werkdag)",
+    source: "Vlaams Verkeerscentrum (Jaarrapport — filezwaarte, jaar-op-jaar % verandering)",
     deterministic: false,
   },
   "I-D2-004": {
