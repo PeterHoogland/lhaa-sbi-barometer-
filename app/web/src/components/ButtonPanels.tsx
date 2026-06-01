@@ -10,6 +10,7 @@ import { TierIndicator } from "./TierIndicator";
 import { PercentileDisplay } from "./PercentileDisplay";
 import { DomainContributions } from "./DomainContributions";
 import { MEDIA_DIAGNOSTIC } from "./Sections";
+import { V04Technical } from "./V04Technical";
 
 /**
  * De vijf in-page klap-knoppen onderaan de barometer.
@@ -69,6 +70,7 @@ export function ButtonPanels({ data }: { data: DailyOutput }) {
       sub: "Voor wetenschappers, journalisten en de adversariële reviewer",
       render: () => (
         <div className="technical-stack">
+          {data.v04 && <V04Technical v04={data.v04} />}
           <TierIndicator tier={data.tier.current} daysInTier={data.tier.days_in_tier} />
           <PercentileDisplay
             shortP={data.percentile.short_24m}

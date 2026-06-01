@@ -7,6 +7,7 @@ import { ConditionLevelDisplay } from "./components/ConditionLevelDisplay";
 import { PreviewPage } from "./components/PreviewPage";
 import { PlainExplainer } from "./components/PlainExplainer";
 import { TopInfluences } from "./components/TopInfluences";
+import { KernIndicators } from "./components/KernIndicators";
 import { HeroBanner } from "./components/HeroBanner";
 import { LHALogo } from "./components/LHALogo";
 import { ButtonPanels } from "./components/ButtonPanels";
@@ -91,6 +92,8 @@ export function App() {
         <CallToAction tier={data.tier.current} brandSafety={data.brand_safety.flag} />
 
         <TopInfluences breakdown={data.indicator_breakdown} />
+
+        {data.v04 && <KernIndicators v04={data.v04} />}
 
         <section className="panel sparkline-panel">
           <h2>Hoe was het de laatste 60 dagen?</h2>
