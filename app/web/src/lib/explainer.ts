@@ -69,7 +69,10 @@ export function enrichKern(k: KernBreakdown, v02: IndicatorBreakdown[]): Indicat
 }
 
 export function buildContext(data: DailyOutput): ExplainerContext {
-  if (data.v04) return buildContextV04(data, data.v04);
+  // §1.1 — één bron van waarheid: de v0.4-kern stuurt de publieke kop ALLEEN in
+  // live-modus. In test-modus (of zonder v04) is de v0.2-meting de enige publieke
+  // bron, zodat cijfer/label/banner nooit tegenstrijdig kunnen ogen (review §1.1).
+  if (data.v04 && data.v04.mode === "live") return buildContextV04(data, data.v04);
   return buildContextV02(data);
 }
 
