@@ -88,5 +88,32 @@
     "link": "https://www.bruzz.be/actua/samenleving/brusselse-brandweer-voert-26-interventies-uit-door-hevig-onweer-2026-05-31",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-01",
+    "magnitude": 1,
+    "title": "Man (78) overleden bij overstromingen na noodweer in Sombreffe, inwoners Nijvel zitten zonder drinkwater",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/01/84099f0c-521e-422e-b516-456f5ae778d7.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-01",
+    "magnitude": 5,
+    "title": "Syrische man krijgt levenslang voor steekincident met terroristisch motief in Bielefeld",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2025/02/26/02336b6b-5cd6-4748-a450-47a33412672e.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-01",
+    "magnitude": 5,
+    "title": "Syrische man krijgt levenslang voor steekpartij met terroristisch motief in Duitsland",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/syrische-man-krijgt-levenslang-voor-steekpartij-met-terroristisch-motief-in-duitsland~a89f1d8b/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
