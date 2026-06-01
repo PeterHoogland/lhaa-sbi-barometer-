@@ -1,56 +1,56 @@
 {
   "I-D1-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T14:42:44.841592",
+    "fetched_at": "2026-06-01T15:14:46.259920",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 7.85
   },
   "I-D1-010": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T14:42:45.238508",
+    "fetched_at": "2026-06-01T15:14:46.854270",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 15.887500000000001
   },
   "I-D2-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T14:42:47.016016",
+    "fetched_at": "2026-06-01T15:14:52.191492",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D3-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T14:42:48.848149",
+    "fetched_at": "2026-06-01T15:14:54.285813",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 131.92000000000002
   },
   "I-D3-003S": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T14:46:58.784975",
+    "fetched_at": "2026-06-01T15:18:25.600389",
     "source": "Ontslag-radar: 9 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen, ~1300 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 9.0
   },
   "I-D3-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T14:42:51.083697",
+    "fetched_at": "2026-06-01T15:14:57.507626",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.005241141553355
   },
   "I-D5-001": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T14:24:19.421625",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 596/598 unieke artikels na dedup, 10 bronnen, poststratificatie): negativiteit jong +0.44 / midden +0.43 / ouder +0.59. Negatiefste headlines: «\"Kwaad opzet\": brand in gesloten shishabar in Merksem Op de Bredabaan in Merksem heeft afgelopen nacht een brand gewoed  · ▶ Zwangere vrouw in Nederlands asielcentrum hardhandig tegen de grond gewerkt: veel kritiek op aanpak politie · Stakingen in Franstalig onderwijs zetten nu ook examens onder druk De geplande hervormingen in het Franstalig onderwijs »",
-    "value": 1.2601
+    "fetched_at": "2026-06-01T15:16:30.308991",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 597/599 unieke artikels na dedup, 10 bronnen, poststratificatie): negativiteit jong +0.26 / midden +0.23 / ouder +0.38. Negatiefste headlines: «\"Kwaad opzet\": brand in gesloten shishabar in Merksem Op de Bredabaan in Merksem heeft afgelopen nacht een brand gewoed  · ▶ Zwangere vrouw in Nederlands asielcentrum hardhandig tegen de grond gewerkt: veel kritiek op aanpak politie · Stakingen in Franstalig onderwijs zetten nu ook examens onder druk De geplande hervormingen in het Franstalig onderwijs »",
+    "value": 1.3064
   },
   "I-D5-002": {
     "date": "2026-05-31",
-    "fetched_at": "2026-06-01T14:44:13.884330",
+    "fetched_at": "2026-06-01T15:16:31.503509",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.124
   },
   "I-D5-003": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T14:46:08.561645",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 5 RSS-kandidaten naar pending voor menselijke review",
+    "fetched_at": "2026-06-01T15:17:32.987023",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 4 RSS-kandidaten naar pending voor menselijke review",
     "value": 0.0829
   },
   "I-D5-006S": {
