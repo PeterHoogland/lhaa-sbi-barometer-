@@ -1,57 +1,57 @@
 {
   "I-D1-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:32:37.883538",
+    "fetched_at": "2026-06-01T23:45:41.669968",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 7.85
   },
   "I-D1-010": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:32:38.320910",
+    "fetched_at": "2026-06-01T23:45:42.060220",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 16.129166666666666
   },
   "I-D2-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:32:39.623278",
+    "fetched_at": "2026-06-01T23:45:43.299566",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D3-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:32:41.387582",
+    "fetched_at": "2026-06-01T23:45:45.959664",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 131.92000000000002
   },
   "I-D3-003S": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:38:00.272494",
-    "source": "Ontslag-radar: 5 artikels met collectief-ontslag-thema in 8 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 5.0
+    "fetched_at": "2026-06-01T23:48:35.628232",
+    "source": "Ontslag-radar: 9 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen, ~500 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 9.0
   },
   "I-D3-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:32:44.444339",
+    "fetched_at": "2026-06-01T23:45:49.722000",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.005241141553355
   },
   "I-D5-001": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T18:42:19.659402",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 596/598 unieke artikels na dedup, 10 bronnen, poststratificatie): negativiteit jong +0.04 / midden +0.00 / ouder +0.07. Negatiefste headlines: «Stakingen in Franstalig onderwijs zetten nu ook examens onder druk De geplande hervormingen in het Franstalig onderwijs  · Drugsbende met plantages over heel het land veroordeeld na onderzoek Brusselse politie In Brussel is een drugsbende vero · Vrouw levensgevaarlijk gewond na steekpartij in Molenbeekse winkel In een winkel in de Jubelfeestlaan in Sint-Jans-Molen»",
-    "value": 1.2753
+    "fetched_at": "2026-06-01T23:47:01.004794",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 598/599 unieke artikels na dedup, 10 bronnen, poststratificatie): negativiteit jong +0.06 / midden +0.03 / ouder +0.06. Negatiefste headlines: «Dode en twee gewonden bij steekincident in Nederland, politie omsingelt gebouw · Stakingen in Franstalig onderwijs zetten nu ook examens onder druk De geplande hervormingen in het Franstalig onderwijs  · Drugsbende met plantages over heel het land veroordeeld na onderzoek Brusselse politie In Brussel is een drugsbende vero»",
+    "value": 1.2624
   },
   "I-D5-002": {
     "date": "2026-05-31",
-    "fetched_at": "2026-06-01T23:34:36.387819",
+    "fetched_at": "2026-06-01T23:47:02.025557",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.124
   },
   "I-D5-003": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:21:41.200222",
+    "fetched_at": "2026-06-01T23:47:46.140805",
     "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 1 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.075867
+    "value": 0.075133
   },
   "I-D5-006S": {
     "date": "2026-05-21",
