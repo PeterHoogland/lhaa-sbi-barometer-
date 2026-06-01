@@ -41,7 +41,7 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
           {
             key: "kern",
             label: "De kern van de meting",
-            sub: "De kern-indicatoren + achtergronddruk",
+            sub: "De kern-indicatoren + achtergrond druk",
             render: () => <KernIndicators v04={data.v04!} />,
           },
         ]
@@ -65,7 +65,7 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
     {
       key: "expert",
       label: "Expert view",
-      sub: "Alle indicatoren, hun Z-thermometer en het secundaire signalencircuit",
+      sub: "Alle metingen op een rij: hoe hoog of laag ze vandaag staan, plus de signalen die we apart in de gaten houden.",
       render: () => (
         <>
           <IndicatorList breakdown={data.indicator_breakdown} />

@@ -116,7 +116,9 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
   z-index: 1;
   display: flex;
   justify-content: center;
-  padding: 34px 32px 26px;
+  /* Genereuze hero-band (in de geest van plus.hautes-alpes.net, ~⅓ scherm):
+     meer berglucht boven het logo i.p.v. een krappe strip. */
+  padding: 104px 32px 56px;
 }
 .site-logo { display: inline-flex; }
 .site-logo img { display: block; height: 104px; width: auto; }

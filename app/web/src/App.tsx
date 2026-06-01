@@ -104,10 +104,6 @@ export function App() {
             <LHALogo size={52} />
             <div className="footer-mark-text">{FOOTER_NOTES.tagline}</div>
           </div>
-          <div className="footer-row muted small">{FOOTER_NOTES.ondersteunend}</div>
-          <div className="footer-row muted small">
-            Methodologie open. Code: open source. Pre-registratie via OSF.
-          </div>
         </div>
       </footer>
     </div>
