@@ -37,11 +37,6 @@ export function HeroBanner() {
           Een barometer voor collectieve blootstelling aan stressverhogende omstandigheden
         </div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
-        <p className="intro-lead">
-          Een dagelijkse meting van de kern-indicatoren die op de hele bevolking inwerken.
-          <br />
-          Niet voor jou persoonlijk. Voor het hele land.
-        </p>
       </div>
     </header>
   );
