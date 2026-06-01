@@ -115,13 +115,21 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
   position: relative;
   z-index: 1;
   display: flex;
-  justify-content: center;
-  /* Genereuze hero-band (in de geest van plus.hautes-alpes.net, ~⅓ scherm):
-     meer berglucht boven het logo i.p.v. een krappe strip. */
-  padding: 104px 32px 56px;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  /* 175px hoog — gelijk aan de header van hautes-alpes.net (logo 56px). */
+  padding: 46px 32px 45px;
 }
 .site-logo { display: inline-flex; }
-.site-logo img { display: block; height: 104px; width: auto; }
+.site-logo img { display: block; height: 56px; width: auto; }
+/* Slogan onder het logo bovenaan (zelfde tekst als in de footer). */
+.hero-tagline {
+  font-family: var(--f-sans);
+  font-size: 0.84rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.85);
+}
 /* dunne scheidingslijn onder het logo, volle breedte */
 .hero-rule {
   position: relative;
@@ -185,7 +193,8 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.9);
   margin: 18px auto 0;
-  max-width: 48ch;
+  /* breder → de zin past op max 2 regels i.p.v. 3 */
+  max-width: 40rem;
   text-wrap: balance;
 }
 .intro-meta {
