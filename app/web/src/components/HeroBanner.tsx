@@ -34,7 +34,7 @@ export function HeroBanner({ weekIso, today, lastRunTime }: Props) {
           rel="noopener noreferrer"
           aria-label="Hautes-Alpes"
         >
-          <LHALogo size={56} />
+          <LHALogo size={112} />
         </a>
         <div className="hero-tagline">Natuurlijk in het hart van de Alpen.</div>
       </div>
@@ -43,8 +43,9 @@ export function HeroBanner({ weekIso, today, lastRunTime }: Props) {
         <div className="intro-eyebrow">Stressor-Blootstellings-Index</div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
         <p className="intro-lead">
-          Een dagelijkse meting van de kern-indicatoren die op de hele bevolking
-          inwerken. Niet voor jou persoonlijk. Voor het hele land.
+          Een dagelijkse meting van de kern-indicatoren die op de hele bevolking inwerken.
+          <br />
+          Niet voor jou persoonlijk. Voor het hele land.
         </p>
         <div className="intro-meta">
           Barometer · {weekIso} · {today}
