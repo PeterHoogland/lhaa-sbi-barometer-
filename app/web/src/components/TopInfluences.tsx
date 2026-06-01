@@ -6,8 +6,12 @@ import { stateColor, stateLabel } from "./indicator-utils";
  * 15-jarig taalniveau.
  */
 export function TopInfluences({ breakdown }: { breakdown: IndicatorBreakdown[] }) {
+  // Trage/structurele grondlast-indicatoren horen niet in de "vandaag"-lijst:
+  // ze bewegen op jaar-/maandschaal, maar lezen met een live-klinkend label
+  // alsof er nú iets verandert. Energie (I-D3-002, dagprijs) blijft wél staan.
+  const SLOW = new Set(["I-D2-001", "I-D2-004", "I-D3-001"]); // verkeer (jaar), brandstof (maand), inflatie (maand)
   const top = [...breakdown]
-    .filter((b) => b.state !== "ontbreekt")
+    .filter((b) => b.state !== "ontbreekt" && !SLOW.has(b.code))
     .sort((a, b) => Math.abs(b.contribution) - Math.abs(a.contribution))
     .slice(0, 3);
 
