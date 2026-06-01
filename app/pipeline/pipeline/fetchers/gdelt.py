@@ -179,6 +179,53 @@ def gdelt_tone_series(start: date, end: date) -> list[dict] | None:
     return out or None
 
 
+# --- I-D5-003 herdefinitie: GDELT-gebeurtenis-intensiteit (zware neg. thema's) ---
+# GKG-thema's voor "grote negatieve collectieve gebeurtenis". Volume-intensiteit
+# (mode=timelinevol) = % van de Belgische mediadekking dat hierover gaat.
+GDELT_EVENT_THEMES = (
+    "(theme:WAR OR theme:ARMEDCONFLICT OR theme:TERROR OR theme:KILL "
+    "OR theme:NATURAL_DISASTER OR theme:MANMADE_DISASTER OR theme:CRISISLEX_CRISISLEXREC)"
+)
+
+
+def gdelt_event_series(start: date, end: date) -> list[dict] | None:
+    """Dagelijkse GDELT-volume-intensiteit van zware negatieve gebeurtenissen in
+    BE-nieuws tussen start en end. Return [{"date","value"}] of None.
+
+    value = volume-intensiteit (% mediadekking) van de zwaar-negatieve thema's —
+    een proxy voor "grote collectieve gebeurtenis" (I-D5-003), backfillbaar tot
+    ~2017. Zelfde API/parsing als gdelt_tone_series.
+    """
+    import urllib.parse as _up
+    query = f"sourcecountry:BE {GDELT_EVENT_THEMES}"
+    url = (
+        f"{GDELT_DOC_URL}?query={_up.quote(query)}"
+        f"&mode=timelinevol&format=json"
+        f"&startdatetime={start.strftime('%Y%m%d000000')}"
+        f"&enddatetime={end.strftime('%Y%m%d235959')}"
+    )
+    ok, body = safe_request(url, timeout=60, retries=3, retry_delay=10)
+    if ok and isinstance(body, str) and (
+        "limit requests" in body.lower() or "too many" in body.lower()
+    ):
+        return None
+    if not ok or not isinstance(body, dict):
+        return None
+    timeline = body.get("timeline", [])
+    if not timeline:
+        return None
+    series = timeline[0]
+    out: list[dict] = []
+    for pt in series.get("data", []):
+        raw_date = str(pt.get("date", ""))
+        try:
+            iso = datetime.strptime(raw_date[:8], "%Y%m%d").strftime("%Y-%m-%d")
+            out.append({"date": iso, "value": round(float(pt["value"]), 6)})
+        except (ValueError, KeyError, TypeError):
+            continue
+    return out or None
+
+
 def fetch_news_negativity(target_date: date) -> FetchResult:
     # RSS-controle-meting: demografisch gesegmenteerde lezing (los van de schaal
     # die de composiet aanstuurt — puur descriptief in de bronvermelding).

@@ -62,14 +62,18 @@ export function loadFactor(achtergrondValue: number, k = LOAD_K): number {
  * kalibratie van de NOG-NIET-bevroren v0.4-laag (spec §8), niet van de
  * pre-geregistreerde v0.2-tier — die blijft onveranderd meelopen.
  *
- *   oranje : na 1 dag  ≥ P65
- *   rood   : na 2 dagen ≥ P90
+ *   oranje : na 1 dag ≥ P60
+ *   rood   : na 1 dag ≥ P85
  *   afschaling: na 2 dagen onder de drempel (hysteresis)
+ *
+ * Agressieve kalibratie (2026-06, op verzoek): drempels verlaagd en rood-sustained
+ * van 2 → 1 dag zodat de bezoeker duidelijk beweging ziet (~25-30% oranje/rood i.p.v.
+ * 16%). Blijft de v0.4-laag; de pre-geregistreerde v0.2-tier blijft onveranderd.
  */
-export const V04_AMBER_P = 65;
+export const V04_AMBER_P = 60;
 export const V04_AMBER_SUSTAIN = 1;
-export const V04_RED_P = 90;
-export const V04_RED_SUSTAIN = 2;
+export const V04_RED_P = 85;
+export const V04_RED_SUSTAIN = 1;
 export const V04_DECAY = 2;
 
 export function computeV04Tier(percentileHistory: number[]): { tier: Tier; daysInTier: number } {
