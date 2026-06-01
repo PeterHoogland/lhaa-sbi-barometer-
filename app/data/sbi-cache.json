@@ -1,37 +1,37 @@
 {
   "I-D1-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T18:41:11.298356",
+    "fetched_at": "2026-06-01T20:45:53.929886",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 7.85
   },
   "I-D1-010": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T18:41:11.702353",
+    "fetched_at": "2026-06-01T20:45:54.370266",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 15.887500000000001
   },
   "I-D2-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T18:41:12.658645",
+    "fetched_at": "2026-06-01T20:46:08.651690",
     "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
     "value": 2.0
   },
   "I-D3-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T18:41:14.217596",
+    "fetched_at": "2026-06-01T20:46:10.593566",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 131.92000000000002
   },
   "I-D3-003S": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T18:44:02.843448",
-    "source": "Ontslag-radar: 9 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen, ~544 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "fetched_at": "2026-06-01T20:49:54.440250",
+    "source": "Ontslag-radar: 9 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen, ~500 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 9.0
   },
   "I-D3-009": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T18:41:16.462175",
+    "fetched_at": "2026-06-01T20:46:13.710072",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.005241141553355
   },
@@ -43,15 +43,15 @@
   },
   "I-D5-002": {
     "date": "2026-05-31",
-    "fetched_at": "2026-06-01T18:42:19.854660",
+    "fetched_at": "2026-06-01T20:47:44.212789",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.124
   },
   "I-D5-003": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-01T18:43:15.434995",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 3 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.079367
+    "fetched_at": "2026-06-01T20:49:08.964878",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 2 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.078
   },
   "I-D5-006S": {
     "date": "2026-05-21",
