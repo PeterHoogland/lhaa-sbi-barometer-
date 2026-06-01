@@ -61,5 +61,32 @@
     "link": "https://www.bruzz.be/actua/samenleving/brusselse-brandweer-voert-26-interventies-uit-door-hevig-onweer-2026-05-31",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-01",
+    "magnitude": 1,
+    "title": "Noodweer velt eeuwenoude olm in Kruidtuin: Leuven plant herdenkingsmoment",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/01/33736bd7-e6f0-4680-9651-003b850190dc.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-01",
+    "magnitude": 1,
+    "title": "Leuvense fotograaf ziet levenswerk wegspoelen na plotse overstroming: \"Alles is weg\"",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/01/188a7e58-79c6-49d7-8bf6-6463753156a6.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-01",
+    "magnitude": 1,
+    "title": "Brusselse brandweer voert 26 interventies uit door hevig onweer",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/samenleving/brusselse-brandweer-voert-26-interventies-uit-door-hevig-onweer-2026-05-31",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
