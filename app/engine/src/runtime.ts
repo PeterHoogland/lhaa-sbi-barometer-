@@ -158,11 +158,17 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
   const evidence = computeComposite(zShort, "evidence");
   const withoutD5 = computeCompositeWithoutD5(zShort, "equal");
 
-  // Weegafhankelijkheids-diagnostiek (doc 05 §4 — informational, geen pass/fail)
+  // Weegafhankelijkheids-diagnostiek (doc 05 §4 — informational, geen pass/fail).
+  // Twee velden zijn (nog) NIET berekend → expliciet null + status, géén verzonnen
+  // getal dat een uitgevoerde meting suggereert (review §0-bis.1).
   const weightSensitivity = {
-    correlation_inverse_vs_equal_12w: 0.84, // placeholder — vereist 12-weken historie van beide schema's
+    correlation_inverse_vs_equal_12w: null as number | null, // vereist 12w parallelle historie van beide gewichtschema's
     composite_range_with_dropouts: estimateDropoutRange(zShort),
-    bootstrap_95_ci_around_equal: estimateBootstrapCI(zShort, equal.composite),
+    bootstrap_95_ci_around_equal: null as [number, number] | null, // echte resample-bootstrap volgt later (§4.4)
+    status: {
+      correlation_inverse_vs_equal_12w: "not_computed" as const,
+      bootstrap_95_ci_around_equal: "not_computed" as const,
+    },
   };
 
   // [7] SIGNAL — percentiel uit 24m historie
@@ -252,15 +258,16 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
           round2(weightSensitivity.composite_range_with_dropouts[0]),
           round2(weightSensitivity.composite_range_with_dropouts[1]),
         ],
-        bootstrap_95_ci_around_equal: [
-          round2(weightSensitivity.bootstrap_95_ci_around_equal[0]),
-          round2(weightSensitivity.bootstrap_95_ci_around_equal[1]),
-        ],
+        bootstrap_95_ci_around_equal: weightSensitivity.bootstrap_95_ci_around_equal,
+        status: weightSensitivity.status,
       },
     },
     percentile: {
       short_24m: Math.round(percShort),
-      fixed_2010_2019: Math.round(percShort), // placeholder — vereist aparte fixed baseline
+      // Niet berekend: vereist een aparte vaste 2010–2019 baseline (review §0-bis.1).
+      // Geen kopie van short_24m onder een andere naam publiceren.
+      fixed_2010_2019: null,
+      fixed_2010_2019_status: "not_computed",
     },
     tier: {
       current: tierResult.tier,
@@ -349,13 +356,6 @@ function estimateDropoutRange(z: ZMap): [number, number] {
     composites.push(computeComposite(withoutDomain, "equal").composite);
   }
   return [Math.min(...composites), Math.max(...composites)];
-}
-
-function estimateBootstrapCI(z: ZMap, anchor: number): [number, number] {
-  // Vereenvoudigd: ±0.15 × |anchor| als heuristische 95% CI placeholder.
-  // Volledige Dirichlet-bootstrap vereist >= 1000 trekkingen — uit te voeren in pipeline.
-  const margin = Math.max(0.1, Math.abs(anchor) * 0.15);
-  return [anchor - margin, anchor + margin];
 }
 
 function buildPercentileHistory(

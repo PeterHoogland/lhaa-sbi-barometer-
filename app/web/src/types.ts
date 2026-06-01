@@ -56,14 +56,16 @@ export interface DailyOutput {
     evidence_graded: number;
     demographic: number;
     weight_sensitivity: {
-      correlation_inverse_vs_equal_12w: number;
+      correlation_inverse_vs_equal_12w: number | null;
       composite_range_with_dropouts: [number, number];
-      bootstrap_95_ci_around_equal: [number, number];
+      bootstrap_95_ci_around_equal: [number, number] | null;
+      status?: Record<string, "not_computed">;
     };
   };
   percentile: {
     short_24m: number;
-    fixed_2010_2019: number;
+    fixed_2010_2019: number | null;
+    fixed_2010_2019_status?: "not_computed";
   };
   tier: {
     current: Tier;

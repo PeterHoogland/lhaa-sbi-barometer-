@@ -1,6 +1,6 @@
 interface Props {
   shortP: number;
-  fixedP: number;
+  fixedP: number | null;
   composite: number;
   evidenceComposite: number;
   demographicComposite?: number;
@@ -32,10 +32,12 @@ export function PercentileDisplay({ shortP, fixedP, composite, evidenceComposite
             <span className="meta-value">{demographicComposite.toFixed(2)}</span>
           </div>
         )}
-        <div className="meta-row">
-          <span className="meta-key">Percentiel · 2010–2019 baseline</span>
-          <span className="meta-value">P {fixedP}</span>
-        </div>
+        {fixedP !== null && (
+          <div className="meta-row">
+            <span className="meta-key">Percentiel · 2010–2019 baseline</span>
+            <span className="meta-value">P {fixedP}</span>
+          </div>
+        )}
       </div>
 
       <div className="percentile-disclaimer">
