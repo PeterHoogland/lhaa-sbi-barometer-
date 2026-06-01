@@ -16,8 +16,6 @@ interface Props {
 export function HeroBanner({ weekIso, today, lastRunTime }: Props) {
   return (
     <header className="site-header">
-      <div className="hero-bg" aria-hidden="true" />
-      <div className="hero-tint" aria-hidden="true" />
       <a
         className="site-back"
         href="https://plus.hautes-alpes.net/"
