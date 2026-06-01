@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { DailyOutput, SparklinePoint } from "../types";
 import { Sparkline } from "./Sparkline";
+import { KernIndicators } from "./KernIndicators";
 import { IndicatorList } from "./IndicatorList";
 import { IndicatorZView } from "./IndicatorZView";
 import { SecondarySignals } from "./SecondarySignals";
@@ -35,6 +36,16 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
     sub: string;
     render: () => React.ReactNode;
   }> = [
+    ...(data.v04
+      ? [
+          {
+            key: "kern",
+            label: "De kern van de meting",
+            sub: "De scherpere v0.4-meting: kern-indicatoren + achtergronddruk",
+            render: () => <KernIndicators v04={data.v04!} />,
+          },
+        ]
+      : []),
     {
       key: "verloop",
       label: "Hoe was het de laatste 60 dagen?",
