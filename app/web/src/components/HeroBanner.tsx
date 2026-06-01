@@ -3,7 +3,6 @@ import { LHALogo } from "./LHALogo";
 interface Props {
   weekIso: string;
   today: string;
-  lastRunTime: string; // bv. "14:00"
 }
 
 /**
@@ -13,7 +12,7 @@ interface Props {
  *
  * v0.4: spreekt expliciet over 10 kern-indicatoren en uurlijkse bijstelling.
  */
-export function HeroBanner({ weekIso, today, lastRunTime }: Props) {
+export function HeroBanner({ weekIso, today }: Props) {
   return (
     <header className="site-header">
       <a
@@ -47,9 +46,6 @@ export function HeroBanner({ weekIso, today, lastRunTime }: Props) {
         </p>
         <div className="intro-meta">
           Barometer · {weekIso} · {today}
-        </div>
-        <div className="intro-note">
-          De Stressindex wordt elke dag gecontroleerd en bijgestuurd · laatst om {lastRunTime}
         </div>
       </div>
     </header>

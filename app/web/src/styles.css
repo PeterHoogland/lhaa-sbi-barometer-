@@ -358,6 +358,11 @@ main {
   font-family: var(--f-mono);
   font-weight: 500;
 }
+.cn-stamp {
+  text-align: right;
+  color: var(--lha-mist);
+  font-style: italic;
+}
 
 /* ============================================================
    PLAIN EXPLAINER
@@ -1401,16 +1406,6 @@ main {
 .code-block { background: var(--lha-stone); color: var(--lha-snow); padding: 16px 20px; border-radius: var(--rad); font-family: var(--f-mono); font-size: 0.78rem; overflow-x: auto; line-height: 1.6; }
 
 /* ============================================================
-   HERO — uurlijks bijgewerkt-noot
-   ============================================================ */
-.intro-note {
-  margin-top: 10px;
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.62);
-  font-style: italic;
-}
-
-/* ============================================================
    BUTTON-PANELS — 5 in-page klap-knoppen (v0.4)
    ============================================================ */
 .bp-section {
@@ -1709,6 +1704,8 @@ main {
   .cn-side { text-align: left; }
   .cn-kicker { font-size: 0.8rem; }
   .cn-secondary { font-size: 0.8rem; }
+  /* Stempel wikkelt onder de percentiel-regel; links uitlijnen i.p.v. rechts. */
+  .cn-stamp { text-align: left; }
 
   /* Smallere zijmarges op telefoon (was 32-40px). */
   main { padding: 0 16px 56px; }

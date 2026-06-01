@@ -11,8 +11,10 @@ const LEVEL_KICKER: Record<ConditionLevel, string> = {
 
 export function ConditionLevelDisplay({
   data,
+  lastRunTime,
 }: {
   data: DailyOutput;
+  lastRunTime: string;
 }) {
   const ctx = buildContext(data);
   const cn = ctx.cn as ConditionLevel;
@@ -40,6 +42,9 @@ export function ConditionLevelDisplay({
       </div>
       <div className="cn-secondary">
         <span>{percentileLine}</span>
+        <span className="cn-stamp">
+          De Stressindex werd gecontroleerd en bijgestuurd · laatst om {lastRunTime}
+        </span>
       </div>
     </section>
   );

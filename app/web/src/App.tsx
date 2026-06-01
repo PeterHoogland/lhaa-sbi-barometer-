@@ -76,14 +76,14 @@ export function App() {
 
   return (
     <div className={`app tier-${data.tier.current}`}>
-      <HeroBanner weekIso={data.week_iso} today={today} lastRunTime={lastRunTime} />
+      <HeroBanner weekIso={data.week_iso} today={today} />
 
       {data.brand_safety.flag !== "normal" && (
         <BrandSafetyBanner brandSafety={data.brand_safety} />
       )}
 
       <main>
-        <ConditionLevelDisplay data={data} />
+        <ConditionLevelDisplay data={data} lastRunTime={lastRunTime} />
 
         <CallToAction tier={data.tier.current} brandSafety={data.brand_safety.flag} />
 
