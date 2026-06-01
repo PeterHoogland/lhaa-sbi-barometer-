@@ -94,7 +94,9 @@ jobs:
         if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/web
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          # De Cloudflare API-token staat als repo-secret 'LESHAUTES'; we mappen 'm
+          # naar de env-var die wrangler verwacht (CLOUDFLARE_API_TOKEN).
+          CLOUDFLARE_API_TOKEN: ${{ secrets.LESHAUTES }}
         run: |
           # Primaire host: instant propagatie + correcte cache-headers (geen sticky
           # CDN-edge zoals Surge). Draait pas écht zodra CLOUDFLARE_API_TOKEN als
