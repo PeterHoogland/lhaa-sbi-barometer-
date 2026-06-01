@@ -90,7 +90,23 @@ jobs:
         working-directory: app/web
         run: npm run build
 
-      - name: Deploy to Surge.sh
+      - name: Deploy to Cloudflare (Workers static assets — primair)
+        if: steps.timecheck.outputs.skip != 'true'
+        working-directory: app/web
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          # Primaire host: instant propagatie + correcte cache-headers (geen sticky
+          # CDN-edge zoals Surge). Draait pas écht zodra CLOUDFLARE_API_TOKEN als
+          # secret gezet is; tot dan no-op zodat de workflow niet breekt. Daarna mag
+          # de Surge-stap hieronder weg (account_id staat in app/web/wrangler.jsonc).
+          if [ -n "$CLOUDFLARE_API_TOKEN" ]; then
+            npx --yes wrangler@4 deploy
+          else
+            echo "CLOUDFLARE_API_TOKEN niet gezet — Cloudflare-deploy overgeslagen (zet de secret om te activeren)."
+          fi
+
+      - name: Deploy to Surge.sh (tijdelijk vangnet — verwijderen na Cloudflare-cutover)
         if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/web
         env:
