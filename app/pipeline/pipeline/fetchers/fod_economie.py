@@ -133,6 +133,75 @@ def bestat_fuel_series() -> list[dict]:
     return [{"date": d, "value": v} for d, v in sorted(rows.items())]
 
 
+# ECB HICP brandstof-prijsINDEX (niveau, niet de yoy-rate), BE, maandelijks.
+# Volledige reeks tot 1996 — de echte, lange backfill-bron voor I-D2-004.
+ECB_FUEL_INDEX_URL = (
+    "https://data-api.ecb.europa.eu/service/data/ICP/M.BE.N.072200.4.INX"
+    "?format=jsondata"
+)
+
+
+def _parse_ecb_index_series(body: dict) -> list[tuple[str, float]]:
+    """ECB SDMX-jsondata → [(periode 'YYYY-MM', indexwaarde)], gesorteerd."""
+    try:
+        ds = body["dataSets"][0]
+        series = next(iter(ds["series"].values()))
+        obs = series["observations"]
+        periods = [v["id"] for v in body["structure"]["dimensions"]["observation"][0]["values"]]
+    except (KeyError, IndexError, StopIteration, TypeError):
+        return []
+    out: list[tuple[str, float]] = []
+    for idx, val in obs.items():
+        try:
+            i = int(idx)
+            v = float(val[0])
+        except (ValueError, TypeError, IndexError):
+            continue
+        if 0 <= i < len(periods):
+            out.append((periods[i], v))
+    out.sort(key=lambda x: x[0])
+    return out
+
+
+def ecb_fuel_eur_per_l_series() -> list[dict]:
+    """Maandelijkse €/l brandstof-historie, afgeleid van de ECB HICP-brandstofindex
+    (CP07.2.2, BE) en VERANKERD op het actuele be.STAT-pompprijsniveau. Zo krijgt
+    I-D2-004 een echte, lange (tot 1996), schaal-consistente baseline i.p.v. een
+    forward-geaccumuleerde of synthetische.
+
+        €/l(maand) = anker_€/l × index(maand) / index(laatste)
+
+    De historische €/l zijn HICP-afgeleide schattingen (geen geregistreerde
+    pompprijzen) — eerlijk te labelen, maar reëel van vorm en schaal.
+    Return [{date, value}] maandelijks, of [] bij fout.
+    """
+    ok, body = safe_request(
+        ECB_FUEL_INDEX_URL, timeout=40, retries=2, retry_delay=5.0,
+        headers={"Accept": "application/json"},
+    )
+    if not ok or not isinstance(body, dict):
+        return []
+    series = _parse_ecb_index_series(body)
+    if len(series) < 24:
+        return []
+    latest_index = series[-1][1]
+    if latest_index <= 0:
+        return []
+
+    # Anker: actuele be.STAT-pompprijs; val terug op de gecodeerde baseline.
+    anchor = EURO95_BASELINE_PER_L
+    bestat = _try_bestat()
+    if bestat is not None:
+        anchor = bestat[0]
+
+    rows: list[dict] = []
+    for period, idx_val in series:
+        eur = anchor * idx_val / latest_index
+        if 0.3 < eur < 6.0:  # scale-sanity €/l
+            rows.append({"date": f"{period}-01", "value": round(eur, 3)})
+    return rows
+
+
 def _try_ecb_fuel_hicp() -> tuple[float, float, str] | None:
     """Return (yoy_pct, eur_per_l_estimate, period) of None."""
     ok, body = safe_request(
