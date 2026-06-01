@@ -73,8 +73,10 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     domain: "D2",
     grade: "A",
     inverseCoded: false,
-    applyStl: true,
-    source: "Vlaams Verkeerscentrum",
+    // Pad A: officiële jaargemiddelde filezwaarte — een jaarmaat heeft geen
+    // sub-jaar-seizoen om weg te corrigeren, dus geen STL.
+    applyStl: false,
+    source: "Vlaams Verkeerscentrum (Jaarrapport — filezwaarte, km·uur/werkdag)",
     deterministic: false,
   },
   "I-D2-004": {

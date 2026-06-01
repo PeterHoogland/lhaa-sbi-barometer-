@@ -20,7 +20,7 @@
  */
 
 import type { IndicatorCode, DomainCode, BrandSafety } from "../types.js";
-import type { KernKlasse } from "../indicators/kern.js";
+import { ACHTERGROND_CODES, type KernKlasse } from "../indicators/kern.js";
 
 // --- Configuratie (vast, publiek; via backtest §8 gekalibreerd 2026-06) ---
 export const SPIKE_DREMPEL = 1.5; // MAD-eenheden dag-op-dag op de KORTE baseline
@@ -103,6 +103,15 @@ export interface EvaluateTriggersResult {
 }
 
 const NEWS_EVENT_CODES = new Set<string>(["I-D5-001", "I-D5-003"]);
+
+/**
+ * Grondlast-bronnen (§3.3) vuren geen eigen indicator.red (T2): ze LADEN de
+ * drempel via de load_factor. Lieten we ze ook zelf vuren, dan ontstaat een
+ * dubbeltelling — een grondlast-bron verlaagt de drempel die hem vervolgens
+ * vangt (precies wat we bij verkeer/filezwaarte zagen). Een grondlast-crisis
+ * komt naar buiten via T3 (composiet-niveau). Zie ACHTERGROND_CODES + addendum.
+ */
+const GRONDLAST_SET = new Set<string>(ACHTERGROND_CODES);
 
 function campaignHint(code: IndicatorCode | null, domain: DomainCode | null): CampaignHint {
   if (code === "I-D5-001" || code === "I-D5-003") return "brede_geruststelling";
@@ -187,8 +196,11 @@ export function evaluateTriggers(input: EvaluateTriggersInput): EvaluateTriggers
   }
 
   // --- Trigger 2 — Eén rood onderdeel (LANGE baseline-percentiel, P95) ---
+  // Grondlast-bronnen (§3.3) zijn uitgesloten: zij laden de drempel i.p.v. zelf
+  // te vuren. Een grondlast-crisis komt via T3 (composiet) naar buiten.
   const redThreshold = INDICATOR_RED_P * input.loadFactor;
   for (const c of input.perCore) {
+    if (GRONDLAST_SET.has(c.code)) continue;
     if (!(c.percentile_lang >= redThreshold)) continue;
     const key = `indicator.red:${c.code}`;
     const cdHours = COOLDOWN_H[c.klasse];

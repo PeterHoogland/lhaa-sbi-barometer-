@@ -23,7 +23,7 @@ export type KernKlasse = "direct" | "snel" | "traag";
 /** De 9 primaire kern-codes (HANDOVER §1), in volgorde van het document. */
 export const KERN_CODES: IndicatorCode[] = [
   "I-D5-001", // negatief nieuws (toon)         ⚡ direct
-  "I-D2-001", // verkeer & ongevallen           ⚡ direct
+  "I-D2-001", // verkeer (filezwaarte)           🐢 traag (Pad A)
   "I-D5-003", // oorlog / grote gebeurtenis      ⚡ direct
   "I-D5-002", // stress-zoekgedrag (Wikipedia)   ⚡ direct
   "I-D1-002", // hitte                           🔆 snel
@@ -42,7 +42,7 @@ export function isKern(code: string): code is IndicatorCode {
 /** Snelheidsklasse per kern-code (HANDOVER §1). */
 const KLASSE_MAP: Record<string, KernKlasse> = {
   "I-D5-001": "direct",
-  "I-D2-001": "direct",
+  "I-D2-001": "traag", // Pad A: filezwaarte is een trage grondlast-maat, geen dag-spike
   "I-D5-003": "direct",
   "I-D5-002": "direct",
   "I-D1-002": "snel",
@@ -79,11 +79,17 @@ export function snelheidsfactor(code: IndicatorCode): number {
  * achtergrond. De twee begrippen — trigger-snelheid en grondlast — zijn
  * gescheiden; dat is precies de v0.4-kerngedachte (zware trage bronnen laden
  * de drempel i.p.v. zelf te vuren).
+ *
+ * v0.4 Pad A (2026-06): verkeer (filezwaarte) is hier toegevoegd als structurele
+ * grondlast-bron. De filezwaarte staat op een historisch record (2024 = +57,6%
+ * t.o.v. 2013) en laadt dus de achtergrond, net als de economische grondlast.
+ * Amendement — zie MASTERDOCUMENT-v0.4-addendum.
  */
 export const ACHTERGROND_CODES: IndicatorCode[] = [
   "I-D3-002", // energie
   "I-D2-004", // brandstof
   "I-D3-001", // inflatie
+  "I-D2-001", // verkeer (filezwaarte) — Pad A: structurele grondlast
 ];
 
 /**

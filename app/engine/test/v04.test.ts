@@ -197,11 +197,12 @@ describe("Trigger-engine (v0.4 §4)", () => {
     expect(r.triggers.filter((t) => t.type === "indicator.spike")).toHaveLength(0);
   });
 
+  // NB: niet-grondlast-code (hitte) — grondlast-bronnen vuren geen eigen T2 (§3.3).
   const redCore = (pct: number): CoreTriggerInput => ({
-    code: "I-D3-001",
-    domain: "D3",
-    plain_name: "Inflatie",
-    klasse: "traag",
+    code: "I-D1-002",
+    domain: "D1",
+    plain_name: "Hitte",
+    klasse: "snel",
     z_kort: 0,
     z_lang: 3,
     delta_1d: 0,
@@ -216,6 +217,23 @@ describe("Trigger-engine (v0.4 §4)", () => {
     const t2 = boven.triggers.find((t) => t.type === "indicator.red");
     expect(t2).toBeDefined();
     expect(t2!.severity).toBe("hoog");
+  });
+
+  it("Grondlast-bron (§3.3 / Pad A) vuurt GÉÉN eigen indicator.red, ook op extreem percentiel", () => {
+    // Verkeer (filezwaarte) + brandstof zijn grondlast: ze laden de drempel,
+    // maar mogen niet zelf vuren (anders dubbeltelling). Een niet-grondlast-bron
+    // op hetzelfde percentiel vuurt wél — zo is de uitsluiting gericht, niet globaal.
+    const verkeer: CoreTriggerInput = {
+      code: "I-D2-001", domain: "D2", plain_name: "Filezwaarte", klasse: "traag",
+      z_kort: 0, z_lang: 4.4, delta_1d: 0, percentile_lang: 99,
+    };
+    const brandstof: CoreTriggerInput = {
+      code: "I-D2-004", domain: "D2", plain_name: "Brandstof", klasse: "traag",
+      z_kort: 0, z_lang: 4, delta_1d: 0, percentile_lang: 99,
+    };
+    const r = evaluateTriggers({ ...base, perCore: [verkeer, brandstof, redCore(99)] });
+    const reds = r.triggers.filter((t) => t.type === "indicator.red");
+    expect(reds.map((t) => t.code)).toEqual(["I-D1-002"]); // alleen de niet-grondlast-bron
   });
 
   it("T3 composiet: P70 → amber/let_op, P90 → red/hoog", () => {

@@ -133,8 +133,8 @@ function syntheticRawValue(code: IndicatorCode, date: Date): number {
       return Math.max(0, 5 - 8 * Math.cos(yearProg) + (Math.random() - 0.5) * 4);
     case "I-D1-004": // Luchtkwaliteit (ratio tov WHO)
       return 0.8 + 0.3 * Math.cos(yearProg) + (Math.random() - 0.5) * 0.3;
-    case "I-D2-001": // Filezwaarte (km·min)
-      return 6500 + 1500 * Math.cos(yearProg - 0.5) + (Math.random() - 0.5) * 1500;
+    case "I-D2-001": // Filezwaarte (km·uur/werkdag — officiële jaarmaat, Pad A)
+      return Math.max(0, 780 + 80 * Math.cos(yearProg - 0.5) + (Math.random() - 0.5) * 120);
     case "I-D2-004": // Brandstofprijs (€/l)
       return 1.85 + 0.15 * Math.sin(yearProg) + (Math.random() - 0.5) * 0.08;
     case "I-D3-001": // CPI yoy %

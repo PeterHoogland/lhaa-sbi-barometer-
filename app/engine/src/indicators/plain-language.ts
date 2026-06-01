@@ -78,8 +78,8 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   "I-D2-001": {
     plain: "Verkeersdrukte",
     why: "Lang in de file staan verhoogt stresshormonen.",
-    reads: "Hoeveel kilometer file × hoeveel minuten ze duurden, in de spits.",
-    unit: "km·min",
+    reads: "Filezwaarte: filelengte × fileduur, als jaargemiddelde per werkdag (de officiële maat van het Verkeerscentrum).",
+    unit: "km·uur/werkdag",
     dataSource: { name: "Vlaams Verkeerscentrum", url: "https://www.verkeerscentrum.be" },
     references: [
       { label: "Novaco, Stokols & Milanesi (1990): pendel en stress", url: "https://doi.org/10.1007/BF00931303" },
