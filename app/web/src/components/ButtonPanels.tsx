@@ -41,7 +41,7 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
           {
             key: "kern",
             label: "De kern van de meting",
-            sub: "De scherpere v0.4-meting: kern-indicatoren + achtergronddruk",
+            sub: "De kern-indicatoren + achtergronddruk",
             render: () => <KernIndicators v04={data.v04!} />,
           },
         ]
