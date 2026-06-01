@@ -21,6 +21,7 @@ import {
   percentileRank,
   computeConditionLevel,
   buildPercentileHistory,
+  computeDaily,
 } from "../src/index.js";
 
 describe("Z-scoring (doc 04 §7)", () => {
@@ -243,5 +244,24 @@ describe("buildPercentileHistory — lookahead-vrij (review §0-bis.2)", () => {
     );
     expect(ph[0]).toBe(50); // enige punt → midrank
     expect(ph[ph.length - 1]).toBeGreaterThan(ph[0]); // laatste = hoogste tot nu
+  });
+});
+
+describe("Onvoldoende historie → 'ontbreekt', niet 'normaal' (review §0-bis.3)", () => {
+  it("een indicator met < 30 historiepunten wordt uitgesloten en toont 'ontbreekt'", () => {
+    const thinHistory = Array.from({ length: 10 }, (_, i) => ({
+      date: `2026-05-${String(i + 1).padStart(2, "0")}`,
+      value: 100 + i,
+    }));
+    const out = computeDaily({
+      date: "2026-06-01",
+      rawValues: { "I-D2-001": 200 }, // verse waarde, maar te weinig baseline
+      history: { "I-D2-001": thinHistory },
+      compositeHistory: [],
+    });
+    const verkeer = out.indicator_breakdown.find((b) => b.code === "I-D2-001");
+    expect(verkeer?.state).toBe("ontbreekt"); // NIET "normaal"
+    expect(verkeer?.z_short).toBeNull();
+    expect(out.data_quality.indicators_missing).toContain("I-D2-001");
   });
 });

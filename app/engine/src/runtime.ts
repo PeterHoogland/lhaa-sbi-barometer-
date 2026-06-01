@@ -94,6 +94,14 @@ export interface DailyComputeInput {
   nowISO?: string;
 }
 
+/**
+ * Minimaal aantal historiepunten voor een betrouwbare v0.2-baseline-Z. Onder deze
+ * drempel scoren we de indicator NIET: hij wordt uitgesloten uit het composiet en
+ * krijgt state "ontbreekt" — i.p.v. een neutrale 0 die als "normaal" zou lezen
+ * (review §0-bis.3: dataschaarste mag geen geruststelling tonen).
+ */
+const MIN_HISTORY_FOR_Z = 30;
+
 export function computeDaily(input: DailyComputeInput): DailyOutput {
   // [1] EXTRACT — vul deterministische indicatoren altijd zelf in
   const today = new Date(input.date + "T12:00:00Z");
@@ -133,9 +141,11 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       }
     }
 
-    if (hist.length < 30) {
-      // Onvoldoende historie — output 0 om geen artificiële piek te genereren
-      zShort[code] = 0;
+    if (hist.length < MIN_HISTORY_FOR_Z) {
+      // Onvoldoende historie voor een betrouwbare baseline → behandel als ontbrekend
+      // (uitgesloten uit het composiet, state "ontbreekt"), NIET als neutrale 0 die
+      // als "normaal" zou lezen (review §0-bis.3).
+      missing.push(code);
       continue;
     }
 
