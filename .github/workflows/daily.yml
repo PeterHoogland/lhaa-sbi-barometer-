@@ -73,6 +73,11 @@ jobs:
       - name: Generate daily output (hybrid real + synthetic)
         if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/engine
+        env:
+          # Campagne-webhook (trigger-uitgang). Niet-gezet → dry-run (logt de
+          # payload, verstuurt niets). Zet via `gh secret set CAMPAIGN_WEBHOOK_URL`.
+          CAMPAIGN_WEBHOOK_URL: ${{ secrets.CAMPAIGN_WEBHOOK_URL }}
+          CAMPAIGN_WEBHOOK_TOKEN: ${{ secrets.CAMPAIGN_WEBHOOK_TOKEN }}
         run: npm run generate-fixture
 
       - name: Install web deps

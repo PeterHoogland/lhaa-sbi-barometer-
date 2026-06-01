@@ -16,6 +16,7 @@ import { computeAllDeterministic } from "../indicators/deterministic.js";
 import { computeDaily } from "../runtime.js";
 import type { IndicatorCode } from "../types.js";
 import { EMPTY_TRIGGER_STATE, type TriggerState } from "../methodology/triggers.js";
+import { dispatchTriggers } from "../webhook.js";
 
 /** Optioneel: pipeline-output kan vandaag's waarden leveren (echt-tijd). */
 interface PipelineResult {
@@ -169,7 +170,7 @@ function isoDate(d: Date): string {
   return d.toISOString().slice(0, 10);
 }
 
-function generate(): void {
+async function generate(): Promise<void> {
   // Bouw 24 maanden historie per niet-deterministische indicator
   const historyDays = 730;
   const history: Partial<Record<IndicatorCode, Array<{ date: string; value: number }>>> = {};
@@ -362,6 +363,19 @@ function generate(): void {
       console.log(`    → ${t.type} ${t.code ?? ""} severity=${t.severity} approval=${t.require_manual_approval}`);
     }
   }
+
+  // v0.4 — campagne-webhook (trigger-uitgang). Stuurt de triggers van deze run
+  // naar CAMPAIGN_WEBHOOK_URL; lege/ongezette URL → dry-run die de payload logt.
+  // Faalt nooit de build (dispatchTriggers vangt alles op). Zie src/webhook.ts.
+  await dispatchTriggers(todayOutput, {
+    url: process.env.CAMPAIGN_WEBHOOK_URL,
+    token: process.env.CAMPAIGN_WEBHOOK_TOKEN,
+    sentAtISO: new Date().toISOString(),
+    logger: (m) => console.log(m),
+  });
 }
 
-generate();
+generate().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

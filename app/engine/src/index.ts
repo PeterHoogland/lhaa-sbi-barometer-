@@ -92,4 +92,19 @@ export {
   type EvaluateTriggersResult,
   type Severity,
   type TriggerType,
+  type CampaignHint,
 } from "./methodology/triggers.js";
+
+// --- SBI v0.4 — campagne-webhook (trigger-uitgang) ---
+export {
+  buildWebhookPayload,
+  dispatchTriggers,
+  WEBHOOK_SCHEMA,
+  DEFAULT_TIMEOUT_MS,
+  type WebhookPayload,
+  type WebhookBarometer,
+  type WebhookSummary,
+  type DispatchOptions,
+  type DispatchResult,
+  type DispatchStatus,
+} from "./webhook.js";
