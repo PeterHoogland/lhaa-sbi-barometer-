@@ -77,17 +77,17 @@ export function buildBody(ctx: ExplainerContext): string {
 
   if (ctx.cn === 1) {
     if (ctx.percentile === 0) {
-      return `Geen van de 10 indicatoren staat hoger dan gewoonlijk. Sinds twee jaar zijn er geen kalmere dagen geregistreerd.`;
+      return `Geen van de ${ctx.totalAvailable} indicatoren staat hoger dan gewoonlijk. Sinds twee jaar zijn er geen kalmere dagen geregistreerd.`;
     }
     if (ctx.percentile < 30) {
       return `${ctx.lowerCount} signalen onder gemiddeld, geen enkele hoger dan gewoonlijk. We zitten lager dan op ${100 - ctx.percentile}% van de afgelopen twee jaar.`;
     }
-    return `Geen van de 10 indicatoren staat hoger dan gewoonlijk. We zitten lager dan op ${100 - ctx.percentile}% van de afgelopen twee jaar.`;
+    return `Geen van de ${ctx.totalAvailable} indicatoren staat hoger dan gewoonlijk. We zitten lager dan op ${100 - ctx.percentile}% van de afgelopen twee jaar.`;
   }
 
   if (ctx.cn === 2) {
     if (ctx.elevatedCount === 0) {
-      return `Niets bijzonders te melden. 10 signalen blijven binnen de gemiddelde zone.`;
+      return `Niets bijzonders te melden. ${ctx.totalAvailable} signalen blijven binnen de gemiddelde zone.`;
     }
     const lead = describeTop(ctx.topContributors, 1);
     return `${lead} Voor banner-activatie zouden meerdere signalen tegelijk hoger moeten staan, drie dagen op rij.`;
@@ -136,18 +136,18 @@ export function buildCnDescription(ctx: ExplainerContext): string {
   }
   if (ctx.cn === 1) {
     if (ctx.percentile === 0) {
-      return `Alle 10 signalen onder of binnen gemiddeld. Historisch lage dag.`;
+      return `Alle ${ctx.totalAvailable} signalen onder of binnen gemiddeld. Historisch lage dag.`;
     }
-    return `Geen van de 10 indicatoren hoger dan gewoonlijk.`;
+    return `Geen van de ${ctx.totalAvailable} indicatoren hoger dan gewoonlijk.`;
   }
   if (ctx.cn === 2) {
     if (ctx.elevatedCount === 0) {
-      return `Alle 10 signalen binnen gemiddeld.`;
+      return `Alle ${ctx.totalAvailable} signalen binnen gemiddeld.`;
     }
     return `${ctx.elevatedCount} signaal${ctx.elevatedCount === 1 ? "" : "en"} hoger dan gewoonlijk, ${ctx.totalAvailable - ctx.elevatedCount} binnen gemiddeld.`;
   }
   if (ctx.cn === 3) {
-    return `${ctx.elevatedCount} van de 10 signalen hoger dan gewoonlijk, ${ctx.daysInTier} dagen op rij. Banner-activatie loopt.`;
+    return `${ctx.elevatedCount} van de ${ctx.totalAvailable} signalen hoger dan gewoonlijk, ${ctx.daysInTier} dagen op rij. Banner-activatie loopt.`;
   }
   if (ctx.cn === 4) {
     return `${ctx.elevatedCount} signalen hoger dan gewoonlijk, ${ctx.extremeCount} in de hoogste zone. Banner-activatie verhoogd.`;
