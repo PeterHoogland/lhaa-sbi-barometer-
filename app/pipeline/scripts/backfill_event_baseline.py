@@ -25,37 +25,30 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from pipeline.fetchers.gdelt import gdelt_event_series  # noqa: E402
 from pipeline.util import DATA_DIR  # noqa: E402
 
-START_YEAR = 2018
+# Eén GDELT-call over een meerjarige reeks (dekt energiecrisis 2022 + recent),
+# zoals de werkende toon-backfill — veel minder rate-limit-hits dan jaar-chunks.
+START = date(2021, 1, 1)
 MIN_DAYS = 60
-CHUNK_ATTEMPTS = 4
-RATE_DELAY_S = 10
+ATTEMPTS = 6
+RETRY_DELAY_S = 20
 
 
 def main() -> int:
-    today = date.today()
-    merged: dict[str, float] = {}
+    rows = None
+    for attempt in range(1, ATTEMPTS + 1):
+        rows = gdelt_event_series(START, date.today())
+        if rows and len(rows) >= MIN_DAYS:
+            break
+        print(
+            f"  poging {attempt}/{ATTEMPTS}: {len(rows or [])} punten — GDELT rate-limit/leeg, opnieuw…",
+            file=sys.stderr,
+        )
+        if attempt < ATTEMPTS:
+            time.sleep(RETRY_DELAY_S + attempt * 5)
 
-    for yr in range(START_YEAR, today.year + 1):
-        start = date(yr, 1, 1)
-        end = date(yr, 12, 31) if yr < today.year else today
-        rows = None
-        for attempt in range(1, CHUNK_ATTEMPTS + 1):
-            rows = gdelt_event_series(start, end)
-            if rows:
-                break
-            print(f"  {yr} poging {attempt}/{CHUNK_ATTEMPTS}: geen data (GDELT rate-limit?), opnieuw…", file=sys.stderr)
-            time.sleep(RATE_DELAY_S + attempt * 5)
-        if rows:
-            for r in rows:
-                merged[r["date"]] = r["value"]
-            print(f"  {yr}: {len(rows)} dagen", file=sys.stderr)
-        else:
-            print(f"  {yr}: geen data", file=sys.stderr)
-        time.sleep(RATE_DELAY_S)  # rate-limit tussen chunks
-
-    out = [{"date": d, "value": v} for d, v in sorted(merged.items())]
+    out = sorted(rows or [], key=lambda r: r["date"])
     if len(out) < MIN_DAYS:
-        print(f"✗ slechts {len(out)} dagen uit GDELT — niets weggeschreven.", file=sys.stderr)
+        print(f"✗ slechts {len(out)} punten uit GDELT — niets weggeschreven.", file=sys.stderr)
         return 1
 
     out_dir = DATA_DIR / "history"
