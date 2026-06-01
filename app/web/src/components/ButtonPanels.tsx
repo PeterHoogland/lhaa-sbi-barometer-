@@ -1,5 +1,6 @@
 import { useState } from "react";
-import type { DailyOutput } from "../types";
+import type { DailyOutput, SparklinePoint } from "../types";
+import { Sparkline } from "./Sparkline";
 import { IndicatorList } from "./IndicatorList";
 import { IndicatorZView } from "./IndicatorZView";
 import { SecondarySignals } from "./SecondarySignals";
@@ -16,7 +17,7 @@ import { V04Technical } from "./V04Technical";
  * De vijf in-page klap-knoppen onderaan de barometer.
  * Elk paneel klapt onafhankelijk open onder zijn knop.
  */
-export function ButtonPanels({ data }: { data: DailyOutput }) {
+export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline: SparklinePoint[] }) {
   const [open, setOpen] = useState<Set<string>>(new Set());
 
   function toggle(key: string) {
@@ -34,6 +35,22 @@ export function ButtonPanels({ data }: { data: DailyOutput }) {
     sub: string;
     render: () => React.ReactNode;
   }> = [
+    {
+      key: "verloop",
+      label: "Hoe was het de laatste 60 dagen?",
+      sub: "Het dag-per-dag-verloop van de teller, met de drempels",
+      render: () => (
+        <section className="sparkline-panel">
+          <p className="panel-lead">
+            Elke stip is één dag. Hoe hoger op de grafiek, hoe meer signalen tegelijk hoog staan.
+            De gekleurde banden tonen de drempels: <strong>gemiddeld</strong>,
+            <strong> hoger dan gewoonlijk</strong> (vanaf 70%),
+            <strong> uitzonderlijk hoog</strong> (vanaf 90%).
+          </p>
+          <Sparkline points={sparkline} />
+        </section>
+      ),
+    },
     {
       key: "expert",
       label: "Expert view",

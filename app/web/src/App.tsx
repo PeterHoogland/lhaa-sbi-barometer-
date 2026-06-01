@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import type { DailyOutput, SparklinePoint } from "./types";
-import { Sparkline } from "./components/Sparkline";
 import { CallToAction } from "./components/CallToAction";
 import { BrandSafetyBanner } from "./components/BrandSafetyBanner";
 import { ConditionLevelDisplay } from "./components/ConditionLevelDisplay";
@@ -95,18 +94,7 @@ export function App() {
 
         {data.v04 && <KernIndicators v04={data.v04} />}
 
-        <section className="panel sparkline-panel">
-          <h2>Hoe was het de laatste 60 dagen?</h2>
-          <p className="panel-lead">
-            Elke stip is één dag. Hoe hoger op de grafiek, hoe meer signalen tegelijk hoog staan.
-            De gekleurde banden tonen de drempels: <strong>gemiddeld</strong>,
-            <strong> hoger dan gewoonlijk</strong> (vanaf 70%),
-            <strong> uitzonderlijk hoog</strong> (vanaf 90%).
-          </p>
-          <Sparkline points={sparkline} />
-        </section>
-
-        <ButtonPanels data={data} />
+        <ButtonPanels data={data} sparkline={sparkline} />
       </main>
 
       <footer className="footer">
