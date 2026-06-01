@@ -226,26 +226,28 @@ main {
   margin-bottom: 36px;
   padding: 40px 40px 32px;
   border-radius: var(--rad-lg);
-  background: var(--lha-snow);
+  background: var(--cn-tint, var(--lha-snow));
   color: var(--c-ink);
+  transition: background 320ms ease;
   position: relative;
   overflow: hidden;
   box-shadow: 0 1px 3px var(--c-shadow);
   border: 1px solid var(--c-line);
   z-index: 2;
 }
-.cn-display.cn-level-3,
-.cn-display.cn-level-4 {
-  background: var(--lha-snow);
-}
-.cn-display.cn-level-5 {
-  background: #f1efea;
-}
+/* Kleuren evolueren met het niveau: rustig groen → mid-groen → amber → rood →
+   grijs (pauze). Elk niveau zet een accent + een zachte kaart-tint, zodat het
+   hele blok meekleurt met de stand. */
+.cn-display.cn-level-1 { --cn-accent: var(--lha-blue-deep);  --cn-tint: #f1f6f2; }
+.cn-display.cn-level-2 { --cn-accent: var(--lha-blue-soft);  --cn-tint: #eef4ef; }
+.cn-display.cn-level-3 { --cn-accent: var(--c-amber);        --cn-tint: var(--c-amber-bg); }
+.cn-display.cn-level-4 { --cn-accent: var(--c-red);          --cn-tint: var(--c-red-bg); }
+.cn-display.cn-level-5 { --cn-accent: var(--lha-stone-soft); --cn-tint: #f1efea; }
 
 .cn-label {
   font-size: 0.72rem;
   letter-spacing: 0.24em;
-  color: var(--lha-blue-deep);
+  color: var(--cn-accent, var(--lha-blue-deep));
   margin-bottom: 18px;
   font-weight: 600;
   position: relative;
@@ -271,11 +273,10 @@ main {
   font-weight: 300;
   font-size: 7rem;
   line-height: 0.85;
-  color: var(--lha-blue-deep);
+  color: var(--cn-accent, var(--lha-blue-deep));
   letter-spacing: -0.04em;
+  transition: color 320ms ease;
 }
-.cn-level-3 .cn-number { color: var(--lha-sun); }
-.cn-level-4 .cn-number { color: var(--st-alert); }
 
 .cn-scale {
   display: flex;
@@ -317,7 +318,7 @@ main {
   font-family: var(--f-sans);
   font-size: 0.85rem;
   letter-spacing: 0.2em;
-  color: var(--lha-blue-deep);
+  color: var(--cn-accent, var(--lha-blue-deep));
   font-weight: 600;
   margin-bottom: 4px;
 }
