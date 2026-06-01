@@ -122,12 +122,12 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
-  /* logo 2× (112px) op verzoek; compacte padding houdt de band in toom. */
-  padding: 26px 32px 26px;
+  gap: 4px;
+  /* slanke balk (~halve hoogte t.o.v. eerder): minimale padding rond het logo. */
+  padding: 4px 32px 6px;
 }
 .site-logo { display: inline-flex; }
-.site-logo img { display: block; height: 112px; width: auto; }
+.site-logo img { display: block; height: 60px; width: auto; }
 /* Slogan onder het logo bovenaan (zelfde tekst als in de footer). */
 .hero-tagline {
   font-family: var(--f-sans);
@@ -175,7 +175,7 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
 .site-back:hover { background: rgba(255, 255, 255, 0.16); }
 
 .intro-eyebrow {
-  font-size: 0.74rem;
+  font-size: 0.96rem; /* +30% (was 0.74rem) */
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.82);

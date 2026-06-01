@@ -32,7 +32,7 @@ export function HeroBanner({ weekIso, today, lastRunTime }: Props) {
           rel="noopener noreferrer"
           aria-label="Hautes-Alpes"
         >
-          <LHALogo size={112} />
+          <LHALogo size={60} />
         </a>
         <div className="hero-tagline">Natuurlijk in het hart van de Alpen.</div>
       </div>
