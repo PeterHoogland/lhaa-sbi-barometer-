@@ -1,0 +1,242 @@
+/**
+ * SBI v0.4 — unit-tests voor de meet- + trigger-laag.
+ * Bron: HANDOVER §2 (v0.4-richtlijn) §1–§4.
+ *
+ * Dekt: getrimde baselines (window), de twee gewichtssets (som 1), het
+ * meet-composiet + load-factor-clamp, en de drie triggers met hun remmen
+ * (cooldown, confirmatie-severity, brand-safety-hold).
+ */
+
+import { describe, it, expect } from "vitest";
+import {
+  KERN_CODES,
+  ACHTERGROND_CODES,
+  wMeting,
+  wTrigger,
+  compositeMeting,
+  achtergrond,
+  loadFactor,
+  sliceTrailing,
+  spanYears,
+  windowedZ,
+  evaluateTriggers,
+  EMPTY_TRIGGER_STATE,
+  computeDaily,
+  type ZLangMap,
+  type CoreTriggerInput,
+  type EvaluateTriggersInput,
+} from "../src/index.js";
+
+function daysAgoISO(base: string, n: number): string {
+  const d = new Date(Date.parse(base + "T00:00:00Z") - n * 86_400_000);
+  return d.toISOString().slice(0, 10);
+}
+
+describe("Getrimde baseline — sliceTrailing (v0.4 §2)", () => {
+  const series = [
+    { date: "2024-01-01", value: 1 },
+    { date: "2025-01-01", value: 2 },
+    { date: "2026-01-01", value: 3 },
+    { date: "2026-05-01", value: 4 },
+  ];
+
+  it("18-maands venster vanaf 2026-06-01 pakt de laatste 3 punten", () => {
+    const slice = sliceTrailing(series, "2026-06-01", 18); // cutoff 2024-12-01
+    expect(slice.map((p) => p.value)).toEqual([2, 3, 4]);
+  });
+
+  it("6-maands venster pakt alleen de laatste 2 punten", () => {
+    const slice = sliceTrailing(series, "2026-06-01", 6); // cutoff 2025-12-01
+    expect(slice.map((p) => p.value)).toEqual([3, 4]);
+  });
+
+  it("lekt geen toekomst (datum > asOf wordt uitgesloten)", () => {
+    const slice = sliceTrailing(series, "2025-06-01", 120);
+    expect(slice.map((p) => p.value)).toEqual([1, 2]);
+  });
+
+  it("spanYears meet de overspanning van de slice", () => {
+    expect(spanYears(series)).toBeCloseTo(2.33, 1);
+  });
+});
+
+describe("Getrimde MAD-Z — windowedZ (v0.4 §2)", () => {
+  const daily: Array<{ date: string; value: number }> = [];
+  for (let i = 60; i >= 1; i--) daily.push({ date: daysAgoISO("2026-06-01", i), value: 10 + (i % 7) });
+  const merged = [...daily, { date: "2026-06-01", value: 25 }];
+
+  it("levert een positieve z voor een waarde ver boven de mediaan", () => {
+    const z = windowedZ(25, merged, "2026-06-01", 18, { applyStl: false });
+    expect(z.applied).toBe(true);
+    expect(z.z).toBeGreaterThan(2);
+    expect(z.n).toBeGreaterThan(8);
+  });
+
+  it("geeft z = 0 (niet toegepast) bij te weinig historie", () => {
+    const tiny = [
+      { date: "2026-05-30", value: 1 },
+      { date: "2026-05-31", value: 2 },
+    ];
+    const z = windowedZ(99, tiny, "2026-06-01", 18, { applyStl: false });
+    expect(z.applied).toBe(false);
+    expect(z.z).toBe(0);
+  });
+});
+
+describe("Twee gewichtssets (v0.4 §3.1)", () => {
+  it("w_meting sommeert over de 9 kern tot 1", () => {
+    const sum = KERN_CODES.reduce((s, c) => s + wMeting(c), 0);
+    expect(sum).toBeCloseTo(1.0, 6);
+  });
+
+  it("w_trigger sommeert over de 9 kern tot 1", () => {
+    const sum = KERN_CODES.reduce((s, c) => s + wTrigger(c), 0);
+    expect(sum).toBeCloseTo(1.0, 6);
+  });
+
+  it("snelle bronnen wegen relatief zwaarder in w_trigger dan in w_meting", () => {
+    // Negatief nieuws (⚡ direct, snelheidsfactor 1.5) moet in trigger zwaarder.
+    expect(wTrigger("I-D5-001")).toBeGreaterThan(wMeting("I-D5-001"));
+    // Inflatie (🐢 traag, 0.4) moet in trigger juist lichter.
+    expect(wTrigger("I-D3-001")).toBeLessThan(wMeting("I-D3-001"));
+  });
+});
+
+describe("Meet-composiet + load-factor (v0.4 §3.2/§3.3)", () => {
+  it("composite_meting = Σ w_meting bij alle z_lang = 1 → 1.0", () => {
+    const z: ZLangMap = {};
+    for (const c of KERN_CODES) z[c] = 1;
+    expect(compositeMeting(z)).toBeCloseTo(1.0, 6);
+  });
+
+  it("achtergrond telt alleen de trage grondlast-bronnen", () => {
+    const z: ZLangMap = {};
+    for (const c of KERN_CODES) z[c] = 1;
+    const expected = ACHTERGROND_CODES.reduce((s, c) => s + wMeting(c), 0);
+    expect(achtergrond(z)).toBeCloseTo(expected, 6);
+    expect(achtergrond(z)).toBeLessThan(compositeMeting(z));
+  });
+
+  it("load_factor clampt op [0.6, 1.0]", () => {
+    expect(loadFactor(0)).toBeCloseTo(1.0, 6); // rust → normale drempel
+    expect(loadFactor(-5)).toBeCloseTo(1.0, 6); // negatief → nooit boven 1
+    expect(loadFactor(100)).toBeCloseTo(0.6, 6); // hoge grondlast → max -40%
+    expect(loadFactor(1)).toBeCloseTo(0.85, 6); // 1 - 0.15·1
+  });
+});
+
+describe("Trigger-engine (v0.4 §4)", () => {
+  const NOW = "2026-06-01T08:00:00Z";
+  const base: EvaluateTriggersInput = {
+    perCore: [],
+    compositeMeting: 0,
+    compositePercentileLang: 0,
+    loadFactor: 1,
+    brandSafetyFlag: "normal",
+    confirmedBy: [],
+    priorState: EMPTY_TRIGGER_STATE,
+    nowISO: NOW,
+  };
+  const newsSpike: CoreTriggerInput = {
+    code: "I-D5-001",
+    domain: "D5",
+    plain_name: "Negatief nieuws",
+    klasse: "direct",
+    z_kort: 2.4,
+    z_lang: 1.1,
+    delta_1d: 2.0,
+    percentile_lang: 55,
+  };
+
+  it("T1 spike vuurt bij delta_1d ≥ drempel; in test-modus require_manual_approval", () => {
+    const r = evaluateTriggers({ ...base, perCore: [newsSpike] });
+    expect(r.triggers).toHaveLength(1);
+    expect(r.triggers[0].type).toBe("indicator.spike");
+    expect(r.triggers[0].severity).toBe("let_op"); // geen bevestiging
+    expect(r.triggers[0].require_manual_approval).toBe(true);
+  });
+
+  it("Bevestiging (#4/#8) tilt de severity van een nieuws-spike naar hoog", () => {
+    const r = evaluateTriggers({ ...base, perCore: [newsSpike], confirmedBy: ["I-D5-002"] });
+    expect(r.triggers[0].severity).toBe("hoog");
+    expect(r.triggers[0].confirmed_by).toContain("I-D5-002");
+  });
+
+  it("Cooldown onderdrukt een herhaalde spike binnen het venster", () => {
+    const first = evaluateTriggers({ ...base, perCore: [newsSpike] });
+    const within = evaluateTriggers({
+      ...base,
+      perCore: [newsSpike],
+      priorState: first.newState,
+      nowISO: "2026-06-01T20:00:00Z", // 12u later < 24u
+    });
+    expect(within.triggers).toHaveLength(0);
+    const after = evaluateTriggers({
+      ...base,
+      perCore: [newsSpike],
+      priorState: first.newState,
+      nowISO: "2026-06-03T09:00:00Z", // > 24u
+    });
+    expect(after.triggers).toHaveLength(1);
+  });
+
+  it("Trage bronnen krijgen geen spike-trigger (alleen ⚡/🔆)", () => {
+    const infl: CoreTriggerInput = {
+      code: "I-D3-001",
+      domain: "D3",
+      plain_name: "Inflatie",
+      klasse: "traag",
+      z_kort: 3,
+      z_lang: 3,
+      delta_1d: 5,
+      percentile_lang: 50,
+    };
+    const r = evaluateTriggers({ ...base, perCore: [infl] });
+    expect(r.triggers.filter((t) => t.type === "indicator.spike")).toHaveLength(0);
+  });
+
+  it("T2 vuurt 'rood' bij percentile_lang ≥ P90 × load_factor", () => {
+    const red: CoreTriggerInput = {
+      code: "I-D3-001",
+      domain: "D3",
+      plain_name: "Inflatie",
+      klasse: "traag",
+      z_kort: 0,
+      z_lang: 3,
+      delta_1d: 0,
+      percentile_lang: 95,
+    };
+    const r = evaluateTriggers({ ...base, perCore: [red] });
+    const t2 = r.triggers.find((t) => t.type === "indicator.red");
+    expect(t2).toBeDefined();
+    expect(t2!.severity).toBe("hoog");
+  });
+
+  it("T3 composiet: P70 → amber/let_op, P90 → red/hoog", () => {
+    const amber = evaluateTriggers({ ...base, compositePercentileLang: 75 });
+    expect(amber.triggers.find((t) => t.type === "composite.amber")?.severity).toBe("let_op");
+    const red = evaluateTriggers({ ...base, compositePercentileLang: 95 });
+    expect(red.triggers.find((t) => t.type === "composite.red")?.severity).toBe("hoog");
+  });
+
+  it("Brand-safety zet require_manual_approval, ook in live-modus", () => {
+    const held = evaluateTriggers({ ...base, mode: "live", perCore: [newsSpike], brandSafetyFlag: "block" });
+    expect(held.triggers[0].require_manual_approval).toBe(true);
+    const free = evaluateTriggers({ ...base, mode: "live", perCore: [newsSpike], brandSafetyFlag: "normal" });
+    expect(free.triggers[0].require_manual_approval).toBe(false);
+  });
+});
+
+describe("Integratie — computeDaily levert een v04-blok", () => {
+  it("v04 bestaat, met 9 kern-breakdowns en een eindig composiet", () => {
+    const out = computeDaily({ date: "2026-06-01", rawValues: {}, history: {}, compositeHistory: [] });
+    expect(out.v04).toBeDefined();
+    expect(out.v04!.kern_breakdown).toHaveLength(9);
+    expect(Number.isFinite(out.v04!.composite.meting)).toBe(true);
+    expect(out.v04!.composite.load_factor).toBeGreaterThanOrEqual(0.6);
+    expect(out.v04!.composite.load_factor).toBeLessThanOrEqual(1.0);
+    // Zonder dagwaarden zijn alle kern "ontbreekt" en is er niets te vuren.
+    expect(out.v04!.kern_breakdown.every((k) => k.state === "ontbreekt")).toBe(true);
+    expect(out.v04!.triggers).toHaveLength(0);
+  });
+});

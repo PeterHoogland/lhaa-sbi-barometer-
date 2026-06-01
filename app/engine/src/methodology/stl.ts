@@ -21,12 +21,30 @@ export interface StlResult {
   applied: boolean; // false wanneer < 3 cycli
 }
 
+/**
+ * Geheugencache voor datum-ontleding. stlResidual wordt in de 60-daagse
+ * fixture-loop miljoenen keren op dezelfde datumstrings aangeroepen; het
+ * herhaald construeren van Date-objecten domineerde de looptijd. Deze cache
+ * (string → {year, doy}) is puur een snelheidsoptimalisatie, geen
+ * semantiekwijziging.
+ */
+const _dateCache = new Map<string, { year: number; doy: number }>();
+
+function parseDate(isoDate: string): { year: number; doy: number } {
+  let cached = _dateCache.get(isoDate);
+  if (cached) return cached;
+  const d = new Date(isoDate + "T12:00:00Z");
+  const year = d.getUTCFullYear();
+  const start = Date.UTC(year, 0, 1);
+  const doy = Math.floor((d.getTime() - start) / (1000 * 60 * 60 * 24)) + 1;
+  cached = { year, doy };
+  _dateCache.set(isoDate, cached);
+  return cached;
+}
+
 /** Dag-van-jaar (1..366). */
 export function dayOfYear(isoDate: string): number {
-  const d = new Date(isoDate + "T12:00:00Z");
-  const start = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-  const diff = d.getTime() - start.getTime();
-  return Math.floor(diff / (1000 * 60 * 60 * 24)) + 1;
+  return parseDate(isoDate).doy;
 }
 
 /**
@@ -39,12 +57,11 @@ export function stlResidual(
   date: string,
   history: Array<{ date: string; value: number }>,
 ): StlResult {
-  const targetDoy = dayOfYear(date);
-  const targetYear = new Date(date + "T12:00:00Z").getUTCFullYear();
+  const target = parseDate(date);
+  const targetDoy = target.doy;
+  const targetYear = target.year;
 
-  const cyclesAvailable = new Set(
-    history.map((h) => new Date(h.date + "T12:00:00Z").getUTCFullYear()),
-  ).size;
+  const cyclesAvailable = new Set(history.map((h) => parseDate(h.date).year)).size;
 
   if (cyclesAvailable < MIN_CYCLES_FOR_STL) {
     return { residual: value, seasonalComponent: 0, applied: false };
@@ -54,12 +71,11 @@ export function stlResidual(
   const window = 7;
   const sameSeasonValues = history
     .filter((h) => {
-      const hYear = new Date(h.date + "T12:00:00Z").getUTCFullYear();
-      if (hYear >= targetYear) return false;
-      const hDoy = dayOfYear(h.date);
+      const h2 = parseDate(h.date);
+      if (h2.year >= targetYear) return false;
       const diff = Math.min(
-        Math.abs(hDoy - targetDoy),
-        DAYS_PER_YEAR - Math.abs(hDoy - targetDoy),
+        Math.abs(h2.doy - targetDoy),
+        DAYS_PER_YEAR - Math.abs(h2.doy - targetDoy),
       );
       return diff <= window;
     })

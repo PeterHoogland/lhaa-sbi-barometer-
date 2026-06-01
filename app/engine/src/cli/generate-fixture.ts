@@ -15,6 +15,7 @@ import { INDICATOR_CODES, INDICATORS } from "../indicators/registry.js";
 import { computeAllDeterministic } from "../indicators/deterministic.js";
 import { computeDaily } from "../runtime.js";
 import type { IndicatorCode } from "../types.js";
+import { EMPTY_TRIGGER_STATE, type TriggerState } from "../methodology/triggers.js";
 
 /** Optioneel: pipeline-output kan vandaag's waarden leveren (echt-tijd). */
 interface PipelineResult {
@@ -80,6 +81,19 @@ const WEB_SIGNAL_OUT = resolve(__dirname, "../../../web/public/data/signal.json"
 const WEB_API_OUT = resolve(__dirname, "../../../web/public/api/v1/signal.json");
 const PIPELINE_OUT = resolve(__dirname, "../../../data/raw-values.json");
 const HISTORY_DIR = resolve(__dirname, "../../../data/history");
+const TRIGGER_STATE_OUT = resolve(__dirname, "../../../data/trigger-state.json");
+
+/** Lees de cooldown-state van de vorige run (leeg bij eerste keer/corrupt). */
+function loadTriggerState(path: string): TriggerState {
+  if (!existsSync(path)) return EMPTY_TRIGGER_STATE;
+  try {
+    const s = JSON.parse(readFileSync(path, "utf-8"));
+    if (s && typeof s === "object" && s.last_fired) return s as TriggerState;
+  } catch {
+    // corrupt — val terug op leeg
+  }
+  return EMPTY_TRIGGER_STATE;
+}
 
 const TODAY = new Date();
 
@@ -203,6 +217,7 @@ function generate(): void {
 
   // Bouw composiet-historie laatste 60 dagen door engine ineen-te-roepen per dag
   const compositeHistory: Array<{ date: string; value: number }> = [];
+  const compositeMetingHistory: Array<{ date: string; value: number }> = [];
   const sparkline: Array<{ date: string; composite: number; percentile: number; tier: string }> = [];
 
   for (let i = 60; i > 0; i--) {
@@ -220,10 +235,13 @@ function generate(): void {
       rawValues,
       history,
       compositeHistory,
+      compositeMetingHistory,
       simulatedIndicators: simulatedCodes,
+      realBaselineCodes,
     });
 
     compositeHistory.push({ date: iso, value: out.composite.equal });
+    if (out.v04) compositeMetingHistory.push({ date: iso, value: out.v04.composite.meting });
     sparkline.push({
       date: iso,
       composite: out.composite.equal,
@@ -245,15 +263,36 @@ function generate(): void {
   const stillSimulatedToday = simulatedCodes.filter((c) => !realCodes.has(c));
 
   const detToday = computeAllDeterministic(TODAY);
+
+  // v0.4: cooldown-state van de vorige run + bevestigingssignalen uit de secundaire laag.
+  const priorTriggerState = loadTriggerState(TRIGGER_STATE_OUT);
+  const radarSignal = secondarySignals.find((s) => s.code === "I-D3-003S");
+  const confirmationSignals = {
+    // Ontslag-radar = aantal ontslag-thema-artikels; ≥ 1 telt als bevestiging.
+    layoffRadarElevated: radarSignal ? radarSignal.value >= 1 : false,
+    // Reddit-valentie-conventie nog niet vastgelegd → conservatief geen bevestiging.
+    // (Confirmation bepaalt enkel severity, nooit of een trigger vuurt.)
+    redditElevated: false,
+  };
+
   const todayOutput = computeDaily({
     date: todayIso,
     rawValues: { ...todayRaw, ...detToday } as Partial<Record<IndicatorCode, number>>,
     history,
     compositeHistory,
+    compositeMetingHistory,
     simulatedIndicators: stillSimulatedToday,
+    realBaselineCodes,
     observationDates,
     secondarySignals,
+    priorTriggerState,
+    confirmationSignals,
   });
+
+  // Persisteer de bijgewerkte cooldown-state voor de volgende run.
+  if (todayOutput.v04) {
+    writeFileSync(TRIGGER_STATE_OUT, JSON.stringify(todayOutput.v04.trigger_state, null, 2));
+  }
 
   if (realCodes.size > 0) {
     console.log(`  Real-time overrides van pipeline: ${[...realCodes].join(", ")}`);
@@ -288,6 +327,11 @@ function generate(): void {
     brand_safety_flag: todayOutput.brand_safety.flag,
     valid_until: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
     methodology_version: todayOutput.data_quality.methodology_version,
+    // v0.4 additief (embed-clients kunnen dit negeren tot de UI het toont)
+    composite_meting: todayOutput.v04?.composite.meting ?? null,
+    load_factor: todayOutput.v04?.composite.load_factor ?? null,
+    triggers_count: todayOutput.v04?.triggers.length ?? 0,
+    v04_mode: todayOutput.v04?.mode ?? null,
   };
   for (const target of [SIGNAL_OUT, WEB_SIGNAL_OUT, WEB_API_OUT]) {
     mkdirSync(dirname(target), { recursive: true });
@@ -303,6 +347,14 @@ function generate(): void {
   console.log(`  Percentile (short_24m): ${todayOutput.percentile.short_24m}`);
   console.log(`  Composite equal: ${todayOutput.composite.equal}`);
   console.log(`  Composite evidence-graded: ${todayOutput.composite.evidence_graded}`);
+  if (todayOutput.v04) {
+    const v = todayOutput.v04;
+    console.log(`  v0.4 composite_meting: ${v.composite.meting} (load_factor ${v.composite.load_factor}, mode ${v.mode})`);
+    console.log(`  v0.4 triggers: ${v.triggers.length}`);
+    for (const t of v.triggers) {
+      console.log(`    → ${t.type} ${t.code ?? ""} severity=${t.severity} approval=${t.require_manual_approval}`);
+    }
+  }
 }
 
 generate();

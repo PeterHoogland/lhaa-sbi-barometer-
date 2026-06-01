@@ -40,3 +40,49 @@ export {
   type ConditionState,
 } from "./methodology/condition-level.js";
 export { computeDaily, type DailyComputeInput } from "./runtime.js";
+
+// --- SBI v0.4 — meet- + trigger-laag ---
+export {
+  KERN_CODES,
+  SNELHEIDSFACTOR,
+  ACHTERGROND_CODES,
+  isKern,
+  klasse,
+  snelheidsfactor,
+  bewijslast,
+  reikwijdte,
+  type KernKlasse,
+} from "./indicators/kern.js";
+export { wMeting, wTrigger, allWMeting, allWTrigger } from "./methodology/kern-weights.js";
+export {
+  sliceTrailing,
+  spanYears,
+  windowedZ,
+  MIN_POINTS_FOR_Z,
+  type HistPoint,
+} from "./methodology/baseline-window.js";
+export {
+  compositeMeting,
+  achtergrond,
+  loadFactor,
+  LOAD_K,
+  LOAD_CLAMP_MIN,
+  LOAD_CLAMP_MAX,
+  type ZLangMap,
+} from "./methodology/kern-composite.js";
+export {
+  evaluateTriggers,
+  EMPTY_TRIGGER_STATE,
+  SPIKE_DREMPEL,
+  P70 as TRIGGER_P70,
+  P90 as TRIGGER_P90,
+  COOLDOWN_H,
+  ERNST_DREMPEL,
+  type TriggerEvent,
+  type TriggerState,
+  type CoreTriggerInput,
+  type EvaluateTriggersInput,
+  type EvaluateTriggersResult,
+  type Severity,
+  type TriggerType,
+} from "./methodology/triggers.js";

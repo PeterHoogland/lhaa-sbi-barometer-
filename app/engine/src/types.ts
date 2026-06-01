@@ -3,6 +3,8 @@
  * Reference: doc 02_Laag-3, doc 03_Laag-4, doc 04_Laag-5, doc 06_Laag-7.
  */
 
+import type { TriggerEvent, TriggerState } from "./methodology/triggers.js";
+
 export type IndicatorCode =
   | "I-D1-001" // Daglichturen
   | "I-D1-002" // Hitte
@@ -115,6 +117,62 @@ export interface SecondarySignal {
   observation_date: string;
 }
 
+// --- SBI v0.4 — meet- + trigger-laag (additief naast de v0.2-output) ---
+
+/** Snelheidsklasse-label zoals het in de payload verschijnt (HANDOVER §1/§5). */
+export type KernKlasseLabel = "direct" | "snel" | "traag";
+
+/** Per kern-indicator detail voor de v0.4-laag (HANDOVER §5 datacontract). */
+export interface KernBreakdown {
+  code: IndicatorCode;
+  domain: DomainCode;
+  plain_name: string;
+  class: KernKlasseLabel;
+  raw_value: number | null;
+  z_kort: number | null; // korte baseline (~18m) → spikes
+  z_lang: number | null; // lange rolling baseline (~120m) → niveaus
+  delta_1d: number | null; // dag-op-dag op z_kort
+  percentile_lang: number | null; // positie binnen de lange rolling verdeling
+  baseline_lang_jaren: number; // werkelijk beschikbare historie (eerlijk gemarkeerd)
+  state: "normaal" | "verhoogd" | "rood" | "ontbreekt";
+  w_meting: number;
+  w_trigger: number;
+  contribution_meting: number;
+  simulated: boolean;
+  observation_date: string;
+  data_source: { name: string; url: string };
+}
+
+/** Het volledige v0.4-blok (HANDOVER §6 payload-uitbreiding). */
+export interface V04Output {
+  schema_version: string;
+  mode: "test" | "live";
+  composite: {
+    meting: number; // Σ w_meting × z_lang over de 9 kern (de kleurbol)
+    achtergrond: number; // Σ w_meting × z_lang over de trage grondlast-bronnen
+    load_factor: number; // clamp(1 − k·achtergrond, 0.6, 1.0)
+  };
+  baseline: {
+    kort_maanden: number;
+    lang_maanden_target: number;
+    lang_rolling: boolean;
+    laatste_herijking: string | null;
+  };
+  percentile: {
+    lang: number; // composite_meting-percentiel in de lange rolling verdeling
+    kort: number; // idem in het korte venster
+    fixed_2010_2019: number | null;
+  };
+  tier: {
+    current: Tier;
+    days_in_tier: number;
+  };
+  kern_breakdown: KernBreakdown[];
+  triggers: TriggerEvent[];
+  /** Cooldown-bookkeeping voor de volgende cyclus (transparant; UI negeert dit). */
+  trigger_state: TriggerState;
+}
+
 /** Volledig daily-output-record — conform doc 06 §4.1. */
 export interface DailyOutput {
   timestamp: string; // ISO
@@ -168,4 +226,6 @@ export interface DailyOutput {
     methodology_version: string;
     implementation_stage: "minimum_viable_pipeline" | "target_architecture";
   };
+  /** SBI v0.4 meet- + trigger-laag. Optioneel: ouder geschreven records missen dit. */
+  v04?: V04Output;
 }
