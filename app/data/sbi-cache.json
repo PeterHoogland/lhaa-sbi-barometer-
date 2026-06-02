@@ -1,61 +1,61 @@
 {
   "I-D1-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:43:39.692770",
+    "fetched_at": "2026-06-02T18:54:21.551141",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 8.67
   },
   "I-D1-010": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:43:40.088846",
+    "fetched_at": "2026-06-02T18:54:21.936425",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 13.195833333333335
   },
   "I-D2-001-rt": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:47:00.800853",
-    "source": "Verkeerscentrum DATEX II v3 — 1 files, 0.87 km totale filelengte (langste 0.87 km), snapshot 2026-06-02",
-    "value": 0.87
+    "fetched_at": "2026-06-02T18:57:11.764853",
+    "source": "Verkeerscentrum DATEX II v3 — 1 files, 0.77 km totale filelengte (langste 0.77 km), snapshot 2026-06-02",
+    "value": 0.77
   },
   "I-D2-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:43:41.296493",
+    "fetched_at": "2026-06-02T18:54:23.006035",
     "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
     "value": 2.0
   },
   "I-D3-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:43:42.628952",
+    "fetched_at": "2026-06-02T18:54:24.261050",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 125.65954545454548
   },
   "I-D3-003S": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:46:59.854162",
+    "fetched_at": "2026-06-02T18:57:10.526376",
     "source": "Ontslag-radar: 8 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 8.0
   },
   "I-D3-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:43:45.086035",
+    "fetched_at": "2026-06-02T18:54:26.273649",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0161836680750393
   },
   "I-D5-001": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:23:41.573594",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 678/709 unieke artikels na dedup, 13 bronnen, poststratificatie): negativiteit jong +0.06 / midden +0.08 / ouder +0.15. Negatiefste headlines: «Aantal bevestigde gevallen met ebola stijgt naar 344, onder wie 60 doden · Oekraïne opnieuw zwaar getroffen door Rusland: acht doden en tientallen gewonden <p>Volg in deze liveblog onze updates o · Britse politie onder vuur na 'monsterlijke moord' op 18-jarige student: \"Aanpak was onmenselijk en vernederend\" In het V»; emotie-profiel headlines (matches/100 woorden): woede 0.15 / angst 0.20 / verdriet 0.10 / walging 0.02 (dominant: angst)",
-    "value": 1.4991
+    "fetched_at": "2026-06-02T18:55:19.690286",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 678/708 unieke artikels na dedup, 13 bronnen, poststratificatie): negativiteit jong +0.05 / midden +0.07 / ouder +0.15. Negatiefste headlines: «Aantal bevestigde gevallen met ebola stijgt naar 344, onder wie 60 doden · Vier bestuurders verliezen rijbewijs na controles in Spoorkin · Oekraïne opnieuw zwaar getroffen door Rusland: acht doden en tientallen gewonden <p>Volg in deze liveblog onze updates o»; emotie-profiel headlines (matches/100 woorden): woede 0.14 / angst 0.21 / verdriet 0.10 / walging 0.02 (dominant: angst)",
+    "value": 1.4912
   },
   "I-D5-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-02T18:45:17.962200",
+    "fetched_at": "2026-06-02T18:55:20.006592",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.533
   },
   "I-D5-003": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:46:10.764288",
+    "fetched_at": "2026-06-02T18:56:19.860630",
     "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 14 RSS-kandidaten naar pending voor menselijke review",
     "value": 0.0689
   },
