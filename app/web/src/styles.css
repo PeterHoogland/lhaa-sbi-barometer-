@@ -513,8 +513,9 @@ main {
 .top-how > summary::-webkit-details-marker { display: none; }
 .top-how > summary::before { content: "+ "; }
 .top-how[open] > summary::before { content: "− "; }
-.top-how-body { margin-top: 10px; }
-.top-how-body p { margin: 0 0 10px; line-height: 1.55; }
+.top-how-body { margin-top: 10px; font-size: 0.82rem; }
+.top-how-body p { margin: 0 0 7px; line-height: 1.5; }
+.top-how > summary { font-size: 0.9rem; }
 .top-rank {
   font-family: var(--f-display);
   font-size: 2rem;
