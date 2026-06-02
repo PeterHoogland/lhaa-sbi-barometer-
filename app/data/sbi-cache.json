@@ -1,57 +1,57 @@
 {
   "I-D1-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T12:16:33.181073",
+    "fetched_at": "2026-06-02T12:30:31.123558",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 8.67
   },
   "I-D1-010": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T12:16:33.578385",
+    "fetched_at": "2026-06-02T12:30:31.513804",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 13.195833333333335
   },
   "I-D2-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T12:16:34.569763",
+    "fetched_at": "2026-06-02T12:30:32.520910",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D3-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T12:16:36.584985",
+    "fetched_at": "2026-06-02T12:30:33.861879",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 125.65954545454548
   },
   "I-D3-003S": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T12:21:11.541074",
+    "fetched_at": "2026-06-02T12:34:01.214281",
     "source": "Ontslag-radar: 8 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen, ~100 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 8.0
   },
   "I-D3-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T12:16:41.882706",
+    "fetched_at": "2026-06-02T12:30:39.626099",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0161836680750393
   },
   "I-D5-001": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T08:08:05.996403",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 591/595 unieke artikels na dedup, 10 bronnen, poststratificatie): negativiteit jong +0.07 / midden +0.10 / ouder +0.14. Negatiefste headlines: «Russische luchtaanvallen op verschillende Oekraïense steden, zeker 13 doden en 100 gewonden · Oekraïne opnieuw zwaar getroffen door Rusland: acht doden en tientallen gewonden <p>Volg in deze liveblog onze updates o · Live - Rusland bevestigt ‘massale aanval’ op Oekraïne met hypersonische Tsirkon-kruisraketten • Minstens tien doden en m»",
-    "value": 1.5958
+    "fetched_at": "2026-06-02T12:31:35.951049",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 591/594 unieke artikels na dedup, 10 bronnen, poststratificatie): negativiteit jong +0.17 / midden +0.17 / ouder +0.24. Negatiefste headlines: «Nu al 18 dodelijke slachtoffers na massale Russische aanvallen op Oekraïne Volg alle ontwikkelingen over de oorlog in Oe · Oekraïne opnieuw zwaar getroffen door Rusland: acht doden en tientallen gewonden <p>Volg in deze liveblog onze updates o · Vliegverkeer stilgelegd door sociale onrust bij luchtverkeersleider Skeyes: 200 vluchten geschrapt van en naar Brussels »; emotie-profiel headlines (matches/100 woorden): woede 0.08 / angst 0.21 / verdriet 0.12 / walging 0.02 (dominant: angst)",
+    "value": 1.5695
   },
   "I-D5-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-02T12:18:19.794702",
+    "fetched_at": "2026-06-02T12:31:36.268376",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.533
   },
   "I-D5-003": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T12:09:31.324784",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 2 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.068533
+    "fetched_at": "2026-06-02T12:33:13.505842",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 8 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.068933
   },
   "I-D5-006S": {
     "date": "2026-05-21",
