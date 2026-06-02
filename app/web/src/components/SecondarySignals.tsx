@@ -15,7 +15,7 @@ export function SecondarySignals({ signals }: { signals: SecondarySignal[] }) {
       <h2>Onderstroom-peiling</h2>
       <p className="panel-lead">
         Dit zijn <strong>experimentele signalen</strong> die we apart meten maar
-        die <strong>bewust niet meetellen</strong> in het cijfer (1 tot 5) of
+        die <strong>bewust niet meetellen</strong> in het stress-cijfer 1 tot 5 of
         in de banner-activatie. Sociale media zijn geen doorsnede van de bevolking,
         dus ze horen methodologisch niet in de officiële meting (doc 02 §8).
         We tonen ze hier alleen ter vergelijking.
