@@ -52,11 +52,16 @@ KEYWORDS_MAG_5 = re.compile(
     re.IGNORECASE,
 )
 KEYWORDS_MAG_3 = re.compile(
-    r"\b(nationale\s+rouw|nationale\s+ramp|tragedie|catastrofe|noodtoestand)\b",
+    r"\b(nationale\s+rouw|nationale\s+ramp|tragedie|catastrofe|noodtoestand"
+    r"|algemene\s+staking|nationale\s+staking)\b",
     re.IGNORECASE,
 )
+# MAG_1 vangt ook sociale onrust / collectieve actie (V6, skeyes-type): merkbaar
+# collectief en ontwrichtend, maar geen ramp. Stakingen/betogingen/blokkades die
+# het dagelijks leven raken worden zo minstens kandidaat voor menselijke review.
 KEYWORDS_MAG_1 = re.compile(
-    r"\b(zware\s+ramp|noodweer|overstroming|hittegolf\s+rood|grootschalige\s+evacuatie|treintragedie)\b",
+    r"\b(zware\s+ramp|noodweer|overstroming|hittegolf\s+rood|grootschalige\s+evacuatie|treintragedie"
+    r"|staking|sociale\s+onrust|betoging|blokkade|vakbondsactie|stilgelegd|lamgelegd|stilgevallen)\b",
     re.IGNORECASE,
 )
 

@@ -32,6 +32,7 @@ from datetime import date, datetime, timedelta
 from ..util import FetchResult, safe_request, seasonal_noise
 from ..cache import get as cache_get, put as cache_put
 from ..lexicon_nl import LEXICON_VERSION, LEXICON_SIZE, tone_of_text
+from ..lexicon_emotion_nl import aggregate_emotions
 from ..media_profiles import poststratify
 
 # (feed-URL, mediaprofiel-sleutel). Sleutel matcht media_profiles.MEDIA_PROFILES.
@@ -112,10 +113,10 @@ def _dedup_headlines(items: list[tuple[str, str, float]],
 
 def _per_source_tones(
     target_date: date,
-) -> tuple[bool, list[tuple[str, float]], int, int, list[tuple[str, str, float]]]:
+) -> tuple[bool, list[tuple[str, float]], int, int, list[tuple[str, str, float]], dict]:
     """Meet de toon per bron afzonderlijk (RSS-controle-meting, v0.5 §9).
     Return (rss_reachable, [(bron, gemiddelde toon)], n_unique, n_raw,
-             top10_negatiefste_headlines)."""
+             top10_negatiefste_headlines, emotie-profiel)."""
     raw_headlines: list[tuple[str, str, float]] = []
     rss_reachable = False
     for url, key in RSS_FEEDS:
@@ -137,7 +138,10 @@ def _per_source_tones(
         by_source.setdefault(src, []).append(tone)
     source_tones = [(k, sum(v) / len(v)) for k, v in by_source.items()]
     top_neg = sorted(deduped, key=lambda h: h[2])[:10]
-    return rss_reachable, source_tones, len(deduped), len(raw_headlines), top_neg
+    # Discrete emotie-profiel over dezelfde (deduped) headlines (V6: woede/angst/
+    # verdriet/walging) — trigger-/signaallaag, descriptief naast de valentie.
+    emotion_profile = aggregate_emotions([txt for _src, txt, _tone in deduped])
+    return rss_reachable, source_tones, len(deduped), len(raw_headlines), top_neg, emotion_profile
 
 
 def gdelt_tone_series(start: date, end: date) -> list[dict] | None:
@@ -230,7 +234,8 @@ def fetch_news_negativity(target_date: date) -> FetchResult:
     # RSS-controle-meting: demografisch gesegmenteerde lezing (los van de schaal
     # die de composiet aanstuurt — puur descriptief in de bronvermelding).
     seg_text = ""
-    rss_ok, source_tones, n_unique, n_raw, top_neg = _per_source_tones(target_date)
+    emo_text = ""
+    rss_ok, source_tones, n_unique, n_raw, top_neg, emotion_profile = _per_source_tones(target_date)
     if rss_ok and source_tones and n_unique >= 8:
         ps = poststratify(source_tones)
         if ps["national"] is not None:
@@ -245,6 +250,14 @@ def fetch_news_negativity(target_date: date) -> FetchResult:
                 f"negativiteit jong {-seg['jong']:+.2f} / midden {-seg['midden']:+.2f} / "
                 f"ouder {-seg['ouder']:+.2f}. Negatiefste headlines: «{top_titles}»"
             )
+        if emotion_profile and emotion_profile.get("dominant"):
+            em = emotion_profile["intensity"]
+            emo_text = (
+                f"; emotie-profiel headlines (matches/100 woorden): "
+                f"woede {em['woede']:.2f} / angst {em['angst']:.2f} / "
+                f"verdriet {em['verdriet']:.2f} / walging {em['walging']:.2f} "
+                f"(dominant: {emotion_profile['dominant']})"
+            )
 
     # 1) GDELT timelinetone — zelfde schaal als de 24m-baseline
     time.sleep(8)  # respecteer GDELT rate-limit (1 req / 5s)
@@ -254,7 +267,7 @@ def fetch_news_negativity(target_date: date) -> FetchResult:
         negativity = round(sum(p["value"] for p in recent) / len(recent), 4)
         source = (
             f"GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, "
-            f"sourcecountry:BE, {len(recent)}d-venster){seg_text}"
+            f"sourcecountry:BE, {len(recent)}d-venster){seg_text}{emo_text}"
         )
         cache_put("I-D5-001", negativity, source, target_date.isoformat())
         return FetchResult(
