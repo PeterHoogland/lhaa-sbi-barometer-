@@ -250,5 +250,23 @@
     "link": "https://www.gva.be/buitenland/vijftien-gewonden-in-japan-door-tropische-storm-jangmi/154801937.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-02",
+    "magnitude": 1,
+    "title": "Staking uitgebroken bij toeleverancier Plasman Gent, gevolgen voor Volvo Car voorlopig onduidelijk",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/02/f844290b-cfb4-473d-8ac5-ab293ae8eaad.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-02",
+    "magnitude": 1,
+    "title": "Vliegverkeer van en naar België volledig stilgelegd door sociale onrust bij Skeyes, Ryanair-topman woedend: “Onaanvaardbaar”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/vliegverkeer-van-en-naar-belgie-volledig-stilgelegd-door-sociale-onrust-bij-skeyes-ryanair-topman-woedend-onaanvaardbaar/154788697.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]

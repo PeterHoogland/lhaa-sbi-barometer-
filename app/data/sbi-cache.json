@@ -1,49 +1,49 @@
 {
   "I-D1-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T13:01:18.303847",
+    "fetched_at": "2026-06-02T13:32:10.010891",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 8.67
   },
   "I-D1-010": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T13:01:18.689399",
+    "fetched_at": "2026-06-02T13:32:10.616344",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 13.195833333333335
   },
   "I-D2-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T13:01:19.763748",
+    "fetched_at": "2026-06-02T13:32:12.306551",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D3-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T13:01:21.669233",
+    "fetched_at": "2026-06-02T13:32:15.661812",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 125.65954545454548
   },
   "I-D3-003S": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T13:05:50.221835",
-    "source": "Ontslag-radar: 10 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen, ~100 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 10.0
+    "fetched_at": "2026-06-02T13:36:21.259696",
+    "source": "Ontslag-radar: 11 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen, ~100 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 11.0
   },
   "I-D3-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T13:01:24.240468",
+    "fetched_at": "2026-06-02T13:32:19.696038",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0161836680750393
   },
   "I-D5-001": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T13:02:38.582672",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 678/705 unieke artikels na dedup, 13 bronnen, poststratificatie): negativiteit jong +0.14 / midden +0.14 / ouder +0.16. Negatiefste headlines: «Waarschuwing voor Peru: Machu Picchu dreigt status als wereldwonder te verliezen De organisatie New7Wonders geeft Peru e · Oekraïne opnieuw zwaar getroffen door Rusland: acht doden en tientallen gewonden <p>Volg in deze liveblog onze updates o · ‘Ernstigste corruptie in moderne Amerikaanse geschiedenis’: controversieel miljardenfonds voor medestanders Trump komt e»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.20 / verdriet 0.12 / walging 0.02 (dominant: angst)",
-    "value": 1.5427
+    "fetched_at": "2026-06-02T13:33:19.595811",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 683/705 unieke artikels na dedup, 13 bronnen, poststratificatie): negativiteit jong +0.20 / midden +0.20 / ouder +0.25. Negatiefste headlines: «Waarschuwing voor Peru: Machu Picchu dreigt status als wereldwonder te verliezen De organisatie New7Wonders geeft Peru e · Oekraïne opnieuw zwaar getroffen door Rusland: acht doden en tientallen gewonden <p>Volg in deze liveblog onze updates o · ‘Ernstigste corruptie in moderne Amerikaanse geschiedenis’: controversieel miljardenfonds voor medestanders Trump komt e»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.19 / verdriet 0.12 / walging 0.02 (dominant: angst)",
+    "value": 1.5428
   },
   "I-D5-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-02T13:02:38.819483",
+    "fetched_at": "2026-06-02T13:33:20.723909",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.533
   },
