@@ -76,22 +76,24 @@ function loadPipelineToday(path: string): {
 
 const MIN_EMOTIE_HISTORY = 20;
 
-/** Emotie-confirmation (V6 increment 2a): true wanneer de emotionele lading van
- *  het nieuws vandaag in de top-30% van zijn EIGEN (dagelijks groeiende) historie
- *  zit. Cold-start (< MIN_EMOTIE_HISTORY punten) → conservatief false. Kalibratie-
- *  vrij — geen magische drempel. Confirmation bepaalt enkel severity, nooit of een
- *  trigger vuurt. */
-function emotieElevatedFromHistory(value: number | undefined, histDir: string): boolean {
-  if (value === undefined) return false;
+/** Emotie-statistiek t.o.v. de eigen (dagelijks groeiende) historie: de lading
+ *  van vandaag, haar percentiel binnen die historie, en het aantal historiepunten.
+ *  null wanneer er geen waarde/historie is. Voedt zowel de confirmation (2a, top-30%)
+ *  als de emotie-spike-trigger (2b, top-10% + ≥ MIN punten). Kalibratie-vrij. */
+function emotieStatsFromHistory(
+  value: number | undefined,
+  histDir: string,
+): { value: number; percentileLang: number; nHistory: number } | null {
+  if (value === undefined) return null;
   const p = resolve(histDir, "I-D5-emotie.json");
-  if (!existsSync(p)) return false;
+  if (!existsSync(p)) return null;
   try {
     const rows = JSON.parse(readFileSync(p, "utf-8")) as Array<{ date: string; value: number }>;
     const vals = rows.map((r) => r.value).filter((v) => Number.isFinite(v));
-    if (vals.length < MIN_EMOTIE_HISTORY) return false;
-    return percentileRank(value, vals) >= 70;
+    if (vals.length === 0) return null;
+    return { value, percentileLang: percentileRank(value, vals), nHistory: vals.length };
   } catch {
-    return false;
+    return null;
   }
 }
 
@@ -301,6 +303,7 @@ async function generate(): Promise<void> {
   const priorTriggerState = loadTriggerState(TRIGGER_STATE_OUT);
   const radarSignal = secondarySignals.find((s) => s.code === "I-D3-003S");
   const emotieSignal = secondarySignals.find((s) => s.code === "I-D5-emotie");
+  const emotieStats = emotieStatsFromHistory(emotieSignal?.value, HISTORY_DIR);
   const confirmationSignals = {
     // Ontslag-radar = aantal ontslag-thema-artikels; ≥ 1 telt als bevestiging.
     layoffRadarElevated: radarSignal ? radarSignal.value >= 1 : false,
@@ -309,7 +312,8 @@ async function generate(): Promise<void> {
     redditElevated: false,
     // Emotionele lading nieuws in top-30% van de eigen historie → versterkt
     // nieuws-spikes naar severity "hoog" (V6 increment 2a; cold-start-veilig).
-    emotieElevated: emotieElevatedFromHistory(emotieSignal?.value, HISTORY_DIR),
+    emotieElevated:
+      !!emotieStats && emotieStats.nHistory >= MIN_EMOTIE_HISTORY && emotieStats.percentileLang >= 70,
   };
 
   const todayOutput = computeDaily({
@@ -324,6 +328,7 @@ async function generate(): Promise<void> {
     secondarySignals,
     priorTriggerState,
     confirmationSignals,
+    emotieSignal: emotieStats ?? undefined,
   });
 
   // Persisteer de bijgewerkte cooldown-state voor de volgende run.

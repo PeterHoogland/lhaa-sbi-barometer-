@@ -50,6 +50,11 @@ RSS_FEEDS = [
     ("https://businessam.be/feed/", "businessam"),
     ("https://www.eoswetenschap.eu/rss.xml", "eos"),
     ("https://newsmonkey.be/feed", "newsmonkey"),
+    # V6-uitbreiding (geverifieerde feeds, Vlaams) — meer headlines = scherper
+    # toon- én emotie-profiel.
+    ("https://www.nieuwsblad.be/rss", "nieuwsblad"),
+    ("https://www.gva.be/rss", "gva"),
+    ("https://www.dewereldmorgen.be/rss.xml", "dewereldmorgen"),
 ]
 
 GDELT_DOC_URL = "https://api.gdeltproject.org/api/v2/doc/doc"

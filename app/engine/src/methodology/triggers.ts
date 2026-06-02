@@ -37,17 +37,23 @@ export const COOLDOWN_H: Record<KernKlasse, number> = { direct: 48, snel: 72, tr
 export const COOLDOWN_COMPOSITE_H = 48;
 /** Boven deze dag-op-dag-sprong krijgt een niet-nieuws-spike severity "hoog". */
 export const ERNST_DREMPEL = 2.5;
+/** Emotie-spike (V6 increment 2b): vuurt vanaf dit percentiel binnen de EIGEN
+ *  emotie-historie, en pas wanneer er ≥ MIN_EMOTIE_HISTORY dagen historie is
+ *  (anders kun je "uitzonderlijk" niet bepalen). Trigger-laag, niet het cijfer. */
+export const EMOTIE_SPIKE_P = 90;
+export const MIN_EMOTIE_HISTORY = 20;
+export const COOLDOWN_EMOTIE_H = 48;
 const RECENT_LOG_CAP = 50;
 
 export type Severity = "hoog" | "let_op";
-export type TriggerType = "indicator.spike" | "indicator.red" | "composite.amber" | "composite.red";
+export type TriggerType = "indicator.spike" | "indicator.red" | "composite.amber" | "composite.red" | "emotie.spike";
 export type CampaignHint = "brede_geruststelling" | "financieel" | "gericht_weer" | "algemeen";
 
 export interface TriggerEvent {
   type: TriggerType;
   fired_at: string;
   scope: "indicator" | "composite";
-  code: IndicatorCode | null;
+  code: IndicatorCode | "I-D5-emotie" | null;
   domain: DomainCode | null;
   plain_name: string | null;
   severity: Severity;
@@ -89,8 +95,11 @@ export interface EvaluateTriggersInput {
   compositePercentileLang: number;
   loadFactor: number;
   brandSafetyFlag: BrandSafety;
-  /** Codes die nu bevestigen (wikipedia #4, reddit #8, ontslag-radar #7). */
+  /** Codes die nu bevestigen (wikipedia #4, reddit #8, ontslag-radar #7, emotie). */
   confirmedBy: string[];
+  /** Emotie-spike-input (V6 2b): lading + percentiel binnen de eigen historie +
+   *  #historiepunten. Afwezig → geen emotie-trigger. */
+  emotie?: { value: number; percentileLang: number; nHistory: number };
   priorState: TriggerState;
   nowISO: string;
   mode?: "test" | "live";
@@ -251,6 +260,33 @@ export function evaluateTriggers(input: EvaluateTriggersInput): EvaluateTriggers
       z_lang: null,
       delta_1d: null,
       percentile_lang: pct,
+      confirmed_by: input.confirmedBy,
+      campaign_hint: "brede_geruststelling",
+    });
+  }
+
+  // --- Trigger 4 — Emotie-spike (V6 2b; gated op opgebouwde eigen historie) ---
+  // Emotie is grade-D (mediatoon ≠ stress): dit is een campagne-/triggersignaal,
+  // NIET het cijfer. Vuurt pas met genoeg eigen historie om "uitzonderlijk" t.o.v.
+  // het normale te bepalen; in test-modus toch require_manual_approval.
+  const emo = input.emotie;
+  if (
+    emo &&
+    emo.nHistory >= MIN_EMOTIE_HISTORY &&
+    emo.percentileLang >= EMOTIE_SPIKE_P &&
+    !cooldownActive("emotie.spike", input.priorState, input.nowISO, COOLDOWN_EMOTIE_H)
+  ) {
+    fire("emotie.spike", COOLDOWN_EMOTIE_H, {
+      type: "emotie.spike",
+      scope: "indicator",
+      code: "I-D5-emotie",
+      domain: "D5",
+      plain_name: "Emotionele lading nieuws",
+      severity: emo.percentileLang >= 95 ? "hoog" : "let_op",
+      z_kort: null,
+      z_lang: null,
+      delta_1d: null,
+      percentile_lang: emo.percentileLang,
       confirmed_by: input.confirmedBy,
       campaign_hint: "brede_geruststelling",
     });

@@ -55,6 +55,10 @@ MEDIA_PROFILES: dict[str, dict] = {
     "businessam": {"name": "Business AM",            "reach": 1.5, "audience": {"jong": 0.30, "midden": 0.42, "ouder": 0.28}},
     "eos":        {"name": "Eos",                    "reach": 1.0, "audience": {"jong": 0.30, "midden": 0.38, "ouder": 0.32}},
     "newsmonkey": {"name": "Newsmonkey",             "reach": 1.0, "audience": {"jong": 0.62, "midden": 0.26, "ouder": 0.12}},
+    # V6-uitbreiding (geverifieerde Vlaamse feeds): mainstream + opinie-flank
+    "nieuwsblad":     {"name": "Het Nieuwsblad",       "reach": 9.0, "audience": {"jong": 0.24, "midden": 0.34, "ouder": 0.42}},
+    "gva":            {"name": "Gazet van Antwerpen",  "reach": 3.5, "audience": {"jong": 0.20, "midden": 0.33, "ouder": 0.47}},
+    "dewereldmorgen": {"name": "De Wereld Morgen",     "reach": 1.0, "audience": {"jong": 0.34, "midden": 0.40, "ouder": 0.26}},
     # Reddit — sterk jong/stedelijk skew (secundaire indicator)
     "reddit":     {"name": "Reddit Belgium",         "reach": 1.0, "audience": {"jong": 0.68, "midden": 0.26, "ouder": 0.06}},
 }

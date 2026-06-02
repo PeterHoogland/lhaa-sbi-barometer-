@@ -197,6 +197,31 @@ describe("Trigger-engine (v0.4 §4)", () => {
     expect(r.triggers.filter((t) => t.type === "indicator.spike")).toHaveLength(0);
   });
 
+  it("Emotie-spike (2b) vuurt bij percentiel ≥ 90 met genoeg eigen historie", () => {
+    const r = evaluateTriggers({ ...base, emotie: { value: 12, percentileLang: 93, nHistory: 30 } });
+    const emo = r.triggers.filter((t) => t.type === "emotie.spike");
+    expect(emo).toHaveLength(1);
+    expect(emo[0].code).toBe("I-D5-emotie");
+    expect(emo[0].severity).toBe("let_op"); // 90 ≤ p < 95
+    expect(emo[0].require_manual_approval).toBe(true); // test-modus
+  });
+
+  it("Emotie-spike: cold-start (historie < MIN) vuurt NIET", () => {
+    const r = evaluateTriggers({ ...base, emotie: { value: 12, percentileLang: 99, nHistory: 5 } });
+    expect(r.triggers.filter((t) => t.type === "emotie.spike")).toHaveLength(0);
+  });
+
+  it("Emotie-spike vuurt niet onder de percentiel-drempel", () => {
+    const r = evaluateTriggers({ ...base, emotie: { value: 12, percentileLang: 80, nHistory: 30 } });
+    expect(r.triggers.filter((t) => t.type === "emotie.spike")).toHaveLength(0);
+  });
+
+  it("Emotie-spike: severity hoog bij percentiel ≥ 95", () => {
+    const r = evaluateTriggers({ ...base, emotie: { value: 20, percentileLang: 97, nHistory: 30 } });
+    const emo = r.triggers.filter((t) => t.type === "emotie.spike");
+    expect(emo[0].severity).toBe("hoog");
+  });
+
   // NB: niet-grondlast-code (hitte) — grondlast-bronnen vuren geen eigen T2 (§3.3).
   const redCore = (pct: number): CoreTriggerInput => ({
     code: "I-D1-002",

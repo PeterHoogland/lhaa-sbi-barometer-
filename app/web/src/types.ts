@@ -127,7 +127,7 @@ export interface KernBreakdown {
 }
 
 export interface TriggerEvent {
-  type: "indicator.spike" | "indicator.red" | "composite.amber" | "composite.red";
+  type: "indicator.spike" | "indicator.red" | "composite.amber" | "composite.red" | "emotie.spike";
   fired_at: string;
   scope: "indicator" | "composite";
   code: string | null;

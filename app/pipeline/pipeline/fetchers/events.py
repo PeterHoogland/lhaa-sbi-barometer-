@@ -44,6 +44,9 @@ RSS_FEEDS = {
     "Het Belang van Limburg": "https://www.hbvl.be/rss/section/2146FCFC-EE7A-44FD-AB5C-8FF3973BA15A",
     "Bruzz": "https://www.bruzz.be/rss.xml",
     "Knack": "https://www.knack.be/nieuws/feed/",
+    "Het Nieuwsblad": "https://www.nieuwsblad.be/rss",
+    "Gazet van Antwerpen": "https://www.gva.be/rss",
+    "De Wereld Morgen": "https://www.dewereldmorgen.be/rss.xml",
 }
 
 # Magnitude-classificatie via keywords. Doc 03 §2.5 niveaus 1/3/5.

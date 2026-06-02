@@ -90,6 +90,8 @@ export interface DailyComputeInput {
   compositeMetingHistory?: Array<{ date: string; value: number }>;
   /** Bevestigingssignalen voor de trigger-severity (reddit #8, ontslag-radar #7, emotie). */
   confirmationSignals?: { redditElevated?: boolean; layoffRadarElevated?: boolean; emotieElevated?: boolean };
+  /** Emotie-spike-input (V6 2b): lading + percentiel binnen de eigen historie + #punten. */
+  emotieSignal?: { value: number; percentileLang: number; nHistory: number };
   /** Huidige tijd (ISO) voor trigger fired_at/cooldown. Default: nu. */
   nowISO?: string;
 }
@@ -255,6 +257,7 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     compositeMetingHistory: input.compositeMetingHistory ?? [],
     brandSafetyFlag,
     confirmation: input.confirmationSignals ?? {},
+    emotieSignal: input.emotieSignal,
     priorTriggerState: input.priorTriggerState ?? EMPTY_TRIGGER_STATE,
     nowISO,
   });
@@ -409,6 +412,7 @@ interface ComputeV04Params {
   compositeMetingHistory: Array<{ date: string; value: number }>;
   brandSafetyFlag: BrandSafety;
   confirmation: { redditElevated?: boolean; layoffRadarElevated?: boolean; emotieElevated?: boolean };
+  emotieSignal?: { value: number; percentileLang: number; nHistory: number };
   priorTriggerState: TriggerState;
   nowISO: string;
 }
@@ -549,6 +553,7 @@ function computeV04(p: ComputeV04Params): V04Output {
     loadFactor: lf,
     brandSafetyFlag: p.brandSafetyFlag,
     confirmedBy,
+    emotie: p.emotieSignal,
     priorState: p.priorTriggerState,
     nowISO: p.nowISO,
   });
