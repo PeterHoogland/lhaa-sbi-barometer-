@@ -133,5 +133,59 @@
     "link": "https://www.demorgen.be/snelnieuws/bescherming-tegen-overstroming-achter-op-schema-vlaanderen-blijft-nog-decennia-kwetsbaar~bf291c5c/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-02",
+    "magnitude": 1,
+    "title": "Vliegverkeer van en naar ons land stil door actie bij luchtverkeersleiding: \"Kom niet naar de luchthaven\"",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2019/05/04/56a47b1f-6e36-11e9-abcc-02b7b76bf47f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-02",
+    "magnitude": 1,
+    "title": "Luchtverkeer op Zaventem hervat na spontane staking bij luchtverkeersleider Skeyes",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/02/7b9751ae-8327-435b-91c8-0da3abc82ae5.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-02",
+    "magnitude": 1,
+    "title": "Vliegverkeer stilgelegd door sociale onrust bij luchtverkeersleider Skeyes: 200 vluchten geschrapt van en naar Brussels Airport",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/snelnieuws/vliegverkeer-stilgelegd-door-sociale-onrust-bij-luchtverkeersleider-skeyes-200-vluchten-geschrapt-van-en-naar-brussels-airport~bfbbf5c0/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-02",
+    "magnitude": 1,
+    "title": "“Kom niet naar de luchthaven”: vliegverkeer boven België opnieuw stilgelegd door sociale onrust bij Skeyes",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/kom-niet-naar-de-luchthaven-vliegverkeer-boven-belgie-opnieuw-stilgelegd-door-sociale-onrust-bij-skeyes~a068aa5f/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-02",
+    "magnitude": 1,
+    "title": "Vliegverkeer van en naar België ligt stil door sociale onrust bij luchtverkeersleiding Skeyes",
+    "source": "De Tijd",
+    "link": "https://www.tijd.be/r/t/1/id/10673303",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-02",
+    "magnitude": 1,
+    "title": "Staking Skeyes houdt aan, geen vliegverkeer meer vanaf 14 uur",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/mobiliteit/vertragingen-op-brussels-airport-door-staking-bij-skeyes-2026-06-02",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
