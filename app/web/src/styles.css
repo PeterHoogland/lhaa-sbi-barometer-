@@ -314,6 +314,27 @@ main {
 .cn-dot-pos-5.current { box-shadow: 0 0 0 5px rgba(74, 90, 115, 0.22); }
 
 .cn-side { text-align: right; }
+
+/* /100-prototype: percentiel-score + 0-100-meter (Peter/Kris kiezen format) */
+.cn-score { display: flex; align-items: baseline; gap: 7px; line-height: 0.85; }
+.cn-score-num {
+  font-family: var(--f-display); font-weight: 300; font-size: 7rem; line-height: 0.85;
+  color: var(--cn-accent, var(--lha-blue-deep)); letter-spacing: -0.04em; transition: color 320ms ease;
+}
+.cn-score-max { font-family: var(--f-display); font-weight: 300; font-size: 1.7rem; color: var(--c-ink-mute); }
+.cn-meter { display: flex; flex-direction: column; gap: 7px; padding: 0 4px; }
+.cn-meter-track { position: relative; height: 12px; border-radius: 6px; overflow: hidden; display: flex; }
+.cn-meter-zone { height: 100%; }
+.cn-meter-green { width: 70%; background: var(--c-green); opacity: 0.30; }
+.cn-meter-amber { width: 20%; background: var(--c-amber); opacity: 0.45; }
+.cn-meter-red { width: 10%; background: var(--c-red); opacity: 0.5; }
+.cn-meter-dot {
+  position: absolute; top: 50%; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--cn-accent); border: 2px solid #fff; transform: translate(-50%, -50%);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.28); transition: left 320ms ease;
+}
+.cn-meter-axis { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--c-ink-mute); letter-spacing: 0.04em; }
+@media (max-width: 640px) { .cn-score-num { font-size: 5.5rem; } }
 .cn-kicker {
   font-family: var(--f-sans);
   font-size: 0.85rem;
