@@ -1,49 +1,49 @@
 {
   "I-D1-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T00:11:34.200093",
+    "fetched_at": "2026-06-02T08:06:43.472808",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 8.67
   },
   "I-D1-010": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T00:11:34.844961",
+    "fetched_at": "2026-06-02T08:06:44.074558",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 16.129166666666666
   },
   "I-D2-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T00:11:36.267316",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
-    "value": 0.0
+    "fetched_at": "2026-06-02T08:06:46.050701",
+    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
+    "value": 2.0
   },
   "I-D3-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T00:11:37.925939",
+    "fetched_at": "2026-06-02T08:06:50.838678",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 125.65954545454548
   },
   "I-D3-003S": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T00:15:52.655628",
-    "source": "Ontslag-radar: 9 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen, ~500 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 9.0
+    "fetched_at": "2026-06-02T08:11:03.383171",
+    "source": "Ontslag-radar: 8 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 8.0
   },
   "I-D3-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T00:11:40.922076",
+    "fetched_at": "2026-06-02T08:06:59.176963",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 1.005241141553355
+    "value": 1.009539268409471
   },
   "I-D5-001": {
-    "date": "2026-06-01",
-    "fetched_at": "2026-06-01T23:47:01.004794",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 598/599 unieke artikels na dedup, 10 bronnen, poststratificatie): negativiteit jong +0.06 / midden +0.03 / ouder +0.06. Negatiefste headlines: «Dode en twee gewonden bij steekincident in Nederland, politie omsingelt gebouw · Stakingen in Franstalig onderwijs zetten nu ook examens onder druk De geplande hervormingen in het Franstalig onderwijs  · Drugsbende met plantages over heel het land veroordeeld na onderzoek Brusselse politie In Brussel is een drugsbende vero»",
-    "value": 1.2624
+    "date": "2026-06-02",
+    "fetched_at": "2026-06-02T08:08:05.996403",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 591/595 unieke artikels na dedup, 10 bronnen, poststratificatie): negativiteit jong +0.07 / midden +0.10 / ouder +0.14. Negatiefste headlines: «Russische luchtaanvallen op verschillende Oekraïense steden, zeker 13 doden en 100 gewonden · Oekraïne opnieuw zwaar getroffen door Rusland: acht doden en tientallen gewonden <p>Volg in deze liveblog onze updates o · Live - Rusland bevestigt ‘massale aanval’ op Oekraïne met hypersonische Tsirkon-kruisraketten • Minstens tien doden en m»",
+    "value": 1.5958
   },
   "I-D5-002": {
     "date": "2026-05-31",
-    "fetched_at": "2026-06-02T00:13:11.047624",
+    "fetched_at": "2026-06-02T08:08:07.179539",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.124
   },
