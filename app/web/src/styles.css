@@ -11,8 +11,8 @@
   --lha-blue-deep:   #29441f;   /* alpine-groen — primair accent */
   --lha-blue-mid:    #1d3216;   /* donkerder groen — hover/header */
   --lha-blue-soft:   #3c5c2e;   /* mid-groen */
-  --lha-sky:         #eaeee7;   /* zacht groen-getint licht */
-  --lha-sky-pale:    #f7f8f9;   /* zachte sectie-achtergrond */
+  --lha-sky:         #efe9e1;   /* zacht warm licht (zonsopgang) */
+  --lha-sky-pale:    #f8f5f0;   /* zachte warme sectie-achtergrond */
   --lha-snow:        #ffffff;   /* puur wit */
   --lha-sun:         #c98a3c;   /* gedempt amber — secundair accent */
   --lha-sun-soft:    #e0b375;   /* zacht amber */
@@ -90,12 +90,12 @@ body::after {
   position: fixed;
   inset: 0;
   z-index: -1;
-  /* groene tint: donker bovenaan (header-tekst leesbaar), lichter eronder
-     zodat de foto op de zijkanten zichtbaar blijft */
+  /* warme tint (zonsopgang): donker-warm bovenaan (header-tekst leesbaar),
+     lichter eronder zodat de foto op de zijkanten zichtbaar blijft */
   background: linear-gradient(180deg,
-    rgba(29, 50, 22, 0.62) 0%,
-    rgba(29, 50, 22, 0.46) 24%,
-    rgba(29, 50, 22, 0.40) 100%);
+    rgba(43, 32, 25, 0.60) 0%,
+    rgba(43, 32, 25, 0.44) 24%,
+    rgba(43, 32, 25, 0.38) 100%);
 }
 
 code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
