@@ -105,6 +105,54 @@ def fetch_one_day(d: date) -> FetchBatch:
     return batch
 
 
+# Map indicator-code → fetcher, voor de self-repair-pass. D4/D6 zijn
+# deterministisch (engine) en horen er niet in.
+def _fetcher_for(code: str):
+    table = {
+        "I-D1-002": lambda d: kmi.fetch_temperature_extremes(d)[0],
+        "I-D1-003": lambda d: kmi.fetch_temperature_extremes(d)[1],
+        "I-D1-004": irceline.fetch_air_quality,
+        "I-D1-009": waterinfo.fetch_flood_signal,
+        "I-D1-010": pollen.fetch_pollen,
+        "I-D2-001": verkeerscentrum.fetch_traffic_load,
+        "I-D2-004": fod_economie.fetch_fuel_prices,
+        "I-D2-009": irail.fetch_train_disruptions,
+        "I-D3-001": statbel.fetch_cpi,
+        "I-D3-002": energy_charts.fetch_energy_prices,
+        "I-D3-003": fod_waso.fetch_collective_layoffs,
+        "I-D3-005": statbel.fetch_unemployment,
+        "I-D3-006": nbb.fetch_mortgage_rate,
+        "I-D3-009": elia.fetch_grid_stress,
+        "I-D5-001": gdelt.fetch_news_negativity,
+        "I-D5-002": wikipedia.fetch_stress_searches,
+        "I-D5-003": events.fetch_collective_events,
+    }
+    return table.get(code)
+
+
+def repair_failed(batch: FetchBatch, d: date) -> list[str]:
+    """Self-repair: elke indicator die op mock viel (simulated=True) krijgt nog
+    één verse ophaalpoging. Veel uitval is tijdelijk (timeout, 429, bron even
+    plat). Slaagt de retry (echte waarde of verse cache), dan vervangt die het
+    mock-resultaat, zodat de dagdata zo volledig mogelijk is. Lukt het nog niet,
+    dan blijft de mock staan en vuurt de bestaande demo-fallback-mailmelding."""
+    repaired: list[str] = []
+    for i, r in enumerate(batch.results):
+        if not r.simulated:
+            continue
+        fn = _fetcher_for(r.code)
+        if fn is None:
+            continue
+        try:
+            retry = fn(d)
+        except Exception:  # noqa: BLE001
+            continue
+        if retry is not None and not retry.simulated:
+            batch.results[i] = retry
+            repaired.append(r.code)
+    return repaired
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="SBI Pipeline — fetch raw indicator values")
     parser.add_argument("--date", type=str, default=None,
@@ -124,6 +172,9 @@ def main(argv: list[str] | None = None) -> int:
     for d in daterange(start, target):
         print(f"  [{d}] fetching…", file=sys.stderr)
         batch = fetch_one_day(d)
+        repaired = repair_failed(batch, d)
+        if repaired:
+            print(f"  ↻ [{d}] self-repair geslaagd: {', '.join(repaired)}", file=sys.stderr)
         history.append(batch.to_dict())
         if d == target:
             today_batch = batch
