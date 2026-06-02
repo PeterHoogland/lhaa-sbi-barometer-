@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: deploy-${{ github.ref }}
@@ -130,4 +131,36 @@ jobs:
             git push origin main || true
           else
             echo "No cache changes to commit"
+          fi
+
+      - name: Demo-fallback alert (mail bij mock/ontbrekende bron)
+        if: steps.timecheck.outputs.skip != 'true'
+        env:
+          # Zet dit secret op een Zapier/Make "Catch Hook -> e-mail naar peter@hoogland.be"
+          # voor een directe mail. Niet gezet -> vangnet: een GitHub-issue (mailt je via
+          # je repo-notificaties) + altijd zichtbaar in de step-summary.
+          ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          FILE=app/data/latest.json
+          if [ ! -f "$FILE" ]; then echo "Geen latest.json - niets te melden."; exit 0; fi
+          SIM=$(python3 -c "import json;print(','.join(json.load(open('$FILE'))['data_quality'].get('indicators_simulated') or []))")
+          MISS=$(python3 -c "import json;print(','.join(json.load(open('$FILE'))['data_quality'].get('indicators_missing') or []))")
+          if [ -z "$SIM" ] && [ -z "$MISS" ]; then
+            echo "OK - alle indicatoren op echte data, geen demo-fallback."
+            exit 0
+          fi
+          DATE=$(date +%F)
+          MSG="SBI demo-fallback op ${DATE}: een of meer bronnen faalden. simulated=[${SIM}] missing=[${MISS}]. De barometer toont die indicatoren eerlijk als 'demo'; controleer de bron."
+          { echo "## Demo-fallback ${DATE}"; echo "$MSG"; } >> "$GITHUB_STEP_SUMMARY"
+          echo "$MSG"
+          if [ -n "$ALERT_WEBHOOK_URL" ]; then
+            PAYLOAD=$(python3 -c "import json,sys;print(json.dumps({'to':'peter@hoogland.be','date':sys.argv[1],'simulated':sys.argv[2],'missing':sys.argv[3],'message':sys.argv[4]}))" "$DATE" "$SIM" "$MISS" "$MSG")
+            curl -fsS -X POST "$ALERT_WEBHOOK_URL" -H "Content-Type: application/json" -d "$PAYLOAD" \
+              && echo "Mail-alert verstuurd via ALERT_WEBHOOK_URL." \
+              || echo "Alert-POST faalde (niet-blokkerend)."
+          else
+            gh issue create --title "SBI demo-fallback ${DATE}" --body "$MSG" >/dev/null 2>&1 \
+              && echo "GitHub-issue aangemaakt (mailt je via je repo-notificaties). Zet ALERT_WEBHOOK_URL voor een directe mail." \
+              || echo "Issue-aanmaak faalde (niet-blokkerend; alert staat in de step-summary)."
           fi
