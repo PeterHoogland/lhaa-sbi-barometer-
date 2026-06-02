@@ -1,13 +1,13 @@
 {
   "I-D1-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:11:06.555450",
+    "fetched_at": "2026-06-02T18:21:59.211303",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 8.67
   },
   "I-D1-010": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:11:06.934122",
+    "fetched_at": "2026-06-02T18:21:59.862949",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 13.195833333333335
   },
@@ -19,37 +19,37 @@
   },
   "I-D2-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:11:08.165396",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
-    "value": 2.0
+    "fetched_at": "2026-06-02T18:22:01.417251",
+    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
+    "value": 1.0
   },
   "I-D3-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:11:10.126317",
+    "fetched_at": "2026-06-02T18:22:03.092844",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 125.65954545454548
   },
   "I-D3-003S": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:14:12.378619",
+    "fetched_at": "2026-06-02T18:26:48.713994",
     "source": "Ontslag-radar: 8 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 8.0
   },
   "I-D3-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:11:12.530099",
+    "fetched_at": "2026-06-02T18:22:07.338460",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0161836680750393
   },
   "I-D5-001": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T17:52:24.920680",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 676/708 unieke artikels na dedup, 13 bronnen, poststratificatie): negativiteit jong +0.20 / midden +0.21 / ouder +0.27. Negatiefste headlines: «Aantal bevestigde gevallen met ebola stijgt naar 344, onder wie 60 doden · Oekraïne opnieuw zwaar getroffen door Rusland: acht doden en tientallen gewonden <p>Volg in deze liveblog onze updates o · Britse politie onder vuur na 'monsterlijke moord' op 18-jarige student: \"Aanpak was onmenselijk en vernederend\" In het V»; emotie-profiel headlines (matches/100 woorden): woede 0.14 / angst 0.20 / verdriet 0.11 / walging 0.02 (dominant: angst)",
-    "value": 1.488
+    "fetched_at": "2026-06-02T18:23:41.573594",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 678/709 unieke artikels na dedup, 13 bronnen, poststratificatie): negativiteit jong +0.06 / midden +0.08 / ouder +0.15. Negatiefste headlines: «Aantal bevestigde gevallen met ebola stijgt naar 344, onder wie 60 doden · Oekraïne opnieuw zwaar getroffen door Rusland: acht doden en tientallen gewonden <p>Volg in deze liveblog onze updates o · Britse politie onder vuur na 'monsterlijke moord' op 18-jarige student: \"Aanpak was onmenselijk en vernederend\" In het V»; emotie-profiel headlines (matches/100 woorden): woede 0.15 / angst 0.20 / verdriet 0.10 / walging 0.02 (dominant: angst)",
+    "value": 1.4991
   },
   "I-D5-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-02T18:12:40.212143",
+    "fetched_at": "2026-06-02T18:23:42.212962",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.533
   },
