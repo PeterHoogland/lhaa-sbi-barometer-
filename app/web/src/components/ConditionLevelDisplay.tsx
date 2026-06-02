@@ -42,7 +42,7 @@ export function ConditionLevelDisplay({
         </div>
       </div>
       <div className="cn-secondary">
-        <span>Hoger dan op {score}% van de vergelijkbare dagen (zelfde tijd van het jaar) in de afgelopen jaren.</span>
+        <span>Hoger dan op {score}% van de vergelijkbare dagen (zelfde tijd van het jaar) in de voorbije twee jaar.</span>
         <span className="cn-stamp">
           De Stressor-Blootstellings-index werd gecontroleerd en bijgestuurd · laatst om {lastRunTime}
         </span>

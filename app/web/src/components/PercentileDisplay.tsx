@@ -13,7 +13,7 @@ export function PercentileDisplay({ shortP, fixedP, composite, evidenceComposite
         <div className="percentile-label">PERCENTIEL · 24m</div>
         <div className="percentile-value">P {shortP}</div>
         <div className="percentile-context">
-          Positie binnen de verdeling van de vergelijkbare periode (zelfde tijd van het jaar).
+          Positie binnen de verdeling van vergelijkbare dagen (zelfde tijd van het jaar) in de voorbije twee jaar.
         </div>
       </div>
 
