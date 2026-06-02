@@ -1,63 +1,63 @@
 {
   "I-D1-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:35:11.425389",
+    "fetched_at": "2026-06-02T15:05:03.767164",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 8.67
   },
   "I-D1-010": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:35:11.806448",
+    "fetched_at": "2026-06-02T15:05:04.164693",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 13.195833333333335
   },
   "I-D2-001-rt": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:39:47.015491",
-    "source": "Verkeerscentrum DATEX II v3 — 48 files, 136.34 km totale filelengte (langste 10.88 km), snapshot 2026-06-02",
-    "value": 136.34
+    "fetched_at": "2026-06-02T15:08:01.688295",
+    "source": "Verkeerscentrum DATEX II v3 — 60 files, 146.24 km totale filelengte (langste 10.72 km), snapshot 2026-06-02",
+    "value": 146.24
   },
   "I-D2-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:35:12.948595",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
-    "value": 0.0
+    "fetched_at": "2026-06-02T15:05:05.256309",
+    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
+    "value": 1.0
   },
   "I-D3-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:35:14.078273",
+    "fetched_at": "2026-06-02T15:05:06.907054",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 125.65954545454548
   },
   "I-D3-003S": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:39:45.883643",
-    "source": "Ontslag-radar: 13 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen, ~100 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 13.0
+    "fetched_at": "2026-06-02T15:08:00.545982",
+    "source": "Ontslag-radar: 12 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen, ~100 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 12.0
   },
   "I-D3-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:35:16.421611",
+    "fetched_at": "2026-06-02T15:05:10.353077",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0161836680750393
   },
   "I-D5-001": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:18:20.339452",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 686/707 unieke artikels na dedup, 13 bronnen, poststratificatie): negativiteit jong +0.34 / midden +0.34 / ouder +0.41. Negatiefste headlines: «Inbraakpoging en diefstal op Truiens industrieterrein · Waarschuwing voor Peru: Machu Picchu dreigt status als wereldwonder te verliezen De organisatie New7Wonders geeft Peru e · Oekraïne opnieuw zwaar getroffen door Rusland: acht doden en tientallen gewonden <p>Volg in deze liveblog onze updates o»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.20 / verdriet 0.11 / walging 0.02 (dominant: angst)",
-    "value": 1.5606
+    "fetched_at": "2026-06-02T15:06:02.439659",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 684/707 unieke artikels na dedup, 13 bronnen, poststratificatie): negativiteit jong +0.23 / midden +0.26 / ouder +0.35. Negatiefste headlines: «Inbraakpoging en diefstal op Truiens industrieterrein · Twee vrouwen gewond na ongeval in Kinrooi · Waarschuwing voor Peru: Machu Picchu dreigt status als wereldwonder te verliezen De organisatie New7Wonders geeft Peru e»; emotie-profiel headlines (matches/100 woorden): woede 0.11 / angst 0.21 / verdriet 0.10 / walging 0.02 (dominant: angst)",
+    "value": 1.577
   },
   "I-D5-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-02T14:36:44.140467",
+    "fetched_at": "2026-06-02T15:06:02.747445",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.533
   },
   "I-D5-003": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:29:58.326935",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 11 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.066233
+    "fetched_at": "2026-06-02T15:07:12.118989",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 10 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.068367
   },
   "I-D5-006S": {
     "date": "2026-05-21",
