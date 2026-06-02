@@ -56,7 +56,7 @@ export function KernIndicators({ v04 }: { v04: V04Output }) {
         <span className="kern-badge">nieuw · v0.4</span>
       </header>
       <p className="panel-lead">
-        Dit is de scherpere meting. We wegen een kern van tien signalen (weer tonen we als
+        Dit is de scherpere meting. We wegen een kern van negen signalen (weer tonen we als
         hitte én koude) tegen twee tijdvensters tegelijk: een kort venster dat plotse pieken
         snel oppikt, en een lang venster dat rustig en betrouwbaar het niveau bewaakt. Zo zie
         je sneller én stabieler wat er speelt.

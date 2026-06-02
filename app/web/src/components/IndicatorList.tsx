@@ -150,8 +150,9 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
       <header className="indicator-list-header">
         <h2>Wat we allemaal bekijken</h2>
         <p className="panel-lead">
-          De index draait op 10 kern-indicatoren; daarnaast lopen 14 secundaire/diagnostische signalen mee. Klik er één open om te zien wat we precies meten,
-          waar de data vandaan komt en welke wetenschappelijke onderbouwing erachter zit.
+          De index bekijkt 24 indicatoren, verdeeld over 6 levensdomeinen; 9 daarvan vormen de kern-meting.
+          Daarnaast lopen 2 secundaire/diagnostische signalen mee die niet in het cijfer meetellen. Klik er één
+          open om te zien wat we precies meten, waar de data vandaan komt en welke wetenschappelijke onderbouwing erachter zit.
         </p>
       </header>
 
