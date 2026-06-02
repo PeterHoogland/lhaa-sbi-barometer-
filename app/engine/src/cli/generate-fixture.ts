@@ -38,6 +38,7 @@ const SECONDARY_NAMES: Record<string, string> = {
   "I-D5-006S": "Reddit-sentiment (onderstroom-peiling)",
   "I-D3-003S": "Ontslag-radar (nieuws-detectie)",
   "I-D5-emotie": "Emotionele lading nieuws (woede/angst/verdriet/walging)",
+  "I-D2-001-rt": "Filezwaarte real-time (DATEX, km file)",
 };
 
 function loadPipelineToday(path: string): {
