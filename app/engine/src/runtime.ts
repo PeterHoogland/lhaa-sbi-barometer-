@@ -151,6 +151,12 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
 
     const baseline = computeBaseline(baselineValues);
     let z = zscore(effectiveValue, baseline);
+    if (!Number.isFinite(z)) {
+      // Geen bruikbare schaal (geen variatie in de baseline) → behandel als ontbrekend
+      // i.p.v. een stille 0/"normaal" (review §4.1).
+      missing.push(code);
+      continue;
+    }
     if (meta.inverseCoded) z = -z;
     const { value } = winsorize(z);
     zShort[code] = value;

@@ -265,3 +265,17 @@ describe("Onvoldoende historie → 'ontbreekt', niet 'normaal' (review §0-bis.3
     expect(out.data_quality.indicators_missing).toContain("I-D2-001");
   });
 });
+
+describe("Robuuste z-score bij MAD = 0 (review §4.1)", () => {
+  it("MAD=0 maar wél spreiding → eindige z via IQR-fallback (geen stille 0)", () => {
+    // mediaan 0; >50% nullen → MAD=0; maar er is spreiding → IQR vangt het op
+    const baseline = computeBaseline([0, 0, 0, 0, 0, 0, 1, 2, 3, 4]);
+    const z = zscore(4, baseline);
+    expect(Number.isFinite(z)).toBe(true);
+    expect(z).not.toBe(0);
+  });
+  it("volledig constante baseline → NaN (geen schaal), niet 0 en niet ±∞", () => {
+    const z = zscore(5, computeBaseline([5, 5, 5, 5, 5]));
+    expect(Number.isNaN(z)).toBe(true);
+  });
+});

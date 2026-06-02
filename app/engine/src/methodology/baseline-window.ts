@@ -115,5 +115,9 @@ export function windowedZ(
 
   const baseline = computeBaseline(distribution);
   const z = zscore(effectiveValue, baseline);
+  if (!Number.isFinite(z)) {
+    // Geen bruikbare schaal (geen variatie) → niet toegepast i.p.v. een artificiële 0 (§4.1).
+    return { z: 0, n: slice.length, jaren, applied: false, effectiveValue, distribution };
+  }
   return { z, n: slice.length, jaren, applied: true, effectiveValue, distribution };
 }

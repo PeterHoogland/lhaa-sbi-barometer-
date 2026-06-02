@@ -26,6 +26,40 @@ export function madScaled(xs: number[]): number {
   return MAD_SCALE_FACTOR * median(deviations);
 }
 
+export const MIN_SCALE = 1e-6;
+
+function quantileSorted(sorted: number[], q: number): number {
+  if (sorted.length === 0) return NaN;
+  const pos = (sorted.length - 1) * q;
+  const lo = Math.floor(pos);
+  const hi = Math.ceil(pos);
+  return lo === hi ? sorted[lo] : sorted[lo] + (pos - lo) * (sorted[hi] - sorted[lo]);
+}
+
+function stdDev(xs: number[]): number {
+  if (xs.length < 2) return NaN;
+  const mean = xs.reduce((a, b) => a + b, 0) / xs.length;
+  return Math.sqrt(xs.reduce((s, x) => s + (x - mean) ** 2, 0) / (xs.length - 1));
+}
+
+/**
+ * Robuuste spreidingsschaal met fallback-keten (review §4.1): MAD (×1.4826) →
+ * IQR/1.349 → klassieke SD → NaN. MAD wordt 0 zodra >50% van de baseline identiek
+ * is (telt-indicatoren, gecensureerde data); dan vangt IQR/SD het op. Pas als er
+ * ÉCHT geen variatie is, geeft dit NaN terug — expliciet "geen schaal" i.p.v. een
+ * stille 0 die als "normaal" zou lezen.
+ */
+export function robustScale(xs: number[]): number {
+  const mad = madScaled(xs);
+  if (Number.isFinite(mad) && mad >= MIN_SCALE) return mad;
+  const sorted = [...xs].sort((a, b) => a - b);
+  const iqr = (quantileSorted(sorted, 0.75) - quantileSorted(sorted, 0.25)) / 1.349;
+  if (Number.isFinite(iqr) && iqr >= MIN_SCALE) return iqr;
+  const sd = stdDev(xs);
+  if (Number.isFinite(sd) && sd >= MIN_SCALE) return sd;
+  return NaN;
+}
+
 export interface BaselineStats {
   median: number;
   sigma: number; // MAD-equivalent
@@ -35,7 +69,7 @@ export interface BaselineStats {
 export function computeBaseline(xs: number[]): BaselineStats {
   return {
     median: median(xs),
-    sigma: madScaled(xs),
+    sigma: robustScale(xs),
     n: xs.length,
   };
 }
@@ -44,10 +78,12 @@ export function computeBaseline(xs: number[]): BaselineStats {
  * Z-score voor één waarde tegen baseline.
  * Doc 04 §2.5: dit is een MAD-Z, niet equivalent aan klassieke Z.
  *
- * Wanneer σ = 0 (constant baseline) of NaN: return 0 zodat de indicator
- * geen artificiële piek genereert (eerlijker dan ∞).
+ * Wanneer er GEEN bruikbare schaal is (constante baseline → robustScale geeft NaN):
+ * return NaN, NIET 0. De aanroeper markeert dit als "ontbreekt" (review §4.1) —
+ * geen-variatie/dataschaarste mag niet als "normaal" verschijnen, en ±∞ kan niet
+ * ontstaan (sigma is dan nooit een eindige 0).
  */
 export function zscore(x: number, baseline: BaselineStats): number {
-  if (!Number.isFinite(baseline.sigma) || baseline.sigma === 0) return 0;
+  if (!Number.isFinite(baseline.sigma) || baseline.sigma === 0) return NaN;
   return (x - baseline.median) / baseline.sigma;
 }
