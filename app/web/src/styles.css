@@ -867,7 +867,9 @@ main {
 .footer {
   margin-top: 56px;
   padding: 36px 32px 32px;
-  background: var(--lha-blue-deep);
+  /* Warm charcoal uit het palet van de hero-foto (zonsopgang-bivak), i.p.v. het
+     alpine-groen — sluit aan bij de foto onderaan de pagina. */
+  background: #2b2019;
   color: rgba(255, 255, 255, 0.75);
   font-size: 0.85rem;
 }

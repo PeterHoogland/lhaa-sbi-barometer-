@@ -67,7 +67,7 @@ export function KernIndicators({ v04 }: { v04: V04Output }) {
           <div className="kern-readout-label">De kern-meting vandaag</div>
           <div className="kern-readout-value">{meting}</div>
           <div className="kern-readout-sub">
-            staat op het {Math.round(v04.percentile.lang)}<sup>e</sup> percentiel van het lange venster
+            hoger dan op {Math.round(v04.percentile.lang)}% van de vergelijkbare dagen in de voorbije twee jaar
           </div>
         </div>
         <div className="kern-readout-cell">

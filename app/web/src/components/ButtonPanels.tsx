@@ -75,7 +75,7 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
       render: () => (
         <div className="technical-stack">
           {data.v04 && <V04Technical v04={data.v04} />}
-          <TierIndicator tier={data.tier.current} daysInTier={data.tier.days_in_tier} />
+          <TierIndicator score={data.percentile.short_24m} />
           <PercentileDisplay
             shortP={data.percentile.short_24m}
             fixedP={data.percentile.fixed_2010_2019}

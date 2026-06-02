@@ -16,6 +16,41 @@ export const TIER_SUBLINE = {
   red: "We zitten in de zwaarste 10% van de laatste twee jaar.",
 } as const;
 
+// Band-gebaseerde kop (volgt de dag-score, zoals de kicker en de meter-zones),
+// zodat de status-tekst klopt met het getal bovenaan. De TIER_*-versies hierboven
+// bleven aan de sustained-tier hangen (3 dagen), waardoor 71 "gewone dag" las.
+export type ScoreBand = "laag" | "gemiddeld" | "verhoogd" | "hoog";
+export function scoreBand(score: number): ScoreBand {
+  if (score >= 90) return "hoog";
+  if (score >= 70) return "verhoogd";
+  if (score >= 50) return "gemiddeld";
+  return "laag";
+}
+export const BAND_LABEL: Record<ScoreBand, string> = {
+  laag: "LAAG",
+  gemiddeld: "GEMIDDELD",
+  verhoogd: "VERHOOGD",
+  hoog: "HOOG",
+};
+export const BAND_HEADLINE: Record<ScoreBand, string> = {
+  laag: "Vandaag is een rustige dag.",
+  gemiddeld: "Vandaag is een gewone dag.",
+  verhoogd: "Vandaag is het drukker dan gewoonlijk.",
+  hoog: "Vandaag staan veel signalen uitzonderlijk hoog.",
+};
+export const BAND_SUBLINE: Record<ScoreBand, string> = {
+  laag: "Lagere druk dan gewoonlijk voor deze tijd van het jaar.",
+  gemiddeld: "Geen verhoogde druk op de hele bevolking.",
+  verhoogd: "Meerdere stress-factoren staan verhoogd voor deze tijd van het jaar.",
+  hoog: "We zitten in de zwaarste 10% van de vergelijkbare dagen.",
+};
+export const BAND_COLOR: Record<ScoreBand, "green" | "amber" | "red"> = {
+  laag: "green",
+  gemiddeld: "green",
+  verhoogd: "amber",
+  hoog: "red",
+};
+
 export const LES_HAUTES_ALPES_CTA = {
   green: null,
   amber: {
@@ -45,8 +80,8 @@ export const DOMAIN_LABELS = {
 } as const;
 
 export const METHODOLOGY_DISCLAIMER = [
-  "Dit is een teller voor het hele land, niet voor jou persoonlijk. We kijken naar 24 dingen die de hele bevolking onder druk kunnen zetten en tellen hoe ongewoon ze vandaag zijn.",
-  "We meten dus geen mensen, we meten omstandigheden. We zijn geen dokter. We voorspellen niet wat morgen gaat gebeuren. Het is geen wetenschappelijke studie, het is gemaakt met onderzoek dat anderen al gedaan hebben.",
+  "Dit is een teller voor het hele land, niet voor jou persoonlijk.",
+  "We meten dus geen mensen, we meten omstandigheden. We voorspellen niet wat morgen gaat gebeuren.",
 ] as const;
 
 export const FOOTER_NOTES = {

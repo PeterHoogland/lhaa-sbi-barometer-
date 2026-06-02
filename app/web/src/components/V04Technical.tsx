@@ -1,4 +1,4 @@
-import type { V04Output, TriggerEvent } from "../types";
+import type { V04Output } from "../types";
 
 /**
  * Technische v0.4-weergave voor het 'Technische details'-paneel: de volledige
@@ -11,17 +11,6 @@ function fmt(v: number | null): string {
   return v === null ? "—" : v.toFixed(2);
 }
 
-function TriggerRow({ t }: { t: TriggerEvent }) {
-  return (
-    <li className={`v04-trigger sev-${t.severity}`}>
-      <span className="v04-trig-type mono">{t.type}</span>
-      <span className="v04-trig-code">{t.plain_name ?? t.code ?? "composiet"}</span>
-      <span className="v04-trig-sev">{t.severity}</span>
-      {t.require_manual_approval && <span className="v04-trig-hold">handmatige goedkeuring</span>}
-    </li>
-  );
-}
-
 export function V04Technical({ v04 }: { v04: V04Output }) {
   return (
     <section className="v04-tech">
@@ -32,9 +21,9 @@ export function V04Technical({ v04 }: { v04: V04Output }) {
         </span>
       </header>
       <p className="muted small">
-        Draait additief naast de hoofdmeting. composite_meting = Σ(w_meting × z_lang) over de
-        kern; de trage bronnen laden de trigger-drempel via de load_factor. De campagne-triggers
-        vereisen handmatige goedkeuring — er vuurt niets automatisch.
+        Dit is een tweede, scherpere meting die meeloopt naast het hoofdcijfer en de
+        campagne-signalen aanstuurt. De campagne-triggers vereisen handmatige goedkeuring,
+        er vuurt niets automatisch.
       </p>
 
       <div className="v04-stat-row">
@@ -69,16 +58,6 @@ export function V04Technical({ v04 }: { v04: V04Output }) {
         </table>
       </div>
 
-      <div className="v04-triggers">
-        <h4>Campagne-triggers: {v04.triggers.length === 0 ? "geen vandaag" : `${v04.triggers.length} actief`}</h4>
-        {v04.triggers.length === 0 ? (
-          <p className="muted small">Geen campagne-triggers vandaag — de barometer staat laag genoeg.</p>
-        ) : (
-          <ul className="v04-trigger-list">
-            {v04.triggers.map((t, i) => <TriggerRow key={i} t={t} />)}
-          </ul>
-        )}
-      </div>
     </section>
   );
 }

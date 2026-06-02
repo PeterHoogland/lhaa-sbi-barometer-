@@ -1,23 +1,24 @@
-import type { Tier } from "../types";
-import { TIER_HEADLINE, TIER_SUBLINE } from "../copy";
+import { BAND_HEADLINE, BAND_SUBLINE, BAND_LABEL, BAND_COLOR, scoreBand } from "../copy";
 
-export function TierIndicator({ tier, daysInTier }: { tier: Tier; daysInTier: number }) {
+/**
+ * Status-kaart. Volgt de DAG-score (zelfde band-logica als de kicker en de
+ * meter-zones: 50/70/90), zodat de kop klopt met het getal bovenaan. Hing vroeger
+ * aan de sustained-tier (3 dagen), waardoor 71 nog "gewone dag" las terwijl het
+ * cijfer "VERHOOGD" toonde. De campagne-/banner-activatie blijft elders op de
+ * sustained-tier-regel (dit is enkel de leesbare status).
+ */
+export function TierIndicator({ score }: { score: number }) {
+  const band = scoreBand(score);
+  const color = BAND_COLOR[band];
   return (
-    <div className={`tier-indicator tier-${tier}`}>
+    <div className={`tier-indicator tier-${color}`}>
       <div className="tier-light">
-        <div className={`tier-dot tier-dot-${tier}`} aria-label={`tier ${tier}`} />
+        <div className={`tier-dot tier-dot-${color}`} aria-label={`niveau ${band}`} />
       </div>
       <div className="tier-text">
-        <div className="tier-label">
-          {tier === "green" && "GROEN · BAND NORMAAL"}
-          {tier === "amber" && "ORANJE · VENSTER OPEN"}
-          {tier === "red" && "ROOD · CONDITIE-PIEK"}
-        </div>
-        <h1 className="tier-headline">{TIER_HEADLINE[tier]}</h1>
-        <p className="tier-subline">{TIER_SUBLINE[tier]}</p>
-        {tier !== "green" && (
-          <div className="tier-meta">Dag {daysInTier} in deze tier.</div>
-        )}
+        <div className="tier-label">BAND {BAND_LABEL[band]}</div>
+        <h1 className="tier-headline">{BAND_HEADLINE[band]}</h1>
+        <p className="tier-subline">{BAND_SUBLINE[band]}</p>
       </div>
     </div>
   );

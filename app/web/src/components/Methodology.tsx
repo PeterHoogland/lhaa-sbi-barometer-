@@ -9,7 +9,7 @@ export function Methodology() {
       ))}
 
       <ul className="methodology-do-dont">
-        <li><strong>Wat we doen:</strong> we kijken naar 24 dingen die met stress te maken hebben, en tellen hoe ongewoon ze vandaag zijn, over heel België.</li>
+        <li><strong>Wat we doen:</strong> we kijken naar 6 thema's en 24 elementen die met stress te maken hebben, en tellen hoe ongewoon ze vandaag zijn.</li>
         <li><strong>Wat we NIET doen:</strong> we kijken niet of jij persoonlijk stress hebt. We zijn geen dokter. We voorspellen niets.</li>
         <li><strong>Hoe vergelijken we?</strong> Met de afgelopen 24 maanden voor dezelfde tijd van het jaar. Een zomerdag wordt vergeleken met zomerdagen, geen winterdagen.</li>
       </ul>
