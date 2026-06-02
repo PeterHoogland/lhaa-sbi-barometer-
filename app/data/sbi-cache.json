@@ -1,37 +1,37 @@
 {
   "I-D1-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T11:36:39.842334",
+    "fetched_at": "2026-06-02T12:06:31.680312",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 8.67
   },
   "I-D1-010": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T11:36:40.226629",
+    "fetched_at": "2026-06-02T12:06:32.067444",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
-    "value": 16.129166666666666
+    "value": 13.195833333333335
   },
   "I-D2-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T11:36:41.617023",
+    "fetched_at": "2026-06-02T12:06:33.258058",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D3-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T11:36:43.378696",
+    "fetched_at": "2026-06-02T12:06:35.016437",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 125.65954545454548
   },
   "I-D3-003S": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T11:39:40.220030",
+    "fetched_at": "2026-06-02T12:10:21.334328",
     "source": "Ontslag-radar: 8 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen, ~100 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 8.0
   },
   "I-D3-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T11:36:46.777139",
+    "fetched_at": "2026-06-02T12:06:37.987931",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0161836680750393
   },
@@ -43,13 +43,13 @@
   },
   "I-D5-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-02T11:38:11.670772",
+    "fetched_at": "2026-06-02T12:08:04.819217",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.533
   },
   "I-D5-003": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T11:38:54.407206",
+    "fetched_at": "2026-06-02T12:09:31.324784",
     "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 2 RSS-kandidaten naar pending voor menselijke review",
     "value": 0.068533
   },
