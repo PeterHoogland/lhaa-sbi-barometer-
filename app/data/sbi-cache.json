@@ -1,13 +1,13 @@
 {
   "I-D1-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T17:51:24.755077",
+    "fetched_at": "2026-06-02T18:11:06.555450",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 8.67
   },
   "I-D1-010": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T17:51:25.137405",
+    "fetched_at": "2026-06-02T18:11:06.934122",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 13.195833333333335
   },
@@ -19,25 +19,25 @@
   },
   "I-D2-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T17:51:27.055335",
+    "fetched_at": "2026-06-02T18:11:08.165396",
     "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
     "value": 2.0
   },
   "I-D3-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T17:51:33.573238",
+    "fetched_at": "2026-06-02T18:11:10.126317",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 125.65954545454548
   },
   "I-D3-003S": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T17:54:33.850576",
-    "source": "Ontslag-radar: 9 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 9.0
+    "fetched_at": "2026-06-02T18:14:12.378619",
+    "source": "Ontslag-radar: 8 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 8.0
   },
   "I-D3-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T17:51:35.543216",
+    "fetched_at": "2026-06-02T18:11:12.530099",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0161836680750393
   },
@@ -49,15 +49,15 @@
   },
   "I-D5-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-02T17:52:25.158951",
+    "fetched_at": "2026-06-02T18:12:40.212143",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.533
   },
   "I-D5-003": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T17:53:46.724097",
+    "fetched_at": "2026-06-02T18:13:22.674869",
     "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 14 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.068733
+    "value": 0.068033
   },
   "I-D5-006S": {
     "date": "2026-05-21",
