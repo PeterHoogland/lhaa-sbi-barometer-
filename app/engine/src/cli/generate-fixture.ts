@@ -148,47 +148,79 @@ function loadRealHistory(): Partial<Record<IndicatorCode, Array<{ date: string; 
   return out;
 }
 
+/**
+ * Deterministische pseudo-random (mulberry32), gezaaid per (indicator, datum).
+ * Reden: een ONgezaaide Math.random maakte het publieke percentiel niet-
+ * reproduceerbaar — dezelfde dag, dezelfde echte data gaf run-op-run een ander
+ * getal (±2-3 punten), puur door her-randomisatie van de synthetische
+ * fallback-baseline. Voor een publiek cijfer is dat onwenselijk. Met een vaste
+ * zaai is de fallback reproduceerbaar (hetzelfde getal bij elke run) maar nog
+ * steeds gevarieerd over dagen en indicatoren. Geen methodologie-wijziging:
+ * dezelfde synthetische vorm, alleen deterministisch i.p.v. toevallig.
+ */
+function mulberry32(seed: number): () => number {
+  let a = seed >>> 0;
+  return function () {
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function hashStr(s: string): number {
+  let h = 2166136261 >>> 0;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
+}
+
 /** Realistische ruw-waarde-generatie met seizoens-modulatie. */
 function syntheticRawValue(code: IndicatorCode, date: Date): number {
   const doy = (date.getTime() - Date.UTC(date.getUTCFullYear(), 0, 0)) / 86400000;
   const yearProg = (doy / 365) * 2 * Math.PI;
+  // Gezaaid per (indicator, dag): deterministisch maar gevarieerd. Vervangt de
+  // ongezaaide Math.random zodat het publieke cijfer reproduceerbaar is.
+  const rnd = mulberry32(hashStr(code + ":" + isoDate(date)));
 
   // Deterministische indicatoren komen niet uit deze synthese — die rekent de engine zelf
   switch (code) {
     case "I-D1-002": // Hitte
-      return Math.max(0, 18 + 10 * Math.sin(yearProg - Math.PI / 2) + (Math.random() - 0.5) * 6);
+      return Math.max(0, 18 + 10 * Math.sin(yearProg - Math.PI / 2) + (rnd() - 0.5) * 6);
     case "I-D1-003": // Kou
-      return Math.max(0, 5 - 8 * Math.cos(yearProg) + (Math.random() - 0.5) * 4);
+      return Math.max(0, 5 - 8 * Math.cos(yearProg) + (rnd() - 0.5) * 4);
     case "I-D1-004": // Luchtkwaliteit (ratio tov WHO)
-      return 0.8 + 0.3 * Math.cos(yearProg) + (Math.random() - 0.5) * 0.3;
+      return 0.8 + 0.3 * Math.cos(yearProg) + (rnd() - 0.5) * 0.3;
     case "I-D2-001": // Filezwaarte — jaar-op-jaar % verandering (Pad A v2, YoY). Fallback rond de mediane jaargroei (~6%); mag negatief.
-      return 6 + 6 * Math.cos(yearProg - 0.5) + (Math.random() - 0.5) * 6;
+      return 6 + 6 * Math.cos(yearProg - 0.5) + (rnd() - 0.5) * 6;
     case "I-D2-004": // Brandstofprijs (€/l)
-      return 1.85 + 0.15 * Math.sin(yearProg) + (Math.random() - 0.5) * 0.08;
+      return 1.85 + 0.15 * Math.sin(yearProg) + (rnd() - 0.5) * 0.08;
     case "I-D3-001": // CPI yoy %
-      return 2.5 + 0.5 * Math.sin(yearProg / 2) + (Math.random() - 0.5) * 0.4;
+      return 2.5 + 0.5 * Math.sin(yearProg / 2) + (rnd() - 0.5) * 0.4;
     case "I-D3-002": // Energie €/MWh
-      return 80 + 25 * Math.cos(yearProg) + (Math.random() - 0.5) * 15;
+      return 80 + 25 * Math.cos(yearProg) + (rnd() - 0.5) * 15;
     case "I-D3-003": // log(1 + ontslagen)
-      return Math.log(1 + 100 + 50 * Math.cos(yearProg + 1) + (Math.random() - 0.5) * 80);
+      return Math.log(1 + 100 + 50 * Math.cos(yearProg + 1) + (rnd() - 0.5) * 80);
     case "I-D3-005": // Werkloosheid %
-      return 6.2 + (Math.random() - 0.5) * 0.4;
+      return 6.2 + (rnd() - 0.5) * 0.4;
     case "I-D3-006": // Hypotheekrente %
-      return 3.4 + (Math.random() - 0.5) * 0.2;
+      return 3.4 + (rnd() - 0.5) * 0.2;
     case "I-D5-001": // Nieuwsneg (GDELT tone — fallback rond echte mediaan ~1.4)
-      return Math.max(0, 1.4 + 0.6 * Math.sin(yearProg * 1.5) + (Math.random() - 0.5) * 0.9);
+      return Math.max(0, 1.4 + 0.6 * Math.sin(yearProg * 1.5) + (rnd() - 0.5) * 0.9);
     case "I-D5-002": // Wikipedia-aandachts-index (per miljoen, fallback ~28)
-      return Math.max(0, 28 + 6 * Math.sin(yearProg) + (Math.random() - 0.5) * 8);
+      return Math.max(0, 28 + 6 * Math.sin(yearProg) + (rnd() - 0.5) * 8);
     case "I-D5-003": // Collectieve gebeurtenissen 0-15
-      return Math.random() < 0.05 ? Math.floor(Math.random() * 6) : 0;
+      return rnd() < 0.05 ? Math.floor(rnd() * 6) : 0;
     case "I-D1-009": // Wateroverlast-index (~1.0)
-      return Math.max(0, 1.05 + (Math.random() - 0.5) * 0.3);
+      return Math.max(0, 1.05 + (rnd() - 0.5) * 0.3);
     case "I-D1-010": // Pollen (seizoensgebonden, lente-piek)
-      return Math.max(0, 2 + 4 * Math.max(0, Math.sin(yearProg - 1)) + (Math.random() - 0.5) * 2);
+      return Math.max(0, 2 + 4 * Math.max(0, Math.sin(yearProg - 1)) + (rnd() - 0.5) * 2);
     case "I-D2-009": // Treinverstoringen (aantal)
-      return Math.max(0, 3 + (Math.random() - 0.5) * 4);
+      return Math.max(0, 3 + (rnd() - 0.5) * 4);
     case "I-D3-009": // Stroomnet-druk (ratio gemeten/voorspeld ~1.0)
-      return Math.max(0, 1.0 + (Math.random() - 0.5) * 0.08);
+      return Math.max(0, 1.0 + (rnd() - 0.5) * 0.08);
     default:
       return 0;
   }
@@ -231,6 +263,21 @@ async function generate(): Promise<void> {
     history[code] = series;
   }
 
+  // Carry-forward-bron voor de reconstructie hieronder. Maandelijkse indicatoren
+  // (filezwaarte, brandstof, CPI, werkloosheid, hypotheek) hebben ~1 echt punt per
+  // maand; de tussenliggende dagen met synthetische ruis vullen vervuilde de
+  // referentieverdeling waartegen het percentiel rekent — een maandcijfer hoort
+  // binnen de maand VAST te staan (zoals de productie-dagwaarde het laatste
+  // maandcijfer vasthoudt), niet te ruisen. We dragen daarom de laatst bekende
+  // echte waarde door. cfPtr schuift mee (de loop is chronologisch).
+  const realSorted: Partial<Record<IndicatorCode, { dates: string[]; values: number[] }>> = {};
+  const cfPtr: Partial<Record<IndicatorCode, number>> = {};
+  for (const code of realBaselineCodes) {
+    const rows = [...(realHistory[code] ?? [])].sort((a, b) => (a.date < b.date ? -1 : 1));
+    realSorted[code] = { dates: rows.map((r) => r.date), values: rows.map((r) => r.value) };
+    cfPtr[code] = -1;
+  }
+
   // Deterministische indicatoren krijgen een ECHTE historie: hun waarde is een
   // reproduceerbare functie van de datum (daglicht, kalender), dus we berekenen
   // ze gewoon voor elke dag in het venster. Zo wegen ook deze indicatoren tegen
@@ -260,8 +307,26 @@ async function generate(): Promise<void> {
 
     const rawValues: Partial<Record<IndicatorCode, number>> = {};
     for (const code of simulatedCodes) {
-      // Echte historie waar beschikbaar, anders synthetisch
-      rawValues[code] = realHistMaps[code]?.get(iso) ?? syntheticRawValue(code, d);
+      // Exacte echte dagwaarde waar beschikbaar; anders de laatst bekende echte
+      // waarde doordragen (maandcijfers staan binnen de maand vast); pas vóór het
+      // eerste echte punt synthetisch. Zo ruist de referentieverdeling niet meer
+      // door her-gerandomiseerde maandindicatoren.
+      const exact = realHistMaps[code]?.get(iso);
+      if (exact !== undefined) {
+        rawValues[code] = exact;
+        continue;
+      }
+      const sorted = realSorted[code];
+      if (sorted) {
+        let p = cfPtr[code]!;
+        while (p + 1 < sorted.dates.length && sorted.dates[p + 1] <= iso) p++;
+        cfPtr[code] = p;
+        if (p >= 0) {
+          rawValues[code] = sorted.values[p];
+          continue;
+        }
+      }
+      rawValues[code] = syntheticRawValue(code, d);
     }
 
     const out = computeDaily({

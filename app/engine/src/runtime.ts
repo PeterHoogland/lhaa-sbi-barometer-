@@ -37,6 +37,7 @@ import {
 import { DEMOGRAPHIC_REACH } from "./methodology/demographic-reach.js";
 import { indicatorWeight, domainWeight } from "./methodology/weights.js";
 import { percentileRank } from "./methodology/percentile.js";
+import { seasonalPercentile, buildSeasonalPercentileHistory } from "./methodology/seasonal-percentile.js";
 import { computeTier } from "./methodology/tier.js";
 import { computeConditionLevel } from "./methodology/condition-level.js";
 // --- SBI v0.4 modules ---
@@ -189,14 +190,18 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     },
   };
 
-  // [7] SIGNAL — percentiel uit 24m historie
-  const percShort = percentileRank(
-    equal.composite,
-    input.compositeHistory.map((h) => h.value),
-  );
+  // [7] SIGNAL — seizoens-bewust percentiel: vergelijk vandaag tegen dezelfde
+  // periode van het jaar (± venster), niet tegen het hele 2-jaars-blok. Een
+  // rustige junidag wordt zo tegen vroegere junidagen gewogen i.p.v. tegen winters
+  // (eerlijker + minder cross-seizoen-grilligheid). Terugval op het volledige
+  // venster bij te weinig seizoenspunten. Zie methodology/seasonal-percentile.ts.
+  const percShort = seasonalPercentile(equal.composite, input.date, input.compositeHistory);
 
-  // Tier-logica vereist een geschiedenis van percentielen
-  const percentileHistory = buildPercentileHistory(input.compositeHistory, equal.composite);
+  // Tier-logica vereist een geschiedenis van (seizoens-)percentielen, lookahead-vrij.
+  const percentileHistory = buildSeasonalPercentileHistory(input.compositeHistory, {
+    date: input.date,
+    value: equal.composite,
+  });
   const tierResult = computeTier(percentileHistory);
 
   // Tier history 30d (asymmetrisch, geen kortere lookback)
@@ -315,7 +320,7 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       d5_cross_correlation_7d: round2(d5Cross),
       composite_without_d5: round2(withoutD5),
       media_contribution_percentile_points: Math.abs(
-        Math.round(percentileRank(withoutD5, input.compositeHistory.map((h) => h.value)) - percShort),
+        Math.round(seasonalPercentile(withoutD5, input.date, input.compositeHistory) - percShort),
       ),
     },
     brand_safety: input.brandSafety
