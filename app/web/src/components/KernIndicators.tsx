@@ -90,7 +90,7 @@ export function KernIndicators({ v04 }: { v04: V04Output }) {
               {kernLabel(k.state)}
             </span>
             <span className="kern-chip-base muted small">
-              tegen {k.baseline_lang_jaren} jaar historie
+              vergeleken met dezelfde tijd van het jaar
             </span>
           </div>
         ))}
