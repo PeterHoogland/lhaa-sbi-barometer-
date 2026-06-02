@@ -25,6 +25,16 @@ export function Methodology() {
           <li>Alle keuzes (drempels, gewichten, formules) staan vooraf vast en zijn publiek, niemand kan ze achteraf bijsturen om een gewenste uitkomst te maken.</li>
         </ol>
       </details>
+
+      <details>
+        <summary>Wat we (nog) niet dekken</summary>
+        <ul className="methodology-gaps">
+          <li>De index leunt nu zwaarder op Vlaamse bronnen. Een volwaardig Franstalig/Waals equivalent (files, water, hulplijnen) ontbreekt deels, dus de dekking is niet overal gelijk.</li>
+          <li>Pollen komt via een model (CAMS), niet via meetstations. Geluid heeft buiten Brussel geen dagresolutie.</li>
+          <li>De groothandelsprijs van energie in realtime en wateroverlast in Wallonië zijn nog niet volledig gedekt.</li>
+          <li>Er is nog geen externe validatie tegen klinische uitkomstmaten (Tele-Onthaal, Sciensano, RIZIV). Dat vereist datadelingsprotocollen. Het meetkader ervoor staat klaar.</li>
+        </ul>
+      </details>
     </section>
   );
 }

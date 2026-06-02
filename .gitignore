@@ -45,3 +45,4 @@ app/web/.surge
 # Cloudflare Wrangler local state
 .wrangler/
 .claude/
+app/data/analysis/
