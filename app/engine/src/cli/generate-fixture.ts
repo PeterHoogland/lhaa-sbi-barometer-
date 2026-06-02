@@ -14,6 +14,7 @@ import { fileURLToPath } from "node:url";
 import { INDICATOR_CODES, INDICATORS } from "../indicators/registry.js";
 import { computeAllDeterministic } from "../indicators/deterministic.js";
 import { computeDaily } from "../runtime.js";
+import { percentileRank } from "../methodology/percentile.js";
 import type { IndicatorCode } from "../types.js";
 import { EMPTY_TRIGGER_STATE, type TriggerState } from "../methodology/triggers.js";
 import { dispatchTriggers } from "../webhook.js";
@@ -36,6 +37,7 @@ interface PipelineBatch {
 const SECONDARY_NAMES: Record<string, string> = {
   "I-D5-006S": "Reddit-sentiment (onderstroom-peiling)",
   "I-D3-003S": "Ontslag-radar (nieuws-detectie)",
+  "I-D5-emotie": "Emotionele lading nieuws (woede/angst/verdriet/walging)",
 };
 
 function loadPipelineToday(path: string): {
@@ -70,6 +72,27 @@ function loadPipelineToday(path: string): {
     // pipeline output is corrupt — fallback naar volledig synthetisch
   }
   return { realValues, realCodes, observationDates, secondarySignals };
+}
+
+const MIN_EMOTIE_HISTORY = 20;
+
+/** Emotie-confirmation (V6 increment 2a): true wanneer de emotionele lading van
+ *  het nieuws vandaag in de top-30% van zijn EIGEN (dagelijks groeiende) historie
+ *  zit. Cold-start (< MIN_EMOTIE_HISTORY punten) → conservatief false. Kalibratie-
+ *  vrij — geen magische drempel. Confirmation bepaalt enkel severity, nooit of een
+ *  trigger vuurt. */
+function emotieElevatedFromHistory(value: number | undefined, histDir: string): boolean {
+  if (value === undefined) return false;
+  const p = resolve(histDir, "I-D5-emotie.json");
+  if (!existsSync(p)) return false;
+  try {
+    const rows = JSON.parse(readFileSync(p, "utf-8")) as Array<{ date: string; value: number }>;
+    const vals = rows.map((r) => r.value).filter((v) => Number.isFinite(v));
+    if (vals.length < MIN_EMOTIE_HISTORY) return false;
+    return percentileRank(value, vals) >= 70;
+  } catch {
+    return false;
+  }
 }
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -277,12 +300,16 @@ async function generate(): Promise<void> {
   // v0.4: cooldown-state van de vorige run + bevestigingssignalen uit de secundaire laag.
   const priorTriggerState = loadTriggerState(TRIGGER_STATE_OUT);
   const radarSignal = secondarySignals.find((s) => s.code === "I-D3-003S");
+  const emotieSignal = secondarySignals.find((s) => s.code === "I-D5-emotie");
   const confirmationSignals = {
     // Ontslag-radar = aantal ontslag-thema-artikels; ≥ 1 telt als bevestiging.
     layoffRadarElevated: radarSignal ? radarSignal.value >= 1 : false,
     // Reddit-valentie-conventie nog niet vastgelegd → conservatief geen bevestiging.
     // (Confirmation bepaalt enkel severity, nooit of een trigger vuurt.)
     redditElevated: false,
+    // Emotionele lading nieuws in top-30% van de eigen historie → versterkt
+    // nieuws-spikes naar severity "hoog" (V6 increment 2a; cold-start-veilig).
+    emotieElevated: emotieElevatedFromHistory(emotieSignal?.value, HISTORY_DIR),
   };
 
   const todayOutput = computeDaily({

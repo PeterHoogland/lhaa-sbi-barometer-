@@ -34,7 +34,9 @@ def append_to_history(batch: FetchBatch) -> None:
     """
     hist_dir = DATA_DIR / "history"
     hist_dir.mkdir(parents=True, exist_ok=True)
-    for r in batch.results:
+    # Ook secundaire signalen (bv. I-D5-emotie) bouwen historie op — die baseline
+    # heeft de trigger-laag nodig (headlines hebben geen extern archief).
+    for r in [*batch.results, *batch.secondary]:
         if r.simulated or r.value is None or not math.isfinite(r.value):
             continue
         # observatiedatum normaliseren naar YYYY-MM-DD (maandcijfers → dag 01)
@@ -93,6 +95,9 @@ def fetch_one_day(d: date) -> FetchBatch:
     # Secundair — NIET in composiet (sensitiviteit, doc 02 §10)
     batch.add_secondary(reddit.fetch_reddit_sentiment(d))
     batch.add_secondary(layoff_radar.fetch_layoff_radar(d))
+    # Emotionele lading van de nieuws-headlines — hergebruikt de RSS-meting van
+    # fetch_news_negativity hierboven (V6 increment 2). Trigger-laag, niet het cijfer.
+    batch.add_secondary(gdelt.news_emotion_secondary(d))
 
     return batch
 

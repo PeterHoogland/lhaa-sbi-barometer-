@@ -88,8 +88,8 @@ export interface DailyComputeInput {
   priorTriggerState?: TriggerState;
   /** Rollende historie van composite_meting — voedt v0.4-percentiel + tier. */
   compositeMetingHistory?: Array<{ date: string; value: number }>;
-  /** Bevestigingssignalen voor de trigger-severity (reddit #8, ontslag-radar #7). */
-  confirmationSignals?: { redditElevated?: boolean; layoffRadarElevated?: boolean };
+  /** Bevestigingssignalen voor de trigger-severity (reddit #8, ontslag-radar #7, emotie). */
+  confirmationSignals?: { redditElevated?: boolean; layoffRadarElevated?: boolean; emotieElevated?: boolean };
   /** Huidige tijd (ISO) voor trigger fired_at/cooldown. Default: nu. */
   nowISO?: string;
 }
@@ -408,7 +408,7 @@ interface ComputeV04Params {
   observationDates?: Partial<Record<IndicatorCode, string>>;
   compositeMetingHistory: Array<{ date: string; value: number }>;
   brandSafetyFlag: BrandSafety;
-  confirmation: { redditElevated?: boolean; layoffRadarElevated?: boolean };
+  confirmation: { redditElevated?: boolean; layoffRadarElevated?: boolean; emotieElevated?: boolean };
   priorTriggerState: TriggerState;
   nowISO: string;
 }
@@ -540,6 +540,7 @@ function computeV04(p: ComputeV04Params): V04Output {
   if (wikiZkort >= CONFIRM_Z) confirmedBy.push("I-D5-002");
   if (p.confirmation.redditElevated) confirmedBy.push("I-D5-006S");
   if (p.confirmation.layoffRadarElevated) confirmedBy.push("I-D3-003S");
+  if (p.confirmation.emotieElevated) confirmedBy.push("I-D5-emotie");
 
   const trig = evaluateTriggers({
     perCore,

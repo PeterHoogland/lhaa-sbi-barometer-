@@ -32,7 +32,7 @@ from datetime import date, datetime, timedelta
 from ..util import FetchResult, safe_request, seasonal_noise
 from ..cache import get as cache_get, put as cache_put
 from ..lexicon_nl import LEXICON_VERSION, LEXICON_SIZE, tone_of_text
-from ..lexicon_emotion_nl import aggregate_emotions
+from ..lexicon_emotion_nl import aggregate_emotions, LEXICON_SIZE as EMOTIE_LEXICON_SIZE
 from ..media_profiles import poststratify
 
 # (feed-URL, mediaprofiel-sleutel). Sleutel matcht media_profiles.MEDIA_PROFILES.
@@ -53,6 +53,10 @@ RSS_FEEDS = [
 ]
 
 GDELT_DOC_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
+
+# Stash van het laatst-berekende emotie-profiel per datum, zodat
+# news_emotion_secondary() het kan hergebruiken zonder de RSS opnieuw te fetchen.
+_LAST_EMOTION: dict[str, dict] = {}
 
 
 def _parse_rss_texts(xml_text: str) -> list[str]:
@@ -236,6 +240,7 @@ def fetch_news_negativity(target_date: date) -> FetchResult:
     seg_text = ""
     emo_text = ""
     rss_ok, source_tones, n_unique, n_raw, top_neg, emotion_profile = _per_source_tones(target_date)
+    _LAST_EMOTION[target_date.isoformat()] = emotion_profile  # hergebruik in news_emotion_secondary
     if rss_ok and source_tones and n_unique >= 8:
         ps = poststratify(source_tones)
         if ps["national"] is not None:
@@ -289,4 +294,34 @@ def fetch_news_negativity(target_date: date) -> FetchResult:
     return FetchResult(
         "I-D5-001", value, target_date.isoformat(),
         simulated=True, source="mock (GDELT + cache leeg)",
+    )
+
+
+# --- I-D5-emotie: secundair emotie-signaal (V6 increment 2) ---
+def news_emotion_secondary(target_date: date) -> FetchResult:
+    """Secundair signaal I-D5-emotie — totale emotionele lading van de nieuws-
+    headlines (woede+angst+verdriet+walging, matches per 100 woorden). Hergebruikt
+    het emotie-profiel dat fetch_news_negativity al over dezelfde RSS-corpus
+    berekende (géén extra fetch). Trigger-/signaallaag, NIET het publieke cijfer.
+
+    Roep dit ALTIJD ná fetch_news_negativity(d) aan — run.py doet dat: de primaire
+    nieuws-fetch eerst, de secundaire signalen daarna."""
+    prof = _LAST_EMOTION.get(target_date.isoformat())
+    if prof and prof.get("n_headlines", 0) > 0:
+        em = prof["intensity"]
+        total = round(em["woede"] + em["angst"] + em["verdriet"] + em["walging"], 3)
+        dom = prof.get("dominant") or "geen"
+        source = (
+            f"Emotie-lexicon NL ({EMOTIE_LEXICON_SIZE} woorden) over "
+            f"{prof['n_headlines']} headlines; dominant: {dom} "
+            f"(woede {em['woede']:.2f} / angst {em['angst']:.2f} / "
+            f"verdriet {em['verdriet']:.2f} / walging {em['walging']:.2f})"
+        )
+        return FetchResult(
+            "I-D5-emotie", total, target_date.isoformat(),
+            simulated=False, source=source,
+        )
+    return FetchResult(
+        "I-D5-emotie", 0.0, target_date.isoformat(),
+        simulated=True, source="mock (geen RSS-headlines voor emotie-profiel)",
     )
