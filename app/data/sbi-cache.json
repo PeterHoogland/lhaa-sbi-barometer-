@@ -1,43 +1,43 @@
 {
   "I-D1-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:17:09.613696",
+    "fetched_at": "2026-06-02T14:27:41.908746",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 8.67
   },
   "I-D1-010": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:17:10.202944",
+    "fetched_at": "2026-06-02T14:27:42.546600",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 13.195833333333335
   },
   "I-D2-001-rt": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:20:18.115338",
-    "source": "Verkeerscentrum DATEX II v3 — 46 files, 113.74 km totale filelengte (langste 10.88 km), snapshot 2026-06-02",
-    "value": 113.74
+    "fetched_at": "2026-06-02T14:30:49.990956",
+    "source": "Verkeerscentrum DATEX II v3 — 45 files, 125.15 km totale filelengte (langste 9.5 km), snapshot 2026-06-02",
+    "value": 125.15
   },
   "I-D2-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:17:11.882099",
+    "fetched_at": "2026-06-02T14:27:44.020236",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D3-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:17:18.435612",
+    "fetched_at": "2026-06-02T14:27:45.774625",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 125.65954545454548
   },
   "I-D3-003S": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:20:16.626692",
+    "fetched_at": "2026-06-02T14:30:48.175288",
     "source": "Ontslag-radar: 11 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen, ~100 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 11.0
   },
   "I-D3-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:17:22.309936",
+    "fetched_at": "2026-06-02T14:27:49.159882",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0161836680750393
   },
@@ -49,15 +49,15 @@
   },
   "I-D5-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-02T14:18:21.521230",
+    "fetched_at": "2026-06-02T14:29:12.900122",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.533
   },
   "I-D5-003": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:19:23.294463",
+    "fetched_at": "2026-06-02T14:29:58.326935",
     "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 11 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.0659
+    "value": 0.066233
   },
   "I-D5-006S": {
     "date": "2026-05-21",
