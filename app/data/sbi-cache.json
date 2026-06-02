@@ -1,43 +1,43 @@
 {
   "I-D1-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:27:41.908746",
+    "fetched_at": "2026-06-02T14:35:11.425389",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 8.67
   },
   "I-D1-010": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:27:42.546600",
+    "fetched_at": "2026-06-02T14:35:11.806448",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 13.195833333333335
   },
   "I-D2-001-rt": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:30:49.990956",
-    "source": "Verkeerscentrum DATEX II v3 — 45 files, 125.15 km totale filelengte (langste 9.5 km), snapshot 2026-06-02",
-    "value": 125.15
+    "fetched_at": "2026-06-02T14:39:47.015491",
+    "source": "Verkeerscentrum DATEX II v3 — 48 files, 136.34 km totale filelengte (langste 10.88 km), snapshot 2026-06-02",
+    "value": 136.34
   },
   "I-D2-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:27:44.020236",
+    "fetched_at": "2026-06-02T14:35:12.948595",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D3-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:27:45.774625",
+    "fetched_at": "2026-06-02T14:35:14.078273",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 125.65954545454548
   },
   "I-D3-003S": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:30:48.175288",
-    "source": "Ontslag-radar: 11 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen, ~100 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 11.0
+    "fetched_at": "2026-06-02T14:39:45.883643",
+    "source": "Ontslag-radar: 13 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen, ~100 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 13.0
   },
   "I-D3-009": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-02T14:27:49.159882",
+    "fetched_at": "2026-06-02T14:35:16.421611",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0161836680750393
   },
@@ -49,7 +49,7 @@
   },
   "I-D5-002": {
     "date": "2026-06-01",
-    "fetched_at": "2026-06-02T14:29:12.900122",
+    "fetched_at": "2026-06-02T14:36:44.140467",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.533
   },
