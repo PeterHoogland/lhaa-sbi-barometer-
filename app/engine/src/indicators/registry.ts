@@ -44,7 +44,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     grade: "A",
     inverseCoded: false,
     applyStl: true,
-    source: "IRCEL-CELINE",
+    source: "open-meteo Air Quality (CAMS-model)",
     deterministic: false,
   },
   "I-D1-009": {
@@ -87,7 +87,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     grade: "B",
     inverseCoded: false,
     applyStl: false,
-    source: "FOD Economie maximumprijzen",
+    source: "be.STAT + ECB ICP (brandstofprijs-index)",
     deterministic: false,
   },
   "I-D2-009": {
@@ -107,7 +107,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     grade: "A",
     inverseCoded: false,
     applyStl: true,
-    source: "STATBEL",
+    source: "STATBEL CPI via ECB SDW",
     deterministic: false,
   },
   "I-D3-002": {
@@ -127,7 +127,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     grade: "A",
     inverseCoded: false,
     applyStl: true,
-    source: "FOD WASO",
+    source: "ECB LFSI werkloosheidsrate-delta (proxy voor ontslagdruk)",
     deterministic: false,
   },
   "I-D3-005": {
@@ -137,7 +137,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     grade: "A",
     inverseCoded: false,
     applyStl: true,
-    source: "STATBEL / Steunpunt Werk",
+    source: "Eurostat (BE werkloosheidsgraad)",
     deterministic: false,
   },
   "I-D3-006": {
@@ -147,7 +147,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     grade: "B",
     inverseCoded: false,
     applyStl: false,
-    source: "Nationale Bank van België",
+    source: "ECB MIR (BE hypotheekrente)",
     deterministic: false,
   },
   "I-D3-009": {

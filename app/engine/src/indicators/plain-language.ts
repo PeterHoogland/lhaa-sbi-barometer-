@@ -69,7 +69,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     why: "Vuile lucht (fijnstof, ozon) hangt samen met meer somberheid en prikkelbaarheid.",
     reads: "Hoe schoon de lucht is vergeleken met wat de WHO gezond noemt.",
     unit: "× WHO-grens",
-    dataSource: { name: "IRCEL-CELINE", url: "https://www.irceline.be" },
+    dataSource: { name: "open-meteo Air Quality (CAMS-model)", url: "https://open-meteo.com/en/docs/air-quality-api" },
     references: [
       { label: "Braithwaite et al. (2019): luchtvervuiling en mentale gezondheid", url: "https://doi.org/10.1289/EHP4595" },
       { label: "Newbury et al. (2019): JAMA Psychiatry", url: "https://doi.org/10.1001/jamapsychiatry.2019.0056" },
@@ -91,7 +91,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     why: "Wanneer tanken duurder wordt, voelen veel gezinnen dat in hun budget.",
     reads: "De officiële maximumprijs van Euro95.",
     unit: "€/liter",
-    dataSource: { name: "FOD Economie", url: "https://economie.fgov.be/nl/themas/energie/energieprijzen" },
+    dataSource: { name: "be.STAT + ECB ICP (brandstofprijs-index)", url: "https://bestat.statbel.fgov.be" },
     references: [
       { label: "Brüggen et al. (2017): financieel welzijn", url: "https://doi.org/10.1016/j.jbusres.2017.03.013" },
     ],
@@ -101,7 +101,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     why: "Als alles duurder wordt, valt geld korter, dat geeft druk.",
     reads: "Hoeveel duurder de gemiddelde boodschap is dan een jaar geleden.",
     unit: "% per jaar",
-    dataSource: { name: "STATBEL", url: "https://statbel.fgov.be/nl/themas/consumptieprijzen/consumptieprijsindex" },
+    dataSource: { name: "STATBEL CPI (via ECB SDW)", url: "https://statbel.fgov.be/nl/themas/consumptieprijzen/consumptieprijsindex" },
     references: [
       { label: "Brüggen et al. (2017): financieel welzijn", url: "https://doi.org/10.1016/j.jbusres.2017.03.013" },
       { label: "Kahneman & Tversky (1979): Prospect Theory", url: "https://doi.org/10.2307/1914185" },
@@ -121,9 +121,9 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   "I-D3-003": {
     plain: "Ontslagen aangekondigd",
     why: "Als ergens een collectief ontslag wordt aangekondigd, voelt iedereen op die werkplek dat, ook wie niet ontslagen wordt.",
-    reads: "Hoeveel werknemers er deze week in een ontslagprocedure zitten.",
+    reads: "Er is geen open feed van aangekondigde collectieve ontslagen; we gebruiken de maandelijkse stijging van de Belgische werkloosheidsgraad (ECB LFSI) als proxy voor ontslagdruk.",
     unit: "log(werknemers)",
-    dataSource: { name: "FOD WASO", url: "https://werk.belgie.be/nl/themas/herstructureringen" },
+    dataSource: { name: "ECB LFSI — werkloosheidsrate-delta (proxy)", url: "https://data.ecb.europa.eu/" },
     references: [
       { label: "Brand (2015): Annual Review of Sociology", url: "https://doi.org/10.1146/annurev-soc-071913-043237" },
       { label: "De Witte et al. (2016): job insecurity review", url: "https://doi.org/10.1111/ap.12176" },
@@ -134,7 +134,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     why: "Hogere werkloosheid betekent dat meer mensen het moeilijk hebben, economische druk op het land.",
     reads: "Het percentage werkzoekenden in de beroepsbevolking.",
     unit: "%",
-    dataSource: { name: "STATBEL: Werkloosheid", url: "https://statbel.fgov.be/nl/themas/werk-opleiding/werkloosheid" },
+    dataSource: { name: "Eurostat — BE werkloosheidsgraad", url: "https://ec.europa.eu/eurostat/databrowser/view/une_rt_m" },
     references: [
       { label: "WHO Commission on Social Determinants (2008): Marmot", url: "https://www.who.int/publications/i/item/WHO-IER-CSDH-08.1" },
     ],
@@ -144,7 +144,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     why: "Een hogere rente maakt een huis kopen of afbetalen duurder.",
     reads: "De gemiddelde rente voor nieuwe woonleningen.",
     unit: "%",
-    dataSource: { name: "Nationale Bank van België", url: "https://stat.nbb.be" },
+    dataSource: { name: "ECB MIR — BE hypotheekrente", url: "https://data.ecb.europa.eu/" },
     references: [
       { label: "Brüggen et al. (2017): financieel welzijn", url: "https://doi.org/10.1016/j.jbusres.2017.03.013" },
     ],
