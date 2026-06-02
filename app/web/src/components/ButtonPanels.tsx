@@ -46,8 +46,8 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
       ? [
           {
             key: "kern",
-            label: "De kern van de meting (v0.4 — testfase)",
-            sub: "De kern-indicatoren + achtergrond druk · testlaag, telt nog niet mee in het publieke cijfer",
+            label: "De kern van de meting",
+            sub: "De kern-indicatoren + achtergrond druk",
             render: () => <KernIndicators v04={data.v04!} />,
           },
         ]

@@ -26,13 +26,15 @@ export function V04Technical({ v04 }: { v04: V04Output }) {
   return (
     <section className="v04-tech">
       <header className="v04-tech-head">
-        <h3>SBI v0.4 — meet- en trigger-laag</h3>
-        <span className={`v04-mode mode-${v04.mode}`}>modus: {v04.mode}</span>
+        <h3>Meet- en trigger-laag</h3>
+        <span className={`v04-mode mode-${v04.mode}`}>
+          {v04.mode === "live" ? "campagnes: automatisch" : "campagnes: handmatig"}
+        </span>
       </header>
       <p className="muted small">
-        Draait additief naast de v0.2-meting. composite_meting = Σ(w_meting × z_lang) over de
-        kern; de trage bronnen laden de trigger-drempel via de load_factor. Triggers staan in
-        test-modus en vereisen handmatige goedkeuring — er vuurt niets automatisch.
+        Draait additief naast de hoofdmeting. composite_meting = Σ(w_meting × z_lang) over de
+        kern; de trage bronnen laden de trigger-drempel via de load_factor. De campagne-triggers
+        vereisen handmatige goedkeuring — er vuurt niets automatisch.
       </p>
 
       <div className="v04-stat-row">
@@ -68,7 +70,7 @@ export function V04Technical({ v04 }: { v04: V04Output }) {
       </div>
 
       <div className="v04-triggers">
-        <h4>Campagne-triggers (testfase): {v04.triggers.length === 0 ? "geen vandaag" : `${v04.triggers.length} actief`}</h4>
+        <h4>Campagne-triggers: {v04.triggers.length === 0 ? "geen vandaag" : `${v04.triggers.length} actief`}</h4>
         {v04.triggers.length === 0 ? (
           <p className="muted small">Geen campagne-triggers vandaag — de barometer staat laag genoeg.</p>
         ) : (

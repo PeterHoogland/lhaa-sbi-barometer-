@@ -53,7 +53,7 @@ export function KernIndicators({ v04 }: { v04: V04Output }) {
     <section className="panel kern-panel">
       <header className="kern-head">
         <h2>De kern van de meting</h2>
-        <span className="kern-badge">nieuw · v0.4</span>
+        <span className="kern-badge">kern</span>
       </header>
       <p className="panel-lead">
         Dit is de scherpere meting. We wegen een kern van negen signalen (weer tonen we als
