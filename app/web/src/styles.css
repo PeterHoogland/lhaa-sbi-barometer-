@@ -16,6 +16,7 @@
   --lha-snow:        #ffffff;   /* puur wit */
   --lha-sun:         #c98a3c;   /* gedempt amber — secundair accent */
   --lha-sun-soft:    #e0b375;   /* zacht amber */
+  --lha-clay:        #b87d58;   /* warme klei/terracotta — negatieve (omlaag) bijdrage, leesbaar maar geen status-amber/rood */
   --lha-stone:       #22252a;   /* inkt, donkere tekst */
   --lha-stone-soft:  #52565b;   /* zachte tekst */
   --lha-mist:        #9ca3af;   /* gedempt grijs */
@@ -963,7 +964,7 @@ main {
 .domain-bar-wrap { height: 8px; background: var(--c-line-soft); border-radius: 4px; overflow: hidden; }
 .domain-bar { height: 100%; border-radius: 4px; transition: width 300ms; }
 .domain-bar.positive { background: var(--lha-blue-deep); }
-.domain-bar.negative { background: var(--lha-sky); }
+.domain-bar.negative { background: var(--lha-clay); }
 .domain-value { font-family: var(--f-mono); text-align: right; font-size: 0.85rem; color: var(--c-ink); }
 
 /* Media diagnostic */
