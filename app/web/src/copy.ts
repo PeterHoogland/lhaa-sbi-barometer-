@@ -52,6 +52,6 @@ export const METHODOLOGY_DISCLAIMER = [
 export const FOOTER_NOTES = {
   implementationStage: "Werkt nu nog in test-modus.",
   methodologyRef: "Methodologie: SBI v0.2, 24 indicatoren in 6 categorieën.",
-  ondersteunend: "Gebaseerd op onderzoek van McEwen (allostatic load), Marmot (sociale gezondheids-determinanten) en Hobfoll (conservation of resources).",
+  ondersteunend: "Geïnspireerd door onderzoek van McEwen (allostatic load — een individueel concept, hier niet gemeten), Marmot (sociale gezondheidsdeterminanten) en Hobfoll (conservation of resources).",
   tagline: "Natuurlijk in het hart van de Alpen.",
 } as const;

@@ -34,7 +34,7 @@ export function isKern(code: string): boolean {
 export const SBI_FOUNDATIONS: Array<{ label: string; url?: string }> = [
   {
     label:
-      "McEwen, B. — Allostatic load: cumulatieve fysiologische last als stressmaat. Basis van de SBI.",
+      "McEwen, B. — Allostatic load: cumulatieve fysiologische last (een individueel-fysiologisch concept). Theoretische inspiratie voor de index, niet de gemeten grootheid.",
   },
   {
     label:

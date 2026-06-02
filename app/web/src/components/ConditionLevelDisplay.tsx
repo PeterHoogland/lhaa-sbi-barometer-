@@ -22,7 +22,7 @@ export function ConditionLevelDisplay({
 
   return (
     <section className={`cn-display cn-level-${cn}`}>
-      <div className="cn-label">STRESS-CIJFER OP DIT MOMENT</div>
+      <div className="cn-label">STRESS-OMSTANDIGHEDEN OP DIT MOMENT</div>
       <div className="cn-main">
         <div className="cn-number" aria-label={`niveau ${cn} van 5`}>
           {cn}
@@ -43,7 +43,7 @@ export function ConditionLevelDisplay({
       <div className="cn-secondary">
         <span>{percentileLine}</span>
         <span className="cn-stamp">
-          De Stressor-Blootstellings-index werd gecontroleerd en bijgestuurd · laatst om {lastRunTime}
+          De Stress-omstandigheden-index werd gecontroleerd en bijgestuurd · laatst om {lastRunTime}
         </span>
       </div>
     </section>

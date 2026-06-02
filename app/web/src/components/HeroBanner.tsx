@@ -32,9 +32,9 @@ export function HeroBanner() {
       </div>
       <div className="hero-rule" aria-hidden="true" />
       <div className="hero-content">
-        <div className="intro-eyebrow">Stressor-Blootstellings-Index</div>
+        <div className="intro-eyebrow">Stress-omstandigheden-index</div>
         <div className="intro-subtitle">
-          Een barometer voor collectieve blootstelling aan stressverhogende omstandigheden
+          Meet hoe ongewoon de omstandigheden in België vandaag zijn — niet of mensen zich gestrest voelen
         </div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
       </div>

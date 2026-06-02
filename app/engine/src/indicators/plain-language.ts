@@ -77,7 +77,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   },
   "I-D2-001": {
     plain: "Verkeersdrukte",
-    why: "Lang in de file staan verhoogt stresshormonen; een snelle stijging betekent toenemende druk.",
+    why: "Lang in de file is geassocieerd met hogere bloeddruk en meer ervaren druk (op individueel niveau); een snelle stijging betekent toenemende druk.",
     reads: "De verandering van de officiële filezwaarte (jaargemiddelde van het Verkeerscentrum) t.o.v. een jaar eerder. Een jaarcijfer, geen dagmeting.",
     unit: "% t.o.v. vorig jaar",
     dataSource: { name: "Vlaams Verkeerscentrum", url: "https://www.verkeerscentrum.be" },
@@ -172,7 +172,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   },
   "I-D5-001": {
     plain: "Hoe negatief is het nieuws?",
-    why: "Veel negatief nieuws beïnvloedt hoe een hele bevolking zich voelt.",
+    why: "Een media-attentiesignaal: hoe negatief de nieuwstoon is. Mediatoon is niet hetzelfde als stress, daarom telt dit signaal niet mee in het cijfer.",
     reads: "We meten de gemiddelde toon van het Belgische nieuws via GDELT, een wetenschappelijk project dat wereldwijd nieuwsberichten leest en de toon ervan scoort. Het grote voordeel: GDELT heeft een echte historie van twee jaar, zodat we vandaag eerlijk kunnen vergelijken met hoe negatief het nieuws gewoonlijk is. Daarnaast lezen we elk uur de titels en intro's van dertien Belgische RSS-bronnen met het Pattern.nl-valentielexicon (Universiteit Antwerpen, 3.000+ woorden, peer-reviewed) en wegen we die naar het leeftijdsprofiel van elk publiek. Bijna-duplicaten worden er eerst uitgefilterd (Jaccard ≥ 0,8), zodat één gebeurtenis niet tienvoudig telt. Per cyclus bewaren we de meest negatieve headlines, zodat elk hoog cijfer terug te leiden is naar concrete koppen.",
     unit: "toon-score",
     dataSource: { name: "GDELT DOC 2.0 nieuwstoon BE + RSS-controle van 13 BE-bronnen", url: "https://www.gdeltproject.org/" },
