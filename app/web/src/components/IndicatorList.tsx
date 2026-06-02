@@ -16,6 +16,7 @@ const DOMAIN_SUBTITLES: Record<DomainCode, string> = {
 function IndicatorRow({ ind }: { ind: IndicatorBreakdown }) {
   const [open, setOpen] = useState(false);
   const color = stateColor(ind.state);
+  const prov = provenance(ind);
   return (
     <div className={`ind-row ind-state-${ind.state}`}>
       <button
@@ -26,7 +27,14 @@ function IndicatorRow({ ind }: { ind: IndicatorBreakdown }) {
         <span className="ind-icon" style={{ color }} aria-hidden="true">
           {stateIcon(ind.state)}
         </span>
-        <span className="ind-name">{ind.plain_name}</span>
+        <span className="ind-name">
+          {ind.plain_name}
+          {prov && (
+            <span className={`ind-prov ${prov.cls}`} title="Herkomst van de data">
+              ● {prov.label}
+            </span>
+          )}
+        </span>
         <span className="ind-state" style={{ color }}>{stateLabel(ind.state)}</span>
         <span className="ind-toggle">{open ? "−" : "+"}</span>
       </button>
@@ -104,6 +112,33 @@ function formatValue(v: number, unit: string): string {
   return v.toFixed(2);
 }
 
+/** Eerlijke herkomst per indicator (review §1.3): echt / vertraagd (jaar-/maandcijfer) / demo. */
+function provenance(ind: IndicatorBreakdown): { label: string; cls: string } | null {
+  if (ind.state === "ontbreekt") return null; // de status toont al "ontbreekt"
+  if (ind.simulated) return { label: "demo", cls: "prov-demo" };
+  const obs = ind.observation_date;
+  if (observationGranularity(obs) === "maand" || /^\d{4}$/.test(obs)) {
+    return { label: "vertraagd", cls: "prov-lag" };
+  }
+  return { label: "echt", cls: "prov-real" };
+}
+
+/** Honest samenvatting onder de lijst — moet kloppen met de som van de per-rij-labels. */
+function provenanceSummary(breakdown: IndicatorBreakdown[]): string {
+  const demo = breakdown.filter((b) => b.simulated).length;
+  const lag = breakdown.filter(
+    (b) =>
+      !b.simulated &&
+      b.state !== "ontbreekt" &&
+      (observationGranularity(b.observation_date) === "maand" || /^\d{4}$/.test(b.observation_date)),
+  ).length;
+  if (demo === 0 && lag === 0) return "Elke meting draait op een echte, actuele bron.";
+  const bits: string[] = [];
+  if (demo > 0) bits.push(`${demo} op demo-data (gemarkeerd "demo")`);
+  if (lag > 0) bits.push(`${lag} jaar-/maandcijfers (gemarkeerd "vertraagd")`);
+  return `Per meting staat de herkomst erbij: ${bits.join(", ")}; de rest op echte dagbronnen.`;
+}
+
 export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }) {
   const byDomain = (["D1", "D2", "D3", "D4", "D5", "D6"] as DomainCode[]).map((d) => ({
     domain: d,
@@ -147,9 +182,8 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
           <span style={{ color: "var(--c-red)" }}>▲▲ uitzonderlijk hoog</span>
         </p>
         <p className="muted small">
-          Met "gemiddeld" bedoelen we: vergeleken met dezelfde periode in de afgelopen twee jaar.
-          Een aantal metingen draait nog op test-data, die zijn gemarkeerd met <em>demo-data</em>.
-          Echte data komt er stap voor stap bij.
+          Met "gemiddeld" bedoelen we: vergeleken met dezelfde periode in de afgelopen twee jaar.{" "}
+          {provenanceSummary(breakdown)}
         </p>
       </footer>
     </section>

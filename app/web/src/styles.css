@@ -650,6 +650,10 @@ main {
 .ind-row-summary:hover { background: var(--lha-sky-pale); }
 .ind-icon { font-size: 1.15rem; text-align: center; line-height: 1; }
 .ind-name { font-size: 0.98rem; color: var(--c-ink); font-weight: 500; }
+.ind-prov { font-size: 0.66rem; letter-spacing: 0.02em; margin-left: 8px; white-space: nowrap; font-weight: 500; }
+.ind-prov.prov-real { color: var(--c-green); }
+.ind-prov.prov-lag { color: var(--lha-blue-soft); }
+.ind-prov.prov-demo { color: var(--c-amber); }
 .ind-state { font-size: 0.85rem; font-weight: 500; text-align: right; }
 .ind-toggle { font-family: var(--f-mono); color: var(--lha-mist); font-size: 1.1rem; text-align: center; }
 
