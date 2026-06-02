@@ -80,7 +80,7 @@ body::before {
   position: fixed;
   inset: -24px; /* overhang zodat de blur-rand buiten beeld valt */
   z-index: -2;
-  background-image: url("/hero.jpg");
+  background-image: url("/hero.webp");
   background-size: cover;
   background-position: center;
   filter: blur(4px);
