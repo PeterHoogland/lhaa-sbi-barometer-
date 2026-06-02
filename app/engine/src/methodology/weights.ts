@@ -30,7 +30,9 @@ export const SCHEMA_2_DOMAIN_WEIGHTS: Record<DomainCode, number> = {
   D6: 0.172,
 };
 
-const GRADE_WEIGHT = { A: 3, B: 2 } as const;
+// Review §3 — A/B/C/D. D (experimentele proxy) krijgt gewicht 0: telt niet mee in
+// de meting. (D-indicatoren worden bovendien overgeslagen in computeComposite.)
+const GRADE_WEIGHT = { A: 3, B: 2, C: 1, D: 0 } as const;
 
 export function evidenceIndicatorWeightInDomain(
   indicator: IndicatorCode,

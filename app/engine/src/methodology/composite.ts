@@ -11,7 +11,7 @@
  */
 
 import type { DomainCode, DomainContribution, IndicatorCode } from "../types.js";
-import { allDomains, indicatorsByDomain, INDICATOR_CODES } from "../indicators/registry.js";
+import { allDomains, indicatorsByDomain, INDICATOR_CODES, INDICATORS } from "../indicators/registry.js";
 import { indicatorWeight, domainWeight, type WeightSchema } from "./weights.js";
 import { demographicWeight } from "./demographic-reach.js";
 
@@ -34,6 +34,7 @@ export function computeComposite(zScores: ZMap, schema: WeightSchema): Composite
     for (const meta of indicatorsByDomain(domain)) {
       const z = zScores[meta.code];
       if (z === undefined) continue; // missing — zie doc 03 §1.3
+      if (meta.grade === "D") continue; // grade D = experimentele proxy, telt niet mee (review §3)
       const w = indicatorWeight(schema, meta.code, domain);
       domainSum += w * z;
     }
@@ -77,6 +78,7 @@ export function computeCompositeWithoutD5(zScores: ZMap, schema: WeightSchema): 
     for (const meta of indicatorsByDomain(domain)) {
       const z = filteredZ[meta.code];
       if (z === undefined) continue;
+      if (meta.grade === "D") continue; // grade D telt niet mee (review §3)
       domainSum += indicatorWeight(schema, meta.code, domain) * z;
     }
     composite += (domainWeight(schema, domain) / totalRemainingWeight) * domainSum;
@@ -96,6 +98,7 @@ export function computeDemographicComposite(zScores: ZMap): number {
   for (const code of INDICATOR_CODES) {
     const z = zScores[code];
     if (z === undefined) continue;
+    if (INDICATORS[code].grade === "D") continue; // grade D telt niet mee (review §3)
     composite += demographicWeight(code) * z;
   }
   return composite;

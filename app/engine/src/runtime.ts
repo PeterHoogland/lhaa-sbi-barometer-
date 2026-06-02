@@ -214,7 +214,10 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     const z = zShort[code];
     const rawValue = raw[code] ?? null;
     const isMissing = z === undefined;
-    const contribution = isMissing
+    // Grade D = experimentele proxy → telt niet mee in het cijfer (review §3), dus
+    // ook géén contributie in de breakdown/top-3 (consistent met computeComposite).
+    const isDiagnostic = meta.grade === "D";
+    const contribution = isMissing || isDiagnostic
       ? 0
       : indicatorWeight("equal", code, meta.domain) * domainWeight("equal", meta.domain) * (z as number);
     return {

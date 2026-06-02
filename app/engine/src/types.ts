@@ -33,7 +33,7 @@ export type IndicatorCode =
 
 export type DomainCode = "D1" | "D2" | "D3" | "D4" | "D5" | "D6";
 
-export type EvidenceGrade = "A" | "B";
+export type EvidenceGrade = "A" | "B" | "C" | "D";
 
 /** Per indicator: meta-info bevroren uit doc 02 §10. */
 export interface IndicatorMeta {

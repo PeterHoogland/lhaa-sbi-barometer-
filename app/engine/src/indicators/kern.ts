@@ -93,12 +93,23 @@ export const ACHTERGROND_CODES: IndicatorCode[] = [
 ];
 
 /**
- * Bewijslast ∈ {1,2,3} — peer-reviewed steun voor de stress-link (HANDOVER §3.1).
- * Afgeleid van de bevroren evidence-grade uit de registry (doc 02): A→3, B→2.
- * Er zit geen grade-C in de kern, dus de waarde 1 komt in de kern niet voor.
+ * Bewijslast ∈ {0,1,2,3} — peer-reviewed steun voor de stress-link. Afgeleid van de
+ * evidence-grade (review §3): A→3, B→2, C→1, D→0. D = experimentele proxy → GÉÉN
+ * meet-gewicht (uit het cijfer). Voedt w_meting.
  */
+const GRADE_METING: Record<string, number> = { A: 3, B: 2, C: 1, D: 0 };
 export function bewijslast(code: IndicatorCode): number {
-  return INDICATORS[code].grade === "A" ? 3 : 2;
+  return GRADE_METING[INDICATORS[code].grade] ?? 2;
+}
+
+/**
+ * Trigger-gewicht-basis per grade: A→3, B→2, C→1, D→1. Anders dan w_meting telt een
+ * D-proxy hier WÉL mee — media-/proxy-signalen blijven snelle campagnetriggers
+ * (review §3 + eis "trigger gevoelig houden"). Voedt w_trigger.
+ */
+const GRADE_TRIGGER: Record<string, number> = { A: 3, B: 2, C: 1, D: 1 };
+export function triggerGewicht(code: IndicatorCode): number {
+  return GRADE_TRIGGER[INDICATORS[code].grade] ?? 2;
 }
 
 /** Reikwijdte ∈ [0,1] — bevolkingsaandeel dat geraakt wordt (= demographic_reach). */

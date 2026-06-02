@@ -10,14 +10,15 @@
  */
 
 import type { IndicatorCode } from "../types.js";
-import { KERN_CODES, bewijslast, reikwijdte, snelheidsfactor } from "../indicators/kern.js";
+import { KERN_CODES, bewijslast, triggerGewicht, reikwijdte, snelheidsfactor } from "../indicators/kern.js";
 
 function rawMeting(code: IndicatorCode): number {
-  return bewijslast(code) * reikwijdte(code);
+  return bewijslast(code) * reikwijdte(code); // D-grade → 0 (uit het cijfer)
 }
 
 function rawTrigger(code: IndicatorCode): number {
-  return bewijslast(code) * reikwijdte(code) * snelheidsfactor(code);
+  // triggerGewicht (≠ bewijslast) houdt D-proxies wél in de trigger-laag.
+  return triggerGewicht(code) * reikwijdte(code) * snelheidsfactor(code);
 }
 
 const SUM_METING = KERN_CODES.reduce((s, c) => s + rawMeting(c), 0);

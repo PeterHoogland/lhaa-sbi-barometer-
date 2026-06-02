@@ -124,7 +124,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     code: "I-D3-003",
     name: "Aangekondigde collectieve ontslagen",
     domain: "D3",
-    grade: "A",
+    grade: "D", // werkloosheidsgraad-proxy ≠ aangekondigde ontslagen, geen echte feed (review §3) → uit het cijfer
     inverseCoded: false,
     applyStl: true,
     source: "ECB LFSI werkloosheidsrate-delta (proxy voor ontslagdruk)",
@@ -184,7 +184,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     code: "I-D5-001",
     name: "Nieuwsnegativiteits-index",
     domain: "D5",
-    grade: "B",
+    grade: "D", // media-toon ≠ stress (review §3): uit het cijfer, blijft trigger/diagnostisch
     inverseCoded: false,
     // Geen STL: nieuwsnegativiteit is gebeurtenis-gedreven, niet sterk
     // seizoensgebonden. De echte GDELT 24m-baseline (data/history/I-D5-001.json)
@@ -198,7 +198,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     code: "I-D5-002",
     name: "Wikipedia-aandacht stress-thema's",
     domain: "D5",
-    grade: "B",
+    grade: "D", // zoek-/leesaandacht ≠ stress (review §3): uit het cijfer, blijft trigger/diagnostisch
     inverseCoded: false,
     // Geen STL: het 7d-gemiddelde verwijdert al het weekdag-effect en de
     // baseline is een recent venster (~11 maanden, drift-gevoelige bron).

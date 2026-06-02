@@ -50,6 +50,7 @@ export {
   klasse,
   snelheidsfactor,
   bewijslast,
+  triggerGewicht,
   reikwijdte,
   type KernKlasse,
 } from "./indicators/kern.js";
