@@ -223,6 +223,7 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     return {
       code,
       domain: meta.domain,
+      grade: meta.grade,
       plain_name: plain.plain,
       why: plain.why,
       reads: plain.reads,

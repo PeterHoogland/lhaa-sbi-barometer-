@@ -102,8 +102,12 @@ export function IndicatorZView({ breakdown }: { breakdown: IndicatorBreakdown[] 
   const [open, setOpen] = useState(false);
   const [sortMode, setSortMode] = useState<"contribution" | "domain">("contribution");
 
+  // Grade-D-indicatoren dragen niet bij aan het cijfer (review §3) en horen dus
+  // niet thuis in een "bijdrage per indicator"-overzicht. We laten ze hier weg.
+  const shown = breakdown.filter((b) => b.grade !== "D");
+
   // Sort indicators
-  const sorted = [...breakdown];
+  const sorted = [...shown];
   if (sortMode === "contribution") {
     sorted.sort((a, b) => {
       const za = a.z_short ?? -99;
@@ -115,8 +119,8 @@ export function IndicatorZView({ breakdown }: { breakdown: IndicatorBreakdown[] 
   }
 
   // Count contributors
-  const activeContributors = breakdown.filter((b) => (b.z_short ?? 0) >= 1).length;
-  const heavyContributors = breakdown.filter((b) => (b.z_short ?? 0) >= 2).length;
+  const activeContributors = shown.filter((b) => (b.z_short ?? 0) >= 1).length;
+  const heavyContributors = shown.filter((b) => (b.z_short ?? 0) >= 2).length;
 
   return (
     <section className="panel zview-panel">

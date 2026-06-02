@@ -82,6 +82,9 @@ export interface DomainContribution {
 export interface IndicatorBreakdown {
   code: IndicatorCode;
   domain: DomainCode;
+  /** Evidence-grade (review §3). D = experimentele proxy: telt niet mee in het
+   *  cijfer en wordt in de publieke indicatorlijsten niet getoond. */
+  grade: EvidenceGrade;
   plain_name: string;
   why: string;
   reads: string;

@@ -19,10 +19,14 @@ export interface SecondarySignal {
 }
 
 export type IndicatorState = "rustig" | "normaal" | "verhoogd" | "extreem" | "ontbreekt";
+export type EvidenceGrade = "A" | "B" | "C" | "D";
 
 export interface IndicatorBreakdown {
   code: string;
   domain: DomainCode;
+  /** Evidence-grade (review §3). Optioneel: oudere data-records missen dit veld.
+   *  Grade D wordt in de publieke indicatorlijsten weggelaten. */
+  grade?: EvidenceGrade;
   plain_name: string;
   why: string;
   reads: string;
