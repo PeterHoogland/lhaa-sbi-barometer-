@@ -184,7 +184,9 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     code: "I-D5-001",
     name: "Nieuwsnegativiteits-index",
     domain: "D5",
-    grade: "D", // media-toon ≠ stress (review §3): uit het cijfer, blijft trigger/diagnostisch
+    grade: "C", // BEWUSTE KEUZE Peter 2026-06-02: review §3.2 zette media-toon op D (mediatoon ≠ stress,
+                // uit het cijfer). Peter overrulet dit expliciet en neemt het tóch mee in het cijfer → C
+                // (gereduceerd gewicht in het evidence-schema). Blijft ook trigger. Zie build-status-memory.
     inverseCoded: false,
     // Geen STL: nieuwsnegativiteit is gebeurtenis-gedreven, niet sterk
     // seizoensgebonden. De echte GDELT 24m-baseline (data/history/I-D5-001.json)
@@ -198,7 +200,8 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     code: "I-D5-002",
     name: "Wikipedia-aandacht stress-thema's",
     domain: "D5",
-    grade: "D", // zoek-/leesaandacht ≠ stress (review §3): uit het cijfer, blijft trigger/diagnostisch
+    grade: "C", // BEWUSTE KEUZE Peter 2026-06-02: review §3.2 zette wikipedia-aandacht op D. Peter overrulet
+                // dit en neemt het tóch mee in het cijfer → C (gereduceerd gewicht). Blijft ook trigger.
     inverseCoded: false,
     // Geen STL: het 7d-gemiddelde verwijdert al het weekdag-effect en de
     // baseline is een recent venster (~11 maanden, drift-gevoelige bron).

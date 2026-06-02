@@ -172,7 +172,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   },
   "I-D5-001": {
     plain: "Hoe negatief is het nieuws?",
-    why: "Een media-attentiesignaal: hoe negatief de nieuwstoon is. Mediatoon is niet hetzelfde als stress, daarom telt dit signaal niet mee in het cijfer.",
+    why: "Hoe negatief de toon van het Belgische nieuws is. Veel negatief nieuws hangt samen met een gespannener, somberder stemming bij de bevolking. Het telt mee in het cijfer met een gereduceerd gewicht — mediatoon is een indirecte maat voor stress.",
     reads: "We meten de gemiddelde toon van het Belgische nieuws via GDELT, een wetenschappelijk project dat wereldwijd nieuwsberichten leest en de toon ervan scoort. Het grote voordeel: GDELT heeft een echte historie van twee jaar, zodat we vandaag eerlijk kunnen vergelijken met hoe negatief het nieuws gewoonlijk is. Daarnaast lezen we elk uur de titels en intro's van dertien Belgische RSS-bronnen met het Pattern.nl-valentielexicon (Universiteit Antwerpen, 3.000+ woorden, peer-reviewed) en wegen we die naar het leeftijdsprofiel van elk publiek. Bijna-duplicaten worden er eerst uitgefilterd (Jaccard ≥ 0,8), zodat één gebeurtenis niet tienvoudig telt. Per cyclus bewaren we de meest negatieve headlines, zodat elk hoog cijfer terug te leiden is naar concrete koppen.",
     unit: "toon-score",
     dataSource: { name: "GDELT DOC 2.0 nieuwstoon BE + RSS-controle van 13 BE-bronnen", url: "https://www.gdeltproject.org/" },
