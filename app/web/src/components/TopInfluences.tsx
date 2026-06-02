@@ -41,6 +41,27 @@ export function TopInfluences({ breakdown }: { breakdown: IndicatorBreakdown[] }
           </li>
         ))}
       </ol>
+
+      <details className="top-how">
+        <summary>Hoe kiezen we deze drie?</summary>
+        <div className="top-how-body">
+          <p>
+            Geen mens kiest ze — de cijfers doen dat. Elke indicator krijgt vandaag een score:
+            hoe ver staat 'ie van wat <strong>normaal</strong> is voor dit moment in het jaar?
+            Een zomerdag vergelijken we met zomerdagen. Hoe groter dat verschil, hoe zwaarder 'ie meeweegt.
+          </p>
+          <p>
+            We sorteren op de <strong>grootte</strong> van die afwijking, niet de richting. Iets dat
+            vandaag uitzonderlijk laag staat, speelt net zo hard mee als iets dat hoog staat — daarom
+            staat er telkens "↑ duwt omhoog" of "↓ duwt omlaag". De drie grootste komen bovenaan.
+          </p>
+          <p className="muted small">
+            Twee dingen laten we weg: metingen die vandaag geen data hebben, en bronnen die alleen op
+            maand- of jaarschaal bewegen (die tellen wél mee in het cijfer zelf, maar horen niet thuis
+            in een lijstje over wat er <em>vandaag</em> speelt).
+          </p>
+        </div>
+      </details>
     </section>
   );
 }

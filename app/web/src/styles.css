@@ -508,6 +508,13 @@ main {
   transition: transform 150ms;
 }
 .top-item:hover { transform: translateX(2px); }
+.top-how { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--lha-mist); }
+.top-how > summary { cursor: pointer; font-weight: 600; color: var(--lha-blue-deep); list-style: none; }
+.top-how > summary::-webkit-details-marker { display: none; }
+.top-how > summary::before { content: "+ "; }
+.top-how[open] > summary::before { content: "− "; }
+.top-how-body { margin-top: 10px; }
+.top-how-body p { margin: 0 0 10px; line-height: 1.55; }
 .top-rank {
   font-family: var(--f-display);
   font-size: 2rem;
