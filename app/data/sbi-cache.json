@@ -1,55 +1,55 @@
 {
   "I-D1-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:27:47.268192",
+    "fetched_at": "2026-06-03T21:48:30.246692",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 22.32
   },
   "I-D1-010": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:27:47.649574",
+    "fetched_at": "2026-06-03T21:48:30.631029",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 7.645833333333332
   },
   "I-D2-001-rt": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:32:02.479430",
+    "fetched_at": "2026-06-03T21:54:03.609314",
     "source": "Verkeerscentrum DATEX II v3 — 2 files, 4.35 km totale filelengte (langste 2.54 km), snapshot 2026-06-03",
     "value": 4.35
   },
   "I-D2-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:27:48.549849",
+    "fetched_at": "2026-06-03T21:48:31.746581",
     "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
     "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:32:04.174593",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 104 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
-    "value": 104.0
+    "fetched_at": "2026-06-03T21:54:05.242717",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 90 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
+    "value": 90.0
   },
   "I-D2-stib": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:32:03.109298",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 274 actieve items; CC BY 4.0)",
-    "value": 274.0
+    "fetched_at": "2026-06-03T21:54:04.221868",
+    "source": "STIB/MIVB TravellersInformation (Brussel, 273 actieve items; CC BY 4.0)",
+    "value": 273.0
   },
   "I-D3-002": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:27:50.230437",
+    "fetched_at": "2026-06-03T21:48:34.639302",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 89.20454545454547
   },
   "I-D3-003S": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:32:00.773169",
-    "source": "Ontslag-radar: 10 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~605 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 10.0
+    "fetched_at": "2026-06-03T21:54:01.635458",
+    "source": "Ontslag-radar: 7 artikels met collectief-ontslag-thema in 17 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 7.0
   },
   "I-D3-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:27:52.492822",
+    "fetched_at": "2026-06-03T21:48:37.001245",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0136415436273722
   },
@@ -61,32 +61,32 @@
   },
   "I-D5-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-03T21:29:05.460061",
+    "fetched_at": "2026-06-03T21:50:28.004511",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 31.141
   },
   "I-D5-003": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:26:33.078788",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 40 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.0649
+    "fetched_at": "2026-06-03T21:53:00.296662",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 41 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.067133
   },
   "I-D5-006S": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:31:27.176715",
+    "fetched_at": "2026-06-03T21:53:04.103293",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.035553002068430074
+    "value": 0.037330779846207834
   },
   "I-D5-mastodon": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:31:28.432972",
+    "fetched_at": "2026-06-03T21:53:05.470327",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.5082233885237948
   },
   "I-D5-trends": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:32:01.443360",
-    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.52 (stress-trends: nick bril, vriendschappelijke interlands, huis gemaakt)",
-    "value": 0.5152
+    "fetched_at": "2026-06-03T21:54:02.575652",
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.50 (stress-trends: nick bril, vriendschappelijke interlands, huis gemaakt)",
+    "value": 0.5
   }
 }
