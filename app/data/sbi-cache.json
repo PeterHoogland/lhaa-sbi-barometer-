@@ -1,63 +1,63 @@
 {
   "I-D1-009": {
-    "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:54:21.551141",
+    "date": "2026-06-03",
+    "fetched_at": "2026-06-03T06:02:26.500645",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
-    "value": 8.67
+    "value": 22.32
   },
   "I-D1-010": {
-    "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:54:21.936425",
+    "date": "2026-06-03",
+    "fetched_at": "2026-06-03T06:02:26.954403",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
-    "value": 13.195833333333335
+    "value": 9.162500000000001
   },
   "I-D2-001-rt": {
-    "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:57:11.764853",
-    "source": "Verkeerscentrum DATEX II v3 — 1 files, 0.77 km totale filelengte (langste 0.77 km), snapshot 2026-06-02",
-    "value": 0.77
+    "date": "2026-06-03",
+    "fetched_at": "2026-06-03T06:05:55.482458",
+    "source": "Verkeerscentrum DATEX II v3 — 45 files, 120.96 km totale filelengte (langste 8.52 km), snapshot 2026-06-03",
+    "value": 120.96
   },
   "I-D2-009": {
-    "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:54:23.006035",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
-    "value": 2.0
+    "date": "2026-06-03",
+    "fetched_at": "2026-06-03T06:02:28.280246",
+    "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
+    "value": 0.0
   },
   "I-D3-002": {
-    "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:54:24.261050",
+    "date": "2026-06-03",
+    "fetched_at": "2026-06-03T06:02:29.770398",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
-    "value": 125.65954545454548
+    "value": 89.20454545454547
   },
   "I-D3-003S": {
-    "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:57:10.526376",
-    "source": "Ontslag-radar: 8 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 8.0
+    "date": "2026-06-03",
+    "fetched_at": "2026-06-03T06:05:54.172866",
+    "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 6.0
   },
   "I-D3-009": {
-    "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:54:26.273649",
+    "date": "2026-06-03",
+    "fetched_at": "2026-06-03T06:02:34.365555",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 1.0161836680750393
+    "value": 1.0236435232275052
   },
   "I-D5-001": {
-    "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:55:19.690286",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 678/708 unieke artikels na dedup, 13 bronnen, poststratificatie): negativiteit jong +0.05 / midden +0.07 / ouder +0.15. Negatiefste headlines: «Aantal bevestigde gevallen met ebola stijgt naar 344, onder wie 60 doden · Vier bestuurders verliezen rijbewijs na controles in Spoorkin · Oekraïne opnieuw zwaar getroffen door Rusland: acht doden en tientallen gewonden <p>Volg in deze liveblog onze updates o»; emotie-profiel headlines (matches/100 woorden): woede 0.14 / angst 0.21 / verdriet 0.10 / walging 0.02 (dominant: angst)",
-    "value": 1.4912
+    "date": "2026-06-03",
+    "fetched_at": "2026-06-03T06:03:27.227902",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 674/711 unieke artikels na dedup, 13 bronnen, poststratificatie): negativiteit jong +0.76 / midden +0.76 / ouder +0.90. Negatiefste headlines: «7 doden en 11 gewonden bij Oekraïense drone-aanval op bus, zegt Rusland · Aantal bevestigde gevallen met ebola stijgt naar 344, onder wie 60 doden · Explosie aan woning in Ganshoren, geen gewonden Aan een woning op de Eeuwfeestsquare in Ganshoren heeft afgelopen nacht »; emotie-profiel headlines (matches/100 woorden): woede 0.14 / angst 0.19 / verdriet 0.12 / walging 0.02 (dominant: angst)",
+    "value": 1.4117
   },
   "I-D5-002": {
-    "date": "2026-06-01",
-    "fetched_at": "2026-06-02T18:55:20.006592",
+    "date": "2026-06-02",
+    "fetched_at": "2026-06-03T06:03:27.948106",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
-    "value": 30.533
+    "value": 31.141
   },
   "I-D5-003": {
-    "date": "2026-06-02",
-    "fetched_at": "2026-06-02T18:56:19.860630",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 14 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.0689
+    "date": "2026-06-03",
+    "fetched_at": "2026-06-03T06:05:03.901745",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 10 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.053867
   },
   "I-D5-006S": {
     "date": "2026-05-21",
