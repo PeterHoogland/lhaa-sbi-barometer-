@@ -39,6 +39,16 @@ export {
   type ConditionLevel as MethodologyConditionLevel,
   type ConditionState,
 } from "./methodology/condition-level.js";
+export {
+  decideBrandSafety,
+  VERDRIET_SHARE_MIN,
+  VERDRIET_SPIKE_P,
+  MIN_VERDRIET_HISTORY,
+  VERDRIET_COLD_START_FLOOR,
+  BRAND_SAFETY_EXPIRY_DAYS,
+  type VerdrietSignal,
+  type BrandSafetyDecision,
+} from "./methodology/brand-safety.js";
 export { computeDaily, buildPercentileHistory, type DailyComputeInput } from "./runtime.js";
 
 // --- SBI v0.4 — meet- + trigger-laag ---

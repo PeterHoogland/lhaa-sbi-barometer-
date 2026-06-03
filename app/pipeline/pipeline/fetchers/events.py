@@ -29,24 +29,20 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 from ..util import FetchResult, ROOT, safe_request
 from ..cache import get as cache_get, put as cache_put
-from .gdelt import gdelt_event_series
+from .gdelt import gdelt_event_series, RSS_FEEDS as _TONE_FEEDS
+from ..media_profiles import MEDIA_PROFILES
 
 
 EVENTS_FILE = ROOT / "pipeline" / "events.json"
 PENDING_FILE = ROOT / "pipeline" / "pending_events.json"
 
-RSS_FEEDS = {
-    "VRT NWS": "https://www.vrt.be/vrtnws/nl.rss.articles.xml",
-    "De Standaard": "https://www.standaard.be/rss/section/F66E3FF1-7AF6-4B95-A98A-43B6C6E7E4C9.rss",
-    "De Morgen": "https://www.demorgen.be/rss.xml",
-    "Het Laatste Nieuws": "https://www.hln.be/rss.xml",
-    "De Tijd": "https://www.tijd.be/rss/ondernemen.xml",
-    "Het Belang van Limburg": "https://www.hbvl.be/rss/section/2146FCFC-EE7A-44FD-AB5C-8FF3973BA15A",
-    "Bruzz": "https://www.bruzz.be/rss.xml",
-    "Knack": "https://www.knack.be/nieuws/feed/",
-    "Het Nieuwsblad": "https://www.nieuwsblad.be/rss",
-    "Gazet van Antwerpen": "https://www.gva.be/rss",
-    "De Wereld Morgen": "https://www.dewereldmorgen.be/rss.xml",
+# RSS-feeds voor kandidaat-gebeurtenis-detectie. Eén bron van waarheid: exact
+# dezelfde 16 feeds die gdelt.py voor de toon-/emotie-scan gebruikt. (2026-06-03:
+# de twee lijsten liepen uiteen — de toon-scan dekte 16 bronnen, deze maar 11;
+# nu gelijkgetrokken zodat een gebeurtenis in elke gescande bron kandidaat wordt.)
+# Display-naam uit media_profiles; valt terug op de sleutel als die ontbreekt.
+RSS_FEEDS: dict[str, str] = {
+    MEDIA_PROFILES.get(key, {}).get("name", key): url for url, key in _TONE_FEEDS
 }
 
 # Magnitude-classificatie via keywords. Doc 03 §2.5 niveaus 1/3/5.
@@ -55,16 +51,22 @@ KEYWORDS_MAG_5 = re.compile(
     re.IGNORECASE,
 )
 KEYWORDS_MAG_3 = re.compile(
-    r"\b(nationale\s+rouw|nationale\s+ramp|tragedie|catastrofe|noodtoestand"
+    r"\b(nationale\s+rouw|rouwdag|nationale\s+ramp|tragedie|catastrofe|noodtoestand"
     r"|algemene\s+staking|nationale\s+staking)\b",
     re.IGNORECASE,
 )
-# MAG_1 vangt ook sociale onrust / collectieve actie (V6, skeyes-type): merkbaar
-# collectief en ontwrichtend, maar geen ramp. Stakingen/betogingen/blokkades die
-# het dagelijks leven raken worden zo minstens kandidaat voor menselijke review.
+# MAG_1 vangt sociale onrust / collectieve actie (V6, skeyes-type) én — sinds
+# 2026-06-03 — zware ongevallen + collectieve rouw-signalen (blinde vlek nationale
+# rouw, HANDOVER §3 punt 8). Merkbaar collectief en ontwrichtend, maar geen ramp op
+# zich: zo worden ze minstens kandidaat voor menselijke review. De I-D5-003-score
+# zelf blijft GDELT-volume; deze keywords sturen enkel pending_events.json.
+# `[a-z]*ongeval` vangt ook verkeers-/bus-/treinongeval; "dodelijk(e)" en
+# "slachtoffer(s)" markeren een mogelijke rouw-aanleiding.
 KEYWORDS_MAG_1 = re.compile(
     r"\b(zware\s+ramp|noodweer|overstroming|hittegolf\s+rood|grootschalige\s+evacuatie|treintragedie"
-    r"|staking|sociale\s+onrust|betoging|blokkade|vakbondsactie|stilgelegd|lamgelegd|stilgevallen)\b",
+    r"|staking|sociale\s+onrust|betoging|blokkade|vakbondsactie|stilgelegd|lamgelegd|stilgevallen"
+    r"|[a-z]*ongeval(?:len)?|omgekomen|dodelijke?|slachtoffers?|dodentol"
+    r"|minuut\s+stilte|moment\s+stilte)\b",
     re.IGNORECASE,
 )
 

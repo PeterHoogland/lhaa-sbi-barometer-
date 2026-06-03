@@ -62,6 +62,9 @@ GDELT_DOC_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
 # Stash van het laatst-berekende emotie-profiel per datum, zodat
 # news_emotion_secondary() het kan hergebruiken zonder de RSS opnieuw te fetchen.
 _LAST_EMOTION: dict[str, dict] = {}
+# Idem voor de poststratified (reach-gewogen) RSS-negativiteit, zodat
+# news_negativity_rss_secondary() ze als secundair signaal kan uitsturen.
+_LAST_RSS_NEG: dict[str, float] = {}
 
 
 def _parse_rss_texts(xml_text: str) -> list[str]:
@@ -249,6 +252,9 @@ def fetch_news_negativity(target_date: date) -> FetchResult:
     if rss_ok and source_tones and n_unique >= 8:
         ps = poststratify(source_tones)
         if ps["national"] is not None:
+            # Reach-gewogen RSS-negativiteit (= -toon) → secundair signaal dat
+            # historie opbouwt (Peters vraag: media op grootte/bereik wegen).
+            _LAST_RSS_NEG[target_date.isoformat()] = round(-ps["national"], 4)
             seg = ps["segments"]
             top_titles = " · ".join(
                 _re.sub(r"\s+", " ", t).strip()[:120] for _src, t, _tone in top_neg[:3]
@@ -329,4 +335,62 @@ def news_emotion_secondary(target_date: date) -> FetchResult:
     return FetchResult(
         "I-D5-emotie", 0.0, target_date.isoformat(),
         simulated=True, source="mock (geen RSS-headlines voor emotie-profiel)",
+    )
+
+
+# --- I-D5-verdriet: verdriet-/rouw-deelsignaal (brand-safety, 2026-06-03) ---
+def news_sadness_secondary(target_date: date) -> FetchResult:
+    """Secundair signaal I-D5-verdriet — ALLEEN de verdriet-/rouw-intensiteit van de
+    nieuws-headlines (matches per 100 woorden), los van de drie andere emoties.
+
+    Waarom apart van I-D5-emotie (de som): de brand-safety-laag pauzeert de
+    commerciële CTA bij een ROUWdag (verdriet leidend), niet bij een woede-/angstdag.
+    Daarvoor heeft de engine de verdriet-intensiteit én haar eigen historie nodig, niet
+    het samengevoegde totaal. Trigger-/veiligheidslaag, NIET het publieke cijfer (rouw
+    is geen omgevingsdruk). Zie methodology/brand-safety.ts + HANDOVER §3 punt 8.
+
+    Hergebruikt het emotie-profiel dat fetch_news_negativity al berekende (géén extra
+    fetch). Roep ALTIJD ná fetch_news_negativity(d) aan — run.py doet dat."""
+    prof = _LAST_EMOTION.get(target_date.isoformat())
+    if prof and prof.get("n_headlines", 0) > 0:
+        em = prof["intensity"]
+        verdriet = round(em["verdriet"], 3)
+        dom = prof.get("dominant") or "geen"
+        source = (
+            f"Emotie-lexicon NL — verdriet/rouw-deel over {prof['n_headlines']} headlines "
+            f"(matches/100 woorden: {verdriet:.2f}; dominante emotie vandaag: {dom})"
+        )
+        return FetchResult(
+            "I-D5-verdriet", verdriet, target_date.isoformat(),
+            simulated=False, source=source,
+        )
+    return FetchResult(
+        "I-D5-verdriet", 0.0, target_date.isoformat(),
+        simulated=True, source="mock (geen RSS-headlines voor emotie-profiel)",
+    )
+
+
+# --- I-D5-001-rss: reach-gewogen RSS-negativiteit (controle naast GDELT) ---
+def news_negativity_rss_secondary(target_date: date) -> FetchResult:
+    """Secundair signaal I-D5-001-rss — de RSS-corpus-negativiteit, POSTSTRATIFIED
+    naar mediabereik + publieksprofiel (media_profiles.poststratify), als negativiteit
+    (= -toon). Antwoord op Peters vraag "moeten we media niet op grootte/bereik wegen":
+    grotere bronnen (HLN, VRT, Nieuwsblad) wegen hier zwaarder. Dit signaal telt NIET
+    in het cijfer (dat blijft GDELT) maar bouwt vanaf nu historie op, zodat het later
+    eventueel gepromoveerd of met GDELT gemengd kan worden (pre-registratie-amendement).
+
+    Hergebruikt de poststratificatie die fetch_news_negativity al berekende — roep dit
+    ALTIJD ná fetch_news_negativity(d) aan (run.py doet dat)."""
+    val = _LAST_RSS_NEG.get(target_date.isoformat())
+    if val is not None:
+        return FetchResult(
+            "I-D5-001-rss", val, target_date.isoformat(), simulated=False,
+            source=(
+                "RSS reach-gewogen poststratified negativiteit (media_profiles: "
+                "bereik × publieksprofiel; controle naast GDELT, bouwt historie)"
+            ),
+        )
+    return FetchResult(
+        "I-D5-001-rss", 0.0, target_date.isoformat(),
+        simulated=True, source="mock (geen RSS-poststratificatie beschikbaar)",
     )

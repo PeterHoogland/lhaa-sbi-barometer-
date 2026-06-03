@@ -17,6 +17,7 @@ import { computeDaily } from "../runtime.js";
 import { percentileRank } from "../methodology/percentile.js";
 import type { IndicatorCode } from "../types.js";
 import { EMPTY_TRIGGER_STATE, type TriggerState } from "../methodology/triggers.js";
+import { decideBrandSafety } from "../methodology/brand-safety.js";
 import { dispatchTriggers } from "../webhook.js";
 
 /** Optioneel: pipeline-output kan vandaag's waarden leveren (echt-tijd). */
@@ -38,6 +39,8 @@ const SECONDARY_NAMES: Record<string, string> = {
   "I-D5-006S": "Reddit-sentiment (onderstroom-peiling)",
   "I-D3-003S": "Ontslag-radar (nieuws-detectie)",
   "I-D5-emotie": "Emotionele lading nieuws (woede/angst/verdriet/walging)",
+  "I-D5-verdriet": "Verdriet-/rouwtoon nieuws (brand-safety-signaal)",
+  "I-D5-001-rss": "Nieuwsnegativiteit RSS (reach-gewogen, controle naast GDELT)",
   "I-D2-001-rt": "Filezwaarte real-time (DATEX, km file)",
 };
 
@@ -77,16 +80,18 @@ function loadPipelineToday(path: string): {
 
 const MIN_EMOTIE_HISTORY = 20;
 
-/** Emotie-statistiek t.o.v. de eigen (dagelijks groeiende) historie: de lading
- *  van vandaag, haar percentiel binnen die historie, en het aantal historiepunten.
- *  null wanneer er geen waarde/historie is. Voedt zowel de confirmation (2a, top-30%)
- *  als de emotie-spike-trigger (2b, top-10% + ≥ MIN punten). Kalibratie-vrij. */
-function emotieStatsFromHistory(
+/** Statistiek van een secundair signaal t.o.v. zijn eigen (dagelijks groeiende)
+ *  historie: de waarde van vandaag, haar percentiel binnen die historie, en het
+ *  aantal historiepunten. null wanneer er geen waarde/historie is. Voedt de emotie-
+ *  confirmation (2a, top-30%), de emotie-spike-trigger (2b, top-10% + ≥ MIN punten)
+ *  én de verdriet-gestuurde brand-safety. Kalibratie-vrij. */
+function secondaryStatsFromHistory(
   value: number | undefined,
   histDir: string,
+  code: string,
 ): { value: number; percentileLang: number; nHistory: number } | null {
   if (value === undefined) return null;
-  const p = resolve(histDir, "I-D5-emotie.json");
+  const p = resolve(histDir, `${code}.json`);
   if (!existsSync(p)) return null;
   try {
     const rows = JSON.parse(readFileSync(p, "utf-8")) as Array<{ date: string; value: number }>;
@@ -369,7 +374,7 @@ async function generate(): Promise<void> {
   const priorTriggerState = loadTriggerState(TRIGGER_STATE_OUT);
   const radarSignal = secondarySignals.find((s) => s.code === "I-D3-003S");
   const emotieSignal = secondarySignals.find((s) => s.code === "I-D5-emotie");
-  const emotieStats = emotieStatsFromHistory(emotieSignal?.value, HISTORY_DIR);
+  const emotieStats = secondaryStatsFromHistory(emotieSignal?.value, HISTORY_DIR, "I-D5-emotie");
   const confirmationSignals = {
     // Ontslag-radar = aantal ontslag-thema-artikels; ≥ 1 telt als bevestiging.
     layoffRadarElevated: radarSignal ? radarSignal.value >= 1 : false,
@@ -382,6 +387,21 @@ async function generate(): Promise<void> {
       !!emotieStats && emotieStats.nHistory >= MIN_EMOTIE_HISTORY && emotieStats.percentileLang >= 70,
   };
 
+  // Brand-safety — pauzeer de commerciële CTA bij een verdriet-/rouwpiek in het nieuws
+  // (blinde vlek nationale rouw, 2026-06-03). Verdriet apart van de emotie-som, gewogen
+  // tegen de eigen historie. NIET het cijfer — alleen de CTA + condition-level (CN 5).
+  const verdrietSignal = secondarySignals.find((s) => s.code === "I-D5-verdriet");
+  const verdrietStats = secondaryStatsFromHistory(verdrietSignal?.value, HISTORY_DIR, "I-D5-verdriet");
+  const brandSafetyDecision = decideBrandSafety(
+    {
+      intensity: verdrietSignal?.value ?? null,
+      totalEmotie: emotieSignal?.value ?? null,
+      percentile: verdrietStats?.percentileLang ?? null,
+      historyN: verdrietStats?.nHistory ?? 0,
+    },
+    todayIso,
+  );
+
   const todayOutput = computeDaily({
     date: todayIso,
     rawValues: { ...todayRaw, ...detToday } as Partial<Record<IndicatorCode, number>>,
@@ -391,10 +411,21 @@ async function generate(): Promise<void> {
     simulatedIndicators: stillSimulatedToday,
     realBaselineCodes,
     observationDates,
-    secondarySignals,
+    // I-D5-verdriet is een brand-safety-INPUT, geen publiek paneel-signaal: het zou
+    // de emotie-som dubbel tonen. Het bouwt zijn historie op via de Python-pipeline
+    // (append_to_history), niet via deze lijst, dus filteren raakt dat niet.
+    secondarySignals: secondarySignals.filter((s) => s.code !== "I-D5-verdriet"),
     priorTriggerState,
     confirmationSignals,
     emotieSignal: emotieStats ?? undefined,
+    brandSafety:
+      brandSafetyDecision.flag === "normal"
+        ? undefined
+        : {
+            flag: brandSafetyDecision.flag as "elevated" | "block",
+            reason: brandSafetyDecision.reason ?? "",
+            expires_estimated: brandSafetyDecision.expires_estimated ?? "",
+          },
   });
 
   // Persisteer de bijgewerkte cooldown-state voor de volgende run.
@@ -466,6 +497,10 @@ async function generate(): Promise<void> {
   console.log(`✓ Signal API:    ${WEB_API_OUT}`);
   console.log(`✓ Web copy:      ${WEB_OUT}`);
   console.log(`  CN level:    ${todayOutput.condition_level.value} (${todayOutput.condition_level.name})`);
+  console.log(
+    `  Brand-safety: ${todayOutput.brand_safety.flag}` +
+      (todayOutput.brand_safety.reason ? ` (${todayOutput.brand_safety.reason})` : ""),
+  );
   console.log(`  Tier: ${todayOutput.tier.current}`);
   console.log(`  Percentile (short_24m): ${todayOutput.percentile.short_24m}`);
   console.log(`  Composite equal: ${todayOutput.composite.equal}`);

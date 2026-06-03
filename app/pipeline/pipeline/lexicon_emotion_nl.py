@@ -33,44 +33,75 @@ from __future__ import annotations
 
 # Vier stress-relevante emoties. Per categorie nieuws-relevante NL-vocabulaire
 # (stammen + courante varianten). Overlap tussen categorieën is toegestaan.
+# Uitgebreid 2026-06-03 (Peters vraag "zo ver mogelijk"): meer Vlaams/NL
+# emotie-vocabulaire per categorie. NB: deze laag voedt de trigger-signalen
+# (I-D5-emotie, I-D5-verdriet → brand-safety), niet het publieke cijfer. Omdat
+# de eigen historie net pas begint op te bouwen, is dit het juiste moment om uit
+# te breiden (de percentielen ijken vanaf nu op het uitgebreide lexicon). De
+# brand-safety-verdriet-drempels zijn relatief (aandeel) + provisoir; herijken
+# met deze lijst zodra er echte historie is.
 WOEDE = {
-    "woede", "woedend", "woede-uitbarsting", "woedeaanval", "boos", "boosheid",
-    "kwaad", "kwaadheid", "razend", "razernij", "furieus", "verbolgen",
-    "verontwaardiging", "verontwaardigd", "verontwaardigde", "frustratie",
-    "gefrustreerd", "agressie", "agressief", "protest", "protesten",
-    "protesteren", "protesteert", "betoging", "betogen", "betogers", "staking",
+    "woede", "woedend", "woede-uitbarsting", "woede-uitbarstingen",
+    "woedeaanval", "boos", "boosheid", "kwaad", "kwaadheid", "kwaadaardig",
+    "razend", "razernij", "ziedend", "furieus", "verbolgen", "vergramd",
+    "getergd", "grimmig", "grimmigheid", "verbeten", "verontwaardiging",
+    "verontwaardigd", "verontwaardigde", "frustratie", "gefrustreerd",
+    "geïrriteerd", "irritatie", "ergernis", "ergerlijk", "gebelgd", "opgefokt",
+    "agressie", "agressief", "vijandig", "vijandigheid", "haat", "haatdragend",
+    "wraak", "wraakzucht", "vergelding", "protest", "protesten", "protesteren",
+    "protesteert", "protestgolf", "betoging", "betogen", "betogers", "staking",
     "stakingen", "staken", "stakers", "rel", "rellen", "opstand", "oproer",
-    "verzet", "boycot", "aanklacht", "beschuldigt", "beschuldiging", "eist",
-    "eisen", "veroordeelt", "schande", "schandalig", "onrecht", "onrechtvaardig",
-    "ruzie", "scheldt", "tegenstand", "woede-uitbarstingen",
+    "rebellie", "muiterij", "verzet", "boycot", "opruiend", "opruiing", "hetze",
+    "aanklacht", "beschuldigt", "beschuldiging", "verwijt", "verwijten",
+    "afkeuring", "eist", "eisen", "veroordeelt", "schande", "schandalig",
+    "onrecht", "onrechtvaardig", "ruzie", "scheldt", "scheldtirade",
+    "tegenstand",
 }
 ANGST = {
-    "angst", "angstig", "angstaanjagend", "bang", "vrees", "vrezen", "gevreesd",
-    "bezorgd", "bezorgdheid", "ongerust", "ongerustheid", "paniek", "panisch",
-    "schrik", "geschrokken", "terreur", "terreurdreiging", "dreiging",
-    "bedreiging", "bedreigd", "gevaar", "gevaarlijk", "risico", "risico's",
-    "alarm", "alarmerend", "waarschuwing", "waarschuwt", "onzeker",
+    "angst", "angstig", "angstaanjagend", "doodsangst", "doodsbang", "bang",
+    "vrees", "vrezen", "gevreesd", "beducht", "bezorgd", "bezorgdheid",
+    "ongerust", "ongerustheid", "paniek", "panisch", "paniekerig",
+    "hyperventilatie", "schrik", "geschrokken", "huiver", "huiveringwekkend",
+    "sidderen", "beven", "bibberen", "kippenvel", "beklemming", "beklemmend",
+    "benauwd", "benauwdheid", "fobie", "paranoia", "paranoïde", "achterdocht",
+    "wantrouwen", "terreur", "terreurdreiging", "dreiging", "dreigement",
+    "dreigementen", "bedreiging", "bedreigd", "gevaar", "gevaarlijk", "risico",
+    "risico's", "alarm", "alarmerend", "waarschuwing", "waarschuwt", "onzeker",
     "onzekerheid", "crisis", "noodtoestand", "evacuatie", "evacueren",
-    "geëvacueerd", "dreigend", "dreigende", "beangstigend", "verontrustend",
-    "zorgwekkend", "nachtmerrie", "onveilig", "vluchten",
+    "geëvacueerd", "dreigend", "dreigende", "onheilspellend", "doembeeld",
+    "doemdenken", "rampscenario", "beangstigend", "verontrustend", "zorgwekkend",
+    "nachtmerrie", "onveilig", "onveiligheidsgevoel", "vluchten", "noodkreet",
+    "hulpgeroep",
 }
 VERDRIET = {
     "verdriet", "verdrietig", "droevig", "droef", "treurig", "treuren",
-    "rouw", "rouwen", "rouwt", "tranen", "huilen", "huilt", "wanhoop",
-    "wanhopig", "hopeloos", "somber", "somberheid", "depressie", "depressief",
-    "eenzaam", "eenzaamheid", "gemis", "verlies", "verloren", "leed", "lijden",
-    "lijdt", "pijn", "gebroken", "teleurgesteld", "teleurstelling", "tragedie",
-    "tragisch", "tragische", "drama", "dramatisch", "slachtoffer", "slachtoffers",
-    "overleden", "betreurt", "afscheid", "verloor",
+    "rouw", "rouwen", "rouwt", "rouwproces", "rouwende", "rouwbeklag",
+    "rouwstoet", "rouwdienst", "condoleance", "condoleances", "condoleren",
+    "gecondoleerd", "deelneming", "medeleven", "tranen", "huilen", "huilt",
+    "huilbui", "snikken", "wanhoop", "wanhopig", "hopeloos", "uitzichtloos",
+    "troosteloos", "ontroostbaar", "ontredderd", "somber", "somberheid",
+    "weemoed", "weemoedig", "melancholie", "neerslachtig", "neerslachtigheid",
+    "gedeprimeerd", "mismoedig", "moedeloos", "terneergeslagen", "verslagen",
+    "verslagenheid", "depressie", "depressief", "eenzaam", "eenzaamheid",
+    "gemis", "verlies", "verloren", "verlatenheid", "leed", "lijden", "lijdt",
+    "pijn", "gebroken", "verscheurd", "hartverscheurend", "schrijnend",
+    "teleurgesteld", "teleurstelling", "tragedie", "tragisch", "tragische",
+    "drama", "dramatisch", "slachtoffer", "slachtoffers", "overleden",
+    "betreurt", "betreuren", "betreurd", "afscheid", "verloor", "herdenking",
+    "dodenherdenking", "uitvaart", "begrafenis", "teraardebestelling",
 }
 WALGING = {
-    "walging", "walgelijk", "walgelijke", "walgt", "weerzin", "afkeer",
-    "afschuw", "afschuwelijk", "afschuwelijke", "gruwel", "gruwelijk",
-    "gruwelijke", "gruweldaad", "weerzinwekkend", "weerzinwekkende",
-    "schandalig", "schande", "corruptie", "corrupt", "fraude", "frauduleus",
-    "misbruik", "mishandeling", "mishandeld", "wantoestand", "wantoestanden",
-    "smerig", "vies", "verrot", "verziekt", "schaamteloos", "stuitend",
-    "misselijk", "onsmakelijk", "schending", "schennis",
+    "walging", "walgelijk", "walgelijke", "walgt", "weerzin", "weerzinwekkend",
+    "weerzinwekkende", "afkeer", "afschuw", "afschuwelijk", "afschuwelijke",
+    "gruwel", "gruwelijk", "gruwelijke", "gruweldaad", "monsterlijk",
+    "beestachtig", "barbaars", "mensonterend", "vernederend", "onterend",
+    "schandalig", "schande", "schandelijk", "verwerpelijk", "laakbaar",
+    "verfoeilijk", "abject", "immoreel", "pervers", "verdorven", "corruptie",
+    "corrupt", "fraude", "frauduleus", "misbruik", "mishandeling", "mishandeld",
+    "wantoestand", "wantoestanden", "smerig", "ranzig", "vies", "vuil",
+    "besmeurd", "verrot", "verziekt", "schaamteloos", "stuitend", "choquerend",
+    "misselijk", "kotsmisselijk", "misselijkmakend", "onsmakelijk", "schending",
+    "schennis",
 }
 
 EMOTIONS: dict[str, set[str]] = {

@@ -98,6 +98,12 @@ def fetch_one_day(d: date) -> FetchBatch:
     # Emotionele lading van de nieuws-headlines — hergebruikt de RSS-meting van
     # fetch_news_negativity hierboven (V6 increment 2). Trigger-laag, niet het cijfer.
     batch.add_secondary(gdelt.news_emotion_secondary(d))
+    # Verdriet-/rouw-deel apart — voedt de brand-safety-CTA-pauze bij een rouwdag
+    # (2026-06-03, blinde vlek nationale rouw). Ook trigger-laag, niet het cijfer.
+    batch.add_secondary(gdelt.news_sadness_secondary(d))
+    # Reach-gewogen RSS-negativiteit (poststratified) — controle naast GDELT die
+    # historie opbouwt (Peters reach-vraag). Niet in het cijfer.
+    batch.add_secondary(gdelt.news_negativity_rss_secondary(d))
     # Real-time filezwaarte (km file) via DATEX v3 — dagmaat verkeersdruk; bouwt
     # historie op tot het de jaar-I-D2-001 kan vervangen (V6, Peters keuze).
     batch.add_secondary(datex_traffic.fetch_traffic_realtime(d))
