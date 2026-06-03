@@ -1,55 +1,55 @@
 {
   "I-D1-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T18:29:49.797875",
+    "fetched_at": "2026-06-03T18:49:56.320805",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 22.32
   },
   "I-D1-010": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T18:29:50.183087",
+    "fetched_at": "2026-06-03T18:49:56.706000",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 7.645833333333332
   },
   "I-D2-001-rt": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T18:34:37.660341",
-    "source": "Verkeerscentrum DATEX II v3 — 4 files, 11.84 km totale filelengte (langste 6.69 km), snapshot 2026-06-03",
-    "value": 11.84
+    "fetched_at": "2026-06-03T18:54:41.475230",
+    "source": "Verkeerscentrum DATEX II v3 — 3 files, 8.75 km totale filelengte (langste 3.83 km), snapshot 2026-06-03",
+    "value": 8.75
   },
   "I-D2-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T18:29:51.030454",
+    "fetched_at": "2026-06-03T18:49:57.676395",
     "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
     "value": 2.0
   },
   "I-D2-delijn": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T18:34:40.133518",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 281 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
-    "value": 281.0
+    "fetched_at": "2026-06-03T18:54:43.247396",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 239 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
+    "value": 239.0
   },
   "I-D2-stib": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T18:34:38.321226",
+    "fetched_at": "2026-06-03T18:54:42.095586",
     "source": "STIB/MIVB TravellersInformation (Brussel, 273 actieve items; CC BY 4.0)",
     "value": 273.0
   },
   "I-D3-002": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T18:29:53.830394",
+    "fetched_at": "2026-06-03T18:49:59.387128",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 89.20454545454547
   },
   "I-D3-003S": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T18:34:35.667503",
-    "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 12 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 6.0
+    "fetched_at": "2026-06-03T18:54:39.275917",
+    "source": "Ontslag-radar: 9 artikels met collectief-ontslag-thema in 15 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 9.0
   },
   "I-D3-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T18:29:56.127162",
+    "fetched_at": "2026-06-03T18:50:01.749850",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0136415436273722
   },
@@ -61,7 +61,7 @@
   },
   "I-D5-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-03T18:31:30.000115",
+    "fetched_at": "2026-06-03T18:51:33.914264",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 31.141
   },
@@ -73,19 +73,19 @@
   },
   "I-D5-006S": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T18:33:38.589124",
+    "fetched_at": "2026-06-03T18:54:04.679599",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.09025358229313993
+    "value": 0.08471912779214759
   },
   "I-D5-mastodon": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T18:33:39.776409",
+    "fetched_at": "2026-06-03T18:54:06.054467",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.32982495102379483
   },
   "I-D5-trends": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T18:34:36.630797",
+    "fetched_at": "2026-06-03T18:54:40.443038",
     "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
     "value": 0.0
   }
