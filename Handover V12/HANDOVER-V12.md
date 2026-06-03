@@ -12,6 +12,45 @@ Oudere achtergrond blijft geldig: `Handover V11/` (en de V3-verbeterplan-status 
 
 ---
 
+## 🆕 UPDATE 2026-06-03 (avond): bron-gezondheid-canary + actieplan-fixes
+
+Na de V12-package is er een extra sessie geweest (commits `0703956`, `cc421a7` + de actieplan-batch). Alles live gedeployed en geverifieerd.
+
+**1. Dagelijkse bron-gezondheidstest ("canary") — NIEUW, LIVE.** `app/pipeline/pipeline/healthcheck.py` (+ `tests/test_healthcheck.py`, 18 tests). Draait elke CI-run na `generate-fixture` en controleert drie dingen: (a) CONNECTIE — levert elke bron (18 primair + 10 secundair) verse ECHTE data; leest de `simulated`-vlag uit `raw-values.json`, NIET de waarde; (b) VERWERKING — draaide de fetch vandaag; (c) VOEDING — composiet + percentiel + 25 indicatoren aanwezig. Verdict `ok`/`degraded`/`critical`. **Kernregel: een waarde 0 is nooit op zich alarm** (Google Trends op een sportdag, Kou in de zomer). Vangt ook de A8-cache-terugval (`source` begint met "cache" → degraded). Schrijft `health-report.json` → live op **`/data/health-report.json`**. De oude demo-fallback-stap (die ~16 vals-alarm-issues/dag spamde over de benigne I-D1-003-nul) is vervangen door de canary + **één rollende GitHub-issue** (opent bij probleem, sluit bij herstel) + run-rood-bij-critical (GitHub mailt dan automatisch).
+- **Eerste live run ving meteen iets echts:** `I-D5-003` ("Grote gebeurtenis") draaide stil op **cache** (`simulated=false`, datum vandaag, in de publieke breakdown gemaskeerd als "Nieuwsmonitoring + menselijke codering"). `data_quality.indicators_simulated` was leeg, dus de oude check zag het niet. Dit is exact het A8-lek, nu zichtbaar. Rollende issue #33 opende; sluit vanzelf bij herstel.
+
+**2. Actieplan-fixes gedaan (uit `V12 SBI_ACTIEPLAN_CLAUDE_CODE_V12.md`):**
+- **Publieke cijfer-zin begrijpelijker (15-jarige).** `ConditionLevelDisplay` + `PercentileDisplay`: "Vandaag hoger dan op X% van de dagen rond deze tijd van het jaar." (jargon weg).
+- **A6** stale `latest.json` (+ `signal.json`, `sparkline-30d.json`, web/public-kopieën, health-report) uit tracking + in `.gitignore`. Een verse clone toont geen stale "3/100" meer.
+- **C1** dead code `fetchers/entsoe.py` weg. **C2** README I-D5-002 = Wikipedia-aandacht. **C6** stale "20/24 indicatoren"-comments → 25. **B5** I-D1-009-bronlabel → "open-meteo Flood API (GloFAS)".
+- Eerdere UI-fixes deze sessie: footer "methodologische verantwoording" weg; secundaire-sectiekop "Onderstroom-peiling" → "Signalen naast het cijfer".
+
+**3. Diagnostische vondsten (voor Peter):**
+- **CPI (I-D3-001) staat stil op observation_date 2025-12** (~6 maanden terug); de ECB SDW HICP-reeks schuift niet op. CPI voedt het cijfer → checken vóór go-live. Canary toont het als zachte "stale"-notitie.
+- **Pollen (I-D1-010) = `applyStl: false`** → leest élk hoogseizoen "uitzonderlijk hoog" (open-meteo CAMS). Echt veel pollen, maar seizoens- niet anomalie-extreem.
+- **"Grote gebeurtenis" reageert niet op een busongeval** want het is een GDELT-VOLUME-aggregaat (7d-decay), geen losse-incident-detector. Rouw hoort bij de verdriet→brand-safety-laag (staat `normal`: verdriet-meter heeft nog 1 historiepunt, valt op cold-start-vloer 0.5; vandaag 0.173 < 0.5).
+
+**4. Nog OPEN (jouw beslissing / vervolg):**
+- **Scharnierbeslissing 22 juni: v0.2 (test, eerlijk) of v0.4 (hoofdmeting)?** Bepaalt of A1/B1/B2 blockers zijn.
+- HARDE-EIS-vervolg: **A7** (I-D2-001 jaarconstante als `imputed` vlaggen), **A8** (fetcher-niveau: cache-leeftijd eerlijk vlaggen in de breakdown, niet enkel in de canary), **A9** (I-D1-003 "missing" = benigne zomer-nul-variantie, documenteren), CPI vers krijgen.
+- Methodologie: **A2** (I-D3-007 formeel pre-registreren — jij gaf de inclusie-GO al; doc-bijwerking 20→25 rest), **A3** (OSF-datum + SHA-256, wacht op jouw publicatie), **A4** (interne validatie-toetsen draaien), **B2/B3/B4**.
+- De ~32 oude "SBI demo-fallback"-spam-issues sluiten (geblokkeerd door de safety-laag; wacht op jouw expliciete OK).
+
+**Test-commando's (zodat je extra tests kan runnen):**
+```bash
+# Canary-unittests (18)
+python3 app/pipeline/tests/test_healthcheck.py
+# Canary handmatig draaien op de lokale data (schrijft app/data/health-report.json)
+cd app/pipeline && python3 -m pipeline.healthcheck
+# Live canary-uitkomst
+curl -s "https://les-hautes-alpes-sbi.brainwolves.workers.dev/data/health-report.json?cb=$(date +%s)" | python3 -m json.tool
+# Engine + web (ongewijzigd, moeten groen blijven)
+cd app/engine && npx tsc --noEmit && npm test       # 99
+cd app/web && npm run build
+```
+
+---
+
 ## ⚠️ LEES DIT EERST: wat er sinds V11 veranderd is (grote uitbreiding)
 
 Deze sessie heeft de barometer fors verbreed. Kort samengevat, alles **live gedeployed en geverifieerd**:

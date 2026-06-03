@@ -48,6 +48,7 @@ Het gecommitte `app/data/latest.json` kan **stale** zijn (V10 zat hier ooit fout
 - **Engine:** `cd app/engine && npx tsc --noEmit && npm test` (99 vitest-tests).
 - **Web:** `cd app/web && npm run build`.
 - **Python lexicons:** `cd app/pipeline && python3 tests/test_lexicon_nl.py` (8) + `python3 tests/test_lexicon_emotion.py` (5).
+- **Bron-gezondheid-canary (NIEUW):** `python3 app/pipeline/tests/test_healthcheck.py` (18 tests) + handmatig draaien met `cd app/pipeline && python3 -m pipeline.healthcheck` (leest `app/data/raw-values.json` + `latest-expert.json`, schrijft `app/data/health-report.json`, verdict ok/degraded/critical). Live: `curl -s "<live>/data/health-report.json?cb=$(date +%s)"`.
 - **Eén fetcher live testen:** `cd app/pipeline && python3 -c "from datetime import date; from pipeline.fetchers import <module>; print(<module>.<fn>(date.today()))"`. Voor De Lijn: `DELIJN_API_KEY=... python3 -c "..."`.
 - **Volledige data-gen lokaal:** `cd app/engine && npm run generate-fixture`. **DAARNA reverten:** `git checkout -- app/data app/web/public` + `rm -f app/data/latest-expert.json app/web/public/data/latest-expert.json`. ⚠ Untracked NIEUWE history-bestanden (bv. een lokaal `I-D2-001-rt-intraday.json`) overleven `git checkout` — `rm` ze als je een schone werkboom wil, of laat de CI ze beheren.
 - **Preview-server:** `barometer`-config in `.claude/launch.json` (poort 5173) — leest LOKALE (vaak stale) data, niet de live. Stop hem na gebruik; laat geen tab openstaan (verwart).

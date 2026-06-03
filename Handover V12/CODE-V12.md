@@ -55,7 +55,11 @@ De **CI (daily.yml)** draait: `python -m pipeline.run` (fetch) → `npm run gene
 - `components/Methodology.tsx` + `copy.ts` — indicator-count 24→25.
 - Rest ongewijzigd. Brand-safety-UI (`BrandSafetyBanner`, `CallToAction` die zich verbergt bij flag≠normal, `ConditionLevelDisplay` kicker "EVEN OP PAUZE") bestond al in V11.
 
+## app/pipeline/pipeline/healthcheck.py (NIEUW, 2026-06-03 avond) — bron-gezondheid-canary
+Pure `analyze(raw_values, index, today)` + `main()`. Leest `raw-values.json` (18 primair + 10 secundair, `simulated`-vlaggen) + `latest-expert.json` (composiet/percentiel/breakdown). Verdict ok/degraded/critical. **Alarmeert op `simulated`/cache-terugval/afwezig/stale, NOOIT op waarde 0** (gezonde nul = Google Trends op sportdag, Kou in zomer). Schrijft `health-report.json` → app/data + web/public/data (`/data/health-report.json`). Tests: `tests/test_healthcheck.py` (18). Inventaris is expliciet gedeclareerd zodat een verdwenen fetcher opvalt.
+
 ## .github/workflows/daily.yml
+- **Canary-stap (NIEUW):** na `generate-fixture` draait `python -m pipeline.healthcheck` (continue-on-error). De oude "demo-fallback alert" is vervangen door: één rollende GitHub-issue (opent bij degraded/critical, sluit bij herstel) + een stap die de run rood markeert bij `critical` (GitHub mailt dan).
 - Cron `0 * * * *` + tijd-guard (`H=$((10#$BE_HOUR))`, door bij 6-21).
 - Pipeline-stap heeft nu `env: DELIJN_API_KEY: ${{ secrets.DELIJN_API_KEY }}`.
 - Persist-stap (`git add -f app/data/history ...`) commit automatisch de nieuwe history-bestanden incl. `I-D2-001-rt-intraday.json`, `I-D3-007.json`, `I-D5-verdriet.json`, `I-D5-trends.json`, etc.
