@@ -2,10 +2,9 @@ name: SBI Daily Update
 
 on:
   schedule:
-    # Voorlopig één totale check per dag om 08:00 BE-tijd (06:00 UTC zomer /
-    # 07:00 UTC winter — dual cron + tijd-guard, zoals voorheen).
-    - cron: "0 6 * * *"
-    - cron: "0 7 * * *"
+    # Elk uur; de tijd-guard hieronder laat alleen 06-21u BE-tijd door (16 runs/dag,
+    # DST-proof via Europe/Brussels). Peter 2026-06-03.
+    - cron: "0 * * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -24,13 +23,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Time-guard (alleen door bij 08:00 BE-tijd of bij handmatige trigger)
+      - name: Time-guard (alleen door tussen 06-21u BE-tijd of bij handmatige trigger)
         id: timecheck
         run: |
           BE_HOUR=$(TZ='Europe/Brussels' date +%H)
+          H=$((10#$BE_HOUR))
           echo "Belgian local hour: $BE_HOUR"
-          if [ "${{ github.event_name }}" = "schedule" ] && [ "$BE_HOUR" != "08" ]; then
-            echo "Skip — schedule firing maar BE-uur is $BE_HOUR, niet 08."
+          if [ "${{ github.event_name }}" = "schedule" ] && { [ "$H" -lt 6 ] || [ "$H" -gt 21 ]; }; then
+            echo "Skip — schedule firing maar BE-uur $BE_HOUR valt buiten 06-21."
             echo "skip=true" >> "$GITHUB_OUTPUT"
           else
             echo "Proceed."
