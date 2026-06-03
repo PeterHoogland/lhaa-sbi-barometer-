@@ -55,6 +55,9 @@ RSS_FEEDS = [
     ("https://www.nieuwsblad.be/rss", "nieuwsblad"),
     ("https://www.gva.be/rss", "gva"),
     ("https://www.dewereldmorgen.be/rss.xml", "dewereldmorgen"),
+    # Hyperlokaal (2026-06-03): regionale TV vangt lokale incidenten/rouw die de
+    # nationale media missen (TV Oost ving het bus-ongeval-rouwsignaal). NL.
+    ("https://www.tvoost.be/rss", "tvoost"),
 ]
 
 GDELT_DOC_URL = "https://api.gdeltproject.org/api/v2/doc/doc"

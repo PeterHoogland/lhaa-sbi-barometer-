@@ -59,6 +59,8 @@ MEDIA_PROFILES: dict[str, dict] = {
     "nieuwsblad":     {"name": "Het Nieuwsblad",       "reach": 9.0, "audience": {"jong": 0.24, "midden": 0.34, "ouder": 0.42}},
     "gva":            {"name": "Gazet van Antwerpen",  "reach": 3.5, "audience": {"jong": 0.20, "midden": 0.33, "ouder": 0.47}},
     "dewereldmorgen": {"name": "De Wereld Morgen",     "reach": 1.0, "audience": {"jong": 0.34, "midden": 0.40, "ouder": 0.26}},
+    # Regionale TV (hyperlokaal, Oost-Vlaanderen) — ouder publiek, lokaal bereik
+    "tvoost":     {"name": "TV Oost",                "reach": 2.0, "audience": {"jong": 0.18, "midden": 0.32, "ouder": 0.50}},
     # Reddit — sterk jong/stedelijk skew (secundaire indicator)
     "reddit":     {"name": "Reddit Belgium",         "reach": 1.0, "audience": {"jong": 0.68, "midden": 0.26, "ouder": 0.06}},
 }

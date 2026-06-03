@@ -42,6 +42,7 @@ const SECONDARY_NAMES: Record<string, string> = {
   "I-D5-verdriet": "Verdriet-/rouwtoon nieuws (brand-safety-signaal)",
   "I-D5-001-rss": "Nieuwsnegativiteit RSS (reach-gewogen, controle naast GDELT)",
   "I-D5-trends": "Stress-aandeel Google Trends (zoekgedrag, tussenstroom)",
+  "I-D5-mastodon": "Mastodon-sentiment (onderstroom, no-auth)",
   "I-D2-001-rt": "Filezwaarte real-time (DATEX, km file)",
 };
 

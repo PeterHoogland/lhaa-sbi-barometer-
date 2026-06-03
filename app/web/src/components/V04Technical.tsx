@@ -16,9 +16,6 @@ export function V04Technical({ v04 }: { v04: V04Output }) {
     <section className="v04-tech">
       <header className="v04-tech-head">
         <h3>Meet- en trigger-laag</h3>
-        <span className={`v04-mode mode-${v04.mode}`}>
-          {v04.mode === "live" ? "campagnes: automatisch" : "campagnes: handmatig"}
-        </span>
       </header>
       <p className="muted small">
         Dit is een tweede, scherpere meting die meeloopt naast het hoofdcijfer en de

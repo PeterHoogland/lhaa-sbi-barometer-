@@ -16,7 +16,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from .util import FetchBatch, DATA_DIR, write_json, daterange, iso
-from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, elia, waterinfo, pollen, datex_traffic, google_trends
+from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, elia, waterinfo, pollen, datex_traffic, google_trends, mastodon
 
 
 # Maximaal aantal punten dat we per indicator in de doorlopende historie houden
@@ -94,6 +94,8 @@ def fetch_one_day(d: date) -> FetchBatch:
 
     # Secundair — NIET in composiet (sensitiviteit, doc 02 §10)
     batch.add_secondary(reddit.fetch_reddit_sentiment(d))
+    # Tweede onderstroom-peiling naast Reddit (no-auth publieke Mastodon-timeline).
+    batch.add_secondary(mastodon.fetch_mastodon_sentiment(d))
     batch.add_secondary(layoff_radar.fetch_layoff_radar(d))
     # Emotionele lading van de nieuws-headlines — hergebruikt de RSS-meting van
     # fetch_news_negativity hierboven (V6 increment 2). Trigger-laag, niet het cijfer.
