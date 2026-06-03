@@ -65,11 +65,6 @@ export function ScienceReferences({ breakdown }: { breakdown: IndicatorBreakdown
           </li>
         ))}
       </ul>
-
-      <p className="muted small ref-note">
-        Volledige methodologische verantwoording: pre-registratie en de zes lagen
-        (indicator-selectie → drempel) staan in de open-source repository van het project.
-      </p>
     </div>
   );
 }
