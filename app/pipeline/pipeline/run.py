@@ -16,7 +16,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from .util import FetchBatch, DATA_DIR, write_json, daterange, iso
-from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, elia, waterinfo, pollen, datex_traffic, google_trends, mastodon, stib, delijn
+from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, elia, waterinfo, pollen, datex_traffic, google_trends, mastodon, stib, delijn, consumer_confidence
 
 
 # Maximaal aantal punten dat we per indicator in de doorlopende historie houden
@@ -86,6 +86,7 @@ def fetch_one_day(d: date) -> FetchBatch:
     batch.add(statbel.fetch_unemployment(d))
     batch.add(nbb.fetch_mortgage_rate(d))
     batch.add(elia.fetch_grid_stress(d))
+    batch.add(consumer_confidence.fetch_consumer_confidence(d))
 
     # D5 — Media (D4 + D6 zijn deterministisch en worden in de engine berekend)
     batch.add(gdelt.fetch_news_negativity(d))
@@ -138,6 +139,7 @@ def _fetcher_for(code: str):
         "I-D3-003": fod_waso.fetch_collective_layoffs,
         "I-D3-005": statbel.fetch_unemployment,
         "I-D3-006": nbb.fetch_mortgage_rate,
+        "I-D3-007": consumer_confidence.fetch_consumer_confidence,
         "I-D3-009": elia.fetch_grid_stress,
         "I-D5-001": gdelt.fetch_news_negativity,
         "I-D5-002": wikipedia.fetch_stress_searches,

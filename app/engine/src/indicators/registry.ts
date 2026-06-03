@@ -150,6 +150,20 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     source: "ECB MIR (BE hypotheekrente)",
     deterministic: false,
   },
+  "I-D3-007": {
+    code: "I-D3-007",
+    name: "Consumentenvertrouwen",
+    domain: "D3",
+    grade: "B",
+    // Hoog vertrouwen = LAGE stress → inverse-coded (een saldo onder het normale,
+    // dus meer pessimisme, levert positieve stress). Amendement 2026-06 (Peter GO):
+    // voorlopend enquête-sentiment, niet in de nieuws-laag → geen dubbeltelling.
+    inverseCoded: true,
+    // Bron is al seizoens-gecorrigeerd (s_adj=SA) → geen STL.
+    applyStl: false,
+    source: "Eurostat — EC consumentenvertrouwen BE (ei_bsco_m, BS-CSMCI)",
+    deterministic: false,
+  },
   "I-D3-009": {
     code: "I-D3-009",
     name: "Stroomnet-druk",

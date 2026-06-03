@@ -54,6 +54,7 @@ export const DEMOGRAPHIC_REACH: Record<IndicatorCode, ReachEntry> = {
   "I-D3-003": { reach: 0.48, rationale: "Ontslagdreiging raakt werkenden plus hun huishoudens (spillover)." },
   "I-D3-005": { reach: 0.70, rationale: "Werkloosheid raakt de beroepsbevolking en wie ervan afhangt." },
   "I-D3-006": { reach: 0.32, rationale: "~30% van de huishoudens heeft een lopende hypotheek." },
+  "I-D3-007": { reach: 0.80, rationale: "Economisch onbehagen over de toekomst raakt vrijwel alle huishoudens." },
   "I-D4-001": { reach: 0.45, rationale: "Werk-deadlines raken de werkende bevolking (~43%)." },
   "I-D4-002": { reach: 0.28, rationale: "Schoolvakantie-druk raakt gezinnen met schoolgaande kinderen." },
   "I-D5-001": { reach: 0.85, rationale: "Ongeveer 85% volgt regelmatig nieuws." },

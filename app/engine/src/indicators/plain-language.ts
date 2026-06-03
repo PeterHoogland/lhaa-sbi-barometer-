@@ -149,6 +149,16 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
       { label: "Brüggen et al. (2017): financieel welzijn", url: "https://doi.org/10.1016/j.jbusres.2017.03.013" },
     ],
   },
+  "I-D3-007": {
+    plain: "Consumentenvertrouwen",
+    why: "Als mensen somber zijn over hun financiën en de economie, weegt dat op het hele land. Een laag vertrouwen telt hier als hogere druk.",
+    reads: "Het maandelijkse consumentenvertrouwen-saldo: hoe optimistisch of pessimistisch gezinnen zijn over hun toekomst.",
+    unit: "saldo",
+    dataSource: { name: "Eurostat — EC consumentenvertrouwen BE", url: "https://ec.europa.eu/eurostat/databrowser/view/ei_bsco_m" },
+    references: [
+      { label: "Europese Commissie — Business and Consumer Surveys", url: "https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/business-and-consumer-surveys_en" },
+    ],
+  },
   "I-D4-001": {
     plain: "Werk-deadlines",
     why: "Bepaalde weken pieken samen, belastingaangifte, kwartaaleinde, jaareinde.",

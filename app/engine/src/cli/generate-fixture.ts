@@ -216,6 +216,8 @@ function syntheticRawValue(code: IndicatorCode, date: Date): number {
       return 6.2 + (rnd() - 0.5) * 0.4;
     case "I-D3-006": // Hypotheekrente %
       return 3.4 + (rnd() - 0.5) * 0.2;
+    case "I-D3-007": // Consumentenvertrouwen-saldo (BE ~ -10, bereik -28..+2)
+      return -10 + (rnd() - 0.5) * 10;
     case "I-D5-001": // Nieuwsneg (GDELT tone — fallback rond echte mediaan ~1.4)
       return Math.max(0, 1.4 + 0.6 * Math.sin(yearProg * 1.5) + (rnd() - 0.5) * 0.9);
     case "I-D5-002": // Wikipedia-aandachts-index (per miljoen, fallback ~28)

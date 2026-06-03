@@ -20,6 +20,7 @@ export type IndicatorCode =
   | "I-D3-003" // Aangekondigde collectieve ontslagen
   | "I-D3-005" // Werkloosheidscijfer
   | "I-D3-006" // Hypotheekrente
+  | "I-D3-007" // Consumentenvertrouwen (amendement 2026-06, Peter GO)
   | "I-D3-009" // Stroomnet-druk (amendement Laag 3)
   | "I-D4-001" // Kalendarische deadlinepieken
   | "I-D4-002" // Schoolvakantie-zonder-opvang
