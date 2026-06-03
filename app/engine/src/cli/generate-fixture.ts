@@ -45,6 +45,7 @@ const SECONDARY_NAMES: Record<string, string> = {
   "I-D5-mastodon": "Mastodon-sentiment (onderstroom, no-auth)",
   "I-D2-001-rt": "Filezwaarte real-time (DATEX, km file)",
   "I-D2-stib": "OV-verstoringen Brussel (STIB/MIVB)",
+  "I-D2-delijn": "OV-omleidingen Vlaanderen (De Lijn)",
 };
 
 function loadPipelineToday(path: string): {

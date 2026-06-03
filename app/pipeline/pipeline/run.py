@@ -16,7 +16,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from .util import FetchBatch, DATA_DIR, write_json, daterange, iso
-from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, elia, waterinfo, pollen, datex_traffic, google_trends, mastodon, stib
+from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, elia, waterinfo, pollen, datex_traffic, google_trends, mastodon, stib, delijn
 
 
 # Maximaal aantal punten dat we per indicator in de doorlopende historie houden
@@ -115,6 +115,8 @@ def fetch_one_day(d: date) -> FetchBatch:
     # STIB/MIVB Brusselse OV-verstoringen (no-auth) — naast de trein (iRail). Bouwt
     # historie op tot het mee in een OV-verstoringsindicator kan (2026-06-03).
     batch.add_secondary(stib.fetch_stib_disruptions(d))
+    # De Lijn Vlaamse bus/tram-omleidingen (vereist DELIJN_API_KEY-secret). Bouwt historie.
+    batch.add_secondary(delijn.fetch_delijn_disruptions(d))
 
     return batch
 

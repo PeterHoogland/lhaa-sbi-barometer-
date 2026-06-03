@@ -63,6 +63,10 @@ jobs:
       - name: Fetch real data (Python pipeline)
         if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/pipeline
+        env:
+          # De Lijn Kern Open Data subscription-key (gratis). Niet-gezet → de
+          # De Lijn-fetcher valt op mock. Zet via `gh secret set DELIJN_API_KEY`.
+          DELIJN_API_KEY: ${{ secrets.DELIJN_API_KEY }}
         run: python -m pipeline.run
         continue-on-error: true
 
