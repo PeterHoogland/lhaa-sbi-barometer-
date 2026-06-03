@@ -1,5 +1,5 @@
 import type { IndicatorBreakdown } from "../types";
-import { stateColor, stateLabel } from "./indicator-utils";
+import { stateColor, stateLabelFor } from "./indicator-utils";
 
 /**
  * "Wat weegt vandaag het zwaarst" — top 3 indicatoren naar absolute bijdrage.
@@ -31,7 +31,7 @@ export function TopInfluences({ breakdown }: { breakdown: IndicatorBreakdown[] }
             <div className="top-body">
               <div className="top-name">{ind.plain_name}</div>
               <div className="top-state" style={{ color: stateColor(ind.state) }}>
-                {stateLabel(ind.state)}
+                {stateLabelFor(ind.state, ind.inverseCoded)}
               </div>
               <div className="top-why">{ind.why}</div>
             </div>

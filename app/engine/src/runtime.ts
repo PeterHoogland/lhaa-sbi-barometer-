@@ -241,6 +241,8 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       state: isMissing ? "ontbreekt" : zToState(z as number),
       source: meta.source,
       simulated: (input.simulatedIndicators ?? []).includes(code),
+      imputed: (input.imputedIndicators ?? []).includes(code),
+      inverseCoded: meta.inverseCoded,
       data_source: plain.dataSource,
       references: plain.references,
       observation_date:

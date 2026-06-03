@@ -109,6 +109,14 @@ export function App() {
             <LHALogo size={52} />
             <div className="footer-mark-text">{FOOTER_NOTES.tagline}</div>
           </div>
+          {/* A5: eerlijke, nuchtere testmodus-melding. Data-gedreven: `v04` zit alleen
+              in de publieke output bij mode=live, dus deze regel verdwijnt vanzelf
+              zodra de campagne-koppeling live gaat. */}
+          {!data.v04 && (
+            <p style={{ fontSize: "0.78rem", opacity: 0.55, marginTop: "0.9rem" }}>
+              Campagne-koppeling staat in testmodus. Er vuurt niets automatisch.
+            </p>
+          )}
         </div>
       </footer>
     </div>

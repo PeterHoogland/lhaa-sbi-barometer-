@@ -94,6 +94,10 @@ def fetch_traffic_load(target_date: date) -> FetchResult:
         value,
         target_date.isoformat(),
         simulated=False,
+        # Jaarconstante uit het Verkeerscentrum-jaarrapport: een echte cijferbron,
+        # maar GEEN verse dagmeting. Eerlijk als geimputeerd vlaggen (A7) zodat de
+        # data-quality-laag + de breakdown het niet als verse live meting tonen.
+        imputed=True,
         source=SOURCE,
         observation_date=str(year),
     )

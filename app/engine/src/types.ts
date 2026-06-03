@@ -96,6 +96,10 @@ export interface IndicatorBreakdown {
   state: "rustig" | "normaal" | "verhoogd" | "extreem" | "ontbreekt";
   source: string;
   simulated: boolean;
+  /** Echte waarde maar geen verse dagmeting: jaarconstante (A7) of cache-terugval (A8). */
+  imputed?: boolean;
+  /** Inverse-coded: hoge stress = LAGE onderliggende waarde (bv. consumentenvertrouwen). */
+  inverseCoded?: boolean;
   data_source: { name: string; url: string };
   references: Array<{ label: string; url: string }>;
   /** Datum/periode waar de onderliggende data naar verwijst.

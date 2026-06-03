@@ -25,6 +25,7 @@ interface PipelineResult {
   code: string;
   value: number;
   simulated: boolean;
+  imputed?: boolean;
   source?: string;
   observation_date?: string;
 }
@@ -51,14 +52,19 @@ const SECONDARY_NAMES: Record<string, string> = {
 function loadPipelineToday(path: string): {
   realValues: Partial<Record<IndicatorCode, number>>;
   realCodes: Set<IndicatorCode>;
+  imputedCodes: Set<IndicatorCode>;
   observationDates: Partial<Record<IndicatorCode, string>>;
-  secondarySignals: Array<{ code: string; name: string; value: number; source: string; simulated: boolean; observation_date: string }>;
+  secondarySignals: Array<{ code: string; name: string; value: number; source: string; simulated: boolean; imputed: boolean; observation_date: string }>;
 } {
   const realValues: Partial<Record<IndicatorCode, number>> = {};
   const realCodes = new Set<IndicatorCode>();
+  // Niet-verse-maar-echte waarden: een geimputeerde jaarconstante (A7) OF een
+  // cache-terugval (A8, bron begint met "cache"). Deze tonen we eerlijk als
+  // "verouderd" i.p.v. als verse live meting.
+  const imputedCodes = new Set<IndicatorCode>();
   const observationDates: Partial<Record<IndicatorCode, string>> = {};
-  let secondarySignals: Array<{ code: string; name: string; value: number; source: string; simulated: boolean; observation_date: string }> = [];
-  if (!existsSync(path)) return { realValues, realCodes, observationDates, secondarySignals };
+  let secondarySignals: Array<{ code: string; name: string; value: number; source: string; simulated: boolean; imputed: boolean; observation_date: string }> = [];
+  if (!existsSync(path)) return { realValues, realCodes, imputedCodes, observationDates, secondarySignals };
   try {
     const batch = JSON.parse(readFileSync(path, "utf-8")) as PipelineBatch;
     for (const r of batch.results) {
@@ -66,6 +72,9 @@ function loadPipelineToday(path: string): {
       if (!r.simulated) {
         realValues[r.code as IndicatorCode] = r.value;
         realCodes.add(r.code as IndicatorCode);
+        if (r.imputed || (r.source ?? "").startsWith("cache")) {
+          imputedCodes.add(r.code as IndicatorCode);
+        }
       }
     }
     secondarySignals = (batch.secondary ?? []).map((s) => ({
@@ -74,12 +83,13 @@ function loadPipelineToday(path: string): {
       value: s.value,
       source: s.source ?? "",
       simulated: s.simulated,
+      imputed: Boolean(s.imputed) || (s.source ?? "").startsWith("cache"),
       observation_date: s.observation_date ?? "",
     }));
   } catch {
     // pipeline output is corrupt — fallback naar volledig synthetisch
   }
-  return { realValues, realCodes, observationDates, secondarySignals };
+  return { realValues, realCodes, imputedCodes, observationDates, secondarySignals };
 }
 
 const MIN_EMOTIE_HISTORY = 20;
@@ -364,7 +374,7 @@ async function generate(): Promise<void> {
 
   // Vandaag — eerst synthetisch invullen, dan ECHTE waarden van de pipeline overschrijven
   const todayIso = isoDate(TODAY);
-  const { realValues, realCodes, observationDates, secondarySignals } = loadPipelineToday(PIPELINE_OUT);
+  const { realValues, realCodes, imputedCodes, observationDates, secondarySignals } = loadPipelineToday(PIPELINE_OUT);
 
   const todayRaw: Partial<Record<IndicatorCode, number>> = {};
   for (const code of simulatedCodes) {
@@ -415,6 +425,7 @@ async function generate(): Promise<void> {
     compositeHistory,
     compositeMetingHistory,
     simulatedIndicators: stillSimulatedToday,
+    imputedIndicators: [...imputedCodes],
     realBaselineCodes,
     observationDates,
     // I-D5-verdriet is een brand-safety-INPUT, geen publiek paneel-signaal: het zou

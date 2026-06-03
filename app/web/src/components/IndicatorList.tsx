@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { IndicatorBreakdown, DomainCode } from "../types";
 import { DOMAIN_LABELS } from "../copy";
 import { isKern } from "../lib/kern";
-import { stateColor, stateLabel, stateIcon } from "./indicator-utils";
+import { stateColor, stateLabelFor, stateIcon } from "./indicator-utils";
 import { formatObservationDate, observationGranularity } from "../lib/format-date";
 
 const DOMAIN_SUBTITLES: Record<DomainCode, string> = {
@@ -36,7 +36,7 @@ function IndicatorRow({ ind }: { ind: IndicatorBreakdown }) {
             </span>
           )}
         </span>
-        <span className="ind-state" style={{ color }}>{stateLabel(ind.state)}</span>
+        <span className="ind-state" style={{ color }}>{stateLabelFor(ind.state, ind.inverseCoded)}</span>
         <span className="ind-toggle">{open ? "−" : "+"}</span>
       </button>
       {open && (
@@ -121,6 +121,9 @@ function provenance(ind: IndicatorBreakdown): { label: string; cls: string } | n
   if (observationGranularity(obs) === "maand" || /^\d{4}$/.test(obs)) {
     return { label: "vertraagd", cls: "prov-lag" };
   }
+  // Cache-terugval (A8): echte waarde maar de verse fetch mislukte vandaag. Eerlijk
+  // als "verouderd" tonen i.p.v. als verse dagmeting.
+  if (ind.imputed) return { label: "verouderd", cls: "prov-lag" };
   return { label: "echt", cls: "prov-real" };
 }
 
@@ -133,10 +136,18 @@ function provenanceSummary(breakdown: IndicatorBreakdown[]): string {
       b.state !== "ontbreekt" &&
       (observationGranularity(b.observation_date) === "maand" || /^\d{4}$/.test(b.observation_date)),
   ).length;
-  if (demo === 0 && lag === 0) return "Elke meting draait op een echte, actuele bron.";
+  const cache = breakdown.filter(
+    (b) =>
+      !b.simulated &&
+      b.state !== "ontbreekt" &&
+      b.imputed &&
+      !(observationGranularity(b.observation_date) === "maand" || /^\d{4}$/.test(b.observation_date)),
+  ).length;
+  if (demo === 0 && lag === 0 && cache === 0) return "Elke meting draait op een echte, actuele bron.";
   const bits: string[] = [];
   if (demo > 0) bits.push(`${demo} op demo-data (gemarkeerd "demo")`);
   if (lag > 0) bits.push(`${lag} jaar-/maandcijfers (gemarkeerd "vertraagd")`);
+  if (cache > 0) bits.push(`${cache} op een recente cache-waarde (gemarkeerd "verouderd")`);
   return `Per meting staat de herkomst erbij: ${bits.join(", ")}; de rest op echte dagbronnen.`;
 }
 
