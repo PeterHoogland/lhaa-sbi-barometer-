@@ -6,7 +6,7 @@ export function stateLabel(s: IndicatorState): string {
     case "normaal": return "gemiddeld";
     case "verhoogd": return "hoger dan gewoonlijk";
     case "extreem": return "uitzonderlijk hoog";
-    case "ontbreekt": return "geen data";
+    case "ontbreekt": return "geen uitschieter";
   }
 }
 
@@ -23,7 +23,7 @@ export function stateLabelFor(s: IndicatorState, inverseCoded?: boolean): string
     case "normaal": return "gemiddeld";
     case "verhoogd": return "lager dan gewoonlijk";
     case "extreem": return "uitzonderlijk laag";
-    case "ontbreekt": return "geen data";
+    case "ontbreekt": return "geen uitschieter";
   }
 }
 

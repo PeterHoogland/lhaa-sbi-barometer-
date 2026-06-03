@@ -44,7 +44,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     grade: "A",
     inverseCoded: false,
     applyStl: true,
-    source: "open-meteo Air Quality (CAMS-model)",
+    source: "IRCELINE (Belgisch luchtmeetnet, Brussel)",
     deterministic: false,
   },
   "I-D1-009": {
@@ -64,7 +64,9 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     grade: "B",
     inverseCoded: false,
     applyStl: false,
-    source: "open-meteo Air Quality (CAMS)",
+    // Geen Belgische pollen-API beschikbaar (Sciensano AirAllergy = enkel een Drupal-
+    // grafiek + PDF's, niet machine-leesbaar). Eerlijk gelabeld als Europees model.
+    source: "Copernicus CAMS (Europees model — geen Belgische pollenmeting beschikbaar)",
     deterministic: false,
   },
   "I-D2-001": {

@@ -69,7 +69,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     why: "Vuile lucht (fijnstof, ozon) hangt samen met meer somberheid en prikkelbaarheid.",
     reads: "Hoe schoon de lucht is vergeleken met wat de WHO gezond noemt.",
     unit: "× WHO-grens",
-    dataSource: { name: "open-meteo Air Quality (CAMS-model)", url: "https://open-meteo.com/en/docs/air-quality-api" },
+    dataSource: { name: "IRCELINE (Belgisch luchtmeetnet, Brussel)", url: "https://www.irceline.be/" },
     references: [
       { label: "Braithwaite et al. (2019): luchtvervuiling en mentale gezondheid", url: "https://doi.org/10.1289/EHP4595" },
       { label: "Newbury et al. (2019): JAMA Psychiatry", url: "https://doi.org/10.1001/jamapsychiatry.2019.0056" },
@@ -273,7 +273,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     why: "Hooikoorts verstoort slaap, concentratie en humeur bij heel veel mensen, een seizoensgebonden maar brede stressor.",
     reads: "We tellen voor Brussel hoeveel pollenkorrels van vijf plantensoorten in de lucht zweven: els, berk, gras, bijvoet en ambrosia. Meer korrels betekent meer niezen, jeuk en vermoeidheid.",
     unit: "pollenkorrels/m³",
-    dataSource: { name: "open-meteo Air Quality (CAMS)", url: "https://open-meteo.com/" },
+    dataSource: { name: "Copernicus CAMS (Europees model, geen Belgische pollenmeting)", url: "https://atmosphere.copernicus.eu/" },
     references: [
       { label: "Damialis et al. (2019): pollen en welbevinden", url: "https://doi.org/10.1111/all.13758" },
       { label: "Copernicus: luchtkwaliteit en allergie", url: "https://atmosphere.copernicus.eu/" },
