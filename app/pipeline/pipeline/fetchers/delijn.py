@@ -1,23 +1,19 @@
 """
-De Lijn — Vlaamse bus/tram-verstoringen (I-D2-delijn).
+De Lijn — Vlaamse bus/tram-verstoringen, real-time (I-D2-delijn).
 
 WAAROM (openbaar-vervoer-uitbreiding 2026-06-03, Peter: "treinen en bussen ook")
 --------------------------------------------------------------------------------
 Naast trein (iRail, I-D2-009) en Brussel (STIB, I-D2-stib) ook het Vlaamse net.
-De Lijn bus/tram raakt heel Vlaanderen; omleidingen/verstoringen treffen veel
-pendelaars tegelijk.
+Peter leverde de GTFS Realtime v3-key, die het DYNAMISCHE signaal geeft: echte
+geannuleerde ritten + vertragingen die mee-ademen met de spits, het weer en
+incidenten — geen statische lijst gepland werk.
 
 BRON (vereist gratis subscription-key)
 --------------------------------------
-De Lijn Kern Open Data — endpoint `/DLKernOpenData/api/v1/omleidingen` geeft alle
-omleidingen netwerk-breed (geverifieerd 2026-06-03 met Peters "Open Data Free"-key:
-HTTP 200, 340 omleidingen). De sleutel komt uit de env-var DELIJN_API_KEY (GitHub
-Actions secret); zonder sleutel → mock met eerlijke vlag.
-
-We tellen de VANDAAG ACTIEVE omleidingen (startDatum ≤ vandaag ≤ eindDatum, of geen
-eindDatum = lopend). Dit is overwegend gepland werk → een trage verstoringslast, geen
-acuut real-time signaal. De real-time GTFS-RT-feed (annuleringen/vertragingen) zou
-dynamischer zijn maar vereist een ander (ook gratis) product "GTFS Realtime v3".
+De Lijn GTFS-Realtime v3 met `?json=true` → JSON i.p.v. protobuf (geen extra parser).
+Sleutel uit env-var DELIJN_API_KEY (GitHub Actions secret); zonder sleutel → mock.
+We tellen geannuleerde ritten + ritten met een vertraging ≥ 3 min over heel
+Vlaanderen (geverifieerd 2026-06-03: ~3750 entities, honderden vertraagde ritten).
 
 PLAATS IN HET MODEL
 -------------------
@@ -31,26 +27,47 @@ from ..util import FetchResult, safe_request, seasonal_noise
 from ..cache import get as cache_get, put as cache_put
 
 KEY_ENV = "DELIJN_API_KEY"
-URL = "https://api.delijn.be/DLKernOpenData/api/v1/omleidingen"
+URL = "https://api.delijn.be/gtfs/v3/realtime?json=true&delay=true&canceled=true&position=false"
 USER_AGENT = "Mozilla/5.0 (compatible; SBI-barometer/0.3; +mailto:peter@hoogland.be)"
+DELAY_THRESHOLD_S = 180  # vertraging ≥ 3 min telt als merkbaar
 
 
-def _count_active(omleidingen: list, today_iso: str) -> int:
-    n = 0
-    for o in omleidingen:
-        if not isinstance(o, dict):
+def _count_disruptions(feed: dict) -> tuple[int, int, int]:
+    """Geeft (geannuleerde ritten, vertraagde ritten ≥3min, service-alerts)."""
+    entities = feed.get("entity")
+    if not isinstance(entities, list):
+        return 0, 0, 0
+    canceled = delayed = alerts = 0
+    for e in entities:
+        if not isinstance(e, dict):
             continue
-        p = o.get("periode") or {}
-        start = str(p.get("startDatum") or "")[:10]
-        eind = str(p.get("eindDatum") or "")[:10]
-        if start and start <= today_iso and (not eind or eind >= today_iso):
-            n += 1
-    return n
+        if "alert" in e:
+            alerts += 1
+        tu = e.get("tripUpdate")
+        if not isinstance(tu, dict):
+            continue
+        rel = str((tu.get("trip") or {}).get("scheduleRelationship", "")).upper()
+        if rel == "CANCELED":
+            canceled += 1
+            continue
+        for stu in tu.get("stopTimeUpdate") or []:
+            if not isinstance(stu, dict):
+                continue
+            d = (stu.get("arrival") or {}).get("delay")
+            if d is None:
+                d = (stu.get("departure") or {}).get("delay")
+            try:
+                if d is not None and abs(int(d)) >= DELAY_THRESHOLD_S:
+                    delayed += 1
+                    break
+            except (TypeError, ValueError):
+                continue
+    return canceled, delayed, alerts
 
 
 def fetch_delijn_disruptions(target_date: date) -> FetchResult:
-    """Aantal vandaag actieve De Lijn-omleidingen (Vlaanderen, I-D2-delijn).
-    Secundair, bouwt historie."""
+    """Aantal real-time De Lijn-verstoringen (geannuleerd + vertraagd ≥3min) over
+    heel Vlaanderen (I-D2-delijn). Secundair, bouwt historie."""
     key = os.environ.get(KEY_ENV)
     if not key:
         return FetchResult(
@@ -59,20 +76,19 @@ def fetch_delijn_disruptions(target_date: date) -> FetchResult:
         )
 
     ok, body = safe_request(
-        URL, timeout=25,
+        URL, timeout=30,
         headers={"Ocp-Apim-Subscription-Key": key, "User-Agent": USER_AGENT},
     )
     if ok and isinstance(body, dict):
-        omleidingen = body.get("omleidingen")
-        if isinstance(omleidingen, list):
-            count = _count_active(omleidingen, target_date.isoformat())
-            source = (f"De Lijn Kern Open Data — {count} vandaag actieve omleidingen "
-                      f"(van {len(omleidingen)} totaal, Vlaanderen)")
-            cache_put("I-D2-delijn", float(count), source, target_date.isoformat())
-            return FetchResult(
-                "I-D2-delijn", float(count), target_date.isoformat(),
-                simulated=False, source=source,
-            )
+        canceled, delayed, alerts = _count_disruptions(body)
+        value = canceled + delayed
+        source = (f"De Lijn GTFS-RT v3 — {canceled} geannuleerd + {delayed} vertraagd "
+                  f"(≥3min), {alerts} service-alerts (Vlaanderen)")
+        cache_put("I-D2-delijn", float(value), source, target_date.isoformat())
+        return FetchResult(
+            "I-D2-delijn", float(value), target_date.isoformat(),
+            simulated=False, source=source,
+        )
 
     cached = cache_get("I-D2-delijn")
     if cached:
@@ -83,7 +99,7 @@ def fetch_delijn_disruptions(target_date: date) -> FetchResult:
         )
 
     return FetchResult(
-        "I-D2-delijn", max(0.0, round(seasonal_noise(target_date, 150, 20, 30, 1.57))),
+        "I-D2-delijn", max(0.0, round(seasonal_noise(target_date, 200, 40, 60, 1.57))),
         target_date.isoformat(), simulated=True,
         source="mock (De Lijn onbereikbaar, geen cache)",
     )
