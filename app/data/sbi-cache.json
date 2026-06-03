@@ -1,68 +1,74 @@
 {
   "I-D1-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T17:14:32.943772",
+    "fetched_at": "2026-06-03T17:39:20.950368",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 22.32
   },
   "I-D1-010": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T17:14:33.571856",
+    "fetched_at": "2026-06-03T17:39:21.416672",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 7.645833333333332
   },
   "I-D2-001-rt": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T17:18:16.643411",
-    "source": "Verkeerscentrum DATEX II v3 — 21 files, 44.55 km totale filelengte (langste 9.73 km), snapshot 2026-06-03",
-    "value": 44.55
+    "fetched_at": "2026-06-03T17:43:24.436438",
+    "source": "Verkeerscentrum DATEX II v3 — 13 files, 27.24 km totale filelengte (langste 9.83 km), snapshot 2026-06-03",
+    "value": 27.24
   },
   "I-D2-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T17:14:35.050014",
+    "fetched_at": "2026-06-03T17:39:22.759082",
     "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
     "value": 1.0
   },
   "I-D3-002": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T17:14:36.929722",
+    "fetched_at": "2026-06-03T17:39:24.236219",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 89.20454545454547
   },
   "I-D3-003S": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T17:18:15.292331",
+    "fetched_at": "2026-06-03T17:43:22.398047",
     "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 14 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 6.0
   },
   "I-D3-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T17:14:42.096113",
+    "fetched_at": "2026-06-03T17:39:26.691700",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0136415436273722
   },
   "I-D5-001": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T06:03:27.227902",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3021 woorden, pattern-nl-1.2+nieuws-overlay-1.0, 674/711 unieke artikels na dedup, 13 bronnen, poststratificatie): negativiteit jong +0.76 / midden +0.76 / ouder +0.90. Negatiefste headlines: «7 doden en 11 gewonden bij Oekraïense drone-aanval op bus, zegt Rusland · Aantal bevestigde gevallen met ebola stijgt naar 344, onder wie 60 doden · Explosie aan woning in Ganshoren, geen gewonden Aan een woning op de Eeuwfeestsquare in Ganshoren heeft afgelopen nacht »; emotie-profiel headlines (matches/100 woorden): woede 0.14 / angst 0.19 / verdriet 0.12 / walging 0.02 (dominant: angst)",
-    "value": 1.4117
+    "fetched_at": "2026-06-03T17:40:36.275818",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 685/712 unieke artikels na dedup, 13 bronnen, poststratificatie): negativiteit jong +0.75 / midden +0.76 / ouder +0.80. Negatiefste headlines: «Drugsbende met plantages over heel het land veroordeeld na onderzoek Brusselse politie In Brussel is een drugsbende vero · Paolo Falzone wilde slachtoffers niet opzettelijk doden, pleit zijn advocaat · ▶ Live - 1 dode en 63 gewonden bij Iraanse aanval op luchthaven Koeweit, beelden tonen zware schade in terminal»; emotie-profiel headlines (matches/100 woorden): woede 0.12 / angst 0.12 / verdriet 0.18 / walging 0.01 (dominant: verdriet)",
+    "value": 1.3607
   },
   "I-D5-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-03T17:16:15.487152",
+    "fetched_at": "2026-06-03T17:40:37.031496",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 31.141
   },
   "I-D5-003": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T17:17:23.095976",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 35 RSS-kandidaten naar pending voor menselijke review",
+    "fetched_at": "2026-06-03T17:42:44.364142",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 34 RSS-kandidaten naar pending voor menselijke review",
     "value": 0.072267
   },
   "I-D5-006S": {
-    "date": "2026-05-21",
-    "fetched_at": "2026-05-21T10:41:36.358846",
-    "source": "Reddit r/belgium + r/Vlaanderen, 200 posts, NL valentie-lexicon (299 woorden, nl-valence-0.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.1669024463534709
+    "date": "2026-06-03",
+    "fetched_at": "2026-06-03T17:42:48.403381",
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.11232483140065191
+  },
+  "I-D5-trends": {
+    "date": "2026-06-03",
+    "fetched_at": "2026-06-03T17:43:23.339677",
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.53 (stress-trends: oorlog oekraïne, het laatste nieuws)",
+    "value": 0.531
   }
 }
