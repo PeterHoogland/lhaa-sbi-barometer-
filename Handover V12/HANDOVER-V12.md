@@ -31,7 +31,8 @@ Na de V12-package is er een extra sessie geweest (commits `0703956`, `cc421a7` +
 - **"Grote gebeurtenis" reageert niet op een busongeval** want het is een GDELT-VOLUME-aggregaat (7d-decay), geen losse-incident-detector. Rouw hoort bij de verdriet→brand-safety-laag (staat `normal`: verdriet-meter heeft nog 1 historiepunt, valt op cold-start-vloer 0.5; vandaag 0.173 < 0.5).
 
 **4. Nog OPEN (jouw beslissing / vervolg):**
-- **Scharnierbeslissing 22 juni: v0.2 (test, eerlijk) of v0.4 (hoofdmeting)?** Bepaalt of A1/B1/B2 blockers zijn.
+- **✅ BESLIST (Peter, 2026-06-04): 22 juni gaat live met v0.2 (test, eerlijk getoond).** A1 (v0.4-schaarste) + B1/B2 vallen van het kritieke pad. Resteert op het pad: A5 (testfase eerlijk tonen — Peters keuze HOE; hij haalde de badge bewust weg), A7 (imputed-vlag), A8 (fetcher-cache-vlag), en de CPI-caveat documenteren.
+- **CPI-caveat:** I-D3-001 staat op dec 2025 omdat ECB SDW én Eurostat beide niet verder publiceren (BE HICP 2,2%). De fetcher haalt al de verste waarde op; niets is verser beschikbaar. Bewust accepteren + documenteren voor go-live, of een snellere bron (Statbel direct) overwegen.
 - HARDE-EIS-vervolg: **A7** (I-D2-001 jaarconstante als `imputed` vlaggen), **A8** (fetcher-niveau: cache-leeftijd eerlijk vlaggen in de breakdown, niet enkel in de canary), **A9** (I-D1-003 "missing" = benigne zomer-nul-variantie, documenteren), CPI vers krijgen.
 - Methodologie: **A2** (I-D3-007 formeel pre-registreren — jij gaf de inclusie-GO al; doc-bijwerking 20→25 rest), **A3** (OSF-datum + SHA-256, wacht op jouw publicatie), **A4** (interne validatie-toetsen draaien), **B2/B3/B4**.
 - De ~32 oude "SBI demo-fallback"-spam-issues sluiten (geblokkeerd door de safety-laag; wacht op jouw expliciete OK).
