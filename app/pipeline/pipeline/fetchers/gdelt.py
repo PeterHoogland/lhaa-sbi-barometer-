@@ -32,8 +32,9 @@ from datetime import date, datetime, timedelta
 from ..util import FetchResult, safe_request, seasonal_noise
 from ..cache import get as cache_get, put as cache_put
 from ..lexicon_nl import LEXICON_VERSION, LEXICON_SIZE, tone_of_text
+from ..lexicon_fr import tone_of_text_fr
 from ..lexicon_emotion_nl import aggregate_emotions, LEXICON_SIZE as EMOTIE_LEXICON_SIZE
-from ..media_profiles import poststratify
+from ..media_profiles import poststratify, MEDIA_PROFILES
 
 # (feed-URL, mediaprofiel-sleutel). Sleutel matcht media_profiles.MEDIA_PROFILES.
 RSS_FEEDS = [
@@ -58,6 +59,13 @@ RSS_FEEDS = [
     # Hyperlokaal (2026-06-03): regionale TV vangt lokale incidenten/rouw die de
     # nationale media missen (TV Oost ving het bus-ongeval-rouwsignaal). NL.
     ("https://www.tvoost.be/rss", "tvoost"),
+    # Franstalige BE-media (2026-06-03, geverifieerd) — gerouteerd door het FR-lexicon
+    # (lang="fr" in media_profiles). Dekt eindelijk de Franstalige helft van het land.
+    ("https://www.lalibre.be/arc/outboundfeeds/rss/?outputType=xml", "lalibre"),
+    ("https://www.dhnet.be/arc/outboundfeeds/rss/?outputType=xml", "dhnet"),
+    ("https://www.lavenir.net/arc/outboundfeeds/rss/?outputType=xml", "lavenir"),
+    ("https://bx1.be/feed/", "bx1"),
+    ("https://www.7sur7.be/home/rss.xml", "7sur7"),
 ]
 
 GDELT_DOC_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
@@ -142,8 +150,12 @@ def _per_source_tones(
         if not ok or not isinstance(body, str):
             continue
         rss_reachable = True
+        # Taal-routing: Franstalige bronnen (lang="fr") door het FR-lexicon, de rest
+        # door het NL-lexicon. Zonder dit scoorden FR-koppen op 0 (Peters vraag).
+        lang = MEDIA_PROFILES.get(key, {}).get("lang", "nl")
+        tone_fn = tone_of_text_fr if lang == "fr" else tone_of_text
         for text in _parse_rss_texts(body):
-            result = tone_of_text(text)
+            result = tone_fn(text)
             if result is not None:
                 raw_headlines.append((key, text.strip(), result[0]))
 
@@ -153,9 +165,12 @@ def _per_source_tones(
         by_source.setdefault(src, []).append(tone)
     source_tones = [(k, sum(v) / len(v)) for k, v in by_source.items()]
     top_neg = sorted(deduped, key=lambda h: h[2])[:10]
-    # Discrete emotie-profiel over dezelfde (deduped) headlines (V6: woede/angst/
-    # verdriet/walging) — trigger-/signaallaag, descriptief naast de valentie.
-    emotion_profile = aggregate_emotions([txt for _src, txt, _tone in deduped])
+    # Discrete emotie-profiel over de NL-headlines (het emotie-lexicon is NL-only;
+    # FEEL-FR blijft licentie-grijs). FR-bronnen tellen dus mee in de TOON maar nog
+    # niet in het emotie-profiel — descriptief naast de valentie.
+    emotion_profile = aggregate_emotions(
+        [txt for src, txt, _tone in deduped if MEDIA_PROFILES.get(src, {}).get("lang", "nl") == "nl"]
+    )
     return rss_reachable, source_tones, len(deduped), len(raw_headlines), top_neg, emotion_profile
 
 

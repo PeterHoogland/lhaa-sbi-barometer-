@@ -61,6 +61,13 @@ MEDIA_PROFILES: dict[str, dict] = {
     "dewereldmorgen": {"name": "De Wereld Morgen",     "reach": 1.0, "audience": {"jong": 0.34, "midden": 0.40, "ouder": 0.26}},
     # Regionale TV (hyperlokaal, Oost-Vlaanderen) — ouder publiek, lokaal bereik
     "tvoost":     {"name": "TV Oost",                "reach": 2.0, "audience": {"jong": 0.18, "midden": 0.32, "ouder": 0.50}},
+    # Franstalige BE-media (2026-06-03) — lang="fr" routeert ze door het FR-lexicon
+    # (lexicon_fr.py). Zonder dat zouden Franstalige koppen op 0 scoren.
+    "lalibre":    {"name": "La Libre",      "reach": 3.0, "lang": "fr", "audience": {"jong": 0.20, "midden": 0.38, "ouder": 0.42}},
+    "dhnet":      {"name": "La DH",         "reach": 4.0, "lang": "fr", "audience": {"jong": 0.28, "midden": 0.36, "ouder": 0.36}},
+    "lavenir":    {"name": "L'Avenir",      "reach": 3.0, "lang": "fr", "audience": {"jong": 0.18, "midden": 0.32, "ouder": 0.50}},
+    "bx1":        {"name": "BX1",           "reach": 1.5, "lang": "fr", "audience": {"jong": 0.34, "midden": 0.38, "ouder": 0.28}},
+    "7sur7":      {"name": "7sur7",         "reach": 5.0, "lang": "fr", "audience": {"jong": 0.32, "midden": 0.34, "ouder": 0.34}},
     # Reddit — sterk jong/stedelijk skew (secundaire indicator)
     "reddit":     {"name": "Reddit Belgium",         "reach": 1.0, "audience": {"jong": 0.68, "midden": 0.26, "ouder": 0.06}},
 }
