@@ -1,5 +1,5 @@
 /**
- * Bevroren registry van de 20 primaire indicatoren.
+ * Bevroren registry van de 25 gescoorde indicatoren.
  * Bron: doc 02_Laag-3 §10 + doc 04_Laag-5 §3.2 (STL beslisregel)
  *       + doc 04_Laag-5 §5 (inverse-codering)
  */
@@ -54,7 +54,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     grade: "B",
     inverseCoded: false,
     applyStl: false,
-    source: "Waterinfo.be (VMM / HIC)",
+    source: "open-meteo Flood API (GloFAS-rivierafvoer)",
     deterministic: false,
   },
   "I-D1-010": {

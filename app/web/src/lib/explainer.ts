@@ -5,7 +5,7 @@
  * "Kern wordt de kop" (2026-06): de publieke kop draait nu op de v0.4-KERN.
  * De CN (1-5) komt DIRECT uit het kern-percentiel (instant) — geen sustained-
  * na-ijling, dus de kop kan niet "verhoogd" tonen op een historisch kalme dag.
- * De v0.2-24-indicatoren-meting blijft als fallback wanneer er geen v04-blok is.
+ * De v0.2-25-indicatoren-meting blijft als fallback wanneer er geen v04-blok is.
  *
  * Taalregister: neutraal informerend, 15-jarig begripbaar. Geen "u/jij", geen
  * klinische taal (doc 09).
@@ -101,7 +101,7 @@ function buildContextV04(data: DailyOutput, v04: NonNullable<DailyOutput["v04"]>
   };
 }
 
-/** Fallback: de oorspronkelijke v0.2-24-indicatoren-meting. */
+/** Fallback: de oorspronkelijke v0.2-25-indicatoren-meting. */
 function buildContextV02(data: DailyOutput): ExplainerContext {
   const breakdown = data.indicator_breakdown;
   const available = breakdown.filter((b) => b.state !== "ontbreekt");

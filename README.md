@@ -62,7 +62,7 @@ GitHub Actions cron — zie `.github/workflows/daily.yml`. Vereist één secret:
 | Tier | Indicatoren | Status |
 |---|---|---|
 | **A — deterministisch** | I-D1-001 (daglicht), I-D4-001/002 (kalender), I-D6-001/002/003/005 | Altijd echt — 7 stuks |
-| **B — werkende real-fetch** | I-D1-002/003 (hitte/kou via open-meteo), I-D5-001 (GDELT), I-D5-002 (Google Trends) | Echt wanneer pipeline draait — 4 stuks |
+| **B — werkende real-fetch** | I-D1-002/003 (hitte/kou via open-meteo), I-D5-001 (GDELT), I-D5-002 (Wikipedia-aandacht) | Echt wanneer pipeline draait — 4 stuks |
 | **C — scraper TODO** | I-D1-004, I-D2-001/004, I-D3-001/002/003/005/006 | Mock, eerlijk gevlagd — 8 stuks |
 | **D — menselijke codering** | I-D5-003 | Leest `pipeline/events.json` — 1 stuk |
 
