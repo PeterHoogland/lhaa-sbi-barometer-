@@ -1,67 +1,67 @@
 {
   "I-D1-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:23:20.553310",
+    "fetched_at": "2026-06-03T21:27:47.268192",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 22.32
   },
   "I-D1-010": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:23:21.072790",
+    "fetched_at": "2026-06-03T21:27:47.649574",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 7.645833333333332
   },
   "I-D2-001-rt": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:27:37.848285",
-    "source": "Verkeerscentrum DATEX II v3 — 2 files, 3.02 km totale filelengte (langste 1.91 km), snapshot 2026-06-03",
-    "value": 3.02
+    "fetched_at": "2026-06-03T21:32:02.479430",
+    "source": "Verkeerscentrum DATEX II v3 — 2 files, 4.35 km totale filelengte (langste 2.54 km), snapshot 2026-06-03",
+    "value": 4.35
   },
   "I-D2-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:23:22.798590",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
-    "value": 2.0
+    "fetched_at": "2026-06-03T21:27:48.549849",
+    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
+    "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:27:40.171902",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 224 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
-    "value": 224.0
+    "fetched_at": "2026-06-03T21:32:04.174593",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 104 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
+    "value": 104.0
   },
   "I-D2-stib": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:27:38.689423",
+    "fetched_at": "2026-06-03T21:32:03.109298",
     "source": "STIB/MIVB TravellersInformation (Brussel, 274 actieve items; CC BY 4.0)",
     "value": 274.0
   },
   "I-D3-002": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:23:24.339655",
+    "fetched_at": "2026-06-03T21:27:50.230437",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 89.20454545454547
   },
   "I-D3-003S": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:27:36.231172",
-    "source": "Ontslag-radar: 7 artikels met collectief-ontslag-thema in 17 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 7.0
+    "fetched_at": "2026-06-03T21:32:00.773169",
+    "source": "Ontslag-radar: 10 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~605 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 10.0
   },
   "I-D3-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:23:27.279980",
+    "fetched_at": "2026-06-03T21:27:52.492822",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0136415436273722
   },
   "I-D5-001": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:24:57.948070",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 876/940 unieke artikels na dedup, 16 bronnen, poststratificatie): negativiteit jong +0.38 / midden +0.40 / ouder +0.40. Negatiefste headlines: «Drugsbende met plantages over heel het land veroordeeld na onderzoek Brusselse politie In Brussel is een drugsbende vero · Verstopt rioolputje zorgt voor wateroverlast in Stadenstraat · Na het dodelijke busongeval in Buggenhout: ‘In dit wrede drama speelt het noodlot slechts een bijrol’»; emotie-profiel headlines (matches/100 woorden): woede 0.11 / angst 0.12 / verdriet 0.17 / walging 0.01 (dominant: verdriet)",
-    "value": 1.4114
+    "fetched_at": "2026-06-03T21:29:05.256438",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1022/1090 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.32 / midden +0.34 / ouder +0.37. Negatiefste headlines: «Rubio s'inquiète du risque \"d'escalade\" dans la guerre en Ukraine Un risque d'escalade inquiète Marco Rubio. ... · Drugsbende met plantages over heel het land veroordeeld na onderzoek Brusselse politie In Brussel is een drugsbende vero · Paolo Falzone wilde slachtoffers niet opzettelijk doden, pleit zijn advocaat»; emotie-profiel headlines (matches/100 woorden): woede 0.12 / angst 0.11 / verdriet 0.19 / walging 0.01 (dominant: verdriet)",
+    "value": 1.4587
   },
   "I-D5-002": {
     "date": "2026-06-02",
-    "fetched_at": "2026-06-03T19:24:58.692754",
+    "fetched_at": "2026-06-03T21:29:05.460061",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 31.141
   },
@@ -73,20 +73,20 @@
   },
   "I-D5-006S": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:26:37.320312",
+    "fetched_at": "2026-06-03T21:31:27.176715",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.07422155165244311
+    "value": 0.035553002068430074
   },
   "I-D5-mastodon": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:26:38.938202",
+    "fetched_at": "2026-06-03T21:31:28.432972",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.5082233885237948
   },
   "I-D5-trends": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-03T19:27:36.777817",
-    "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
-    "value": 0.0
+    "fetched_at": "2026-06-03T21:32:01.443360",
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.52 (stress-trends: nick bril, vriendschappelijke interlands, huis gemaakt)",
+    "value": 0.5152
   }
 }
