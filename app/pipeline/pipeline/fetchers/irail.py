@@ -5,7 +5,9 @@ Doc 03_Laag-4: I-D2-009 — ongeplande spoorverstoringen (domein D2 mobiliteit).
 Bron: iRail API (https://api.irail.be/) — open, gratis, geen token. iRail is
 een community-project dat de officiële NMBS/SNCB-data ontsluit.
 
-Endpoint: https://api.irail.be/disturbances/?format=json&lang=nl
+Endpoint: https://api.irail.be/v1/disturbances?format=json&lang=nl
+(De oude /disturbances/ geeft sinds 2026 een 303-redirect naar /v1/ — fragiel;
+daarom rechtstreeks de v1-URL, geverifieerd 2026-06-03: HTTP 200, zelfde structuur.)
 De respons bevat een lijst 'disturbance'. Elk item heeft een veld 'type' dat
 ofwel "disturbance" (ongeplande verstoring) ofwel "planned" (geplande werken)
 is. We tellen ENKEL de ongeplande verstoringen — geplande werken zijn
@@ -20,7 +22,7 @@ from datetime import date
 from ..util import FetchResult, safe_request, seasonal_noise
 from ..cache import get as cache_get, put as cache_put
 
-URL = "https://api.irail.be/disturbances/?format=json&lang=nl"
+URL = "https://api.irail.be/v1/disturbances?format=json&lang=nl"
 USER_AGENT = "SBI-barometer/0.2 (publieke stress-indicator; contact peter@hoogland.be)"
 
 
