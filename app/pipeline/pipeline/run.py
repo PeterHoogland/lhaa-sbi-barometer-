@@ -16,7 +16,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from .util import FetchBatch, DATA_DIR, write_json, daterange, iso
-from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, elia, waterinfo, pollen, datex_traffic
+from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, elia, waterinfo, pollen, datex_traffic, google_trends
 
 
 # Maximaal aantal punten dat we per indicator in de doorlopende historie houden
@@ -104,6 +104,9 @@ def fetch_one_day(d: date) -> FetchBatch:
     # Reach-gewogen RSS-negativiteit (poststratified) — controle naast GDELT die
     # historie opbouwt (Peters reach-vraag). Niet in het cijfer.
     batch.add_secondary(gdelt.news_negativity_rss_secondary(d))
+    # Google Trends — stress-aandeel van de Belgische trending searches (tussenstroom
+    # = zoekgedrag op schaal, 2026-06-03). Bouwt historie op. Niet in het cijfer.
+    batch.add_secondary(google_trends.fetch_google_trends_stress(d))
     # Real-time filezwaarte (km file) via DATEX v3 — dagmaat verkeersdruk; bouwt
     # historie op tot het de jaar-I-D2-001 kan vervangen (V6, Peters keuze).
     batch.add_secondary(datex_traffic.fetch_traffic_realtime(d))

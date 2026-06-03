@@ -23,40 +23,61 @@ Zelfde lexicon-gebaseerde toon-analyse als de mainstream nieuwsindicator
 
 BRON
 ----
-Reddit publieke JSON-endpoints van Belgische subreddits:
-  r/belgium    — algemeen, gemengd NL/FR/EN
-  r/Vlaanderen — Nederlandstalig
+Reddit publieke Atom-feeds (.rss) van Belgische subreddits:
+  r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire.
 
-Reddit vereist een herkenbare User-Agent. Lage frequentie (1×/dag),
-read-only, publieke data.
+⚠ Reddit blokkeert sinds eind 2024 ALLE ongeauthenticeerde .json-toegang (HTTP 403).
+De vroegere .json-route viel daardoor stil terug op cache→mock (een verborgen
+degradatie). Sinds 2026-06-03 gebruiken we de publieke .rss (Atom), die nog wél
+werkt vanaf een niet-ingelogd IP, met een browser-achtige User-Agent. Lage
+frequentie (1×/dag), read-only, publieke data. Caveat: datacenter-IP's (GitHub
+Actions) worden soms alsnog geweigerd → dan cache→mock met eerlijke vlag. Een
+robuustere upgrade is OAuth (client-credentials); de .rss is de no-auth-variant.
 """
 from __future__ import annotations
+import re
+import xml.etree.ElementTree as ET
 from datetime import date
 from ..util import FetchResult, safe_request, seasonal_noise
 from ..cache import get as cache_get, put as cache_put
 from ..lexicon_nl import LEXICON_VERSION, LEXICON_SIZE, tone_of_text
 
-SUBREDDITS = ["belgium", "Vlaanderen"]
-USER_AGENT = "SBI-barometer/0.2 (publieke sensitiviteits-indicator; contact peter@hoogland.be)"
+# r/belgium + r/Vlaanderen (algemeen NL/FR/EN) + r/brussels (stedelijk, deels FR/EN)
+# + r/Antwerpen (NL, lokaal) + r/BEFire (geld/werk/pensioen-stress). Uitgebreid
+# 2026-06-03 voor bredere onderstroom-dekking van Belgisch dagelijks-leven-stress.
+SUBREDDITS = ["belgium", "Vlaanderen", "brussels", "Antwerpen", "BEFire"]
+# Reddit blokkeert sinds eind 2024 ALLE ongeauthenticeerde .json (403). De publieke
+# .rss (Atom) werkt nog wél met een browser-achtige UA. Vandaar deze UA + de .rss-route.
+USER_AGENT = "Mozilla/5.0 (compatible; SBI-barometer/0.3; +mailto:peter@hoogland.be)"
+_TAG_RE = re.compile(r"<[^>]+>")
 
 
 def _fetch_subreddit_posts(sub: str) -> list[str]:
-    """Haal titels + selftext van de nieuwste posts uit één subreddit."""
-    url = f"https://www.reddit.com/r/{sub}/new.json?limit=100&raw_json=1"
+    """Haal titels + tekst van de nieuwste posts uit één subreddit via de publieke
+    Atom-feed (.rss). De vroegere .json-route geeft sinds eind 2024 HTTP 403 vanaf
+    elk niet-ingelogd IP — die viel stil terug op cache/mock. De .rss werkt nog."""
+    url = f"https://www.reddit.com/r/{sub}/.rss"
     ok, body = safe_request(url, timeout=20, headers={"User-Agent": USER_AGENT})
-    if not ok or not isinstance(body, dict):
+    if not ok or not isinstance(body, str):
+        return []
+    try:
+        root = ET.fromstring(body)
+    except ET.ParseError:
         return []
     texts: list[str] = []
-    try:
-        for child in body.get("data", {}).get("children", []):
-            d = child.get("data", {})
-            title = d.get("title", "") or ""
-            selftext = d.get("selftext", "") or ""
-            combined = f"{title} {selftext}".strip()
-            if combined:
-                texts.append(combined)
-    except (AttributeError, TypeError):
-        return []
+    for el in root.iter():
+        if not el.tag.endswith("entry"):
+            continue
+        title, content = "", ""
+        for child in el:
+            tag = child.tag.split("}", 1)[-1].lower()
+            if tag == "title" and child.text:
+                title = child.text.strip()
+            elif tag in ("content", "summary") and child.text and not content:
+                content = _TAG_RE.sub(" ", child.text)  # strip HTML uit de post-body
+        combined = f"{title} {content}".strip()
+        if combined:
+            texts.append(combined)
     return texts
 
 
@@ -77,7 +98,8 @@ def fetch_reddit_sentiment(target_date: date) -> FetchResult:
     if reachable and all_tones:
         mean_tone = sum(all_tones) / len(all_tones)
         negativity = -mean_tone
-        source = (f"Reddit r/belgium + r/Vlaanderen, {posts_total} posts, "
+        subs = ", ".join(f"r/{s}" for s in SUBREDDITS)
+        source = (f"Reddit ({subs}) via Atom-feed, {posts_total} posts, "
                   f"NL valentie-lexicon ({LEXICON_SIZE} woorden, {LEXICON_VERSION}); "
                   f"SECUNDAIR, niet-representatief, niet in composiet")
         cache_put("I-D5-006S", negativity, source, target_date.isoformat())
