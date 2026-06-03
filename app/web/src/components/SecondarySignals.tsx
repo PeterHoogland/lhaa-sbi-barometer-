@@ -12,13 +12,17 @@ export function SecondarySignals({ signals }: { signals: SecondarySignal[] }) {
   return (
     <section className="panel secondary-panel">
       <div className="secondary-badge">SECUNDAIR · NIET IN HET CIJFER</div>
-      <h2>Onderstroom-peiling</h2>
+      <h2>Signalen naast het cijfer</h2>
       <p className="panel-lead">
         Dit zijn <strong>experimentele signalen</strong> die we apart meten maar
         die <strong>bewust niet meetellen</strong> in het cijfer (0-100) of
-        in de banner-activatie. Sociale media zijn geen doorsnede van de bevolking,
-        dus ze horen methodologisch niet in de officiële meting (doc 02 §8).
-        We tonen ze hier alleen ter vergelijking.
+        in de banner-activatie. Ze komen uit verschillende lagen: de sociale
+        onderstroom (Reddit, Mastodon), het zoekgedrag (Google Trends),
+        nieuws-afgeleiden (ontslag-radar, emotie) en real-time verkeer en
+        openbaar vervoer (DATEX, STIB, De Lijn). Ze missen een lange eigen
+        meetlat of een representatieve doorsnede van de bevolking, dus ze horen
+        nog niet in de officiële meting (doc 02 §8). We tonen ze hier ter
+        vergelijking, voor wie nieuwsgierig is.
       </p>
 
       <div className="secondary-list">

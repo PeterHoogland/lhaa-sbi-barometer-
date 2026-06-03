@@ -85,6 +85,20 @@ jobs:
           CAMPAIGN_WEBHOOK_TOKEN: ${{ secrets.CAMPAIGN_WEBHOOK_TOKEN }}
         run: npm run generate-fixture
 
+      - name: Bron-gezondheid — dagelijkse canary (connectie + verwerking + voeding)
+        if: steps.timecheck.outputs.skip != 'true'
+        id: health
+        working-directory: app/pipeline
+        # Leest de dagrun (raw-values.json) + de index (latest-expert.json) en
+        # controleert: levert elke bron verse ECHTE data (geen mock/cache-terugval),
+        # draaide de fetch vandaag, en is de index effectief gevoed (composiet +
+        # percentiel + 25 indicatoren)? Schrijft health-report.json naar app/data EN
+        # web/public/data (deployt mee → /data/health-report.json) en zet output
+        # `verdict`. Breekt de build NOOIT (continue-on-error); een aparte stap
+        # markeert de run rood bij `critical`.
+        run: python -m pipeline.healthcheck
+        continue-on-error: true
+
       - name: Install web deps
         if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/web
@@ -137,34 +151,50 @@ jobs:
             echo "No cache changes to commit"
           fi
 
-      - name: Demo-fallback alert (mail bij mock/ontbrekende bron)
+      - name: Alarm bij gedegradeerde/kritieke bron-gezondheid (één rollende issue, niet-blokkerend)
         if: steps.timecheck.outputs.skip != 'true'
         env:
           # Zet dit secret op een Zapier/Make "Catch Hook -> e-mail naar peter@hoogland.be"
-          # voor een directe mail. Niet gezet -> vangnet: een GitHub-issue (mailt je via
-          # je repo-notificaties) + altijd zichtbaar in de step-summary.
+          # voor een directe mail. Niet gezet -> vangnet: één rollende GitHub-issue die
+          # opent bij een probleem en sluit bij herstel (mailt je via je repo-notificaties).
           ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
           GH_TOKEN: ${{ github.token }}
         run: |
-          FILE=app/data/latest.json
-          if [ ! -f "$FILE" ]; then echo "Geen latest.json - niets te melden."; exit 0; fi
-          SIM=$(python3 -c "import json;print(','.join(json.load(open('$FILE'))['data_quality'].get('indicators_simulated') or []))")
-          MISS=$(python3 -c "import json;print(','.join(json.load(open('$FILE'))['data_quality'].get('indicators_missing') or []))")
-          if [ -z "$SIM" ] && [ -z "$MISS" ]; then
-            echo "OK - alle indicatoren op echte data, geen demo-fallback."
+          REPORT=app/data/health-report.json
+          if [ ! -f "$REPORT" ]; then echo "Geen health-report.json - de canary draaide niet."; exit 0; fi
+          VERDICT=$(python3 -c "import json;print(json.load(open('$REPORT'))['verdict'])")
+          echo "Bron-gezondheid verdict: $VERDICT"
+          TITLE="SBI bron-gezondheid (automatische canary)"
+          # Eén rollende issue: opzoeken of er al een open staat (dedupe -> geen spam).
+          NUM=$(gh issue list --state open --json number,title \
+            --jq '.[] | select(.title|test("bron-gezondheid")) | .number' 2>/dev/null | head -1)
+          if [ "$VERDICT" = "ok" ]; then
+            if [ -n "$NUM" ]; then
+              gh issue close "$NUM" -c "Hersteld op $(date +%F): alle bronnen weer op verse echte data, index gevoed." >/dev/null 2>&1 \
+                && echo "Issue #$NUM gesloten (hersteld)." || echo "Sluiten faalde (niet-blokkerend)."
+            else
+              echo "OK - alle bronnen verbonden, index gevoed. Niets te melden."
+            fi
             exit 0
           fi
-          DATE=$(date +%F)
-          MSG="SBI demo-fallback op ${DATE}: een of meer bronnen faalden. simulated=[${SIM}] missing=[${MISS}]. De barometer toont die indicatoren eerlijk als 'demo'; controleer de bron."
-          { echo "## Demo-fallback ${DATE}"; echo "$MSG"; } >> "$GITHUB_STEP_SUMMARY"
-          echo "$MSG"
-          if [ -n "$ALERT_WEBHOOK_URL" ]; then
-            PAYLOAD=$(python3 -c "import json,sys;print(json.dumps({'to':'peter@hoogland.be','date':sys.argv[1],'simulated':sys.argv[2],'missing':sys.argv[3],'message':sys.argv[4]}))" "$DATE" "$SIM" "$MISS" "$MSG")
-            curl -fsS -X POST "$ALERT_WEBHOOK_URL" -H "Content-Type: application/json" -d "$PAYLOAD" \
-              && echo "Mail-alert verstuurd via ALERT_WEBHOOK_URL." \
-              || echo "Alert-POST faalde (niet-blokkerend)."
+          # degraded of critical: open de rollende issue als die nog niet bestaat.
+          if [ -z "$NUM" ]; then
+            gh issue create --title "$TITLE" --body-file app/data/health-report.md >/dev/null 2>&1 \
+              && echo "Issue aangemaakt ($VERDICT)." || echo "Issue-aanmaak faalde (niet-blokkerend)."
           else
-            gh issue create --title "SBI demo-fallback ${DATE}" --body "$MSG" >/dev/null 2>&1 \
-              && echo "GitHub-issue aangemaakt (mailt je via je repo-notificaties). Zet ALERT_WEBHOOK_URL voor een directe mail." \
-              || echo "Issue-aanmaak faalde (niet-blokkerend; alert staat in de step-summary)."
+            gh issue comment "$NUM" --body "Nog steeds **$VERDICT** op $(date +%F). Zie de step-summary van deze run." >/dev/null 2>&1 || true
+            echo "Issue #$NUM staat al open ($VERDICT) - bijgewerkt, geen nieuwe (anti-spam)."
           fi
+          if [ -n "$ALERT_WEBHOOK_URL" ]; then
+            MSG=$(python3 -c "import json;r=json.load(open('$REPORT'));print(r['verdict'].upper()+': '+'; '.join(r['messages'][-2:]))")
+            PAYLOAD=$(python3 -c "import json,sys;print(json.dumps({'to':'peter@hoogland.be','date':sys.argv[1],'verdict':sys.argv[2],'message':sys.argv[3]}))" "$(date +%F)" "$VERDICT" "$MSG")
+            curl -fsS -X POST "$ALERT_WEBHOOK_URL" -H "Content-Type: application/json" -d "$PAYLOAD" \
+              && echo "Webhook-alert verstuurd." || echo "Webhook-POST faalde (niet-blokkerend)."
+          fi
+
+      - name: Run rood markeren bij kritieke index (GitHub mailt je dan automatisch)
+        if: steps.timecheck.outputs.skip != 'true' && steps.health.outputs.verdict == 'critical'
+        run: |
+          echo "Bron-gezondheid CRITICAL: de index zelf is niet correct gevoed."
+          echo "De run wordt bewust rood gemarkeerd zodat GitHub je een mail stuurt."
+          exit 1
