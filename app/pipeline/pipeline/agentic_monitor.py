@@ -38,6 +38,7 @@ import os
 import sys
 import time
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 import requests
 
@@ -159,6 +160,13 @@ def main() -> int:
 
     should_retrigger, hard = decide(latest or {}, problems, run, now)
 
+    # Alleen hertriggeren binnen het update-venster (06-20u BE). 's Nachts hoort het cijfer
+    # niet te verversen, dus "stale" is dan geen reden om af te trappen. Harde problemen
+    # (inconsistent cijfer, kritieke canary, fallback-vangrail) blijven WEL altijd alarmeren.
+    be_hour = datetime.now(ZoneInfo("Europe/Brussels")).hour
+    if not (6 <= be_hour <= 20):
+        should_retrigger = False
+
     lines: list[str] = []
     pct = ((latest or {}).get("percentile") or {}).get("short_24m")
     print(f"AGENTIC MONITOR — percentiel={pct}, problemen={problems or 'geen'}")
@@ -171,7 +179,10 @@ def main() -> int:
         lines.append(f"Update stond stil (of laatste run faalde) -> daily.yml {'opnieuw afgetrapt' if retriggered else 'hertrigger MISLUKT'}.")
         print(f"  {'↻ hertriggerd' if retriggered else '✗ hertrigger mislukt'}")
 
-    review = agentic_review(latest or {}, problems, notes, api_key)
+    # Agentische lezing alleen wanneer er iets te melden valt (probleem of hertrigger):
+    # de monitor draait nu elke 20 min; op de frequente gezonde checks slaan we de
+    # (betaalde) AI-laag over. Zo blijft de strakke hartslag goedkoop.
+    review = agentic_review(latest or {}, problems, notes, api_key) if (hard or should_retrigger) else None
     if review:
         lines.append(f"**Agentische lezing (Claude):** {review}")
         print(f"  🧠 {review}")

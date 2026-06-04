@@ -8,7 +8,7 @@ on:
     # is best-effort; hij blijft hier enkel als dead-man's-switch: vuurt hij toch, dan
     # vangt hij een eventuele Worker-uitval op. De tijd-guard laat alleen 06-20u BE
     # écht door (elk heel uur van 06:00 t/m 20:00). Peter 2026-06-04.
-    - cron: "30 * * * *"
+    - cron: "3,33 * * * *"
   workflow_dispatch: {}
 
 permissions:
