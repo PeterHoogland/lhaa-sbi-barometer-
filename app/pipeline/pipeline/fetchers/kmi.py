@@ -9,13 +9,43 @@ registratie vereist.
 Brussel: 50.85°N, 4.35°E (doc 03 §1.2).
 """
 from __future__ import annotations
-from datetime import date
+from datetime import date, timedelta
 from ..util import FetchResult, safe_request
 
 # Brussel (doc 03 §1.2)
 _LAT, _LON = 50.85, 4.35
+# KMI/RMI synop-station Ukkel (volledig Belgische primaire bron, opendata.meteo.be).
+_KMI_BE_STATION = "6447"
 # MET Norway vereist een beschrijvende, identificeerbare User-Agent (hun ToS).
 _MET_NO_UA = "lhaa-sbi-barometer/1.0 github.com/PeterHoogland (peter@hoogland.be)"
+
+
+def _kmi_be_extremes(target_date: date) -> tuple[float, float] | None:
+    """PRIMAIRE, volledig Belgische bron: KMI/RMI synop via de open WFS van
+    opendata.meteo.be (gratis, geen sleutel, geen registratie). Station Ukkel (6447).
+    Tmax/Tmin uit de uurlijkse temp-metingen van vandaag (de vorige dag wordt meegevraagd
+    zodat een vroege-ochtend-run toch een nachtminimum heeft; we filteren op vandaag)."""
+    day = target_date.isoformat()
+    since = (target_date - timedelta(days=1)).isoformat()
+    url = (
+        "https://opendata.meteo.be/service/wfs?service=WFS&version=2.0.0"
+        "&request=GetFeature&typeNames=synop:synop_data&outputFormat=application/json"
+        "&sortBy=timestamp+D&count=200"
+        f"&cql_filter=code%3D{_KMI_BE_STATION}%20AND%20timestamp%20AFTER%20{since}T00:00:00Z"
+    )
+    ok, body = safe_request(url, timeout=25)
+    if not (ok and isinstance(body, dict)):
+        return None
+    temps: list[float] = []
+    for f in body.get("features", []):
+        p = f.get("properties", {})
+        if str(p.get("timestamp", "")).startswith(day):
+            t = p.get("temp")
+            if isinstance(t, (int, float)):
+                temps.append(float(t))
+    if len(temps) < 2:
+        return None
+    return max(temps), min(temps)
 
 
 def _heat_cold(tmax: float, tmin: float) -> tuple[float, float]:
@@ -71,12 +101,15 @@ def _met_no_extremes(target_date: date) -> tuple[float, float] | None:
 
 
 def fetch_temperature_extremes(target_date: date) -> tuple[FetchResult, FetchResult]:
-    """Hitte-/koude-overschrijding voor Brussel. open-meteo is recurrent flaky (502),
-    dus bij uitval grijpen we METEEN naar een tweede, ONAFHANKELIJKE echte bron
-    (MET Norway) vóór we op een neutrale waarde terugvallen. Zo blijft het weer ECHT,
-    ook als open-meteo plat ligt."""
+    """Hitte-/koude-overschrijding voor Brussel, met een keten van ECHTE bronnen op
+    dezelfde delta-schaal: (1) KMI/RMI synop Ukkel = de volledig Belgische primaire bron
+    (opendata.meteo.be, geen sleutel); (2) open-meteo; (3) MET Norway / Yr. Valt de ene
+    weg (open-meteo is recurrent flaky, 502), dan grijpen we METEEN naar de volgende.
+    Pas als ze ALLE drie plat liggen → een neutrale 0. Zo blijft het weer echt en
+    Belgisch-eerst, ook bij een bronstoring."""
     for provider, label in (
-        (_open_meteo_extremes, "open-meteo (KMI proxy)"),
+        (_kmi_be_extremes, "KMI/RMI synop Ukkel (opendata.meteo.be, Belgisch)"),
+        (_open_meteo_extremes, "open-meteo (KMI proxy, fallback)"),
         (_met_no_extremes, "MET Norway / Yr (fallback, echte meting)"),
     ):
         res = provider(target_date)
