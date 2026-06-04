@@ -1,98 +1,98 @@
 {
   "I-D1-004": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:49:03.332926",
+    "fetched_at": "2026-06-04T10:08:39.679636",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.686
   },
   "I-D1-009": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:49:03.982609",
+    "fetched_at": "2026-06-04T10:08:40.276406",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
     "value": 26.01
   },
   "I-D1-010": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:49:04.624604",
+    "fetched_at": "2026-06-04T10:08:40.927685",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 6.795833333333333
   },
   "I-D2-001-rt": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:53:58.426657",
-    "source": "Verkeerscentrum DATEX II v3 — 31 files, 75.89 km totale filelengte (langste 10.88 km), snapshot 2026-06-04",
-    "value": 75.89
+    "fetched_at": "2026-06-04T10:11:56.638965",
+    "source": "Verkeerscentrum DATEX II v3 — 29 files, 69.64 km totale filelengte (langste 10.88 km), snapshot 2026-06-04",
+    "value": 69.64
   },
   "I-D2-009": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:49:06.031937",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
-    "value": 2.0
+    "fetched_at": "2026-06-04T10:08:42.460880",
+    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
+    "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:54:01.574923",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 465 vertraagd (≥3min), 20 service-alerts (Vlaanderen)",
-    "value": 465.0
+    "fetched_at": "2026-06-04T10:11:59.571758",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 521 vertraagd (≥3min), 17 service-alerts (Vlaanderen)",
+    "value": 521.0
   },
   "I-D2-stib": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:53:59.391085",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 322 actieve items; CC BY 4.0)",
-    "value": 322.0
+    "fetched_at": "2026-06-04T10:11:57.615805",
+    "source": "STIB/MIVB TravellersInformation (Brussel, 324 actieve items; CC BY 4.0)",
+    "value": 324.0
   },
   "I-D3-002": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:49:08.026575",
+    "fetched_at": "2026-06-04T10:08:45.215892",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 51.280909090909084
   },
   "I-D3-003S": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:53:56.281058",
-    "source": "Ontslag-radar: 8 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~605 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 8.0
+    "fetched_at": "2026-06-04T10:11:54.436595",
+    "source": "Ontslag-radar: 10 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~605 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 10.0
   },
   "I-D3-009": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:49:14.012195",
+    "fetched_at": "2026-06-04T10:08:48.150810",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0022085198680752
   },
   "I-D5-001": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T05:55:42.382698",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1009/1090 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.61 / midden +0.58 / ouder +0.60. Negatiefste headlines: «Rubio s'inquiète du risque \"d'escalade\" dans la guerre en Ukraine Un risque d'escalade inquiète Marco Rubio. ... · Geen akkoord bij Volvo-toeleverancier Plasman, staking wordt voortgezet · Drugsbende met plantages over heel het land veroordeeld na onderzoek Brusselse politie In Brussel is een drugsbende vero»; emotie-profiel headlines (matches/100 woorden): woede 0.12 / angst 0.13 / verdriet 0.19 / walging 0.02 (dominant: verdriet)",
-    "value": 1.2247
+    "fetched_at": "2026-06-04T10:10:05.787475",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1025/1091 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.39 / midden +0.33 / ouder +0.39. Negatiefste headlines: «Rubio s'inquiète du risque \"d'escalade\" dans la guerre en Ukraine Un risque d'escalade inquiète Marco Rubio. ... · Drugsbende met plantages over heel het land veroordeeld na onderzoek Brusselse politie In Brussel is een drugsbende vero · Paolo Falzone wilde slachtoffers niet opzettelijk doden, pleit zijn advocaat»; emotie-profiel headlines (matches/100 woorden): woede 0.14 / angst 0.15 / verdriet 0.17 / walging 0.02 (dominant: verdriet)",
+    "value": 1.5172
   },
   "I-D5-002": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-04T09:50:59.201686",
+    "fetched_at": "2026-06-04T10:10:06.766465",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.214
   },
   "I-D5-003": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:53:16.341021",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 47 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.060467
+    "fetched_at": "2026-06-04T10:11:16.678909",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 44 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.064233
   },
   "I-D5-006S": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:53:20.134057",
+    "fetched_at": "2026-06-04T10:11:21.100888",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.029120942200144356
+    "value": 0.0639448472735398
   },
   "I-D5-mastodon": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:53:21.986786",
+    "fetched_at": "2026-06-04T10:11:23.097502",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.5274541577545641
   },
   "I-D5-trends": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T09:53:56.795372",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.29 (stress-trends: lieke marsman, huisarts)",
-    "value": 0.2941
+    "fetched_at": "2026-06-04T10:11:54.939784",
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.26 (stress-trends: lieke marsman, huisarts)",
+    "value": 0.2632
   }
 }
