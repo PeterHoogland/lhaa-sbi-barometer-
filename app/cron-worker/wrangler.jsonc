@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lhaa-sbi-cron",
+  "main": "src/index.js",
+  "compatibility_date": "2026-06-01",
+  "account_id": "90650c9157a45b740546805924c8c42e",
+  // Elk uur 04-20u UTC = dekt 06-21u BE in zomer- en wintertijd. De tijd-guard in
+  // daily.yml laat enkel 06-21u BE écht door; randuren zijn een snelle no-op.
+  "triggers": {
+    "crons": ["0 4-20 * * *"]
+  },
+  "observability": {
+    "enabled": true
+  }
+}
