@@ -207,10 +207,21 @@ function syntheticRawValue(code: IndicatorCode, date: Date): number {
 
   // Deterministische indicatoren komen niet uit deze synthese — die rekent de engine zelf
   switch (code) {
-    case "I-D1-002": // Hitte
-      return Math.max(0, 18 + 10 * Math.sin(yearProg - Math.PI / 2) + (rnd() - 0.5) * 6);
-    case "I-D1-003": // Kou
-      return Math.max(0, 5 - 8 * Math.cos(yearProg) + (rnd() - 0.5) * 4);
+    case "I-D1-002": { // Hitte = °C boven 30, dus max(0, Tmax−30) — ZELFDE delta-schaal
+      // als de kmi-fetcher én de baseline (mediaan 0). Eerder gaf deze tak de rauwe
+      // Tmax (~26 in juni); zodra open-meteo faalde en deze fallback insprong, werd die
+      // temperatuur tegen de delta-baseline gescoord → valse z=3 "uitzonderlijk hoog"
+      // terwijl het niet warm was. Synth nu een Tmax en pas dezelfde drempel toe →
+      // vrijwel altijd 0, net als de echte meting op een niet-hete dag.
+      const tmax = 15 + 9 * Math.sin(yearProg - Math.PI / 2) + (rnd() - 0.5) * 8;
+      return Math.max(0, tmax - 30);
+    }
+    case "I-D1-003": { // Kou = °C onder −5, dus max(0, −5−Tmin) — zelfde delta-schaal als
+      // de kmi-fetcher + baseline. Eerder rauwe-temp-schaal (gaf ~12 in de zomer, een
+      // valse uitschieter); nu de delta, vrijwel altijd 0 buiten een echte vorstnacht.
+      const tmin = 6 - 7 * Math.cos(yearProg) + (rnd() - 0.5) * 8;
+      return Math.max(0, -5 - tmin);
+    }
     case "I-D1-004": // Luchtkwaliteit (ratio tov WHO)
       return 0.8 + 0.3 * Math.cos(yearProg) + (rnd() - 0.5) * 0.3;
     case "I-D2-001": // Filezwaarte — jaar-op-jaar % verandering (Pad A v2, YoY). Fallback rond de mediane jaargroei (~6%); mag negatief.
@@ -235,8 +246,12 @@ function syntheticRawValue(code: IndicatorCode, date: Date): number {
       return Math.max(0, 28 + 6 * Math.sin(yearProg) + (rnd() - 0.5) * 8);
     case "I-D5-003": // Collectieve gebeurtenissen 0-15
       return rnd() < 0.05 ? Math.floor(rnd() * 6) : 0;
-    case "I-D1-009": // Wateroverlast-index (~1.0)
-      return Math.max(0, 1.05 + (rnd() - 0.5) * 0.3);
+    case "I-D1-009": // Wateroverlast = som dag-debiet VMM+SPW (m³/s), baseline-mediaan ~23.
+      // Sinds de V13-bron-swap (GloFAS-index ~1.0 → VMM+SPW-debietsom) stond deze fallback
+      // nog op de oude ~1.0-schaal: een dormante landmijn van dezelfde klasse als de Hitte-
+      // bug, die bij een VMM/SPW-storing een vals "uitzonderlijk laag" zou injecteren. Nu op
+      // de debiet-schaal (hoger in de winter, lager in de zomer).
+      return Math.max(0, 24 + 10 * Math.cos(yearProg) + (rnd() - 0.5) * 12);
     case "I-D1-010": // Pollen (seizoensgebonden, lente-piek)
       return Math.max(0, 2 + 4 * Math.max(0, Math.sin(yearProg - 1)) + (rnd() - 0.5) * 2);
     case "I-D2-009": // Treinverstoringen (aantal)
