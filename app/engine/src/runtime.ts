@@ -126,6 +126,18 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       continue;
     }
 
+    // Geen ECHTE baseline: de reconstructie vult de historie van dunne indicatoren
+    // synthetisch op (~730 punten), waardoor de MIN_HISTORY-check hieronder niet
+    // grijpt en de indicator tegen VERZONNEN data wordt gescoord (bv. trein I-D2-009
+    // met 6 echte punten → valse z). Sluit zulke codes uit i.p.v. ze het echte cijfer
+    // te laten beïnvloeden (Peter: alles echt). De v0.4-laag doet dit al via
+    // `baselineReal`; dit trekt de v0.2-laag gelijk. Deterministische indicatoren
+    // (kalender, daglicht) zijn berekend en altijd geldig, dus uitgezonderd.
+    if (!meta.deterministic && input.realBaselineCodes && !input.realBaselineCodes.includes(code)) {
+      missing.push(code);
+      continue;
+    }
+
     const hist = input.history[code] ?? [];
     let effectiveValue = x;
     let baselineValues = hist.map((h) => h.value);
