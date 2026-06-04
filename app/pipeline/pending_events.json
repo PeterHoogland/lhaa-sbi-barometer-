@@ -1591,5 +1591,32 @@
     "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/schoten/verkeersongeval-in-schoten-twee-inzittenden-bevrijd-door-de-brandweer/155215793.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-04",
+    "magnitude": 1,
+    "title": "Live - Yves Demaeght wordt nieuwe topman van VDAB • Busbedrijven vragen meer geld voor leerlingenvervoer na dodelijk ongeval in Buggenhout",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/snelnieuws/live-yves-demaeght-wordt-nieuwe-topman-van-vdab-busbedrijven-vragen-meer-geld-voor-leerlingenvervoer-na-dodelijk-ongeval-in-buggenhout~bf7e76f4/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-04",
+    "magnitude": 1,
+    "title": "Ruim uur file op E17 richting Antwerpen door ongeval in Kalken",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/laarne/ruim-uur-file-op-e17-richting-antwerpen-door-ongeval-in-kalken~a23a4344/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-04",
+    "magnitude": 1,
+    "title": "Veertiger riskeert zeven jaar cel voor in brand steken van echtgenote (34): “Hij heeft haar getekend voor het leven”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/genk/veertiger-riskeert-zeven-jaar-cel-voor-in-brand-steken-van-echtgenote-34-hij-heeft-haar-getekend-voor-het-leven/155217987.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
