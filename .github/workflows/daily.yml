@@ -2,12 +2,13 @@ name: SBI Daily Update
 
 on:
   schedule:
-    # 3x per uur (:00/:20/:40 UTC); de tijd-guard hieronder laat alleen 06-21u BE
-    # door. GitHub's scheduled-cron is best-effort en slaat onder belasting vaak
-    # over — meerdere pogingen per uur verhogen de kans dat er minstens één per uur
-    # vuurt. Voor GEGARANDEERD uurlijks: een externe trigger (Cloudflare Cron-Worker
-    # die workflow_dispatch aanroept). DST-proof via Europe/Brussels. Peter 2026-06-04.
-    - cron: "0,20,40 * * * *"
+    # FALLBACK (op :30). De BETROUWBARE uurlijkse trigger is nu de Cloudflare
+    # Cron-Worker `lhaa-sbi-cron` (app/cron-worker), die workflow_dispatch exact op
+    # tijd aanroept, ook als niemands computer aanstaat. GitHub's eigen scheduled-cron
+    # is best-effort; hij blijft hier enkel als dead-man's-switch: vuurt hij toch, dan
+    # vangt hij een eventuele Worker-uitval op. De tijd-guard laat alleen 06-21u BE
+    # écht door. Peter 2026-06-04.
+    - cron: "30 * * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -201,3 +202,14 @@ jobs:
           echo "Bron-gezondheid CRITICAL: de index zelf is niet correct gevoed."
           echo "De run wordt bewust rood gemarkeerd zodat GitHub je een mail stuurt."
           exit 1
+
+      - name: Post-deploy live-eindresultaat-verificatie (volledig, autonoom)
+        if: steps.timecheck.outputs.skip != 'true'
+        working-directory: app/pipeline
+        # Sluit de lus: controleert NA de deploy of de LIVE site het correcte
+        # eindresultaat toont — vers (deploy gepropageerd), 25 indicatoren, composiet
+        # = som van de contributies, elke indicator gescoord of eerlijk uitgesloten,
+        # niets stil gesimuleerd, canary niet kritiek. Faalt dit -> exit non-zero ->
+        # run rood -> GitHub mailt. Zo wordt ELKE uurlijkse run volledig op
+        # correctheid van het eindresultaat gecontroleerd, autonoom.
+        run: python -m pipeline.verify_live
