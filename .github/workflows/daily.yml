@@ -6,8 +6,8 @@ on:
     # Cron-Worker `lhaa-sbi-cron` (app/cron-worker), die workflow_dispatch exact op
     # tijd aanroept, ook als niemands computer aanstaat. GitHub's eigen scheduled-cron
     # is best-effort; hij blijft hier enkel als dead-man's-switch: vuurt hij toch, dan
-    # vangt hij een eventuele Worker-uitval op. De tijd-guard laat alleen 06-21u BE
-    # écht door. Peter 2026-06-04.
+    # vangt hij een eventuele Worker-uitval op. De tijd-guard laat alleen 06-20u BE
+    # écht door (elk heel uur van 06:00 t/m 20:00). Peter 2026-06-04.
     - cron: "30 * * * *"
   workflow_dispatch: {}
 
@@ -27,14 +27,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Time-guard (alleen door tussen 06-21u BE-tijd of bij handmatige trigger)
+      - name: Time-guard (alleen door tussen 06-20u BE-tijd of bij handmatige trigger)
         id: timecheck
         run: |
           BE_HOUR=$(TZ='Europe/Brussels' date +%H)
           H=$((10#$BE_HOUR))
           echo "Belgian local hour: $BE_HOUR"
-          if [ "${{ github.event_name }}" = "schedule" ] && { [ "$H" -lt 6 ] || [ "$H" -gt 21 ]; }; then
-            echo "Skip — schedule firing maar BE-uur $BE_HOUR valt buiten 06-21."
+          if [ "${{ github.event_name }}" = "schedule" ] && { [ "$H" -lt 6 ] || [ "$H" -gt 20 ]; }; then
+            echo "Skip — schedule firing maar BE-uur $BE_HOUR valt buiten 06-20."
             echo "skip=true" >> "$GITHUB_OUTPUT"
           else
             echo "Proceed."
