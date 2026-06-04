@@ -1780,5 +1780,41 @@
     "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/zuid-west-vlaanderen/lendelede/mathias-klampte-zich-vast-aan-vluchtwagen-inbrekers-en-werd-300-meter-meegesleurd-hij-is-zwaargewond-en-wordt-nu-geopereerd/155233268.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-04",
+    "magnitude": 1,
+    "title": "Hezbollah verwerpt wapenstilstand met Israël - Blauwhelm omgekomen in zuiden van Libanon",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/iran/oorlog-amerika-iran~ac88fede/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-04",
+    "magnitude": 1,
+    "title": "Minstens 4 doden bij vliegtuigcrash in Kroatië",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/minstens-4-doden-bij-vliegtuigcrash-in-kroatie~aaf75404/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-04",
+    "magnitude": 1,
+    "title": "Drie ongevallen met gewonden in Hasselt",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/hasselt/drie-ongevallen-met-gewonden-in-hasselt/155239117.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-04",
+    "magnitude": 1,
+    "title": "Gewonden bij botsing in Hamont",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/hamont-achel/gewonden-bij-botsing-in-hamont/155238828.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
