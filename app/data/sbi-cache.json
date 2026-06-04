@@ -1,98 +1,98 @@
 {
   "I-D1-004": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:07:24.602593",
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:54:21.839450",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.673
+    "value": 0.64
   },
   "I-D1-009": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:07:25.068719",
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:54:22.252609",
     "source": "open-meteo Flood API (GloFAS-rivierafvoer, som van 4 Belgische stroomgebieden: Maas, Schelde, Dijle-Demer, Leie)",
-    "value": 22.32
+    "value": 26.01
   },
   "I-D1-010": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:07:25.466177",
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:54:22.642726",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 6.795833333333333
   },
   "I-D2-001-rt": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:12:44.697106",
-    "source": "Verkeerscentrum DATEX II v3 — 1 files, 3.13 km totale filelengte (langste 3.13 km), snapshot 2026-06-03",
-    "value": 3.13
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:57:04.968991",
+    "source": "Verkeerscentrum DATEX II v3 — 55 files, 177.69 km totale filelengte (langste 12.57 km), snapshot 2026-06-04",
+    "value": 177.69
   },
   "I-D2-009": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:07:26.741470",
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:54:23.552261",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D2-delijn": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:12:46.495918",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 28 vertraagd (≥3min), 12 service-alerts (Vlaanderen)",
-    "value": 28.0
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:57:07.584038",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 1236 vertraagd (≥3min), 12 service-alerts (Vlaanderen)",
+    "value": 1236.0
   },
   "I-D2-stib": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:12:45.347376",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 272 actieve items; CC BY 4.0)",
-    "value": 272.0
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:57:05.603174",
+    "source": "STIB/MIVB TravellersInformation (Brussel, 316 actieve items; CC BY 4.0)",
+    "value": 316.0
   },
   "I-D3-002": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:07:28.724478",
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:54:28.896441",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
-    "value": 89.20454545454547
+    "value": 51.280909090909084
   },
   "I-D3-003S": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:12:43.277779",
-    "source": "Ontslag-radar: 7 artikels met collectief-ontslag-thema in 17 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 7.0
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:57:03.431003",
+    "source": "Ontslag-radar: 11 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~605 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 11.0
   },
   "I-D3-009": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:07:31.217776",
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:54:33.618830",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 1.0136415436273722
+    "value": 0.9905712433063206
   },
   "I-D5-001": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:29:05.256438",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1022/1090 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.32 / midden +0.34 / ouder +0.37. Negatiefste headlines: «Rubio s'inquiète du risque \"d'escalade\" dans la guerre en Ukraine Un risque d'escalade inquiète Marco Rubio. ... · Drugsbende met plantages over heel het land veroordeeld na onderzoek Brusselse politie In Brussel is een drugsbende vero · Paolo Falzone wilde slachtoffers niet opzettelijk doden, pleit zijn advocaat»; emotie-profiel headlines (matches/100 woorden): woede 0.12 / angst 0.11 / verdriet 0.19 / walging 0.01 (dominant: verdriet)",
-    "value": 1.4587
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:55:42.382698",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1009/1090 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.61 / midden +0.58 / ouder +0.60. Negatiefste headlines: «Rubio s'inquiète du risque \"d'escalade\" dans la guerre en Ukraine Un risque d'escalade inquiète Marco Rubio. ... · Geen akkoord bij Volvo-toeleverancier Plasman, staking wordt voortgezet · Drugsbende met plantages over heel het land veroordeeld na onderzoek Brusselse politie In Brussel is een drugsbende vero»; emotie-profiel headlines (matches/100 woorden): woede 0.12 / angst 0.13 / verdriet 0.19 / walging 0.02 (dominant: verdriet)",
+    "value": 1.2247
   },
   "I-D5-002": {
-    "date": "2026-06-02",
-    "fetched_at": "2026-06-03T23:09:19.693223",
+    "date": "2026-06-03",
+    "fetched_at": "2026-06-04T05:55:42.882970",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
-    "value": 31.141
+    "value": 30.214
   },
   "I-D5-003": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T21:53:00.296662",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 41 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.067133
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:56:29.927108",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 51 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.048267
   },
   "I-D5-006S": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:11:48.473751",
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:56:33.598290",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.02625096311121867
+    "value": 0.020301581656219224
   },
   "I-D5-mastodon": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:11:49.873809",
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:56:35.007902",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.5082233885237948
   },
   "I-D5-trends": {
-    "date": "2026-06-03",
-    "fetched_at": "2026-06-03T23:12:43.725022",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.38 (stress-trends: streamz, huis gemaakt)",
-    "value": 0.375
+    "date": "2026-06-04",
+    "fetched_at": "2026-06-04T05:57:03.881506",
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.06 (stress-trends: streamz)",
+    "value": 0.0606
   }
 }
