@@ -167,10 +167,22 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     const baseline = computeBaseline(baselineValues);
     let z = zscore(effectiveValue, baseline);
     if (!Number.isFinite(z)) {
-      // Geen bruikbare schaal (geen variatie in de baseline) → behandel als ontbrekend
-      // i.p.v. een stille 0/"normaal" (review §4.1).
-      missing.push(code);
-      continue;
+      // Geen bruikbare schaal — de baseline heeft (bijna) geen variatie. Twee gevallen:
+      // (a) de dagwaarde ligt OP of ONDER de mediaan → per definitie GEEN hoge
+      //     uitschieter. Dat is geen datagebrek maar een gemeten "geen uitschieter"
+      //     (bv. Kou: in Brussel zakt de temperatuur zelden onder −5°C, dus de
+      //     koude-overschrijding is vrijwel altijd 0). Score z=0 → state "normaal"
+      //     i.p.v. het alarmerend-ogende "ontbreekt". Cijfer-neutraal: z=0 levert geen
+      //     bijdrage en de domeingewichten zijn vast (review §4.1 blijft gerespecteerd
+      //     voor het écht-ambigue geval hieronder).
+      // (b) de dagwaarde ligt BOVEN een platte baseline → geen schaal om te wegen hoe
+      //     uitzonderlijk → blijf "ontbreekt" (geen stille geruststelling).
+      if (!meta.inverseCoded && effectiveValue <= baseline.median) {
+        z = 0;
+      } else {
+        missing.push(code);
+        continue;
+      }
     }
     if (meta.inverseCoded) z = -z;
     const { value } = winsorize(z);

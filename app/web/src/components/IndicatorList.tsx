@@ -3,7 +3,8 @@ import type { IndicatorBreakdown, DomainCode } from "../types";
 import { DOMAIN_LABELS } from "../copy";
 import { isKern } from "../lib/kern";
 import { stateColor, stateLabelFor, stateIcon } from "./indicator-utils";
-import { formatObservationDate, observationGranularity } from "../lib/format-date";
+import { IndicatorDetail } from "./IndicatorDetail";
+import { observationGranularity } from "../lib/format-date";
 
 const DOMAIN_SUBTITLES: Record<DomainCode, string> = {
   D1: "Hoe de buitenwereld vandaag aanvoelt",
@@ -39,78 +40,9 @@ function IndicatorRow({ ind }: { ind: IndicatorBreakdown }) {
         <span className="ind-state" style={{ color }}>{stateLabelFor(ind.state, ind.inverseCoded)}</span>
         <span className="ind-toggle">{open ? "−" : "+"}</span>
       </button>
-      {open && (
-        <div className="ind-detail">
-          <p className="ind-why">{ind.why}</p>
-
-          <div className="ind-meta-grid">
-            <div className="ind-meta-cell">
-              <div className="ind-meta-label">Wat we uitlezen</div>
-              <div className="ind-meta-value">{ind.reads}</div>
-            </div>
-            {ind.raw_value !== null && (
-              <div className="ind-meta-cell">
-                <div className="ind-meta-label">Gemeten waarde</div>
-                <div className="ind-meta-value">
-                  <strong>{formatValue(ind.raw_value, ind.unit)}</strong> {ind.unit}
-                </div>
-              </div>
-            )}
-            <div className="ind-meta-cell">
-              <div className="ind-meta-label">
-                {observationGranularity(ind.observation_date) === "maand"
-                  ? "Maandcijfer van"
-                  : "Cijfer van"}
-              </div>
-              <div className="ind-meta-value">
-                {formatObservationDate(ind.observation_date)}
-              </div>
-            </div>
-            <div className="ind-meta-cell">
-              <div className="ind-meta-label">Raakt naar schatting</div>
-              <div className="ind-meta-value">
-                <strong>{Math.round(ind.demographic_reach * 100)}%</strong> van de bevolking
-              </div>
-            </div>
-          </div>
-
-          <p className="ind-reach-rationale">{ind.reach_rationale}</p>
-
-          <div className="ind-sources">
-            <div className="ind-source-block">
-              <div className="ind-source-label">Databron</div>
-              <a className="ind-source-link" href={ind.data_source.url} target="_blank" rel="noopener noreferrer">
-                {ind.data_source.name} ↗
-              </a>
-              {ind.simulated && <span className="ind-mock-tag">demo-data</span>}
-            </div>
-
-            {ind.references.length > 0 && (
-              <div className="ind-source-block">
-                <div className="ind-source-label">Wetenschappelijke onderbouwing</div>
-                <ul className="ind-refs">
-                  {ind.references.map((ref, i) => (
-                    <li key={i}>
-                      <a href={ref.url} target="_blank" rel="noopener noreferrer">
-                        {ref.label} ↗
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+      {open && <IndicatorDetail ind={ind} />}
     </div>
   );
-}
-
-function formatValue(v: number, unit: string): string {
-  if (unit.includes("%") || unit.includes("€/liter")) return v.toFixed(2);
-  if (Math.abs(v) >= 1000) return v.toFixed(0);
-  if (Math.abs(v) >= 10) return v.toFixed(1);
-  return v.toFixed(2);
 }
 
 /** Eerlijke herkomst per indicator (review §1.3): echt / vertraagd (jaar-/maandcijfer) / demo. */

@@ -1,9 +1,38 @@
+import { useState } from "react";
 import type { IndicatorBreakdown } from "../types";
 import { stateColor, stateLabelFor } from "./indicator-utils";
+import { IndicatorDetail } from "./IndicatorDetail";
+
+/** Eén top-3-kaart, klikbaar open zoals de indicatoren in de volledige lijst. */
+function TopItem({ ind, rank }: { ind: IndicatorBreakdown; rank: number }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <li className={`top-item ind-state-${ind.state}`}>
+      <button className="top-summary" onClick={() => setOpen(!open)} aria-expanded={open}>
+        <div className="top-rank">{rank}</div>
+        <div className="top-body">
+          <div className="top-name">{ind.plain_name}</div>
+          <div className="top-state" style={{ color: stateColor(ind.state) }}>
+            {stateLabelFor(ind.state, ind.inverseCoded)}
+          </div>
+          <div className="top-why">{ind.why}</div>
+        </div>
+        <div className="top-aside">
+          <div className="top-direction">
+            {ind.contribution > 0 ? "↑ duwt omhoog" : "↓ duwt omlaag"}
+          </div>
+          <span className="top-toggle">{open ? "−" : "+"}</span>
+        </div>
+      </button>
+      {open && <IndicatorDetail ind={ind} hideWhy />}
+    </li>
+  );
+}
 
 /**
  * "Wat weegt vandaag het zwaarst" — top 3 indicatoren naar absolute bijdrage.
- * 15-jarig taalniveau.
+ * 15-jarig taalniveau. Elke kaart klikt open met hetzelfde detailvenster als de
+ * volledige indicatorlijst.
  */
 export function TopInfluences({ breakdown }: { breakdown: IndicatorBreakdown[] }) {
   // Trage/structurele grondlast-indicatoren horen niet in de "vandaag"-lijst:
@@ -26,19 +55,7 @@ export function TopInfluences({ breakdown }: { breakdown: IndicatorBreakdown[] }
       </p>
       <ol className="top-list">
         {top.map((ind, i) => (
-          <li key={ind.code} className="top-item">
-            <div className="top-rank">{i + 1}</div>
-            <div className="top-body">
-              <div className="top-name">{ind.plain_name}</div>
-              <div className="top-state" style={{ color: stateColor(ind.state) }}>
-                {stateLabelFor(ind.state, ind.inverseCoded)}
-              </div>
-              <div className="top-why">{ind.why}</div>
-            </div>
-            <div className="top-direction">
-              {ind.contribution > 0 ? "↑ duwt omhoog" : "↓ duwt omlaag"}
-            </div>
-          </li>
+          <TopItem key={ind.code} ind={ind} rank={i + 1} />
         ))}
       </ol>
 
