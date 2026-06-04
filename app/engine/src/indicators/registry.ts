@@ -54,7 +54,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     grade: "B",
     inverseCoded: false,
     applyStl: false,
-    source: "open-meteo Flood API (GloFAS-rivierafvoer)",
+    source: "VMM Waterinfo.be + SPW Wallonië (dag-debiet, KiWIS)",
     deterministic: false,
   },
   "I-D1-010": {

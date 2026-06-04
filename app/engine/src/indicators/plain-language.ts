@@ -260,9 +260,9 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   "I-D1-009": {
     plain: "Staat het water gevaarlijk hoog?",
     why: "Hoogwater bedreigt huizen en bezit; de dreiging zelf, ook zonder ramp, veroorzaakt al angst en waakzaamheid.",
-    reads: "We kijken naar de waterstanden van meetpunten van de Vlaamse Milieumaatschappij. Staan de hoogste punten ver boven de doorsnee, dan staat het water netbreed hoog.",
-    unit: "hoogwater-index",
-    dataSource: { name: "Waterinfo.be (VMM / HIC)", url: "https://www.waterinfo.be/" },
+    reads: "We tellen het debiet (hoeveel water er door de rivieren stroomt) op in Vlaanderen én Wallonië, waaronder de Vesdre en Ourthe die in 2021 overstroomden. Hoe voller de rivieren, hoe groter de overstromingsdruk.",
+    unit: "m³/s (som)",
+    dataSource: { name: "VMM Waterinfo.be + SPW hydrometrie.wallonie.be", url: "https://www.waterinfo.be/" },
     references: [
       { label: "Fernandez et al. (2019): overstromingen en mentale gezondheid", url: "https://doi.org/10.1016/j.ijdrr.2019.101270" },
       { label: "WHO: factsheet overstromingen", url: "https://www.who.int/news-room/fact-sheets/detail/floods" },
