@@ -1,0 +1,50 @@
+name: SBI Agentic Monitor
+
+# De onafhankelijke bewaker-van-de-bewaker. Draait op een EIGEN cron (los van daily.yml
+# en de Cloudflare cron-Worker), zodat zelfs als die allebei uitvallen, deze workflow
+# merkt dat het dashboard niet meer ververst en de update opnieuw aftrapt. Alles in
+# GitHub's cloud -> volledig computer-onafhankelijk, niemands computer hoeft aan te staan.
+#
+# Twee lagen (zie app/pipeline/pipeline/agentic_monitor.py):
+#  - deterministisch: live-checks + hertrigger bij stilstand (geen sleutel nodig).
+#  - agentisch (optioneel): een begrijpelijke gezondheidslezing door Claude, alleen als
+#    het secret ANTHROPIC_API_KEY gezet is. Zonder sleutel draait alleen de harde laag.
+
+on:
+  schedule:
+    # Elke 2 uur op een niet-rond minuut (verspreidt de load, geen :00-piek).
+    - cron: "13 */2 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  actions: write        # nodig om daily.yml opnieuw af te trappen bij stilstand
+  issues: write
+
+concurrency:
+  group: monitor-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installeer dependencies
+        run: pip install --quiet requests certifi
+
+      - name: Agentic monitor
+        working-directory: app/pipeline
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          # Optioneel: zet dit secret om de agentische (Claude) laag aan te zetten.
+          # Zonder dit secret draait alleen de deterministische bewaking + hertrigger.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m pipeline.agentic_monitor
