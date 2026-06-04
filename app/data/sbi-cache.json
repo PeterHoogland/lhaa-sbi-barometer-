@@ -1,39 +1,45 @@
 {
   "I-D1-004": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T11:02:30.492903",
+    "fetched_at": "2026-06-04T11:33:52.412752",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.7109
+    "value": 0.7333
   },
   "I-D1-009": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-04T11:02:33.876976",
+    "fetched_at": "2026-06-04T11:33:55.184289",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 17.05
   },
   "I-D1-010": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T11:02:34.580467",
+    "fetched_at": "2026-06-04T11:33:55.765791",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 6.795833333333333
   },
+  "I-D1-010-sci": {
+    "date": "2026-06-01",
+    "fetched_at": "2026-06-04T11:43:49.291505",
+    "source": "Sciensano AirAllergy (Belgisch pollennetwerk, 1/5 stations, grains/m³)",
+    "value": 83.0
+  },
   "I-D2-001-rt": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T11:06:09.434962",
-    "source": "Verkeerscentrum DATEX II v3 — 33 files, 104.24 km totale filelengte (langste 10.88 km), snapshot 2026-06-04",
-    "value": 104.24
+    "fetched_at": "2026-06-04T11:42:13.370593",
+    "source": "Verkeerscentrum DATEX II v3 — 34 files, 114.31 km totale filelengte (langste 14.7 km), snapshot 2026-06-04",
+    "value": 114.31
   },
   "I-D2-009": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T11:02:36.008091",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
-    "value": 1.0
+    "fetched_at": "2026-06-04T11:33:57.145854",
+    "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
+    "value": 0.0
   },
   "I-D2-delijn": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T11:06:13.466590",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 543 vertraagd (≥3min), 17 service-alerts (Vlaanderen)",
-    "value": 543.0
+    "fetched_at": "2026-06-04T11:43:24.374233",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 505 vertraagd (≥3min), 17 service-alerts (Vlaanderen)",
+    "value": 505.0
   },
   "I-D2-stib": {
     "date": "2026-06-04",
@@ -43,31 +49,31 @@
   },
   "I-D3-002": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T11:02:37.997923",
+    "fetched_at": "2026-06-04T11:33:59.667932",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 51.280909090909084
   },
   "I-D3-003S": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T11:06:07.085725",
-    "source": "Ontslag-radar: 11 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "fetched_at": "2026-06-04T11:42:11.270515",
+    "source": "Ontslag-radar: 11 artikels met collectief-ontslag-thema in 19 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 11.0
   },
   "I-D3-009": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T11:02:41.470310",
+    "fetched_at": "2026-06-04T11:34:02.518940",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0022085198680752
   },
   "I-D5-001": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T10:53:29.786379",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1031/1092 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.30 / midden +0.25 / ouder +0.31. Negatiefste headlines: «Opnieuw Israëlische aanvallen op Gaza-Stad · Franstalig onderwijs in rep en roer door zware besparingen en protesten: wat is het probleem? · Rubio s'inquiète du risque \"d'escalade\" dans la guerre en Ukraine Un risque d'escalade inquiète Marco Rubio. ...»; emotie-profiel headlines (matches/100 woorden): woede 0.13 / angst 0.14 / verdriet 0.16 / walging 0.02 (dominant: verdriet)",
-    "value": 1.4618
+    "fetched_at": "2026-06-04T11:36:50.728744",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1023/1080 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.32 / midden +0.27 / ouder +0.34. Negatiefste headlines: «Opnieuw Israëlische aanvallen op Gaza-Stad · Franstalig onderwijs in rep en roer door zware besparingen en protesten: wat is het probleem? · Rubio s'inquiète du risque \"d'escalade\" dans la guerre en Ukraine Un risque d'escalade inquiète Marco Rubio. ...»; emotie-profiel headlines (matches/100 woorden): woede 0.13 / angst 0.12 / verdriet 0.17 / walging 0.03 (dominant: verdriet)",
+    "value": 1.4688
   },
   "I-D5-002": {
     "date": "2026-06-03",
-    "fetched_at": "2026-06-04T11:04:15.001457",
+    "fetched_at": "2026-06-04T11:36:51.841298",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.214
   },
@@ -79,20 +85,20 @@
   },
   "I-D5-006S": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T11:05:31.623828",
+    "fetched_at": "2026-06-04T11:40:26.870877",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.04196749095880491
+    "value": 0.02593995495532413
   },
   "I-D5-mastodon": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T11:05:33.088681",
+    "fetched_at": "2026-06-04T11:40:28.404025",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.5274541577545641
   },
   "I-D5-trends": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-04T11:06:07.622119",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.16 (stress-trends: lieke marsman, huisarts)",
-    "value": 0.1648
+    "fetched_at": "2026-06-04T11:42:11.810567",
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.35 (stress-trends: luchtaanval, rechter, lieke marsman)",
+    "value": 0.3543
   }
 }
