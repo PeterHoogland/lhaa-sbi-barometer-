@@ -47,6 +47,7 @@ const SECONDARY_NAMES: Record<string, string> = {
   "I-D2-001-rt": "Filezwaarte real-time (DATEX, km file)",
   "I-D2-stib": "OV-verstoringen Brussel (STIB/MIVB)",
   "I-D2-delijn": "OV-omleidingen Vlaanderen (De Lijn)",
+  "I-D1-010-sci": "Pollen Sciensano (Belgisch meetnet, in opbouw)",
 };
 
 function loadPipelineToday(path: string): {

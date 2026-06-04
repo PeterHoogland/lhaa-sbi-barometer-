@@ -95,6 +95,7 @@ SECONDARY_SOURCES: dict[str, tuple[str, int]] = {
     "I-D2-001-rt": ("Filezwaarte real-time (DATEX)", 3),
     "I-D2-stib": ("OV-verstoringen Brussel (STIB)", 3),
     "I-D2-delijn": ("OV-verstoringen Vlaanderen (De Lijn)", 4),
+    "I-D1-010-sci": ("Pollen Sciensano (Belgisch meetnet, in opbouw)", 4),
 }
 
 # De volledige gescoorde set die in het cijfer hoort te zitten (incl. de
