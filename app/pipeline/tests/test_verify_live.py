@@ -76,6 +76,20 @@ def test_simulated_is_notitie_geen_fail():
     assert any("gesimuleerd" in x for x in n), n
 
 
+def test_gesimuleerd_extreem_faalt():
+    # De Hitte-bug-klasse (2026-06-04): een fallback-waarde op de verkeerde schaal leest
+    # "extreem". Een gesimuleerde indicator hoort climatologisch/neutraal te zijn, dus
+    # gesimuleerd + extreem = schaal-bug → de run moet falen.
+    l = _healthy_latest()
+    l["indicator_breakdown"][0] = {
+        "code": "I-D1-002", "state": "extreem", "z_short": 3, "contribution": 0.08,
+        "simulated": True, "raw_value": 26.08,
+    }
+    l["composite"]["equal"] = 0.32                       # 24 x 0.01 + 0.08
+    p, _ = vl.assess(l, _OK, NOW)
+    assert any("verkeerde schaal" in x for x in p), p
+
+
 def test_composiet_inconsistent_faalt():
     l = _healthy_latest()
     l["composite"]["equal"] = 0.9                        # ≠ 0.25

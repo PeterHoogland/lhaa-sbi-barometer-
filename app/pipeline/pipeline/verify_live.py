@@ -100,6 +100,19 @@ def assess(latest: dict, health: dict | None, now: datetime) -> tuple[list[str],
         if v == "critical":
             problems.append(f"canary KRITIEK: {'; '.join(health.get('messages', [])[:2])}")
 
+    # 9) FALLBACK-SANITEIT — een gesimuleerde (fallback-)indicator hoort climatologisch/
+    #    neutraal te zijn: bij een bronstoring valt hij terug op een normaalwaarde rond de
+    #    baseline-mediaan, dus mag hij NOOIT "extreem" lezen. Doet hij dat toch, dan staat
+    #    de fallback-waarde op een ANDERE schaal dan zijn baseline. Dat is exact de Hitte-bug
+    #    van 2026-06-04 (rauwe temperatuur ~26 i.p.v. de delta-boven-30 → valse z=3 → vals
+    #    "uitzonderlijk hoog"). Deze regel vangt die hele bug-klasse autonoom, elke run.
+    for e in bd:
+        if e.get("simulated") and e.get("state") == "extreem":
+            problems.append(
+                f"{e.get('code')}: gesimuleerd én 'extreem' (raw={e.get('raw_value')}) — "
+                "fallback-waarde staat op een verkeerde schaal t.o.v. de baseline"
+            )
+
     return problems, notes
 
 
