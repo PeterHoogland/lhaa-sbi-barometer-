@@ -29,7 +29,7 @@ export function CallToAction({ tier, brandSafety }: Props) {
         </div>
         <h2 className="cta-headline">{cta.headline}</h2>
         <p className="cta-body">{cta.body}</p>
-        <a className="cta-action" href="https://www.hautes-alpes.net" target="_blank" rel="noopener noreferrer">
+        <a className="cta-action" href="https://plus.hautes-alpes.net/" target="_blank" rel="noopener noreferrer">
           {cta.action} →
         </a>
       </div>

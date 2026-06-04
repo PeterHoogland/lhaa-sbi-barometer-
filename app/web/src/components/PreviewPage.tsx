@@ -125,7 +125,7 @@ export function PreviewPage() {
     target: '#sbi-banner',
     apiUrl: '/data/latest.json',   // production: https://barometer.sbi/api/v1/signal
     brand: 'Les Hautes Alpes',
-    ctaUrl: 'https://www.hautes-alpes.net'
+    ctaUrl: 'https://plus.hautes-alpes.net/'
   }));
 </script>`}</pre>
         <p className="muted small">
