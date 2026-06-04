@@ -12,8 +12,11 @@ name: SBI Agentic Monitor
 
 on:
   schedule:
-    # Elke 2 uur op een niet-rond minuut (verspreidt de load, geen :00-piek).
-    - cron: "13 */2 * * *"
+    # UURLIJKS op een niet-rond minuut (Peter wil de controle verhogen, niet verlagen).
+    # Zo draait er ELK uur een tweede, onafhankelijke cloud-check naast verify_live:
+    # een echte dubbelcheck, los van daily.yml en de Worker. :13 valt na de uurlijkse
+    # update (die ~:00-:10 klaar is), zodat hij het verse resultaat ziet.
+    - cron: "13 * * * *"
   workflow_dispatch: {}
 
 permissions:
