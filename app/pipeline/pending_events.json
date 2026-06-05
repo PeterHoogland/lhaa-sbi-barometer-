@@ -2662,5 +2662,32 @@
     "link": "https://www.tvoost.be/nieuws/52-mensen-vroegen-al-om-psychologische-hulp-na-dodelijk-ongeval-buggenhout-211329",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-05",
+    "magnitude": 1,
+    "title": "Jonge arbeider sterft na zwaar ongeval op bedrijfssite vlak bij Tijsmanstunnel",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/antwerpen/jonge-arbeider-sterft-na-zwaar-ongeval-op-bedrijfssite-vlak-bij-tijsmanstunnel~a1b69377/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-05",
+    "magnitude": 1,
+    "title": "Man (36) onder invloed rijdt Pol (72) dood op zijn tractor, acht maanden later crasht hij wéér: “Dat papa’s leven werd ontnomen door een zatlap steekt enorm”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/roeselare/man-36-onder-invloed-rijdt-pol-72-dood-op-zijn-tractor-acht-maanden-later-crasht-hij-weer-dat-papas-leven-werd-ontnomen-door-een-zatlap-steekt-enorm~a4b532a1/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-05",
+    "magnitude": 1,
+    "title": "Dode bij aanrijding op site van chemiebedrijf Evonik in Antwerpse haven",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/dode-bij-aanrijding-op-site-van-chemiebedrijf-evonik-in-antwerpse-haven/155462041.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
