@@ -1,25 +1,25 @@
 {
   "I-D1-004": {
-    "date": "2026-06-05",
-    "fetched_at": "2026-06-05T18:21:18.952587",
+    "date": "2026-06-06",
+    "fetched_at": "2026-06-06T04:35:07.081295",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.6422
+    "value": 0.704
   },
   "I-D1-009": {
-    "date": "2026-06-04",
-    "fetched_at": "2026-06-05T18:21:22.043396",
+    "date": "2026-06-05",
+    "fetched_at": "2026-06-06T04:35:10.041431",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
-    "value": 18.4
+    "value": 19.67
   },
   "I-D1-010": {
-    "date": "2026-06-05",
-    "fetched_at": "2026-06-05T18:21:22.436204",
+    "date": "2026-06-06",
+    "fetched_at": "2026-06-06T04:35:10.501474",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
-    "value": 13.495833333333332
+    "value": 23.925
   },
   "I-D1-010-sci": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-05T18:26:36.219314",
+    "fetched_at": "2026-06-06T04:39:27.901683",
     "source": "Sciensano AirAllergy (Belgisch pollennetwerk, 1/5 stations, grains/m³)",
     "value": 40.0
   },
@@ -30,52 +30,52 @@
     "value": 56.19
   },
   "I-D2-009": {
-    "date": "2026-06-05",
-    "fetched_at": "2026-06-05T18:21:23.534708",
+    "date": "2026-06-06",
+    "fetched_at": "2026-06-06T04:35:11.550731",
     "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
     "value": 1.0
   },
   "I-D2-delijn": {
-    "date": "2026-06-05",
-    "fetched_at": "2026-06-05T18:26:04.117593",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 336 vertraagd (≥3min), 13 service-alerts (Vlaanderen)",
-    "value": 336.0
+    "date": "2026-06-06",
+    "fetched_at": "2026-06-06T04:38:56.654630",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 97 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
+    "value": 97.0
   },
   "I-D2-stib": {
-    "date": "2026-06-05",
-    "fetched_at": "2026-06-05T18:26:02.617562",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 343 actieve items; CC BY 4.0)",
-    "value": 343.0
+    "date": "2026-06-06",
+    "fetched_at": "2026-06-06T04:38:55.484110",
+    "source": "STIB/MIVB TravellersInformation (Brussel, 362 actieve items; CC BY 4.0)",
+    "value": 362.0
   },
   "I-D3-002": {
-    "date": "2026-06-05",
-    "fetched_at": "2026-06-05T18:21:25.380949",
+    "date": "2026-06-06",
+    "fetched_at": "2026-06-06T04:35:13.619987",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
-    "value": 99.53193181818179
+    "value": 79.7209090909091
   },
   "I-D3-003S": {
-    "date": "2026-06-05",
-    "fetched_at": "2026-06-05T18:26:00.451599",
+    "date": "2026-06-06",
+    "fetched_at": "2026-06-06T04:38:53.255433",
     "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 4.0
   },
   "I-D3-009": {
-    "date": "2026-06-05",
-    "fetched_at": "2026-06-05T18:21:27.533049",
+    "date": "2026-06-06",
+    "fetched_at": "2026-06-06T04:35:18.347183",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 1.0012757272918833
+    "value": 0.9784337175872576
   },
   "I-D5-001": {
-    "date": "2026-06-05",
-    "fetched_at": "2026-06-05T10:58:56.118701",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1042/1096 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.19 / midden +0.17 / ouder +0.20. Negatiefste headlines: «Opnieuw ziekenhuis in zuiden van Libanon zwaar beschadigd in Israëlische aanval · Tien personen opgepakt bij protest tegen besparingen in Franstalig onderwijs De protesten tegen de besparingen in het Fr · Loontransparantie lastig? Sommige politici en werkgevers verkopen liever drama dan dat ze verantwoordelijkheid opnemen»; emotie-profiel headlines (matches/100 woorden): woede 0.11 / angst 0.12 / verdriet 0.14 / walging 0.02 (dominant: verdriet)",
-    "value": 1.3932
+    "date": "2026-06-06",
+    "fetched_at": "2026-06-06T04:36:11.389755",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1049/1101 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.77 / midden +0.74 / ouder +0.83. Negatiefste headlines: «Zeven doden in Colombia na ontploffing in mijn · Opnieuw ziekenhuis in zuiden van Libanon zwaar beschadigd in Israëlische aanval · Tien personen opgepakt bij protest tegen besparingen in Franstalig onderwijs De protesten tegen de besparingen in het Fr»; emotie-profiel headlines (matches/100 woorden): woede 0.15 / angst 0.10 / verdriet 0.17 / walging 0.02 (dominant: verdriet)",
+    "value": 1.3279
   },
   "I-D5-002": {
-    "date": "2026-06-04",
-    "fetched_at": "2026-06-05T18:23:09.508046",
+    "date": "2026-06-05",
+    "fetched_at": "2026-06-06T04:36:11.718553",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
-    "value": 29.377
+    "value": 29.336
   },
   "I-D5-003": {
     "date": "2026-06-05",
@@ -84,21 +84,21 @@
     "value": 0.071667
   },
   "I-D5-006S": {
-    "date": "2026-06-05",
-    "fetched_at": "2026-06-05T18:25:27.123118",
+    "date": "2026-06-06",
+    "fetched_at": "2026-06-06T04:38:18.156573",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.24419953932204358
+    "value": -0.17300364249584269
   },
   "I-D5-mastodon": {
-    "date": "2026-06-05",
-    "fetched_at": "2026-06-05T18:25:28.323972",
+    "date": "2026-06-06",
+    "fetched_at": "2026-06-06T04:38:19.508857",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.4313003116007179
   },
   "I-D5-trends": {
-    "date": "2026-06-05",
-    "fetched_at": "2026-06-05T18:26:00.921802",
-    "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
-    "value": 0.0
+    "date": "2026-06-06",
+    "fetched_at": "2026-06-06T04:38:53.759335",
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.18 (stress-trends: bart schols, aandeel)",
+    "value": 0.1795
   }
 }
