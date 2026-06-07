@@ -1,25 +1,25 @@
 {
   "I-D1-004": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T04:22:30.673230",
+    "fetched_at": "2026-06-07T08:00:11.041564",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.725
   },
   "I-D1-009": {
     "date": "2026-06-06",
-    "fetched_at": "2026-06-07T04:22:36.141051",
+    "fetched_at": "2026-06-07T08:00:14.814662",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 18.18
   },
   "I-D1-010": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T04:22:36.763821",
+    "fetched_at": "2026-06-07T08:00:15.385217",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 21.650000000000002
   },
   "I-D1-010-sci": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-07T04:26:43.172964",
+    "fetched_at": "2026-06-07T08:06:34.695154",
     "source": "Sciensano AirAllergy (Belgisch pollennetwerk, 1/5 stations, grains/m³)",
     "value": 40.0
   },
@@ -31,37 +31,37 @@
   },
   "I-D2-009": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T04:22:38.622914",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
-    "value": 0.0
+    "fetched_at": "2026-06-07T08:00:17.010955",
+    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
+    "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T04:26:11.126728",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 41 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
-    "value": 41.0
+    "fetched_at": "2026-06-07T08:06:03.315247",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 241 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
+    "value": 241.0
   },
   "I-D2-stib": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T04:26:09.607808",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 315 actieve items; CC BY 4.0)",
-    "value": 315.0
+    "fetched_at": "2026-06-07T08:06:02.069356",
+    "source": "STIB/MIVB TravellersInformation (Brussel, 317 actieve items; CC BY 4.0)",
+    "value": 317.0
   },
   "I-D3-002": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T04:22:40.696738",
+    "fetched_at": "2026-06-07T08:00:24.121501",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 33.315000000000005
   },
   "I-D3-003S": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T04:26:06.321439",
-    "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 4.0
+    "fetched_at": "2026-06-07T08:05:59.269447",
+    "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 3.0
   },
   "I-D3-009": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T04:22:46.147169",
+    "fetched_at": "2026-06-07T08:00:31.120101",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9990161822861199
   },
@@ -73,7 +73,7 @@
   },
   "I-D5-002": {
     "date": "2026-06-06",
-    "fetched_at": "2026-06-07T04:24:15.085267",
+    "fetched_at": "2026-06-07T08:03:11.761527",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.629
   },
@@ -85,20 +85,20 @@
   },
   "I-D5-006S": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T04:25:23.276409",
+    "fetched_at": "2026-06-07T08:05:22.039713",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.05988334427688025
+    "value": -0.06255813945361438
   },
   "I-D5-mastodon": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T04:25:33.420952",
+    "fetched_at": "2026-06-07T08:05:23.490402",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.2711151264155326
   },
   "I-D5-trends": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T04:26:06.945378",
-    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.02 (stress-trends: dina tersago)",
-    "value": 0.0161
+    "fetched_at": "2026-06-07T08:05:59.686952",
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.09 (stress-trends: huis gemaakt, politie)",
+    "value": 0.0857
   }
 }
