@@ -3823,5 +3823,23 @@
     "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/vlaamse-ardennen/sint-lievens-houtem/heeft-bende-het-gemunt-op-toyota-land-cruisers-slachtoffer-nicholas-wil-andere-eigenaars-waarschuwen-neem-maatregelen/155968933.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-07",
+    "magnitude": 1,
+    "title": "Helikopter van Franse gendarmerie neergestort nabij Orléans",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/helikopter-van-franse-gendarmerie-neergestort-nabij-orleans~a53bdde1/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-07",
+    "magnitude": 1,
+    "title": "Auto van Nicolas uit Sint-Lievens-Houtem gestolen op de oprit: \"Auto staat intussen internationaal geseind\"",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/auto-van-nicolas-uit-sint-lievens-houtem-gestolen-op-de-oprit-auto-staat-intussen-internationaal-geseind-211370",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
