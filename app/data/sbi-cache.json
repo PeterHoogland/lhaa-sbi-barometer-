@@ -1,25 +1,25 @@
 {
   "I-D1-004": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T10:35:01.010108",
+    "fetched_at": "2026-06-07T12:12:36.346189",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.725
   },
   "I-D1-009": {
     "date": "2026-06-06",
-    "fetched_at": "2026-06-07T10:35:05.254564",
+    "fetched_at": "2026-06-07T12:12:51.984618",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 18.18
   },
   "I-D1-010": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T10:35:05.853903",
+    "fetched_at": "2026-06-07T12:12:52.385779",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
-    "value": 21.650000000000002
+    "value": 22.954166666666666
   },
   "I-D1-010-sci": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-07T10:43:34.529154",
+    "fetched_at": "2026-06-07T12:17:42.952544",
     "source": "Sciensano AirAllergy (Belgisch pollennetwerk, 1/5 stations, grains/m³)",
     "value": 40.0
   },
@@ -37,68 +37,68 @@
   },
   "I-D2-delijn": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T10:43:02.781557",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 279 vertraagd (≥3min), 10 service-alerts (Vlaanderen)",
-    "value": 279.0
+    "fetched_at": "2026-06-07T12:17:11.553064",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 301 vertraagd (≥3min), 10 service-alerts (Vlaanderen)",
+    "value": 301.0
   },
   "I-D2-stib": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T10:43:01.380178",
+    "fetched_at": "2026-06-07T12:17:10.330639",
     "source": "STIB/MIVB TravellersInformation (Brussel, 311 actieve items; CC BY 4.0)",
     "value": 311.0
   },
   "I-D3-002": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T10:35:22.119571",
+    "fetched_at": "2026-06-07T12:13:04.934412",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 33.315000000000005
   },
   "I-D3-003S": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T10:42:58.685340",
-    "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 19 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "fetched_at": "2026-06-07T12:16:15.166458",
+    "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 3.0
   },
   "I-D3-009": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T10:35:32.681902",
+    "fetched_at": "2026-06-07T12:13:07.443579",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0046096152801895
   },
   "I-D5-001": {
-    "date": "2026-06-06",
-    "fetched_at": "2026-06-06T18:48:24.867843",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1036/1104 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.22 / midden +0.27 / ouder +0.38. Negatiefste headlines: «Pentagon bezorgd om spionagedreiging vanuit Israël: \"Situatie is kritiek\" · Tien personen opgepakt bij protest tegen besparingen in Franstalig onderwijs De protesten tegen de besparingen in het Fr · Hegseth haalt op D-Day-herdenking zwaar uit naar Europese landen en waarschuwt voor ‘invasie’ van ‘gevaarlijke ideologie»; emotie-profiel headlines (matches/100 woorden): woede 0.15 / angst 0.11 / verdriet 0.18 / walging 0.02 (dominant: verdriet)",
-    "value": 1.5893
+    "date": "2026-06-07",
+    "fetched_at": "2026-06-07T12:14:29.538456",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1046/1106 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.05 / midden +0.06 / ouder +0.10. Negatiefste headlines: «Zeker 1 dode en 5 gewonden bij schietincident in Israël, politie kan dader neutraliseren · Tien personen opgepakt bij protest tegen besparingen in Franstalig onderwijs De protesten tegen de besparingen in het Fr · \"Extreem laffe aanval\": Rusland raakt opslag voor nucleaire brandstof nabij Tsjernobyl»; emotie-profiel headlines (matches/100 woorden): woede 0.15 / angst 0.10 / verdriet 0.14 / walging 0.01 (dominant: woede)",
+    "value": 1.7186
   },
   "I-D5-002": {
     "date": "2026-06-06",
-    "fetched_at": "2026-06-07T10:38:08.259177",
+    "fetched_at": "2026-06-07T12:14:30.044398",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.629
   },
   "I-D5-003": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T10:41:02.594621",
+    "fetched_at": "2026-06-07T12:15:37.758778",
     "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 28 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.071167
+    "value": 0.077967
   },
   "I-D5-006S": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T10:41:07.516700",
+    "fetched_at": "2026-06-07T12:15:41.278213",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.0024639144601134085
+    "value": 0.023863389162243637
   },
   "I-D5-mastodon": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T10:41:08.996112",
+    "fetched_at": "2026-06-07T12:15:42.609337",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.5746865549869613
   },
   "I-D5-trends": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T10:42:59.159940",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.10 (stress-trends: deus vult symbool, huis gemaakt)",
-    "value": 0.1045
+    "fetched_at": "2026-06-07T12:16:15.654058",
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.07 (stress-trends: frits spits)",
+    "value": 0.0694
   }
 }
