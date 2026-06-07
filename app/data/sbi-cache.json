@@ -1,25 +1,25 @@
 {
   "I-D1-004": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T17:10:35.563614",
+    "fetched_at": "2026-06-07T18:46:46.218594",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.735
   },
   "I-D1-009": {
     "date": "2026-06-06",
-    "fetched_at": "2026-06-07T17:10:40.018906",
+    "fetched_at": "2026-06-07T18:46:50.378719",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 18.18
   },
   "I-D1-010": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T17:10:40.462048",
+    "fetched_at": "2026-06-07T18:46:50.965787",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 22.954166666666666
   },
   "I-D1-010-sci": {
     "date": "2026-06-04",
-    "fetched_at": "2026-06-07T17:14:35.395663",
+    "fetched_at": "2026-06-07T18:51:30.223310",
     "source": "Sciensano AirAllergy (Belgisch pollennetwerk, 1/5 stations, grains/m³)",
     "value": 40.0
   },
@@ -37,43 +37,43 @@
   },
   "I-D2-delijn": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T17:14:02.427554",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 259 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
-    "value": 259.0
+    "fetched_at": "2026-06-07T18:50:58.744148",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 196 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
+    "value": 196.0
   },
   "I-D2-stib": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T17:14:01.304805",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 290 actieve items; CC BY 4.0)",
-    "value": 290.0
+    "fetched_at": "2026-06-07T18:50:57.426729",
+    "source": "STIB/MIVB TravellersInformation (Brussel, 274 actieve items; CC BY 4.0)",
+    "value": 274.0
   },
   "I-D3-002": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T17:10:53.250559",
+    "fetched_at": "2026-06-07T18:47:04.396587",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 33.315000000000005
   },
   "I-D3-003S": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T17:13:58.681459",
-    "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 3.0
+    "fetched_at": "2026-06-07T18:50:54.865072",
+    "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 4.0
   },
   "I-D3-009": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T17:10:55.878742",
+    "fetched_at": "2026-06-07T18:47:07.255983",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0046096152801895
   },
   "I-D5-001": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T14:26:49.421298",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1051/1106 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.13 / midden +0.16 / ouder +0.23. Negatiefste headlines: «Zeker 1 dode en 5 gewonden bij schietincident in Israël, politie kan dader neutraliseren · Tien personen opgepakt bij protest tegen besparingen in Franstalig onderwijs De protesten tegen de besparingen in het Fr · \"Extreem laffe aanval\": Rusland raakt opslag voor nucleaire brandstof nabij Tsjernobyl»; emotie-profiel headlines (matches/100 woorden): woede 0.14 / angst 0.10 / verdriet 0.15 / walging 0.01 (dominant: verdriet)",
-    "value": 1.6565
+    "fetched_at": "2026-06-07T18:48:11.078300",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1050/1109 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.15 / midden +0.13 / ouder +0.17. Negatiefste headlines: «Zeker 1 dode en 5 gewonden bij schietincident in Israël, politie kan dader neutraliseren · Tien personen opgepakt bij protest tegen besparingen in Franstalig onderwijs De protesten tegen de besparingen in het Fr · Levenloos lichaam van vrouw aangetroffen in woning: politie voert onderzoek naar \"onduidelijk overlijden\" De politie ond»; emotie-profiel headlines (matches/100 woorden): woede 0.13 / angst 0.11 / verdriet 0.13 / walging 0.01 (dominant: woede)",
+    "value": 1.5617
   },
   "I-D5-002": {
     "date": "2026-06-06",
-    "fetched_at": "2026-06-07T17:12:19.226000",
+    "fetched_at": "2026-06-07T18:48:12.457118",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.629
   },
@@ -85,20 +85,20 @@
   },
   "I-D5-006S": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T17:13:23.117946",
+    "fetched_at": "2026-06-07T18:50:14.233430",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.09313266192802919
+    "value": 0.08109622319235615
   },
   "I-D5-mastodon": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T17:13:24.702066",
+    "fetched_at": "2026-06-07T18:50:15.584360",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.5746865549869613
   },
   "I-D5-trends": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-07T17:13:59.280884",
-    "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
-    "value": 0.0
+    "fetched_at": "2026-06-07T18:50:55.315919",
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.01 (stress-trends: denemarken oekraine)",
+    "value": 0.0117
   }
 }
