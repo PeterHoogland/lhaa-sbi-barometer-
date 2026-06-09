@@ -1,81 +1,81 @@
 {
   "I-D1-004": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:34:00.699881",
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:44:51.744619",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.775
+    "value": 0.8057
   },
   "I-D1-009": {
-    "date": "2026-06-07",
-    "fetched_at": "2026-06-08T17:34:04.716378",
+    "date": "2026-06-08",
+    "fetched_at": "2026-06-09T06:44:56.205040",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
-    "value": 14.87
+    "value": 13.65
   },
   "I-D1-010": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:34:05.121647",
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:44:56.766599",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
-    "value": 31.00000000000001
+    "value": 17.70416666666667
   },
   "I-D1-010-sci": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-08T17:41:42.293647",
+    "fetched_at": "2026-06-09T06:50:04.802733",
     "source": "Sciensano AirAllergy (Belgisch pollennetwerk, 1/5 stations, grains/m³)",
     "value": 19.0
   },
   "I-D2-001-rt": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:41:09.615855",
-    "source": "Verkeerscentrum DATEX II v3 — 2 files, 4.27 km totale filelengte (langste 4.17 km), snapshot 2026-06-08",
-    "value": 4.27
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:49:27.722596",
+    "source": "Verkeerscentrum DATEX II v3 — 46 files, 135.16 km totale filelengte (langste 11.51 km), snapshot 2026-06-09",
+    "value": 135.16
   },
   "I-D2-009": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:34:06.298218",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 3 ongepland)",
-    "value": 3.0
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:44:58.290543",
+    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
+    "value": 2.0
   },
   "I-D2-delijn": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:41:11.540071",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 340 vertraagd (≥3min), 11 service-alerts (Vlaanderen)",
-    "value": 340.0
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:49:30.707115",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 878 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
+    "value": 878.0
   },
   "I-D2-stib": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:41:10.251464",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 282 actieve items; CC BY 4.0)",
-    "value": 282.0
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:49:28.653239",
+    "source": "STIB/MIVB TravellersInformation (Brussel, 279 actieve items; CC BY 4.0)",
+    "value": 279.0
   },
   "I-D3-002": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:34:07.503361",
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:45:03.633428",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
-    "value": 132.64250000000004
+    "value": 84.60965909090908
   },
   "I-D3-003S": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:41:08.125923",
-    "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 16 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 6.0
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:49:25.567101",
+    "source": "Ontslag-radar: 8 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~17200 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 8.0
   },
   "I-D3-009": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:34:09.489326",
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:45:09.425830",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 1.0197393616367494
+    "value": 1.017448491950243
   },
   "I-D5-001": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:36:33.131892",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 888/932 unieke artikels na dedup, 15 bronnen, poststratificatie): negativiteit jong +0.21 / midden +0.18 / ouder +0.23. Negatiefste headlines: «Twee doden bij brand in Anderlecht, zoektocht naar slachtoffers gaat verder Het Brussels parket bevestigt dat er twee do · Live - Netanyahu bevestigt aanvallen tegen Iran tijdelijk te staken • ‘VS hebben olietanker uitgeschakeld die blokkade I · Twee gewonden bij botsing in Bree»; emotie-profiel headlines (matches/100 woorden): woede 0.11 / angst 0.15 / verdriet 0.14 / walging 0.03 (dominant: angst)",
-    "value": 1.551
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:46:26.852308",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1018/1093 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.43 / midden +0.43 / ouder +0.50. Negatiefste headlines: «Twee doden bij brand in Anderlecht, zoektocht naar slachtoffers gaat verder Het Brussels parket bevestigt dat er twee do · BRUZZ 24 over de brand in Anderlecht met twee dodelijke slachtoffers: ‘Echt in paniek’ Twee personen zijn overleden in d · Vakbond over scholierenprotesten: 'Aandacht moet gaan naar geweld door jongeren' De voorzitter van overheidsvakbond VSOA»; emotie-profiel headlines (matches/100 woorden): woede 0.13 / angst 0.13 / verdriet 0.17 / walging 0.04 (dominant: verdriet)",
+    "value": 1.6868
   },
   "I-D5-002": {
-    "date": "2026-06-07",
-    "fetched_at": "2026-06-08T17:36:33.827910",
+    "date": "2026-06-08",
+    "fetched_at": "2026-06-09T06:46:28.217898",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
-    "value": 30.249
+    "value": 30.348
   },
   "I-D5-003": {
     "date": "2026-06-08",
@@ -84,21 +84,21 @@
     "value": 0.087033
   },
   "I-D5-006S": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:38:54.776786",
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:48:45.030815",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.1590510272261486
+    "value": 0.1764483835392329
   },
   "I-D5-mastodon": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:39:02.829163",
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:48:46.643747",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.5178683731687794
+    "value": -0.2678683731687794
   },
   "I-D5-trends": {
-    "date": "2026-06-08",
-    "fetched_at": "2026-06-08T17:41:08.662541",
-    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.06 (stress-trends: hittegolf)",
-    "value": 0.0592
+    "date": "2026-06-09",
+    "fetched_at": "2026-06-09T06:49:26.041237",
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.28 (stress-trends: marc van ranst, oplichting)",
+    "value": 0.275
   }
 }
