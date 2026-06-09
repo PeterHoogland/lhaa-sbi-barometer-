@@ -1,67 +1,67 @@
 {
   "I-D1-004": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T10:32:07.657895",
+    "fetched_at": "2026-06-09T11:26:38.817970",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.7491
+    "value": 0.7483
   },
   "I-D1-009": {
     "date": "2026-06-08",
-    "fetched_at": "2026-06-09T10:32:25.151032",
+    "fetched_at": "2026-06-09T11:26:56.778171",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 13.65
   },
   "I-D1-010": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T10:32:25.763244",
+    "fetched_at": "2026-06-09T11:26:57.345338",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 17.70416666666667
   },
   "I-D1-010-sci": {
     "date": "2026-06-07",
-    "fetched_at": "2026-06-09T10:38:02.418957",
+    "fetched_at": "2026-06-09T11:31:27.477280",
     "source": "Sciensano AirAllergy (Belgisch pollennetwerk, 1/5 stations, grains/m³)",
     "value": 19.0
   },
   "I-D2-001-rt": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T10:37:27.823813",
-    "source": "Verkeerscentrum DATEX II v3 — 11 files, 27.76 km totale filelengte (langste 7.18 km), snapshot 2026-06-09",
-    "value": 27.76
+    "fetched_at": "2026-06-09T11:30:52.566487",
+    "source": "Verkeerscentrum DATEX II v3 — 17 files, 33.74 km totale filelengte (langste 5.93 km), snapshot 2026-06-09",
+    "value": 33.74
   },
   "I-D2-009": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T10:32:27.463835",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
-    "value": 2.0
+    "fetched_at": "2026-06-09T11:26:58.957016",
+    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
+    "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T10:37:31.269474",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 724 vertraagd (≥3min), 15 service-alerts (Vlaanderen)",
-    "value": 724.0
+    "fetched_at": "2026-06-09T11:30:55.257891",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 572 vertraagd (≥3min), 13 service-alerts (Vlaanderen)",
+    "value": 572.0
   },
   "I-D2-stib": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T10:37:28.758922",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 281 actieve items; CC BY 4.0)",
-    "value": 281.0
+    "fetched_at": "2026-06-09T11:30:53.631151",
+    "source": "STIB/MIVB TravellersInformation (Brussel, 283 actieve items; CC BY 4.0)",
+    "value": 283.0
   },
   "I-D3-002": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T10:32:44.789239",
+    "fetched_at": "2026-06-09T11:27:03.669148",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 84.60965909090908
   },
   "I-D3-003S": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T10:37:25.826926",
+    "fetched_at": "2026-06-09T11:30:50.966826",
     "source": "Ontslag-radar: 9 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~17200 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 9.0
   },
   "I-D3-009": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T10:33:09.695061",
+    "fetched_at": "2026-06-09T11:27:12.856539",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0167982313231054
   },
@@ -73,32 +73,32 @@
   },
   "I-D5-002": {
     "date": "2026-06-08",
-    "fetched_at": "2026-06-09T10:34:30.266936",
+    "fetched_at": "2026-06-09T11:28:42.820709",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 30.348
   },
   "I-D5-003": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T08:01:39.665771",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 36 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.067933
+    "fetched_at": "2026-06-09T11:30:09.203305",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 26 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.0796
   },
   "I-D5-006S": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T10:36:48.759440",
+    "fetched_at": "2026-06-09T11:30:13.803539",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 125 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.21943693326056998
+    "value": 0.19942114720439463
   },
   "I-D5-mastodon": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T10:36:50.525934",
+    "fetched_at": "2026-06-09T11:30:15.300750",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.0504770688209533
+    "value": -0.10815838750227194
   },
   "I-D5-trends": {
     "date": "2026-06-09",
-    "fetched_at": "2026-06-09T10:37:26.297355",
-    "source": "Google Trends trending RSS (geo=BE) — 4/10 trends stress-relevant, aandeel zoekvolume 0.32 (stress-trends: veerle malschaert, verkeersboete, marc van ranst, argenta)",
-    "value": 0.3158
+    "fetched_at": "2026-06-09T11:30:51.381381",
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.13 (stress-trends: veerle malschaert, marc van ranst)",
+    "value": 0.1274
   }
 }
