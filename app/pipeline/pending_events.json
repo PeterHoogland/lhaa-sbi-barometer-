@@ -4867,5 +4867,50 @@
     "link": "https://www.tvoost.be/nieuws/bestuurder-bestelwagen-kruipt-door-oog-van-de-naald-na-aanrijding-met-vrachtwagen-op-e17-211313",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-09",
+    "magnitude": 1,
+    "title": "Dodentol van zware aardbeving in Filipijnen loopt op tot 37, ook 500 gewonden en zeker vier vermisten",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/snelnieuws/dodentol-van-zware-aardbeving-in-filipijnen-loopt-op-tot-37-ook-500-gewonden-en-zeker-vier-vermisten~be656807/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-09",
+    "magnitude": 5,
+    "title": "OCAD ziet bijna alle teruggekeerde IS-vrouwen re-integreren",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/ocad-ziet-bijna-alle-teruggekeerde-is-vrouwen-re-integreren~a948f01e/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-09",
+    "magnitude": 1,
+    "title": "Wagen valt in Kruidtuintunnel en dat zorgt voor zware ochtendspits",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/brussel/brussel/wagen-valt-in-kruidtuintunnel-en-dat-zorgt-voor-zware-ochtendspits/156337579.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-09",
+    "magnitude": 1,
+    "title": "Motorrijder (43) deelt slag met helm uit aan automobilist: voorwaardelijke celstraf van 12 maanden",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/laakdal/motorrijder-43-deelt-slag-met-helm-uit-aan-automobilist-voorwaardelijke-celstraf-van-12-maanden/156337510.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-09",
+    "magnitude": 1,
+    "title": "Dodentol van zware aardbeving in Filipijnen loopt op tot 37",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/nieuws/dodentol-van-zware-aardbeving-in-filipijnen-loopt-op-tot-37/156333928.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
