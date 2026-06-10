@@ -5479,5 +5479,59 @@
     "link": "https://www.tvoost.be/nieuws/auto-van-nicolas-uit-sint-lievens-houtem-gestolen-op-de-oprit-auto-staat-intussen-internationaal-geseind-211370",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-10",
+    "magnitude": 1,
+    "title": "Fietser komt onder vrachtwagen terecht en overlijdt ter plaatse in Mortsel",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/10/d06092f9-b8e2-4bc9-ae79-bdec5d4f9979.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-10",
+    "magnitude": 1,
+    "title": "Auto crasht en vat vuur op jaagpad in Tildonk",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/10/4519387d-7cd0-43d4-b207-729520b7ce07.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-10",
+    "magnitude": 5,
+    "title": "🎧 “Ik zong 10 seconden lang gewoon ‘lalalala’”: meeprater Jan Schepens deelt grappige herinnering na black-out Harry Styles",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/home/ik-zong-10-seconden-lang-gewoon-lalalala-meeprater-jan-schepens-deelt-grappige-herinnering-na-black-out-harry-styles~a3a32696/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-10",
+    "magnitude": 1,
+    "title": "Frans parket vraagt voorlopige hechtenis voor Patrick Bruel: “Voor verkrachting, poging tot verkrachting, seksueel misbruik en seksuele intimidatie van 9 slachtoffers”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/frans-parket-vraagt-voorlopige-hechtenis-voor-patrick-bruel-voor-verkrachting-poging-tot-verkrachting-seksueel-misbruik-en-seksuele-intimidatie-van-9-slachtoffers/156536662.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-10",
+    "magnitude": 1,
+    "title": "Israëlische vlag aan stadhuis zet opnieuw Antwerpse coalitie onder druk: “Stadsbestuur moet verbinden, niet verdelen”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/israelische-vlag-aan-stadhuis-zet-opnieuw-antwerpse-coalitie-onder-druk-stadsbestuur-moet-verbinden-niet-verdelen/156535433.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-10",
+    "magnitude": 1,
+    "title": "Fietsster (54) overleden na aanrijding met vrachtwagen in Mortsel",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/fietsster-54-overleden-na-aanrijding-met-vrachtwagen-in-mortsel/156532226.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
