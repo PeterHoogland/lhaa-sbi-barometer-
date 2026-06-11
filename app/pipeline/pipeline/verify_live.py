@@ -80,13 +80,21 @@ def assess(latest: dict, health: dict | None, now: datetime) -> tuple[list[str],
         else:
             notes.append(f"composiet=Σcontributies (Δ={round(delta,4)})")
 
-    # 6) DATA-KWALITEIT — gesimuleerd is bron-degradatie; de canary alarmeert dit al
-    #    (degraded). Hier enkel als notitie, zodat een tijdelijke mock niet dubbel
-    #    alarmeert. (Op go-live met mode:live hoort simulated leeg te zijn — dat
-    #    bewaakt de aparte HARDE-EIS-check.)
+    # 6) DATA-KWALITEIT + HARDE EIS — gesimuleerd is bron-degradatie; de canary
+    #    alarmeert dit al (degraded). In test-modus blijft het hier een notitie,
+    #    zodat een tijdelijke mock niet dubbel alarmeert. HARDE EIS (go-live):
+    #    zodra de live output mode "live" voert (v04-blok staat dan publiek in
+    #    latest.json, zie engine/src/publish.ts), mag indicators_simulated NIET
+    #    meer gevuld zijn — dan faalt de run hier hard.
     sim = (latest.get("data_quality") or {}).get("indicators_simulated") or []
+    mode = (latest.get("v04") or {}).get("mode") or latest.get("mode")
     if sim:
-        notes.append(f"gesimuleerd (canary meldt dit als degraded): {sim}")
+        if mode == "live":
+            problems.append(
+                f"HARDE EIS geschonden: mode=live maar gesimuleerde indicatoren in het cijfer: {sim}"
+            )
+        else:
+            notes.append(f"gesimuleerd (canary meldt dit als degraded): {sim}")
 
     # 7) SECUNDAIRE SIGNALEN aanwezig
     ss = latest.get("secondary_signals") or []

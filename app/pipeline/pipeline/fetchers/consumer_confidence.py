@@ -24,6 +24,7 @@ Bron is al seizoens-gecorrigeerd → geen STL.
 from __future__ import annotations
 from datetime import date
 from ..util import FetchResult, safe_request, seasonal_noise
+from ..cache import get as cache_get, put as cache_put
 from .statbel import _parse_eurostat_latest
 
 EUROSTAT_CONS_URL = (
@@ -39,16 +40,30 @@ def fetch_consumer_confidence(target_date: date) -> FetchResult:
         result = _parse_eurostat_latest(body)
         if result is not None:
             val, period = result
+            source = "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)"
+            cache_put("I-D3-007", val, source, target_date.isoformat())
             return FetchResult(
                 "I-D3-007", val, target_date.isoformat(),
                 simulated=False,
-                source="Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
+                source=source,
                 observation_date=period,
+                source_url=EUROSTAT_CONS_URL,
             )
+
+    # Cache-vangnet (≤14d) vóór de mock — zelfde ladder als irail.py/nbb.py.
+    cached = cache_get("I-D3-007")
+    if cached:
+        value, prev_source = cached
+        return FetchResult(
+            "I-D3-007", value, target_date.isoformat(),
+            simulated=False,
+            source=f"cache (laatst succesvol: {prev_source})",
+            source_url=EUROSTAT_CONS_URL,
+        )
 
     # Mock: rond het lange-termijn-gemiddelde (~ -10 saldo voor BE)
     value = -10.0 + seasonal_noise(target_date, 0, 0, 4.0, 0.0)
     return FetchResult(
         "I-D3-007", value, target_date.isoformat(),
-        simulated=True, source="mock (Eurostat ei_bsco_m endpoint faalde)",
+        simulated=True, source="mock (Eurostat ei_bsco_m endpoint faalde, geen cache)",
     )

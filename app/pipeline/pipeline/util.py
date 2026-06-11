@@ -4,7 +4,7 @@ import json
 import math
 import random
 from dataclasses import dataclass, field
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Iterable
 
@@ -28,10 +28,20 @@ class FetchResult:
     # Voor maandelijkse bronnen (ECB) = de maand (YYYY-MM).
     # Wanneer een fetcher hem niet expliciet zet, valt hij terug op de fetch-datum.
     observation_date: str = ""
+    # Provenance (A4): source_url = de echte endpoint-URL waar de waarde vandaan
+    # komt (succes = endpoint van deze run; cache = endpoint waar de gecachte
+    # waarde oorspronkelijk vandaan kwam; mock = leeg, een synthetische waarde
+    # heeft geen endpoint). fetched_at = UTC-tijdstip van deze fetch-run,
+    # automatisch gezet in __post_init__. Beide stromen via FetchBatch.to_dict()
+    # (r.__dict__) automatisch mee naar raw-values.json.
+    source_url: str = ""
+    fetched_at: str = ""
 
     def __post_init__(self) -> None:
         if not self.observation_date:
             self.observation_date = self.date
+        if not self.fetched_at:
+            self.fetched_at = datetime.now(timezone.utc).isoformat()
 
 
 @dataclass

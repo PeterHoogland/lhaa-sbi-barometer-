@@ -16,6 +16,14 @@ aangekondigd en veroorzaken weinig acute stress.
 Hogere waarde = meer ongeplande verstoringen = meer reizigersstress.
 
 iRail vereist een herkenbare User-Agent (fair-use policy).
+
+TODO (Optie-B — NIET uitvoeren zonder pre-registratie-amendement + Peters GO):
+I-D2-009 scoort vandaag bewust als "ontbreekt": de echte baseline telt nog te
+weinig punten (< 60-drempel, baseline-discipline in generate-fixture.ts). Dat is
+correct gedrag, geen bug. Optie-B zou omschakelen naar Infrabel-stiptheidsdata
+met historische backfill zodat de indicator wél meteen scoort — dat is een
+methodologie-wijziging en vereist eerst een pre-registratie-amendement en een
+expliciete GO van Peter.
 """
 from __future__ import annotations
 from datetime import date
@@ -60,6 +68,7 @@ def fetch_train_disruptions(target_date: date) -> FetchResult:
                 "I-D2-009", float(count), target_date.isoformat(),
                 simulated=False, source=source,
                 observation_date=target_date.isoformat(),
+                source_url=URL,
             )
 
     # Cache-fallback (≤14d) voordat we naar mock vallen
@@ -71,6 +80,7 @@ def fetch_train_disruptions(target_date: date) -> FetchResult:
             simulated=False,
             source=f"cache (laatst succesvol: {prev_source})",
             observation_date=target_date.isoformat(),
+            source_url=URL,
         )
 
     # Definitief: mock met eerlijke vlag. Basislijn ~6 verstoringen,

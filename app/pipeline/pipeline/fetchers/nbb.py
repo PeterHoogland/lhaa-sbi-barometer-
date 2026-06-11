@@ -14,6 +14,7 @@ Key voor BE woonkredieten:
 from __future__ import annotations
 from datetime import date
 from ..util import FetchResult, safe_request, seasonal_noise
+from ..cache import get as cache_get, put as cache_put
 from .statbel import _parse_ecb_latest_with_period
 
 
@@ -29,13 +30,30 @@ def fetch_mortgage_rate(target_date: date) -> FetchResult:
         result = _parse_ecb_latest_with_period(body)
         if result is not None:
             val, period = result
+            source = "ECB MIR (BE hypotheekrente, nieuwe contracten)"
+            cache_put("I-D3-006", val, source, target_date.isoformat())
             return FetchResult(
                 "I-D3-006", val, target_date.isoformat(),
-                simulated=False, source="ECB MIR (BE hypotheekrente, nieuwe contracten)",
+                simulated=False, source=source,
                 observation_date=period,
+                source_url=ECB_MORTGAGE_URL,
             )
+
+    # Cache-vangnet (≤14d, zie cache.py) vóór de mock: een transiente endpoint-
+    # failure mag een maandcijfer niet meteen door synthetische ruis vervangen.
+    # Source-prefix "cache" is de conventie die healthcheck.py als degraded markeert.
+    cached = cache_get("I-D3-006")
+    if cached:
+        value, prev_source = cached
+        return FetchResult(
+            "I-D3-006", value, target_date.isoformat(),
+            simulated=False,
+            source=f"cache (laatst succesvol: {prev_source})",
+            source_url=ECB_MORTGAGE_URL,
+        )
+
     value = 3.4 + seasonal_noise(target_date, 0, 0, 0.15, 0.0)
     return FetchResult(
         "I-D3-006", value, target_date.isoformat(),
-        simulated=True, source="mock (ECB MIR endpoint faalde)",
+        simulated=True, source="mock (ECB MIR endpoint faalde, geen cache)",
     )

@@ -396,9 +396,21 @@ async function generate(): Promise<void> {
   const todayIso = isoDate(TODAY);
   const { realValues, realCodes, imputedCodes, observationDates, secondarySignals } = loadPipelineToday(PIPELINE_OUT);
 
+  // Strict-real-modus (go-live-stand: SBI_STRICT_REAL=1 in daily.yml zodra mode
+  // live gaat): injecteer GEEN syntheticRawValue voor codes zonder echte
+  // dagwaarde — de code blijft weg uit todayRaw en de runtime scoort hem eerlijk
+  // als "ontbreekt" i.p.v. een synthetisch getal in het cijfer te laten lopen.
+  // Zonder vlag (default) blijft het gedrag exact zoals voorheen.
+  const strictReal = process.env.SBI_STRICT_REAL === "1";
   const todayRaw: Partial<Record<IndicatorCode, number>> = {};
   for (const code of simulatedCodes) {
-    todayRaw[code] = realValues[code] ?? syntheticRawValue(code, TODAY);
+    const real = realValues[code];
+    if (real != null) {
+      // zelfde semantiek als het oude `realValues[code] ?? synthetic…`
+      todayRaw[code] = real;
+    } else if (!strictReal) {
+      todayRaw[code] = syntheticRawValue(code, TODAY);
+    }
   }
 
   // Update simulated-lijst: indicatoren waarvoor pipeline ECHTE data leverde, zijn niet meer simulated

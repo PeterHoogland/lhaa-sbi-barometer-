@@ -76,6 +76,33 @@ def test_simulated_is_notitie_geen_fail():
     assert any("gesimuleerd" in x for x in n), n
 
 
+def test_harde_eis_mode_live_met_simulated_faalt():
+    # HARDE EIS (go-live): mode "live" (v04-blok publiek in latest.json) +
+    # indicators_simulated niet leeg → de run moet rood.
+    l = _healthy_latest()
+    l["v04"] = {"mode": "live"}
+    l["data_quality"]["indicators_simulated"] = ["I-D3-006"]
+    p, _ = vl.assess(l, _OK, NOW)
+    assert any("HARDE EIS" in x for x in p), p
+
+
+def test_harde_eis_mode_live_zonder_simulated_is_ok():
+    l = _healthy_latest()
+    l["v04"] = {"mode": "live"}
+    p, _ = vl.assess(l, _OK, NOW)
+    assert p == [], p
+
+
+def test_harde_eis_mode_test_met_simulated_blijft_notitie():
+    # In test-modus blijft gesimuleerd een notitie (bestaand gedrag), geen probleem.
+    l = _healthy_latest()
+    l["v04"] = {"mode": "test"}
+    l["data_quality"]["indicators_simulated"] = ["I-D3-006"]
+    p, n = vl.assess(l, _OK, NOW)
+    assert p == [], p
+    assert any("gesimuleerd" in x for x in n), n
+
+
 def test_gesimuleerd_extreem_faalt():
     # De Hitte-bug-klasse (2026-06-04): een fallback-waarde op de verkeerde schaal leest
     # "extreem". Een gesimuleerde indicator hoort climatologisch/neutraal te zijn, dus

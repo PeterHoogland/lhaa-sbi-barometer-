@@ -22,6 +22,7 @@ from __future__ import annotations
 import math
 from datetime import date
 from ..util import FetchResult, safe_request
+from ..cache import get as cache_get, put as cache_put
 
 
 # ECB LFSI: BE unemployment rate (%), seasonally adjusted, ages 15-74, total
@@ -72,24 +73,41 @@ def fetch_collective_layoffs(target_date: date) -> FetchResult:
                 # 0.1 pp × 5M workforce = ~5000 extra werkzoekenden
                 effective_workers = max(0, delta_pp / 100 * BE_WORKFORCE)
                 value = math.log1p(effective_workers)
+                source = (f"ECB LFSI werkloosheidsrate-delta ({delta_pp:+.2f}pp, "
+                          f"~{int(effective_workers)} werkzoekenden, proxy voor ontslagen)")
+                cache_put("I-D3-003", value, source, target_date.isoformat())
                 return FetchResult(
                     "I-D3-003", value, target_date.isoformat(),
                     simulated=False,
-                    source=(f"ECB LFSI werkloosheidsrate-delta ({delta_pp:+.2f}pp, "
-                            f"~{int(effective_workers)} werkzoekenden, proxy voor ontslagen)"),
+                    source=source,
                     observation_date=period,
+                    source_url=ECB_UNEMPLOYED_URL,
                 )
             # Only last available — baseline 0
+            source = f"ECB LFSI werkloosheidsrate {last_rate:.1f}% (baseline)"
+            cache_put("I-D3-003", math.log1p(0), source, target_date.isoformat())
             return FetchResult(
                 "I-D3-003", math.log1p(0), target_date.isoformat(),
                 simulated=False,
-                source=f"ECB LFSI werkloosheidsrate {last_rate:.1f}% (baseline)",
+                source=source,
                 observation_date=period,
+                source_url=ECB_UNEMPLOYED_URL,
             )
+
+    # Cache-vangnet (≤14d) vóór de mock — zelfde ladder als irail.py/nbb.py.
+    cached = cache_get("I-D3-003")
+    if cached:
+        value, prev_source = cached
+        return FetchResult(
+            "I-D3-003", value, target_date.isoformat(),
+            simulated=False,
+            source=f"cache (laatst succesvol: {prev_source})",
+            source_url=ECB_UNEMPLOYED_URL,
+        )
 
     # Conservatief fallback
     return FetchResult(
         "I-D3-003", math.log1p(1), target_date.isoformat(),
         simulated=True,
-        source="mock (ECB LFSI endpoint faalde)",
+        source="mock (ECB LFSI endpoint faalde, geen cache)",
     )
