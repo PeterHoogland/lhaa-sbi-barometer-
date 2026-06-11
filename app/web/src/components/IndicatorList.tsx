@@ -89,18 +89,22 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
   // ongelabeld weg; ze blijven wel in de data (en in de trigger-/bronpanelen).
   const visible = breakdown.filter((b) => b.grade !== "D");
   const kernShown = visible.filter((b) => isKern(b.code)).length;
-  const byDomain = (["D1", "D2", "D3", "D4", "D5", "D6"] as DomainCode[]).map((d) => ({
-    domain: d,
-    indicators: visible.filter((b) => b.domain === d),
-  }));
+  // A6: D6 (kalendercontext) zit niet meer in de breakdown — lege domeinen niet renderen.
+  const byDomain = (["D1", "D2", "D3", "D4", "D5", "D6"] as DomainCode[])
+    .map((d) => ({
+      domain: d,
+      indicators: visible.filter((b) => b.domain === d),
+    }))
+    .filter((g) => g.indicators.length > 0);
 
   return (
     <section className="indicator-list">
       <header className="indicator-list-header">
         <h2>Wat we allemaal bekijken</h2>
         <p className="panel-lead">
-          In het cijfer tellen {visible.length} indicatoren mee, verdeeld over 6 levensdomeinen; {kernShown} daarvan
-          vormen de kern-meting. Daarnaast lopen 2 secundaire/diagnostische signalen mee die niet in het cijfer
+          In het cijfer tellen {visible.length} indicatoren mee, verdeeld over {byDomain.length} levensdomeinen; {kernShown} daarvan
+          vormen de kern-meting. De kalender (vakanties, examens, klok-verzetten) tonen we apart als context;
+          die telt niet mee in het cijfer. Daarnaast lopen secundaire/diagnostische signalen mee die evenmin
           meetellen. Klik er één open om te zien wat we precies meten, waar de data vandaan komt en welke
           wetenschappelijke onderbouwing erachter zit.
         </p>

@@ -78,9 +78,19 @@ describe("Wegingen (doc 05 Annex A)", () => {
     expect(SCHEMA_2_DOMAIN_WEIGHTS.D6).toBe(0.172);
   });
 
-  it("Schema 1 gewichten zijn 1/6 per domein", () => {
-    expect(domainWeight("equal", "D1")).toBeCloseTo(1 / 6, 5);
-    expect(domainWeight("equal", "D6")).toBeCloseTo(1 / 6, 5);
+  it("Schema 1 gewichten zijn 1/5 per gescoord domein; D6 (context) weegt 0 (A6)", () => {
+    expect(domainWeight("equal", "D1")).toBeCloseTo(1 / 5, 5);
+    expect(domainWeight("equal", "D5")).toBeCloseTo(1 / 5, 5);
+    expect(domainWeight("equal", "D6")).toBe(0);
+  });
+
+  it("Schema 2 actief: pro-rata hernormaliseerd zonder D6, verhoudingen bewaard (A6)", () => {
+    expect(domainWeight("evidence", "D6")).toBe(0);
+    // Verhouding D1/D3 blijft die van de bevroren tabel: 0.211/0.223
+    expect(domainWeight("evidence", "D1") / domainWeight("evidence", "D3")).toBeCloseTo(
+      0.211 / 0.223,
+      5,
+    );
   });
 
   it("Schema 2 sommeert tot ~1.0 (rounding-tolerantie)", () => {
@@ -215,7 +225,75 @@ describe("Composite met Schema 1", () => {
     } as const;
     const result = computeComposite(z, "equal");
     expect(result.composite).toBeGreaterThan(0);
-    expect(result.domainContributions).toHaveLength(6);
+    // A6: D6 (kalendercontext) telt niet meer mee → 5 gescoorde domeinen.
+    expect(result.domainContributions).toHaveLength(5);
+    expect(result.domainContributions.find((c) => c.domain === "D6")).toBeUndefined();
+  });
+
+  it("kalendercontext beïnvloedt het composiet niet (A6)", () => {
+    const meetwaarden = { "I-D1-002": 1.0, "I-D3-001": 1.0, "I-D5-001": 0.8 } as const;
+    const zonder = computeComposite({ ...meetwaarden }, "equal");
+    const met = computeComposite(
+      { ...meetwaarden, "I-D6-001": 3, "I-D6-002": 3, "I-D6-003": 3, "I-D6-005": 3 },
+      "equal",
+    );
+    expect(met.composite).toBeCloseTo(zonder.composite, 10);
+  });
+});
+
+describe("Kalendercontext D6 (A6) — context, geen meting", () => {
+  it("D6 staat niet in indicator_breakdown of indicators_missing, wél in context_signals", () => {
+    // 2026-06-01 valt in de examenperiode (ho2 + cse overlappen).
+    const out = computeDaily({
+      date: "2026-06-01",
+      rawValues: {},
+      history: {},
+      compositeHistory: [],
+    });
+    const breakdownCodes = out.indicator_breakdown.map((b) => b.code);
+    for (const code of ["I-D6-001", "I-D6-002", "I-D6-003", "I-D6-005"] as const) {
+      expect(breakdownCodes).not.toContain(code);
+      expect(out.data_quality.indicators_missing).not.toContain(code);
+    }
+    expect(out.context_signals.map((c) => c.code).sort()).toEqual([
+      "I-D6-001",
+      "I-D6-002",
+      "I-D6-003",
+      "I-D6-005",
+    ]);
+    const examens = out.context_signals.find((c) => c.code === "I-D6-005")!;
+    expect(examens.raw_value).toBeGreaterThanOrEqual(1); // het ís examenperiode
+    expect(examens).not.toHaveProperty("z_short");
+    expect(examens).not.toHaveProperty("state");
+    expect(examens.observation_date).toBe("2026-06-01");
+  });
+
+  it("de kalender verandert composite.equal niet (geen circulaire kalenderbijdrage)", () => {
+    // Identieke meetinputs op een dag mét (1 juni) en zonder (1 oktober) examens:
+    // alleen de kalender verschilt, het cijfer mag dat niet doen.
+    const mkHist = (anchor: string) =>
+      Array.from({ length: 60 }, (_, i) => ({
+        date: new Date(Date.parse(anchor + "T00:00:00Z") - (i + 1) * 86_400_000)
+          .toISOString()
+          .slice(0, 10),
+        value: 10 + (i % 5),
+      }));
+    const juni = computeDaily({
+      date: "2026-06-01", // examenperiode
+      rawValues: { "I-D5-001": 12 },
+      history: { "I-D5-001": mkHist("2026-06-01") },
+      compositeHistory: [],
+    });
+    const oktober = computeDaily({
+      date: "2026-10-01", // geen examenperiode
+      rawValues: { "I-D5-001": 12 },
+      history: { "I-D5-001": mkHist("2026-10-01") },
+      compositeHistory: [],
+    });
+    const juniExamens = juni.context_signals.find((c) => c.code === "I-D6-005")!;
+    const oktExamens = oktober.context_signals.find((c) => c.code === "I-D6-005")!;
+    expect(juniExamens.raw_value).toBeGreaterThan(oktExamens.raw_value); // kalender verschilt écht
+    expect(juni.composite.equal).toBeCloseTo(oktober.composite.equal, 2); // het cijfer niet
   });
 });
 

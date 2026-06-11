@@ -16,12 +16,13 @@ import type {
   DailyOutput,
   IndicatorBreakdown,
   SecondarySignal,
+  ContextSignal,
   Tier,
   BrandSafety,
   V04Output,
   KernBreakdown,
 } from "./types.js";
-import { INDICATOR_CODES, INDICATORS } from "./indicators/registry.js";
+import { INDICATOR_CODES, INDICATORS, contextIndicators, scoredDomains } from "./indicators/registry.js";
 import { computeAllDeterministic } from "./indicators/deterministic.js";
 import { PLAIN, zToState } from "./indicators/plain-language.js";
 import { computeBaseline, zscore } from "./methodology/zscore.js";
@@ -54,7 +55,9 @@ import {
   type CoreTriggerInput,
 } from "./methodology/triggers.js";
 
-const METHODOLOGY_VERSION = "0.2.0";
+// 0.3.0 (2026-06-11, BLOK A): D6-kalendercontext uit het composiet (A6),
+// hernormalisatie gewichten 1/6→1/5 + Schema-2 pro rata. Zie CHANGELOG.md.
+const METHODOLOGY_VERSION = "0.3.0";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {
@@ -124,6 +127,10 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
 
   for (const code of INDICATOR_CODES) {
     const meta = INDICATORS[code];
+    // Kalendercontext (A6): afgeleid uit de datum, geen meting — krijgt géén
+    // z-score en telt niet mee in het composiet. NIET in `missing` (het is geen
+    // datafalen); verschijnt apart in context_signals.
+    if (meta.contextOnly) continue;
     const x = raw[code];
     if (x === undefined || !Number.isFinite(x)) {
       missing.push(code);
@@ -242,8 +249,11 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
   const brandSafetyFlag = input.brandSafety?.flag ?? "normal";
   const cn = computeConditionLevel(tierResult.tier, percShort, brandSafetyFlag);
 
-  // Per-indicator publieksvriendelijke breakdown — alle 20 indicatoren met plain Dutch
-  const indicatorBreakdown: IndicatorBreakdown[] = INDICATOR_CODES.map((code) => {
+  // Per-indicator publieksvriendelijke breakdown — alle gemeten indicatoren uit de
+  // registry (kalendercontext uitgezonderd: die staat in context_signals, A6).
+  const indicatorBreakdown: IndicatorBreakdown[] = INDICATOR_CODES
+    .filter((code) => !INDICATORS[code].contextOnly)
+    .map((code) => {
     const meta = INDICATORS[code];
     const plain = PLAIN[code];
     const z = zShort[code];
@@ -277,6 +287,25 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
         input.observationDates?.[code] ?? (meta.deterministic ? input.date : input.date),
       demographic_reach: DEMOGRAPHIC_REACH[code].reach,
       reach_rationale: DEMOGRAPHIC_REACH[code].rationale,
+    };
+  });
+
+  // Kalendercontext (A6): de D6-signalen als context — zonder z-score of state.
+  // De ruwe waarde komt uit computeAllDeterministic (altijd geldig, geen meting).
+  const contextSignals: ContextSignal[] = contextIndicators().map((meta) => {
+    const plain = PLAIN[meta.code];
+    return {
+      code: meta.code,
+      name: meta.name,
+      plain_name: plain.plain,
+      raw_value: Math.round((raw[meta.code] ?? 0) * 1000) / 1000,
+      unit: plain.unit,
+      reads: plain.reads,
+      why: plain.why,
+      source: meta.source,
+      observation_date: input.date,
+      data_source: plain.dataSource,
+      references: plain.references,
     };
   });
 
@@ -346,6 +375,7 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       ...s,
       value: Math.round(s.value * 1000) / 1000,
     })),
+    context_signals: contextSignals,
     media_cluster_diagnostic: {
       d5_cross_correlation_7d: round2(d5Cross),
       composite_without_d5: round2(withoutD5),
@@ -404,9 +434,9 @@ function compute7dCrossCorrelation(
 }
 
 function estimateDropoutRange(z: ZMap): [number, number] {
-  // Bereken composiet met telkens één domein weggelaten — neem min/max
+  // Bereken composiet met telkens één gescoord domein weggelaten — neem min/max
   const composites: number[] = [];
-  for (const domain of ["D1", "D2", "D3", "D4", "D5", "D6"] as const) {
+  for (const domain of scoredDomains()) {
     const withoutDomain: ZMap = { ...z };
     for (const code of INDICATOR_CODES) {
       if (INDICATORS[code].domain === domain) delete withoutDomain[code];

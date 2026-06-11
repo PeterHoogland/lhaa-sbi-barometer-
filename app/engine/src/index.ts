@@ -4,7 +4,7 @@
  */
 
 export * from "./types.js";
-export { INDICATORS, INDICATOR_CODES, DOMAIN_NAMES, indicatorsByDomain, allDomains } from "./indicators/registry.js";
+export { INDICATORS, INDICATOR_CODES, DOMAIN_NAMES, indicatorsByDomain, allDomains, contextIndicators, scoredDomains } from "./indicators/registry.js";
 export { computeAllDeterministic, daylightHours } from "./indicators/deterministic.js";
 export { computeBaseline, zscore, median, madScaled } from "./methodology/zscore.js";
 export { stlResidual, dayOfYear } from "./methodology/stl.js";

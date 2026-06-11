@@ -18,6 +18,21 @@ export interface SecondarySignal {
   observation_date: string;
 }
 
+/** Kalendercontext (A6): afgeleid uit de datum, geen meting — bewust zonder z of state. */
+export interface ContextSignal {
+  code: string;
+  name: string;
+  plain_name: string;
+  raw_value: number;
+  unit: string;
+  reads: string;
+  why: string;
+  source: string;
+  observation_date: string;
+  data_source: { name: string; url: string };
+  references: Array<{ label: string; url: string }>;
+}
+
 export type IndicatorState = "rustig" | "normaal" | "verhoogd" | "extreem" | "ontbreekt";
 export type EvidenceGrade = "A" | "B" | "C" | "D";
 
@@ -83,6 +98,8 @@ export interface DailyOutput {
   top_contributing_domains: DomainContribution[];
   indicator_breakdown: IndicatorBreakdown[];
   secondary_signals: SecondarySignal[];
+  /** Kalendercontext (A6) — optioneel: oudere records missen dit veld. */
+  context_signals?: ContextSignal[];
   media_cluster_diagnostic: {
     d5_cross_correlation_7d: number;
     composite_without_d5: number;

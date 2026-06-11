@@ -19,7 +19,7 @@ import time
 from datetime import datetime, timezone
 
 BASE = "https://les-hautes-alpes-sbi.brainwolves.workers.dev"
-EXPECTED_INDICATORS = 25
+EXPECTED_INDICATORS = 21  # 25 registry-codes - 4 D6-kalendercontext (A6: context_signals, niet gescoord)
 FRESH_MAX_MIN = 45          # live timestamp moet hierbinnen vallen (deploy gepropageerd)
 COMPOSITE_TOL = 0.06        # |composiet - som(contributies)| tolerantie
 

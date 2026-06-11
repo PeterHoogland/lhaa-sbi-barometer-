@@ -319,11 +319,14 @@ async function generate(): Promise<void> {
   // reproduceerbare functie van de datum (daglicht, kalender), dus we berekenen
   // ze gewoon voor elke dag in het venster. Zo wegen ook deze indicatoren tegen
   // echte historie i.p.v. een lege baseline (z=0) zoals voorheen.
+  // Kalendercontext-codes (contextOnly, A6) slaan we over: ze worden niet meer
+  // gescoord en hebben dus geen baseline nodig — ze verschijnen als context_signals.
   for (let i = historyDays; i > 0; i--) {
     const d = new Date(TODAY.getTime() - i * 86400000);
     const iso = isoDate(d);
     const det = computeAllDeterministic(d);
     for (const [code, value] of Object.entries(det)) {
+      if (INDICATORS[code as IndicatorCode].contextOnly) continue;
       (history[code as IndicatorCode] ??= []).push({ date: iso, value });
     }
   }

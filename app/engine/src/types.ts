@@ -50,6 +50,12 @@ export interface IndicatorMeta {
   source: string;
   /** True wanneer indicator volledig uit kalender/astronomie afleidbaar is (Tier A). */
   deterministic: boolean;
+  /**
+   * True = kalender-/contextindicator (A6): wordt afgeleid uit de datum, niet
+   * gemeten. Verschijnt als context_signal (zonder z-score of state) en telt
+   * NIET mee in composiet, condition_level of indicator_breakdown.
+   */
+  contextOnly?: boolean;
 }
 
 /** Eén meetpunt voor één indicator op één datum. */
@@ -123,6 +129,26 @@ export interface SecondarySignal {
   source: string;
   simulated: boolean;
   observation_date: string;
+}
+
+/**
+ * Kalender-/contextsignaal (A6): volledig afgeleid uit de datum, geen meting.
+ * Wordt apart getoond ("het is examenperiode") zonder z-score of state, en telt
+ * niet mee in composiet/condition_level. Bewust géén z-/state-velden: een
+ * ontwerp-aanname mag niet als gemeten stress renderen.
+ */
+export interface ContextSignal {
+  code: IndicatorCode;
+  name: string;
+  plain_name: string;
+  raw_value: number;
+  unit: string;
+  reads: string;
+  why: string;
+  source: string;
+  observation_date: string;
+  data_source: { name: string; url: string };
+  references: Array<{ label: string; url: string }>;
 }
 
 // --- SBI v0.4 — meet- + trigger-laag (additief naast de v0.2-output) ---
@@ -218,6 +244,8 @@ export interface DailyOutput {
   indicator_breakdown: IndicatorBreakdown[];
   /** Secundaire signalen (bv. Reddit) — NIET in composiet, apart getoond. */
   secondary_signals: SecondarySignal[];
+  /** Kalendercontext (A6): D6-signalen als context, NIET in composiet/condition_level. */
+  context_signals: ContextSignal[];
   media_cluster_diagnostic: {
     d5_cross_correlation_7d: number;
     composite_without_d5: number;

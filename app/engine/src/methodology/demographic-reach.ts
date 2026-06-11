@@ -36,6 +36,7 @@
  */
 
 import type { IndicatorCode } from "../types.js";
+import { INDICATORS } from "../indicators/registry.js";
 
 export interface ReachEntry {
   reach: number; // fractie 0-1 van de bevolking die de indicator raakt
@@ -70,13 +71,18 @@ export const DEMOGRAPHIC_REACH: Record<IndicatorCode, ReachEntry> = {
   "I-D3-009": { reach: 0.95, rationale: "Stroomnet-druk raakt vrijwel elk huishouden; effect is diffuus maar nagenoeg universeel." },
 };
 
-/** Som van alle reach-waarden — noemer voor de genormaliseerde weging. */
-export const TOTAL_REACH = Object.values(DEMOGRAPHIC_REACH).reduce(
-  (s, e) => s + e.reach,
-  0,
-);
+/**
+ * Som van de reach-waarden van de GESCOORDE indicatoren — noemer voor de
+ * genormaliseerde weging. Kalendercontext-codes (contextOnly, A6) tellen niet
+ * mee in het composiet en horen dus ook niet in de noemer: anders raakt het
+ * demografische composiet stilletjes gedeflateerd.
+ */
+export const TOTAL_REACH = (Object.keys(DEMOGRAPHIC_REACH) as IndicatorCode[])
+  .filter((code) => !INDICATORS[code].contextOnly)
+  .reduce((s, code) => s + DEMOGRAPHIC_REACH[code].reach, 0);
 
-/** Genormaliseerd demografisch gewicht van één indicator (telt op tot 1.0). */
+/** Genormaliseerd demografisch gewicht van één gescoorde indicator (telt op tot 1.0). */
 export function demographicWeight(code: IndicatorCode): number {
+  if (INDICATORS[code].contextOnly) return 0; // kalendercontext (A6)
   return DEMOGRAPHIC_REACH[code].reach / TOTAL_REACH;
 }

@@ -18,11 +18,11 @@ NOW = datetime(2026, 6, 4, 12, 0, 0, tzinfo=timezone.utc)
 
 
 def _healthy_latest() -> dict:
-    bd = [{"code": f"X-{i}", "state": "normaal", "z_short": 0.1, "contribution": 0.01} for i in range(25)]
+    bd = [{"code": f"X-{i}", "state": "normaal", "z_short": 0.1, "contribution": 0.01} for i in range(21)]
     return {
         "timestamp": "2026-06-04T11:55:00Z",            # 5 min oud
         "indicator_breakdown": bd,
-        "composite": {"equal": 0.25},                    # = 25 x 0.01
+        "composite": {"equal": 0.21},                    # = 21 x 0.01
         "percentile": {"short_24m": 60},
         "data_quality": {"indicators_simulated": []},
         "secondary_signals": [{} for _ in range(9)],
@@ -46,9 +46,9 @@ def test_stale_faalt():
 
 def test_verkeerd_aantal_faalt():
     l = _healthy_latest()
-    l["indicator_breakdown"] = l["indicator_breakdown"][:24]
+    l["indicator_breakdown"] = l["indicator_breakdown"][:20]
     p, _ = vl.assess(l, _OK, NOW)
-    assert any("verwacht 25" in x for x in p), p
+    assert any("verwacht 21" in x for x in p), p
 
 
 def test_stil_kapotte_indicator_faalt():
@@ -92,7 +92,7 @@ def test_gesimuleerd_extreem_faalt():
 
 def test_composiet_inconsistent_faalt():
     l = _healthy_latest()
-    l["composite"]["equal"] = 0.9                        # ≠ 0.25
+    l["composite"]["equal"] = 0.9                        # ≠ 0.21
     p, _ = vl.assess(l, _OK, NOW)
     assert any("som contributies" in x for x in p), p
 

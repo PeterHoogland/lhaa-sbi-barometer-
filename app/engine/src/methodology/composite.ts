@@ -11,7 +11,7 @@
  */
 
 import type { DomainCode, DomainContribution, IndicatorCode } from "../types.js";
-import { allDomains, indicatorsByDomain, INDICATOR_CODES, INDICATORS } from "../indicators/registry.js";
+import { scoredDomains, indicatorsByDomain, INDICATOR_CODES, INDICATORS } from "../indicators/registry.js";
 import { indicatorWeight, domainWeight, type WeightSchema } from "./weights.js";
 import { demographicWeight } from "./demographic-reach.js";
 
@@ -29,12 +29,14 @@ export function computeComposite(zScores: ZMap, schema: WeightSchema): Composite
     D1: 0, D2: 0, D3: 0, D4: 0, D5: 0, D6: 0,
   };
 
-  for (const domain of allDomains()) {
+  // A6: alleen gescoorde domeinen — D6 (kalendercontext) telt niet mee.
+  for (const domain of scoredDomains()) {
     let domainSum = 0;
     for (const meta of indicatorsByDomain(domain)) {
       const z = zScores[meta.code];
       if (z === undefined) continue; // missing — zie doc 03 §1.3
       if (meta.grade === "D") continue; // grade D = experimentele proxy, telt niet mee (review §3)
+      if (meta.contextOnly) continue; // kalendercontext (A6) — geen meting
       const w = indicatorWeight(schema, meta.code, domain);
       domainSum += w * z;
     }
@@ -44,7 +46,7 @@ export function computeComposite(zScores: ZMap, schema: WeightSchema): Composite
   let composite = 0;
   const contributions: DomainContribution[] = [];
 
-  for (const domain of allDomains()) {
+  for (const domain of scoredDomains()) {
     const wd = domainWeight(schema, domain);
     const contrib = wd * domainScores[domain];
     composite += contrib;
@@ -66,19 +68,20 @@ export function computeCompositeWithoutD5(zScores: ZMap, schema: WeightSchema): 
   for (const meta of indicatorsByDomain("D5")) {
     delete filteredZ[meta.code];
   }
-  // Herschalen: de overige 5 domeinen krijgen weight-verdeling pro rata
+  // Herschalen: de overige gescoorde domeinen krijgen weight-verdeling pro rata
   let composite = 0;
-  const totalRemainingWeight = allDomains()
+  const totalRemainingWeight = scoredDomains()
     .filter((d) => d !== "D5")
     .reduce((s, d) => s + domainWeight(schema, d), 0);
 
-  for (const domain of allDomains()) {
+  for (const domain of scoredDomains()) {
     if (domain === "D5") continue;
     let domainSum = 0;
     for (const meta of indicatorsByDomain(domain)) {
       const z = filteredZ[meta.code];
       if (z === undefined) continue;
       if (meta.grade === "D") continue; // grade D telt niet mee (review §3)
+      if (meta.contextOnly) continue; // kalendercontext (A6) — geen meting
       domainSum += indicatorWeight(schema, meta.code, domain) * z;
     }
     composite += (domainWeight(schema, domain) / totalRemainingWeight) * domainSum;
@@ -99,6 +102,7 @@ export function computeDemographicComposite(zScores: ZMap): number {
     const z = zScores[code];
     if (z === undefined) continue;
     if (INDICATORS[code].grade === "D") continue; // grade D telt niet mee (review §3)
+    if (INDICATORS[code].contextOnly) continue; // kalendercontext (A6) — geen meting
     composite += demographicWeight(code) * z;
   }
   return composite;

@@ -98,9 +98,11 @@ SECONDARY_SOURCES: dict[str, tuple[str, int]] = {
     "I-D1-010-sci": ("Pollen Sciensano (Belgisch meetnet, in opbouw)", 4),
 }
 
-# De volledige gescoorde set die in het cijfer hoort te zitten (incl. de
-# deterministische D4/D6). Komt overeen met de indicator_breakdown in latest.json.
-EXPECTED_SCORED_INDICATORS = 25
+# De volledige gemeten set die in de indicator_breakdown hoort te zitten (incl.
+# de deterministische D1/D4, maar ZONDER de D6-kalendercontext: die staat sinds
+# het A6-amendement als context_signals buiten het cijfer). 25 registry-codes
+# - 4 context = 21.
+EXPECTED_SCORED_INDICATORS = 21
 
 # Verdict-drempels.
 CRITICAL_PRIMARY_DOWN = 6       # >= zoveel primaire bronnen plat = systeemstoring

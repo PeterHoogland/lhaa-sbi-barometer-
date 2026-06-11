@@ -5,6 +5,7 @@ import { BrandSafetyBanner } from "./components/BrandSafetyBanner";
 import { ConditionLevelDisplay } from "./components/ConditionLevelDisplay";
 import { PreviewPage } from "./components/PreviewPage";
 import { TopInfluences } from "./components/TopInfluences";
+import { ContextSignals } from "./components/ContextSignals";
 import { HeroBanner } from "./components/HeroBanner";
 import { LHALogo } from "./components/LHALogo";
 import { ButtonPanels } from "./components/ButtonPanels";
@@ -99,6 +100,8 @@ export function App() {
               : data.indicator_breakdown
           }
         />
+
+        <ContextSignals signals={data.context_signals ?? []} />
 
         <ButtonPanels data={expertData ?? data} sparkline={sparkline} />
       </main>

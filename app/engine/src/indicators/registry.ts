@@ -244,6 +244,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     applyStl: false,
     source: "Kalender-deterministisch",
     deterministic: true,
+    contextOnly: true,
   },
   "I-D6-002": {
     code: "I-D6-002",
@@ -254,6 +255,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     applyStl: false,
     source: "Kalender-deterministisch",
     deterministic: true,
+    contextOnly: true,
   },
   "I-D6-003": {
     code: "I-D6-003",
@@ -264,6 +266,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     applyStl: false,
     source: "Kalender-deterministisch",
     deterministic: true,
+    contextOnly: true,
   },
   "I-D6-005": {
     code: "I-D6-005",
@@ -274,6 +277,7 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
     applyStl: false,
     source: "Academische kalender",
     deterministic: true,
+    contextOnly: true,
   },
 };
 
@@ -294,4 +298,22 @@ export function indicatorsByDomain(domain: DomainCode): IndicatorMeta[] {
 
 export function allDomains(): DomainCode[] {
   return ["D1", "D2", "D3", "D4", "D5", "D6"];
+}
+
+/**
+ * Kalender-/contextindicatoren (A6): afgeleid uit de datum, geen meting.
+ * Verschijnen als context_signals; tellen niet mee in het composiet.
+ */
+export function contextIndicators(): IndicatorMeta[] {
+  return INDICATOR_CODES.map((c) => INDICATORS[c]).filter((m) => m.contextOnly === true);
+}
+
+/**
+ * Domeinen die in het composiet gescoord worden. D6 (Kalender & ritme) bestaat
+ * volledig uit contextOnly-indicatoren en valt er dus uit (A6-amendement: een
+ * kalendervariabele is een ontwerp-aanname, geen meting — ze mag het hoofdcijfer
+ * niet circulair opdrijven).
+ */
+export function scoredDomains(): DomainCode[] {
+  return allDomains().filter((d) => indicatorsByDomain(d).some((m) => !m.contextOnly));
 }

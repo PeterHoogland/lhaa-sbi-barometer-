@@ -33,7 +33,7 @@ def _healthy_index() -> dict:
     return {
         "composite": {"equal": 0.24},
         "percentile": {"short_24m": 71},
-        "indicator_breakdown": [{"code": f"X-{i}", "state": "normaal"} for i in range(25)],
+        "indicator_breakdown": [{"code": f"X-{i}", "state": "normaal"} for i in range(21)],
         "timestamp": "2026-06-03T08:00:00Z",
     }
 
@@ -157,7 +157,7 @@ def test_percentiel_buiten_bereik_is_critical():
 
 def test_verkeerd_aantal_indicatoren_is_critical():
     idx = _healthy_index()
-    idx["indicator_breakdown"] = idx["indicator_breakdown"][:24]  # 24 i.p.v. 25
+    idx["indicator_breakdown"] = idx["indicator_breakdown"][:20]  # 20 i.p.v. 21
     rep = hc.analyze(_healthy_raw(), idx, TODAY)
     assert rep.verdict == "critical"
 
