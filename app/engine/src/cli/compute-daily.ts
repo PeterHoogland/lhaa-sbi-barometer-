@@ -13,6 +13,7 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { computeDaily } from "../runtime.js";
+import { toPublicOutput } from "../publish.js";
 import { INDICATORS, INDICATOR_CODES } from "../indicators/registry.js";
 import type { IndicatorCode } from "../types.js";
 
@@ -22,6 +23,8 @@ const RAW_HISTORY = resolve(__dirname, "../../../data/raw-history.json");
 const COMPOSITE_HISTORY = resolve(__dirname, "../../../data/composite-history.json");
 const OUT_DATA = resolve(__dirname, "../../../data/latest.json");
 const OUT_WEB = resolve(__dirname, "../../../web/public/data/latest.json");
+const EXPERT_DATA = resolve(__dirname, "../../../data/latest-expert.json");
+const EXPERT_WEB = resolve(__dirname, "../../../web/public/data/latest-expert.json");
 const SPARK_DATA = resolve(__dirname, "../../../data/sparkline-30d.json");
 const SPARK_WEB = resolve(__dirname, "../../../web/public/data/sparkline-30d.json");
 
@@ -118,7 +121,15 @@ function main() {
     tier: "green" as const,
   }));
 
+  // A3: het publieke latest.json bevat in test-modus GEEN v0.4-blok (zelfde
+  // helper als generate-fixture); de volledige output gaat naar het expliciete
+  // expert-kanaal (healthcheck leest latest-expert.json eerst).
+  const publicOutput = toPublicOutput(output);
   for (const target of [OUT_DATA, OUT_WEB]) {
+    mkdirSync(dirname(target), { recursive: true });
+    writeFileSync(target, JSON.stringify(publicOutput, null, 2));
+  }
+  for (const target of [EXPERT_DATA, EXPERT_WEB]) {
     mkdirSync(dirname(target), { recursive: true });
     writeFileSync(target, JSON.stringify(output, null, 2));
   }

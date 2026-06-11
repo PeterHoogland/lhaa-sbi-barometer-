@@ -98,7 +98,9 @@ export function App() {
 
         <TopInfluences
           breakdown={
-            data.v04
+            // Gate op mode (A3), niet op aanwezigheid: een test-modus-v04 mag de
+            // publieke top-3 nooit voeden, ook niet als een publisher vergeet te strippen.
+            data.v04?.mode === "live"
               ? data.v04.kern_breakdown.map((k) => enrichKern(k, data.indicator_breakdown))
               : data.indicator_breakdown
           }
@@ -115,10 +117,9 @@ export function App() {
             <LHALogo size={52} />
             <div className="footer-mark-text">{FOOTER_NOTES.tagline}</div>
           </div>
-          {/* A5: eerlijke, nuchtere testmodus-melding. Data-gedreven: `v04` zit alleen
-              in de publieke output bij mode=live, dus deze regel verdwijnt vanzelf
-              zodra de campagne-koppeling live gaat. */}
-          {!data.v04 && (
+          {/* A5: eerlijke, nuchtere testmodus-melding. Gate op mode (A3): de regel
+              verdwijnt pas wanneer de campagne-koppeling écht live staat. */}
+          {data.v04?.mode !== "live" && (
             <p style={{ fontSize: "0.78rem", opacity: 0.55, marginTop: "0.9rem" }}>
               Campagne-koppeling staat in testmodus. Er vuurt niets automatisch.
             </p>

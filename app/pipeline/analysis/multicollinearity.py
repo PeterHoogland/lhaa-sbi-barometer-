@@ -1,7 +1,7 @@
 """
 Multicollineariteit-audit (verbeterplan §4.6).
 
-Doel: nagaan of de 24 indicatoren elkaar deels dubbel tellen. Sterk gecorreleerde
+Doel: nagaan of de gescoorde indicatoren (21 gemeten, registry) elkaar deels dubbel tellen. Sterk gecorreleerde
 indicatoren dragen feitelijk hetzelfde signaal en wegen dan dubbel in het composiet.
 We rapporteren paren met |Spearman-rho| >= 0,70 (de plan-drempel) en een ruwe
 schatting van de effectieve dimensionaliteit.

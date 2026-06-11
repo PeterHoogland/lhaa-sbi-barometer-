@@ -14,6 +14,7 @@ import { fileURLToPath } from "node:url";
 import { INDICATOR_CODES, INDICATORS } from "../indicators/registry.js";
 import { computeAllDeterministic } from "../indicators/deterministic.js";
 import { computeDaily } from "../runtime.js";
+import { toPublicOutput } from "../publish.js";
 import { percentileRank } from "../methodology/percentile.js";
 import type { IndicatorCode } from "../types.js";
 import { EMPTY_TRIGGER_STATE, type TriggerState } from "../methodology/triggers.js";
@@ -486,10 +487,9 @@ async function generate(): Promise<void> {
   // In test-modus mag de v0.4-laag NIET in de publieke kanalen: latest.json wordt een
   // v0.2-projectie; de volledige output (incl. v04) gaat naar latest-expert.json — het
   // expliciete "expert/test"-kanaal (review §0-bis.5 / §1.1). In live-modus is v04 de
-  // hoofdmeting en blijft alles publiek.
+  // hoofdmeting en blijft alles publiek. Gedeelde helper met compute-daily (A3).
   const isTest = todayOutput.v04?.mode !== "live";
-  const publicOutput = { ...todayOutput };
-  if (isTest) delete publicOutput.v04;
+  const publicOutput = toPublicOutput(todayOutput);
 
   for (const target of [DEFAULT_OUT, WEB_OUT]) {
     mkdirSync(dirname(target), { recursive: true });

@@ -1,7 +1,10 @@
 /**
- * Bevroren registry van de 25 gescoorde indicatoren.
+ * Bevroren registry van de 25 geregistreerde indicatoren — de single source of
+ * truth voor elke telling (A3). Daarvan: 20 gescoord in het cijfer, 4 kalender-
+ * context (contextOnly, A6) en 1 diagnostisch (grade D, I-D3-003).
  * Bron: doc 02_Laag-3 §10 + doc 04_Laag-5 §3.2 (STL beslisregel)
- *       + doc 04_Laag-5 §5 (inverse-codering)
+ *       + doc 04_Laag-5 §5 (inverse-codering) + amendementen (zie
+ *       PRE_REGISTERED_CODES / AMENDED_CODES onderaan + CHANGELOG.md)
  */
 
 import type { IndicatorMeta, IndicatorCode, DomainCode } from "../types.js";
@@ -317,3 +320,28 @@ export function contextIndicators(): IndicatorMeta[] {
 export function scoredDomains(): DomainCode[] {
   return allDomains().filter((d) => indicatorsByDomain(d).some((m) => !m.contextOnly));
 }
+
+/**
+ * Pre-registratie-reconciliatie (A2/A3). De oorspronkelijke pre-registratie
+ * (doc 00 §4 + doc 02 §10) somt 20 primaire indicatoren op; daarna zijn er via
+ * het amendement-protocol (doc 00 §13, grond A2) vijf bijgekomen. Deze twee
+ * bevroren lijsten maken dat verifieerbaar: een gescoorde indicator die in geen
+ * van beide staat, laat de synchronisatietest (test/registry.test.ts) falen.
+ */
+export const PRE_REGISTERED_CODES: IndicatorCode[] = [
+  "I-D1-001", "I-D1-002", "I-D1-003", "I-D1-004",
+  "I-D2-001", "I-D2-004",
+  "I-D3-001", "I-D3-002", "I-D3-003", "I-D3-005", "I-D3-006",
+  "I-D4-001", "I-D4-002",
+  "I-D5-001", "I-D5-002", "I-D5-003",
+  "I-D6-001", "I-D6-002", "I-D6-003", "I-D6-005",
+];
+
+/** Per amendement toegevoegd (doc 00 §13 grond A2; data + motivatie in CHANGELOG.md). */
+export const AMENDED_CODES: IndicatorCode[] = [
+  "I-D1-009", // Wateroverlast (amendement Laag 3)
+  "I-D1-010", // Pollen (amendement Laag 3; verving secundair I-D1-005S)
+  "I-D2-009", // Treinverstoringen (amendement Laag 3)
+  "I-D3-007", // Consumentenvertrouwen (amendement 2026-06-03, Peter GO)
+  "I-D3-009", // Stroomnet-druk (amendement Laag 3)
+];
