@@ -83,4 +83,23 @@ describe("buildSeasonalPercentileHistory is lookahead-vrij", () => {
     expect(out[1]).toBeGreaterThan(50);
     expect(out.length).toBe(4);
   });
+
+  it("een bevroren dag verandert niet als er latere data bijkomt (A5)", () => {
+    // Zelfde patroon als de buildPercentileHistory-test in engine.test.ts, maar
+    // dan over het seizoenspad (windowDays actief, minPoints 1).
+    const hist = [
+      { date: "2026-01-01", value: 0 },
+      { date: "2026-01-02", value: 10 },
+      { date: "2026-01-03", value: -10 },
+    ];
+    const a = buildSeasonalPercentileHistory(hist, { date: "2026-01-04", value: 5 }, 45, 1);
+    const b = buildSeasonalPercentileHistory(
+      [...hist, { date: "2026-01-04", value: 5 }],
+      { date: "2026-01-05", value: 99 },
+      45,
+      1,
+    );
+    // de percentielen van dag 0..3 mogen niet wijzigen door de latere dag
+    expect(b.slice(0, a.length)).toEqual(a);
+  });
 });

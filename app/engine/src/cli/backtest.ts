@@ -6,8 +6,15 @@
  * rood haalt, en hoeveel triggers er vuren. Zo zie je objectief of de huidige
  * (ongekalibreerde) drempels te streng of te los staan — vóór je ze bijstelt.
  *
- * Lookahead-vrij: per dag telt alleen data met datum ≤ die dag (windowedZ +
- * progressieve composiet-historie). Run: npm run backtest [-- --from YYYY-MM-DD].
+ * Lookahead-vrij voor wat GERAPPORTEERD wordt: alle geaggregeerde stats komen uit
+ * de v0.4-laag (windowedZ = trailing slice ≤ dag t) en de composiet-historie wordt
+ * progressief opgebouwd (push ná elke dag). Bekende, bewuste beperking: de
+ * v0.2-z-laag binnen computeDaily krijgt per dag de VOLLEDIGE per-indicator-historie
+ * en heeft dus een residuele lookahead via de z-baseline. Die v0.2-waarden worden
+ * hier niet gerapporteerd; per-dag clippen zou de v0.2-composietreeks verschuiven
+ * en de facto een herkalibratie van de v0.4-drempels zijn — alleen doen als bewuste
+ * beslissing met vóór/ná-vergelijking (zie verbeterplan A5).
+ * Run: npm run backtest [-- --from YYYY-MM-DD].
  */
 
 import { readFileSync, existsSync } from "node:fs";
