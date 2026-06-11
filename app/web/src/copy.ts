@@ -65,6 +65,12 @@ export const LES_HAUTES_ALPES_CTA = {
   },
 } as const;
 
+export const DEMO_BANNER = {
+  label: "DEMO · TESTDATA, NIET VOOR BESLUITVORMING",
+  message:
+    "Een te groot deel van de meting draait vandaag nog op demo-data. Het cijfer hieronder is een testweergave, geen betrouwbare stand van het land.",
+} as const;
+
 export const BRAND_SAFETY_OVERRIDE = {
   elevated: "Er speelt iets gevoeligs vandaag. We zetten de commerciële boodschap even op pauze. De meting loopt door.",
   block: "Commerciële boodschappen zijn opgeschort. De teller blijft de huidige toestand registreren.",

@@ -22,6 +22,8 @@ import {
   computeConditionLevel,
   buildPercentileHistory,
   computeDaily,
+  computeDemoFraction,
+  DEMO_FRACTION_THRESHOLD,
 } from "../src/index.js";
 
 describe("Z-scoring (doc 04 §7)", () => {
@@ -294,6 +296,75 @@ describe("Kalendercontext D6 (A6) — context, geen meting", () => {
     const oktExamens = oktober.context_signals.find((c) => c.code === "I-D6-005")!;
     expect(juniExamens.raw_value).toBeGreaterThan(oktExamens.raw_value); // kalender verschilt écht
     expect(juni.composite.equal).toBeCloseTo(oktober.composite.equal, 2); // het cijfer niet
+  });
+});
+
+describe("Demo-fractie (A7) — gewogen demo-aandeel + score_label", () => {
+  it("≥30% gewogen demo-aandeel → demo_fraction ≥ 0.3 (alle D1-codes + D5 simulated)", () => {
+    // D1 (6 codes) + D5 (3 codes) = 2 van de 5 gescoorde domeinen volledig demo
+    // → gewogen aandeel 0.4 bij volledige dekking.
+    const z = {
+      "I-D1-001": 0.5, "I-D1-002": 0.5, "I-D1-003": 0.5, "I-D1-004": 0.5,
+      "I-D1-009": 0.5, "I-D1-010": 0.5,
+      "I-D2-001": 0.5, "I-D2-004": 0.5, "I-D2-009": 0.5,
+      "I-D3-001": 0.5, "I-D3-002": 0.5, "I-D3-005": 0.5, "I-D3-006": 0.5,
+      "I-D3-007": 0.5, "I-D3-009": 0.5,
+      "I-D4-001": 0.5, "I-D4-002": 0.5,
+      "I-D5-001": 0.5, "I-D5-002": 0.5, "I-D5-003": 0.5,
+    } as const;
+    const simulated = [
+      "I-D1-001", "I-D1-002", "I-D1-003", "I-D1-004", "I-D1-009", "I-D1-010",
+      "I-D5-001", "I-D5-002", "I-D5-003",
+    ] as const;
+    const f = computeDemoFraction({ ...z }, [...simulated]);
+    // Demo-gewicht D1+D5 = 0.4; de noemer mist het 1/7-aandeel van grade-D
+    // I-D3-003 binnen D3 (consistent met computeComposite) → 0.4 / (1 − 0.2/7).
+    expect(f).toBeCloseTo(0.4 / (1 - 0.2 / 7), 5);
+    expect(f).toBeGreaterThanOrEqual(DEMO_FRACTION_THRESHOLD);
+  });
+
+  it("geen simulated → fractie 0; integratie: score_label 'echt' en demo_fraction 0", () => {
+    expect(computeDemoFraction({ "I-D1-002": 1 }, [])).toBe(0);
+    const out = computeDaily({ date: "2026-06-01", rawValues: {}, history: {}, compositeHistory: [] });
+    expect(out.data_quality.demo_fraction).toBe(0);
+    expect(out.data_quality.score_label).toBe("echt");
+  });
+
+  it("simulated-maar-niet-gescoord (missing) telt niet mee", () => {
+    // I-D2-009 simulated maar zonder z (ontbreekt) → beïnvloedt het cijfer niet.
+    const f = computeDemoFraction({ "I-D1-002": 1, "I-D3-001": 1 }, ["I-D2-009"]);
+    expect(f).toBe(0);
+  });
+
+  it("grade-D-indicator telt niet mee in de fractie (consistent met computeComposite)", () => {
+    const f = computeDemoFraction({ "I-D1-002": 1, "I-D3-003": 2 }, ["I-D3-003"]);
+    expect(f).toBe(0);
+  });
+
+  it("één simulated indicator die als enige scoort → fractie 1 (het cijfer ís dan demo)", () => {
+    expect(computeDemoFraction({ "I-D3-006": 0.2 }, ["I-D3-006"])).toBe(1);
+  });
+
+  it("integratie: simulated codes met echte baseline zetten demo_fraction in data_quality", () => {
+    const mkHist = () =>
+      Array.from({ length: 60 }, (_, i) => ({
+        date: new Date(Date.parse("2026-06-01T00:00:00Z") - (i + 1) * 86_400_000)
+          .toISOString()
+          .slice(0, 10),
+        value: 10 + (i % 5),
+      }));
+    const out = computeDaily({
+      date: "2026-06-01",
+      rawValues: { "I-D5-001": 12, "I-D1-002": 12 },
+      history: { "I-D5-001": mkHist(), "I-D1-002": mkHist() },
+      compositeHistory: [],
+      simulatedIndicators: ["I-D5-001"],
+    });
+    // Gescoord: I-D5-001 + I-D1-002 + deterministische codes (daglicht, deadlines,
+    // schoolvakantie — geen historie nodig? wel: zonder 30 punten zijn die missing).
+    // Hier scoren alleen de twee met echte historie → demo-aandeel = w(D5)/.
+    expect(out.data_quality.demo_fraction).toBeGreaterThan(0);
+    expect(out.data_quality.indicators_simulated).toContain("I-D5-001");
   });
 });
 

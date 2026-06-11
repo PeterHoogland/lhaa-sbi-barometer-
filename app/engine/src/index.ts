@@ -49,7 +49,7 @@ export {
   type VerdrietSignal,
   type BrandSafetyDecision,
 } from "./methodology/brand-safety.js";
-export { computeDaily, buildPercentileHistory, type DailyComputeInput } from "./runtime.js";
+export { computeDaily, buildPercentileHistory, computeDemoFraction, DEMO_FRACTION_THRESHOLD, type DailyComputeInput } from "./runtime.js";
 
 // --- SBI v0.4 — meet- + trigger-laag ---
 export {

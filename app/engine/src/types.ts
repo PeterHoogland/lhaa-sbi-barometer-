@@ -260,6 +260,10 @@ export interface DailyOutput {
     indicators_with_imputed_data: IndicatorCode[];
     indicators_missing: IndicatorCode[];
     indicators_simulated: IndicatorCode[];
+    /** A7: gewogen aandeel van het cijfer dat uit demo-/simulated-data komt (0-1). */
+    demo_fraction: number;
+    /** A7: "demo" zodra demo_fraction ≥ DEMO_FRACTION_THRESHOLD — UI toont dan de demo-banner. */
+    score_label: "demo" | "echt";
     pipeline_version: string;
     methodology_version: string;
     implementation_stage: "minimum_viable_pipeline" | "target_architecture";

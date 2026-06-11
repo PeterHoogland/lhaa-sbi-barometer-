@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { DailyOutput, SparklinePoint } from "./types";
 import { CallToAction } from "./components/CallToAction";
 import { BrandSafetyBanner } from "./components/BrandSafetyBanner";
+import { DemoBanner } from "./components/DemoBanner";
 import { ConditionLevelDisplay } from "./components/ConditionLevelDisplay";
 import { PreviewPage } from "./components/PreviewPage";
 import { TopInfluences } from "./components/TopInfluences";
@@ -83,6 +84,8 @@ export function App() {
   return (
     <div className={`app tier-${data.tier.current}`}>
       <HeroBanner />
+
+      <DemoBanner dataQuality={data.data_quality} />
 
       {data.brand_safety.flag !== "normal" && (
         <BrandSafetyBanner brandSafety={data.brand_safety} />

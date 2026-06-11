@@ -516,6 +516,9 @@ async function generate(): Promise<void> {
     brand_safety_flag: todayOutput.brand_safety.flag,
     valid_until: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
     methodology_version: todayOutput.data_quality.methodology_version,
+    // A7: ook de embed/lichte clients zien eerlijk of de dagscore op demo-data leunt.
+    demo_fraction: todayOutput.data_quality.demo_fraction,
+    score_label: todayOutput.data_quality.score_label,
     // v0.4-afgeleide waarden lekken NIET naar de embed in test-modus (review §0-bis.5):
     // null zolang mode = test; v04_mode blijft als transparantie-vlag staan.
     composite_meting: isTest ? null : (todayOutput.v04?.composite.meting ?? null),

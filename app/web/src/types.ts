@@ -114,6 +114,9 @@ export interface DailyOutput {
     indicators_with_imputed_data: string[];
     indicators_missing: string[];
     indicators_simulated: string[];
+    /** A7 — optioneel: oudere records missen deze velden. */
+    demo_fraction?: number;
+    score_label?: "demo" | "echt";
     pipeline_version: string;
     methodology_version: string;
     implementation_stage: string;

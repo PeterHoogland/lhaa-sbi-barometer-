@@ -290,6 +290,9 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     };
   });
 
+  // A7: gewogen demo-aandeel van het cijfer (voor data_quality + demo-banner).
+  const demoFraction = computeDemoFraction(zShort, input.simulatedIndicators ?? []);
+
   // Kalendercontext (A6): de D6-signalen als context — zonder z-score of state.
   // De ruwe waarde komt uit computeAllDeterministic (altijd geldig, geen meting).
   const contextSignals: ContextSignal[] = contextIndicators().map((meta) => {
@@ -394,6 +397,10 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       indicators_with_imputed_data: input.imputedIndicators ?? [],
       indicators_missing: missing,
       indicators_simulated: input.simulatedIndicators ?? [],
+      // A7: gewogen demo-aandeel in het cijfer + label. Het label wordt op de
+      // ONafgeronde fractie bepaald (geen flapperen rond de drempel door round2).
+      demo_fraction: round2(demoFraction),
+      score_label: demoFraction >= DEMO_FRACTION_THRESHOLD ? "demo" : "echt",
       pipeline_version: PIPELINE_VERSION,
       methodology_version: METHODOLOGY_VERSION,
       implementation_stage: "minimum_viable_pipeline",
@@ -431,6 +438,34 @@ function compute7dCrossCorrelation(
   const b = history[codeB]?.slice(-7).map((h) => h.value) ?? [];
   if (a.length < 3 || b.length < 3 || a.length !== b.length) return 0;
   return pearsonCorrelation(a, b);
+}
+
+/** Drempel waarboven de hele dagscore als "demo" gelabeld wordt (A7). */
+export const DEMO_FRACTION_THRESHOLD = 0.3;
+
+/**
+ * Gewogen demo-aandeel ÍN het cijfer (A7): het aandeel van het equal-gewicht dat
+ * uit gesimuleerde indicatoren komt, genormaliseerd over de indicatoren die
+ * werkelijk meetellen (z aanwezig, grade ≠ D, geen kalendercontext) — gespiegeld
+ * aan de uitsluitingen van computeComposite. Een simulated indicator die niet
+ * scoort (missing) beïnvloedt het cijfer niet en telt dus bewust niet mee.
+ * Keerzijde, ook bewust: op een dag waarop bijna alles ontbreekt en één
+ * simulated indicator wél scoort, is de fractie hoog — het cijfer ís dan
+ * vooral demo.
+ */
+export function computeDemoFraction(z: ZMap, simulated: IndicatorCode[]): number {
+  let counted = 0;
+  let demo = 0;
+  for (const code of INDICATOR_CODES) {
+    const meta = INDICATORS[code];
+    if (z[code] === undefined) continue;
+    if (meta.grade === "D") continue;
+    if (meta.contextOnly) continue;
+    const w = indicatorWeight("equal", code, meta.domain) * domainWeight("equal", meta.domain);
+    counted += w;
+    if (simulated.includes(code)) demo += w;
+  }
+  return counted > 0 ? demo / counted : 0;
 }
 
 function estimateDropoutRange(z: ZMap): [number, number] {

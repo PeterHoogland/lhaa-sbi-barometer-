@@ -1764,3 +1764,12 @@ main {
      die de body tot losse woorden op een smal scherm). */
   .top-summary { grid-template-columns: 34px 1fr auto; gap: 12px; padding: 16px; }
 }
+
+/* ============================================================
+   DEMO BANNER (A7) — prominenter dan brand-safety: testdata-waarschuwing
+   ============================================================ */
+.demo-banner {
+  border-color: var(--st-alert);
+  background: var(--c-red-bg);
+}
+.demo-banner .bs-label { color: var(--st-alert); }
