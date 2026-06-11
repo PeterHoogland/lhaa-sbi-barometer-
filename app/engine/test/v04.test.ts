@@ -82,6 +82,17 @@ describe("Getrimde MAD-Z — windowedZ (v0.4 §2)", () => {
     const z = windowedZ(99, tiny, "2026-06-01", 18, { applyStl: false });
     expect(z.applied).toBe(false);
     expect(z.z).toBe(0);
+    expect(z.reason).toBe("insufficient_points");
+  });
+
+  it("markeert een baseline zonder variatie als 'no_scale'", () => {
+    const flat = Array.from({ length: 12 }, (_, i) => ({
+      date: daysAgoISO("2026-06-01", i + 1),
+      value: 5,
+    }));
+    const z = windowedZ(5, [...flat, { date: "2026-06-01", value: 5 }], "2026-06-01", 18, { applyStl: false });
+    expect(z.applied).toBe(false);
+    expect(z.reason).toBe("no_scale");
   });
 });
 
@@ -297,6 +308,69 @@ describe("v0.4 zichtbare tier (oranje 1d≥P60, rood 2d≥P90)", () => {
     expect(computeV04Tier([90, 90, 40, 40]).tier).toBe("green");
     // 1 dag onder is nog niet genoeg
     expect(computeV04Tier([90, 90, 40]).tier).toBe("red");
+  });
+});
+
+describe("Schaarste & hernormalisatie (A1) — schaarse kern is 'ontbreekt', geen z=0", () => {
+  it("schaarse kern-code (wél dagwaarde, te weinig historie) → 'ontbreekt', geen trigger", () => {
+    // 5 echte punten < MIN_POINTS_FOR_Z (8): de indicator mag niet als z=0
+    // ("normaal") in het composiet lekken en mag geen T1/T2-trigger voeden.
+    const hist = Array.from({ length: 5 }, (_, i) => ({
+      date: daysAgoISO("2026-06-01", i + 1),
+      value: 10 + i,
+    }));
+    const out = computeDaily({
+      date: "2026-06-01",
+      rawValues: { "I-D5-003": 99 },
+      history: { "I-D5-003": hist },
+      compositeHistory: [],
+    });
+    const k = out.v04!.kern_breakdown.find((b) => b.code === "I-D5-003")!;
+    expect(k.state).toBe("ontbreekt");
+    expect(k.z_lang).toBeNull();
+    expect(k.z_kort).toBeNull();
+    expect(k.percentile_lang).toBeNull();
+    expect(k.contribution_meting).toBe(0);
+    expect(k.raw_value).toBe(99); // de dagwaarde wás er — alleen de baseline niet
+    expect(out.v04!.triggers).toHaveLength(0);
+    expect(Number.isFinite(out.v04!.composite.meting)).toBe(true);
+  });
+
+  it("hernormalisatie: ontbrekende kern-codes verdunnen composite_meting niet", () => {
+    // Vóór A1 gaf dit Σ w_meting van de 2 aanwezige codes (≪ 1); nu 1.0.
+    const z: ZLangMap = { "I-D5-001": 1, "I-D1-002": 1 };
+    expect(compositeMeting(z)).toBeCloseTo(1.0, 6);
+  });
+
+  it("achtergrond hernormaliseert met de KERN-brede factor en behoudt deelsom-semantiek", () => {
+    const z: ZLangMap = { "I-D3-002": 1, "I-D2-004": 1 }; // beide grondlast
+    expect(achtergrond(z)).toBeCloseTo(1.0, 6);
+    const mixed: ZLangMap = { "I-D3-002": 1, "I-D5-001": 1 }; // grondlast + niet-grondlast
+    expect(achtergrond(mixed)).toBeLessThan(compositeMeting(mixed));
+  });
+
+  it("lege z-map → 0 en eindig (lege-noemer-guard, geen 0/0)", () => {
+    expect(compositeMeting({})).toBe(0);
+    expect(achtergrond({})).toBe(0);
+  });
+
+  it("vlakke baseline met dagwaarde op de mediaan → gemeten 'geen uitschieter' (z 0, normaal)", () => {
+    // v0.2-pariteit: geen variatie + waarde op/onder de mediaan is een meting
+    // ("geen uitschieter"), geen datagebrek (bv. koude-overschrijding 0 in de zomer).
+    const flat = Array.from({ length: 12 }, (_, i) => ({
+      date: daysAgoISO("2026-06-01", i + 1),
+      value: 5,
+    }));
+    const out = computeDaily({
+      date: "2026-06-01",
+      rawValues: { "I-D5-002": 5 },
+      history: { "I-D5-002": flat },
+      compositeHistory: [],
+    });
+    const k = out.v04!.kern_breakdown.find((b) => b.code === "I-D5-002")!;
+    expect(k.state).toBe("normaal");
+    expect(k.z_lang).toBe(0);
+    expect(k.contribution_meting).toBe(0);
   });
 });
 

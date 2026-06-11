@@ -102,6 +102,10 @@ export interface DailyComputeInput {
  * drempel scoren we de indicator NIET: hij wordt uitgesloten uit het composiet en
  * krijgt state "ontbreekt" — i.p.v. een neutrale 0 die als "normaal" zou lezen
  * (review §0-bis.3: dataschaarste mag geen geruststelling tonen).
+ *
+ * NB: de v0.4-laag hanteert bewust een lagere drempel (MIN_POINTS_FOR_Z = 8 in
+ * methodology/baseline-window.ts) omdat maandbronnen in een 18-maands venster
+ * maar ~12–18 punten hebben; de "ontbreekt"-conventie is in beide lagen gelijk.
  */
 const MIN_HISTORY_FOR_Z = 30;
 
@@ -501,6 +505,44 @@ function computeV04(p: ComputeV04Params): V04Output {
     const zl = windowedZ(value, merged, p.date, LANG_MAANDEN, meta);
     const zk = windowedZ(value, merged, p.date, KORT_MAANDEN, { applyStl: false });
 
+    // Geen geldige lange-baseline-z → "ontbreekt", conform de v0.2-conventie
+    // (MIN_HISTORY_FOR_Z): dataschaarste mag niet als z=0 ("normaal") in het
+    // composiet lekken en het cijfer verdunnen. Eén uitzondering, gespiegeld aan
+    // de v0.2-nuance in de z-loop hierboven: een vlakke baseline ("no_scale") met
+    // een dagwaarde op of onder de mediaan is een gemeten "geen uitschieter"
+    // (bv. koude-overschrijding 0 in de zomer) → z_lang = 0, state "normaal".
+    // De 9 kern-codes zijn alle non-inverse, dus de inverse-tak vervalt hier.
+    if (!zl.applied) {
+      const flatNoOutlier =
+        zl.reason === "no_scale" &&
+        zl.distribution.length > 0 &&
+        zl.effectiveValue <= computeBaseline(zl.distribution).median;
+      if (!flatNoOutlier) {
+        // NIET in zLangMap (composiet hernormaliseert over aanwezige codes) en
+        // NIET in perCore (een schaarse code mag ook geen T1/T2-trigger voeden).
+        kernBreakdown.push({
+          code,
+          domain: meta.domain,
+          plain_name: plain.plain,
+          class: klasse(code),
+          raw_value: round3(value),
+          z_kort: null,
+          z_lang: null,
+          delta_1d: null,
+          percentile_lang: null,
+          baseline_lang_jaren: Math.round(zl.jaren),
+          state: "ontbreekt",
+          w_meting: round3(wMeting(code)),
+          w_trigger: round3(wTrigger(code)),
+          contribution_meting: 0,
+          simulated: p.simulated.includes(code),
+          observation_date: p.observationDates?.[code] ?? p.date,
+          data_source: plain.dataSource,
+        });
+        continue;
+      }
+    }
+
     // delta_1d = z_kort(t) − z_kort(t−1), op dezelfde korte baseline.
     let delta1d = 0;
     const prev = lastBefore(series, p.date);
@@ -509,7 +551,9 @@ function computeV04(p: ComputeV04Params): V04Output {
       if (zkPrev.applied) delta1d = zk.z - zkPrev.z;
     }
 
-    const zLang = zl.applied ? zl.z : 0;
+    // Na de guard hierboven: zl.applied, óf het vlakke-baseline-"geen uitschieter"-
+    // geval (waar zl.z al 0 is). zl.z is hier dus altijd een gemeten waarde.
+    const zLang = zl.z;
     const zKort = zk.applied ? zk.z : 0;
     const pctLang =
       zl.applied && zl.distribution.length > 0 ? percentileRank(zl.effectiveValue, zl.distribution) : 0;

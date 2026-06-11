@@ -2,9 +2,14 @@
  * SBI v0.4 — meet-composiet, achtergronddruk en load-factor.
  * Bron: HANDOVER §2 (v0.4-richtlijn) §3.2 + §3.3.
  *
- *   composite_meting = Σ_kern   ( w_meting_i × z_lang_i )      // de kleurbol
- *   achtergrond      = Σ_traag  ( w_meting_i × z_lang_i )      // economische grondlast
+ *   composite_meting = Σ_kern   ( w_meting_i × z_lang_i ) / Σ_aanwezig w_meting_i
+ *   achtergrond      = Σ_traag  ( w_meting_i × z_lang_i ) / Σ_aanwezig w_meting_i
  *   load_factor      = clamp( 1 − k·achtergrond , 0.6 , 1.0 )  // moduleert de drempel
+ *
+ * De deler is de hernormalisatie over AANWEZIGE kern-codes (A1): een ontbrekende
+ * indicator (schaarse of geen echte baseline) mag het composiet niet richting 0
+ * verdunnen alsof er "normaal" gemeten is. Zodra alle 9 kern-codes aanwezig zijn
+ * is de factor exact 1 en is de formule identiek aan de oorspronkelijke.
  *
  * Beide composieten gebruiken de LANGE baseline (z_lang): het cijfer moet de
  * werkelijke last weerspiegelen, niet schommelen op recente ruis. De load-factor
@@ -28,14 +33,34 @@ function weightedSum(codes: IndicatorCode[], zLang: ZLangMap): number {
   return sum;
 }
 
-/** composite_meting = Σ over de 9 kern van w_meting × z_lang. */
-export function compositeMeting(zLang: ZLangMap): number {
-  return weightedSum(KERN_CODES, zLang);
+/**
+ * Hernormalisatie-noemer (A1): Σ w_meting van de kern-codes die met een eindige z
+ * in de map aanwezig zijn. Altijd over de VOLLE kern-set berekend — ook voor het
+ * achtergrond-deelcomposiet — zodat achtergrond zijn deelsom-semantiek behoudt
+ * (achtergrond < meting bij gelijke z) en de factor exact 1 is bij volledige dekking.
+ */
+function presentWeight(zLang: ZLangMap): number {
+  let sum = 0;
+  for (const code of KERN_CODES) {
+    const z = zLang[code];
+    if (z === undefined || !Number.isFinite(z)) continue;
+    sum += wMeting(code);
+  }
+  return sum;
 }
 
-/** achtergrond = Σ over de trage grondlast-bronnen van w_meting × z_lang (§3.3). */
+/** composite_meting = Σ over de aanwezige kern van w_meting × z_lang, hernormaliseerd. */
+export function compositeMeting(zLang: ZLangMap): number {
+  const pw = presentWeight(zLang);
+  if (pw === 0) return 0; // geen enkele kern-code aanwezig → neutraal én eindig (geen 0/0)
+  return weightedSum(KERN_CODES, zLang) / pw;
+}
+
+/** achtergrond = Σ over de trage grondlast-bronnen van w_meting × z_lang (§3.3), hernormaliseerd. */
 export function achtergrond(zLang: ZLangMap): number {
-  return weightedSum(ACHTERGROND_CODES, zLang);
+  const pw = presentWeight(zLang);
+  if (pw === 0) return 0;
+  return weightedSum(ACHTERGROND_CODES, zLang) / pw;
 }
 
 /** k uit §3.3 (te kalibreren via backtest, daarna bevriezen). */

@@ -25,10 +25,14 @@ export interface HistPoint {
 }
 
 /**
- * Minimaal aantal punten voor een zinvolle MAD-Z. Lager dan de v2-drempel van 30
- * omdat maandelijkse bronnen (inflatie, ontslagen) legitiem maar ~12–18 punten in
- * een venster van 18 maanden hebben. Onder deze drempel geven we z = 0 terug
- * (geen artificiële piek), conform de v0.2-conventie bij te weinig historie.
+ * Minimaal aantal punten voor een zinvolle MAD-Z. BEWUST lager dan de v0.2-drempel
+ * (MIN_HISTORY_FOR_Z = 30 in runtime.ts): maandelijkse bronnen (inflatie, ontslagen)
+ * hebben legitiem maar ~12–18 punten in een venster van 18 maanden; gelijktrekken
+ * naar 30 zou ze permanent uit het korte venster duwen. Onder deze drempel is de z
+ * NIET toegepast (applied = false, reason = "insufficient_points"); de aanroeper
+ * moet de indicator dan als "ontbreekt" behandelen en UIT het composiet laten —
+ * conform de v0.2-conventie (review §0-bis.3: dataschaarste mag geen geruststelling
+ * tonen). De z = 0 in de return is een placeholder, géén meting.
  */
 export const MIN_POINTS_FOR_Z = 8;
 
@@ -68,7 +72,10 @@ export interface WindowedZ {
   z: number;
   n: number; // aantal punten in het venster
   jaren: number; // werkelijk beslagen historie (afgerond elders)
-  applied: boolean; // false = te weinig historie → z = 0
+  /** false = geen geldige z; de aanroeper moet de indicator als "ontbreekt" behandelen. */
+  applied: boolean;
+  /** Waarom de z niet is toegepast (alleen gezet bij applied = false). */
+  reason?: "insufficient_points" | "no_scale";
   /** De waarde op de schaal waarop gewogen wordt (raw of STL-residu). */
   effectiveValue: number;
   /** De verdeling waartegen gewogen wordt (voor percentiel-berekening). */
@@ -92,7 +99,15 @@ export function windowedZ(
   const jaren = spanYears(slice);
 
   if (slice.length < MIN_POINTS_FOR_Z) {
-    return { z: 0, n: slice.length, jaren, applied: false, effectiveValue: value, distribution: slice.map((p) => p.value) };
+    return {
+      z: 0,
+      n: slice.length,
+      jaren,
+      applied: false,
+      reason: "insufficient_points",
+      effectiveValue: value,
+      distribution: slice.map((p) => p.value),
+    };
   }
 
   let effectiveValue = value;
@@ -117,7 +132,7 @@ export function windowedZ(
   const z = zscore(effectiveValue, baseline);
   if (!Number.isFinite(z)) {
     // Geen bruikbare schaal (geen variatie) → niet toegepast i.p.v. een artificiële 0 (§4.1).
-    return { z: 0, n: slice.length, jaren, applied: false, effectiveValue, distribution };
+    return { z: 0, n: slice.length, jaren, applied: false, reason: "no_scale", effectiveValue, distribution };
   }
   return { z, n: slice.length, jaren, applied: true, effectiveValue, distribution };
 }
