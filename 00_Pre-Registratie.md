@@ -49,16 +49,53 @@ Wijzigingen aan deze keuzes worden uitsluitend toegestaan via het in `08_Onderho
 
 ## 4. Domein-taxonomie (uit laag 2/3)
 
-**Zes domeinen:**
+**Zes domeinen** (stand na amendementen, zie §4.1):
 
-1. D1 — Omgeving & klimaat (4 indicatoren)
-2. D2 — Mobiliteit & ruimte (2 indicatoren)
-3. D3 — Economische conditie (5 indicatoren)
+1. D1 — Omgeving & klimaat (6 indicatoren)
+2. D2 — Mobiliteit & ruimte (3 indicatoren)
+3. D3 — Economische conditie (7 indicatoren, waarvan 1 diagnostisch)
 4. D4 — Werk & belasting (2 indicatoren)
 5. D5 — Media & collectieve gebeurtenissen (3 indicatoren)
-6. D6 — Kalender & ritme (4 indicatoren)
+6. D6 — Kalender & ritme (4 indicatoren, kalendercontext)
 
-**Totaal: 20 primaire indicatoren** + 6 secundaire (sensitivity) + 4 validatie-variabelen.
+**Totaal: 25 geregistreerde indicatoren — 20 gescoord in het cijfer, 4 kalendercontext (D6, amendement A6), 1 diagnostisch (grade D)** + 6 secundaire (sensitivity) + 4 validatie-variabelen.
+
+De registry in `app/engine/src/indicators/registry.ts` is de single source of truth voor deze set.
+
+---
+
+## 4.1 Amendementen op de indicatorset
+
+**Eerlijkheidsverklaring vooraf.** De 30-dagen-aankondigingstermijn (§13) is voor de onderstaande wijzigingen niet vooraf gevolgd; dit is een retroactieve regularisatie, vastgelegd op 2026-06-11. De wijzigingen zelf zijn wel op het moment van invoering in commit-berichten en in de registry gedocumenteerd (geen stille aanpassingen aan data of berekeningen achteraf), maar de formele procedure uit §13 is pas nu, achteraf, in dit document geregistreerd. Dit wordt hier expliciet benoemd in plaats van weggemoffeld.
+
+### 4.1.1 Toegevoegde indicatoren (§13 grond A2: indicator-toevoeging door datatoegang)
+
+| Code | Naam | Datum GO | Grond | Motivatie | Bron | Codering |
+|---|---|---|---|---|---|---|
+| I-D1-009 | Wateroverlast | 2026-05-21 | A2 | Overstromingsdruk ontbrak in D1; machine-leesbare dagelijkse debietdata beschikbaar | VMM Waterinfo.be + SPW Wallonië (dag-debiet, KiWIS) | direct, grade B, dagelijks |
+| I-D1-010 | Pollen | 2026-05-21 | A2 | Vervangt secundaire I-D1-005S Pollenconcentratie (grade C, laag 3 §10); dagelijkse modelbron beschikbaar. Geen Belgische pollenmeting machine-leesbaar; eerlijk gelabeld als Europees model | Copernicus CAMS | direct, grade B, dagelijks |
+| I-D2-009 | Treinverstoringen | 2026-05-21 | A2 | OV-verstoringsdruk ontbrak in D2; open API beschikbaar | iRail API (NMBS/Infrabel) | direct, grade B, dagelijks |
+| I-D3-007 | Consumentenvertrouwen | 2026-06-03 (Peter GO, commit 0cefc23) | A2 | Voorlopend enquête-sentiment; zit niet in de nieuws-laag, dus geen dubbeltelling met D5. Backfill: 197 maandpunten (2010-2026) | Eurostat ei_bsco_m (BS-CSMCI) | inverse-coded (hoog vertrouwen = lage stress), grade B, maandelijks |
+| I-D3-009 | Stroomnet-druk | 2026-05-21 | A2 | Netbelasting als druk-signaal in D3; open databron beschikbaar | Elia Open Data | direct, grade B, dagelijks |
+
+### 4.1.2 Grade-overrides en bronwissel (2026-06-02, evidence-review §3)
+
+| Code | Naam | Wijziging | Motivatie |
+|---|---|---|---|
+| I-D3-003 | Aangekondigde collectieve ontslagen | grade A → D; uit het cijfer, blijft diagnostisch zichtbaar | De feitelijke feed is een werkloosheidsgraad-proxy, geen echte ontslag-aankondigingsdata; dat rechtvaardigt grade A niet |
+| I-D5-001 | Nieuwsnegativiteits-index | grade B → C; blijft in het cijfer | Review §3.2 zette media-toon op D (mediatoon is geen stressmeting). Bewuste keuze Peter 2026-06-02: indicator blijft gescoord op C met gereduceerd gewicht in het evidence-schema. Dit wijkt af van de §5-regel dat grade C naar de secundaire set gaat; die afwijking is bewust en hier gedocumenteerd. Baseline: bevroren GDELT-historiek |
+| I-D5-002 | Wikipedia-aandacht stress-thema's | bron- en naamwissel (2026-05-21) plus grade B → C (2026-06-02); blijft in het cijfer | Oorspronkelijk gepre-registreerd als "Google Trends stress-termen"; Google Trends bleek geblokkeerd voor geautomatiseerde afname. Vervangen door Wikipedia-pageviews (Wikimedia REST API). Zelfde §5-afwijking als I-D5-001, eveneens bewust en gedocumenteerd |
+
+### 4.1.3 Amendement A6: kalenderdomein D6 naar contextlaag (2026-06-11, methodologie 0.2.0 → 0.3.0)
+
+De vier D6-kalenderindicatoren (I-D6-001, I-D6-002, I-D6-003, I-D6-005) zijn deterministische kalenderfeiten, geen metingen. Sinds A6 tellen ze niet meer mee in composiet en condition_level; ze worden gepubliceerd als `context_signals` naast het cijfer. Gevolgen:
+
+- Equal-domeingewicht van 1/6 naar 1/5 per gescoord domein (D1-D5).
+- De Schema-2-tabel in §7.2 blijft bevroren als historiek; de actieve Schema-2-gewichten worden pro rata hernormaliseerd over D1-D5 (deling door 0.832, som van de D1-D5-gewichten). D6 weegt 0.
+- De demografische TOTAL_REACH-noemer telt contextcodes niet meer mee.
+- Historische dagscores zijn onder 0.3.0 herberekend; verwacht en waargenomen gevolg op 2026-06-11: composiet van 0.13 naar circa -0.11, waarmee de amber-banner doofde (de examens-bijdrage was de drijver). De bevroren v0.4-kern bevat geen D6 en is ongemoeid.
+
+**Gemotiveerde scopekeuze:** I-D1-001 (daglichturen), I-D4-001 (deadlinepieken) en I-D4-002 (schoolvakantie) zijn eveneens deterministisch maar blijven voorlopig gescoord. Dit is een bewuste, gedocumenteerde beperking; heroverweging staat gepland bij de construct-herziening (BLOK B).
 
 ---
 

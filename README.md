@@ -1,8 +1,9 @@
 # Les Hautes Alpes · Stressor-Blootstellings-Index (SBI)
 
 Publieke barometer die elke dag opnieuw meet hoe ongewoon de omstandigheden in
-België zijn op 20 indicatoren — weer, economie, nieuws, kalender. Niet voor
-individuele meting; voor het collectief.
+België zijn op 21 gemeten indicatoren (20 gescoord + 1 diagnostisch) in 5
+domeinen, plus 4 kalendercontext-signalen — weer, economie, nieuws, kalender.
+Niet voor individuele meting; voor het collectief.
 
 🌐 **Live**: [les-hautes-alpes-sbi.surge.sh](https://les-hautes-alpes-sbi.surge.sh)
 

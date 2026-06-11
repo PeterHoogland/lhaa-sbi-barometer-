@@ -11,7 +11,7 @@
 
 ## 0. Samenvatting
 
-Dit document operationaliseert de in laag 3 geselecteerde 20 primaire indicatoren in 6 domeinen. Per indicator wordt de exacte formule, eenheid, missing-data-strategie, ruis-karakteristiek en databron-toegang gespecificeerd. Aanvullend worden vijf methodologische protocollen vastgelegd: tijdsharmonisatie tussen indicatoren van verschillende frequentie, collineariteit-resolutie via VIF, mediacyclus-decorrelatie binnen D5, datapipeline-architectuur (target state én minimum viable pipeline), en robuustheidstest bij dataverlies.
+Dit document operationaliseert de in laag 3 geselecteerde indicatorset. Sinds de amendementen (zie 00_Pre-Registratie.md §4.1 en 02_Laag-3 §10) telt die set 25 geregistreerde indicatoren in 6 domeinen: 20 gescoord in het cijfer, 4 kalendercontext (D6, amendement A6) en 1 diagnostisch (grade D). De uitwerking hieronder beschrijft de oorspronkelijke 20-set; de vijf later toegevoegde indicatoren (I-D1-009, I-D1-010, I-D2-009, I-D3-007, I-D3-009) zijn geoperationaliseerd in de registry en fetchers van de app, met `app/engine/src/indicators/registry.ts` als single source of truth. Per indicator wordt de exacte formule, eenheid, missing-data-strategie, ruis-karakteristiek en databron-toegang gespecificeerd. Aanvullend worden vijf methodologische protocollen vastgelegd: tijdsharmonisatie tussen indicatoren van verschillende frequentie, collineariteit-resolutie via VIF, mediacyclus-decorrelatie binnen D5, datapipeline-architectuur (target state én minimum viable pipeline), en robuustheidstest bij dataverlies.
 
 ---
 

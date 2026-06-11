@@ -126,6 +126,14 @@ Gewicht ongeschaald = mean_grade × balance:
 | D6 | 2.25 × 1.096 = 2.466 | 0.172 |
 | **Totaal** | **14.364** | **1.000** |
 
+### 3.3.1 Notitie bij de afleiding (amendementen, vastgelegd 2026-06-11)
+
+De Schema-2-domeingewichten hierboven (0.211 / 0.135 / 0.223 / 0.108 / 0.155 / 0.172) blijven bevroren op de oorspronkelijke afleiding uit de 20-set en zijn niet herafgeleid na de indicator-amendementen (zie 00_Pre-Registratie.md §4.1). De per-domein-tellingen en mean grades in §3.3 beschrijven dus de oorspronkelijke set, niet de huidige registry-set.
+
+Sinds amendement A6 (2026-06-11, methodologie 0.3.0) telt het kalenderdomein D6 niet meer mee in het composiet. De actieve Schema-2-gewichten worden pro rata hernormaliseerd over D1-D5: elk bevroren gewicht gedeeld door 0.832 (de som van de D1-D5-gewichten). D6 weegt 0. Code: `app/engine/src/methodology/weights.ts`, functie `schema2DomainWeight`. Het equal-schema weegt sindsdien 1/5 per gescoord domein (was 1/6).
+
+Noemer-nuance binnen D3: het equal-indicatorgewicht binnen een domein blijft 1/|D| over alle geregistreerde codes in dat domein, inclusief de grade-D-code I-D3-003. Binnen D3 (7 codes) is dat 1/7 per indicator; omdat I-D3-003 niet gescoord wordt, verdampt dat 1/7-aandeel bewust in plaats van te worden herverdeeld over de overige D3-indicatoren.
+
 ### 3.4 Waarom parallel rapporteren
 
 Equal en Evidence-Graded kunnen significant verschillen. Door beide te rapporteren toont de SBI haar gevoeligheid voor weegkeuze. Dit ondersteunt falsifieerbaarheidscriterium F2 (mono-causaliteit) uit het anker-paper.
@@ -276,3 +284,5 @@ Met media en collectieve gebeurtenissen samen in D5 is het composiet niet meer k
 | **Totaal** | **20** | | | **14.364** | **1.000** |
 
 Onder Schema 1 (equal): elk domein **0.167**.
+
+*Annex-notitie (2026-06-11): deze tabel is bevroren historiek op basis van de oorspronkelijke 20-set. Sinds amendement A6 worden de actieve Schema-2-gewichten pro rata hernormaliseerd over D1-D5 (deling door 0.832) en weegt D6 als kalendercontext 0; onder het equal-schema weegt elk gescoord domein 1/5. Zie §3.3.1 en 00_Pre-Registratie.md §4.1.3.*

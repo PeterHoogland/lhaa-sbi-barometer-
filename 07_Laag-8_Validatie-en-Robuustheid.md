@@ -82,7 +82,7 @@ Het instrument 14 jaar terug berekenen (2010-2024) en kijken of gedrag intuïtie
 
 ### 3.2 Pipeline
 
-1. Alle 20 primaire indicatoren ophalen voor 2010-2024
+1. Alle 20 gescoorde indicatoren ophalen voor 2010-2024. Let op: dit zijn er na de amendementen toevallig opnieuw 20, maar in een andere samenstelling dan de oorspronkelijke 20-set (5 indicatoren toegevoegd, 4 D6-kalenderindicatoren naar de contextlaag, 1 indicator diagnostisch op grade D; zie 00_Pre-Registratie.md §4.1)
 2. Pipeline draaien met live-methodologie — geen aanpassing aan historische data
 3. C(t), P(t), tier produceren per dag
 
@@ -207,7 +207,7 @@ Composiet moet substantieel hetzelfde blijven als 50% van indicatoren weggelaten
 
 ### 7.2 Methode
 
-Bootstrap: 1000 trekkingen × 50% van de 20 indicatoren × pipeline herberekenen × tier vergelijken met volledige-set.
+Bootstrap: 1000 trekkingen × 50% van de 20 gescoorde indicatoren × pipeline herberekenen × tier vergelijken met volledige-set. Het aantal is na de amendementen toevallig opnieuw 20, maar de samenstelling verschilt van de oorspronkelijke 20-set (zie 00_Pre-Registratie.md §4.1); de bootstrap trekt uit de gescoorde set, dus zonder de D6-contextcodes en zonder de grade-D-code I-D3-003.
 
 ### 7.3 Succescriterium
 

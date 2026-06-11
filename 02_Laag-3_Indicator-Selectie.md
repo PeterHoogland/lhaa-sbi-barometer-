@@ -355,9 +355,9 @@ Een indicator komt in aanmerking dan en slechts dan als ze aan álle vijf voldoe
 
 ---
 
-## 10. Geconsolideerde inclusielijst (na v0.2-herziening)
+## 10. Geconsolideerde inclusielijst (na v0.2-herziening; amendementen verwerkt op 2026-06-11)
 
-### Primaire set (composiet)
+### Geregistreerde set (gescoord + context + diagnostisch)
 
 | Code | Indicator | Domein | Grade | Resolutie |
 |---|---|---|---|---|
@@ -365,31 +365,44 @@ Een indicator komt in aanmerking dan en slechts dan als ze aan álle vijf voldoe
 | I-D1-002 | Hitte (Tmax >30°C, tropische nachten) | D1 | A | dagelijks |
 | I-D1-003 | Kou (Tmin <-5°C) | D1 | B | dagelijks |
 | I-D1-004 | Luchtkwaliteit (PM2.5, O₃, NO₂) | D1 | A | dagelijks |
+| I-D1-009 | Wateroverlast ¹ | D1 | B | dagelijks |
+| I-D1-010 | Pollen ¹ ² | D1 | B | dagelijks |
 | I-D2-001 | Filezwaarte | D2 | A | dagelijks |
 | I-D2-004 | Brandstofprijzen | D2 | B | dagelijks |
+| I-D2-009 | Treinverstoringen ¹ | D2 | B | dagelijks |
 | I-D3-001 | Consumptieprijsindex | D3 | A | maandelijks |
 | I-D3-002 | Energieprijzen | D3 | B | wekelijks |
-| I-D3-003 | Aangekondigde collectieve ontslagen | D3 | A | wekelijks |
+| I-D3-003 | Aangekondigde collectieve ontslagen ³ | D3 | D | wekelijks |
 | I-D3-005 | Werkloosheidscijfer | D3 | A | maandelijks |
 | I-D3-006 | Hypotheekrente | D3 | B | maandelijks |
+| I-D3-007 | Consumentenvertrouwen ⁴ | D3 | B | maandelijks |
+| I-D3-009 | Stroomnet-druk ¹ | D3 | B | dagelijks |
 | I-D4-001 | Kalendarische deadlinepieken | D4 | B | dagelijks |
 | I-D4-002 | Schoolvakantie-zonder-opvang | D4 | B | dagelijks |
-| I-D5-001 | Nieuwsnegativiteits-index | D5 | B | dagelijks |
-| I-D5-002 | Google Trends stress-termen | D5 | B | dagelijks |
+| I-D5-001 | Nieuwsnegativiteits-index ⁵ | D5 | C | dagelijks |
+| I-D5-002 | Wikipedia-aandacht stress-thema's ⁶ | D5 | C | dagelijks |
 | I-D5-003 | Negatieve collectieve gebeurtenissen | D5 | A | event |
-| I-D6-001 | Dagen tot volgende vakantie | D6 | B | dagelijks |
-| I-D6-002 | Weekdag-cyclus | D6 | B | dagelijks |
-| I-D6-003 | Klok-verzetten | D6 | A | event |
-| I-D6-005 | Examenperiode | D6 | B | dagelijks |
+| I-D6-001 | Dagen tot volgende vakantie ⁷ | D6 | B | dagelijks |
+| I-D6-002 | Weekdag-cyclus ⁷ | D6 | B | dagelijks |
+| I-D6-003 | Klok-verzetten ⁷ | D6 | A | event |
+| I-D6-005 | Examenperiode ⁷ | D6 | B | dagelijks |
 
-**Totaal primaire set: 20 indicatoren in 6 domeinen**
+¹ Amendement 2026-05-21 (§13 grond A2 van 00_Pre-Registratie.md): toegevoegd na de oorspronkelijke pre-registratie. De 30-dagen-aankondigingstermijn is niet vooraf gevolgd; retroactief geregulariseerd op 2026-06-11, zie 00_Pre-Registratie.md §4.1.
+² Vervangt de secundaire I-D1-005S Pollenconcentratie (grade C, zie secundaire set hieronder). Bron: Copernicus CAMS (Europees model; geen Belgische pollenmeting machine-leesbaar).
+³ Grade-override 2026-06-02 (A naar D): de feitelijke feed is een werkloosheidsgraad-proxy, geen echte ontslag-aankondigingsdata. Diagnostisch zichtbaar, telt niet mee in het cijfer.
+⁴ Amendement 2026-06-03 (Peter GO, commit 0cefc23, §13 grond A2): inverse-coded (hoog vertrouwen = lage stress), bron Eurostat ei_bsco_m (BS-CSMCI), backfill 197 maandpunten 2010-2026.
+⁵ Grade-override 2026-06-02 (B naar C): bewuste keuze Peter, blijft gescoord met gereduceerd gewicht in het evidence-schema. Zie 00_Pre-Registratie.md §4.1.2.
+⁶ Oorspronkelijk gepre-registreerd als "Google Trends stress-termen". Bronwissel 2026-05-21 naar Wikipedia-pageviews (Wikimedia REST API) omdat Google Trends geautomatiseerde afname blokkeert; grade-override 2026-06-02 (B naar C). Zie 00_Pre-Registratie.md §4.1.2.
+⁷ Context (A6, 2026-06-11, telt niet mee in het cijfer): gepubliceerd als kalendercontext (context_signals) naast het composiet.
+
+**Totaal: 25 geregistreerde indicatoren in 6 domeinen — 20 gescoord, 4 kalendercontext, 1 diagnostisch.**
 
 ### Secundaire set (sensitivity-analyse)
 
 | Code | Indicator | Domein | Grade |
 |---|---|---|---|
 | I-D1-004S | Luchtdruk-schommelingen | D1 | C |
-| I-D1-005S | Pollenconcentratie | D1 | C |
+| I-D1-005S | Pollenconcentratie (per 2026-05-21 vervangen door primaire I-D1-010 Pollen) | D1 | C |
 | I-D2-003S | Aangekondigde OV-stakingen | D2 | C |
 | I-D3-004S | Beurs-volatiliteit | D3 | C |
 | I-D5-005S | Algemene staking / sociale onrust | D5 | C |
