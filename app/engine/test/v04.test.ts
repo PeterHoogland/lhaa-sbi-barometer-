@@ -342,11 +342,23 @@ describe("Schaarste & hernormalisatie (A1) — schaarse kern is 'ontbreekt', gee
     expect(compositeMeting(z)).toBeCloseTo(1.0, 6);
   });
 
-  it("achtergrond hernormaliseert met de KERN-brede factor en behoudt deelsom-semantiek", () => {
-    const z: ZLangMap = { "I-D3-002": 1, "I-D2-004": 1 }; // beide grondlast
-    expect(achtergrond(z)).toBeCloseTo(1.0, 6);
+  it("achtergrond: gemiddelde over aanwezige grondlast × volledig grondlast-aandeel", () => {
+    const full = ACHTERGROND_CODES.reduce((s, c) => s + wMeting(c), 0);
+    const z: ZLangMap = { "I-D3-002": 1, "I-D2-004": 1 }; // beide grondlast, z=1
+    expect(achtergrond(z)).toBeCloseTo(full, 6); // geen verdunning, wél stabiele schaal
     const mixed: ZLangMap = { "I-D3-002": 1, "I-D5-001": 1 }; // grondlast + niet-grondlast
     expect(achtergrond(mixed)).toBeLessThan(compositeMeting(mixed));
+  });
+
+  it("dekking van NIET-grondlast-codes verschuift achtergrond en load_factor niet (review A1)", () => {
+    // De achtergrond voedt de triggerdrempels; of nieuws/Wikipedia/hitte die dag
+    // een baseline hadden, mag de drempels niet bewegen.
+    const vol: ZLangMap = {};
+    for (const c of KERN_CODES) vol[c] = 1.5;
+    const alleenGrondlast: ZLangMap = {};
+    for (const c of ACHTERGROND_CODES) alleenGrondlast[c] = 1.5;
+    expect(achtergrond(alleenGrondlast)).toBeCloseTo(achtergrond(vol), 10);
+    expect(loadFactor(achtergrond(alleenGrondlast))).toBeCloseTo(loadFactor(achtergrond(vol)), 10);
   });
 
   it("lege z-map → 0 en eindig (lege-noemer-guard, geen 0/0)", () => {
@@ -371,6 +383,8 @@ describe("Schaarste & hernormalisatie (A1) — schaarse kern is 'ontbreekt', gee
     expect(k.state).toBe("normaal");
     expect(k.z_lang).toBe(0);
     expect(k.contribution_meting).toBe(0);
+    // Er is geen percentiel berekend (geen schaal) → null, geen misleidende 0.
+    expect(k.percentile_lang).toBeNull();
   });
 });
 

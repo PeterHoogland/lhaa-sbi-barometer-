@@ -2,14 +2,17 @@
  * SBI v0.4 — meet-composiet, achtergronddruk en load-factor.
  * Bron: HANDOVER §2 (v0.4-richtlijn) §3.2 + §3.3.
  *
- *   composite_meting = Σ_kern   ( w_meting_i × z_lang_i ) / Σ_aanwezig w_meting_i
- *   achtergrond      = Σ_traag  ( w_meting_i × z_lang_i ) / Σ_aanwezig w_meting_i
+ *   composite_meting = Σ_kern  ( w_meting_i × z_lang_i ) / Σ_aanwezige-kern w_meting_i
+ *   achtergrond      = [ Σ_traag ( w_meting_i × z_lang_i ) / Σ_aanwezige-traag w_meting_i ] × Σ_volledige-traag w_meting_i
  *   load_factor      = clamp( 1 − k·achtergrond , 0.6 , 1.0 )  // moduleert de drempel
  *
- * De deler is de hernormalisatie over AANWEZIGE kern-codes (A1): een ontbrekende
- * indicator (schaarse of geen echte baseline) mag het composiet niet richting 0
- * verdunnen alsof er "normaal" gemeten is. Zodra alle 9 kern-codes aanwezig zijn
- * is de factor exact 1 en is de formule identiek aan de oorspronkelijke.
+ * Hernormalisatie (A1 + review): een ontbrekende indicator (schaars of geen
+ * echte baseline) mag het composiet niet richting 0 verdunnen alsof er
+ * "normaal" gemeten is. Voor compositeMeting loopt de noemer over de aanwezige
+ * KERN-codes; voor achtergrond BINNEN de grondlast-subset (herschaald naar het
+ * volledige-dekking-aandeel), zodat de dekking van niet-grondlast-codes de
+ * triggerdrempels niet kan verschuiven. Bij volledige dekking zijn beide
+ * identiek aan de oorspronkelijke formules.
  *
  * Beide composieten gebruiken de LANGE baseline (z_lang): het cijfer moet de
  * werkelijke last weerspiegelen, niet schommelen op recente ruis. De load-factor
@@ -56,11 +59,28 @@ export function compositeMeting(zLang: ZLangMap): number {
   return weightedSum(KERN_CODES, zLang) / pw;
 }
 
-/** achtergrond = Σ over de trage grondlast-bronnen van w_meting × z_lang (§3.3), hernormaliseerd. */
+/** Σ w_meting van de volledige grondlast-set — vaste herschalingsfactor voor achtergrond. */
+const FULL_ACHTERGROND_WEIGHT = ACHTERGROND_CODES.reduce((s, c) => s + wMeting(c), 0);
+
+/**
+ * achtergrond = gewogen gemiddelde over de AANWEZIGE grondlast-bronnen,
+ * herschaald naar het volledige-dekking-grondlastaandeel (§3.3 + review A1).
+ *
+ * Bewust een ANDERE noemer dan compositeMeting: de achtergrond voedt via
+ * load_factor de triggerdrempels (triggers.ts), dus de dekking van
+ * NIET-grondlast-codes (nieuws, Wikipedia, hitte) mag de drempels niet
+ * verschuiven. Bij volledige dekking identiek aan de oorspronkelijke deelsom;
+ * ontbrekende grondlast-codes verdunnen niet richting 0 (A1-doel blijft).
+ */
 export function achtergrond(zLang: ZLangMap): number {
-  const pw = presentWeight(zLang);
+  let pw = 0;
+  for (const code of ACHTERGROND_CODES) {
+    const z = zLang[code];
+    if (z === undefined || !Number.isFinite(z)) continue;
+    pw += wMeting(code);
+  }
   if (pw === 0) return 0;
-  return weightedSum(ACHTERGROND_CODES, zLang) / pw;
+  return (weightedSum(ACHTERGROND_CODES, zLang) / pw) * FULL_ACHTERGROND_WEIGHT;
 }
 
 /** k uit §3.3 (te kalibreren via backtest, daarna bevriezen). */

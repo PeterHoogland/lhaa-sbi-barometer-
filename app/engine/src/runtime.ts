@@ -638,7 +638,9 @@ function computeV04(p: ComputeV04Params): V04Output {
       z_kort: round2(zKort),
       z_lang: round2(zLang),
       delta_1d: round2(delta1d),
-      percentile_lang: Math.round(pctLang),
+      // Vlakke-baseline-geval (no_scale op mediaan): er ís geen percentiel
+      // berekend — publiceer null, geen 0 die "laagste ooit" suggereert.
+      percentile_lang: zl.applied ? Math.round(pctLang) : null,
       baseline_lang_jaren: Math.round(zl.jaren),
       state,
       w_meting: round3(wm),

@@ -22,7 +22,7 @@ from __future__ import annotations
 import math
 from datetime import date
 from ..util import FetchResult, safe_request
-from ..cache import get as cache_get, put as cache_put
+from ..cache import get_with_date as cache_get_with_date, put as cache_put
 
 
 # ECB LFSI: BE unemployment rate (%), seasonally adjusted, ages 15-74, total
@@ -75,7 +75,7 @@ def fetch_collective_layoffs(target_date: date) -> FetchResult:
                 value = math.log1p(effective_workers)
                 source = (f"ECB LFSI werkloosheidsrate-delta ({delta_pp:+.2f}pp, "
                           f"~{int(effective_workers)} werkzoekenden, proxy voor ontslagen)")
-                cache_put("I-D3-003", value, source, target_date.isoformat())
+                cache_put("I-D3-003", value, source, target_date.isoformat(), observation_date=period)
                 return FetchResult(
                     "I-D3-003", value, target_date.isoformat(),
                     simulated=False,
@@ -85,7 +85,7 @@ def fetch_collective_layoffs(target_date: date) -> FetchResult:
                 )
             # Only last available — baseline 0
             source = f"ECB LFSI werkloosheidsrate {last_rate:.1f}% (baseline)"
-            cache_put("I-D3-003", math.log1p(0), source, target_date.isoformat())
+            cache_put("I-D3-003", math.log1p(0), source, target_date.isoformat(), observation_date=period)
             return FetchResult(
                 "I-D3-003", math.log1p(0), target_date.isoformat(),
                 simulated=False,
@@ -95,13 +95,14 @@ def fetch_collective_layoffs(target_date: date) -> FetchResult:
             )
 
     # Cache-vangnet (≤14d) vóór de mock — zelfde ladder als irail.py/nbb.py.
-    cached = cache_get("I-D3-003")
+    cached = cache_get_with_date("I-D3-003")
     if cached:
-        value, prev_source = cached
+        value, prev_source, cached_obs = cached
         return FetchResult(
             "I-D3-003", value, target_date.isoformat(),
             simulated=False,
             source=f"cache (laatst succesvol: {prev_source})",
+            observation_date=cached_obs,
             source_url=ECB_UNEMPLOYED_URL,
         )
 

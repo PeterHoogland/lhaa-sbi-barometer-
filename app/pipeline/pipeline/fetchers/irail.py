@@ -28,7 +28,7 @@ expliciete GO van Peter.
 from __future__ import annotations
 from datetime import date
 from ..util import FetchResult, safe_request, seasonal_noise
-from ..cache import get as cache_get, put as cache_put
+from ..cache import get_with_date as cache_get_with_date, put as cache_put
 
 URL = "https://api.irail.be/v1/disturbances?format=json&lang=nl"
 USER_AGENT = "SBI-barometer/0.2 (publieke stress-indicator; contact peter@hoogland.be)"
@@ -63,7 +63,7 @@ def fetch_train_disruptions(target_date: date) -> FetchResult:
         count = _count_unplanned(body)
         if count is not None:
             source = f"iRail API (NMBS/SNCB-verstoringen, {count} ongepland)"
-            cache_put("I-D2-009", float(count), source, target_date.isoformat())
+            cache_put("I-D2-009", float(count), source, target_date.isoformat(), observation_date=target_date.isoformat())
             return FetchResult(
                 "I-D2-009", float(count), target_date.isoformat(),
                 simulated=False, source=source,
@@ -72,14 +72,14 @@ def fetch_train_disruptions(target_date: date) -> FetchResult:
             )
 
     # Cache-fallback (≤14d) voordat we naar mock vallen
-    cached = cache_get("I-D2-009")
+    cached = cache_get_with_date("I-D2-009")
     if cached:
-        value, prev_source = cached
+        value, prev_source, cached_obs = cached
         return FetchResult(
             "I-D2-009", value, target_date.isoformat(),
             simulated=False,
             source=f"cache (laatst succesvol: {prev_source})",
-            observation_date=target_date.isoformat(),
+            observation_date=cached_obs,
             source_url=URL,
         )
 

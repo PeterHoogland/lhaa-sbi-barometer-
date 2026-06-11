@@ -108,6 +108,11 @@ In v0.1 zat seizoenseffect dubbel: één keer expliciet (via I-D7-004 seizoensfa
 
 Geen overlap meer.
 
+> **Amendement A6 (2026-06-11, methodologie 0.3.0):** de D6-kalenderindicatoren
+> (I-D6-001/002/003/005) worden nog wel berekend maar tellen niet meer mee in het
+> composiet; ze verschijnen als context_signals. De normalisatie-afspraken in dit
+> document blijven gelden voor de gescoorde set. Zie 00_Pre-Registratie §4.1.3.
+
 ---
 
 ## 4. Outlier-bescherming

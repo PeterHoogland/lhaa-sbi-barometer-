@@ -13,7 +13,7 @@ toegepast (doc 03 §3.2).
 from __future__ import annotations
 from datetime import date
 from ..util import FetchResult, safe_request, seasonal_noise
-from ..cache import get as cache_get, put as cache_put
+from ..cache import get_with_date as cache_get_with_date, put as cache_put
 
 
 # ECB SDW dataset: ICP (Indices of Consumer Prices), key voor BE HICP yoy:
@@ -95,7 +95,7 @@ def fetch_cpi(target_date: date) -> FetchResult:
         if result is not None:
             val, period = result
             source = "ECB SDW (BE HICP yoy %)"
-            cache_put("I-D3-001", val, source, target_date.isoformat())
+            cache_put("I-D3-001", val, source, target_date.isoformat(), observation_date=period)
             return FetchResult(
                 "I-D3-001", val, target_date.isoformat(),
                 simulated=False, source=source,
@@ -104,13 +104,14 @@ def fetch_cpi(target_date: date) -> FetchResult:
             )
 
     # Cache-vangnet (≤14d) vóór de mock — zelfde ladder als irail.py/nbb.py.
-    cached = cache_get("I-D3-001")
+    cached = cache_get_with_date("I-D3-001")
     if cached:
-        value, prev_source = cached
+        value, prev_source, cached_obs = cached
         return FetchResult(
             "I-D3-001", value, target_date.isoformat(),
             simulated=False,
             source=f"cache (laatst succesvol: {prev_source})",
+            observation_date=cached_obs,
             source_url=ECB_CPI_URL,
         )
 
@@ -129,7 +130,7 @@ def fetch_unemployment(target_date: date) -> FetchResult:
         if result is not None:
             val, period = result
             source = "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)"
-            cache_put("I-D3-005", val, source, target_date.isoformat())
+            cache_put("I-D3-005", val, source, target_date.isoformat(), observation_date=period)
             return FetchResult(
                 "I-D3-005", val, target_date.isoformat(),
                 simulated=False, source=source,
@@ -144,7 +145,7 @@ def fetch_unemployment(target_date: date) -> FetchResult:
         if result is not None:
             val, period = result
             source = "Eurostat (BE werkloosheid, seizoens-gecorrigeerd)"
-            cache_put("I-D3-005", val, source, target_date.isoformat())
+            cache_put("I-D3-005", val, source, target_date.isoformat(), observation_date=period)
             return FetchResult(
                 "I-D3-005", val, target_date.isoformat(),
                 simulated=False, source=source,
@@ -154,13 +155,14 @@ def fetch_unemployment(target_date: date) -> FetchResult:
 
     # Cache-vangnet (≤14d) vóór de mock — welke bron de gecachte waarde leverde
     # staat in de source-string; source_url wijst naar het primaire endpoint.
-    cached = cache_get("I-D3-005")
+    cached = cache_get_with_date("I-D3-005")
     if cached:
-        value, prev_source = cached
+        value, prev_source, cached_obs = cached
         return FetchResult(
             "I-D3-005", value, target_date.isoformat(),
             simulated=False,
             source=f"cache (laatst succesvol: {prev_source})",
+            observation_date=cached_obs,
             source_url=ECB_UNEMPLOYMENT_URL,
         )
 

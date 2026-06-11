@@ -133,6 +133,16 @@
 
     fetchSignal(options.apiUrl)
       .then(function (signal) {
+        // A7: op een demo-dag (score_label "demo") draait de dagscore op
+        // testdata en mag er geen commerciële banner op vertrouwen. Render niets.
+        var scoreLabel = signal.score_label ||
+          (signal.data_quality && signal.data_quality.score_label);
+        if (scoreLabel === "demo") {
+          target.innerHTML = "";
+          target.setAttribute("data-sbi-demo", "1");
+          return;
+        }
+
         // Twee API-vormen: signal-API (minimal) of full daily-output
         var level = signal.condition_level
           ? (signal.condition_level.value || signal.condition_level)

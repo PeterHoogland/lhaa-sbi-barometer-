@@ -33,6 +33,12 @@ C(t) = Σ_D [w_domain(D) × D_score(D, t)]
 
 Onder Schema 1 (equal, 1/6 per domein): C_equal(t)
 Onder Schema 2 (evidence-graded met balance-correctie): C_evidence(t)
+
+> **Amendement A6 (2026-06-11, methodologie 0.3.0):** de som Σ_D loopt sinds dit
+> amendement over de vijf GESCOORDE domeinen (D1 t/m D5). D6 (Kalender & ritme)
+> is een contextlaag buiten het composiet; zie 00_Pre-Registratie §4.1.3 en
+> CHANGELOG.md. Schema 1 weegt dus 1/5 per gescoord domein; de Schema-2-tabel
+> blijft bevroren en wordt pro rata hernormaliseerd over D1-D5 (zie doc 05 §3.3.1).
 Schema 3 (weegafhankelijkheid-diagnostiek): gerapporteerd als gevoeligheidsstatistiek, niet als signaal.
 
 C_equal(t) is het primaire publieke signaal.

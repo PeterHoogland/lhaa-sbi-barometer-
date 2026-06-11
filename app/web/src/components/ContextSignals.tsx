@@ -18,9 +18,9 @@ export function ContextSignals({ signals }: { signals: ContextSignal[] }) {
       <p className="panel-lead">
         Deze ritmes lees je af aan de kalender, we meten ze niet. Examens,
         vakanties en het klok-verzetten kleuren hoe een dag aanvoelt, maar een
-        kalender is een ontwerp-aanname en geen meting. Daarom tellen deze
+        kalender is een ontwerp-aanname en geen meting. Daarom tellen deze vier
         signalen <strong>bewust niet mee</strong> in het cijfer of in de
-        banner-activatie — we tonen ze als duiding bij wat we wél meten.
+        banner-activatie. We tonen ze als duiding bij wat we wél meten.
       </p>
 
       <div className="secondary-list">
@@ -37,6 +37,20 @@ export function ContextSignals({ signals }: { signals: ContextSignal[] }) {
               <span>Stand op: {formatObservationDate(s.observation_date)}</span>
             </div>
             <div className="secondary-source">{s.reads}</div>
+            <div className="secondary-source">
+              Bron:{" "}
+              <a href={s.data_source.url} target="_blank" rel="noreferrer">
+                {s.data_source.name}
+              </a>
+              {s.references.map((r) => (
+                <span key={r.url}>
+                  {" · "}
+                  <a href={r.url} target="_blank" rel="noreferrer">
+                    {r.label}
+                  </a>
+                </span>
+              ))}
+            </div>
           </div>
         ))}
       </div>
@@ -45,8 +59,8 @@ export function ContextSignals({ signals }: { signals: ContextSignal[] }) {
         Waarom apart? Een kalendervariabele "weet" zijn waarde al bij het
         ontwerp: dat er in juni examens zijn, is geen meting van vandaag. Zou
         ze meetellen, dan bevestigt het cijfer zijn eigen aanname. Sinds het
-        A6-amendement (juni 2026) staat de kalender daarom hier, als context
-        naast de gemeten indicatoren.
+        A6-amendement (juni 2026) staan deze kalendersignalen daarom hier, als
+        context naast de gemeten indicatoren.
       </p>
     </section>
   );

@@ -44,6 +44,21 @@ def _save(cache: dict) -> None:
 
 def get(code: str) -> tuple[float, str] | None:
     """Return (value, source) als cache hit, anders None."""
+    hit = get_with_date(code)
+    if hit is None:
+        return None
+    value, source, _obs = hit
+    return value, source
+
+
+def get_with_date(code: str) -> tuple[float, str, str] | None:
+    """Als get(), maar met de observatiedatum/-periode van de gecachte waarde.
+
+    Een gecachte waarde verwijst naar zijn OORSPRONKELIJKE periode, niet naar de
+    dag waarop de cache wordt uitgelezen (review A4: een fetch-fallback mag geen
+    verse waarneming suggereren). Oudere cache-entries zonder observation_date
+    vallen terug op hun fetch-datum ("date") — dichter bij de waarheid dan vandaag.
+    """
     cache = _load()
     entry = cache.get(code)
     if not entry:
@@ -54,15 +69,17 @@ def get(code: str) -> tuple[float, str] | None:
         return None
     if datetime.utcnow() - fetched_at > CACHE_TTL:
         return None
-    return entry["value"], entry.get("source", "cache")
+    obs = entry.get("observation_date") or entry.get("date", "")
+    return entry["value"], entry.get("source", "cache"), obs
 
 
-def put(code: str, value: float, source: str, target_date: str) -> None:
-    """Sla succesvolle fetch op."""
+def put(code: str, value: float, source: str, target_date: str, observation_date: str | None = None) -> None:
+    """Sla succesvolle fetch op (incl. de periode waarnaar de waarde verwijst)."""
     cache = _load()
     cache[code] = {
         "value": value,
         "date": target_date,
+        "observation_date": observation_date or target_date,
         "source": source,
         "fetched_at": datetime.utcnow().isoformat(),
     }

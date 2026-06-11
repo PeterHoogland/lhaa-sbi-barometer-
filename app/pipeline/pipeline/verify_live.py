@@ -44,7 +44,7 @@ def assess(latest: dict, health: dict | None, now: datetime) -> tuple[list[str],
     except (ValueError, TypeError, AttributeError):
         problems.append(f"ongeldige timestamp: {ts!r}")
 
-    # 2) COMPLEETHEID — alle 25 indicatoren aanwezig
+    # 2) COMPLEETHEID — alle gemeten indicatoren aanwezig (EXPECTED_INDICATORS, registry)
     bd = latest.get("indicator_breakdown") or []
     if len(bd) != EXPECTED_INDICATORS:
         problems.append(f"{len(bd)} indicatoren in de breakdown, verwacht {EXPECTED_INDICATORS}")

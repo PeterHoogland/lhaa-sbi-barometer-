@@ -103,9 +103,9 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
         <h2>Wat we allemaal bekijken</h2>
         <p className="panel-lead">
           In het cijfer tellen {visible.length} indicatoren mee, verdeeld over {byDomain.length} levensdomeinen; {kernShown} daarvan
-          vormen de kern-meting. De kalender (vakanties, examens, klok-verzetten) tonen we apart als context;
-          die telt niet mee in het cijfer. Daarnaast lopen secundaire/diagnostische signalen mee die evenmin
-          meetellen. Klik er één open om te zien wat we precies meten, waar de data vandaan komt en welke
+          vormen de kern-meting. De vier kalendersignalen van het domein Kalender en ritme tonen we apart als
+          context; die tellen niet mee in het cijfer. Daarnaast lopen secundaire/diagnostische signalen mee die
+          evenmin meetellen. Klik er één open om te zien wat we precies meten, waar de data vandaan komt en welke
           wetenschappelijke onderbouwing erachter zit.
         </p>
       </header>

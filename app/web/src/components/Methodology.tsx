@@ -9,7 +9,7 @@ export function Methodology() {
       ))}
 
       <ul className="methodology-do-dont">
-        <li><strong>Wat we doen:</strong> we kijken naar 5 thema's en 21 gemeten elementen die met druk en belasting te maken hebben, en tellen hoe ongewoon ze vandaag zijn. De kalender (vakanties, examens, klok-verzetten) tonen we apart als context; die telt niet mee in het cijfer.</li>
+        <li><strong>Wat we doen:</strong> we kijken naar 5 thema's en 21 gemeten elementen die met druk en belasting te maken hebben, en tellen hoe ongewoon ze vandaag zijn. De vier kalendersignalen van het domein Kalender en ritme (afstand tot vakantie, weekdag, klok-verzetten, examens) tonen we apart als context; die tellen niet mee in het cijfer. Drie andere indicatoren die uit de kalender afgeleid worden (daglicht, werk-deadlines, schoolvakantieperiode) tellen voorlopig wel mee; die keuze staat gedocumenteerd in de methodologie en wordt in de volgende fase herzien.</li>
         <li><strong>Wat we NIET doen:</strong> we kijken niet of jij persoonlijk stress hebt. We zijn geen dokter. We voorspellen niets.</li>
         <li><strong>Hoe vergelijken we?</strong> Met de afgelopen 24 maanden voor dezelfde tijd van het jaar. Een zomerdag wordt vergeleken met zomerdagen, geen winterdagen.</li>
       </ul>
@@ -17,7 +17,7 @@ export function Methodology() {
       <details>
         <summary>Voor wie wil weten hoe het cijfer tot stand komt</summary>
         <ol className="methodology-steps">
-          <li>We tellen 21 gemeten indicatoren, verdeeld over 5 categorieën (weer, verkeer, economie, werk/gezin, nieuws). Kalendersignalen (vakanties, examens, klok-verzetten) staan sinds juni 2026 buiten het cijfer: een kalender is een ontwerp-aanname, geen meting.</li>
+          <li>We tellen 21 gemeten indicatoren, verdeeld over 5 categorieën (weer, verkeer, economie, werk/gezin, nieuws). De vier kalendersignalen van het domein Kalender en ritme staan sinds juni 2026 buiten het cijfer: een kalender is een ontwerp-aanname, geen meting. Drie andere kalender-afgeleide indicatoren (daglicht, werk-deadlines, schoolvakantieperiode) tellen voorlopig wel mee; dat is een gedocumenteerde keuze.</li>
           <li>Voor elke indicator vergelijken we de waarde van vandaag met wat normaal is voor dit moment in het jaar.</li>
           <li>We corrigeren voor seizoens-effecten waar dat zinvol is (bv. files in juli zijn anders dan files in november).</li>
           <li>We tellen alles op, met gewichten die rekening houden met hoeveel wetenschappelijk onderzoek de link met stress ondersteunt.</li>

@@ -73,16 +73,16 @@ export const DEMOGRAPHIC_REACH: Record<IndicatorCode, ReachEntry> = {
 
 /**
  * Som van de reach-waarden van de GESCOORDE indicatoren — noemer voor de
- * genormaliseerde weging. Kalendercontext-codes (contextOnly, A6) tellen niet
- * mee in het composiet en horen dus ook niet in de noemer: anders raakt het
- * demografische composiet stilletjes gedeflateerd.
+ * genormaliseerde weging. Kalendercontext-codes (contextOnly, A6) én grade-D-
+ * codes (diagnostisch, telt niet in het cijfer) horen niet in de noemer:
+ * anders raakt het demografische composiet stilletjes gedeflateerd.
  */
 export const TOTAL_REACH = (Object.keys(DEMOGRAPHIC_REACH) as IndicatorCode[])
-  .filter((code) => !INDICATORS[code].contextOnly)
+  .filter((code) => !INDICATORS[code].contextOnly && INDICATORS[code].grade !== "D")
   .reduce((s, code) => s + DEMOGRAPHIC_REACH[code].reach, 0);
 
 /** Genormaliseerd demografisch gewicht van één gescoorde indicator (telt op tot 1.0). */
 export function demographicWeight(code: IndicatorCode): number {
-  if (INDICATORS[code].contextOnly) return 0; // kalendercontext (A6)
+  if (INDICATORS[code].contextOnly || INDICATORS[code].grade === "D") return 0;
   return DEMOGRAPHIC_REACH[code].reach / TOTAL_REACH;
 }

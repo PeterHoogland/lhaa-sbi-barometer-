@@ -109,7 +109,13 @@ function main() {
     secondarySignals,
   });
 
-  // Update composite-history
+  // Update composite-history. LET OP (A6-schaalbreuk, 2026-06-11): waarden van
+  // vóór methodologie 0.3.0 bevatten de D6-kalenderbijdrage en 1/6-gewichten;
+  // nieuwe waarden niet. Een gemengd bestand vertekent percentiel/tier tot de
+  // oude waarden uit het 730-dagenvenster gerold zijn. Het productiepad
+  // (generate-fixture, daily.yml) herrekent de volledige historie per run en
+  // heeft hier geen last van; wie deze bridge gebruikt moet composite-history.json
+  // éénmalig regenereren onder 0.3.0 (zie CHANGELOG).
   compositeHistory.push({ date: today.target_date, value: output.composite.equal });
   const trimmed = compositeHistory.slice(-730);
 

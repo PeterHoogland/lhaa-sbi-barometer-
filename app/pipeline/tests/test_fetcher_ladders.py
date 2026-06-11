@@ -43,14 +43,17 @@ class _PutSpy:
     def __init__(self):
         self.calls = []
 
-    def __call__(self, code, value, source, target_date):
-        self.calls.append((code, value, source, target_date))
+    def __call__(self, code, value, source, target_date, observation_date=None):
+        self.calls.append((code, value, source, target_date, observation_date))
 
 
 def _patch(module, *, ok, body, cached, put=None):
-    """Zet safe_request/cache_get/cache_put van een fetcher-module op fixtures."""
+    """Zet safe_request/cache_get_with_date/cache_put van een fetcher-module op fixtures.
+
+    `cached` is een 3-tuple (value, source, observation_date) of None — het
+    contract van cache.get_with_date (review A4)."""
     module.safe_request = lambda *a, **k: (ok, body)
-    module.cache_get = lambda code: cached
+    module.cache_get_with_date = lambda code: cached
     module.cache_put = put if put is not None else _PutSpy()
     return module.cache_put
 
@@ -58,12 +61,15 @@ def _patch(module, *, ok, body, cached, put=None):
 # --- (a) nbb: hypotheekrente I-D3-006 ----------------------------------------
 
 def test_nbb_failure_met_cache_geeft_cache_niet_mock():
-    _patch(nbb, ok=False, body="timeout", cached=(3.25, "ECB MIR (BE hypotheekrente, nieuwe contracten)"))
+    _patch(nbb, ok=False, body="timeout", cached=(3.25, "ECB MIR (BE hypotheekrente, nieuwe contracten)", "2026-03"))
     r = nbb.fetch_mortgage_rate(TARGET)
     assert r.simulated is False, r
     assert r.source.startswith("cache"), r.source
     assert "laatst succesvol" in r.source, r.source
     assert r.value == 3.25, r.value
+    # Review A4: een gecachte waarde behoudt zijn OORSPRONKELIJKE periode,
+    # geen verse waarneming van vandaag suggereren.
+    assert r.observation_date == "2026-03", r.observation_date
 
 
 def test_nbb_failure_zonder_cache_geeft_mock():
@@ -81,6 +87,7 @@ def test_nbb_succes_vult_cache_en_plausibele_range():
     assert 0.5 <= r.value <= 10, r.value          # plausibele hypotheekrente
     assert len(put.calls) == 1, put.calls
     assert put.calls[0][0] == "I-D3-006" and put.calls[0][1] == 3.1, put.calls
+    assert put.calls[0][4] == "2026-04", put.calls  # periode mee de cache in
     assert r.source_url == nbb.ECB_MORTGAGE_URL, r.source_url
     assert r.observation_date == "2026-04", r.observation_date
 
@@ -88,11 +95,12 @@ def test_nbb_succes_vult_cache_en_plausibele_range():
 # --- (b) consumer_confidence I-D3-007 + statbel fetch_cpi I-D3-001 ------------
 
 def test_consumer_confidence_failure_met_cache_geeft_cache():
-    _patch(consumer_confidence, ok=False, body="503", cached=(-8.7, "Eurostat ei_bsco_m"))
+    _patch(consumer_confidence, ok=False, body="503", cached=(-8.7, "Eurostat ei_bsco_m", "2026-04"))
     r = consumer_confidence.fetch_consumer_confidence(TARGET)
     assert r.simulated is False, r
     assert r.source.startswith("cache"), r.source
     assert r.value == -8.7, r.value
+    assert r.observation_date == "2026-04", r.observation_date
 
 
 def test_consumer_confidence_failure_zonder_cache_geeft_mock():
@@ -112,11 +120,12 @@ def test_consumer_confidence_succes_vult_cache():
 
 
 def test_statbel_cpi_failure_met_cache_geeft_cache():
-    _patch(statbel, ok=False, body="timeout", cached=(2.8, "ECB SDW (BE HICP yoy %)"))
+    _patch(statbel, ok=False, body="timeout", cached=(2.8, "ECB SDW (BE HICP yoy %)", "2026-04"))
     r = statbel.fetch_cpi(TARGET)
     assert r.simulated is False, r
     assert r.source.startswith("cache"), r.source
     assert r.value == 2.8, r.value
+    assert r.observation_date == "2026-04", r.observation_date
 
 
 def test_statbel_cpi_failure_zonder_cache_geeft_mock():

@@ -413,8 +413,11 @@ async function generate(): Promise<void> {
     }
   }
 
-  // Update simulated-lijst: indicatoren waarvoor pipeline ECHTE data leverde, zijn niet meer simulated
-  const stillSimulatedToday = simulatedCodes.filter((c) => !realCodes.has(c));
+  // Update simulated-lijst: indicatoren waarvoor pipeline ECHTE data leverde, zijn
+  // niet meer simulated. In strict-real-modus wordt voor niet-geleverde codes ook
+  // NIETS gesimuleerd (ze ontbreken gewoon) — dan is de simulated-lijst leeg;
+  // anders zou de HARDE-EIS-check op go-live onwaar "simulated" rapporteren.
+  const stillSimulatedToday = strictReal ? [] : simulatedCodes.filter((c) => !realCodes.has(c));
 
   const detToday = computeAllDeterministic(TODAY);
 
