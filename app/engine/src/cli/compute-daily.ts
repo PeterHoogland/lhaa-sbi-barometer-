@@ -108,6 +108,8 @@ function main() {
     imputedIndicators: today.imputed_codes,
     observationDates,
     secondarySignals,
+    // B3: productie-dagschrijver → bootstrap-CI rond het dagcijfer.
+    computeUncertainty: true,
   });
 
   // Update composite-history. LET OP (A6-schaalbreuk, 2026-06-11): waarden van

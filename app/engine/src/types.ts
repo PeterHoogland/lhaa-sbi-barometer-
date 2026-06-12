@@ -240,6 +240,26 @@ export interface DailyOutput {
     fixed_2010_2019: number | null;
     fixed_2010_2019_status?: "not_computed";
   };
+  /**
+   * B3 — echte bootstrap-onzekerheid rond het dagcijfer (baseline-resampling,
+   * ≥2000 trekkingen, deterministisch geseed). Alleen aanwezig wanneer de
+   * berekening echt is uitgevoerd (productie-dagschrijvers); afwezig in
+   * warm-up-/backtest-output en oudere records.
+   */
+  uncertainty?: {
+    method: "baseline_resample_bootstrap";
+    n_draws: number;
+    n_indicators: number;
+    n_reference: number;
+    ci_90_lower: number;
+    ci_90_upper: number;
+    width_fraction: number;
+    uncertainty_flag: "low" | "medium" | "high";
+    flag_reason: "ci_width" | "thin_reference" | "no_scored_indicators";
+    composite_ci_95: [number, number];
+    covers: string;
+    seed: number;
+  };
   tier: {
     current: Tier;
     days_in_tier: number;

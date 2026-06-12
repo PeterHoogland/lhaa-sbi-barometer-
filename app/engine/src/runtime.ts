@@ -38,7 +38,19 @@ import {
 import { DEMOGRAPHIC_REACH } from "./methodology/demographic-reach.js";
 import { indicatorWeight, domainWeight } from "./methodology/weights.js";
 import { percentileRank } from "./methodology/percentile.js";
-import { seasonalPercentile, buildSeasonalPercentileHistory } from "./methodology/seasonal-percentile.js";
+import {
+  seasonalPercentile,
+  buildSeasonalPercentileHistory,
+  seasonalReference,
+  SEASONAL_WINDOW_DAYS,
+  MIN_SEASONAL_POINTS,
+} from "./methodology/seasonal-percentile.js";
+import {
+  bootstrapDayUncertainty,
+  seedFromString,
+  type BootstrapIndicatorInput,
+  type DayUncertainty,
+} from "./methodology/bootstrap.js";
 import { computeTier } from "./methodology/tier.js";
 import { computeConditionLevel } from "./methodology/condition-level.js";
 // --- SBI v0.4 modules ---
@@ -100,6 +112,16 @@ export interface DailyComputeInput {
   emotieSignal?: { value: number; percentileLang: number; nHistory: number };
   /** Huidige tijd (ISO) voor trigger fired_at/cooldown. Default: nu. */
   nowISO?: string;
+  /**
+   * B3 — bereken de bootstrap-onzekerheid rond het dagcijfer (≥2000 trekkingen).
+   * Bewust opt-in: de warm-up-loops (generate-fixture-reconstructie, backtest)
+   * roepen computeDaily honderden keren aan en zouden anders minutenlang
+   * bootstrappen. De twee productie-dagschrijvers (generate-fixture vandaag,
+   * compute-daily-bridge) zetten dit expliciet aan.
+   */
+  computeUncertainty?: boolean;
+  /** Aantal bootstrap-trekkingen (default DEFAULT_BOOTSTRAP_DRAWS = 2000); tests verlagen dit. */
+  bootstrapDraws?: number;
 }
 
 /**
@@ -126,6 +148,9 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
   // [2-3-4] Per indicator: STL → Z (short + fixed) → inverse-coding → winsorize
   const zShort: ZMap = {};
   const missing: IndicatorCode[] = [];
+  // B3: de exacte (effectiveValue, baseline)-paren van de gescoorde indicatoren,
+  // zodat de bootstrap dezelfde keten hertrekt als de hoofdberekening.
+  const bootstrapInputs: BootstrapIndicatorInput[] = [];
 
   for (const code of INDICATOR_CODES) {
     const meta = INDICATORS[code];
@@ -200,6 +225,12 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     if (meta.inverseCoded) z = -z;
     const { value } = winsorize(z);
     zShort[code] = value;
+    bootstrapInputs.push({
+      code,
+      effectiveValue,
+      baselineValues,
+      inverseCoded: meta.inverseCoded,
+    });
   }
 
   // [5] DECORRELATE — D5-monitor (doc 03 §4.4 stap 2)
@@ -214,16 +245,35 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
   const evidence = computeComposite(zShort, "evidence");
   const withoutD5 = computeCompositeWithoutD5(zShort, "equal");
 
+  // B3 — echte bootstrap-onzekerheid rond het dagcijfer. Opt-in (zie
+  // DailyComputeInput.computeUncertainty): de referentieset is exact dezelfde
+  // als die van seasonalPercentile hieronder (seizoensvenster met terugval).
+  let uncertainty: DayUncertainty | undefined;
+  if (input.computeUncertainty) {
+    const seasonalRef = seasonalReference(input.compositeHistory, input.date, SEASONAL_WINDOW_DAYS);
+    const percentileReference =
+      seasonalRef.length >= MIN_SEASONAL_POINTS
+        ? seasonalRef
+        : input.compositeHistory.map((h) => h.value);
+    uncertainty = bootstrapDayUncertainty({
+      indicators: bootstrapInputs,
+      percentileReference,
+      nDraws: input.bootstrapDraws,
+      seed: seedFromString(input.date),
+    });
+  }
+
   // Weegafhankelijkheids-diagnostiek (doc 05 §4 — informational, geen pass/fail).
-  // Twee velden zijn (nog) NIET berekend → expliciet null + status, géén verzonnen
-  // getal dat een uitgevoerde meting suggereert (review §0-bis.1).
+  // bootstrap_95_ci_around_equal is sinds B3 een ECHTE resample-bootstrap (zelfde
+  // trekkingen als het dag-CI); zonder computeUncertainty blijft hij eerlijk
+  // null + "not_computed" — geen veld dat een niet-uitgevoerde berekening suggereert.
   const weightSensitivity = {
     correlation_inverse_vs_equal_12w: null as number | null, // vereist 12w parallelle historie van beide gewichtschema's
     composite_range_with_dropouts: estimateDropoutRange(zShort),
-    bootstrap_95_ci_around_equal: null as [number, number] | null, // echte resample-bootstrap volgt later (§4.4)
+    bootstrap_95_ci_around_equal: uncertainty ? uncertainty.composite_ci_95 : null,
     status: {
       correlation_inverse_vs_equal_12w: "not_computed" as const,
-      bootstrap_95_ci_around_equal: "not_computed" as const,
+      ...(uncertainty ? {} : { bootstrap_95_ci_around_equal: "not_computed" as const }),
     },
   };
 
@@ -364,6 +414,9 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       fixed_2010_2019: null,
       fixed_2010_2019_status: "not_computed",
     },
+    // B3: alleen aanwezig als de bootstrap echt gedraaid heeft (opt-in) — een
+    // afwezig veld is eerlijker dan een verzonnen interval.
+    ...(uncertainty ? { uncertainty } : {}),
     tier: {
       current: tierResult.tier,
       days_in_tier: tierResult.daysInTier,

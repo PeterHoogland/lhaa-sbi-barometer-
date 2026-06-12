@@ -71,6 +71,22 @@ export interface IndicatorBreakdown {
 
 export type ConditionLevel = 1 | 2 | 3 | 4 | 5;
 
+/** B3 — bootstrap-onzekerheid rond het dagcijfer. Optioneel: oudere records missen dit. */
+export interface DayUncertainty {
+  method: string;
+  n_draws: number;
+  n_indicators: number;
+  n_reference: number;
+  ci_90_lower: number;
+  ci_90_upper: number;
+  width_fraction: number;
+  uncertainty_flag: "low" | "medium" | "high";
+  flag_reason: string;
+  composite_ci_95: [number, number];
+  covers: string;
+  seed: number;
+}
+
 export interface DailyOutput {
   timestamp: string;
   week_iso: string;
@@ -96,6 +112,8 @@ export interface DailyOutput {
     fixed_2010_2019: number | null;
     fixed_2010_2019_status?: "not_computed";
   };
+  /** B3 — alleen aanwezig wanneer de bootstrap echt is uitgevoerd. */
+  uncertainty?: DayUncertainty;
   tier: {
     current: Tier;
     days_in_tier: number;

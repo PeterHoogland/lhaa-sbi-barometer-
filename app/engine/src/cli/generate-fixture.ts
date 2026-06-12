@@ -460,6 +460,9 @@ async function generate(): Promise<void> {
     history,
     compositeHistory,
     compositeMetingHistory,
+    // B3: alleen de dag-output van vandaag bootstrapt (de warm-up-loop hierboven
+    // niet — die draait honderden dagen en heeft geen publiek CI nodig).
+    computeUncertainty: true,
     simulatedIndicators: stillSimulatedToday,
     imputedIndicators: [...imputedCodes],
     realBaselineCodes,

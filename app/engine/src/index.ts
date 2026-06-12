@@ -10,6 +10,19 @@ export { computeBaseline, zscore, median, madScaled } from "./methodology/zscore
 export { stlResidual, dayOfYear } from "./methodology/stl.js";
 export { winsorize, WINSOR_BOUND } from "./methodology/winsorize.js";
 export {
+  bootstrapDayUncertainty,
+  classifyUncertainty,
+  seedFromString,
+  mulberry32,
+  DEFAULT_BOOTSTRAP_DRAWS,
+  MIN_RELIABLE_REFERENCE,
+  UNCERTAINTY_LOW_MAX,
+  UNCERTAINTY_MEDIUM_MAX,
+  type DayUncertainty,
+  type UncertaintyFlag,
+  type BootstrapIndicatorInput,
+} from "./methodology/bootstrap.js";
+export {
   SCHEMA_2_DOMAIN_WEIGHTS,
   indicatorWeight,
   domainWeight,

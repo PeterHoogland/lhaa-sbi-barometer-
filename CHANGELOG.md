@@ -6,7 +6,19 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
-## 2026-06-12 — B7 (deel 1, naam-agnostisch): eerste schermzin + bronlabels eerlijk; naamkeuze ligt bij Peter
+## 2026-06-12 — B3: echte bootstrap-CI rond het dagcijfer (ci_90 + uncertainty_flag)
+
+**Aanleiding:** BLOK B-taak B3 (02_VERBETERPLAN): zichtbare onzekerheid is de grootste geloofwaardigheidssprong. De oude `bootstrap_95_ci_around_equal` stond bewust op null/not_computed; die wordt nu écht berekend.
+
+**Beslissingen:**
+
+- Nieuw `methodology/bootstrap.ts`: baseline-resampling per gescoorde indicator (met teruglegging, zelfde n), volledige productieketen herberekend per trekking (computeBaseline → zscore → geen-schaal-splitsing → inverse → winsorize → equal-composiet → percentiel tegen exact dezelfde seizoensreferentie als het gepubliceerde cijfer). 2.000 trekkingen, deterministisch geseed op de datum (mulberry32/FNV-1a) — reproduceerbaar voor audit.
+- Output `uncertainty` in latest.json: ci_90_lower/upper (percentielpunten), width_fraction, uncertainty_flag (low <0,10 ≤ medium ≤ 0,20 < high), flag_reason (ci_width / thin_reference bij <30 referentiepunten / no_scored_indicators), composite_ci_95, covers (eerlijk: dekt baseline-schattingsonzekerheid, geen bronfouten/modelkeuzes — dat is B4). Veld alleen aanwezig als de bootstrap echt draaide.
+- `bootstrap_95_ci_around_equal` wordt uit dezelfde trekkingen gevuld (2,5e–97,5e percentiel composiet); zonder bootstrap eerlijk null + not_computed.
+- Opt-in via `computeUncertainty` (DailyComputeInput): de twee productie-dagschrijvers (generate-fixture vandaag-pad, compute-daily-bridge) zetten hem aan; warm-up-loop en backtest niet (honderden aanroepen; kost gemeten: ~23 s per dag-run bij 21 indicatoren × 730 baselinepunten × 2.000 trekkingen — acceptabel voor de uurlijkse CI, funest in een loop).
+- UI respecteert de vlag: bij "high" géén scherp getal maar het 90%-bereik + waarschuwing (kicker "ONZEKER"); bij low/medium bandbreedte-regel onder het cijfer en een band in de meter.
+- Doc 07 §13-bis beschrijft methode, vlagregels en de eerlijke dekking-grens (bootstrap ≠ multiverse).
+- Tests: nieuwe suite test/bootstrap.test.ts (9 tests: determinisme, flag-drempels, thin-reference/no-indicators-eerlijkheid, vlakke-baseline-pad, smaller interval bij strakkere baselines, runtime-integratie aan/uit). Engine 145/145, web build groen; smoketest productie: CI [0,6–9,4] rond percentiel 4, flag low, n_reference 181.
 
 **Aanleiding:** BLOK B-taak B7 (02_VERBETERPLAN). De index meet omgevingsongewoonheid, geen bewezen populatiestress; titel en bronteksten moeten die claim dragen. De publieksnaam zelf ("De Nationale Stress Barometer" vs alternatieven) is een beslissing van Peter; beslismemo staat klaar in het handover-pakket (04_B7_BESLISMEMO_NAAMKEUZE.md).
 

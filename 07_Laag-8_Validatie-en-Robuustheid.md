@@ -340,6 +340,22 @@ Publieke uitnodiging voor methodologische uitdagingen.
 
 ---
 
+## 13-bis. Dagelijkse onzekerheidsrapportage (B3, geïmplementeerd 2026-06-12)
+
+Elke productie-dagberekening rapporteert sinds B3 een echt bootstrap-betrouwbaarheidsinterval rond het dagcijfer (`uncertainty` in latest.json; implementatie `app/engine/src/methodology/bootstrap.ts`).
+
+**Methode (baseline-resampling):** per gescoorde indicator wordt de baseline met teruglegging hertrokken (zelfde n) en de volledige productieketen herberekend (mediaan/robuuste schaal → z → geen-schaal-splitsing → inverse-codering → winsorization → equal-composiet → seizoenspercentiel tegen exact dezelfde referentieset als het gepubliceerde cijfer). Over 2.000 trekkingen (deterministisch geseed op de datum, mulberry32) geeft de 5e–95e percentiel-spreiding het 90%-interval.
+
+**Vlag:** `uncertainty_flag` op de intervalbreedte als fractie van de 0–100-schaal: low < 0,10 ≤ medium ≤ 0,20 < high. Structurele overrides: minder dan 30 referentiepunten voor het percentiel → high (`thin_reference`); nul gescoorde indicatoren → high met volledig bereik (`no_scored_indicators`). Bij high toont de publieke UI géén scherp getal maar het bereik plus een waarschuwing; bij low/medium staat de bandbreedte onder het cijfer en als band in de meter.
+
+**Wat het interval dekt — en eerlijk: wat niet.** Het dekt de schattingsonzekerheid van de baselines (eindige steekproef) en de doorvertaling daarvan naar het dagpercentiel. Het dekt géén bronfouten, géén modelkeuzes (winsor-grens, STL-parameters, wegingsschema) en géén afhankelijkheid tussen indicator-baselines (indicatoren worden onafhankelijk hertrokken). Die bredere modelonzekerheid is het domein van de multiverse-/gevoeligheidsanalyse (§5 en de OECD/JRC-stap-7-analyse van BLOK B4).
+
+**Relatie met §5 (multiverse):** bootstrap = "hoe zeker is dit getal gegeven de gekozen methode"; multiverse = "hoe anders was het getal onder andere redelijke methodekeuzes". Beide worden gerapporteerd, nooit door elkaar geteld.
+
+De oude placeholder `bootstrap_95_ci_around_equal` (bewust `null`/`not_computed` sinds review §0-bis.1) wordt nu écht gevuld uit dezelfde trekkingen (2,5e–97,5e percentiel van het composiet, z-eenheden); zonder uitgevoerde bootstrap blijft hij eerlijk `null`.
+
+---
+
 ## 14. Sluiting van de methodologie-build
 
 Met laag 8 voltooid (v0.2) is de volledige SBI-methodologie gedocumenteerd op acht lagen, plus drie ondersteunende documenten:
