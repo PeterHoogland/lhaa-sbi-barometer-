@@ -6,7 +6,15 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
-## 2026-06-12 — OSF-publicatiepakket bevroren (SHA-256-manifest docs 00-09)
+## 2026-06-12 — I-D2-009-baseline verlengd: 13 → 24 maanden, alle maanden gevalideerd; 2023 eerlijk geweigerd
+
+**Aanleiding:** Peters GO voor de baselineverlenging (Infrabel-maandbestanden gaan ~12 jaar terug).
+
+**Beslissingen:**
+
+- Baseline nu **730 echte dagpunten (juni 2024 t/m mei 2026)** — het volledige methodologische 24-maandsvenster (doc 04 §2.1), via `backfill_infrabel_baseline.py --months 24`. Elke maand gevalideerd tegen het officiële maandcijfer; delta's tussen −0,535 en +0,265 pp, allemaal binnen de 0,75-pp-tolerantie. Oude 396-puntenreeks vervangen (zelfde maat, langere periode).
+- **Verder terug is eerlijk NIET mogelijk:** de probes april/mei/juni/september/oktober 2023 weken −0,76 tot −1,19 pp af; de meetset-benadering klopt daar structureel niet meer (juli/augustus 2023 passeerden wel, maar het script weigert terecht een reeks met een falende tussenmaand). Geen `--force` gebruikt: dat zou de schaaldiscipline breken. De gemeten 2023-delta's staan hierboven als bewijs.
+- Gevolg voor de eCDF-gate (amendement §4.1.6): 24 maanden < 3 jaargangen, dus I-D2-009 blijft eerlijk op MAD-z ("voorlopig"); de gate opent vanzelf zodra de live-aanvoer de seizoensreferentie over 3 jaargangen tilt (~juni 2027), of eerder als een latere hervalidatie van eind-2023-maanden alsnog slaagt.
 
 **Aanleiding:** Peters GO voor OSF-publicatie; plan-volgorde gerespecteerd (eerst alle amendementen §4.1.1-§4.1.6 + naamkeuze, dán hashen).
 
