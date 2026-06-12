@@ -16,7 +16,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from .util import FetchBatch, DATA_DIR, write_json, daterange, iso
-from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, elia, waterinfo, pollen, datex_traffic, google_trends, mastodon, stib, delijn, consumer_confidence, sciensano_pollen
+from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, infrabel, elia, waterinfo, pollen, datex_traffic, google_trends, mastodon, stib, delijn, consumer_confidence, sciensano_pollen
 
 
 # Maximaal aantal punten dat we per indicator in de doorlopende historie houden
@@ -77,7 +77,9 @@ def fetch_one_day(d: date) -> FetchBatch:
     # D2 — Mobiliteit
     batch.add(verkeerscentrum.fetch_traffic_load(d))
     batch.add(fod_economie.fetch_fuel_prices(d))
-    batch.add(irail.fetch_train_disruptions(d))
+    # Herdefinitie 2026-06-12 (amendement, Peter GO): vertragingsgraad via
+    # Infrabel-stiptheid; de iRail-verstoringsteller loopt door als secundair.
+    batch.add(infrabel.fetch_train_delays(d))
 
     # D3 — Economie
     batch.add(statbel.fetch_cpi(d))
@@ -95,6 +97,9 @@ def fetch_one_day(d: date) -> FetchBatch:
 
     # Secundair — NIET in composiet (sensitiviteit, doc 02 §10)
     batch.add_secondary(reddit.fetch_reddit_sentiment(d))
+    # iRail-verstoringsteller (was primair I-D2-009 tot het Infrabel-amendement) —
+    # bouwt eigen historie op als I-D2-009S, niet in het cijfer.
+    batch.add_secondary(irail.fetch_train_disruptions(d))
     # Tweede onderstroom-peiling naast Reddit (no-auth publieke Mastodon-timeline).
     batch.add_secondary(mastodon.fetch_mastodon_sentiment(d))
     batch.add_secondary(layoff_radar.fetch_layoff_radar(d))
@@ -137,7 +142,7 @@ def _fetcher_for(code: str):
         "I-D1-010": pollen.fetch_pollen,
         "I-D2-001": verkeerscentrum.fetch_traffic_load,
         "I-D2-004": fod_economie.fetch_fuel_prices,
-        "I-D2-009": irail.fetch_train_disruptions,
+        "I-D2-009": infrabel.fetch_train_delays,
         "I-D3-001": statbel.fetch_cpi,
         "I-D3-002": energy_charts.fetch_energy_prices,
         "I-D3-003": fod_waso.fetch_collective_layoffs,

@@ -369,7 +369,7 @@ Een indicator komt in aanmerking dan en slechts dan als ze aan álle vijf voldoe
 | I-D1-010 | Pollen ¹ ² | D1 | B | dagelijks |
 | I-D2-001 | Filezwaarte | D2 | A | dagelijks |
 | I-D2-004 | Brandstofprijzen | D2 | B | dagelijks |
-| I-D2-009 | Treinverstoringen ¹ | D2 | B | dagelijks |
+| I-D2-009 | Treinvertragingen (vertragingsgraad Infrabel) ¹ ⁸ | D2 | B | dagelijks |
 | I-D3-001 | Consumptieprijsindex | D3 | A | maandelijks |
 | I-D3-002 | Energieprijzen | D3 | B | wekelijks |
 | I-D3-003 | Aangekondigde collectieve ontslagen ³ | D3 | D | wekelijks |
@@ -394,6 +394,7 @@ Een indicator komt in aanmerking dan en slechts dan als ze aan álle vijf voldoe
 ⁵ Grade-override 2026-06-02 (B naar C): bewuste keuze Peter, blijft gescoord met gereduceerd gewicht in het evidence-schema. Zie 00_Pre-Registratie.md §4.1.2.
 ⁶ Oorspronkelijk gepre-registreerd als "Google Trends stress-termen". Bronwissel 2026-05-21 naar Wikipedia-pageviews (Wikimedia REST API) omdat Google Trends geautomatiseerde afname blokkeert; grade-override 2026-06-02 (B naar C). Zie 00_Pre-Registratie.md §4.1.2.
 ⁷ Context (A6, 2026-06-11, telt niet mee in het cijfer): gepubliceerd als kalendercontext (context_signals) naast het composiet.
+⁸ Herdefinitie 2026-06-12 (Peter GO): van iRail-verstoringsteller naar Infrabel-vertragingsgraad (aandeel treinen met 6 min of meer aankomstvertraging, officiële meetset, meetdag tot 20 uur). De teller loopt door als secundair I-D2-009S. Zie 00_Pre-Registratie §4.1.4.
 
 **Totaal: 25 geregistreerde indicatoren in 6 domeinen — 20 gescoord, 4 kalendercontext, 1 diagnostisch.**
 

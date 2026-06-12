@@ -63,20 +63,20 @@ def fetch_train_disruptions(target_date: date) -> FetchResult:
         count = _count_unplanned(body)
         if count is not None:
             source = f"iRail API (NMBS/SNCB-verstoringen, {count} ongepland)"
-            cache_put("I-D2-009", float(count), source, target_date.isoformat(), observation_date=target_date.isoformat())
+            cache_put("I-D2-009S", float(count), source, target_date.isoformat(), observation_date=target_date.isoformat())
             return FetchResult(
-                "I-D2-009", float(count), target_date.isoformat(),
+                "I-D2-009S", float(count), target_date.isoformat(),
                 simulated=False, source=source,
                 observation_date=target_date.isoformat(),
                 source_url=URL,
             )
 
     # Cache-fallback (≤14d) voordat we naar mock vallen
-    cached = cache_get_with_date("I-D2-009")
+    cached = cache_get_with_date("I-D2-009S")
     if cached:
         value, prev_source, cached_obs = cached
         return FetchResult(
-            "I-D2-009", value, target_date.isoformat(),
+            "I-D2-009S", value, target_date.isoformat(),
             simulated=False,
             source=f"cache (laatst succesvol: {prev_source})",
             observation_date=cached_obs,
@@ -87,7 +87,7 @@ def fetch_train_disruptions(target_date: date) -> FetchResult:
     # licht seizoens-gemoduleerd (winter/herfst iets hoger door weer).
     value = max(0.0, round(seasonal_noise(target_date, 6, 3, 3, 1.57)))
     return FetchResult(
-        "I-D2-009", value, target_date.isoformat(),
+        "I-D2-009S", value, target_date.isoformat(),
         simulated=True,
         source="mock (iRail onbereikbaar, geen cache)",
         observation_date=target_date.isoformat(),

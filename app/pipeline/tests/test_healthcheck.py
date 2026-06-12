@@ -50,11 +50,12 @@ def test_alles_gezond_is_ok():
 
 
 def test_volledige_inventaris_wordt_gecontroleerd():
-    # 18 primair + 11 secundair = de volledige verwachte set.
+    # 18 primair + 12 secundair = de volledige verwachte set
+    # (I-D2-009S erbij sinds het Infrabel-amendement van 2026-06-12).
     assert len(hc.PRIMARY_SOURCES) == 18
-    assert len(hc.SECONDARY_SOURCES) == 11
+    assert len(hc.SECONDARY_SOURCES) == 12
     r = hc.analyze(_healthy_raw(), _healthy_index(), TODAY)
-    assert len(r.sources) == 29
+    assert len(r.sources) == 30
 
 
 # --- KERNREGEL: gezonde nul is geen alarm -----------------------------------

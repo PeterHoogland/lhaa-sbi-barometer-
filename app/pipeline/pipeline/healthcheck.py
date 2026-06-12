@@ -65,7 +65,7 @@ PRIMARY_SOURCES: dict[str, tuple[str, int]] = {
     "I-D1-010": ("Pollen", 4),
     "I-D2-001": ("Filezwaarte (jaar)", 400),   # jaarcijfer, verandert zelden
     "I-D2-004": ("Brandstofprijzen", 10),
-    "I-D2-009": ("Treinverstoringen", 3),
+    "I-D2-009": ("Treinvertragingen (Infrabel-stiptheid)", 3),
     # Maandcijfers ijlen inherent na (publicatie ~1-3 maanden later). Ruime
     # tolerantie (100d) zodat normale naijling NIET ruist; een ECHTE bevriezing
     # van meerdere maanden (bv. CPI blijft op een oude maand hangen) toont dan
@@ -93,6 +93,7 @@ SECONDARY_SOURCES: dict[str, tuple[str, int]] = {
     "I-D5-001-rss": ("Nieuwsnegativiteit RSS (reach-gewogen)", 3),
     "I-D5-trends": ("Stress-aandeel Google Trends", 4),
     "I-D2-001-rt": ("Filezwaarte real-time (DATEX)", 3),
+    "I-D2-009S": ("Treinverstoringen iRail-teller (was primair tot Infrabel-amendement)", 3),
     "I-D2-stib": ("OV-verstoringen Brussel (STIB)", 3),
     "I-D2-delijn": ("OV-verstoringen Vlaanderen (De Lijn)", 4),
     "I-D1-010-sci": ("Pollen Sciensano (Belgisch meetnet, in opbouw)", 4),

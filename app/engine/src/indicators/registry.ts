@@ -97,12 +97,17 @@ export const INDICATORS: Record<IndicatorCode, IndicatorMeta> = {
   },
   "I-D2-009": {
     code: "I-D2-009",
-    name: "Treinverstoringen",
+    // Herdefinitie 2026-06-12 (amendement, Peter GO): vertragingsgraad via
+    // Infrabel-stiptheid i.p.v. de iRail-verstoringsteller (te dunne eigen
+    // historie voor een eerlijke baseline). Grade blijft B: de bronkwaliteit
+    // steeg, het stress-bewijs niet. De teller leeft voort als secundair
+    // I-D2-009S. Zie 00_Pre-Registratie §4.1 + CHANGELOG.
+    name: "Treinvertragingen",
     domain: "D2",
     grade: "B",
     inverseCoded: false,
     applyStl: false,
-    source: "iRail API (NMBS/Infrabel)",
+    source: "Infrabel Open Data (stiptheid officiële meetset, dagcijfer/D-1)",
     deterministic: false,
   },
   "I-D3-001": {

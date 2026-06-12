@@ -282,9 +282,9 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   "I-D2-009": {
     plain: "Hoeveel treinen rijden er in de soep?",
     why: "Onaangekondigde spoorvertragingen ontnemen pendelaars de controle over hun tijd en aankomst, een directe dagelijkse stressor.",
-    reads: "We tellen via de iRail-dienst hoeveel ongeplande storingen er nu op het Belgische spoornet zijn. Geplande werken tellen niet mee, want die ken je op voorhand.",
-    unit: "aantal verstoringen",
-    dataSource: { name: "iRail API (NMBS/Infrabel)", url: "https://api.irail.be/" },
+    reads: "Het aandeel treinen dat met 6 minuten of meer vertraging aankomt, gemeten op de officiële Infrabel-meetpunten (Brussel en eindbestemmingen), over de meetdag tot 20 uur.",
+    unit: "% vertraagde treinen",
+    dataSource: { name: "Infrabel Open Data (stiptheid)", url: "https://opendata.infrabel.be/explore/dataset/stiptheid-van-vandaag-per-uur/" },
     references: [
       { label: "Chatterjee et al. (2017): pendelen en welzijn", url: "https://doi.org/10.1016/j.trf.2017.08.002" },
       { label: "APA: controleverlies als stressbron", url: "https://www.apa.org/topics/stress" },
