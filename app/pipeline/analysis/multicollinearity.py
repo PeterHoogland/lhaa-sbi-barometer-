@@ -57,6 +57,110 @@ def spearman(a: list[float], b: list[float]) -> float:
     return _pearson(_avg_ranks(a), _avg_ranks(b))
 
 
+# --- B6-uitbreiding: echte PCA-dimensionaliteit (Jacobi, pure Python) --------
+
+def jacobi_eigenvalues(matrix: list[list[float]], sweeps: int = 50, tol: float = 1e-10) -> list[float]:
+    """
+    Eigenwaarden van een symmetrische matrix via cyclische Jacobi-rotaties.
+    Pure Python; voor een ~20x20 correlatiematrix ruim snel en stabiel genoeg.
+    """
+    n = len(matrix)
+    a = [row[:] for row in matrix]
+    for _ in range(sweeps):
+        off = sum(a[i][j] ** 2 for i in range(n) for j in range(n) if i != j)
+        if off < tol:
+            break
+        for p in range(n - 1):
+            for q in range(p + 1, n):
+                if abs(a[p][q]) < tol / (n * n):
+                    continue
+                # rotatiehoek
+                theta = (a[q][q] - a[p][p]) / (2.0 * a[p][q])
+                t = (1.0 if theta >= 0 else -1.0) / (abs(theta) + (theta * theta + 1.0) ** 0.5)
+                c = 1.0 / (t * t + 1.0) ** 0.5
+                s = t * c
+                for k in range(n):
+                    akp, akq = a[k][p], a[k][q]
+                    a[k][p] = c * akp - s * akq
+                    a[k][q] = s * akp + c * akq
+                for k in range(n):
+                    apk, aqk = a[p][k], a[q][k]
+                    a[p][k] = c * apk - s * aqk
+                    a[q][k] = s * apk + c * aqk
+    return sorted((a[i][i] for i in range(n)), reverse=True)
+
+
+def effective_dimensionality(eigenvalues: list[float]) -> dict:
+    """Kaiser-telling (lambda > 1) + participatieratio (som lambda)^2 / som lambda^2."""
+    pos = [max(0.0, ev) for ev in eigenvalues]
+    total = sum(pos)
+    sq = sum(ev * ev for ev in pos)
+    return {
+        "kaiser_components": sum(1 for ev in pos if ev > 1.0),
+        "participation_ratio": round((total * total) / sq, 2) if sq > 0 else 0.0,
+        "eigenvalues": [round(ev, 3) for ev in pos],
+    }
+
+
+# --- B6-uitbreiding: EWMA-correlatie voor het D5-paar ------------------------
+
+EWMA_HALFLIFE_DAYS = 7.0  # zelfde tijdschaal als het 7d-venster van doc 03 §4.4
+
+
+def ewma_correlation(a: list[float], b: list[float], halflife: float = EWMA_HALFLIFE_DAYS) -> list[float]:
+    """
+    Exponentieel gewogen lopende correlatie (RiskMetrics-stijl): EWMA van
+    gemiddelden, varianties en covariantie met halfwaardetijd `halflife` dagen.
+    Geeft per dag (vanaf de tweede) de actuele correlatieschatting.
+    """
+    if len(a) != len(b) or len(a) < 2:
+        return []
+    lam = 0.5 ** (1.0 / halflife)  # decay per dag
+    ma, mb = a[0], b[0]
+    va = vb = cab = 0.0
+    out: list[float] = []
+    for i in range(1, len(a)):
+        da, db = a[i] - ma, b[i] - mb
+        ma = lam * ma + (1 - lam) * a[i]
+        mb = lam * mb + (1 - lam) * b[i]
+        va = lam * va + (1 - lam) * da * da
+        vb = lam * vb + (1 - lam) * db * db
+        cab = lam * cab + (1 - lam) * da * db
+        denom = (va * vb) ** 0.5
+        out.append(cab / denom if denom > 0 else 0.0)
+    return out
+
+
+def d5_ewma_monitor(series: dict[str, dict[str, float]]) -> dict | None:
+    """
+    Formalisering van de D5-monitor (doc 03 §4.4 stap 2) als EWMA-benadering:
+    lopende correlatie I-D5-001 x I-D5-003 + aandeel dagen boven de 0,70-drempel.
+    LET OP: dit is een AUDIT-rapportage. De automatische gewichts-halvering uit
+    doc 03 §4.4 is in de engine bewust NIET actief (monitor-only); activeren
+    is een amendement (zie doc 03 §4.4-annotatie + CHANGELOG 2026-06-12).
+    """
+    a, b = series.get("I-D5-001"), series.get("I-D5-003")
+    if not a or not b:
+        return None
+    common = sorted(set(a) & set(b))
+    if len(common) < MIN_OVERLAP:
+        return None
+    corr = ewma_correlation([a[d] for d in common], [b[d] for d in common])
+    days_above = sum(1 for c in corr if c > HIGH_CORR)
+    recent = corr[-30:]
+    return {
+        "pair": ["I-D5-001", "I-D5-003"],
+        "halflife_days": EWMA_HALFLIFE_DAYS,
+        "n_days": len(corr),
+        "days_above_threshold": days_above,
+        "fraction_above_threshold": round(days_above / len(corr), 3),
+        "current": round(corr[-1], 3),
+        "max_recent_30d": round(max(recent), 3),
+        "threshold": HIGH_CORR,
+        "note": "Gewichts-halvering (doc 03 §4.4 stap 2) is monitor-only; activering vergt een amendement.",
+    }
+
+
 def load_series() -> dict[str, dict[str, float]]:
     series: dict[str, dict[str, float]] = {}
     for path in sorted(HIST_DIR.glob("I-*.json")):
@@ -112,6 +216,23 @@ def main() -> int:
             parent[ra] = rb
     clusters = len({find(c) for c in codes})
 
+    # B6: echte PCA-dimensionaliteit op de Spearman-correlatiematrix (Jacobi,
+    # pure Python — de oude numpy-disclaimer vervalt). Paren zonder voldoende
+    # overlap krijgen rho 0 (conservatief: geen verzonnen samenhang).
+    rho_by_pair = {(p["a"], p["b"]): p["rho"] for p in pairs}
+    matrix = [
+        [
+            1.0 if i == j else rho_by_pair.get((codes[min(i, j)], codes[max(i, j)]), 0.0)
+            for j in range(len(codes))
+        ]
+        for i in range(len(codes))
+    ]
+    eigen = jacobi_eigenvalues(matrix)
+    dim = effective_dimensionality(eigen)
+
+    # B6: EWMA-formalisering van de D5-monitor (doc 03 §4.4 stap 2).
+    d5_monitor = d5_ewma_monitor(series)
+
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     report = {
         "method": "Spearman rank-correlatie op overlappende dagen (>= %d), drempel |rho| >= %.2f" % (MIN_OVERLAP, HIGH_CORR),
@@ -119,15 +240,25 @@ def main() -> int:
         "indicators": codes,
         "high_correlation_pairs": high,
         "effective_dimensionality_lower_bound": clusters,
-        "note": "Exacte effectieve dimensionaliteit (PCA-eigenwaarden) vereist numpy en draait in CI; dit is een onder-grens uit de correlatie-graaf.",
+        "pca": {
+            "method": "Jacobi-eigenwaarden van de Spearman-correlatiematrix (pure Python); ontbrekende overlap = rho 0 (conservatief)",
+            **dim,
+        },
+        "d5_ewma_monitor": d5_monitor,
+        "maintenance": "Halfjaarlijkse audit per 08_Onderhoud-Protocol §5; drempel 0,70 per doc 03 §4.4.",
     }
-    (OUT_DIR / "multicollinearity.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
+    (OUT_DIR / "multicollinearity.json").write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
 
     print(f"Multicollineariteit-audit: {len(codes)} indicatoren, {len(pairs)} paren beoordeeld.")
     print(f"Paren met |rho| >= {HIGH_CORR}: {len(high)}")
     for p in high[:15]:
         print(f"  {p['a']} ~ {p['b']}: rho={p['rho']} (n={p['n']})")
-    print(f"Effectieve dimensionaliteit (ondergrens, correlatie-clusters): ~{clusters} van {len(codes)}")
+    print(f"Effectieve dimensionaliteit: clusters-ondergrens ~{clusters}, "
+          f"Kaiser {dim['kaiser_components']}, participatieratio {dim['participation_ratio']} (van {len(codes)})")
+    if d5_monitor:
+        print(f"D5 EWMA-monitor (I-D5-001 x I-D5-003): nu {d5_monitor['current']}, "
+              f"{d5_monitor['fraction_above_threshold']:.0%} van de dagen boven {HIGH_CORR} "
+              f"(halvering blijft monitor-only, zie doc 03 §4.4)")
     print(f"-> {OUT_DIR / 'multicollinearity.json'}")
     return 0
 

@@ -278,6 +278,16 @@ Elke collineariteits-beslissing gelogd met VIF-waarde, beslissing en datum.
 - Indien correlatie > 0.7 over een gehele week: D5-domein-gewicht automatisch gehalveerd in die week
 - Origineel én gehalveerd composiet beide gerapporteerd voor transparantie
 
+> **Implementatie-annotatie (B6, 2026-06-12):** de monitor uit deze stap draait
+> in productie (`media_cluster_diagnostic.d5_cross_correlation_7d` in elke
+> dag-output) en is in de halfjaarlijkse audit geformaliseerd als
+> EWMA-correlatie met halfwaardetijd 7 dagen
+> (`app/pipeline/analysis/multicollinearity.py`). De **automatische
+> gewichts-halvering is bewust NIET actief**: een automatische herweging zou de
+> pre-geregistreerde gewichten stil wijzigen (bewuste vereenvoudiging, geen
+> omissie). Activering vergt een amendement per doc 00 §13; tot dan is de
+> mitigatie zichtbaar via `composite_without_d5` (stap 3) en de audit.
+
 *Stap 3 — "Non-media baseline" als sensitivity-rapportage.*
 - Een composiet zonder D5 wordt parallel berekend
 - Wekelijks gerapporteerd: het verschil ("media-bijdrage") in percentielpunten

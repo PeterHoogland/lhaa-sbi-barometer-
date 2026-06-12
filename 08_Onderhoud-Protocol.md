@@ -41,6 +41,8 @@ Zonder gedocumenteerde onderhouds-kalender vervalt elke pre-registratie tot fict
 |---|---|
 | Schema-2-gewichten-herberekening | Indien evidence-grade van enige indicator gewijzigd is sinds laatste publicatie |
 | Pre-COVID-baseline-stabiliteitstest | Is 2010-2019-baseline nog steeds representatief, of vraagt het om verschuiving naar bv. 2015-2024? |
+| Multicollineariteits-audit (B6, sinds 2026-06-12) | `python3 app/pipeline/analysis/multicollinearity.py`: Spearman-paren ≥ 0,70, PCA-eigenwaarden (Kaiser + participatieratio) en de D5-EWMA-monitor. Nieuwe paren boven de drempel of een dalende effectieve dimensionaliteit → agendapunt gewichten-review (amendement vereist; geen stille herweging). Rapport: `app/data/analysis/multicollinearity.json`. |
+| Gevoeligheidsanalyse (B4, sinds 2026-06-12) | `python3 app/pipeline/analysis/sensitivity.py`: Monte-Carlo over methodekeuzes + Sobol'-indices. Stijgende spread of een dominante factor → bespreken vóór elke methodologie-release. |
 
 ### 1.4 Jaarlijks
 

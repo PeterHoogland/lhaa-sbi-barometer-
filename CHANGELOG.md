@@ -6,7 +6,18 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
-## 2026-06-12 — B4: Monte-Carlo-gevoeligheidsanalyse (OECD/JRC stap 7) met Sobol'-indices
+## 2026-06-12 — B6: multicollineariteits-audit met echte PCA + D5-EWMA-monitor; halvering expliciet monitor-only
+
+**Aanleiding:** BLOK B-taak B6 (02_VERBETERPLAN): halfjaarlijkse Spearman-audit + PCA-dimensionaliteitscheck; de D5-halvering formaliseren of als bewuste vereenvoudiging documenteren.
+
+**Beslissingen:**
+
+- `analysis/multicollinearity.py` uitgebreid: echte PCA-eigenwaarden van de Spearman-correlatiematrix via cyclische Jacobi-rotaties (pure Python; de oude "vereist numpy"-disclaimer vervalt), met Kaiser-telling en participatieratio naast de bestaande cluster-ondergrens. Paren zonder voldoende overlap krijgen rho 0 (conservatief, geen verzonnen samenhang).
+- D5-monitor geformaliseerd als EWMA-correlatie (halfwaardetijd 7 dagen, RiskMetrics-stijl) voor I-D5-001 × I-D5-003: actuele waarde, aandeel dagen boven 0,70 en 30-dagen-piek in het auditrapport.
+- **De automatische D5-gewichts-halvering uit doc 03 §4.4 stap 2 is bewust NIET geactiveerd** (gedocumenteerde keuze, geen omissie): automatische herweging zou de pre-geregistreerde gewichten stil wijzigen. Doc 03 §4.4 draagt nu een implementatie-annotatie; activering vergt een amendement. Mitigatie blijft zichtbaar via composite_without_d5 + deze audit.
+- Onderhoudsritme vastgelegd: doc 08 §1.3 (halfjaarlijks) bevat nu de multicollineariteits-audit én de B4-gevoeligheidsanalyse met expliciete actiedrempels (nieuwe paren ≥ 0,70 of dalende dimensionaliteit → gewichten-reviewagendapunt, amendement vereist).
+- Resultaat op de echte historie (18 reeksen, 82 paren): 0 paren ≥ 0,70; effectieve dimensionaliteit Kaiser 8 / participatieratio 12,5 van 18; D5-EWMA nu 0,51 met 2% van de dagen boven de drempel. De gewichten hoeven dus niet aangepast: de redundantie wordt aantoonbaar gemonitord en zit onder de actiedrempel.
+- Test: `tests/test_multicollinearity.py` (15 standalone checks: Jacobi op bekende matrices, spoorbehoud, Kaiser/participatieratio, EWMA-convergentie ±1, monitor-only-note).
 
 **Aanleiding:** BLOK B-taak B4 (02_VERBETERPLAN): kwantificeer hoeveel het dagcijfer beweegt onder redelijke alternatieve methodekeuzes.
 
