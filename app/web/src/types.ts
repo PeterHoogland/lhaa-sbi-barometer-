@@ -48,6 +48,8 @@ export interface IndicatorBreakdown {
   grade?: EvidenceGrade;
   /** Eerlijke bewijskracht-duiding (B8). Optioneel: oudere data-records missen dit veld. */
   evidence_note?: string;
+  /** B2: normalisatie van vandaag ("mad_z" = voorlopig, "ecdf" = lange baseline). */
+  normalization?: "ecdf" | "mad_z";
   plain_name: string;
   why: string;
   reads: string;
@@ -112,6 +114,10 @@ export interface DailyOutput {
     short_24m: number;
     fixed_2010_2019: number | null;
     fixed_2010_2019_status?: "not_computed";
+    /** B2: true zolang minstens één gescoorde indicator op voorlopige MAD-z draait. */
+    normalization_provisional?: boolean;
+    /** B2: indicatoren die de eCDF-gate (>=3 jaar seizoenshistorie) haalden. */
+    ecdf_active?: string[];
   };
   /** B3 — alleen aanwezig wanneer de bootstrap echt is uitgevoerd. */
   uncertainty?: DayUncertainty;

@@ -81,6 +81,25 @@ MAD-gebaseerde Z-scores zijn *niet* equivalent aan klassieke Z-scores. Een Z_sho
 
 Unit-tests dekken de MAD=0-tak en de geen-schaal-paden (`app/engine/test/engine.test.ts`).
 
+### 2.7 eCDF-normalisatie met 3-jaarsgate en 5-jaars-drift-cap (B2, amendement §4.1.6, methodologie 0.3.2)
+
+> Pre-geregistreerde regel, vastgelegd 2026-06-12. Stand bij registratie: alleen
+> I-D5-003 kwalificeert (dagdata sinds mei 2023); effect op het composiet
+> verwaarloosbaar (z −3,0 → −2,91; dagpercentiel 4 → 5).
+> Implementatie: `app/engine/src/methodology/ecdf.ts`.
+
+Percentielen en z-scores op 18-24 maanden historie dragen een wezenlijke schattingsonzekerheid (±10-12 pp; bevestigd door de gemeten spread van 18,8 pp in de B4-gevoeligheidsanalyse). Daarom schakelt elke indicator, zodra zijn seizoensbewuste referentie (±45 dagen rond dezelfde dag-van-het-jaar, **begrensd op de recentste 5 jaar**) **ten minste 3 jaargangen overspant én 90 punten telt**, over op eCDF-normalisatie naar het voorbeeld van de ECB CISS (Holló, Kremer & Lo Duca 2012):
+
+1. p = empirische kans (midrank) van de dagwaarde in de seizoensreferentie;
+2. klemming op [1/(2n), 1−1/(2n)] — ±∞ is per constructie onmogelijk;
+3. z = Φ⁻¹(p) (probit, Acklam-benadering), zodat eCDF- en MAD-z-indicatoren tijdens de overgang in één composiet aggregeerbaar blijven;
+4. inverse-codering en winsorization (±3) blijven onverkort gelden;
+5. géén STL voor eCDF-indicatoren: het seizoensvenster ís de seizoenscorrectie.
+
+**Waarom de 5-jaarscap:** zonder begrenzing zou een decennialange trendreeks "vandaag" permanent als extreem scoren — de brandstofprijs-index (maandreeks sinds 1996) kwalificeerde in de eerste smoketest en zou tegen 1996-niveaus wegen; dat meet inflatie, geen seizoens-ongewoonheid. Het drift-argument van §8.2 geldt voor de eCDF onverkort; de cap volgt het plan-anker "3-5 jaar per seizoensvenster".
+
+Tot een indicator de gate haalt geldt de MAD-z-keten uit §2.6 en wordt de normalisatie expliciet **"voorlopig"** gelabeld (breakdown-veld `normalization`, percentiel-veld `normalization_provisional`). Maandbronnen halen de 90-puntseis binnen de cap structureel niet: die blijven bewust op MAD-z (een eCDF op een handvol punten is een trap-functie, geen verdeling). De B3-bootstrap spiegelt voor eCDF-indicatoren exact dezelfde keten.
+
 ---
 
 ## 3. Seizoensdecompositie

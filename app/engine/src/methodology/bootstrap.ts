@@ -26,6 +26,7 @@ import { computeBaseline, zscore } from "./zscore.js";
 import { winsorize } from "./winsorize.js";
 import { computeComposite, type ZMap } from "./composite.js";
 import { percentileRank } from "./percentile.js";
+import { ecdfZ } from "./ecdf.js";
 
 /** Aantal trekkingen in productie (plan-eis: ≥ 2000). */
 export const DEFAULT_BOOTSTRAP_DRAWS = 2000;
@@ -47,11 +48,13 @@ export function classifyUncertainty(widthFraction: number): UncertaintyFlag {
 /** Eén gescoorde indicator zoals de hoofd-z-loop hem zag. */
 export interface BootstrapIndicatorInput {
   code: IndicatorCode;
-  /** Dagwaarde zoals gescoord (bij STL: het residu). */
+  /** Dagwaarde zoals gescoord (bij STL: het residu; bij eCDF: de ruwe waarde). */
   effectiveValue: number;
-  /** De exacte baseline-set van de hoofdberekening (bij STL: residuen). */
+  /** De exacte baseline-/referentieset van de hoofdberekening. */
   baselineValues: number[];
   inverseCoded: boolean;
+  /** Normalisatie van de hoofdberekening (B2): de trekking spiegelt dezelfde keten. */
+  method: "mad" | "ecdf";
 }
 
 export interface DayUncertainty {
@@ -167,14 +170,21 @@ export function bootstrapDayUncertainty(input: BootstrapDayInput): DayUncertaint
       for (let i = 0; i < n; i++) {
         resampled[i] = ind.baselineValues[Math.floor(rng() * n)];
       }
-      const baseline = computeBaseline(resampled);
-      let z = zscore(ind.effectiveValue, baseline);
-      if (!Number.isFinite(z)) {
-        // Spiegel van runtime.ts: vlakke hertrokken baseline.
-        if (!ind.inverseCoded && ind.effectiveValue <= baseline.median) {
-          z = 0;
-        } else {
-          continue; // valt uit deze trekking, zoals "ontbreekt"
+      let z: number;
+      if (ind.method === "ecdf") {
+        // B2-spiegel: hertrokken seizoensreferentie → eCDF-z (probit, geklemd).
+        z = ecdfZ(ind.effectiveValue, resampled);
+        if (!Number.isFinite(z)) continue;
+      } else {
+        const baseline = computeBaseline(resampled);
+        z = zscore(ind.effectiveValue, baseline);
+        if (!Number.isFinite(z)) {
+          // Spiegel van runtime.ts: vlakke hertrokken baseline.
+          if (!ind.inverseCoded && ind.effectiveValue <= baseline.median) {
+            z = 0;
+          } else {
+            continue; // valt uit deze trekking, zoals "ontbreekt"
+          }
         }
       }
       if (ind.inverseCoded) z = -z;

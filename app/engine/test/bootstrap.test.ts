@@ -32,12 +32,14 @@ function indicatorInput(
   value: number,
   baseline: number[],
   inverse = false,
+  method: BootstrapIndicatorInput["method"] = "mad",
 ): BootstrapIndicatorInput {
   return {
     code: code as BootstrapIndicatorInput["code"],
     effectiveValue: value,
     baselineValues: baseline,
     inverseCoded: inverse,
+    method,
   };
 }
 

@@ -49,6 +49,7 @@ import {
   type BootstrapIndicatorInput,
   type DayUncertainty,
 } from "./methodology/bootstrap.js";
+import { ecdfEligibility, ecdfZ } from "./methodology/ecdf.js";
 import { computeTier } from "./methodology/tier.js";
 import { computeConditionLevel } from "./methodology/condition-level.js";
 // --- SBI v0.4 modules ---
@@ -69,7 +70,10 @@ import {
 // hernormalisatie gewichten 1/6→1/5 + Schema-2 pro rata.
 // 0.3.1 (2026-06-12): tier dagelijks reactief (SUSTAINED_DAYS 3→1, Peter GO) +
 // I-D2-009 herdefinitie naar Infrabel-vertragingsgraad. Zie CHANGELOG.md.
-const METHODOLOGY_VERSION = "0.3.1";
+// 0.3.2 (2026-06-12, B2/amendement §4.1.6): eCDF-normalisatie pre-geregistreerd
+// met 3-jaarsgate (vandaag kwalificeert geen indicator: gedrag ongewijzigd);
+// normalisatie expliciet "voorlopig" gelabeld tot de gate opent.
+const METHODOLOGY_VERSION = "0.3.2";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {
@@ -149,6 +153,9 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
   // B3: de exacte (effectiveValue, baseline)-paren van de gescoorde indicatoren,
   // zodat de bootstrap dezelfde keten hertrekt als de hoofdberekening.
   const bootstrapInputs: BootstrapIndicatorInput[] = [];
+  // B2: welke normalisatie elke gescoorde indicator vandaag kreeg (eerlijk
+  // gelabeld in de breakdown; "voorlopig" zolang de eCDF-gate dicht is).
+  const normalizationByCode: Partial<Record<IndicatorCode, "ecdf" | "mad_z">> = {};
 
   for (const code of INDICATOR_CODES) {
     const meta = INDICATORS[code];
@@ -175,6 +182,36 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     }
 
     const hist = input.history[code] ?? [];
+
+    // B2 (amendement §4.1.6, methodologie 0.3.2): zodra de seizoensreferentie
+    // van een indicator ≥3 jaargangen overspant én ≥90 punten telt (begrensd op
+    // de recentste 5 jaar, drift-cap), schakelt die indicator over op
+    // eCDF-normalisatie (CISS-methode; probit van het seizoensvenster-
+    // percentiel). Geen STL hier: het seizoensvenster ís de seizoenscorrectie.
+    // Op registratiedatum kwalificeert alleen I-D5-003 (3 jaar dagdata); de
+    // rest blijft MAD-z met "voorlopig"-label tot de gate opent.
+    const ecdf = ecdfEligibility(hist, input.date);
+    if (ecdf.eligible) {
+      let z = ecdfZ(x, ecdf.reference);
+      if (!Number.isFinite(z)) {
+        missing.push(code);
+        continue;
+      }
+      if (meta.inverseCoded) z = -z;
+      zShort[code] = winsorize(z).value;
+      normalizationByCode[code] = "ecdf";
+      if (meta.grade !== "D") {
+        bootstrapInputs.push({
+          code,
+          effectiveValue: x,
+          baselineValues: ecdf.reference,
+          inverseCoded: meta.inverseCoded,
+          method: "ecdf",
+        });
+      }
+      continue;
+    }
+
     let effectiveValue = x;
     let baselineValues = hist.map((h) => h.value);
     if (meta.applyStl && hist.length > 0) {
@@ -223,6 +260,7 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     if (meta.inverseCoded) z = -z;
     const { value } = winsorize(z);
     zShort[code] = value;
+    normalizationByCode[code] = "mad_z";
     // Grade D (diagnostisch) wordt door computeComposite in élke trekking
     // overgeslagen: meenemen zou n_indicators overdrijven (21 i.p.v. de 20 die
     // het cijfer dragen) en ~5% van de trekkingen verspillen.
@@ -232,6 +270,7 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
         effectiveValue,
         baselineValues,
         inverseCoded: meta.inverseCoded,
+        method: "mad",
       });
     }
   }
@@ -325,6 +364,7 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       domain: meta.domain,
       grade: meta.grade,
       evidence_note: plain.evidenceNote,
+      normalization: normalizationByCode[code],
       plain_name: plain.plain,
       why: plain.why,
       reads: plain.reads,
@@ -416,6 +456,10 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       // Geen kopie van short_24m onder een andere naam publiceren.
       fixed_2010_2019: null,
       fixed_2010_2019_status: "not_computed",
+      // B2: eerlijk "voorlopig" zolang niet elke gescoorde indicator de
+      // eCDF-gate (≥3 jaar seizoenshistorie) gehaald heeft.
+      normalization_provisional: Object.values(normalizationByCode).some((m) => m === "mad_z"),
+      ecdf_active: INDICATOR_CODES.filter((c) => normalizationByCode[c] === "ecdf"),
     },
     // B3: alleen aanwezig als de bootstrap echt gedraaid heeft (opt-in) — een
     // afwezig veld is eerlijker dan een verzonnen interval.

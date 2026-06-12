@@ -6,6 +6,22 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-12 — B2/amendement: eCDF-normalisatie met 3-jaarsgate pre-geregistreerd (methodologie 0.3.2)
+
+**Aanleiding:** BLOK B-taak B2 (02_VERBETERPLAN): percentielen op 18-24 maanden dragen ±10-12 pp onzekerheid (B4 mat 18,8 pp spread); de CISS-methode (eCDF over een lange seizoensbaseline) is het einddoel zodra de historie het toelaat.
+
+**Beslissingen:**
+
+- Nieuw `methodology/ecdf.ts` + amendement 00_Pre-Registratie §4.1.6 + doc 04 §2.7: per indicator schakelt de normalisatie over op eCDF (midrank-kans, geklemd op [1/(2n), 1−1/(2n)], via probit naar z-equivalent zodat het composiet aggregeerbaar blijft; winsorize/inverse blijven gelden; geen STL want het seizoensvenster is de seizoenscorrectie) **zodra** de seizoensreferentie ≥3 jaargangen overspant én ≥90 punten telt, **begrensd op de recentste 5 jaar**.
+- **Drift-cap gevangen door de smoketest:** zonder cap kwalificeerde de brandstofprijs-index (maandreeks sinds 1996) en zou "vandaag" tegen 1996-niveaus wegen — dat meet inflatie, geen seizoens-ongewoonheid (zelfde klasse als het baseline-drift-argument in doc 04 §8.2). De 5-jaarscap volgt het plan-anker "3-5 jaar per seizoensvenster"; maandbronnen blijven daardoor structureel op MAD-z (een eCDF op een handvol punten is een trap-functie).
+- **Stand bij registratie (smoketest):** alleen I-D5-003 haalt de gate (dagdata sinds mei 2023, 3,05 jaar). Effect op het composiet verwaarloosbaar: z −3,0 (winsorized MAD-z) → −2,91 (eCDF), dagpercentiel 4 → 5. Voor alle andere indicatoren verandert vandaag niets; latere overschakelingen zijn uitvoering van deze pre-geregistreerde regel, geen stille wijziging.
+- Tot de gate opent is de normalisatie expliciet "voorlopig": breakdown draagt per indicator `normalization` ("mad_z" | "ecdf"), het percentiel-blok `normalization_provisional` + `ecdf_active`, en de methodologie-pagina benoemt het voorlopige karakter (acceptatie-eis "tot dan expliciete onzekerheid", samen met het B3-interval).
+- B3-bootstrap spiegelt het eCDF-pad (hertrokken seizoensreferentie → probit → winsorize); methodologie-versie 0.3.1 → 0.3.2.
+- Tests: nieuwe suite test/ecdf.test.ts (12 tests: probit-kwantielen, klemming nooit ±∞, gate dicht bij 2 jaar / open bij 4 jaar / dicht bij dunne maandbron, 5-jaarscap, runtime-labels + bootstrap op het eCDF-pad). Engine 159/159.
+- Genoteerd voor Peter: (a) een bewuste I-D2-009-baselineverlenging (Infrabel-maandbestanden ~12 jaar terug; backfill `--months N` valideert per maand) zou die indicator binnen de cap door de gate brengen — aparte beslissing, niet uitgevoerd; (b) dataobservatie buiten B2-scope: de I-D5-003-historie (1.100 punten, band 0,05-0,22, geen nullen) staat op een andere schaal dan de dagwaarde 0 van vandaag, waardoor een gebeurtenisloze dag al vóór B2 als winsorized −3 scoorde — bestaand gedrag, het verdient een eigen datacheck.
+
+---
+
 ## 2026-06-12 — Reviewfixes BLOK B-snel + B3 (adversariële multi-agent-review, 14 bevestigde bevindingen)
 
 **Aanleiding:** onafhankelijke review van de B1/B8/B7/B3-commits (drie lenzen: statistiek, integratie, eerlijkheid; 16 bevindingen, 14 bevestigd, 2 weerlegd) — zelfde werkwijze als de BLOK A-review.

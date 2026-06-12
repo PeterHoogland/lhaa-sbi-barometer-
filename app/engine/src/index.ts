@@ -10,6 +10,15 @@ export { computeBaseline, zscore, median, madScaled } from "./methodology/zscore
 export { stlResidual, dayOfYear } from "./methodology/stl.js";
 export { winsorize, WINSOR_BOUND } from "./methodology/winsorize.js";
 export {
+  probit,
+  ecdfZ,
+  ecdfEligibility,
+  ECDF_MIN_YEARS,
+  ECDF_MIN_POINTS,
+  ECDF_MAX_YEARS,
+  type EcdfEligibility,
+} from "./methodology/ecdf.js";
+export {
   bootstrapDayUncertainty,
   classifyUncertainty,
   seedFromString,
