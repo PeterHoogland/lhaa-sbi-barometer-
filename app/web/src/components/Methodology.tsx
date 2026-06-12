@@ -22,7 +22,7 @@ export function Methodology() {
           <li>We corrigeren voor seizoens-effecten waar dat zinvol is (bv. files in juli zijn anders dan files in november).</li>
           <li>We tellen alles op: de vijf categorieën tellen elk even zwaar mee in het cijfer. Daarnaast berekenen we een controleversie waarin sterker onderbouwde indicatoren zwaarder wegen; wijkt die sterk af van het hoofdcijfer, dan is dat voor ons een waarschuwingssignaal. Hoe sterk het onderzoek achter elke indicator is, zie je per indicator bij "Bewijskracht".</li>
           <li>Het "venster" opent zodra de dag zelf boven de drempel zit: hoger dan 70% van de dagen rond deze tijd van het jaar, gemeten over de laatste twee jaar. Zakt de dag eronder, dan sluit het venster ook weer dezelfde dag.</li>
-          <li>Alle keuzes (drempels, gewichten, formules) staan vooraf vast en zijn publiek, niemand kan ze achteraf bijsturen om een gewenste uitkomst te maken.</li>
+          <li>Alle keuzes (drempels, gewichten, formules) staan vooraf vast in de methodologie-documenten en worden bij publicatie integraal openbaar. Wijzigen kan alleen via een gedocumenteerd amendement met logboek-vermelding; automatische tests laten de bouw falen bij een stille wijziging.</li>
         </ol>
       </details>
 

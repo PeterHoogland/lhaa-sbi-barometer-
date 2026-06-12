@@ -44,7 +44,8 @@ export function FOOTER({ methodologyVersion }: { methodologyVersion: string }) {
       <div className="footer-row muted">{FOOTER_NOTES.methodologyRef}</div>
       <div className="footer-row muted small">{FOOTER_NOTES.ondersteunend}</div>
       <div className="footer-row muted small">
-        Methodologie open: zie documenten 00–09 in projectroot. Code: open source.
+        De volledige methodologie staat beschreven in documenten 00–09 (projectroot).
+        Publicatie van code en pre-registratie (OSF) is voorbereid maar nog niet live.
       </div>
     </footer>
   );

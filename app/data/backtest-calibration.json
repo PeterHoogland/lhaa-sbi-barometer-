@@ -1,0 +1,69 @@
+{
+  "generated_at": "2026-06-12",
+  "period": {
+    "start": "2024-05-21",
+    "end": "2026-06-12",
+    "n_days": 753
+  },
+  "real_baseline_codes": [
+    "I-D1-002",
+    "I-D1-003",
+    "I-D1-004",
+    "I-D1-009",
+    "I-D1-010",
+    "I-D2-001",
+    "I-D2-004",
+    "I-D2-009",
+    "I-D3-001",
+    "I-D3-002",
+    "I-D3-003",
+    "I-D3-005",
+    "I-D3-006",
+    "I-D3-007",
+    "I-D3-009",
+    "I-D5-001",
+    "I-D5-002",
+    "I-D5-003"
+  ],
+  "thresholds": {
+    "SPIKE_DREMPEL": 1.5,
+    "TRIGGER_P70": 70,
+    "TRIGGER_P90": 90,
+    "LOAD_K": 0.15,
+    "SUSTAINED_DAYS": 1,
+    "COOLDOWN_H": {
+      "direct": 48,
+      "snel": 72,
+      "traag": 72
+    },
+    "ERNST_DREMPEL": 2.5,
+    "V04_AMBER_P": 60,
+    "V04_RED_P": 90,
+    "V04_AMBER_SUSTAIN": 1,
+    "V04_RED_SUSTAIN": 2
+  },
+  "results": {
+    "tier_days": {
+      "green": 525,
+      "amber": 185,
+      "red": 43
+    },
+    "pct_lang_median": 22,
+    "pct_lang_p90": 86,
+    "days_ge_p70": 133,
+    "days_ge_p90": 59,
+    "load_factor_median": 0.96,
+    "total_triggers": 371,
+    "triggers_by_type": {
+      "composite.amber": 69,
+      "indicator.spike": 146,
+      "composite.red": 42,
+      "indicator.red": 114
+    },
+    "triggers_by_severity": {
+      "let_op": 205,
+      "hoog": 166
+    }
+  },
+  "note": "Drempels zoals geverifieerd door deze backtest-run (lookahead-vrij voor de gerapporteerde v0.4-stats; zie de bewuste-beperking-noot bovenaan dit script). Wijzig een drempel nooit zonder her-run + nieuw artefact + CHANGELOG."
+}

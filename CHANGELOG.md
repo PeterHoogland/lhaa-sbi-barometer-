@@ -6,6 +6,20 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-12 — C2: kalibratie verifieerbaar gemaakt + claimaudit publieke copy
+
+**Aanleiding:** BLOK C-taak C2 (02_VERBETERPLAN): elke open-source-/pre-registratie-/kalibratie-claim moet een werkende verwijzing of reproduceerbaar artefact hebben, of verdwijnen — vóór de OSF-hash alles bevriest.
+
+**Beslissingen:**
+
+- **Kalibratie-artefact:** `cli/backtest.ts` schrijft nu `app/data/backtest-calibration.json` (bewust gecommit, geen CI-output): datum, periode, n, de exacte drempels waarmee gedraaid is (SPIKE_DREMPEL, P70/P90, LOAD_K, SUSTAINED_DAYS, COOLDOWN_H, ERNST_DREMPEL, V04-drempels) en de resultaten. Run van vandaag: 2024-05-21 t/m 2026-06-12, 753 dagen, 18/25 echte baselines; v0.4-tier 69,7% groen / 24,6% oranje / 5,7% rood; 371 triggers.
+- **Synchronisatietest:** nieuw `test/calibration.test.ts` pint de engine-constanten exact op het artefact (zelfde bewuste-frictie-patroon als registry.test.ts): een drempel wijzigen zonder her-backtest + nieuw artefact laat de suite falen. De engine blijft puur (geen runtime-file-I/O); de koppeling loopt via de test.
+- **Claimaudit publieke copy:** footer-claim "Code: open source." verwijderd (onwaar tot de repo publiek is) → eerlijke formulering "publicatie van code en pre-registratie (OSF) is voorbereid maar nog niet live". Methodologie-stap "staan vooraf vast en zijn publiek" → "staan vooraf vast in de methodologie-documenten en worden bij publicatie integraal openbaar", met verwijzing naar amendement-pad + falende tests bij stille wijziging.
+- OSF-publicatie zelf blijft Peters beslissing (01_STATUS §2.4); de volgorde-eis van het plan (eerst amendementen afronden, dán hashen) is gerespecteerd: §4.1.6 (B2) staat erin.
+- Verificatie: engine 161/161 (+2 tests), web build groen.
+
+---
+
 ## 2026-06-12 — B2/amendement: eCDF-normalisatie met 3-jaarsgate pre-geregistreerd (methodologie 0.3.2)
 
 **Aanleiding:** BLOK B-taak B2 (02_VERBETERPLAN): percentielen op 18-24 maanden dragen ±10-12 pp onzekerheid (B4 mat 18,8 pp spread); de CISS-methode (eCDF over een lange seizoensbaseline) is het einddoel zodra de historie het toelaat.

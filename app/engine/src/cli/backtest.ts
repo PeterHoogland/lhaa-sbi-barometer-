@@ -17,7 +17,7 @@
  * Run: npm run backtest [-- --from YYYY-MM-DD].
  */
 
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, existsSync, writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { INDICATOR_CODES, INDICATORS } from "../indicators/registry.js";
@@ -28,12 +28,19 @@ import {
   TRIGGER_P90,
   LOAD_K,
   SUSTAINED_DAYS,
+  COOLDOWN_H,
+  ERNST_DREMPEL,
+  V04_AMBER_P,
+  V04_RED_P,
+  V04_AMBER_SUSTAIN,
+  V04_RED_SUSTAIN,
   type TriggerState,
 } from "../index.js";
 import type { IndicatorCode, Tier } from "../types.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const HISTORY_DIR = resolve(__dirname, "../../../data/history");
+const CALIBRATION_OUT = resolve(__dirname, "../../../data/backtest-calibration.json");
 
 type Series = Array<{ date: string; value: number }>;
 
@@ -164,6 +171,45 @@ function main(): void {
   console.log(`  per severity:`, JSON.stringify(triggersBySeverity));
   const months = Object.keys(triggersByMonth).sort();
   console.log(`  drukste maanden:`, months.map((m) => `${m}:${triggersByMonth[m]}`).slice(-6).join("  "));
+
+  // C2: maak "gekalibreerd" verifieerbaar. Dit artefact legt vast met welke
+  // drempels deze backtest draaide, over welke periode en met welk resultaat;
+  // test/calibration.test.ts pint de engine-constanten op dit bestand, zodat
+  // een drempel niet stil kan wijzigen zonder her-backtest (zelfde patroon als
+  // de registry-synchronisatietest). Bewust gecommit artefact, geen CI-output.
+  const calibration = {
+    generated_at: end,
+    period: { start, end, n_days: nDays },
+    real_baseline_codes: realBaselineCodes,
+    thresholds: {
+      SPIKE_DREMPEL,
+      TRIGGER_P70,
+      TRIGGER_P90,
+      LOAD_K,
+      SUSTAINED_DAYS,
+      COOLDOWN_H,
+      ERNST_DREMPEL,
+      V04_AMBER_P,
+      V04_RED_P,
+      V04_AMBER_SUSTAIN,
+      V04_RED_SUSTAIN,
+    },
+    results: {
+      tier_days: tierDays,
+      pct_lang_median: pct(pctLang, 50),
+      pct_lang_p90: pct(pctLang, 90),
+      days_ge_p70: daysGE(70),
+      days_ge_p90: daysGE(90),
+      load_factor_median: Math.round(pct(loadFactors, 50) * 100) / 100,
+      total_triggers: totalTriggers,
+      triggers_by_type: triggersByType,
+      triggers_by_severity: triggersBySeverity,
+    },
+    note:
+      "Drempels zoals geverifieerd door deze backtest-run (lookahead-vrij voor de gerapporteerde v0.4-stats; zie de bewuste-beperking-noot bovenaan dit script). Wijzig een drempel nooit zonder her-run + nieuw artefact + CHANGELOG.",
+  };
+  writeFileSync(CALIBRATION_OUT, JSON.stringify(calibration, null, 2) + "\n", "utf-8");
+  console.log(`\nkalibratie-artefact: ${CALIBRATION_OUT}`);
   console.log("");
 }
 
