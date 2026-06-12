@@ -1,53 +1,29 @@
-import { LHALogo } from "./LHALogo";
-
 /**
- * Site-header: een licht geblurde alpenfoto over de volle breedte, met het
- * Hautes-Alpes-logo groot en gecentreerd bovenaan, een dunne scheidingslijn
- * eronder (zoals op plus.hautes-alpes.net), en daaronder het titelblok.
- *
- * v0.4: spreekt expliciet over 10 kern-indicatoren en uurlijkse bijstelling.
+ * Site-header (June20-branding, Peter 13/6): de merknaam bovenaan — het
+ * Les Hautes-Alpes-logo, de tagline en de site-link zijn naar de onderste
+ * balk verhuisd (afzender, geen meetgebied). Daaronder de eerlijke
+ * openingszin, de grote vraag en het meetgebied.
  */
 export function HeroBanner() {
   return (
     <header className="site-header">
-      <a
-        className="site-back"
-        href="https://plus.hautes-alpes.net/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Naar hautes-alpes.net ↗
-      </a>
       <div className="hero-top">
-        <a
-          className="site-logo"
-          href="https://plus.hautes-alpes.net/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Hautes-Alpes"
-        >
-          <LHALogo size={60} />
-        </a>
-        <div className="hero-tagline">Natuurlijk in het hart van de Alpen.</div>
+        <div className="hero-brand">De Nationale Stress Barometer</div>
       </div>
       <div className="hero-rule" aria-hidden="true" />
       <div className="hero-content">
-        {/* Publieksnaam (Peter GO 12/6): De Nationale Stress Index. De eerlijke
-            subtitel hieronder is de PERMANENTE claim-mitigatie bij deze naam
-            (beslismemo B7, optie B-discipline): nooit verwijderen of afzwakken
-            zonder nieuwe naamkeuze-beslissing. De methodologische motornaam
-            blijft SBI (footer + docs). */}
-        <div className="intro-eyebrow">De Nationale Stress Index</div>
+        {/* Eerlijke openingszin (formulering Peter 13/6) — de permanente
+            claim-mitigatie bij de Stress-naam (B7-discipline): we meten
+            omstandigheden die op mensen KUNNEN inwerken, geen gemeten
+            gevoelens. Niet verwijderen of afzwakken zonder nieuwe
+            naamkeuze-beslissing; zie 09_Brand-Message-Style-Guide. */}
         <div className="intro-subtitle">
-          Deze index meet hoe ongewoon zwaar de omstandigheden vandaag zijn voor heel
-          België, niet of mensen zich gestrest voelen.
-        </div>
-        {/* C3: afzender en meetgebied expliciet gescheiden — de alpenbranding
-            hierboven mag niet suggereren dat we de Hautes-Alpes meten. */}
-        <div className="intro-geo">
-          Meetgebied: België · een initiatief van Les Hautes-Alpes (Frankrijk)
+          Deze index meet hoe ongewoon zwaar de omstandigheden vandaag zijn die in
+          heel België op mensen kunnen inwerken.
         </div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
+        {/* C3: meetgebied expliciet; de afzender staat in de footer. */}
+        <div className="intro-geo">Meetgebied: België</div>
       </div>
     </header>
   );

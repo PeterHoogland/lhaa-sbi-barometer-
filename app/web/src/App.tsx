@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { DailyOutput, SparklinePoint } from "./types";
 // CallToAction bewust niet meer gerenderd (Peter 2026-06-12) — zie <main> hieronder.
+import { June20Mark } from "./components/June20Mark";
 import { BrandSafetyBanner } from "./components/BrandSafetyBanner";
 import { DemoBanner } from "./components/DemoBanner";
 import { ConditionLevelDisplay } from "./components/ConditionLevelDisplay";
@@ -118,9 +119,18 @@ export function App() {
 
       <footer className="footer">
         <div className="footer-inner footer-center">
+          {/* Afzender + bouwer in de onderste balk (Peter 13/6): het LHA-logo
+              verhuisde hierheen uit de header — afzender, geen meetgebied. */}
           <div className="footer-mark">
             <LHALogo size={52} />
             <div className="footer-mark-text">{FOOTER_NOTES.tagline}</div>
+          </div>
+          <div className="footer-credits">
+            <span>Een initiatief van Les Hautes Alpes</span>
+            <span> · </span>
+            <span>
+              Gebouwd door de <June20Mark /> Business Innovation OS
+            </span>
           </div>
           {/* A5: eerlijke, nuchtere testmodus-melding. Gate op mode (A3): de regel
               verdwijnt pas wanneer de campagne-koppeling écht live staat. */}

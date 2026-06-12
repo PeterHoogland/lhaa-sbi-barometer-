@@ -6,6 +6,20 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-13 — Naam gepreciseerd naar "De Nationale Stress Barometer" + header/footer-herschikking + JUNE20-woordmerk
+
+**Aanleiding:** Peter (13/6, met de June20-poster): header = "De Nationale Stress Barometer", nieuwe openingszin, "Meetgebied: België" onder de grote vraag, afzenders naar de onderste balk, en het JUNE20-woordmerk gereconstrueerd uit de poster (rest van de poster genegeerd).
+
+**Beslissingen:**
+
+- **Publieksnaam consistent "De Nationale Stress Barometer"** (header, browser-titel, meta-description, controle-stempel, embed-meta, stijlgids). NB: 12/6 was "Stress Index" gekozen; Peters header-instructie van 13/6 zegt expliciet "Barometer" — consistent doorgevoerd zodat header en overige plekken nooit uiteenlopen; één woord terugdraaien kan met dezelfde greep.
+- **Header herschikt:** merknaam in de bovenbalk (June20-posterregister: Inter zwaar, caps, wit); LHA-logo, tagline en site-link weg uit de header. Openingszin in Peters formulering van 13/6: "Deze index meet hoe ongewoon zwaar de omstandigheden vandaag zijn die in heel België op mensen kunnen inwerken." (blijft de bindende claim-mitigatie: omstandigheden die KUNNEN inwerken, geen gemeten gevoelens — stijlgids bijgewerkt). Daarna de grote vraag, met "Meetgebied: België" eronder.
+- **Onderste balk:** LHA-logo + tagline (afzender) + nieuwe credits-regel "Een initiatief van Les Hautes Alpes · Gebouwd door de JUNE20 Business Innovation OS"; footer op June20-off-black.
+- **JUNE20-woordmerk typografisch gereconstrueerd** (June20Mark-component): Inter Black, signaalrood, 180°-gedraaide J — geen beeldmateriaal van de poster overgenomen.
+- Visueel geverifieerd via lokale preview (header, geo-positie, footer-credits incl. woordmerk).
+
+---
+
 ## 2026-06-13 — UI: altijd één getal (Peter GO) + June20-visuele branding
 
 **Aanleiding:** Peter (13/6, met schermafbeelding): het hoofdcijfer moet altijd één getal op 100 zijn (geen bereik), de "/100" 50% groter, en de visuele branding van june20.be/innovationscan.

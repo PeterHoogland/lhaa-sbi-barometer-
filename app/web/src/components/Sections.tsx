@@ -1,5 +1,6 @@
 import type { DailyOutput } from "../types";
 import { FOOTER_NOTES } from "../copy";
+import { June20Mark } from "./June20Mark";
 
 export function MEDIA_DIAGNOSTIC({ diagnostic }: { diagnostic: DailyOutput["media_cluster_diagnostic"] }) {
   return (
@@ -46,6 +47,14 @@ export function FOOTER({ methodologyVersion }: { methodologyVersion: string }) {
       <div className="footer-row muted small">
         De volledige methodologie staat beschreven in documenten 00–09 (projectroot).
         Publicatie van code en pre-registratie (OSF) is voorbereid maar nog niet live.
+      </div>
+      {/* Onderste balk (Peter 13/6): afzender + bouwer — verhuisd uit de header. */}
+      <div className="footer-row footer-credits">
+        <span>Een initiatief van Les Hautes Alpes</span>
+        <span>·</span>
+        <span>
+          Gebouwd door de <June20Mark /> Business Innovation OS
+        </span>
       </div>
     </footer>
   );

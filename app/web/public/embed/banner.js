@@ -98,7 +98,7 @@
       + '<div class="sbi-b-headline">' + escapeHtml(copy.headline) + "</div>"
       + '<div class="sbi-b-body">' + escapeHtml(copy.body) + "</div>"
       + ctaHtml
-      + '<div class="sbi-b-meta">De Nationale Stress Index &middot; niveau ' + level + "/5"
+      + '<div class="sbi-b-meta">De Nationale Stress Barometer &middot; niveau ' + level + "/5"
       + (dateStr ? " &middot; " + escapeHtml(dateStr) : "")
       + " &middot; <a href=\"https://barometer.sbi/methodologie\">methodologie</a>"
       + "</div>"

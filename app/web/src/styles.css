@@ -133,6 +133,35 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
   letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.85);
 }
+
+/* Merkkop in de header (Peter 13/6) — June20-posterregister: zwaar, wit, caps. */
+.hero-brand {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(1.1rem, 3.2vw, 1.7rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 12px 0 8px;
+  text-align: center;
+}
+
+/* Gereconstrueerd JUNE20-woordmerk: Inter Black, signaalrood, 180°-gedraaide J
+   (typografische reconstructie van de poster; geen beeldmateriaal). */
+.j20-mark {
+  font-weight: 900;
+  color: var(--j20-red);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.j20-mark-j { display: inline-block; transform: rotate(180deg); }
+
+/* Onderste balk: afzender + bouwer (verhuisd uit de header, Peter 13/6). */
+.footer-credits {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
 /* dunne scheidingslijn onder het logo, volle breedte */
 .hero-rule {
   position: relative;
@@ -212,7 +241,8 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
   font-size: 0.8rem;
   letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.7);
-  margin: -8px auto 16px;
+  /* Staat sinds 13/6 ONDER de titel (was erboven, met negatieve marge). */
+  margin: 14px auto 0;
   max-width: 42rem;
 }
 
@@ -935,9 +965,8 @@ main {
 .footer {
   margin-top: 56px;
   padding: 36px 32px 32px;
-  /* Warm charcoal uit het palet van de hero-foto (zonsopgang-bivak), i.p.v. het
-     alpine-groen — sluit aan bij de foto onderaan de pagina. */
-  background: #2b2019;
+  /* June20-off-black (13/6) — zelfde vlak als de paginadonker. */
+  background: var(--j20-off-black);
   color: rgba(255, 255, 255, 0.75);
   font-size: 0.85rem;
 }
