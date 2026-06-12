@@ -59,6 +59,28 @@ Voor de eerste 24 maanden na opstart: vaste baseline als surrogaat, met explicie
 
 MAD-gebaseerde Z-scores zijn *niet* equivalent aan klassieke Z-scores. Een Z_short van 2.0 in onze methodologie staat ongeveer overeen met een klassieke Z van 1.5 voor symmetrische verdelingen. In communicatie spreken we daarom uitsluitend over *percentielen* (uit laag 7), niet over "σ-overschrijdingen", om verwarring met klassieke statistische standaarden te vermijden.
 
+### 2.6 Geïmplementeerde schaal-keten en schaarste-regels (v0.3.x, geverifieerd 2026-06-12)
+
+> Dit hoofdstuk documenteert de werkelijke implementatie in `app/engine/src/methodology/zscore.ts` en `app/engine/src/runtime.ts`, die strikter is dan de vereenvoudigde formule in §2.1. Bij verschil tussen §2.1 en deze sectie geldt deze sectie.
+
+**Robuuste spreidingsschaal met fallback-keten** (`robustScale()`): de σ in de Z-formule is niet kaal "MAD ×1.4826" maar een keten met expliciete uitval:
+
+1. **MAD ×1.4826** (consistentiefactor naar SD-equivalent voor normale verdelingen; equivalent aan delen door 0.6745). Gebruikt tenzij de geschaalde MAD < `MIN_SCALE` (1e-6).
+2. **IQR/1.349** als de MAD wegvalt. De MAD wordt exact 0 zodra >50% van de baselinepunten identiek is — typisch bij telt-indicatoren en gecensureerde reeksen (bv. koude-overschrijding die meestal 0 is). De interkwartielafstand overleeft tot >75% identieke punten.
+3. **Klassieke SD** (n−1) als ook de IQR wegvalt.
+4. **NaN** als er werkelijk geen variatie is: expliciet "geen schaal", nooit een stille 0.
+
+**Geen-schaal-semantiek** (`zscore()` + aanroeper in `runtime.ts`): bij σ = NaN of 0 geeft `zscore()` NaN terug. Er kan dus per constructie geen ±∞ ontstaan en dataschaarste verschijnt nooit als z = 0 ("normaal"). De aanroeper splitst het NaN-geval in twee:
+
+- **(a) Vlakke baseline, dagwaarde op of onder de mediaan** (en niet inverse-gecodeerd): dit is geen datagebrek maar een gemeten "geen uitschieter" — score z = 0, state "normaal". Voorbeeld: koude-overschrijding in Brussel is vrijwel altijd 0; een dagwaarde 0 tegen een vlakke 0-baseline is een echte meting van afwezigheid.
+- **(b) Vlakke baseline, dagwaarde erboven**: er is geen schaal om te wegen hoe uitzonderlijk de overschrijding is → indicator telt als "ontbreekt" (uitgesloten uit het composiet), geen stille geruststelling en geen verzonnen uitslag.
+
+**Minimale historie** (`MIN_HISTORY_FOR_Z = 30` in `runtime.ts`): met minder dan 30 baselinepunten wordt geen Z berekend; de indicator telt als "ontbreekt". De v0.4-kernlaag gebruikt bewust een lagere grens (`MIN_POINTS_FOR_Z = 8`) omdat die laag maandbronnen verwerkt; dat is een gedocumenteerd verschil, geen inconsistentie.
+
+**Volgorde van bewerkingen per indicator:** STL-residu (waar van toepassing, met gedetrende baseline) → baseline (mediaan + schaal-keten) → Z → geen-schaal-splitsing (a)/(b) → inverse-codering (§5) → winsorization (§4). Inverse-codering vóór winsorization, zodat de clip symmetrisch om de gecorrigeerde richting ligt.
+
+Unit-tests dekken de MAD=0-tak en de geen-schaal-paden (`app/engine/test/engine.test.ts`).
+
 ---
 
 ## 3. Seizoensdecompositie
@@ -124,6 +146,12 @@ Voor alle continue indicatoren na Z-scoring:
 Z_winsorized(i, t) = clip(Z(i, t), -3, +3)
 
 Behoudt richting en relatieve grootte van extremen, voorkomt single-indicator-dominantie.
+
+**Vastgelegde grens (geverifieerd 2026-06-12):** de grens is één constante, `WINSOR_BOUND = 3` in `app/engine/src/methodology/winsorize.ts`, gebruikt door zowel de v0.2- als de v0.4-laag. Motivatie voor ±3:
+
+1. Bij MAD-gebaseerde Z's is ±3 het *conservatieve* afkappunt uit de robust-statistics-literatuur (Leys et al. 2013 noemen 2.5 "gematigd" en 3 "zeer conservatief"): er wordt zo min mogelijk echte informatie weggeknipt, terwijl één extreme indicator het composiet niet kan domineren.
+2. Met 20 gescoorde indicatoren en domeingewichten van 1/5 is de maximale bijdrage van één geclipte indicator aan het composiet begrensd; een hogere grens zou single-indicator-dominantie weer mogelijk maken, een lagere grens zou echte crises afvlakken (§8.4).
+3. De keuze blijft conventioneel, niet empirisch afgeleid; dat staat hieronder eerlijk vermeld en de gevoeligheid wordt in laag 8 getoetst.
 
 **Eerlijke disclaimer:** ±3 is een conventionele drempel zonder specifieke empirische basis. In laag 8 (multiverse-analyse) wordt het effect van varieerde drempels (±2.5, ±3.5) systematisch getoetst.
 

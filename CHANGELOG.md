@@ -6,6 +6,18 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-12 — B1: doc 04 beschrijft de werkelijke z-implementatie (geen code-wijziging)
+
+**Aanleiding:** BLOK B-taak B1 (02_VERBETERPLAN). De code had sinds de reviewfix van §4.1 al de robuuste fallback-keten, maar doc 04_Laag-5 beschreef nog de simpele MAD-z uit v0.2.
+
+**Beslissingen:**
+
+- Doc 04 §2.6 (nieuw) documenteert de geïmplementeerde keten: MAD ×1.4826 → IQR/1.349 → SD → NaN (MIN_SCALE 1e-6), de geen-schaal-semantiek (nooit ±∞, nooit stille 0), de vlakke-baseline-splitsing (op/onder mediaan = gemeten z=0; erboven = "ontbreekt"), MIN_HISTORY_FOR_Z = 30 (v0.2) vs MIN_POINTS_FOR_Z = 8 (v0.4, maandbronnen) en de bewerkingsvolgorde (STL → baseline → Z → splitsing → inverse → winsor).
+- Doc 04 §4.1 legt WINSOR_BOUND = 3 vast als gedeelde constante (winsorize.ts, beide lagen) met motivatie (conservatief afkappunt per Leys et al. 2013; dominantie-begrenzing bij 20 indicatoren); de eerlijke disclaimer dat ±3 conventioneel is blijft staan, laag 8 toetst de gevoeligheid.
+- Geverifieerd: geen code-wijziging nodig; engine 131/131 groen.
+
+---
+
 ## 2026-06-12 — Amendement: tier dagelijks reactief (Peter GO, methodologie 0.3.1)
 
 **Aanleiding:** Peter wil dat het advertentievenster per dag reageert op de 2-jaarsnorm in plaats van na 3 dagen vasthouden. De 3-dagen-regel maakte de banner traag (backtest 97,7% groen) en live zichtbaar inconsistent (12 juni: scherm "LAAG" op percentiel 42 terwijl de banner nog "Venster opent" toonde uit het 3-dagen-geheugen).
