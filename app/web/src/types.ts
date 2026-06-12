@@ -27,6 +27,10 @@ export interface ContextSignal {
   unit: string;
   reads: string;
   why: string;
+  /** Evidence-grade (B8). Optioneel: oudere data-records missen dit veld. */
+  grade?: EvidenceGrade;
+  /** Eerlijke bewijskracht-duiding (B8). Optioneel: oudere data-records missen dit veld. */
+  evidence_note?: string;
   source: string;
   observation_date: string;
   data_source: { name: string; url: string };
@@ -42,6 +46,8 @@ export interface IndicatorBreakdown {
   /** Evidence-grade (review §3). Optioneel: oudere data-records missen dit veld.
    *  Grade D wordt in de publieke indicatorlijsten weggelaten. */
   grade?: EvidenceGrade;
+  /** Eerlijke bewijskracht-duiding (B8). Optioneel: oudere data-records missen dit veld. */
+  evidence_note?: string;
   plain_name: string;
   why: string;
   reads: string;

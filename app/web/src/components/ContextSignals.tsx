@@ -1,5 +1,6 @@
 import type { ContextSignal } from "../types";
 import { formatObservationDate } from "../lib/format-date";
+import { GRADE_LABELS } from "./indicator-utils";
 
 /**
  * Kalendercontext (A6) — D6-signalen als context, NIET in het cijfer.
@@ -37,6 +38,14 @@ export function ContextSignals({ signals }: { signals: ContextSignal[] }) {
               <span>Stand op: {formatObservationDate(s.observation_date)}</span>
             </div>
             <div className="secondary-source">{s.reads}</div>
+            {s.grade && (
+              <div className="secondary-source">
+                <span className={`ind-grade grade-${s.grade}`} title={`Bewijskracht ${s.grade}: ${GRADE_LABELS[s.grade]}`}>
+                  bewijs {s.grade}
+                </span>
+                {s.evidence_note && <span className="ctx-evidence-note"> {s.evidence_note}</span>}
+              </div>
+            )}
             <div className="secondary-source">
               Bron:{" "}
               <a href={s.data_source.url} target="_blank" rel="noreferrer">

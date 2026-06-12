@@ -1,4 +1,24 @@
-import type { IndicatorState } from "../types";
+import type { EvidenceGrade, IndicatorState } from "../types";
+
+/**
+ * Bewijskracht-labels (B8). De grade beschrijft de sterkte van het onderzoek
+ * achter een indicator, niet zijn gewicht in het hoofdcijfer: het publieke
+ * cijfer gebruikt gelijke domeingewichten; alleen het parallelle bewijs-gewogen
+ * controleschema weegt op grade. D telt nergens mee en staat niet in de lijst.
+ */
+export const GRADE_LABELS: Record<EvidenceGrade, string> = {
+  A: "sterk onderzoek",
+  B: "consistent onderzoek",
+  C: "indirect bewijs",
+  D: "diagnostisch",
+};
+
+export const GRADE_EXPLAINER: Record<EvidenceGrade, string> = {
+  A: "Sterk: herhaald onderzoek dat dit verband direct ondersteunt.",
+  B: "Goed: consistent onderzoek, vooral via welzijn en gezondheid.",
+  C: "Beperkt: indirect bewijs; de bron meet niet rechtstreeks stress of druk.",
+  D: "Diagnostisch: meet iets anders dan druk en telt niet mee in het cijfer.",
+};
 
 export function stateLabel(s: IndicatorState): string {
   switch (s) {

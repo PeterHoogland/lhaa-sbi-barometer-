@@ -2,7 +2,7 @@ import { useState } from "react";
 import type { IndicatorBreakdown, DomainCode } from "../types";
 import { DOMAIN_LABELS } from "../copy";
 import { isKern } from "../lib/kern";
-import { stateColor, stateLabelFor, stateIcon } from "./indicator-utils";
+import { GRADE_LABELS, stateColor, stateLabelFor, stateIcon } from "./indicator-utils";
 import { IndicatorDetail } from "./IndicatorDetail";
 import { observationGranularity } from "../lib/format-date";
 
@@ -34,6 +34,14 @@ function IndicatorRow({ ind }: { ind: IndicatorBreakdown }) {
           {prov && (
             <span className={`ind-prov ${prov.cls}`} title="Herkomst van de data">
               ● {prov.label}
+            </span>
+          )}
+          {ind.grade && (
+            <span
+              className={`ind-grade grade-${ind.grade}`}
+              title={`Bewijskracht ${ind.grade}: ${GRADE_LABELS[ind.grade]}`}
+            >
+              bewijs {ind.grade}
             </span>
           )}
         </span>
@@ -139,6 +147,14 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
         <p className="muted small">
           Met "gemiddeld" bedoelen we: vergeleken met dezelfde periode in de afgelopen twee jaar.{" "}
           {provenanceSummary(visible)}
+        </p>
+        <p className="muted small">
+          <strong>Bewijskracht per indicator:</strong> A = sterk en herhaald onderzoek, B = consistent
+          onderzoek (vooral via welzijn en gezondheid), C = indirect bewijs. De grade zegt hoe sterk het
+          onderzoek achter een indicator is, niet hoe zwaar hij in het cijfer weegt: in het hoofdcijfer
+          tellen alle getoonde indicatoren gelijk mee. Signalen met grade D meten iets anders dan druk;
+          die tellen niet mee en staan niet in deze lijst. Klik een indicator open voor wat het bewijs
+          precies wel en niet draagt.
         </p>
       </footer>
     </section>

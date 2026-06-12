@@ -1,5 +1,6 @@
 import type { IndicatorBreakdown } from "../types";
 import { formatObservationDate, observationGranularity } from "../lib/format-date";
+import { GRADE_EXPLAINER, GRADE_LABELS } from "./indicator-utils";
 
 /**
  * Het open-klik detailvenster van één indicator: wat we uitlezen, de gemeten
@@ -45,6 +46,18 @@ export function IndicatorDetail({ ind, hideWhy = false }: { ind: IndicatorBreakd
       </div>
 
       <p className="ind-reach-rationale">{ind.reach_rationale}</p>
+
+      {ind.grade && (
+        <div className="ind-evidence">
+          <div className="ind-meta-label">Bewijskracht</div>
+          <div className="ind-evidence-head">
+            <span className={`grade-badge grade-${ind.grade}`}>{ind.grade}</span>
+            <span className="ind-evidence-label">{GRADE_LABELS[ind.grade]}</span>
+            <span className="ind-evidence-explainer">{GRADE_EXPLAINER[ind.grade]}</span>
+          </div>
+          {ind.evidence_note && <p className="ind-evidence-note">{ind.evidence_note}</p>}
+        </div>
+      )}
 
       <div className="ind-sources">
         <div className="ind-source-block">

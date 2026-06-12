@@ -6,7 +6,17 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
-## 2026-06-12 — B1: doc 04 beschrijft de werkelijke z-implementatie (geen code-wijziging)
+## 2026-06-12 — B8: evidence-grading zichtbaar in de UI + claim-precisie per indicator
+
+**Aanleiding:** BLOK B-taak B8 (02_VERBETERPLAN). De grades (A/B/C/D) zaten al in registry en breakdown, maar de UI toonde ze nergens; per indicator ontbrak een eerlijke duiding van wat het bewijs wel en niet draagt.
+
+**Beslissingen:**
+
+- plain-language.ts: nieuw veld `evidenceNote` voor alle 25 indicatoren, geschreven volgens 03_REFERENTIE_BRONNEN_GRADING.md (oud wetenschapspakket): expliciet over niveau (individueel vs bevolking), proxy-afstand en beperkingen; overschrijdt de gelinkte bronnen niet. Grades zelf NIET gewijzigd (per amendement gepind; hergraderen zou een nieuw amendement vergen).
+- Breakdown (21) en context_signals (4) dragen nu `evidence_note` (context ook `grade`); UI: bewijskracht-chip per rij (IndicatorList), Bewijskracht-blok met badge + note (IndicatorDetail, dus ook TopInfluences), grade + note bij de kalendercontext (ContextSignals), legende in de lijst-footer. Grade D blijft buiten de publieke lijst (bestaande gedocumenteerde keuze).
+- Claim-correctie: de copy van I-D5-001 beweerde "telt mee met een gereduceerd gewicht", maar het publieke cijfer gebruikt gelijke domeingewichten; de reductie geldt alleen in het parallelle evidence-controleschema. Copy herschreven; de legende legt expliciet uit dat de grade bewijskracht beschrijft, geen gewicht in het hoofdcijfer.
+- Huisregel afgedwongen: em-dashes verwijderd uit user-facing bronnamen/labels in plain-language.ts; nieuwe testsuite test/evidence.test.ts (5 tests) pint notes aanwezig + "telt niet mee"-eerlijkheid voor D/context + geen gewichtsclaim + geen em-dash.
+- Verificatie: engine 136/136 (was 131, +5), web build groen, smoketest generate-fixture: 21 breakdown-entries en 4 contextsignalen dragen note/grade; CI-data teruggezet.
 
 **Aanleiding:** BLOK B-taak B1 (02_VERBETERPLAN). De code had sinds de reviewfix van §4.1 al de robuuste fallback-keten, maar doc 04_Laag-5 beschreef nog de simpele MAD-z uit v0.2.
 

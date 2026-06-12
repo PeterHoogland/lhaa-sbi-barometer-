@@ -92,6 +92,8 @@ export interface IndicatorBreakdown {
   /** Evidence-grade (review §3). D = experimentele proxy: telt niet mee in het
    *  cijfer en wordt in de publieke indicatorlijsten niet getoond. */
   grade: EvidenceGrade;
+  /** Eerlijke duiding van wat het bewijs wél en niet draagt (B8); user-facing. */
+  evidence_note: string;
   plain_name: string;
   why: string;
   reads: string;
@@ -145,6 +147,10 @@ export interface ContextSignal {
   unit: string;
   reads: string;
   why: string;
+  /** Evidence-grade uit de registry (B8) — ook context toont zijn bewijskracht. */
+  grade: EvidenceGrade;
+  /** Eerlijke duiding van wat het bewijs wél en niet draagt (B8); user-facing. */
+  evidence_note: string;
   source: string;
   observation_date: string;
   data_source: { name: string; url: string };
