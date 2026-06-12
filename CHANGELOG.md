@@ -6,7 +6,17 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
-## 2026-06-12 — B3: echte bootstrap-CI rond het dagcijfer (ci_90 + uncertainty_flag)
+## 2026-06-12 — B4: Monte-Carlo-gevoeligheidsanalyse (OECD/JRC stap 7) met Sobol'-indices
+
+**Aanleiding:** BLOK B-taak B4 (02_VERBETERPLAN): kwantificeer hoeveel het dagcijfer beweegt onder redelijke alternatieve methodekeuzes.
+
+**Beslissingen:**
+
+- Nieuw `app/pipeline/analysis/sensitivity.py` (pure Python, stijl multicollinearity.py): 1.200 geseede Monte-Carlo-runs over vier factoren: normalisatiemethode (MAD/IQR/SD-z), domeingewichten ±30% (hernormaliseerd), baselinelengte (18/24 m), indicator-uitsluiting (geen of één). Precompute van z-varianten per (methode × lengte) houdt de looptijd onder 2 s.
+- Per dag p05/p50/p95 + spread van het dagpercentiel over alle runs; eerste-orde Sobol'-indices via conditional-mean-binning (Y = percentiel van de recentste 7 dagen; expliciet NIET het gemiddelde over alle dagen — dat is binnen de eigen verdeling per constructie ~50 en drukt alle indices naar 0; deze valkuil zat in de eerste implementatie en is door de determinismetest + nulvariantie-symptoom gevangen).
+- Eerlijke vereenvoudigingen expliciet in het rapport (`limitations`): geen STL, percentiel binnen het analysisvenster, brute-force-Sobol zonder Saltelli-design, equal-binnen-domein.
+- Resultaat op de echte historie (90 dagen, 17 indicatoren met voldoende reeks, seed 20260612): gemiddelde spread dagpercentiel 18,8 pp (mediaan 17,8, max 43,3) — consistent met de ±10-12 pp-onzekerheidsmotivatie achter B2. Sobol': indicator-uitsluiting 0,40; gewichten samen 0,42 (D1 0,17 &gt; D2 0,11 &gt; D3 0,09 &gt; D5 0,06); normalisatiemethode 0,16; baselinelengte ~0.
+- Output naar `app/data/analysis/sensitivity.json` (gitignored, regenereerbaar). Test: `tests/test_sensitivity.py` (14 checks, standalone): determinisme, registry-filterregels (geen S/D6/grade-D), Sobol-sanity (dominante factor ~1, irrelevante ~0), spreidingsrapport.
 
 **Aanleiding:** BLOK B-taak B3 (02_VERBETERPLAN): zichtbare onzekerheid is de grootste geloofwaardigheidssprong. De oude `bootstrap_95_ci_around_equal` stond bewust op null/not_computed; die wordt nu écht berekend.
 
