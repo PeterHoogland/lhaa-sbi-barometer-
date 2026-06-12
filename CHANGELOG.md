@@ -6,7 +6,17 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
-## 2026-06-12 — C1: criteriumvalidatie-raamwerk volwaardig (p-waarden, lag, seizoen als confounder)
+## 2026-06-12 — C3: meetgebied België expliciet binnen één scherm; afzender gescheiden van meetgebied
+
+**Aanleiding:** BLOK C-taak C3 (02_VERBETERPLAN): een nieuwe bezoeker moet binnen één scherm begrijpen dat dit een Belgische index is, ondanks de Hautes-Alpes-branding.
+
+**Beslissingen:**
+
+- HeroBanner: nieuwe regel direct onder de openingszin: "Meetgebied: België · een initiatief van Les Hautes-Alpes (Frankrijk)". Samen met de B7-openingszin ("...voor heel België...") staat het meetgebied nu tweemaal op het eerste scherm, en is de alpenbranding expliciet afzender, geen meetgebied.
+- METHODOLOGY_DISCLAIMER: "het hele land" → "heel België" (geen impliciete lands-aanname); Methodology "Wat we doen" zegt nu "voor België".
+- "Wat we (nog) niet dekken" was al actueel (Vlaamse bron-bias) en C1 voegde de validatiekalender toe.
+- De naamafhankelijke stap (een "Nationale ..."-naam die dit definitief oplost) wacht op Peters B7-naamkeuze (04_B7_BESLISMEMO_NAAMKEUZE.md).
+- Verificatie: engine 161/161 (synchronisatietest-regexes ongemoeid), web build groen.
 
 **Aanleiding:** BLOK C-taak C1 (02_VERBETERPLAN). Verificatie eerst: validation/criterion_validity.py bestond al als stub met datacontract en verzendklare data-aanvragen (DATA-REQUESTS.md); de publieke jaaraggregaten stonden al verzameld met bronlinks (GATHERED-DATA.md). De resttaak was de rekenkern op acceptatieniveau brengen.
 

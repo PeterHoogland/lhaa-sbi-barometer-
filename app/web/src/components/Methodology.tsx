@@ -9,7 +9,7 @@ export function Methodology() {
       ))}
 
       <ul className="methodology-do-dont">
-        <li><strong>Wat we doen:</strong> we kijken naar 5 thema's en 21 gemeten elementen die met druk en belasting te maken hebben, en tellen hoe ongewoon ze vandaag zijn. De vier kalendersignalen van het domein Kalender en ritme (afstand tot vakantie, weekdag, klok-verzetten, examens) tonen we apart als context; die tellen niet mee in het cijfer. Drie andere indicatoren die uit de kalender afgeleid worden (daglicht, werk-deadlines, schoolvakantieperiode) tellen voorlopig wel mee; die keuze staat gedocumenteerd in de methodologie en wordt in de volgende fase herzien.</li>
+        <li><strong>Wat we doen:</strong> we kijken voor België naar 5 thema's en 21 gemeten elementen die met druk en belasting te maken hebben, en tellen hoe ongewoon ze vandaag zijn. De vier kalendersignalen van het domein Kalender en ritme (afstand tot vakantie, weekdag, klok-verzetten, examens) tonen we apart als context; die tellen niet mee in het cijfer. Drie andere indicatoren die uit de kalender afgeleid worden (daglicht, werk-deadlines, schoolvakantieperiode) tellen voorlopig wel mee; die keuze staat gedocumenteerd in de methodologie en wordt in de volgende fase herzien.</li>
         <li><strong>Wat we NIET doen:</strong> we kijken niet of jij persoonlijk stress hebt. We zijn geen dokter. We voorspellen niets.</li>
         <li><strong>Hoe vergelijken we?</strong> Met de afgelopen 24 maanden voor dezelfde tijd van het jaar. Een zomerdag wordt vergeleken met zomerdagen, geen winterdagen.</li>
       </ul>

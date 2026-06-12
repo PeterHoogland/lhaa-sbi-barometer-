@@ -37,6 +37,11 @@ export function HeroBanner() {
           Deze index meet hoe ongewoon zwaar de omstandigheden vandaag zijn voor heel
           België, niet of mensen zich gestrest voelen.
         </div>
+        {/* C3: afzender en meetgebied expliciet gescheiden — de alpenbranding
+            hierboven mag niet suggereren dat we de Hautes-Alpes meten. */}
+        <div className="intro-geo">
+          Meetgebied: België · een initiatief van Les Hautes-Alpes (Frankrijk)
+        </div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
       </div>
     </header>

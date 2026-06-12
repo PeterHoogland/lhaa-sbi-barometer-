@@ -210,6 +210,15 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
   max-width: 42rem;
 }
 
+/* C3: meetgebied vs afzender, direct onder de openingszin. */
+.intro-geo {
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.7);
+  margin: -8px auto 16px;
+  max-width: 42rem;
+}
+
 /* ============================================================
    MAIN CONTENT — sober
    ============================================================ */

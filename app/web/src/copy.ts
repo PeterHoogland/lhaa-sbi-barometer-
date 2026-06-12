@@ -87,7 +87,7 @@ export const DOMAIN_LABELS = {
 } as const;
 
 export const METHODOLOGY_DISCLAIMER = [
-  "Dit is een teller voor het hele land, niet voor jou persoonlijk.",
+  "Dit is een teller voor heel België, niet voor jou persoonlijk.",
   "We meten dus geen mensen, we meten omstandigheden. We voorspellen niet wat morgen gaat gebeuren.",
 ] as const;
 
