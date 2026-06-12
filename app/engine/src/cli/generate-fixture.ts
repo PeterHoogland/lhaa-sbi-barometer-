@@ -234,8 +234,14 @@ function syntheticRawValue(code: IndicatorCode, date: Date): number {
       return 2.5 + 0.5 * Math.sin(yearProg / 2) + (rnd() - 0.5) * 0.4;
     case "I-D3-002": // Energie €/MWh
       return 80 + 25 * Math.cos(yearProg) + (rnd() - 0.5) * 15;
-    case "I-D3-003": // log(1 + ontslagen)
-      return Math.log(1 + 100 + 50 * Math.cos(yearProg + 1) + (rnd() - 0.5) * 80);
+    case "I-D3-003": { // Ontslagdruk-proxy = log1p(extra werkzoekenden uit de
+      // LFSI-rate-delta). De echte reeks is 66% van de maanden exact 0 (delta <= 0)
+      // en anders ~7.6-10.7; de oude fallback gaf ALTIJD ~4.6-5.3 (log1p van een
+      // verzonnen niveau i.p.v. een delta) — zelfde landmijnklasse als de
+      // Hitte-bug. Grade D (telt niet mee in het cijfer), maar ook diagnostiek
+      // hoort op de echte schaal te ruisen.
+      return rnd() < 0.35 ? Math.log1p(2000 + rnd() * 8000) : 0;
+    }
     case "I-D3-005": // Werkloosheid %
       return 6.2 + (rnd() - 0.5) * 0.4;
     case "I-D3-006": // Hypotheekrente %
@@ -246,8 +252,16 @@ function syntheticRawValue(code: IndicatorCode, date: Date): number {
       return Math.max(0, 1.4 + 0.6 * Math.sin(yearProg * 1.5) + (rnd() - 0.5) * 0.9);
     case "I-D5-002": // Wikipedia-aandachts-index (per miljoen, fallback ~28)
       return Math.max(0, 28 + 6 * Math.sin(yearProg) + (rnd() - 0.5) * 8);
-    case "I-D5-003": // Collectieve gebeurtenissen 0-15
-      return rnd() < 0.05 ? Math.floor(rnd() * 6) : 0;
+    case "I-D5-003": { // Collectieve gebeurtenissen — GDELT-volume-intensiteit.
+      // Sinds de v0.4-herdefinitie is de maat het GDELT-volume van zware
+      // negatieve thema's (~0.05-0.22, mediaan ~0.10), niet meer de 0-15-
+      // magnitude uit events.json. De oude fallback gaf 0 op de magnitude-
+      // schaal: tegen de volume-baseline las dat als winsorized -3
+      // ("uitzonderlijk rustig") — een vals geruststellend signaal bij elke
+      // pipeline-uitval. Zelfde dormante-landmijnklasse als de Hitte-bug en
+      // de I-D1-009-fix hieronder; gevonden via de datacheck van 12/6.
+      return Math.max(0.04, 0.10 + 0.02 * Math.sin(yearProg) + (rnd() - 0.5) * 0.06);
+    }
     case "I-D1-009": // Wateroverlast = som dag-debiet VMM+SPW (m³/s), baseline-mediaan ~23.
       // Sinds de V13-bron-swap (GloFAS-index ~1.0 → VMM+SPW-debietsom) stond deze fallback
       // nog op de oude ~1.0-schaal: een dormante landmijn van dezelfde klasse als de Hitte-
@@ -256,8 +270,13 @@ function syntheticRawValue(code: IndicatorCode, date: Date): number {
       return Math.max(0, 24 + 10 * Math.cos(yearProg) + (rnd() - 0.5) * 12);
     case "I-D1-010": // Pollen (seizoensgebonden, lente-piek)
       return Math.max(0, 2 + 4 * Math.max(0, Math.sin(yearProg - 1)) + (rnd() - 0.5) * 2);
-    case "I-D2-009": // Treinverstoringen (aantal)
-      return Math.max(0, 3 + (rnd() - 0.5) * 4);
+    case "I-D2-009": { // Treinvertragingen — vertragingsgraad in % (amendement
+      // 12/6: aandeel treinen >= 6 min vertraagd; baseline mediaan ~6.5%,
+      // bereik 2.3-21.2). De oude fallback gaf nog de iRail-verstoringsTELLER
+      // (~1-5 stuks): tegen de %-baseline las dat als kunstmatig "rustig".
+      // Zelfde landmijnklasse als hierboven; gevonden via de datacheck van 12/6.
+      return Math.max(1, 6.5 + 1.5 * Math.cos(yearProg) + (rnd() - 0.5) * 4);
+    }
     case "I-D3-009": // Stroomnet-druk (ratio gemeten/voorspeld ~1.0)
       return Math.max(0, 1.0 + (rnd() - 0.5) * 0.08);
     default:

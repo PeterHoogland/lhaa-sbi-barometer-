@@ -6,7 +6,28 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
-## 2026-06-12 — Alarmering naar peter@hoogland.be bij niet-herstelbare defecten (laag 5 van de zelfcontrole)
+## 2026-06-12 — B7-naamkeuze (Peter GO): publieksnaam "De Nationale Stress Index"
+
+**Aanleiding:** Peter koos uit het B7-beslismemo voor de Stress-naam (optie B-familie). Bindende voorwaarde uit het memo: de eerlijke openingszin is de permanente claim-mitigatie en mag nooit losgekoppeld worden van de naam.
+
+**Beslissingen:**
+
+- Publieksnaam overal: browser-titel + meta-description (index.html, "stress-cijfer"-formulering weg), hero-eyebrow, controle-stempel onder het cijfer, embed-meta-regel (abonnee-banner). SBI blijft de methodologische motornaam (footer-versienummer, docs, API) — geen wijziging aan registry of methodologie.
+- De eerlijke subtitel ("meet hoe ongewoon zwaar de omstandigheden zijn... niet of mensen zich gestrest voelen") staat direct onder de naam en is in de code gemarkeerd als niet-verwijderbaar zonder nieuwe naamkeuze-beslissing; 09_Brand-Message-Style-Guide draagt dezelfde bindende voorwaarde voor elke downstream-uiting.
+- "Nationale" bevestigt het meetgebied België (C3); de afzender-regel ("initiatief van Les Hautes-Alpes") blijft.
+- Open: de visuele branding "van de innovatiescan" — de gegeven docx-bestanden (HYE/Navitec) bevatten standaard Office-opmaak en geen link; wacht op de link van Peter voor de visuele pass.
+
+---
+
+## 2026-06-12 — Datacheck Hitte-bug-klasse: drie synthetische fallbacks op verouderde schaal gefixt
+
+**Aanleiding:** Peters datacheck-opdracht n.a.v. de I-D5-003-observatie (gebeurtenisloze dag scoorde winsorized −3 in de lokale smoketest).
+
+**Bevindingen en beslissingen:**
+
+- **Productie is schaal-consistent:** de live I-D5-003-dagwaarde (0,062) en de baseline (0,05-0,22) zijn beide GDELT-volume-intensiteit, zoals de v0.4-herdefinitie voorschrijft. Geen productiebug; de −3-observatie kwam uit de lokale smoketest zonder pipeline-output (regel 7-les: niet op lokale data diagnosticeren).
+- **De echte landmijn:** drie `syntheticRawValue`-fallbacks in generate-fixture.ts stonden nog op de schaal van vóór hun herdefinitie — exact de klasse die eerder bij Hitte en I-D1-009 is gefixt. Bij een pipeline-uitval (zonder SBI_STRICT_REAL) zouden ze valse extremen injecteren: I-D5-003 (magnitude 0-15 i.p.v. GDELT-volume ~0,1 → vals "uitzonderlijk rustig"), I-D2-009 (iRail-teller ~3 i.p.v. vertragingsgraad ~6,5% → vals "rustig"), I-D3-003 (altijd log1p≈4,6-5,3 i.p.v. 66% nullen; grade D, diagnostisch). Alle drie nu op de echte verdelingsschaal met landmijn-commentaar.
+- NB: deze fallbacks verdwijnen sowieso bij go-live (SBI_STRICT_REAL=1 = "ontbreekt" i.p.v. synthese); tot dan zijn ze nu tenminste schaal-eerlijk.
 
 **Aanleiding:** Peter (12/6): het systeem moet zichzelf controleren, bijstellen en herstellen, en mailen naar peter@hoogland.be zodra iets faalt dat niet automatisch hersteld kan worden. Audit wees uit dat lagen 0-4 al bestonden (cron-Worker + fallback-schedule; fetcher-ladders; healthcheck-canary met rollende issue; verify_live; monitor.yml met hertrigger elke 20 min + optionele Claude-laag). Het gat: geen directe-mailroute, en een willekeurige stapfaal (build/deploy/verify_live) had alleen de rode run als signaal.
 
