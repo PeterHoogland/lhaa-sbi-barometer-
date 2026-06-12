@@ -1,79 +1,79 @@
 {
   "I-D1-004": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:08:06.628565",
+    "fetched_at": "2026-06-12T15:34:58.664582",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.4929
+    "value": 0.51
   },
   "I-D1-009": {
     "date": "2026-06-11",
-    "fetched_at": "2026-06-12T14:08:09.369501",
+    "fetched_at": "2026-06-12T15:35:01.979119",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 12.6
   },
   "I-D1-010": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:08:09.762277",
+    "fetched_at": "2026-06-12T15:35:02.371932",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 5.950000000000001
   },
   "I-D1-010-sci": {
     "date": "2026-06-11",
-    "fetched_at": "2026-06-12T14:13:21.750962",
+    "fetched_at": "2026-06-12T15:39:50.960508",
     "source": "Sciensano AirAllergy (Belgisch pollennetwerk, 1/5 stations, grains/m³)",
     "value": 18.0
   },
   "I-D2-001-rt": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:12:48.418593",
-    "source": "Verkeerscentrum DATEX II v3 — 44 files, 137.22 km totale filelengte (langste 11.48 km), snapshot 2026-06-12",
-    "value": 137.22
+    "fetched_at": "2026-06-12T15:39:17.794450",
+    "source": "Verkeerscentrum DATEX II v3 — 47 files, 121.44 km totale filelengte (langste 9.45 km), snapshot 2026-06-12",
+    "value": 121.44
   },
   "I-D2-009": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:08:10.842826",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
-    "value": 1.0
+    "fetched_at": "2026-06-12T15:35:03.623689",
+    "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
+    "value": 0.0
   },
   "I-D2-delijn": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:12:50.899307",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 1338 vertraagd (≥3min), 13 service-alerts (Vlaanderen)",
-    "value": 1338.0
+    "fetched_at": "2026-06-12T15:39:20.153346",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 1055 vertraagd (≥3min), 13 service-alerts (Vlaanderen)",
+    "value": 1055.0
   },
   "I-D2-stib": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:12:49.150580",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 518 actieve items; CC BY 4.0)",
-    "value": 518.0
+    "fetched_at": "2026-06-12T15:39:18.626698",
+    "source": "STIB/MIVB TravellersInformation (Brussel, 517 actieve items; CC BY 4.0)",
+    "value": 517.0
   },
   "I-D3-002": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:08:12.497338",
+    "fetched_at": "2026-06-12T15:35:05.798436",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 85.52954545454544
   },
   "I-D3-003S": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:12:46.755166",
-    "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "fetched_at": "2026-06-12T15:39:16.198257",
+    "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~10 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 6.0
   },
   "I-D3-009": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:08:15.090953",
+    "fetched_at": "2026-06-12T15:35:08.315636",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0321968330722657
   },
   "I-D5-001": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:09:27.092345",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1038/1099 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.35 / midden +0.35 / ouder +0.38. Negatiefste headlines: «Derde dodelijk slachtoffer van brand in Anderlecht is Bogdan, een 55-jarige Pool In de tragische brand in Anderlecht vor · 17-jarige gewond na ongeval in Zelem · Brandweer nog steeds op zoek naar slachtoffers na explosie in flatgebouw in Amsterdam: zeker zeven gewonden, 400 mensen »; emotie-profiel headlines (matches/100 woorden): woede 0.14 / angst 0.12 / verdriet 0.17 / walging 0.04 (dominant: verdriet)",
-    "value": 1.5834
+    "fetched_at": "2026-06-12T15:36:02.930189",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1038/1096 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.61 / midden +0.57 / ouder +0.65. Negatiefste headlines: «Derde dodelijk slachtoffer van brand in Anderlecht is Bogdan, een 55-jarige Pool In de tragische brand in Anderlecht vor · Maaseikenaar gewond bij ongeval in Gruitrode · Meerdere mensen opgepakt na explosie en brand in flatgebouw Amsterdam, mogelijke slachtoffers nog onder puin De politie »; emotie-profiel headlines (matches/100 woorden): woede 0.14 / angst 0.14 / verdriet 0.16 / walging 0.04 (dominant: verdriet)",
+    "value": 1.6402
   },
   "I-D5-002": {
     "date": "2026-06-11",
-    "fetched_at": "2026-06-12T14:09:27.282454",
+    "fetched_at": "2026-06-12T15:36:03.907665",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 32.493
   },
@@ -85,20 +85,20 @@
   },
   "I-D5-006S": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:12:12.439415",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.36164885372433303
+    "fetched_at": "2026-06-12T15:38:43.050977",
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.5723028083557283
   },
   "I-D5-mastodon": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:12:13.509512",
+    "fetched_at": "2026-06-12T15:38:44.552305",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.11162678701036903
   },
   "I-D5-trends": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-12T14:12:47.354155",
-    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.16 (stress-trends: algemene staking, space x aandeel, boom)",
-    "value": 0.1616
+    "fetched_at": "2026-06-12T15:39:16.625133",
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.09 (stress-trends: algemene staking, storing facebook)",
+    "value": 0.0859
   }
 }
