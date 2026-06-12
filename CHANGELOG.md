@@ -6,7 +6,15 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
-## 2026-06-13 — Naam gepreciseerd naar "De Nationale Stress Barometer" + header/footer-herschikking + JUNE20-woordmerk
+## 2026-06-13 — Top-3 en kalendercontext achter uitklikbalken (Peter, met schermafbeeldingen)
+
+**Aanleiding:** Peter: "Wat speelt vandaag het meest mee?" en het kalendercontext-blok moeten uitklikbalken worden zoals de balken lager op de site; het open contextblok mag van de pagina.
+
+**Beslissingen:**
+
+- Nieuw `CollapseBar`-component dat exact de bp-rij-stijl van ButtonPanels hergebruikt (zelfde klassen = gegarandeerd zelfde look/gedrag); beide blokken staan nu dichtgeklapt direct onder de scorekaart: "Wat speelt vandaag het meest mee?" en "Context - Niet in het cijfer".
+- `TopInfluences` en `ContextSignals` kregen een `bare`-variant: binnen een balk levert de balk de titel, dus eigen kop/badge/paneelkader blijven daar weg (dubbelop). Buiten een balk (PreviewPage e.d.) renderen ze onveranderd.
+- Inhoud, data en eerlijkheidscopy (lead, "telt niet mee"-notes, disclaimer, A6-uitleg) zijn ongewijzigd; alleen de verpakking is ingeklapt. Visueel geverifieerd in lokale preview (dicht + open: 3 top-items, 4 contextsignalen, geen dubbele koppen).
 
 **Aanleiding:** Peter (13/6, met de June20-poster): header = "De Nationale Stress Barometer", nieuwe openingszin, "Meetgebied: België" onder de grote vraag, afzenders naar de onderste balk, en het JUNE20-woordmerk gereconstrueerd uit de poster (rest van de poster genegeerd).
 

@@ -9,13 +9,15 @@ import { GRADE_LABELS } from "./indicator-utils";
  * zonder state en zonder bijdrage: "het is examenperiode" is duiding,
  * geen gemeten stress.
  */
-export function ContextSignals({ signals }: { signals: ContextSignal[] }) {
+export function ContextSignals({ signals, bare = false }: { signals: ContextSignal[]; bare?: boolean }) {
   if (!signals || signals.length === 0) return null;
 
   return (
-    <section className="panel secondary-panel context-panel">
-      <div className="secondary-badge">CONTEXT · NIET IN HET CIJFER</div>
-      <h2>De kalender als context</h2>
+    // `bare` (Peter 13/6): binnen de uitklikbalk "Context - Niet in het cijfer"
+    // levert de balk de titel — badge en h2 zijn daar dubbelop en blijven weg.
+    <section className={bare ? "context-panel" : "panel secondary-panel context-panel"}>
+      {!bare && <div className="secondary-badge">CONTEXT · NIET IN HET CIJFER</div>}
+      {!bare && <h2>De kalender als context</h2>}
       <p className="panel-lead">
         Deze ritmes lees je af aan de kalender, we meten ze niet. Examens,
         vakanties en het klok-verzetten kleuren hoe een dag aanvoelt, maar een

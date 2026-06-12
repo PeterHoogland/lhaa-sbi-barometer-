@@ -34,7 +34,7 @@ function TopItem({ ind, rank }: { ind: IndicatorBreakdown; rank: number }) {
  * 15-jarig taalniveau. Elke kaart klikt open met hetzelfde detailvenster als de
  * volledige indicatorlijst.
  */
-export function TopInfluences({ breakdown }: { breakdown: IndicatorBreakdown[] }) {
+export function TopInfluences({ breakdown, bare = false }: { breakdown: IndicatorBreakdown[]; bare?: boolean }) {
   // Trage/structurele grondlast-indicatoren horen niet in de "vandaag"-lijst:
   // ze bewegen op jaar-/maandschaal, maar lezen met een live-klinkend label
   // alsof er nú iets verandert. Energie (I-D3-002, dagprijs) blijft wél staan.
@@ -47,8 +47,10 @@ export function TopInfluences({ breakdown }: { breakdown: IndicatorBreakdown[] }
   if (top.length === 0) return null;
 
   return (
-    <section className="panel top-influences">
-      <h2>Wat speelt vandaag het meest mee?</h2>
+    // `bare` (Peter 13/6): binnen een uitklikbalk levert de balk zelf de titel
+    // en het paneel-chroom — dan geen eigen .panel-kader en h2 (dubbelop).
+    <section className={bare ? "top-influences" : "panel top-influences"}>
+      {!bare && <h2>Wat speelt vandaag het meest mee?</h2>}
       <p className="panel-lead">
         Van de kern-indicatoren die we bekijken, zijn dit de drie die vandaag
         de meeste invloed hebben op het cijfer.

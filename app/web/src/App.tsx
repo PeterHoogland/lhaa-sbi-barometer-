@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { DailyOutput, SparklinePoint } from "./types";
 // CallToAction bewust niet meer gerenderd (Peter 2026-06-12) — zie <main> hieronder.
 import { June20Mark } from "./components/June20Mark";
+import { CollapseBar } from "./components/CollapseBar";
 import { BrandSafetyBanner } from "./components/BrandSafetyBanner";
 import { DemoBanner } from "./components/DemoBanner";
 import { ConditionLevelDisplay } from "./components/ConditionLevelDisplay";
@@ -102,17 +103,31 @@ export function App() {
             Heractiveren = deze regel terugzetten:
             <CallToAction tier={data.tier.current} brandSafety={data.brand_safety.flag} /> */}
 
-        <TopInfluences
-          breakdown={
-            // Gate op mode (A3), niet op aanwezigheid: een test-modus-v04 mag de
-            // publieke top-3 nooit voeden, ook niet als een publisher vergeet te strippen.
-            data.v04?.mode === "live"
-              ? data.v04.kern_breakdown.map((k) => enrichKern(k, data.indicator_breakdown))
-              : data.indicator_breakdown
-          }
-        />
-
-        <ContextSignals signals={data.context_signals ?? []} />
+        {/* Peter 13/6: deze twee blokken staan niet langer open op de pagina
+            maar achter uitklikbalken, in dezelfde stijl als de balken eronder. */}
+        <section className="bp-section" aria-label="Vandaag uitgelicht">
+          <CollapseBar
+            label="Wat speelt vandaag het meest mee?"
+            sub="De drie indicatoren met vandaag de meeste invloed op het cijfer"
+          >
+            <TopInfluences
+              bare
+              breakdown={
+                // Gate op mode (A3), niet op aanwezigheid: een test-modus-v04 mag de
+                // publieke top-3 nooit voeden, ook niet als een publisher vergeet te strippen.
+                data.v04?.mode === "live"
+                  ? data.v04.kern_breakdown.map((k) => enrichKern(k, data.indicator_breakdown))
+                  : data.indicator_breakdown
+              }
+            />
+          </CollapseBar>
+          <CollapseBar
+            label="Context - Niet in het cijfer"
+            sub="De vier kalendersignalen: duiding naast het cijfer, ze tellen niet mee"
+          >
+            <ContextSignals bare signals={data.context_signals ?? []} />
+          </CollapseBar>
+        </section>
 
         <ButtonPanels data={expertData ?? data} sparkline={sparkline} />
       </main>
