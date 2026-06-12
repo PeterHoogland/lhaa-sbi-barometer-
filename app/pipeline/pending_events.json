@@ -7126,5 +7126,68 @@
     "link": "https://www.nieuwsblad.be/mobiliteit/nieuw-ongeval-op-e313-doet-antwerpse-avondspits-ontsporen-op-veel-trajecten-verlies-je-meer-dan-een-uur/156945030.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-12",
+    "magnitude": 1,
+    "title": "Na verbod deelsteps: regering onderzoekt mogelijkheid om vloot deelfietsen uit te breiden",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/mobiliteit/na-verbod-deelsteps-regering-onderzoekt-mogelijkheid-om-vloot-deelfietsen-uit-te-breiden-2026-06-12",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-12",
+    "magnitude": 3,
+    "title": "Herdenking Air India-ramp staat in teken van verdriet en onbeantwoorde vragen",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/herdenking-air-india-ramp-staat-in-teken-van-verdriet-en-onbeantwoorde-vragen/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-12",
+    "magnitude": 1,
+    "title": "Schietpartij bezig in Texas: 11 mensen neergeschoten, zeker 1 dode",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/schietpartij-bezig-in-texas-11-mensen-neergeschoten-zeker-1-dode/157049066.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-12",
+    "magnitude": 1,
+    "title": "Bijzonder zware avondspits: bestuurder rijdt in op twee wagens die worden getakeld op E34 in Zandhoven",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/deurne/bijzonder-zware-avondspits-bestuurder-rijdt-in-op-twee-wagens-die-worden-getakeld-op-e34-in-zandhoven/157022922.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-12",
+    "magnitude": 1,
+    "title": "Michal en Hsuan-Jia van restaurant Lil Bao werden slachtoffer van relschoppers: “Wegkijken en niet reageren is geen optie”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/brussel/brussel/michal-en-hsuan-jia-van-restaurant-lil-bao-werden-slachtoffer-van-relschoppers-wegkijken-en-niet-reageren-is-geen-optie/156962662.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-12",
+    "magnitude": 1,
+    "title": "Bestuurder rijdt in op twee wagens die worden getakeld, file op E34 richting Nederland",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/zandhoven/bestuurder-rijdt-in-op-twee-wagens-die-worden-getakeld-file-op-e34-richting-nederland/157044047.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-12",
+    "magnitude": 1,
+    "title": "Bijzonder zware avondspits in en rond Antwerpen door ongevallen op E313 en E34: “Op veel trajecten verlies je meer dan een uur”",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/bijzonder-zware-avondspits-in-en-rond-antwerpen-door-ongevallen-op-e313-en-e34-op-veel-trajecten-verlies-je-meer-dan-een-uur/156946968.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
