@@ -32,7 +32,12 @@ export function HeroBanner() {
       </div>
       <div className="hero-rule" aria-hidden="true" />
       <div className="hero-content">
-        <div className="intro-eyebrow">Stressor-Blootstellings-Index</div>
+        {/* Publieksnaam (Peter GO 12/6): De Nationale Stress Index. De eerlijke
+            subtitel hieronder is de PERMANENTE claim-mitigatie bij deze naam
+            (beslismemo B7, optie B-discipline): nooit verwijderen of afzwakken
+            zonder nieuwe naamkeuze-beslissing. De methodologische motornaam
+            blijft SBI (footer + docs). */}
+        <div className="intro-eyebrow">De Nationale Stress Index</div>
         <div className="intro-subtitle">
           Deze index meet hoe ongewoon zwaar de omstandigheden vandaag zijn voor heel
           België, niet of mensen zich gestrest voelen.

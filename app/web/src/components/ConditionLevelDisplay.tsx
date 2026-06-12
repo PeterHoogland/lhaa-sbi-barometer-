@@ -104,7 +104,7 @@ export function ConditionLevelDisplay({
           </span>
         )}
         <span className="cn-stamp">
-          De Stressor-Blootstellings-index werd gecontroleerd en bijgestuurd · laatst om {lastRunTime}
+          De Nationale Stress Index werd gecontroleerd en bijgestuurd · laatst om {lastRunTime}
         </span>
       </div>
     </section>
