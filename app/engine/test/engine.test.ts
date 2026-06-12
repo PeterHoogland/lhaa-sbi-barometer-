@@ -104,30 +104,33 @@ describe("Wegingen (doc 05 Annex A)", () => {
   });
 });
 
-describe("Tier-logica (doc 06 §3)", () => {
-  it("Eén dag boven 90 ≠ rood (sustained-regel)", () => {
-    const result = computeTier([50, 50, 50, 95, 50, 50]);
-    expect(result.tier).toBe("green");
-  });
-
-  it("Drie opeenvolgende dagen ≥90 → rood", () => {
-    const result = computeTier([50, 50, 92, 93, 95]);
+describe("Tier-logica (doc 06 §3 + amendement 2026-06-12: dagelijks reactief)", () => {
+  it("één dag ≥ 90 → direct rood (dagregel)", () => {
+    const result = computeTier([50, 50, 50, 95]);
     expect(result.tier).toBe("red");
+    expect(result.daysInTier).toBe(1);
   });
 
-  it("Drie opeenvolgende dagen tussen 70-90 → oranje", () => {
-    const result = computeTier([60, 75, 80, 78]);
+  it("één dag in 70-90 → direct oranje", () => {
+    const result = computeTier([60, 50, 75]);
     expect(result.tier).toBe("amber");
   });
 
-  it("Decay: 3 dagen onder drempel verlaagt tier", () => {
-    const result = computeTier([95, 95, 95, 95, 50, 50, 50]);
+  it("afschalen volgt de dag: onder de drempel → direct groen", () => {
+    const result = computeTier([95, 95, 50]);
     expect(result.tier).toBe("green");
+    expect(result.daysInTier).toBe(1);
   });
 
-  it("Decay vereist 3 opeenvolgende dagen onder — 2 niet genoeg", () => {
-    const result = computeTier([95, 95, 95, 50, 50]);
-    expect(result.tier).toBe("red"); // nog steeds rood na 2 dagen herstel
+  it("tier volgt de dagband exact (geen meerdaags geheugen meer)", () => {
+    const result = computeTier([50, 75, 95, 75, 50]);
+    expect(result.tierHistory).toEqual(["green", "amber", "red", "amber", "green"]);
+  });
+
+  it("daysInTier telt een aaneengesloten reeks in dezelfde band", () => {
+    const result = computeTier([50, 75, 78, 82]);
+    expect(result.tier).toBe("amber");
+    expect(result.daysInTier).toBe(3);
   });
 });
 

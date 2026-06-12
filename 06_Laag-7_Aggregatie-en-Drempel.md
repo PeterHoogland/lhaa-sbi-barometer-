@@ -95,7 +95,18 @@ Bij daling onder drempel: tier wordt afgeschaald pas na 3 opeenvolgende dagen on
 
 Het instrument is ontworpen om *trage* tier-overgangen op te leggen (zowel omhoog als omlaag). Het is geen real-time alarm; het is een rapport over collectieve conditie.
 
-### 3.5 Rechtvaardiging van de 3-dagen-sustained-regel
+> **Amendement (2026-06-12, Peter GO, methodologie 0.3.1):** de tier volgt sinds
+> dit amendement de DAGBAND direct (SUSTAINED_DAYS = 1): oranje zodra het
+> dagpercentiel >= P70, rood zodra >= P90, en afschalen gebeurt eveneens dezelfde
+> dag. De drempels en de norm (seizoensbewust percentiel over 24 maanden)
+> wijzigen niet; alleen de reactiesnelheid. Motivatie: de 3-dagen-regel maakte de
+> banner traag en inconsistent met het dagcijfer (backtest: 97,7% groen; live
+> zichtbaar als "LAAG"-dagen met een nog actieve banner uit het 3-dagen-geheugen).
+> Verwacht gevolg, per definitie van het percentiel: venster open op ~30% van de
+> dagen (waarvan ~10% op piekniveau). §3.5 hieronder blijft staan als historische
+> rechtvaardiging van de oorspronkelijke keuze. Zie 00_Pre-Registratie §4.1.5.
+
+### 3.5 Rechtvaardiging van de 3-dagen-sustained-regel (historiek, vervangen per 2026-06-12)
 
 De keuze van 3 dagen is niet arbitrair maar geankerd in twee literatuurlijnen:
 

@@ -21,7 +21,7 @@ export function Methodology() {
           <li>Voor elke indicator vergelijken we de waarde van vandaag met wat normaal is voor dit moment in het jaar.</li>
           <li>We corrigeren voor seizoens-effecten waar dat zinvol is (bv. files in juli zijn anders dan files in november).</li>
           <li>We tellen alles op, met gewichten die rekening houden met hoeveel wetenschappelijk onderzoek de link met stress ondersteunt.</li>
-          <li>Pas als het cijfer minstens drie dagen op rij boven een drempel zit, gaat het "venster" open. Eén slechte dag verandert het cijfer niet meteen.</li>
+          <li>Het "venster" opent zodra de dag zelf boven de drempel zit: hoger dan 70% van de dagen rond deze tijd van het jaar, gemeten over de laatste twee jaar. Zakt de dag eronder, dan sluit het venster ook weer dezelfde dag.</li>
           <li>Alle keuzes (drempels, gewichten, formules) staan vooraf vast en zijn publiek, niemand kan ze achteraf bijsturen om een gewenste uitkomst te maken.</li>
         </ol>
       </details>

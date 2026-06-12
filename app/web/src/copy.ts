@@ -12,13 +12,14 @@ export const TIER_HEADLINE = {
 
 export const TIER_SUBLINE = {
   green: "Geen verhoogde druk op de hele bevolking.",
-  amber: "Verschillende stress-factoren staan samen aan, al drie dagen of langer.",
+  amber: "Verschillende stress-factoren staan vandaag samen aan.",
   red: "We zitten in de zwaarste 10% van de laatste twee jaar.",
 } as const;
 
 // Band-gebaseerde kop (volgt de dag-score, zoals de kicker en de meter-zones),
-// zodat de status-tekst klopt met het getal bovenaan. De TIER_*-versies hierboven
-// bleven aan de sustained-tier hangen (3 dagen), waardoor 71 "gewone dag" las.
+// zodat de status-tekst klopt met het getal bovenaan. Sinds het amendement van
+// 2026-06-12 volgt de tier zelf óók de dagband (geen 3-dagen-geheugen meer),
+// dus banden, kicker en banner zijn elke dag onderling consistent.
 export type ScoreBand = "laag" | "gemiddeld" | "verhoogd" | "hoog";
 export function scoreBand(score: number): ScoreBand {
   if (score >= 90) return "hoog";

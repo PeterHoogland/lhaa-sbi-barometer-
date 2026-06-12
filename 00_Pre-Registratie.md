@@ -97,6 +97,20 @@ De vier D6-kalenderindicatoren (I-D6-001, I-D6-002, I-D6-003, I-D6-005) zijn det
 
 **Gemotiveerde scopekeuze:** I-D1-001 (daglichturen), I-D4-001 (deadlinepieken) en I-D4-002 (schoolvakantie) zijn eveneens deterministisch maar blijven voorlopig gescoord. Dit is een bewuste, gedocumenteerde beperking; heroverweging staat gepland bij de construct-herziening (BLOK B).
 
+### 4.1.4 Amendement: herdefinitie I-D2-009 naar Infrabel-vertragingsgraad (2026-06-12, Peter GO)
+
+De maat van I-D2-009 wijzigt van "aantal ongeplande verstoringen" (iRail-teller) naar "vertragingsgraad": het aandeel treinmetingen met 6 minuten of meer aankomstvertraging, in procent, over de officiële Infrabel-meetset-benadering (per trein de eerste Brussel-aankomst, anders de eindbestemming), beperkt tot aankomsten vóór 20:00 lokale tijd. Motivatie en borging:
+
+- **Waarom:** de iRail-teller had op go-live-datum (22 juni) maar circa 14 echte historiepunten en kon dus niet eerlijk gescoord worden vóór eind juli. De Infrabel-stiptheidsdata levert jaren echte daghistorie en een officiële, dagelijks ververste bron zonder sleutel.
+- **Schaaldiscipline:** de baseline (app/pipeline/scripts/backfill_infrabel_baseline.py, 13 maanden) en de live fetcher (pipeline/fetchers/infrabel.py) delen exact dezelfde drempel- en venster-constanten. De meetset-benadering is een 75%-subsample van de officiële telling met vrijwel hetzelfde niveau, empirisch geijkt: mei 2026 reconstructie 7,63% vs officieel maandcijfer 7,61% (regelmaat 92,39); over mei-oktober 2025 lagen de maanddelta's tussen -0,53 en +0,27 procentpunt zonder systematische richting. Het backfill-script valideert ELKE maand tegen het officiële cijfer en weigert een baseline te schrijven bij een afwijking groter dan 0,75 procentpunt (tolerantie empirisch afgeleid uit die delta-verdeling; een echte meetset-drift valt erbuiten).
+- **Grade blijft B:** de bronkwaliteit steeg (officieel, dagelijks), maar het wetenschappelijke bewijs voor de stress-link veranderde niet; geen stille gewichtswijziging.
+- **De iRail-teller verdwijnt niet:** hij loopt door als secundair signaal I-D2-009S (eigen historie, niet in het cijfer). De oude I-D2-009-historie (verstoringsteller, andere schaal) is vervangen, niet gemengd.
+- **Procedure:** ook dit amendement is vastgelegd vóór OSF-publicatie van dit document; de 30-dagen-termijn van §13 is met expliciete GO van de methodologie-eigenaar verkort (zie de eerlijkheidsverklaring bovenaan §4.1).
+
+### 4.1.5 Amendement: tier dagelijks reactief (2026-06-12, Peter GO, methodologie 0.3.1)
+
+De 3-dagen-sustained-regel (doc 06 §3) is vervangen door een dagregel: de tier volgt de band van het dagpercentiel direct, zowel omhoog als omlaag (oranje >= P70, rood >= P90, afschalen dezelfde dag). De norm wijzigt niet: het percentiel blijft seizoensbewust gewogen tegen dezelfde periode van het jaar over de laatste 24 maanden. Motivatie: de oorspronkelijke regel maakte het advertentievenster traag (backtest 97,7% groen) en kon een laag dagcijfer combineren met een nog actieve banner uit het meerdaagse geheugen; sinds de dagregel zijn cijfer, label en banner elke dag onderling consistent. Verwacht gevolg, per definitie van het percentiel: venster open op circa 30% van de dagen (waarvan circa 10% piekniveau); de brand-safety-override (CN 5) blijft onverkort gelden. De rechtvaardiging van de oude regel blijft als historiek staan in doc 06 §3.5.
+
 ---
 
 ## 5. Inclusiecriteria (uit laag 3)

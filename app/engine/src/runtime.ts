@@ -56,8 +56,10 @@ import {
 } from "./methodology/triggers.js";
 
 // 0.3.0 (2026-06-11, BLOK A): D6-kalendercontext uit het composiet (A6),
-// hernormalisatie gewichten 1/6→1/5 + Schema-2 pro rata. Zie CHANGELOG.md.
-const METHODOLOGY_VERSION = "0.3.0";
+// hernormalisatie gewichten 1/6→1/5 + Schema-2 pro rata.
+// 0.3.1 (2026-06-12): tier dagelijks reactief (SUSTAINED_DAYS 3→1, Peter GO) +
+// I-D2-009 herdefinitie naar Infrabel-vertragingsgraad. Zie CHANGELOG.md.
+const METHODOLOGY_VERSION = "0.3.1";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {

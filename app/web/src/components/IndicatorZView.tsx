@@ -174,10 +174,10 @@ export function IndicatorZView({ breakdown }: { breakdown: IndicatorBreakdown[] 
           </div>
 
           <p className="zview-footer-note">
-            Banner-activatie vereist dat het <strong>gewogen composiet</strong> 3 dagen
-            op rij in de top-30% (P ≥ 70) van de laatste 24 maanden zit, plus brand-safety
-            normaal. Geen enkele indicator triggert op zichzelf, maar elke balk hierboven
-            laat zien welke vandaag bijdragen.
+            Banner-activatie vereist dat het <strong>gewogen composiet</strong> vandaag
+            in de top-30% (P ≥ 70) van dezelfde periode over de laatste 24 maanden zit,
+            plus brand-safety normaal. Geen enkele indicator triggert op zichzelf, maar
+            elke balk hierboven laat zien welke vandaag bijdragen.
           </p>
         </div>
       )}

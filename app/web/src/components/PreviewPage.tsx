@@ -41,7 +41,7 @@ const BANNERS: BannerSpec[] = [
     headline: "Verhoogd-blootstellings-venster open.",
     body: "Wanneer de condities verhoogd zijn, weegt rust extra zwaar.",
     action: "Tijd voor rust →",
-    notes: "Standaard banner-set. Geactiveerd na 3 dagen P 70-89.",
+    notes: "Standaard banner-set. Geactiveerd bij dagpercentiel 70-89.",
   },
   {
     level: 4,
@@ -50,7 +50,7 @@ const BANNERS: BannerSpec[] = [
     headline: "Blootstellings-conditie op piekniveau.",
     body: "Statistisch gezien is dit een goed moment voor herstel, preventief, terwijl het kan.",
     action: "Bekijk de bestemmingen →",
-    notes: "Verhoogde banner-set. Geactiveerd na 3 dagen P≥90.",
+    notes: "Verhoogde banner-set. Geactiveerd bij dagpercentiel 90 of hoger.",
   },
   {
     level: 5,
