@@ -46,17 +46,13 @@ export function ConditionLevelDisplay({
     <section className={`cn-display cn-level-${cn}`}>
       <div className="cn-label">STRESS-INDEX OP DIT MOMENT</div>
       <div className="cn-main">
-        {highUncertainty && lo !== null && hi !== null ? (
-          <div className="cn-score" aria-label={`tussen ${lo} en ${hi} op 100`}>
-            <span className="cn-score-num cn-score-range">{lo}&ndash;{hi}</span>
-            <span className="cn-score-max">/100</span>
-          </div>
-        ) : (
-          <div className="cn-score" aria-label={`${score} op 100`}>
-            <span className="cn-score-num">{score}</span>
-            <span className="cn-score-max">/100</span>
-          </div>
-        )}
+        {/* Productkeuze Peter (13/6): ALTIJD één getal op 100 — ook bij hoge
+            onzekerheid. De eerlijkheid blijft via de band in de meter, de
+            ONZEKER-kicker en de bandbreedte-tekst eronder. */}
+        <div className="cn-score" aria-label={`${score} op 100`}>
+          <span className="cn-score-num">{score}</span>
+          <span className="cn-score-max">/100</span>
+        </div>
         <div className="cn-meter" aria-hidden="true">
           <div className="cn-meter-track">
             <span className="cn-meter-zone cn-meter-green" />
@@ -69,8 +65,7 @@ export function ConditionLevelDisplay({
                 title={`90%-bereik: ${lo} tot ${hi}`}
               />
             )}
-            {/* Bij high géén exacte stip: de copy zegt net dat een scherp getal niet kan. */}
-            {!highUncertainty && <span className="cn-meter-dot" style={{ left: `${score}%` }} />}
+            <span className="cn-meter-dot" style={{ left: `${score}%` }} />
           </div>
           <div className="cn-meter-axis"><span>0</span><span>50</span><span>100</span></div>
         </div>
@@ -83,25 +78,25 @@ export function ConditionLevelDisplay({
         </div>
       </div>
       <div className="cn-secondary">
+        <span>Vandaag hoger dan op {score}% van de dagen rond deze tijd van het jaar.</span>
         {highUncertainty && lo !== null && hi !== null ? (
           intervalCoversFlag ? (
             <span className="cn-uncertainty-warning">
-              De meting is vandaag te onzeker voor één scherp getal: het ligt met 90% zekerheid
-              tussen {lo} en {hi}. We tonen daarom het bereik.
+              De meting is vandaag onzeker: met 90% zekerheid ligt het cijfer tussen {lo} en {hi}
+              (de band in de meter).
             </span>
           ) : (
             <span className="cn-uncertainty-warning">
-              Er zijn nog te weinig vergelijkbare dagen om dit cijfer betrouwbaar te plaatsen.
-              We tonen daarom een indicatief bereik ({lo} tot {hi}), geen scherp getal.
+              Er zijn nog te weinig vergelijkbare dagen om dit cijfer scherp te plaatsen;
+              de band in de meter ({lo} tot {hi}) is indicatief.
             </span>
           )
         ) : (
-          <span>Vandaag hoger dan op {score}% van de dagen rond deze tijd van het jaar.</span>
-        )}
-        {unc && !highUncertainty && lo !== null && hi !== null && (
-          <span className="cn-uncertainty-band">
-            Bandbreedte (90% zeker): {lo} tot {hi}.
-          </span>
+          unc && lo !== null && hi !== null && (
+            <span className="cn-uncertainty-band">
+              Bandbreedte (90% zeker): {lo} tot {hi}.
+            </span>
+          )
         )}
         <span className="cn-stamp">
           De Nationale Stress Index werd gecontroleerd en bijgestuurd · laatst om {lastRunTime}

@@ -6,6 +6,20 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-13 — UI: altijd één getal (Peter GO) + June20-visuele branding
+
+**Aanleiding:** Peter (13/6, met schermafbeelding): het hoofdcijfer moet altijd één getal op 100 zijn (geen bereik), de "/100" 50% groter, en de visuele branding van june20.be/innovationscan.
+
+**Beslissingen:**
+
+- **Altijd één getal:** de bereik-weergave bij hoge onzekerheid (B3) is vervangen; de eerlijkheid blijft volwaardig zichtbaar via de 90%-band in de meter (ongewijzigd, op Peters verzoek), de kicker "ONZEKER" en de bandbreedte-zin onder het cijfer (bij thin_reference zonder 90%-claim). Doc 07 §13-bis geactualiseerd als gedocumenteerde productkeuze; de data-velden (uncertainty) zijn onaangeroerd.
+- **"/100" 50% groter** (1,7rem → 2,55rem).
+- **June20-branding** (bron: june20.be/innovationscan): vlak warm off-black (#211419) i.p.v. de alpenfoto, Inter-typografie (i.p.v. Ubuntu), signaalrood accent (#e6371e / donker #c02b0a), strakke 4px-hoeken; pills blijven. De lha-*-variabelenamen zijn behouden met herijkte waarden, dus alle componenten volgen mee.
+- **Stoplicht-semantiek bewaakt:** CN 1/2 zijn losgekoppeld van het (nu rode) merkaccent — een rustige dag kleurt kalm groen/inkt, rood blijft voorbehouden aan CN 4. Visueel geverifieerd via lokale preview (rustige dag: groen cijfer, band zichtbaar, geen alarm-uitstraling).
+- Open: het June20-displayfont "Ethereal" is een niet-herdistribueerbare custom woff; Inter draagt de identiteit tot Peter het fontbestand aanlevert.
+
+---
+
 ## 2026-06-12 — I-D2-009-baseline verlengd: 13 → 24 maanden, alle maanden gevalideerd; 2023 eerlijk geweigerd
 
 **Aanleiding:** Peters GO voor de baselineverlenging (Infrabel-maandbestanden gaan ~12 jaar terug).

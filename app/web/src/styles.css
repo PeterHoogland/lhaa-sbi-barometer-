@@ -1,32 +1,41 @@
 /* ============================================================
-   Hautes-Alpes · Barometer
-   Visueel register: minimalistisch, rustig — in lijn met
-   plus.hautes-alpes.net. Wit + zachte grijzen, één alpine-groen
-   accent (#29441f). Typografie: Ubuntu. Pill-vormige knoppen.
+   De Nationale Stress Index
+   Visueel register: June20-branding (Peter GO 13/6, bron:
+   june20.be/innovationscan). Vlak warm off-black (#211419),
+   wit, signaalrood accent (#e6371e), Inter, strakke 4px-hoeken.
+   Variabelenamen (lha-*) behouden zodat alle bestaande regels
+   blijven werken; alleen de waarden zijn herijkt.
+   NB: het June20-displayfont "Ethereal" is een custom woff die we
+   niet mogen herdistribueren; Inter draagt de identiteit tot Peter
+   het fontbestand aanlevert.
    ============================================================ */
 
 :root {
-  /* plus.hautes-alpes.net — palet (variabelenamen behouden voor de
-     bestaande regels; waarden herijkt naar het nieuwe, kalme register) */
-  --lha-blue-deep:   #29441f;   /* alpine-groen — primair accent */
-  --lha-blue-mid:    #1d3216;   /* donkerder groen — hover/header */
-  --lha-blue-soft:   #3c5c2e;   /* mid-groen */
-  --lha-sky:         #efe9e1;   /* zacht warm licht (zonsopgang) */
-  --lha-sky-pale:    #f8f5f0;   /* zachte warme sectie-achtergrond */
-  --lha-snow:        #ffffff;   /* puur wit */
-  --lha-sun:         #c98a3c;   /* gedempt amber — secundair accent */
-  --lha-sun-soft:    #e0b375;   /* zacht amber */
-  --lha-clay:        #b87d58;   /* warme klei/terracotta — negatieve (omlaag) bijdrage, leesbaar maar geen status-amber/rood */
-  --lha-stone:       #22252a;   /* inkt, donkere tekst */
-  --lha-stone-soft:  #52565b;   /* zachte tekst */
-  --lha-mist:        #9ca3af;   /* gedempt grijs */
-  --lha-fog:         #e5e7eb;   /* haarlijn-grijs */
+  /* June20 — kernpalet */
+  --j20-off-black:   #211419;
+  --j20-red:         #e6371e;
+  --j20-red-dark:    #c02b0a;
+  --j20-lila:        #f0c8eb;
 
-  /* Status-kleuren — gedempt, kalm */
+  --lha-blue-deep:   var(--j20-red);      /* primair accent (was alpine-groen) */
+  --lha-blue-mid:    var(--j20-off-black);/* paginadonker — body/header */
+  --lha-blue-soft:   var(--j20-red-dark); /* mid-accent / hover */
+  --lha-sky:         #f3f4f6;             /* lichte sectie-tint (June20 line-soft) */
+  --lha-sky-pale:    #fafafa;             /* zachte sectie-achtergrond */
+  --lha-snow:        #ffffff;             /* puur wit */
+  --lha-sun:         #c98a3c;             /* gedempt amber — status, functioneel */
+  --lha-sun-soft:    #e0b375;             /* zacht amber */
+  --lha-clay:        #b87d58;             /* terracotta — negatieve bijdrage, geen status-rood */
+  --lha-stone:       #211419;             /* inkt op licht = off-black (June20) */
+  --lha-stone-soft:  #4b5563;             /* zachte tekst (June20 ink-soft) */
+  --lha-mist:        #6b7280;             /* gedempt grijs (June20 ink-mute) */
+  --lha-fog:         #e5e7eb;             /* haarlijn-grijs */
+
+  /* Status-kleuren — functioneel (tier-semantiek), afgestemd op het palet */
   --st-rust:   #4f7a5b;         /* rustig groen */
   --st-norm:   var(--lha-mist);
   --st-warn:   #c98a3c;         /* gedempt amber */
-  --st-alert:  #a64242;         /* gedempt rood */
+  --st-alert:  var(--j20-red-dark); /* alarm in de June20-roodfamilie */
 
   /* Aliassen voor de bestaande code */
   --c-ink:        var(--lha-stone);
@@ -51,14 +60,15 @@
   --c-shadow:     rgb(0 0 0 / 0.05);
   --c-shadow-lg:  rgb(0 0 0 / 0.09);
 
-  --rad: 8px;
-  --rad-lg: 12px;
+  /* June20: strakke hoeken (4px), pills blijven rond */
+  --rad: 4px;
+  --rad-lg: 4px;
   --rad-pill: 9999px;
 
   --max-w: 1040px;
 
-  --f-display: "Ubuntu", system-ui, -apple-system, sans-serif;
-  --f-sans: "Ubuntu", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --f-display: "Inter", system-ui, -apple-system, sans-serif;
+  --f-sans: "Inter", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
   --f-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
@@ -76,27 +86,14 @@ body {
 /* Paginabrede achtergrondfoto (hautes-alpes.net) — fixed, loopt door op de
    zijkanten én in de gaten tussen de witte blokken. De blokken zijn
    ondoorzichtig, dus de foto zit nooit ÍN het informatieblok. */
+/* June20-branding (13/6): vlak warm off-black — de geblurde alpenfoto en de
+   zonsopgang-gradient zijn uit. Heractiveren = de twee blokken hieronder
+   terugzetten (foto: /hero.webp). */
 body::before {
-  content: "";
-  position: fixed;
-  inset: -24px; /* overhang zodat de blur-rand buiten beeld valt */
-  z-index: -2;
-  background-image: url("/hero.webp");
-  background-size: cover;
-  background-position: center;
-  filter: blur(4px);
+  content: none;
 }
 body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  /* warme tint (zonsopgang): donker-warm bovenaan (header-tekst leesbaar),
-     lichter eronder zodat de foto op de zijkanten zichtbaar blijft */
-  background: linear-gradient(180deg,
-    rgba(43, 32, 25, 0.60) 0%,
-    rgba(43, 32, 25, 0.44) 24%,
-    rgba(43, 32, 25, 0.38) 100%);
+  content: none;
 }
 
 code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
@@ -248,8 +245,10 @@ main {
 /* Kleuren evolueren met het niveau: rustig groen → mid-groen → amber → rood →
    grijs (pauze). Elk niveau zet een accent + een zachte kaart-tint, zodat het
    hele blok meekleurt met de stand. */
-.cn-display.cn-level-1 { --cn-accent: var(--lha-blue-deep);  --cn-tint: #f1f6f2; }
-.cn-display.cn-level-2 { --cn-accent: var(--lha-blue-soft);  --cn-tint: #eef4ef; }
+/* CN 1/2 NIET aan het rode merkaccent koppelen: een rustige dag mag niet
+   alarmkleurig ogen (stoplicht-semantiek: rood is voorbehouden aan CN 4). */
+.cn-display.cn-level-1 { --cn-accent: var(--st-rust);    --cn-tint: #f1f6f2; }
+.cn-display.cn-level-2 { --cn-accent: var(--lha-stone);  --cn-tint: #f3f4f6; }
 .cn-display.cn-level-3 { --cn-accent: var(--c-amber);        --cn-tint: var(--c-amber-bg); }
 .cn-display.cn-level-4 { --cn-accent: var(--c-red);          --cn-tint: var(--c-red-bg); }
 .cn-display.cn-level-5 { --cn-accent: var(--lha-stone-soft); --cn-tint: #f1efea; }
@@ -331,7 +330,8 @@ main {
   font-family: var(--f-display); font-weight: 300; font-size: 7rem; line-height: 0.85;
   color: var(--cn-accent, var(--lha-blue-deep)); letter-spacing: -0.04em; transition: color 320ms ease;
 }
-.cn-score-max { font-family: var(--f-display); font-weight: 300; font-size: 1.7rem; color: var(--c-ink-mute); }
+/* Peter 13/6: de "/100" 50% groter (1.7rem -> 2.55rem). */
+.cn-score-max { font-family: var(--f-display); font-weight: 300; font-size: 2.55rem; color: var(--c-ink-mute); }
 .cn-meter { display: flex; flex-direction: column; gap: 7px; padding: 0 4px; }
 .cn-meter-track { position: relative; height: 12px; border-radius: 6px; overflow: hidden; display: flex; }
 .cn-meter-zone { height: 100%; }
