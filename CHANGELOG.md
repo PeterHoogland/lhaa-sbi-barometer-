@@ -6,6 +6,30 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-12 — Reviewfixes BLOK B-snel + B3 (adversariële multi-agent-review, 14 bevestigde bevindingen)
+
+**Aanleiding:** onafhankelijke review van de B1/B8/B7/B3-commits (drie lenzen: statistiek, integratie, eerlijkheid; 16 bevindingen, 14 bevestigd, 2 weerlegd) — zelfde werkwijze als de BLOK A-review.
+
+**Beslissingen (bevinding → fix):**
+
+- **CHANGELOG-koppen hersteld (integratie/minor):** elke BLOK B-edit overschreef de kop van de vorige entry; alleen de nieuwste kop bestond nog. Alle zes koppen (B1/B8/B7/B3/B4/B6) zijn teruggeplaatst; de audit-trail leest weer per taak. Oorzaak: edit-anker op de vorige kop zonder die kop in de vervangtekst te herhalen.
+- **Legende-overclaim gecorrigeerd (eerlijkheid/MAJOR):** de B8-legende zei "in het hoofdcijfer tellen alle getoonde indicatoren gelijk mee"; in werkelijkheid wegen de domeinen gelijk en de indicatoren alleen bínnen hun domein (kleine categorie = zwaarder per indicator). Legende zegt dat nu expliciet.
+- **Flag volgt de gepubliceerde velden (statistiek/minor):** de uncertainty_flag wordt nu geclassificeerd op de afgeronde, gepubliceerde grenzen; width_fraction is exact (upper−lower)/100 van die grenzen. Een lezer die de doc-regel op latest.json toepast krijgt altijd dezelfde vlag.
+- **Grade D uit de bootstrap-inputs (statistiek/minor):** I-D3-003 telde mee in n_indicators (21) terwijl computeComposite hem in elke trekking overslaat; nu gefilterd (n_indicators = 20 dragende indicatoren, ~5% minder rekenwerk). NB: dit verschuift de RNG-stroom, dus de exacte CI-grenzen wijken af van de eerdere smoketest-waarden; methode ongewijzigd.
+- **composite_ci_95 = null zonder trekkingen (statistiek/minor):** de no_scored_indicators-tak gaf [0,0] dat als "echt gebootstrapt" naar bootstrap_95_ci_around_equal stroomde; nu null + not_computed-status (placeholder-regel gerespecteerd).
+- **nDraws-validatie (integratie/minor):** 0/negatief/NaN gaf NaN-kwantielen (null in JSON met misleidende flag_reason); valt nu terug op de default met test.
+- **thin_reference-copy (integratie/minor):** bij high door te dunne referentie claimde de UI "met 90% zekerheid tussen X en Y" terwijl het interval die onzekerheid juist niet dekt; aparte formulering ("indicatief bereik") per flag_reason.
+- **Kicker-precedentie (integratie/minor):** "ONZEKER" overschreef het CN 5-brand-safety-pauzewoord; CN 5 wint nu weer (gedocumenteerde hiërarchie).
+- **v0.4-maatdiscipline (integratie/minor, latent):** zodra v0.4 live de score levert, hoort de v0.2-CI niet bij het getoonde getal; band/bereik worden dan onderdrukt tot er een v0.4-CI bestaat.
+- **Meter consistent bij high (statistiek/nit):** de exacte stip verdwijnt als de copy zegt dat een scherp getal niet kan; band-positie geklemd zodat hij bij lo=hi=100 niet buiten de track valt (integratie/nit).
+- **Gedeelde referentie-helper (statistiek/nit):** seasonalReferenceWithFallback in seasonal-percentile.ts; percentiel en CI zien per constructie dezelfde referentie (driftrisico weg).
+- **covers/doc eerlijker (statistiek/minor):** expliciet dat referentieset en dagwaarde vastgehouden worden en referentie-steekproefruis boven de 30-puntsgrens ongedekt blijft (doc 07 §13-bis + covers-string).
+- **Marin-referentie toegevoegd aan I-D5-001 (eerlijkheid/nit):** de evidence-note verwees naar "het beste experiment" dat niet bij de indicator-bronnen stond; Marin et al. (2012, PLoS ONE) staat nu in de references.
+- Verworpen na verificatie (2): hero-zin "voor heel België" (dekkingsbias staat eerlijk in "Wat we (nog) niet dekken"); pollen-prevalentie 20-30% (gedragen door de bron).
+- Verificatie: engine 147/147 (+2 tests), web build groen.
+
+---
+
 ## 2026-06-12 — B5: empirische kalibratie van de CN-banden expliciet gedocumenteerd
 
 **Aanleiding:** BLOK B-taak B5 (02_VERBETERPLAN): drempels aantoonbaar afleiden van de empirische verdeling en documenteren (kalibratieperiode + n).
@@ -15,6 +39,10 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 - Doc 06 §3.7 (nieuw): de CN-banden zijn percentiel-posities in de empirische verdeling van het composiet zelf. Kalibratieperiode = voortschrijdend 24 maanden, seizoensbewust (±45 d); n ≈ 180 referentiedagen per dag (productie 12 juni 2026: n = 181; terugval volledig venster ≤ ~730 bij < 30 seizoenspunten; actuele n per dag in uncertainty.n_reference sinds B3). Bandfrequenties per constructie ~50/20/20/10%; herijking impliciet door het meeschuivende venster.
 - Geen drempelwijziging: de fijnere 5-bands-variant (P20/P40/P60/P80) staat gedocumenteerd als open productkeuze voor Peter (amendement-pad), niet eigenmachtig doorgevoerd.
 - condition-level.ts-docblock geactualiseerd: beschreef nog de 3-dagen-regel; verwijst nu naar de dagregel (0.3.1) en doc 06 §3.7. Geen gedragswijziging (commentaar-only); engine-suite groen.
+
+---
+
+## 2026-06-12 — B6: multicollineariteits-audit met echte PCA + D5-EWMA-monitor; halvering expliciet monitor-only
 
 **Aanleiding:** BLOK B-taak B6 (02_VERBETERPLAN): halfjaarlijkse Spearman-audit + PCA-dimensionaliteitscheck; de D5-halvering formaliseren of als bewuste vereenvoudiging documenteren.
 
@@ -27,6 +55,10 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 - Resultaat op de echte historie (18 reeksen, 82 paren): 0 paren ≥ 0,70; effectieve dimensionaliteit Kaiser 8 / participatieratio 12,5 van 18; D5-EWMA nu 0,51 met 2% van de dagen boven de drempel. De gewichten hoeven dus niet aangepast: de redundantie wordt aantoonbaar gemonitord en zit onder de actiedrempel.
 - Test: `tests/test_multicollinearity.py` (15 standalone checks: Jacobi op bekende matrices, spoorbehoud, Kaiser/participatieratio, EWMA-convergentie ±1, monitor-only-note).
 
+---
+
+## 2026-06-12 — B4: Monte-Carlo-gevoeligheidsanalyse (OECD/JRC stap 7) met Sobol'-indices
+
 **Aanleiding:** BLOK B-taak B4 (02_VERBETERPLAN): kwantificeer hoeveel het dagcijfer beweegt onder redelijke alternatieve methodekeuzes.
 
 **Beslissingen:**
@@ -36,6 +68,10 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 - Eerlijke vereenvoudigingen expliciet in het rapport (`limitations`): geen STL, percentiel binnen het analysisvenster, brute-force-Sobol zonder Saltelli-design, equal-binnen-domein.
 - Resultaat op de echte historie (90 dagen, 17 indicatoren met voldoende reeks, seed 20260612): gemiddelde spread dagpercentiel 18,8 pp (mediaan 17,8, max 43,3) — consistent met de ±10-12 pp-onzekerheidsmotivatie achter B2. Sobol': indicator-uitsluiting 0,40; gewichten samen 0,42 (D1 0,17 &gt; D2 0,11 &gt; D3 0,09 &gt; D5 0,06); normalisatiemethode 0,16; baselinelengte ~0.
 - Output naar `app/data/analysis/sensitivity.json` (gitignored, regenereerbaar). Test: `tests/test_sensitivity.py` (14 checks, standalone): determinisme, registry-filterregels (geen S/D6/grade-D), Sobol-sanity (dominante factor ~1, irrelevante ~0), spreidingsrapport.
+
+---
+
+## 2026-06-12 — B3: echte bootstrap-CI rond het dagcijfer (ci_90 + uncertainty_flag)
 
 **Aanleiding:** BLOK B-taak B3 (02_VERBETERPLAN): zichtbare onzekerheid is de grootste geloofwaardigheidssprong. De oude `bootstrap_95_ci_around_equal` stond bewust op null/not_computed; die wordt nu écht berekend.
 
@@ -49,6 +85,10 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 - Doc 07 §13-bis beschrijft methode, vlagregels en de eerlijke dekking-grens (bootstrap ≠ multiverse).
 - Tests: nieuwe suite test/bootstrap.test.ts (9 tests: determinisme, flag-drempels, thin-reference/no-indicators-eerlijkheid, vlakke-baseline-pad, smaller interval bij strakkere baselines, runtime-integratie aan/uit). Engine 145/145, web build groen; smoketest productie: CI [0,6–9,4] rond percentiel 4, flag low, n_reference 181.
 
+---
+
+## 2026-06-12 — B7 (deel 1, naam-agnostisch): eerste schermzin + bronlabels eerlijk; naamkeuze ligt bij Peter
+
 **Aanleiding:** BLOK B-taak B7 (02_VERBETERPLAN). De index meet omgevingsongewoonheid, geen bewezen populatiestress; titel en bronteksten moeten die claim dragen. De publieksnaam zelf ("De Nationale Stress Barometer" vs alternatieven) is een beslissing van Peter; beslismemo staat klaar in het handover-pakket (04_B7_BESLISMEMO_NAAMKEUZE.md).
 
 **Beslissingen (alles naam-agnostisch, geldig onder elke naamkeuze):**
@@ -60,6 +100,10 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 - Em-dashes uit user-facing copy (footer, SBI_FOUNDATIONS-labels) verwijderd (huisregel).
 - Verificatie: engine 136/136, web build groen. Open: naamkeuze (memo §5) en de naamafhankelijke vervolgtaken (titel, eyebrow, embed-copy, style-guide, C3-koppeling).
 
+---
+
+## 2026-06-12 — B8: evidence-grading zichtbaar in de UI + claim-precisie per indicator
+
 **Aanleiding:** BLOK B-taak B8 (02_VERBETERPLAN). De grades (A/B/C/D) zaten al in registry en breakdown, maar de UI toonde ze nergens; per indicator ontbrak een eerlijke duiding van wat het bewijs wel en niet draagt.
 
 **Beslissingen:**
@@ -69,6 +113,10 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 - Claim-correctie: de copy van I-D5-001 beweerde "telt mee met een gereduceerd gewicht", maar het publieke cijfer gebruikt gelijke domeingewichten; de reductie geldt alleen in het parallelle evidence-controleschema. Copy herschreven; de legende legt expliciet uit dat de grade bewijskracht beschrijft, geen gewicht in het hoofdcijfer.
 - Huisregel afgedwongen: em-dashes verwijderd uit user-facing bronnamen/labels in plain-language.ts; nieuwe testsuite test/evidence.test.ts (5 tests) pint notes aanwezig + "telt niet mee"-eerlijkheid voor D/context + geen gewichtsclaim + geen em-dash.
 - Verificatie: engine 136/136 (was 131, +5), web build groen, smoketest generate-fixture: 21 breakdown-entries en 4 contextsignalen dragen note/grade; CI-data teruggezet.
+
+---
+
+## 2026-06-12 — B1: doc 04 beschrijft de werkelijke z-implementatie (geen code-wijziging)
 
 **Aanleiding:** BLOK B-taak B1 (02_VERBETERPLAN). De code had sinds de reviewfix van §4.1 al de robuuste fallback-keten, maar doc 04_Laag-5 beschreef nog de simpele MAD-z uit v0.2.
 

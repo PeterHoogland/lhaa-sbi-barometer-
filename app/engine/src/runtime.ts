@@ -41,9 +41,7 @@ import { percentileRank } from "./methodology/percentile.js";
 import {
   seasonalPercentile,
   buildSeasonalPercentileHistory,
-  seasonalReference,
-  SEASONAL_WINDOW_DAYS,
-  MIN_SEASONAL_POINTS,
+  seasonalReferenceWithFallback,
 } from "./methodology/seasonal-percentile.js";
 import {
   bootstrapDayUncertainty,
@@ -225,12 +223,17 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     if (meta.inverseCoded) z = -z;
     const { value } = winsorize(z);
     zShort[code] = value;
-    bootstrapInputs.push({
-      code,
-      effectiveValue,
-      baselineValues,
-      inverseCoded: meta.inverseCoded,
-    });
+    // Grade D (diagnostisch) wordt door computeComposite in élke trekking
+    // overgeslagen: meenemen zou n_indicators overdrijven (21 i.p.v. de 20 die
+    // het cijfer dragen) en ~5% van de trekkingen verspillen.
+    if (meta.grade !== "D") {
+      bootstrapInputs.push({
+        code,
+        effectiveValue,
+        baselineValues,
+        inverseCoded: meta.inverseCoded,
+      });
+    }
   }
 
   // [5] DECORRELATE — D5-monitor (doc 03 §4.4 stap 2)
@@ -250,14 +253,11 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
   // als die van seasonalPercentile hieronder (seizoensvenster met terugval).
   let uncertainty: DayUncertainty | undefined;
   if (input.computeUncertainty) {
-    const seasonalRef = seasonalReference(input.compositeHistory, input.date, SEASONAL_WINDOW_DAYS);
-    const percentileReference =
-      seasonalRef.length >= MIN_SEASONAL_POINTS
-        ? seasonalRef
-        : input.compositeHistory.map((h) => h.value);
     uncertainty = bootstrapDayUncertainty({
       indicators: bootstrapInputs,
-      percentileReference,
+      // Gedeelde helper: per constructie dezelfde referentieset als
+      // seasonalPercentile hieronder gebruikt voor het gepubliceerde cijfer.
+      percentileReference: seasonalReferenceWithFallback(input.compositeHistory, input.date),
       nDraws: input.bootstrapDraws,
       seed: seedFromString(input.date),
     });
@@ -265,15 +265,18 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
 
   // Weegafhankelijkheids-diagnostiek (doc 05 §4 — informational, geen pass/fail).
   // bootstrap_95_ci_around_equal is sinds B3 een ECHTE resample-bootstrap (zelfde
-  // trekkingen als het dag-CI); zonder computeUncertainty blijft hij eerlijk
-  // null + "not_computed" — geen veld dat een niet-uitgevoerde berekening suggereert.
+  // trekkingen als het dag-CI); zonder computeUncertainty, en óók wanneer er geen
+  // trekkingen waren (no_scored_indicators → composite_ci_95 null), blijft hij
+  // eerlijk null + "not_computed" — geen veld dat een niet-uitgevoerde berekening
+  // suggereert.
+  const realCompositeCi = uncertainty?.composite_ci_95 ?? null;
   const weightSensitivity = {
     correlation_inverse_vs_equal_12w: null as number | null, // vereist 12w parallelle historie van beide gewichtschema's
     composite_range_with_dropouts: estimateDropoutRange(zShort),
-    bootstrap_95_ci_around_equal: uncertainty ? uncertainty.composite_ci_95 : null,
+    bootstrap_95_ci_around_equal: realCompositeCi,
     status: {
       correlation_inverse_vs_equal_12w: "not_computed" as const,
-      ...(uncertainty ? {} : { bootstrap_95_ci_around_equal: "not_computed" as const }),
+      ...(realCompositeCi ? {} : { bootstrap_95_ci_around_equal: "not_computed" as const }),
     },
   };
 

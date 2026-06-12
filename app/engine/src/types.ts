@@ -256,7 +256,8 @@ export interface DailyOutput {
     width_fraction: number;
     uncertainty_flag: "low" | "medium" | "high";
     flag_reason: "ci_width" | "thin_reference" | "no_scored_indicators";
-    composite_ci_95: [number, number];
+    /** Null wanneer er geen trekkingen waren (no_scored_indicators). */
+    composite_ci_95: [number, number] | null;
     covers: string;
     seed: number;
   };

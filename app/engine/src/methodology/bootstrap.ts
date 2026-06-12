@@ -67,8 +67,11 @@ export interface DayUncertainty {
   uncertainty_flag: UncertaintyFlag;
   /** Waarom de flag is wat hij is — "ci_width" tenzij een structurele reden overheerst. */
   flag_reason: "ci_width" | "thin_reference" | "no_scored_indicators";
-  /** 95%-interval van het equal-composiet zelf (z-eenheden) — vult bootstrap_95_ci_around_equal. */
-  composite_ci_95: [number, number];
+  /** 95%-interval van het equal-composiet zelf (z-eenheden) — vult
+   *  bootstrap_95_ci_around_equal. Null wanneer er geen trekkingen waren
+   *  (no_scored_indicators): geen veld dat een niet-uitgevoerde berekening
+   *  suggereert. */
+  composite_ci_95: [number, number] | null;
   /** Eerlijk over dekking: baseline-schattingsonzekerheid, geen bron-/modelfout. */
   covers: string;
   seed: number;
@@ -120,12 +123,17 @@ export interface BootstrapDayInput {
  * trekking (zoals "ontbreekt" uit het composiet valt).
  */
 export function bootstrapDayUncertainty(input: BootstrapDayInput): DayUncertainty {
-  const nDraws = input.nDraws ?? DEFAULT_BOOTSTRAP_DRAWS;
+  // Ongeldige nDraws (0, negatief, NaN) zou NaN-kwantielen opleveren die na
+  // JSON.stringify als null publiceren met een misleidende flag_reason — val
+  // terug op de default in plaats van stil corrupt te rapporteren.
+  const requested = input.nDraws ?? DEFAULT_BOOTSTRAP_DRAWS;
+  const nDraws =
+    Number.isFinite(requested) && requested >= 1 ? Math.floor(requested) : DEFAULT_BOOTSTRAP_DRAWS;
   const ref = input.percentileReference;
   const rng = mulberry32(input.seed);
 
   const covers =
-    "Baseline-schattingsonzekerheid (resampling per indicator, onafhankelijk); dekt geen bronfouten of modelkeuzes, zie gevoeligheidsanalyse (B4).";
+    "Baseline-schattingsonzekerheid (resampling per indicator, onafhankelijk; referentieset en dagwaarde worden vastgehouden); dekt geen bronfouten, modelkeuzes of referentie-steekproefruis boven de 30-puntsgrens, zie gevoeligheidsanalyse (B4).";
 
   if (input.indicators.length === 0) {
     // Composiet is dan constant 0; een smal interval suggereren zou
@@ -140,7 +148,9 @@ export function bootstrapDayUncertainty(input: BootstrapDayInput): DayUncertaint
       width_fraction: 1,
       uncertainty_flag: "high",
       flag_reason: "no_scored_indicators",
-      composite_ci_95: [0, 0],
+      // Geen trekkingen = geen composiet-CI. [0,0] zou als "echt gebootstrapt"
+      // doorstromen naar bootstrap_95_ci_around_equal (placeholder-regel).
+      composite_ci_95: null,
       covers,
       seed: input.seed,
     };
@@ -178,9 +188,13 @@ export function bootstrapDayUncertainty(input: BootstrapDayInput): DayUncertaint
   percentileDraws.sort((a, b) => a - b);
   compositeDraws.sort((a, b) => a - b);
 
-  const lower = quantileSorted(percentileDraws, 0.05);
-  const upper = quantileSorted(percentileDraws, 0.95);
-  const widthFraction = (upper - lower) / 100;
+  // Eerst afronden zoals gepubliceerd, dán classificeren: de flag moet exact
+  // volgen uit de velden die een lezer in latest.json ziet, anders kan het
+  // record op een drempelrand zijn eigen gedocumenteerde regel tegenspreken
+  // (bv. ware breedte 0,0999 → "low" terwijl het JSON 0.100 toont).
+  const lower = Math.round(quantileSorted(percentileDraws, 0.05) * 10) / 10;
+  const upper = Math.round(quantileSorted(percentileDraws, 0.95) * 10) / 10;
+  const widthFraction = Math.round(((upper - lower) / 100) * 1000) / 1000;
 
   const thinReference = ref.length < MIN_RELIABLE_REFERENCE;
   const flag: UncertaintyFlag = thinReference ? "high" : classifyUncertainty(widthFraction);
@@ -190,9 +204,9 @@ export function bootstrapDayUncertainty(input: BootstrapDayInput): DayUncertaint
     n_draws: nDraws,
     n_indicators: input.indicators.length,
     n_reference: ref.length,
-    ci_90_lower: Math.round(lower * 10) / 10,
-    ci_90_upper: Math.round(upper * 10) / 10,
-    width_fraction: Math.round(widthFraction * 1000) / 1000,
+    ci_90_lower: lower,
+    ci_90_upper: upper,
+    width_fraction: widthFraction,
     uncertainty_flag: flag,
     flag_reason: thinReference ? "thin_reference" : "ci_width",
     composite_ci_95: [

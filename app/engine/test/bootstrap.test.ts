@@ -87,9 +87,29 @@ describe("bootstrapDayUncertainty", () => {
     expect(r.ci_90_lower).toBeLessThanOrEqual(r.ci_90_upper);
     expect(r.ci_90_lower).toBeGreaterThanOrEqual(0);
     expect(r.ci_90_upper).toBeLessThanOrEqual(100);
-    expect(r.width_fraction).toBeCloseTo((r.ci_90_upper - r.ci_90_lower) / 100, 2);
-    expect(["low", "medium", "high"]).toContain(r.uncertainty_flag);
-    expect(r.composite_ci_95[0]).toBeLessThanOrEqual(r.composite_ci_95[1]);
+    // Reviewfix: flag en width_fraction volgen exact uit de GEPUBLICEERDE
+    // (afgeronde) grenzen — een lezer van latest.json reproduceert de vlag.
+    expect(r.width_fraction).toBe(
+      Math.round(((r.ci_90_upper - r.ci_90_lower) / 100) * 1000) / 1000,
+    );
+    expect(r.flag_reason).toBe("ci_width");
+    expect(r.uncertainty_flag).toBe(classifyUncertainty(r.width_fraction));
+    expect(r.composite_ci_95).not.toBeNull();
+    expect(r.composite_ci_95![0]).toBeLessThanOrEqual(r.composite_ci_95![1]);
+  });
+
+  it("ongeldige nDraws (0, negatief, NaN) vallen terug op de default i.p.v. NaN-kwantielen", () => {
+    for (const bad of [0, -5, Number.NaN]) {
+      const r = bootstrapDayUncertainty({
+        indicators: [indicators[0]],
+        percentileReference: WIDE_REFERENCE,
+        nDraws: bad,
+        seed: 9,
+      });
+      expect(r.n_draws).toBe(2000);
+      expect(Number.isFinite(r.ci_90_lower)).toBe(true);
+      expect(Number.isFinite(r.ci_90_upper)).toBe(true);
+    }
   });
 
   it("dunne percentiel-referentie (< MIN_RELIABLE_REFERENCE) = eerlijk high", () => {
@@ -115,6 +135,9 @@ describe("bootstrapDayUncertainty", () => {
     expect(r.ci_90_lower).toBe(0);
     expect(r.ci_90_upper).toBe(100);
     expect(r.n_draws).toBe(0);
+    // Reviewfix: geen trekkingen = geen composiet-CI (placeholder-regel) —
+    // [0,0] zou als echt gebootstrapt veld doorstromen naar weight_sensitivity.
+    expect(r.composite_ci_95).toBeNull();
   });
 
   it("vlakke baseline met dagwaarde op de mediaan crasht niet (z=0-pad)", () => {
@@ -183,6 +206,20 @@ describe("runtime-integratie (opt-in)", () => {
     expect(
       out.composite.weight_sensitivity.status?.bootstrap_95_ci_around_equal,
     ).toBeUndefined();
+  });
+
+  it("grade D (I-D3-003) telt niet mee in n_indicators: hij draagt het cijfer niet", () => {
+    const out = computeDaily({
+      date: TODAY,
+      rawValues: { "I-D3-006": 3.6, "I-D3-003": 3.4 },
+      history: { "I-D3-006": hist, "I-D3-003": hist },
+      compositeHistory,
+      computeUncertainty: true,
+      bootstrapDraws: 100,
+    });
+    // I-D3-003 wordt wel ge-z-scoord (breakdown), maar computeComposite slaat
+    // grade D in elke trekking over — meetellen zou n_indicators overdrijven.
+    expect(out.uncertainty!.n_indicators).toBe(1);
   });
 
   it("zonder computeUncertainty blijft het veld weg en de status eerlijk not_computed", () => {

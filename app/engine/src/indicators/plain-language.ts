@@ -213,6 +213,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
       { label: "Leetaru (2013): GDELT Global Knowledge Graph", url: "https://www.gdeltproject.org/" },
       { label: "Young & Soroka (2012): Affective News, Lexicoder-methode", url: "https://doi.org/10.1080/10584609.2012.671234" },
       { label: "Soroka, Fournier & Nir (2019): PNAS, negativity bias", url: "https://doi.org/10.1073/pnas.1908369116" },
+      { label: "Marin et al. (2012): PLoS ONE, nieuws en stressreactiviteit (het experiment uit de bewijskracht-duiding)", url: "https://doi.org/10.1371/journal.pone.0047189" },
     ],
   },
   "I-D5-002": {

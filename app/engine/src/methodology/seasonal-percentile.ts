@@ -55,6 +55,22 @@ export function seasonalReference(history: DatedValue[], asOf: string, windowDay
 }
 
 /**
+ * De referentieset die seasonalPercentile gebruikt: het seizoensvenster, met
+ * terugval op de volledige historie onder `minPoints`. Gedeeld met de
+ * B3-bootstrap (runtime.ts) zodat percentiel en CI per constructie dezelfde
+ * referentie zien — een latere wijziging hier raakt beide tegelijk.
+ */
+export function seasonalReferenceWithFallback(
+  history: DatedValue[],
+  asOf: string,
+  windowDays: number = SEASONAL_WINDOW_DAYS,
+  minPoints: number = MIN_SEASONAL_POINTS,
+): number[] {
+  const seasonal = seasonalReference(history, asOf, windowDays);
+  return seasonal.length >= minPoints ? seasonal : history.map((h) => h.value);
+}
+
+/**
  * Seizoens-percentiel van `value` op dag `asOf` t.o.v. `history`. Terugval op het
  * volledige venster als er minder dan `minPoints` seizoenspunten zijn. Lege
  * referentie → percentileRank geeft 50 (zelfde conventie als zonder seizoen).
@@ -66,9 +82,7 @@ export function seasonalPercentile(
   windowDays: number = SEASONAL_WINDOW_DAYS,
   minPoints: number = MIN_SEASONAL_POINTS,
 ): number {
-  const seasonal = seasonalReference(history, asOf, windowDays);
-  const ref = seasonal.length >= minPoints ? seasonal : history.map((h) => h.value);
-  return percentileRank(value, ref);
+  return percentileRank(value, seasonalReferenceWithFallback(history, asOf, windowDays, minPoints));
 }
 
 /**

@@ -30,10 +30,17 @@ export function ConditionLevelDisplay({
 
   // B3: respecteer de bootstrap-onzekerheid. Bij "high" tonen we géén scherp
   // getal maar het 90%-bereik; bij "medium" het getal mét bandbreedte eronder.
-  const unc = data.uncertainty;
+  // Zodra v0.4 live de score levert (buildContext schakelt dan naar
+  // v04.percentile.lang) hoort de v0.2-CI niet meer bij het getoonde getal:
+  // band en bereik dan onderdrukken tot er een v0.4-CI bestaat (maatdiscipline).
+  const v04Live = data.v04?.mode === "live";
+  const unc = v04Live ? undefined : data.uncertainty;
   const lo = unc ? Math.round(unc.ci_90_lower) : null;
   const hi = unc ? Math.round(unc.ci_90_upper) : null;
   const highUncertainty = unc?.uncertainty_flag === "high";
+  // thin_reference/no_scored_indicators: het interval dekt die onzekerheid
+  // juist NIET — claim dan geen "90% zekerheid" (zie bootstrap.ts flag_reason).
+  const intervalCoversFlag = unc?.flag_reason === "ci_width";
 
   return (
     <section className={`cn-display cn-level-${cn}`}>
@@ -58,24 +65,36 @@ export function ConditionLevelDisplay({
             {unc && lo !== null && hi !== null && (
               <span
                 className="cn-meter-band"
-                style={{ left: `${lo}%`, width: `${Math.max(hi - lo, 1)}%` }}
+                style={{ left: `${Math.min(lo, 99)}%`, width: `${Math.max(hi - lo, 1)}%` }}
                 title={`90%-bereik: ${lo} tot ${hi}`}
               />
             )}
-            <span className="cn-meter-dot" style={{ left: `${score}%` }} />
+            {/* Bij high géén exacte stip: de copy zegt net dat een scherp getal niet kan. */}
+            {!highUncertainty && <span className="cn-meter-dot" style={{ left: `${score}%` }} />}
           </div>
           <div className="cn-meter-axis"><span>0</span><span>50</span><span>100</span></div>
         </div>
         <div className="cn-side">
-          <div className="cn-kicker">{highUncertainty ? "ONZEKER" : kickerWord(cn, score)}</div>
+          {/* CN 5 (brand-safety) behoudt zijn pauze-woord — die override staat
+              hiërarchisch boven de onzekerheidsmelding (zie kickerWord). */}
+          <div className="cn-kicker">
+            {cn !== 5 && highUncertainty ? "ONZEKER" : kickerWord(cn, score)}
+          </div>
         </div>
       </div>
       <div className="cn-secondary">
         {highUncertainty && lo !== null && hi !== null ? (
-          <span className="cn-uncertainty-warning">
-            De meting is vandaag te onzeker voor één scherp getal: het ligt met 90% zekerheid
-            tussen {lo} en {hi}. We tonen daarom het bereik.
-          </span>
+          intervalCoversFlag ? (
+            <span className="cn-uncertainty-warning">
+              De meting is vandaag te onzeker voor één scherp getal: het ligt met 90% zekerheid
+              tussen {lo} en {hi}. We tonen daarom het bereik.
+            </span>
+          ) : (
+            <span className="cn-uncertainty-warning">
+              Er zijn nog te weinig vergelijkbare dagen om dit cijfer betrouwbaar te plaatsen.
+              We tonen daarom een indicatief bereik ({lo} tot {hi}), geen scherp getal.
+            </span>
+          )
         ) : (
           <span>Vandaag hoger dan op {score}% van de dagen rond deze tijd van het jaar.</span>
         )}

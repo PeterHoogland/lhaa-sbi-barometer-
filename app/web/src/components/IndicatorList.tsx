@@ -152,9 +152,10 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
           <strong>Bewijskracht per indicator:</strong> A = sterk en herhaald onderzoek, B = consistent
           onderzoek (vooral via welzijn en gezondheid), C = indirect bewijs. De grade zegt hoe sterk het
           onderzoek achter een indicator is, niet hoe zwaar hij in het cijfer weegt: in het hoofdcijfer
-          tellen alle getoonde indicatoren gelijk mee. Signalen met grade D meten iets anders dan druk;
-          die tellen niet mee en staan niet in deze lijst. Klik een indicator open voor wat het bewijs
-          precies wel en niet draagt.
+          wegen de vijf categorieën even zwaar, en binnen een categorie telt elke indicator gelijk mee
+          (een indicator in een kleine categorie weegt daardoor iets zwaarder dan één in een grote).
+          Signalen met grade D meten iets anders dan druk; die tellen niet mee en staan niet in deze
+          lijst. Klik een indicator open voor wat het bewijs precies wel en niet draagt.
         </p>
       </footer>
     </section>
