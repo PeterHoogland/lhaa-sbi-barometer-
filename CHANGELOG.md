@@ -6,6 +6,33 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-12 — Alarmering naar peter@hoogland.be bij niet-herstelbare defecten (laag 5 van de zelfcontrole)
+
+**Aanleiding:** Peter (12/6): het systeem moet zichzelf controleren, bijstellen en herstellen, en mailen naar peter@hoogland.be zodra iets faalt dat niet automatisch hersteld kan worden. Audit wees uit dat lagen 0-4 al bestonden (cron-Worker + fallback-schedule; fetcher-ladders; healthcheck-canary met rollende issue; verify_live; monitor.yml met hertrigger elke 20 min + optionele Claude-laag). Het gat: geen directe-mailroute, en een willekeurige stapfaal (build/deploy/verify_live) had alleen de rode run als signaal.
+
+**Beslissingen:**
+
+- Nieuw `pipeline/alert.py` (pure stdlib): kanaal-ladder SMTP-mail naar peter@hoogland.be (secrets SMTP_HOST/SMTP_USER/SMTP_PASS, optioneel SMTP_PORT) → ALERT_WEBHOOK_URL → expliciete "geen kanalen"-melding. Exit altijd 0: alarmering mag de oorspronkelijke fout nooit maskeren; een falend kanaal wordt gerapporteerd, niet fataal.
+- daily.yml: nieuwe laatste-lijn-stap op `failure()` — vuurt bij élke stapfaal (per definitie niet zelf hersteld; de hertrigger-laag heeft dan al gefaald of komt nog), mailt/webhookt met run-URL en houdt daarnaast één rollende "dagrun gefaald"-issue bij (dedupe).
+- monitor.yml: zelfde alarmstap op `failure()` — de monitor exit non-zero alléén bij harde problemen die hertriggeren niet oplost (inconsistent cijfer, kritieke canary, vangrail).
+- Doc 08 §1-bis documenteert de volledige vijf-lagen-architectuur incl. activatie-instructie (3 secrets) en de bewuste grens: geen zelf-modificerende "fixes", herstel = hertriggeren + eerlijke degradatie-labels (pre-registratie-discipline).
+- Test: tests/test_alert.py (11 standalone checks: kanaal-detectie, default-ontvanger peter@hoogland.be, dry-run, falend kanaal niet fataal, exit 0). Beide workflow-YAML's gevalideerd.
+- Open voor Peter: de SMTP-secrets (of ALERT_WEBHOOK_URL) zetten — tot dan dragen rollende issue + rode run (GitHub-notificatiemail) het alarm.
+
+---
+
+## 2026-06-12 — CTA-banner van de hoofdsite gehaald (Peter, 12/6)
+
+**Aanleiding:** Peter (schermafbeelding 12/6): haal de campagne-banner ("Adem in. Adem uit." / "Ontdek de bestemmingen") van de site.
+
+**Beslissingen:**
+
+- App.tsx rendert `CallToAction` niet meer; component en copy (`LES_HAUTES_ALPES_CTA`) blijven bestaan voor heractivering (één regel terugzetten, gedocumenteerd in de code).
+- Bewust NIET geraakt: de abonnee-kanalen (embed `public/embed/banner.js`, PreviewPage) en de tier-/banner-logica zelf — alleen de weergave op de hoofdsite is uit.
+- Zichtbaar effect volgt pas bij de push (live draait nog 0.2.0 mét banner).
+
+---
+
 ## 2026-06-12 — C3: meetgebied België expliciet binnen één scherm; afzender gescheiden van meetgebied
 
 **Aanleiding:** BLOK C-taak C3 (02_VERBETERPLAN): een nieuwe bezoeker moet binnen één scherm begrijpen dat dit een Belgische index is, ondanks de Hautes-Alpes-branding.

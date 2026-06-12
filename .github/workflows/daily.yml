@@ -213,3 +213,42 @@ jobs:
         # run rood -> GitHub mailt. Zo wordt ELKE uurlijkse run volledig op
         # correctheid van het eindresultaat gecontroleerd, autonoom.
         run: python -m pipeline.verify_live
+
+      - name: Alarm naar peter@hoogland.be bij gefaalde run (laatste lijn, niet zelf-herstelbaar)
+        # Vuurt op ELKE stapfaal in deze run (build, deploy, kritieke canary,
+        # verify_live, ...). Tegen die tijd hebben de zelfherstel-lagen hun werk al
+        # gedaan (fetcher-ladders, hertrigger door monitor.yml); wat hier aankomt is
+        # per definitie niet automatisch hersteld. Verzending: pipeline/alert.py
+        # (SMTP-mail als SMTP_HOST/SMTP_USER/SMTP_PASS gezet zijn; daarnaast/anders
+        # ALERT_WEBHOOK_URL; vangnet hieronder: rollende issue + de rode run zelf).
+        if: failure() && steps.timecheck.outputs.skip != 'true'
+        working-directory: app/pipeline
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          BODY="De uurlijkse SBI-run is GEFAALD en kon niet automatisch hersteld worden.
+
+          Run-log met de exacte faalstap: $RUN_URL
+          Live: https://les-hautes-alpes-sbi.brainwolves.workers.dev
+
+          De onafhankelijke monitor (elke 20 min) probeert zelf een hertrigger.
+          Blijft deze melding terugkomen, dan is het structureel en is menselijke
+          actie nodig (zie 08_Onderhoud-Protocol, zelfcontrole-architectuur)."
+          python -m pipeline.alert --subject "SBI ALARM: dagrun gefaald ($(TZ='Europe/Brussels' date '+%F %H:%M') BE)" --body "$BODY" || true
+          # Vangnet zonder secrets: één rollende issue (dedupe; GitHub mailt via notificaties).
+          TITLE="SBI dagrun gefaald (automatisch alarm)"
+          NUM=$(gh issue list --state open --json number,title \
+            --jq '.[] | select(.title|test("dagrun gefaald")) | .number' 2>/dev/null | head -1)
+          if [ -z "$NUM" ]; then
+            gh issue create --title "$TITLE" --body "Run: $RUN_URL — zie de faalstap in de log. Handmatig sluiten na herstel." >/dev/null 2>&1 \
+              && echo "Faal-issue aangemaakt." || echo "Issue-aanmaak faalde (niet-blokkerend)."
+          else
+            gh issue comment "$NUM" --body "Opnieuw gefaald: $RUN_URL" >/dev/null 2>&1 || true
+            echo "Faal-issue #$NUM bijgewerkt (anti-spam)."
+          fi

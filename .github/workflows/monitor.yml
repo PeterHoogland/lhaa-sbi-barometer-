@@ -53,3 +53,26 @@ jobs:
           # Zonder dit secret draait alleen de deterministische bewaking + hertrigger.
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python -m pipeline.agentic_monitor
+
+      - name: Alarm naar peter@hoogland.be bij hard probleem (laatste lijn)
+        # De monitor exit non-zero alleen bij een HARD probleem (inconsistent cijfer,
+        # kritieke canary, fallback-vangrail) dat hertriggeren niet oplost — precies
+        # de "niet automatisch hersteld"-categorie. Zelfde verzender als daily.yml;
+        # zonder secrets blijft het vangnet de rode run (GitHub-notificatiemail).
+        if: failure()
+        working-directory: app/pipeline
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
+        run: |
+          RUN_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          BODY="De onafhankelijke SBI-monitor ziet een HARD probleem op de live site dat
+          hertriggeren niet oplost (inconsistent cijfer, kritieke canary of de
+          fallback-vangrail). Dit is per definitie niet zelf-herstelbaar.
+
+          Monitor-log met de details: $RUN_URL
+          Live: https://les-hautes-alpes-sbi.brainwolves.workers.dev"
+          python -m pipeline.alert --subject "SBI ALARM: hard probleem live ($(TZ='Europe/Brussels' date '+%F %H:%M') BE)" --body "$BODY" || true

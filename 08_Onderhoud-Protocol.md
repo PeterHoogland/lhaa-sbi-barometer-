@@ -62,6 +62,31 @@ Zonder gedocumenteerde onderhouds-kalender vervalt elke pre-registratie tot fict
 
 ---
 
+## 1-bis. Zelfcontrole-, zelfherstel- en alarmeringsarchitectuur (live-systeem, stand 2026-06-12)
+
+Het live-systeem controleert en herstelt zichzelf in lagen; alleen wat geen enkele laag kan herstellen, bereikt een mens. Volledig computer-onafhankelijk (GitHub-cloud + Cloudflare).
+
+**Laag 0 — aansturing (uurlijks, 06-20u BE):** Cloudflare Cron-Worker `lhaa-sbi-cron` trapt `daily.yml` exact op tijd af; GitHub's eigen schedule blijft als dead-man's-switch. Elke run: bronnen ophalen → verwerken → verrekenen → publiceren → live verifiëren.
+
+**Laag 1 — per bron, zelfherstel (fetcher-ladder):** live → cache (eerlijke `observation_date`, gemarkeerd "degraded") → mock (gemarkeerd `simulated`). Een haperende bron breekt de run nooit; de degradatie is altijd zichtbaar gelabeld, nooit stil.
+
+**Laag 2 — per run, zelfcontrole (healthcheck-canary):** controleert per bron verse échte data + of de index effectief gevoed is (composiet, percentiel, 25 indicatoren). Verdict `ok`/`degraded`/`critical` in `health-report.json` (deployt mee). `critical` markeert de run bewust rood.
+
+**Laag 3 — na publicatie (verify_live):** haalt de LIVE site op en controleert het eindresultaat: vers, 25 indicatoren, composiet = som van de contributies, niets stil gesimuleerd (HARDE EIS in live-modus), canary niet kritiek. Faalt → run rood.
+
+**Laag 4 — bewaker-van-de-bewaker (monitor.yml, elke 20 min):** onafhankelijke cron; ziet hij stilstand of een gefaalde laatste run → **hertriggert hij daily.yml zelf** (zelfherstel van gemiste/gefaalde updates, hersteltijd ≤ ~20 min). Structurele problemen (inconsistent cijfer, kritieke canary, vangrail) = hard alarm, geen stille hertrigger-lus. Optionele agentische laag (Claude-gezondheidslezing) achter het secret `ANTHROPIC_API_KEY` — oordeel bóvenop de meting, nooit in plaats van.
+
+**Laag 5 — alarmering naar een mens (sinds 2026-06-12, `pipeline/alert.py`):** vuurt uitsluitend op de "niet automatisch hersteld"-categorie: élke stapfaal in daily.yml en élk hard monitor-probleem. Kanaal-ladder:
+1. directe **SMTP-mail naar peter@hoogland.be** — vereist secrets `SMTP_HOST`, `SMTP_USER`, `SMTP_PASS` (optioneel `SMTP_PORT`, default 587 STARTTLS; bv. Gmail-app-wachtwoord);
+2. `ALERT_WEBHOOK_URL` (Zapier/Make → e-mail), bestond al voor de canary;
+3. vangnet zonder secrets: één **rollende GitHub-issue** (anti-spam-dedupe, sluit bij herstel) + de rode run zelf → GitHub-notificatiemail.
+
+**Activatie van de directe mail** = drie secrets zetten: `gh secret set SMTP_HOST SMTP_USER SMTP_PASS`. Tot die gezet zijn, zegt de alarmstap dat expliciet in de log en dragen issue + rode run het alarm.
+
+**Bewuste grens:** geen enkele laag wijzigt code of data om "zichzelf te fixen" — herstel beperkt zich tot hertriggeren en eerlijke degradatie-labels. Een echte bug fixt een mens; automatische zelfmodificatie zou de pre-registratie-discipline (§5) ondermijnen.
+
+---
+
 ## 2. Triggers voor onmiddellijke review
 
 Niet-cyclische review-momenten:
