@@ -6,6 +6,18 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-12 — OSF-publicatiepakket bevroren (SHA-256-manifest docs 00-09)
+
+**Aanleiding:** Peters GO voor OSF-publicatie; plan-volgorde gerespecteerd (eerst alle amendementen §4.1.1-§4.1.6 + naamkeuze, dán hashen).
+
+**Beslissingen:**
+
+- `OSF_PUBLICATIE/SHA256-MANIFEST.txt`: hashes van de tien methodologiedocumenten op het moment van bevriezing. CHANGELOG.md valt bewust buiten de hash (levend auditlog).
+- `OSF_PUBLICATIE/README_OSF.md`: de zes publicatiestappen, incl. de §14-invulling (die doc 00 wijzigt → manifest direct herberekenen) en de footer-link die pas ná publicatie geactiveerd mag worden (C2-claimaudit).
+- De upload zelf vereist Peters OSF-account; zonder credentials is dit het maximaal voorbereidbare. Vanaf feitelijke publicatie geldt het 30-dagen-protocol (doc 08 §5).
+
+---
+
 ## 2026-06-12 — B7-naamkeuze (Peter GO): publieksnaam "De Nationale Stress Index"
 
 **Aanleiding:** Peter koos uit het B7-beslismemo voor de Stress-naam (optie B-familie). Bindende voorwaarde uit het memo: de eerlijke openingszin is de permanente claim-mitigatie en mag nooit losgekoppeld worden van de naam.
