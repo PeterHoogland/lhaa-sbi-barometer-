@@ -32,7 +32,17 @@ export function Methodology() {
           <li>De index leunt nu zwaarder op Vlaamse bronnen. Een volwaardig Franstalig/Waals equivalent (files, water, hulplijnen) ontbreekt deels, dus de dekking is niet overal gelijk.</li>
           <li>Pollen komt via een model (CAMS), niet via meetstations. Geluid heeft buiten Brussel geen dagresolutie.</li>
           <li>De groothandelsprijs van energie in realtime en wateroverlast in Wallonië zijn nog niet volledig gedekt.</li>
-          <li>Er is nog geen externe validatie tegen klinische uitkomstmaten (Tele-Onthaal, Sciensano, RIZIV). Dat vereist datadelingsprotocollen. Het meetkader ervoor staat klaar.</li>
+          <li>Er is nog geen externe validatie tegen klinische uitkomstmaten. Dat vereist datadelingsprotocollen; de aanvragen en het meetkader staan klaar.</li>
+        </ul>
+      </details>
+
+      <details>
+        <summary>Hoe we de index extern gaan ijken (validatiekalender)</summary>
+        <ul className="methodology-gaps">
+          <li><strong>Dagelijks (sterkste toets):</strong> oproepvolumes van Tele-Onthaal (106) en de Zelfmoordlijn 1813, via kruiscorrelatie met een vertraging van 0 tot 3 dagen.</li>
+          <li><strong>Per kwartaal:</strong> Sciensano BELHEALTH (gevalideerde angst- en depressievragenlijsten GAD-7 en PHQ-9).</li>
+          <li><strong>Jaarlijks:</strong> RIZIV-cijfers over psychosociale arbeidsongeschiktheid en werkgeversabsenteïsme.</li>
+          <li><strong>Belangrijke kanttekening:</strong> administratieve reeksen weerspiegelen deels beleid en aanbod (de RIZIV-burn-out-stijging volgde mede op de terugbetalingshervorming van 2022; hulplijnvolumes bewegen mee met campagnes). We corrigeren voor seizoen en beschouwen één enkele correlatie nooit als bewijs: alleen convergentie over meerdere onafhankelijke maten telt.</li>
         </ul>
       </details>
     </section>

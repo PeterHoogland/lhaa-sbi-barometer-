@@ -6,7 +6,17 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
-## 2026-06-12 — C2: kalibratie verifieerbaar gemaakt + claimaudit publieke copy
+## 2026-06-12 — C1: criteriumvalidatie-raamwerk volwaardig (p-waarden, lag, seizoen als confounder)
+
+**Aanleiding:** BLOK C-taak C1 (02_VERBETERPLAN). Verificatie eerst: validation/criterion_validity.py bestond al als stub met datacontract en verzendklare data-aanvragen (DATA-REQUESTS.md); de publieke jaaraggregaten stonden al verzameld met bronlinks (GATHERED-DATA.md). De resttaak was de rekenkern op acceptatieniveau brengen.
+
+**Beslissingen:**
+
+- criterion_validity.py uitgebreid: p-waarden via Fisher-z (math.erf, gerapporteerd als p_approx), kruiscorrelatie lag 0-3 dagen ruw ÉN seizoens-gecorrigeerd (maand-centrering als confounder-controle; "best" wordt bewust uit de gecorrigeerde reeks gekozen omdat een louter ruwe correlatie gedeelde seizoensgang kan zijn), maand-/kwartaalbronnen via periodegemiddelde-aggregatie (lag 0-1 periode), minimale-n-bewaking (30 dagen / 8 periodes), en de SBI-zijde pakt automatisch composite-history.json zodra die bestaat (met schaalbreuk-caveat) i.p.v. alleen de 30-dagen-sparkline.
+- Statuslogica eerlijk: "computed" alleen als er echt een correlatie uit komt; de verzamelde jaaraggregaten (geen dagresolutie, geen overlap) geven "partial". Het rapport draagt datacontract, methode, confounder-note en de validatiekalender.
+- Methodologiepagina: nieuw klap-paneel "Hoe we de index extern gaan ijken" met de validatiekalender (dagelijks Tele-Onthaal/1813, kwartaal BELHEALTH, jaarlijks RIZIV/absenteïsme) en de expliciete beleids-/aanbod-caveat (RIZIV-hervorming 2022, campagne-effecten op hulplijnen).
+- Test: tests/test_criterion_validity.py (14 standalone checks: Fisher-p-randen, maand-centrering dempt seizoensgang, geconstrueerde lag-2 wordt gevonden op witte-ruis-basis, periodieke aggregatie, stub/partial/computed-statussen).
+- Open (extern, niet code): datadelingsprotocollen met Tele-Onthaal/CPZ voor dag-resolutie; de aanvraagmails staan verzendklaar in DATA-REQUESTS.md.
 
 **Aanleiding:** BLOK C-taak C2 (02_VERBETERPLAN): elke open-source-/pre-registratie-/kalibratie-claim moet een werkende verwijzing of reproduceerbaar artefact hebben, of verdwijnen — vóór de OSF-hash alles bevriest.
 
