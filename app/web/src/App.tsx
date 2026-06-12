@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import type { DailyOutput, SparklinePoint } from "./types";
-import { CallToAction } from "./components/CallToAction";
+// CallToAction bewust niet meer gerenderd (Peter 2026-06-12) — zie <main> hieronder.
 import { BrandSafetyBanner } from "./components/BrandSafetyBanner";
 import { DemoBanner } from "./components/DemoBanner";
 import { ConditionLevelDisplay } from "./components/ConditionLevelDisplay";
@@ -94,7 +94,12 @@ export function App() {
       <main>
         <ConditionLevelDisplay data={data} lastRunTime={lastRunTime} />
 
-        <CallToAction tier={data.tier.current} brandSafety={data.brand_safety.flag} />
+        {/* CTA-banner ("Adem in. Adem uit.") op instructie van Peter (2026-06-12)
+            van de hoofdsite gehaald. Component + copy blijven bestaan voor de
+            campagne-heractivering; de abonnee-kanalen (embed/banner.js,
+            PreviewPage) zijn hier bewust NIET door geraakt.
+            Heractiveren = deze regel terugzetten:
+            <CallToAction tier={data.tier.current} brandSafety={data.brand_safety.flag} /> */}
 
         <TopInfluences
           breakdown={
