@@ -34,7 +34,8 @@ export function HeroBanner() {
       <div className="hero-content">
         <div className="intro-eyebrow">Stressor-Blootstellings-Index</div>
         <div className="intro-subtitle">
-          Een barometer voor collectieve blootstelling aan stressverhogende omstandigheden
+          Deze index meet hoe ongewoon zwaar de omstandigheden vandaag zijn voor heel
+          België, niet of mensen zich gestrest voelen.
         </div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
       </div>

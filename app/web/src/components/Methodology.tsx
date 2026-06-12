@@ -20,7 +20,7 @@ export function Methodology() {
           <li>We tellen 21 gemeten indicatoren, verdeeld over 5 categorieën (weer, verkeer, economie, werk/gezin, nieuws). De vier kalendersignalen van het domein Kalender en ritme staan sinds juni 2026 buiten het cijfer: een kalender is een ontwerp-aanname, geen meting. Drie andere kalender-afgeleide indicatoren (daglicht, werk-deadlines, schoolvakantieperiode) tellen voorlopig wel mee; dat is een gedocumenteerde keuze.</li>
           <li>Voor elke indicator vergelijken we de waarde van vandaag met wat normaal is voor dit moment in het jaar.</li>
           <li>We corrigeren voor seizoens-effecten waar dat zinvol is (bv. files in juli zijn anders dan files in november).</li>
-          <li>We tellen alles op, met gewichten die rekening houden met hoeveel wetenschappelijk onderzoek de link met stress ondersteunt.</li>
+          <li>We tellen alles op: de vijf categorieën tellen elk even zwaar mee in het cijfer. Daarnaast berekenen we een controleversie waarin sterker onderbouwde indicatoren zwaarder wegen; wijkt die sterk af van het hoofdcijfer, dan is dat voor ons een waarschuwingssignaal. Hoe sterk het onderzoek achter elke indicator is, zie je per indicator bij "Bewijskracht".</li>
           <li>Het "venster" opent zodra de dag zelf boven de drempel zit: hoger dan 70% van de dagen rond deze tijd van het jaar, gemeten over de laatste twee jaar. Zakt de dag eronder, dan sluit het venster ook weer dezelfde dag.</li>
           <li>Alle keuzes (drempels, gewichten, formules) staan vooraf vast en zijn publiek, niemand kan ze achteraf bijsturen om een gewenste uitkomst te maken.</li>
         </ol>

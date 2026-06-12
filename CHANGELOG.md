@@ -6,7 +6,18 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
-## 2026-06-12 — B8: evidence-grading zichtbaar in de UI + claim-precisie per indicator
+## 2026-06-12 — B7 (deel 1, naam-agnostisch): eerste schermzin + bronlabels eerlijk; naamkeuze ligt bij Peter
+
+**Aanleiding:** BLOK B-taak B7 (02_VERBETERPLAN). De index meet omgevingsongewoonheid, geen bewezen populatiestress; titel en bronteksten moeten die claim dragen. De publieksnaam zelf ("De Nationale Stress Barometer" vs alternatieven) is een beslissing van Peter; beslismemo staat klaar in het handover-pakket (04_B7_BESLISMEMO_NAAMKEUZE.md).
+
+**Beslissingen (alles naam-agnostisch, geldig onder elke naamkeuze):**
+
+- HeroBanner-subtitel = de verplichte openingszin uit het copy-deck (04_REFERENTIE_CONSTRUCT.md, oud wetenschapspakket): "Deze index meet hoe ongewoon zwaar de omstandigheden vandaag zijn voor heel België, niet of mensen zich gestrest voelen." (verving "blootstelling aan stressverhogende omstandigheden"; benoemt en passant het meetgebied België, voorschot op C3).
+- Allostatic load overal alleen nog gelabelde inspiratie: footer-copy + SBI_FOUNDATIONS zeggen expliciet "niet de gemeten grootheid en niet de validatie van deze dagindex".
+- Vertekende-citatie-fix (wetenschapspakket §bronnen): het Marin et al. 2012-label claimt niet langer dat negatief nieuws stressreactiviteit "verhoogt"; het vermeldt nu de echte uitkomst (geen directe stresshormoon-stijging; wel verhoogde reactiviteit op een latere stressor; kleine steekproef, alleen vrouwen).
+- Methodologie-stap 4 gecorrigeerd: het hoofdcijfer weegt de vijf categorieën gelijk; het evidence-gewogen schema is een controleversie (de oude tekst suggereerde evidence-weging van het hoofdcijfer). Verwijst nu naar de B8-bewijskracht per indicator.
+- Em-dashes uit user-facing copy (footer, SBI_FOUNDATIONS-labels) verwijderd (huisregel).
+- Verificatie: engine 136/136, web build groen. Open: naamkeuze (memo §5) en de naamafhankelijke vervolgtaken (titel, eyebrow, embed-copy, style-guide, C3-koppeling).
 
 **Aanleiding:** BLOK B-taak B8 (02_VERBETERPLAN). De grades (A/B/C/D) zaten al in registry en breakdown, maar de UI toonde ze nergens; per indicator ontbrak een eerlijke duiding van wat het bewijs wel en niet draagt.
 

@@ -34,66 +34,66 @@ export function isKern(code: string): boolean {
 export const SBI_FOUNDATIONS: Array<{ label: string; url?: string }> = [
   {
     label:
-      "McEwen, B. — Allostatic load: cumulatieve fysiologische last (een individueel-fysiologisch concept). Theoretische inspiratie voor de index, niet de gemeten grootheid.",
+      "McEwen, B.: Allostatic load, cumulatieve fysiologische last (een individueel-fysiologisch concept). Theoretische inspiratie voor de index; niet de gemeten grootheid en niet de validatie van deze dagindex.",
   },
   {
     label:
-      "Marin et al. (2012), PLoS ONE — negatief nieuws verhoogt de fysiologische stressreactiviteit.",
+      "Marin et al. (2012), PLoS ONE: negatief nieuws verhoogde in dit experiment de stresshormonen niet rechtstreeks, wel de reactiviteit op een latere stressor (kleine steekproef; effect alleen bij vrouwen).",
     url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3468453/",
   },
   {
     label:
-      "Mayo Clinic Press (2024) — herhaalde nieuws-blootstelling en cortisol.",
+      "Mayo Clinic Press (2024): herhaalde nieuws-blootstelling en cortisol (duiding, geen primaire studie).",
     url: "https://mcpress.mayoclinic.org/mental-health/how-the-news-rewires-your-brain/",
   },
   {
     label:
-      "UEA / Understanding Society (2022) — energie- en brandstofarmoede tasten welzijn aan.",
+      "UEA / Understanding Society (2022): energie- en brandstofarmoede tasten welzijn aan.",
     url: "https://www.understandingsociety.ac.uk/news/2022/02/04/high-fuel-prices-affect-mental-and-physical-health/",
   },
   {
     label:
-      "Nature Energy (2023) — de energieprijscrisis en gevolgen voor huishoudens.",
+      "Nature Energy (2023): de energieprijscrisis en gevolgen voor huishoudens.",
     url: "https://www.nature.com/articles/s41560-023-01209-8",
   },
   {
     label:
-      "BMC Public Health (2024) — subjectieve financiële onzekerheid als sterke stressdeterminant.",
+      "BMC Public Health (2024): subjectieve financiële onzekerheid als sterke stressdeterminant.",
     url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11668040/",
   },
   {
-    label: "Marmot — sociale gezondheidsdeterminanten (basis indicator-selectie).",
+    label: "Marmot: sociale gezondheidsdeterminanten (basis indicator-selectie).",
   },
   {
-    label: "Hobfoll — Conservation of Resources (basis voor reikwijdte-weging).",
+    label: "Hobfoll: Conservation of Resources (basis voor reikwijdte-weging).",
   },
   {
     label:
-      "Young, L. & Soroka, S. (2012), Political Communication — Lexicoder Sentiment Dictionary, methodologische basis voor nieuwstoon-meting.",
+      "Young, L. & Soroka, S. (2012), Political Communication: Lexicoder Sentiment Dictionary, methodologische basis voor nieuwstoon-meting.",
     url: "https://doi.org/10.1080/10584609.2012.671234",
   },
   {
     label:
-      "De Smedt, T. & Daelemans, W. (2012), CLiPS — Pattern.nl: Nederlands sentiment-lexicon (3.000+ woorden, PDDL). Basis van de Laag-1-toonscoring uit v0.5 §9.3.",
+      "De Smedt, T. & Daelemans, W. (2012), CLiPS: Pattern.nl, Nederlands sentiment-lexicon (3.000+ woorden, PDDL). Basis van de Laag-1-toonscoring uit v0.5 §9.3.",
     url: "https://github.com/clips/pattern/blob/master/pattern/text/nl/nl-sentiment.xml",
   },
   {
     label:
-      "Soroka, Fournier & Nir (2019), PNAS — negativity bias in psychofysiologische reactie op nieuws.",
+      "Soroka, Fournier & Nir (2019), PNAS: negativity bias in psychofysiologische reactie op nieuws.",
     url: "https://doi.org/10.1073/pnas.1908369116",
   },
   {
-    label: "Leetaru, K. (2013) — GDELT Global Knowledge Graph (data-bron nieuwstoon).",
+    label: "Leetaru, K. (2013): GDELT Global Knowledge Graph (data-bron nieuwstoon).",
     url: "https://www.gdeltproject.org/",
   },
   {
     label:
-      "Generous et al. (2014), PLoS Comp. Biol. — Wikipedia-pageviews als digital-epidemiologie-proxy.",
+      "Generous et al. (2014), PLoS Comp. Biol.: Wikipedia-pageviews als digital-epidemiologie-proxy.",
     url: "https://doi.org/10.1371/journal.pcbi.1003892",
   },
   {
     label:
-      "Lazer et al. (2014), Science — parable of Google Flu (waarschuwing bij zoekdata).",
+      "Lazer et al. (2014), Science: parable of Google Flu (waarschuwing bij zoekdata).",
     url: "https://doi.org/10.1126/science.1248506",
   },
 ];
