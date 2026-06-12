@@ -27,11 +27,14 @@ export function scoreBand(score: number): ScoreBand {
   if (score >= 50) return "gemiddeld";
   return "laag";
 }
+// Peter 13/6: de publieke niveauschaal loopt van laag naar EXTREEM (de
+// top-10%-band heet "extreem", zelfde register als de indicator-states en de
+// P90-band in de methodologie). De interne bandnaam "hoog" blijft ongewijzigd.
 export const BAND_LABEL: Record<ScoreBand, string> = {
   laag: "LAAG",
   gemiddeld: "GEMIDDELD",
   verhoogd: "VERHOOGD",
-  hoog: "HOOG",
+  hoog: "EXTREEM",
 };
 export const BAND_HEADLINE: Record<ScoreBand, string> = {
   laag: "Vandaag is een rustige dag.",

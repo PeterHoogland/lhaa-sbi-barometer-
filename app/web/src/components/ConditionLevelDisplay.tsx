@@ -6,12 +6,17 @@ import { buildContext } from "../lib/explainer";
  * niet het conditie-niveau. Reden: het cijfer leest gevoelsmatig vreemd als 71
  * "gemiddeld" heet terwijl de meter-stip al in de verhoogde (amber) zone staat.
  * De banner/campagne-logica blijft onveranderd op de pre-geregistreerde tier-regel
- * (sustained ≥P70), dus een verhoogde DAGwaarde geeft hier wel het juiste woord
+ * (dagregel ≥P70), dus een verhoogde DAGwaarde geeft hier wel het juiste woord
  * maar nog geen vals alarm. Brand-safety (CN 5) overschrijft met een pauze-woord.
+ *
+ * Peter 13/6: de kicker is ALTIJD een niveauwoord op de schaal laag → extreem
+ * (methodologie-conform: de P50/P70/P90-banden; "extreem" = de top-10%-band,
+ * zelfde register als de indicator-states). Nooit "ONZEKER": onzekerheid is
+ * geen niveau en staat in de bandbreedte-regel + de band in de meter.
  */
 function kickerWord(cn: ConditionLevel, score: number): string {
   if (cn === 5) return "EVEN OP PAUZE";
-  if (score >= 90) return "HOOG";
+  if (score >= 90) return "EXTREEM";
   if (score >= 70) return "VERHOOGD";
   if (score >= 50) return "GEMIDDELD";
   return "LAAG";
@@ -70,11 +75,7 @@ export function ConditionLevelDisplay({
           <div className="cn-meter-axis"><span>0</span><span>50</span><span>100</span></div>
         </div>
         <div className="cn-side">
-          {/* CN 5 (brand-safety) behoudt zijn pauze-woord — die override staat
-              hiërarchisch boven de onzekerheidsmelding (zie kickerWord). */}
-          <div className="cn-kicker">
-            {cn !== 5 && highUncertainty ? "ONZEKER" : kickerWord(cn, score)}
-          </div>
+          <div className="cn-kicker">{kickerWord(cn, score)}</div>
         </div>
       </div>
       <div className="cn-secondary">
@@ -82,8 +83,8 @@ export function ConditionLevelDisplay({
         {highUncertainty && lo !== null && hi !== null ? (
           intervalCoversFlag ? (
             <span className="cn-uncertainty-warning">
-              De meting is vandaag onzeker: met 90% zekerheid ligt het cijfer tussen {lo} en {hi}
-              (de band in de meter).
+              De meting is vandaag onzeker: met 90% zekerheid ligt het cijfer tussen {lo} en{" "}
+              {hi} (de band in de meter).
             </span>
           ) : (
             <span className="cn-uncertainty-warning">

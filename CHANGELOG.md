@@ -6,6 +6,19 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-13 — Kicker altijd een niveauwoord laag → extreem; nooit "ONZEKER" (Peter)
+
+**Aanleiding:** Peter (met schermafbeelding): naast de meter geen "ONZEKER" maar een niveauwoord op de schaal laag naar extreem, wetenschappelijk binnen de aanpak en de methodologie.
+
+**Beslissingen:**
+
+- De kicker volgt altijd de percentielband (P50/P70/P90, dagregel-conform): LAAG < 50 ≤ GEMIDDELD < 70 ≤ VERHOOGD < 90 ≤ **EXTREEM**. "Extreem" vervangt "hoog" als top-10%-label — zelfde register als de indicator-states (rustig/normaal/verhoogd/extreem) en de "uitzonderlijk hoog"-copy; het interne bandtype blijft ongewijzigd. Ook BAND_LABEL (TierIndicator) volgt, zodat één schaalwoordenschat overal geldt.
+- Onzekerheid is geen niveau en krijgt dus geen kicker meer: ze blijft volwaardig zichtbaar via de 90%-band in de meter en de vetgedrukte bandbreedte-regel onder het cijfer. Doc 07 §13-bis geactualiseerd (weergavekeuze, data-velden onaangeroerd); CN 5 behoudt "EVEN OP PAUZE".
+- Typografische fix: ontbrekende spatie vóór "(de band in de meter)" in de onzekerheidsregel (JSX-witruimteval).
+- OSF-manifest herberekend (doc 07 wijzigde; nog niet geüpload).
+
+---
+
 ## 2026-06-13 — Top-3 en kalendercontext achter uitklikbalken (Peter, met schermafbeeldingen)
 
 **Aanleiding:** Peter: "Wat speelt vandaag het meest mee?" en het kalendercontext-blok moeten uitklikbalken worden zoals de balken lager op de site; het open contextblok mag van de pagina.
