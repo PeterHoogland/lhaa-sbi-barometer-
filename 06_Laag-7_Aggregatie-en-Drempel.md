@@ -124,6 +124,17 @@ P=70 is gekozen als "waarschuwingsband" vóór rood; het exacte percentiel heeft
 
 We zijn over deze keuze expliciet: het zijn redelijke conventies, niet wetenschappelijke noodzakelijkheden.
 
+### 3.7 Empirische kalibratie van de publieke banden (B5, vastgelegd 2026-06-12)
+
+De publieke CN-banden (CN 1 < P50 ≤ CN 2 < P70 ≤ CN 3 < P90 ≤ CN 4; `condition-level.ts`) zijn **percentiel-posities in de empirische verdeling van het composiet zelf**, geen absolute schaalwaarden. Dat betekent:
+
+- **Kalibratieperiode:** voortschrijdend 24 maanden, seizoensbewust (±45 dagen rond dezelfde dag-van-het-jaar, over alle beschikbare jaargangen; `seasonal-percentile.ts`).
+- **n:** per dag ≈ 2 jaargangen × 91-dagenvenster ≈ 180 referentiedagen (gemeten in productie op 12 juni 2026: n = 181); bij minder dan 30 seizoenspunten terugval op het volledige venster (n ≤ ~730). De actuele n staat per dag in `uncertainty.n_reference` (B3).
+- **Impliciete herijking:** doordat het venster dagelijks meeschuift, herkalibreren de banden zichzelf continu aan de werkelijke verdeling; de bandfrequenties zijn per constructie ~50% (CN 1), ~20% (CN 2), ~20% (CN 3) en ~10% (CN 4) van de vergelijkbare dagen, plus de CN 5-override.
+- **Onzekerheid:** het B3-bootstrap-interval (doc 07 §13-bis) kwantificeert per dag hoe zeker de percentiel-positie is; bij vlag "high" toont de UI geen scherp getal.
+
+**Open productkeuze (Peter):** een fijnere 5-bands-verdeling (P20/P40/P60/P80) zou het publieke label vaker laten bewegen. Dat is sinds de dagregel (0.3.1) een product-, geen wetenschapsvraag; wijziging loopt via amendement + CHANGELOG (zie ook 01_STATUS §2.3 over bannerfrequentie).
+
 ---
 
 ## 4. Output-specificatie

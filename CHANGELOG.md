@@ -6,7 +6,15 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
-## 2026-06-12 — B6: multicollineariteits-audit met echte PCA + D5-EWMA-monitor; halvering expliciet monitor-only
+## 2026-06-12 — B5: empirische kalibratie van de CN-banden expliciet gedocumenteerd
+
+**Aanleiding:** BLOK B-taak B5 (02_VERBETERPLAN): drempels aantoonbaar afleiden van de empirische verdeling en documenteren (kalibratieperiode + n).
+
+**Beslissingen:**
+
+- Doc 06 §3.7 (nieuw): de CN-banden zijn percentiel-posities in de empirische verdeling van het composiet zelf. Kalibratieperiode = voortschrijdend 24 maanden, seizoensbewust (±45 d); n ≈ 180 referentiedagen per dag (productie 12 juni 2026: n = 181; terugval volledig venster ≤ ~730 bij < 30 seizoenspunten; actuele n per dag in uncertainty.n_reference sinds B3). Bandfrequenties per constructie ~50/20/20/10%; herijking impliciet door het meeschuivende venster.
+- Geen drempelwijziging: de fijnere 5-bands-variant (P20/P40/P60/P80) staat gedocumenteerd als open productkeuze voor Peter (amendement-pad), niet eigenmachtig doorgevoerd.
+- condition-level.ts-docblock geactualiseerd: beschreef nog de 3-dagen-regel; verwijst nu naar de dagregel (0.3.1) en doc 06 §3.7. Geen gedragswijziging (commentaar-only); engine-suite groen.
 
 **Aanleiding:** BLOK B-taak B6 (02_VERBETERPLAN): halfjaarlijkse Spearman-audit + PCA-dimensionaliteitscheck; de D5-halvering formaliseren of als bewuste vereenvoudiging documenteren.
 

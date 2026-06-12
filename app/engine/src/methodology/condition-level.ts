@@ -5,12 +5,15 @@
  * vertaling van de bestaande tier + percentile + brand-safety logica
  * (doc 00 §8, doc 06 §3, doc 06 §7). Niet vrij wijzigbaar zonder doc 08.
  *
- * Regels:
+ * Regels (dagregel sinds amendement 0.3.1, 2026-06-12 — doc 06 §3.4):
  *   CN 5  brand-safety flag = elevated | block          (banner OFF, override)
- *   CN 4  tier = red       (P≥90 sustained 3d)          (banner aan, verhoogd)
- *   CN 3  tier = amber     (P 70-89 sustained 3d)       (banner aan, standaard)
+ *   CN 4  tier = red       (dagpercentiel ≥ P90)        (banner aan, verhoogd)
+ *   CN 3  tier = amber     (dagpercentiel 70-89)        (banner aan, standaard)
  *   CN 2  tier = green & 50 ≤ P < 70                    (banner uit)
  *   CN 1  tier = green & P < 50                          (banner uit)
+ *
+ * De banden zijn percentiel-posities in de empirische 24-maands seizoens-
+ * verdeling (kalibratie + n: doc 06 §3.7); geen absolute schaalwaarden.
  *
  * Belangrijk: CN 5 staat hiërarchisch BOVEN CN 4 — het is geen "hogere stress"
  * maar een banner-override-modus bij gevoelige actualiteit.
