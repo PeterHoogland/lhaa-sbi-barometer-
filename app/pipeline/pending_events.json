@@ -7792,5 +7792,23 @@
     "link": "https://www.tvoost.be/nieuws/vliegtuig-neergestort-vlakbij-vliegveld-van-overboelare-slachtoffer-in-kritieke-toestand-211524",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-13",
+    "magnitude": 1,
+    "title": "Vrouw gewond na zware crash tegen bomen: wagen komt op zijkant terecht",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/middenkust/oudenburg/vrouw-gewond-na-zware-crash-tegen-bomen-wagen-komt-op-zijkant-terecht/157166481.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-13",
+    "magnitude": 1,
+    "title": "Doorbraak in asbestdossier: Slachtoffers kunnen voortaan naar rechter stappen tegen asbestbedrijven",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/doorbraak-in-asbestdossier-slachtoffers-kunnen-voortaan-naar-rechter-stappen-tegen-asbestbedrijven-211528",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
