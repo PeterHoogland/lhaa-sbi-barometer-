@@ -142,6 +142,14 @@ STL (Cleveland et al, 1990) ontbindt een tijdreeks in: X(t) = T(t) + S(t) + R(t)
 
 STL betrouwbaar bij ≥ 3 seizoenscycli. Voor indicatoren met < 3 jaar betrouwbare historiek: geen STL toegepast, expliciet gelogd.
 
+**Werkelijke MVP-staat (geverifieerd 2026-06-13, na de adversariële review; beschrijving, geen herdefinitie):** de geïmplementeerde STL (`app/engine/src/methodology/stl.ts`, aangeroepen vanuit `runtime.ts`) is bewust conservatief en raakt vandaag minder indicatoren dan tabel 3.2 suggereert:
+
+- **Gate:** de seizoenscomponent S(t) wordt alleen geschat als er ≥ 10 historiepunten binnen ±7 dagen rond dezelfde dag-van-het-jaar uit **strikt voorgaande** jaren beschikbaar zijn (anders eerlijke terugval op de ruwe waarde, `applied: false`). Gevolg: **maandbronnen halen die eis structureel niet** (een maandreeks levert ~1 punt per voorgaand jaar in een ±7-daagsvenster). I-D3-001 (CPI), I-D3-003 (ontslagen) en I-D3-005 (werkloosheid) draaien daardoor **de facto op de ruwe waarde**, ook al staat hun `applyStl`-vlag aan. STL is vandaag alleen echt actief voor de dagelijkse weer-/luchtreeksen I-D1-002 (Hitte), I-D1-003 (Kou), I-D1-004 (Luchtkwaliteit) en I-D3-002 (energieprijs, dagdata).
+- **Effectieve baseline binnen het 24m-venster (§4.1.7):** punten zonder een voorgaand jaar bínnen het venster kunnen niet gedetrend worden en vallen uit de residuverdeling; de effectieve STL-baseline is daardoor ~12-14 maanden, niet 24. De n ≥ 30-poort staat sinds 2026-06-13 op die residuenset (de verdeling waar de Z écht tegen weegt), niet op de ruwe historielengte.
+- **Cycli vs kalenderjaren:** de gate telt unieke kalenderjaren; een 24-maands venster raakt doorgaans 3 kalenderjaren maar bevat 2 echte seizoenscycli. De volledige 3-cycli-betrouwbaarheid van deze §3.4 wordt voor de dagreeksen ~mei 2027 bereikt; tot dan is de seizoenscorrectie op indicatorniveau een tweede, lichtere correctie bovenop de seizoensmatch die het composietpercentiel (±45 d, 24 m, doc 06 §1.1) sowieso al draagt.
+
+Dit is bewust **niet** opgelost door STL op 2 cycli te forceren (dat zou tegen deze stabiliteitsvoorwaarde ingaan) noch door STL uit te zetten (dat zou een werkende, geteste transformatie verwijderen vlak vóór go-live). De keuze is: de huidige conservatieve werking eerlijk documenteren en de schone herijking (STL op volle historie zodra ≥ 3 cycli, met amendement) plannen voor ~mei 2027. Zie 00_Pre-Registratie §4.1.7, slotnoten.
+
 ### 3.5 Bescherming tegen seizoens-dubbeltelling
 
 In v0.1 zat seizoenseffect dubbel: één keer expliciet (via I-D7-004 seizoensfase) en één keer impliciet (via daglichturen, hitte, etc.). In v0.2 is I-D6-004 (was I-D7-004) verplaatst naar secundaire set, en wordt seizoensimpact gemeten uitsluitend via:

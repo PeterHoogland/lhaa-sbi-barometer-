@@ -6,6 +6,19 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-13 — STL-besluit (advocaat-van-de-duivel-overleg): werkelijke MVP-werking documenteren, geen hybride bouwen
+
+**Aanleiding:** Peter vroeg wat "het meest correct" is voor STL op het gevensterde MAD-z-pad: echte-jaargangen tellen, STL uitschakelen, of een hybride op volle historie. Tweede adversariële ronde uitgevoerd; mijn eigen voorkeur (hybride STL op volle historie) is na verificatie verworpen.
+
+**Beslissing: documenteren, geen code-wijziging (optie O2).** Twee gemeten feiten kantelden het besluit:
+
+- De STL raakt vandaag **4 indicatoren, niet 7**: de maandbronnen I-D3-001/003/005 halen de gate (≥10 seizoenspunten binnen ±7 d uit voorgaande jaren) structureel niet en draaien de facto al op de ruwe waarde (geverifieerd: 0 seizoenspunten). STL is alleen echt actief voor I-D1-002/003/004 en I-D3-002.
+- Het composietpercentiel is al seizoensgematcht (±45 d, 24 m). De indicator-STL is een tweede, lichtere correctie; de winst van een hybride op 2 cycli is marginaal en zou exact de stabiliteitsvoorwaarde van doc 04 §3.4 ("STL betrouwbaar bij ≥3 cycli") codificeren die ze wil respecteren.
+
+De hybride (O3) is verworpen omdat hij pre-registratie-schuld maximaliseert voor een marginale winst; STL uitzetten (O1) is verworpen omdat het een werkende, geteste transformatie verwijdert vlak vóór go-live (prime directive: werkende kern niet blind herschrijven). Doc 04 §3.4 kreeg een eerlijke "werkelijke MVP-staat"-notitie (raakt ook harde regel 2: de docs suggereerden STL op maandbronnen terwijl dat niet draait). Schone herijking — STL op volle historie zodra ≥3 cycli, met amendement — gepland ~mei 2027. Manifest herberekend (doc 04 wijzigde). Geen engine-wijziging, dus gedrag identiek.
+
+---
+
 ## 2026-06-13 — Adversariële review op verzoek van Peter ("advocaat van de duivel"): drie correcties, drie open beslissingen
 
 **Aanleiding:** Peter vroeg een advocaat van de duivel op de wetenschappelijke houdbaarheid van de onzekerheidsweergave en de recente methodologiewijzigingen. Onafhankelijke adversariële review uitgevoerd (verdicten: onzekerheidsweergave HOUDBAAR MET AANPASSING; §4.1.7-vensters HOUDBAAR MET AANPASSING; testmodus-regel-verwijdering HOUDBAAR). Alle technische claims handmatig geverifieerd vóór verwerking.
