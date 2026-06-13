@@ -117,6 +117,15 @@ export interface BootstrapDayInput {
   percentileReference: number[];
   nDraws?: number;
   seed: number;
+  /**
+   * Aggregatie van de hertrokken z's naar één composietwaarde. Default = het
+   * equal-composiet (v0.2-hoofdcijfer). De v0.4-kernlaag geeft hier
+   * `compositeMeting` mee zodat de CI tegen exact dezelfde gewogen aggregatie
+   * wordt gebootstrapt als de gepubliceerde v0.4-score (anders een
+   * maat-mismatch tussen band en getal). De aggregator MOET eindig zijn voor
+   * een (mogelijk lege) zMap.
+   */
+  aggregate?: (zMap: ZMap) => number;
 }
 
 /**
@@ -134,6 +143,7 @@ export function bootstrapDayUncertainty(input: BootstrapDayInput): DayUncertaint
     Number.isFinite(requested) && requested >= 1 ? Math.floor(requested) : DEFAULT_BOOTSTRAP_DRAWS;
   const ref = input.percentileReference;
   const rng = mulberry32(input.seed);
+  const aggregate = input.aggregate ?? ((zMap: ZMap) => computeComposite(zMap, "equal").composite);
 
   const covers =
     "Baseline-schattingsonzekerheid (resampling per indicator, onafhankelijk; referentieset en dagwaarde worden vastgehouden); dekt geen bronfouten, modelkeuzes of referentie-steekproefruis boven de 30-puntsgrens, zie gevoeligheidsanalyse (B4).";
@@ -190,7 +200,7 @@ export function bootstrapDayUncertainty(input: BootstrapDayInput): DayUncertaint
       if (ind.inverseCoded) z = -z;
       zMap[ind.code] = winsorize(z).value;
     }
-    const composite = computeComposite(zMap, "equal").composite;
+    const composite = aggregate(zMap);
     compositeDraws[b] = composite;
     percentileDraws[b] = percentileRank(composite, ref);
   }

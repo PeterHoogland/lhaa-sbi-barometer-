@@ -6,6 +6,21 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-13 — v0.4-onzekerheid: bootstrap-CI rond percentile.lang; onzekerheids-black-out opgeheven (Peter GO na advocaat-van-de-duivel-overleg)
+
+**Aanleiding:** open beslispunt uit de adversariële review. Zodra de campagne live gaat stuurt de v0.4-kern de publieke kop, maar er bestond geen v0.4-CI — `ConditionLevelDisplay` onderdrukte dan élke onzekerheidsweergave (black-out), precies op de dag van maximale exposure. Overlegd met de advocaat van de duivel; uitkomst: niet ontkoppelen (P4) of accepteren (P1), maar de CI bouwen (P3) — de bootstrap-infrastructuur stond er al.
+
+**Beslissingen:**
+
+- `methodology/bootstrap.ts`: `bootstrapDayUncertainty` gegeneraliseerd met een optionele `aggregate`-callback (default = equal-composiet, dus v0.2 volledig ongewijzigd). De v0.4-aanroep geeft `compositeMeting` mee (kern-gewichten), zodat band en getal op dezelfde maat staan.
+- `runtime.ts computeV04`: verzamelt per gescoorde kern-indicator de (effectiveValue, lange-baseline)-paren en berekent `v04.uncertainty` rond `percentile.lang`, opt-in via `computeUncertainty` (al aan in beide productie-dagschrijvers). Eigen seed-suffix (datum + ":v04") zodat de v0.2- en v0.4-trekkingen niet correleren.
+- `types.ts` + web `types.ts`: `V04Output.uncertainty` toegevoegd (vorm identiek aan `DailyOutput.uncertainty`).
+- `ConditionLevelDisplay.tsx`: black-out vervangen — in live-modus leest de UI `data.v04.uncertainty`, anders `data.uncertainty`. Er is geen toestand meer waarin een score zonder band publiek gaat.
+- Doc 07 §13-bis uitgebreid; manifest herberekend. NB: dit is een uitbreiding van de nog-niet-bevroren v0.4-laag (spec §8); bij de formele v0.4-go-live hoort deze grootheid in het §4.1-amendement dat die go-live vastlegt.
+- Verificatie: 4 nieuwe tests (vorm, determinisme, eigen seed, afwezig zonder opt-in); engine **168/168**; smoke (testmodus, expert-output): percentile.lang 5, v04.uncertainty CI90 (2.1, 7.8), flag low, n_indicators 9, n_reference 730 — band omvat de score. Web bouwt; v0.2-weergave (vandaag zichtbaar) onveranderd.
+
+---
+
 ## 2026-06-13 — STL-besluit (advocaat-van-de-duivel-overleg): werkelijke MVP-werking documenteren, geen hybride bouwen
 
 **Aanleiding:** Peter vroeg wat "het meest correct" is voor STL op het gevensterde MAD-z-pad: echte-jaargangen tellen, STL uitschakelen, of een hybride op volle historie. Tweede adversariële ronde uitgevoerd; mijn eigen voorkeur (hybride STL op volle historie) is na verificatie verworpen.

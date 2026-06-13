@@ -35,11 +35,12 @@ export function ConditionLevelDisplay({
 
   // B3-onzekerheid: altijd één getal; de 90%-band staat in de meter en als
   // sobere bandbreedte-regel eronder (Peter 13/6, derde aanscherping).
-  // LET OP (adversariële review 13/6): zodra v0.4 live de score levert, valt
-  // élke onzekerheidsweergave weg tot er een v0.4-CI bestaat (maatdiscipline).
-  // Vóór de campagne-go-live (22/6) hoort hierover een expliciete beslissing.
+  // In live-modus stuurt de v0.4-kern het getal én levert hij zijn EIGEN
+  // bootstrap-CI (kern-gewichten) — band en getal staan dan op dezelfde maat.
+  // Geen black-out meer (besluit Peter 13/6 na adversariële review): er is geen
+  // toestand waarin een score zonder onzekerheidsweergave publiek gaat.
   const v04Live = data.v04?.mode === "live";
-  const unc = v04Live ? undefined : data.uncertainty;
+  const unc = v04Live ? data.v04?.uncertainty : data.uncertainty;
   const lo = unc ? Math.round(unc.ci_90_lower) : null;
   const hi = unc ? Math.round(unc.ci_90_upper) : null;
   // thin_reference/no_scored_indicators: het interval dekt die onzekerheid

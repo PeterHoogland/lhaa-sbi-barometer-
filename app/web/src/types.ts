@@ -218,6 +218,9 @@ export interface V04Output {
     last_fired: Record<string, string>;
     recent: Array<{ key: string; fired_at: string; severity: string }>;
   };
+  /** B3 voor de v0.4-laag: bootstrap-CI rond percentile.lang. Aanwezig zodra
+   *  de productie-dagschrijvers de berekening uitvoeren. */
+  uncertainty?: DayUncertainty;
 }
 
 export interface SparklinePoint {

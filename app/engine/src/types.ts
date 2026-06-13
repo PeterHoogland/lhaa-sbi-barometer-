@@ -214,6 +214,27 @@ export interface V04Output {
   triggers: TriggerEvent[];
   /** Cooldown-bookkeeping voor de volgende cyclus (transparant; UI negeert dit). */
   trigger_state: TriggerState;
+  /**
+   * B3 voor de v0.4-laag: bootstrap-CI rond percentile.lang (kern-gewichten,
+   * 2000 trekkingen, deterministisch geseed). Alleen aanwezig wanneer de
+   * berekening echt is uitgevoerd (productie-dagschrijvers). Zonder dit blok
+   * mag een v0.4-score NIET zonder onzekerheidsweergave publiek gaan. Vorm
+   * identiek aan DailyOutput.uncertainty (inline gehouden om een import-cyclus
+   * met methodology/bootstrap.ts te vermijden). */
+  uncertainty?: {
+    method: "baseline_resample_bootstrap";
+    n_draws: number;
+    n_indicators: number;
+    n_reference: number;
+    ci_90_lower: number;
+    ci_90_upper: number;
+    width_fraction: number;
+    uncertainty_flag: "low" | "medium" | "high";
+    flag_reason: "ci_width" | "thin_reference" | "no_scored_indicators";
+    composite_ci_95: [number, number] | null;
+    covers: string;
+    seed: number;
+  };
 }
 
 /** Volledig daily-output-record — conform doc 06 §4.1. */

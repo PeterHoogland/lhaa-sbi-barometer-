@@ -471,6 +471,8 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     emotieSignal: input.emotieSignal,
     priorTriggerState: input.priorTriggerState ?? EMPTY_TRIGGER_STATE,
     nowISO,
+    computeUncertainty: input.computeUncertainty,
+    bootstrapDraws: input.bootstrapDraws,
   });
 
   return {
@@ -666,6 +668,9 @@ interface ComputeV04Params {
   emotieSignal?: { value: number; percentileLang: number; nHistory: number };
   priorTriggerState: TriggerState;
   nowISO: string;
+  /** B3 voor de v0.4-laag: bereken het bootstrap-CI rond percentile.lang (opt-in, ~kost). */
+  computeUncertainty?: boolean;
+  bootstrapDraws?: number;
 }
 
 /**
@@ -677,6 +682,10 @@ function computeV04(p: ComputeV04Params): V04Output {
   const zLangMap: ZLangMap = {};
   const kernBreakdown: KernBreakdown[] = [];
   const perCore: CoreTriggerInput[] = [];
+  // B3-v0.4: de exacte (effectiveValue, lange-baseline)-paren van de gescoorde
+  // kern-codes, zodat de bootstrap dezelfde z_lang-keten hertrekt als
+  // compositeMeting. Alleen gevuld bij computeUncertainty (kost ~seconden).
+  const v04BootstrapInputs: BootstrapIndicatorInput[] = [];
   let wikiZkort = 0;
 
   for (const code of KERN_CODES) {
@@ -775,6 +784,18 @@ function computeV04(p: ComputeV04Params): V04Output {
       zl.applied && zl.distribution.length > 0 ? percentileRank(zl.effectiveValue, zl.distribution) : 0;
 
     zLangMap[code] = zLang;
+    // Spiegel exact de z_lang-keten in de bootstrap: hertrek zl.distribution
+    // (de lange-venster-verdeling, residuen bij STL) en herscoor zl.effectiveValue.
+    // Kern-codes zijn alle non-inverse en MAD (geen eCDF op het v0.4-pad).
+    if (p.computeUncertainty) {
+      v04BootstrapInputs.push({
+        code,
+        effectiveValue: zl.effectiveValue,
+        baselineValues: zl.distribution,
+        inverseCoded: false,
+        method: "mad",
+      });
+    }
     if (code === "I-D5-002") wikiZkort = zKort;
 
     const wm = wMeting(code);
@@ -832,6 +853,21 @@ function computeV04(p: ComputeV04Params): V04Output {
   const metingPercHist = buildPercentileHistory(p.compositeMetingHistory, compMeting);
   const v04Tier = computeV04Tier(metingPercHist);
 
+  // B3-v0.4: bootstrap-CI rond percentile.lang. Aggregeert met compositeMeting
+  // (kern-gewichten, NIET equal) tegen exact dezelfde referentie als de
+  // gepubliceerde lang-score, zodat band en getal op dezelfde maat staan. Eigen
+  // seed-suffix zodat de v0.4-trekkingen niet correleren met de v0.2-bootstrap.
+  let uncertainty: DayUncertainty | undefined;
+  if (p.computeUncertainty) {
+    uncertainty = bootstrapDayUncertainty({
+      indicators: v04BootstrapInputs,
+      percentileReference: metingDist,
+      aggregate: compositeMeting,
+      nDraws: p.bootstrapDraws,
+      seed: seedFromString(p.date + ":v04"),
+    });
+  }
+
   // Bevestigingssignalen voor de trigger-severity (§4 rem B; reddit nooit zelfstandig).
   const confirmedBy: string[] = [];
   if (wikiZkort >= CONFIRM_Z) confirmedBy.push("I-D5-002");
@@ -874,6 +910,7 @@ function computeV04(p: ComputeV04Params): V04Output {
     kern_breakdown: kernBreakdown,
     triggers: trig.triggers,
     trigger_state: trig.newState,
+    ...(uncertainty ? { uncertainty } : {}),
   };
 }
 

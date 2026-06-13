@@ -401,3 +401,59 @@ describe("Integratie — computeDaily levert een v04-blok", () => {
     expect(out.v04!.triggers).toHaveLength(0);
   });
 });
+
+describe("v0.4 onzekerheid (B3 voor de kernlaag): bootstrap-CI rond percentile.lang", () => {
+  // Eén kern-indicator met ruime echte historie + een rijke meting-composiet-
+  // historie zodat de referentie ≥30 punten heeft (anders forceert thin_reference).
+  const longHist = Array.from({ length: 200 }, (_, i) => ({
+    date: daysAgoISO("2026-06-13", 200 - i),
+    value: 1 + ((i % 13) / 7),
+  }));
+  const metingHist = Array.from({ length: 120 }, (_, i) => ({
+    date: daysAgoISO("2026-06-13", 120 - i),
+    value: -0.5 + ((i % 9) / 9),
+  }));
+
+  const base = {
+    date: "2026-06-13",
+    rawValues: { "I-D5-001": 2.4 },
+    history: { "I-D5-001": longHist },
+    compositeHistory: [],
+    compositeMetingHistory: metingHist,
+  } as const;
+
+  it("met computeUncertainty verschijnt v04.uncertainty in de juiste vorm", () => {
+    const out = computeDaily({ ...base, computeUncertainty: true, bootstrapDraws: 300 });
+    const u = out.v04!.uncertainty;
+    expect(u).toBeDefined();
+    expect(u!.method).toBe("baseline_resample_bootstrap");
+    expect(u!.n_draws).toBe(300);
+    expect(u!.n_indicators).toBe(1); // alleen I-D5-001 gescoord
+    expect(u!.n_reference).toBe(metingHist.length);
+    // Geldig 90%-interval binnen de 0-100-schaal, lower ≤ upper.
+    expect(u!.ci_90_lower).toBeLessThanOrEqual(u!.ci_90_upper);
+    expect(u!.ci_90_lower).toBeGreaterThanOrEqual(0);
+    expect(u!.ci_90_upper).toBeLessThanOrEqual(100);
+    // De gepubliceerde lang-score ligt binnen (of op de rand van) zijn eigen band.
+    const score = out.v04!.percentile.lang;
+    expect(score).toBeGreaterThanOrEqual(u!.ci_90_lower - 1);
+    expect(score).toBeLessThanOrEqual(u!.ci_90_upper + 1);
+  });
+
+  it("is deterministisch: dezelfde dag geeft exact hetzelfde interval", () => {
+    const a = computeDaily({ ...base, computeUncertainty: true, bootstrapDraws: 300 });
+    const b = computeDaily({ ...base, computeUncertainty: true, bootstrapDraws: 300 });
+    expect(a.v04!.uncertainty).toEqual(b.v04!.uncertainty);
+  });
+
+  it("eigen seed-suffix: v0.4- en v0.2-band correleren niet (verschillende seed)", () => {
+    const out = computeDaily({ ...base, computeUncertainty: true, bootstrapDraws: 300 });
+    // Beide blokken bestaan; de seeds verschillen bewust (date vs date+':v04').
+    expect(out.uncertainty!.seed).not.toBe(out.v04!.uncertainty!.seed);
+  });
+
+  it("zonder computeUncertainty blijft v04.uncertainty weg (geen stille placeholder)", () => {
+    const out = computeDaily({ ...base });
+    expect(out.v04!.uncertainty).toBeUndefined();
+  });
+});
