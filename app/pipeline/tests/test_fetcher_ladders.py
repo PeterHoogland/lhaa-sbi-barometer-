@@ -120,7 +120,8 @@ def test_consumer_confidence_succes_vult_cache():
 
 
 def test_statbel_cpi_failure_met_cache_geeft_cache():
-    _patch(statbel, ok=False, body="timeout", cached=(2.8, "ECB SDW (BE HICP yoy %)", "2026-04"))
+    _patch(statbel, ok=False, body="timeout",
+           cached=(2.8, "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)", "2026-04"))
     r = statbel.fetch_cpi(TARGET)
     assert r.simulated is False, r
     assert r.source.startswith("cache"), r.source
@@ -136,12 +137,32 @@ def test_statbel_cpi_failure_zonder_cache_geeft_mock():
 
 
 def test_statbel_cpi_succes_vult_cache():
-    put = _patch(statbel, ok=True, body=_ecb_body(2.6, "2026-05"), cached=None)
+    # Sinds de HICP-migratie 2026 is de primaire bron Eurostat (JSON-stat-vorm).
+    put = _patch(statbel, ok=True, body=_eurostat_body(2.6, "2026-05"), cached=None)
     r = statbel.fetch_cpi(TARGET)
     assert r.simulated is False, r
     assert r.value == 2.6, r.value
     assert put.calls and put.calls[0][0] == "I-D3-001", put.calls
-    assert r.source_url == statbel.ECB_CPI_URL, r.source_url
+    assert r.source_url == statbel.EUROSTAT_CPI_URL, r.source_url
+    assert r.observation_date == "2026-05", r.observation_date
+
+
+def test_statbel_cpi_naijlende_maand_pakt_laatste_gevulde_observatie():
+    # Eurostat geeft met lastTimePeriod=3 de nieuwste periode soms LEEG voor BE
+    # (publicatie-naijling): die ontbreekt dan in 'value'. De parser moet de
+    # laatste GEVULDE observatie nemen, niet None teruggeven.
+    body = {
+        "value": {"0": 3.9, "1": 4.1},  # positie 2 (2026-06) nog leeg
+        "dimension": {"time": {"category": {"index": {
+            "2026-04": 0, "2026-05": 1, "2026-06": 2,
+        }}}},
+    }
+    put = _patch(statbel, ok=True, body=body, cached=None)
+    r = statbel.fetch_cpi(TARGET)
+    assert r.simulated is False, r
+    assert r.value == 4.1, r.value
+    assert r.observation_date == "2026-05", r.observation_date
+    assert put.calls and put.calls[0][4] == "2026-05", put.calls
 
 
 # --- (c) provenance: fetched_at automatisch, source_url in to_dict() ----------

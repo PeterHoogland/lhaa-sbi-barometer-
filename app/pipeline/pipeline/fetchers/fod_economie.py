@@ -8,16 +8,18 @@ officiele maximumprijs (cliquetsysteem / programmaovereenkomst
 petroleumproducten) als machine-leesbare JSON. We lezen "Benzine 95 RON E10"
 (€/l, incl. btw) als de stress-relevante pompprijs.
 
-Dit is een upgrade t.o.v. de vorige aanpak (ECB-HICP yoy → €/l-schatting):
+Dit is een upgrade t.o.v. de vorige aanpak (HICP yoy → €/l-schatting):
 de be.STAT-waarde is de ECHTE prijs van de dag zelf, geen maandschatting.
 
-Fallback cascade: be.STAT → ECB HICP CP0722 → carbu scrape → mock.
+Fallback cascade: be.STAT → Eurostat HICP CP0722 → carbu scrape → mock.
+(De HICP-bron is sinds de 2026-migratie Eurostat prc_hicp_minr; de oude
+ECB SDW ICP-reeksen zijn per 2025-12 bevroren — zie statbel.py.)
 """
 from __future__ import annotations
 import re
 from datetime import date
 from ..util import FetchResult, safe_request, seasonal_noise
-from .statbel import _parse_ecb_latest_with_period
+from .statbel import _parse_eurostat_latest, _parse_eurostat_series
 
 
 # be.STAT API — officiele maximumprijzen aardolieproducten (FOD Economie)
@@ -29,11 +31,12 @@ BESTAT_FUEL_URL = (
 )
 BESTAT_PRODUCT = "Benzine 95 RON E10 (€/L)"
 
-# ECB HICP key voor "Fuels and lubricants for personal transport equipment"
-# Coicop 07.2.2, BE, monthly, annual rate of change
-ECB_FUEL_HICP_URL = (
-    "https://data-api.ecb.europa.eu/service/data/ICP/M.BE.N.072200.4.ANR"
-    "?format=jsondata&lastNObservations=1"
+# Eurostat HICP "Fuels and lubricants for personal transport equipment"
+# (ECOICOP ver.2 CP0722, BE, maandelijks, annual rate of change).
+# lastTimePeriod=3: nieuwste periode kan voor BE leeg zijn (naijling).
+EUROSTAT_FUEL_HICP_URL = (
+    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_minr"
+    "?geo=BE&coicop18=CP0722&unit=RCH_A&format=JSON&lastTimePeriod=3"
 )
 
 CARBU_URL = "https://carbu.com/belgie/index.php/laagsteprijs/EUROPE_95/-/-"
@@ -133,41 +136,23 @@ def bestat_fuel_series() -> list[dict]:
     return [{"date": d, "value": v} for d, v in sorted(rows.items())]
 
 
-# ECB HICP brandstof-prijsINDEX (niveau, niet de yoy-rate), BE, maandelijks.
-# Volledige reeks tot 1996 — de echte, lange backfill-bron voor I-D2-004.
-ECB_FUEL_INDEX_URL = (
-    "https://data-api.ecb.europa.eu/service/data/ICP/M.BE.N.072200.4.INX"
-    "?format=jsondata"
+# Eurostat HICP brandstof-prijsINDEX (niveau, niet de yoy-rate), BE, maandelijks.
+# Unit I15 (basis 2015=100) — zelfde basis als de oude ECB-reeks, dus
+# schaal-identiek; de verankering hieronder is bovendien ratio-gebaseerd
+# (basisjaar valt weg). Volledige reeks tot 1996 — de echte, lange
+# backfill-bron voor I-D2-004.
+EUROSTAT_FUEL_INDEX_URL = (
+    "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_minr"
+    "?geo=BE&coicop18=CP0722&unit=I15&format=JSON"
 )
 
 
-def _parse_ecb_index_series(body: dict) -> list[tuple[str, float]]:
-    """ECB SDMX-jsondata → [(periode 'YYYY-MM', indexwaarde)], gesorteerd."""
-    try:
-        ds = body["dataSets"][0]
-        series = next(iter(ds["series"].values()))
-        obs = series["observations"]
-        periods = [v["id"] for v in body["structure"]["dimensions"]["observation"][0]["values"]]
-    except (KeyError, IndexError, StopIteration, TypeError):
-        return []
-    out: list[tuple[str, float]] = []
-    for idx, val in obs.items():
-        try:
-            i = int(idx)
-            v = float(val[0])
-        except (ValueError, TypeError, IndexError):
-            continue
-        if 0 <= i < len(periods):
-            out.append((periods[i], v))
-    out.sort(key=lambda x: x[0])
-    return out
-
-
-def ecb_fuel_eur_per_l_series() -> list[dict]:
-    """Maandelijkse €/l brandstof-historie, afgeleid van de ECB HICP-brandstofindex
-    (CP07.2.2, BE) en VERANKERD op het actuele be.STAT-pompprijsniveau. Zo krijgt
-    I-D2-004 een echte, lange (tot 1996), schaal-consistente baseline i.p.v. een
-    forward-geaccumuleerde of synthetische.
+def hicp_fuel_eur_per_l_series() -> list[dict]:
+    """Maandelijkse €/l brandstof-historie, afgeleid van de Eurostat
+    HICP-brandstofindex (CP0722, BE) en VERANKERD op het actuele
+    be.STAT-pompprijsniveau. Zo krijgt I-D2-004 een echte, lange (tot 1996),
+    schaal-consistente baseline i.p.v. een forward-geaccumuleerde of
+    synthetische.
 
         €/l(maand) = anker_€/l × index(maand) / index(laatste)
 
@@ -176,12 +161,12 @@ def ecb_fuel_eur_per_l_series() -> list[dict]:
     Return [{date, value}] maandelijks, of [] bij fout.
     """
     ok, body = safe_request(
-        ECB_FUEL_INDEX_URL, timeout=40, retries=2, retry_delay=5.0,
+        EUROSTAT_FUEL_INDEX_URL, timeout=40, retries=2, retry_delay=5.0,
         headers={"Accept": "application/json"},
     )
     if not ok or not isinstance(body, dict):
         return []
-    series = _parse_ecb_index_series(body)
+    series = _parse_eurostat_series(body)
     if len(series) < 24:
         return []
     latest_index = series[-1][1]
@@ -202,15 +187,15 @@ def ecb_fuel_eur_per_l_series() -> list[dict]:
     return rows
 
 
-def _try_ecb_fuel_hicp() -> tuple[float, float, str] | None:
+def _try_eurostat_fuel_hicp() -> tuple[float, float, str] | None:
     """Return (yoy_pct, eur_per_l_estimate, period) of None."""
     ok, body = safe_request(
-        ECB_FUEL_HICP_URL, timeout=20,
+        EUROSTAT_FUEL_HICP_URL, timeout=20,
         headers={"Accept": "application/json"},
     )
     if not ok or not isinstance(body, dict):
         return None
-    result = _parse_ecb_latest_with_period(body)
+    result = _parse_eurostat_latest(body)
     if result is None:
         return None
     yoy, period = result
@@ -252,14 +237,14 @@ def fetch_fuel_prices(target_date: date) -> FetchResult:
             observation_date=obs or target_date.isoformat(),
         )
 
-    # 2) ECB HICP CP0722 — methodologisch sterke maand-fallback
-    hicp = _try_ecb_fuel_hicp()
+    # 2) Eurostat HICP CP0722 — methodologisch sterke maand-fallback
+    hicp = _try_eurostat_fuel_hicp()
     if hicp is not None:
         yoy, estimate, period = hicp
         return FetchResult(
             "I-D2-004", estimate, target_date.isoformat(),
             simulated=False,
-            source=f"ECB HICP brandstof yoy {yoy:+.1f}% naar €{estimate}/l geschat (be.STAT onbereikbaar)",
+            source=f"Eurostat HICP brandstof yoy {yoy:+.1f}% naar €{estimate}/l geschat (be.STAT onbereikbaar)",
             observation_date=period,
         )
 
@@ -277,5 +262,5 @@ def fetch_fuel_prices(target_date: date) -> FetchResult:
     return FetchResult(
         "I-D2-004", value, target_date.isoformat(),
         simulated=True,
-        source="mock (be.STAT + ECB HICP + carbu alle drie faalden)",
+        source="mock (be.STAT + Eurostat HICP + carbu alle drie faalden)",
     )

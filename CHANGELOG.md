@@ -6,6 +6,21 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-13 — HICP-migratie 2026: bevroren inflatiereeksen vervangen door de ECOICOP ver.2-opvolger
+
+**Aanleiding:** Bron-audit op vraag van Peter ("werken alle databronnen?"). I-D3-001 (CPI) stond op observatie 2025-12 (194 dagen oud; de healthcheck vlagde dit al als zachte "stale"-notitie). Diagnose: Eurostat heeft de HICP per 2026 gemigreerd naar ECOICOP ver.2 (basis 2025=100); de oude reeksen — ECB SDW `ICP/M.BE.N.000000.4.ANR` én Eurostat `prc_hicp_manr` — zijn per 2025-12 officieel bevroren (catalogustitel: "(1997-2025)"). De fetcher werkte correct; de bron zelf stopte. Echte BE-inflatie mei 2026 = **4,1%**, niet de bevroren 2,2% van december.
+
+**Beslissingen:**
+
+- `statbel.fetch_cpi`: primaire bron naar **Eurostat `prc_hicp_minr`** (coicop18=TOTAL, unit=RCH_A) — zelfde meetgrootheid (BE HICP yoy %, officiële Europese statistiek), alleen de doorlopende opvolger-reeks; geen indicator-herdefinitie, pre-registratie ongewijzigd. `lastTimePeriod=3` omdat de nieuwste periode voor BE leeg kan zijn (publicatie-naijling); de parser pakt de laatste gevulde observatie (nieuwe test pint dit). Ladder (cache ≤14d → mock) ongewijzigd.
+- `fod_economie`: brandstof-maandfallback (CP0722 yoy) en de lange indexreeks voor de I-D2-004-backfill naar dezelfde opvolger-dataset (unit **I15** = zelfde basis 2015=100 als de oude ECB-reeks; de €/l-verankering is bovendien ratio-gebaseerd, dus basisjaar-invariant). `ecb_fuel_eur_per_l_series` hernoemd naar `hicp_fuel_eur_per_l_series` (eerlijke naam), import in `backfill_fuel_baseline.py` mee.
+- `backfill_macro_baseline.py` deelt nu URL én parser met de dagfetcher (schaaldiscipline, CLAUDE.md regel 5: baseline en dagwaarde uit exact dezelfde reeks).
+- **Overlap-validatie oud↔nieuw vóór de switch:** 216 gedeelde maanden; recente 10 jaar identiek; 6 maanden (2008–2016) met max |Δ| = 0,1 pp (afrondingsrevisies) — geen schaalbreuk, ruim binnen de 0,75 pp-norm. Daarna **bewuste herbackfill I-D3-001**: 221 punten (2008-01 t/m 2026-05), incl. de maanden jan–mei 2026 die de bevroren bron nooit leverde.
+- Eurostat-werkloosheidsfallback (`une_rt_m`) ook op `lastTimePeriod=3`: zelfde naijlings-bugklasse — met `=1` gaf de fallback None zodra de nieuwste maand voor BE leeg was, precies wanneer hij nodig is.
+- Verificatie: ladder-suite 12/12 (incl. nieuwe naijlingstest), alle 11 pipeline-suites groen; live smoke: CPI 4,1 (2026-05), werkloosheid 6,2 (2026-04, LFSI-primair), brandstof-fallback +26,8% → €2,346/l (2026-04), indexreeks 364 punten 1996-01→2026-04.
+
+---
+
 ## 2026-06-13 — Kicker altijd een niveauwoord laag → extreem; nooit "ONZEKER" (Peter)
 
 **Aanleiding:** Peter (met schermafbeelding): naast de meter geen "ONZEKER" maar een niveauwoord op de schaal laag naar extreem, wetenschappelijk binnen de aanpak en de methodologie.

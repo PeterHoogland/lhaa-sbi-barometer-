@@ -9,7 +9,9 @@ baseline door echte historie op exact dezelfde schaal als de dagwaarde.
 
 Indicatoren en bronnen
 ----------------------
-- I-D3-001  CPI / inflatie (yoy %)        ECB SDW ICP   — MAANDdata
+- I-D3-001  CPI / inflatie (yoy %)        Eurostat prc_hicp_minr — MAANDdata
+                                          (sinds de HICP-migratie 2026; de
+                                          oude ECB SDW ICP-reeks is bevroren)
 - I-D3-002  Energieprijs (€/MWh)          Energy-Charts — DAGdata
 - I-D3-005  Werkloosheid (%)              ECB SDW LFSI  — MAANDdata
 - I-D3-006  Hypotheekrente (%)            ECB SDW MIR   — MAANDdata
@@ -45,6 +47,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from pipeline.util import DATA_DIR, safe_request  # noqa: E402
+# Gedeeld met de dagfetcher (schaaldiscipline): zelfde reeks, zelfde parser.
+from pipeline.fetchers.statbel import (  # noqa: E402
+    EUROSTAT_CPI_HISTORY_URL,
+    _parse_eurostat_series,
+)
 
 # BE-beroepsbevolking (15-74) — identiek aan fod_waso.BE_WORKFORCE.
 # Gebruikt om de werkloosheidsRATE-delta om te zetten naar werkzoekenden-count.
@@ -52,10 +59,6 @@ BE_WORKFORCE = 5_000_000
 
 # --- ECB SDW endpoints met volledige reeks (geen lastNObservations-limiet) ---
 # Zelfde series-keys als de fetchers; alleen het observatie-venster verschilt.
-ECB_CPI_HISTORY_URL = (
-    "https://data-api.ecb.europa.eu/service/data/ICP/M.BE.N.000000.4.ANR"
-    "?format=jsondata&startPeriod=2008-01"
-)
 ECB_UNEMPLOYMENT_HISTORY_URL = (
     "https://data-api.ecb.europa.eu/service/data/LFSI/M.BE.S.UNEHRT.TOTAL0.15_74.T"
     "?format=jsondata&startPeriod=2008-01"
@@ -126,6 +129,18 @@ def _fetch_ecb_history(url: str, label: str) -> list[tuple[str, float]]:
     return rows
 
 
+def _fetch_eurostat_history(url: str, label: str) -> list[tuple[str, float]]:
+    print(f"  {label}: GET {url}", file=sys.stderr)
+    ok, body = safe_request(url, timeout=30, headers={"Accept": "application/json"})
+    if not ok or not isinstance(body, dict):
+        print(f"  FOUT: Eurostat-call faalde voor {label} ({body!r:.120})", file=sys.stderr)
+        return []
+    rows = _parse_eurostat_series(body)
+    if not rows:
+        print(f"  FOUT: geen observaties in Eurostat-respons voor {label}.", file=sys.stderr)
+    return rows
+
+
 def _write_history(code: str, rows: list[dict]) -> int:
     """Schrijf rows naar app/data/history/{code}.json en log min/mediaan/max."""
     if not rows:
@@ -149,8 +164,9 @@ def _write_history(code: str, rows: list[dict]) -> int:
 
 
 def backfill_cpi() -> int:
-    """I-D3-001 — ECB ICP BE HICP yoy %. Raw value, geen transformatie."""
-    rows = _fetch_ecb_history(ECB_CPI_HISTORY_URL, "I-D3-001 CPI")
+    """I-D3-001 — Eurostat prc_hicp_minr BE HICP yoy %. Raw value, geen
+    transformatie. Zelfde reeks + parser als de dagfetcher (statbel.fetch_cpi)."""
+    rows = _fetch_eurostat_history(EUROSTAT_CPI_HISTORY_URL, "I-D3-001 CPI")
     out = [{"date": _month_to_date(p), "value": v} for p, v in rows]
     return _write_history("I-D3-001", out)
 

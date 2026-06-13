@@ -22,7 +22,7 @@ from pathlib import Path
 # pipeline-package importeerbaar maken vanuit scripts/
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from pipeline.fetchers.fod_economie import ecb_fuel_eur_per_l_series  # noqa: E402
+from pipeline.fetchers.fod_economie import hicp_fuel_eur_per_l_series  # noqa: E402
 from pipeline.util import DATA_DIR  # noqa: E402
 
 MAX_ROUNDS = 6
@@ -33,11 +33,11 @@ MIN_ROWS = 24
 def main() -> int:
     rows: list[dict] = []
     for attempt in range(1, MAX_ROUNDS + 1):
-        rows = ecb_fuel_eur_per_l_series()
+        rows = hicp_fuel_eur_per_l_series()
         if len(rows) >= MIN_ROWS:
             break
         print(
-            f"  poging {attempt}/{MAX_ROUNDS}: {len(rows)} rijen — ECB traag/onbereikbaar, opnieuw…",
+            f"  poging {attempt}/{MAX_ROUNDS}: {len(rows)} rijen — Eurostat traag/onbereikbaar, opnieuw…",
             file=sys.stderr,
         )
         if attempt < MAX_ROUNDS:
