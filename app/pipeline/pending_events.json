@@ -7621,5 +7621,50 @@
     "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/gent/dronken-automobilist-35-knalt-tegen-andere-wagen-en-gevel-rijbewijs-voor-15-dagen-ingetrokken/157125068.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-13",
+    "magnitude": 1,
+    "title": "Fietser (77) gewond na aanrijding met auto in Blankenberge",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/13/10b05f15-88a7-43ef-941a-736c425b4c03.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-13",
+    "magnitude": 1,
+    "title": "Nachtelijk ongeval op E403 in Kachtem: 6 gewonden, onder wie 2 in levensgevaar",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/13/0d87ea59-1093-435f-ab3a-46c242928eb9.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-13",
+    "magnitude": 1,
+    "title": "Ongeval in Deurne zorgt urenlang voor file op de Antwerpse Ring",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/deurne/ongeval-in-deurne-zorgt-urenlang-voor-file-op-de-antwerpse-ring/157133377.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-13",
+    "magnitude": 1,
+    "title": "Vrouw belandt in beek na aanrijding met vluchtmisdrijf",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/beveren-kruibeke-zwijndrecht/vrouw-belandt-in-beek-na-aanrijding-met-vluchtmisdrijf/157135234.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-13",
+    "magnitude": 1,
+    "title": "Meisje (4) en haar papa (39) in levensgevaar na zwaar ongeval op E403, ook zoontje (7) en mama (40) zwaargewond",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/meisje-4-en-haar-papa-39-in-levensgevaar-na-zwaar-ongeval-op-e403-ook-zoontje-7-en-mama-40-zwaargewond/157095997.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
