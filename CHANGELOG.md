@@ -6,6 +6,17 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-13 — Merknaam in June20-rood; testmodus-regel uit de footer (Peter, met schermafbeelding)
+
+**Aanleiding:** Peter: de merknaam "De Nationale Stress Barometer" in het June20-signaalrood; de regel "Campagne-koppeling staat in testmodus. Er vuurt niets automatisch." weg. (De June20-bouwer-credit en de onzekerheids-waarschuwingszin op zijn schermafbeelding waren al verwijderd in de vorige commits; die wachtten alleen op de deploy.)
+
+**Beslissingen:**
+
+- `.hero-brand` kleur `#fff` → `var(--j20-red)` (#e6371e). De CN-kleurkoppeling blijft onaangeroerd: rust blijft groen/inkt, rood blijft als merk-/alarmaccent.
+- Testmodus-melding (A5) uit de publieke footer: de campagne-CTA staat op de hoofdsite toch uit, dus de regel beschreef iets dat de bezoeker niet kan zien. De modus zelf blijft eerlijk zichtbaar in de API (`v04.mode` in latest-expert.json); de A3-gate-logica is intact en de melding kan met één regel terug bij de go-live-beslissing.
+
+---
+
 ## 2026-06-13 — Amendement §4.1.7: geharmoniseerde recency-vensters MAD-z-baseline (Peter GO, methodologie 0.3.3)
 
 **Aanleiding:** Peter: "moeten we niet elke indicator afzetten tov 2 jaar terug? is er anders een vertekende situatie?" Meting bevestigde de vertekening: zeven maand-/jaarbronnen wogen tegen 16-30 jaar historie terwijl dagbronnen tegen ~2 jaar wogen — zelfde meting kon van teken wisselen afhankelijk van de vensterdiepte (inflatie 4,1%: z +1,12 tegen 18 j vs −0,08 tegen 5 j; werkloosheid: −0,43 vs +1,35).

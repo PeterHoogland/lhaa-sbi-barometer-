@@ -141,7 +141,7 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
   font-size: clamp(1.1rem, 3.2vw, 1.7rem);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--j20-red); /* merknaam in June20-signaalrood (Peter 13/6) */
   padding: 12px 0 8px;
   text-align: center;
 }

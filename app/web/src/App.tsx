@@ -143,13 +143,9 @@ export function App() {
           <div className="footer-credits">
             <span>Een initiatief van Les Hautes Alpes</span>
           </div>
-          {/* A5: eerlijke, nuchtere testmodus-melding. Gate op mode (A3): de regel
-              verdwijnt pas wanneer de campagne-koppeling écht live staat. */}
-          {data.v04?.mode !== "live" && (
-            <p style={{ fontSize: "0.78rem", opacity: 0.55, marginTop: "0.9rem" }}>
-              Campagne-koppeling staat in testmodus. Er vuurt niets automatisch.
-            </p>
-          )}
+          {/* Testmodus-melding verwijderd (Peter 13/6): de campagne-CTA staat op
+              de hoofdsite toch uit, dus de regel beschreef iets onzichtbaars.
+              De mode zelf blijft in data.v04.mode (API) eerlijk zichtbaar. */}
         </div>
       </footer>
     </div>
