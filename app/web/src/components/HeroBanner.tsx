@@ -12,14 +12,14 @@ export function HeroBanner() {
       </div>
       <div className="hero-rule" aria-hidden="true" />
       <div className="hero-content">
-        {/* Eerlijke openingszin (formulering Peter 13/6) — de permanente
-            claim-mitigatie bij de Stress-naam (B7-discipline): we meten
-            omstandigheden die op mensen KUNNEN inwerken, geen gemeten
+        {/* Eerlijke openingszin (formulering Peter 13/6, herzien zelfde dag) —
+            de permanente claim-mitigatie bij de Stress-naam (B7-discipline):
+            we meten omstandigheden die op mensen KUNNEN inwerken, geen gemeten
             gevoelens. Niet verwijderen of afzwakken zonder nieuwe
             naamkeuze-beslissing; zie 09_Brand-Message-Style-Guide. */}
         <div className="intro-subtitle">
-          Deze index meet hoe ongewoon zwaar de omstandigheden vandaag zijn die in
-          heel België op mensen kunnen inwerken.
+          Deze index meet elke dag en elk uur hoe omstandigheden in heel België
+          op mensen kunnen inwerken.
         </div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
         {/* C3: meetgebied expliciet; de afzender staat in de footer. */}

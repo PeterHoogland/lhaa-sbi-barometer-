@@ -6,6 +6,19 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-13 — Openingszin herzien, onzekerheids-waarschuwingszin weg, footer alleen afzender (Peter)
+
+**Aanleiding:** Peter, drie UI-beslissingen in één bericht: (1) nieuwe openingszin; (2) de zin "De meting is vandaag onzeker: met 90% zekerheid ligt het cijfer tussen X en Y (de band in de meter)." moet weg; (3) de footer-credit wordt alleen "Een initiatief van Les Hautes Alpes".
+
+**Beslissingen:**
+
+- Openingszin (de bindende claim-mitigatie onder de naam) wordt: **"Deze index meet elke dag en elk uur hoe omstandigheden in heel België op mensen kunnen inwerken."** De mitigatie-kern (omstandigheden die KUNNEN inwerken, geen gemeten gevoelens) blijft intact; de meetfrequentie is nu expliciet; de "ongewoon zwaar"-duiding blijft beschikbaar via de percentiel-regel onder het cijfer. Doc 09-annotatie geactualiseerd. De zin was al gecentreerd (header-CSS), geen stijlwijziging nodig.
+- Onzekerheidsweergave (derde aanscherping van doc 07 §13-bis): geen waarschuwingszin meer bij vlag high — in élke vlagtoestand dezelfde sobere regel "Bandbreedte (90% zeker): X tot Y." De eerlijkheidsnuance blijft: bij `thin_reference` staat er "Bandbreedte (indicatief)" omdat het interval die onzekerheid niet dekt. De 90%-band in de meter en alle JSON-velden ongewijzigd.
+- Footer-credit op hoofdsite én PreviewPage: alleen "Een initiatief van Les Hautes Alpes"; de regel "Gebouwd door de JUNE20 Business Innovation OS" (incl. gereconstrueerd woordmerk) is verwijderd. `June20Mark.tsx` blijft in de codebase (ongebruikt) voor het geval de credit terugkeert.
+- OSF-manifest herberekend (docs 07 en 09 wijzigden; nog niet geüpload). Verificatie licht gehouden op Peters aanwijzing: build groen + één preview-schermcheck (zin gecentreerd, waarschuwing weg, sobere band-regel zichtbaar).
+
+---
+
 ## 2026-06-13 — HICP-migratie 2026: bevroren inflatiereeksen vervangen door de ECOICOP ver.2-opvolger
 
 **Aanleiding:** Bron-audit op vraag van Peter ("werken alle databronnen?"). I-D3-001 (CPI) stond op observatie 2025-12 (194 dagen oud; de healthcheck vlagde dit al als zachte "stale"-notitie). Diagnose: Eurostat heeft de HICP per 2026 gemigreerd naar ECOICOP ver.2 (basis 2025=100); de oude reeksen — ECB SDW `ICP/M.BE.N.000000.4.ANR` én Eurostat `prc_hicp_manr` — zijn per 2025-12 officieel bevroren (catalogustitel: "(1997-2025)"). De fetcher werkte correct; de bron zelf stopte. Echte BE-inflatie mei 2026 = **4,1%**, niet de bevroren 2,2% van december.

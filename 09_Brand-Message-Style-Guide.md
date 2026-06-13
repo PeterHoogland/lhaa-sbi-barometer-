@@ -5,13 +5,15 @@
 > is **De Nationale Stress Barometer**. SBI blijft de methodologische motornaam
 > (versienummers, docs, API). Bindende voorwaarde bij deze naam (B7-beslismemo,
 > optie B-discipline): de eerlijke openingszin staat permanent en prominent
-> onder de naam — "Deze index meet hoe ongewoon zwaar de omstandigheden vandaag
-> zijn die in heel België op mensen kunnen inwerken." (formulering Peter 13/6:
-> omstandigheden die KUNNEN inwerken, geen gemeten gevoelens). Elke
-> downstream-uiting die de naam voert zonder die zin, overschrijdt deze
-> stijlgids (§1-§3 blijven onverkort gelden). Afzender-credits ("Een initiatief
-> van Les Hautes Alpes · Gebouwd door de June20 Business Innovation OS") staan
-> in de onderste balk, gescheiden van het meetgebied (België).
+> onder de naam — "Deze index meet elke dag en elk uur hoe omstandigheden in
+> heel België op mensen kunnen inwerken." (formulering Peter 13/6, zelfde dag
+> herzien: omstandigheden die KUNNEN inwerken, geen gemeten gevoelens; de
+> meetfrequentie expliciet, de "ongewoon zwaar"-kwalificatie verhuist naar de
+> percentiel-uitleg onder het cijfer). Elke downstream-uiting die de naam voert
+> zonder die zin, overschrijdt deze stijlgids (§1-§3 blijven onverkort gelden).
+> Afzender-credit ("Een initiatief van Les Hautes Alpes" — alleen de afzender,
+> geen bouwer-credit; Peter 13/6) staat in de onderste balk, gescheiden van het
+> meetgebied (België).
 
 **Status:** v0.2 — bindende stijlgids
 **Doel:** voorkomen dat downstream-communicatie de methodologische beperkingen van de SBI overschrijdt

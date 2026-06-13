@@ -42,7 +42,6 @@ export function ConditionLevelDisplay({
   const unc = v04Live ? undefined : data.uncertainty;
   const lo = unc ? Math.round(unc.ci_90_lower) : null;
   const hi = unc ? Math.round(unc.ci_90_upper) : null;
-  const highUncertainty = unc?.uncertainty_flag === "high";
   // thin_reference/no_scored_indicators: het interval dekt die onzekerheid
   // juist NIET — claim dan geen "90% zekerheid" (zie bootstrap.ts flag_reason).
   const intervalCoversFlag = unc?.flag_reason === "ci_width";
@@ -80,22 +79,18 @@ export function ConditionLevelDisplay({
       </div>
       <div className="cn-secondary">
         <span>Vandaag hoger dan op {score}% van de dagen rond deze tijd van het jaar.</span>
-        {highUncertainty && lo !== null && hi !== null ? (
+        {/* Peter 13/6 (derde aanscherping): geen waarschuwingszin meer bij hoge
+            onzekerheid — altijd dezelfde sobere bandbreedte-regel. Bij
+            thin_reference (interval dekt de dunne-referentie-onzekerheid niet)
+            blijft de "90% zeker"-claim eerlijk achterwege. */}
+        {unc && lo !== null && hi !== null && (
           intervalCoversFlag ? (
-            <span className="cn-uncertainty-warning">
-              De meting is vandaag onzeker: met 90% zekerheid ligt het cijfer tussen {lo} en{" "}
-              {hi} (de band in de meter).
-            </span>
-          ) : (
-            <span className="cn-uncertainty-warning">
-              Er zijn nog te weinig vergelijkbare dagen om dit cijfer scherp te plaatsen;
-              de band in de meter ({lo} tot {hi}) is indicatief.
-            </span>
-          )
-        ) : (
-          unc && lo !== null && hi !== null && (
             <span className="cn-uncertainty-band">
               Bandbreedte (90% zeker): {lo} tot {hi}.
+            </span>
+          ) : (
+            <span className="cn-uncertainty-band">
+              Bandbreedte (indicatief): {lo} tot {hi}.
             </span>
           )
         )}
