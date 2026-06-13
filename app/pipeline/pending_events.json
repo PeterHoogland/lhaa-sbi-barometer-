@@ -7585,5 +7585,41 @@
     "link": "https://www.demorgen.be/snelnieuws/e403-in-izegem-weer-vrijgegeven-na-zwaar-ongeval-met-zeven-gewonden~b3a099f9/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-13",
+    "magnitude": 1,
+    "title": "Varkensboer die 14 jaar cel kreeg voor 'putdekselmoord' in Gierle, na 3 jaar uit gevangenis met enkelband",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2025/04/17/65ca5fc3-02b5-4779-b35a-71e8af7dc5f4.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-13",
+    "magnitude": 1,
+    "title": "\"Heel hard gestreden tegen straffeloosheid\": slachtoffers blij met opheffing immuniteit asbestbedrijven",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/13/2b903b92-e6dd-4f2e-8d26-7d3b20dcf313.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-13",
+    "magnitude": 3,
+    "title": "Willy Sommers wil rustiger leven na hartoperatie",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/willy-sommers-wil-rustiger-leven-na-hartoperatie/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-13",
+    "magnitude": 1,
+    "title": "Dronken automobilist (35) knalt tegen andere wagen en gevel: “Rijbewijs voor 15 dagen ingetrokken”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/gent/dronken-automobilist-35-knalt-tegen-andere-wagen-en-gevel-rijbewijs-voor-15-dagen-ingetrokken/157125068.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]

@@ -1,38 +1,38 @@
 {
   "I-D1-004": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:19:12.758618",
+    "fetched_at": "2026-06-13T10:36:14.064044",
     "observation_date": "2026-06-13",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.445
+    "value": 0.535
   },
   "I-D1-009": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-13T08:19:16.237151",
+    "fetched_at": "2026-06-13T10:36:17.389560",
     "observation_date": "2026-06-12",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 17.62
   },
   "I-D1-010": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:19:16.726772",
+    "fetched_at": "2026-06-13T10:36:18.029348",
     "observation_date": "2026-06-13",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 28.225000000000005
   },
   "I-D1-010-sci": {
     "date": "2026-06-11",
-    "fetched_at": "2026-06-13T08:23:59.270183",
+    "fetched_at": "2026-06-13T10:40:08.350514",
     "observation_date": "2026-06-11",
     "source": "Sciensano AirAllergy (Belgisch pollennetwerk, 1/5 stations, grains/m³)",
     "value": 18.0
   },
   "I-D2-001-rt": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:23:25.813793",
+    "fetched_at": "2026-06-13T10:39:34.021810",
     "observation_date": "2026-06-13",
-    "source": "Verkeerscentrum DATEX II v3 — 6 files, 5.81 km totale filelengte (langste 2.12 km), snapshot 2026-06-13",
-    "value": 5.81
+    "source": "Verkeerscentrum DATEX II v3 — 13 files, 22.11 km totale filelengte (langste 6.2 km), snapshot 2026-06-13",
+    "value": 22.11
   },
   "I-D2-009": {
     "date": "2026-06-12",
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:22:46.718707",
+    "fetched_at": "2026-06-13T10:38:52.642903",
     "observation_date": "2026-06-13",
     "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
     "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:23:28.294677",
+    "fetched_at": "2026-06-13T10:39:37.177692",
     "observation_date": "2026-06-13",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 421 vertraagd (≥3min), 7 service-alerts (Vlaanderen)",
-    "value": 421.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 444 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
+    "value": 444.0
   },
   "I-D2-stib": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:23:26.832446",
+    "fetched_at": "2026-06-13T10:39:35.434684",
     "observation_date": "2026-06-13",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 521 actieve items; CC BY 4.0)",
-    "value": 521.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 519 actieve items; CC BY 4.0)",
+    "value": 519.0
   },
   "I-D3-001": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:19:18.842266",
+    "fetched_at": "2026-06-13T10:36:24.205834",
     "observation_date": "2026-05",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.1
   },
   "I-D3-002": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:19:20.048889",
+    "fetched_at": "2026-06-13T10:36:26.293110",
     "observation_date": "2026-06-13",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 23.89636363636364
   },
   "I-D3-003": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:19:20.712805",
+    "fetched_at": "2026-06-13T10:36:27.428832",
     "observation_date": "2026-04",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:23:23.870627",
+    "fetched_at": "2026-06-13T10:39:31.514739",
     "observation_date": "2026-06-13",
     "source": "Ontslag-radar: 5 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~10 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 5.0
   },
   "I-D3-005": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:19:21.203994",
+    "fetched_at": "2026-06-13T10:36:28.134341",
     "observation_date": "2026-04",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.2
   },
   "I-D3-006": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:19:21.750038",
+    "fetched_at": "2026-06-13T10:36:28.936046",
     "observation_date": "2026-04",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.52
   },
   "I-D3-007": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:19:23.420420",
+    "fetched_at": "2026-06-13T10:36:30.749372",
     "observation_date": "2026-05",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -20.0
   },
   "I-D3-009": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:19:23.007864",
+    "fetched_at": "2026-06-13T10:36:30.243447",
     "observation_date": "2026-06-13",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 1.0648573581062089
+    "value": 1.0663202135413963
   },
   "I-D5-001": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:21:05.767069",
+    "fetched_at": "2026-06-13T10:37:25.807881",
     "observation_date": "2026-06-13",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1042/1101 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.46 / midden +0.49 / ouder +0.62. Negatiefste headlines: «E403 in Izegem weer vrijgegeven na zwaar ongeval met zes gewonden · Derde dodelijk slachtoffer van brand in Anderlecht is Bogdan, een 55-jarige Pool In de tragische brand in Anderlecht vor · Meerdere mensen opgepakt na explosie en brand in flatgebouw Amsterdam, mogelijke slachtoffers nog onder puin De politie »; emotie-profiel headlines (matches/100 woorden): woede 0.13 / angst 0.14 / verdriet 0.15 / walging 0.02 (dominant: verdriet)",
-    "value": 1.5035
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1039/1101 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.26 / midden +0.27 / ouder +0.35. Negatiefste headlines: «E403 in Izegem weer vrijgegeven na zwaar ongeval met zeven gewonden · Derde dodelijk slachtoffer van brand in Anderlecht is Bogdan, een 55-jarige Pool In de tragische brand in Anderlecht vor · Duitse minister waarschuwt voor droneaanvallen op Bondsdag • Dode bij een aanval met Oekraïense drones in het zuiden van»; emotie-profiel headlines (matches/100 woorden): woede 0.11 / angst 0.13 / verdriet 0.14 / walging 0.02 (dominant: verdriet)",
+    "value": 1.6045
   },
   "I-D5-002": {
     "date": "2026-06-12",
-    "fetched_at": "2026-06-13T08:21:06.489806",
+    "fetched_at": "2026-06-13T10:37:26.484331",
     "observation_date": "2026-06-12",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 31.648
   },
   "I-D5-003": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:22:08.215649",
+    "fetched_at": "2026-06-13T10:38:13.907799",
     "observation_date": "2026-06-13",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 29 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.0627
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 25 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.0774
   },
   "I-D5-006S": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:22:46.317439",
+    "fetched_at": "2026-06-13T10:38:51.819968",
     "observation_date": "2026-06-13",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.9855084745932995
+    "value": 0.34484437316325356
   },
   "I-D5-mastodon": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:22:48.202397",
+    "fetched_at": "2026-06-13T10:38:54.301663",
     "observation_date": "2026-06-13",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.20126964415322618
+    "value": -0.23251964415322618
   },
   "I-D5-trends": {
     "date": "2026-06-13",
-    "fetched_at": "2026-06-13T08:23:24.467255",
+    "fetched_at": "2026-06-13T10:39:32.329491",
     "observation_date": "2026-06-13",
-    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.03 (stress-trends: prinses)",
-    "value": 0.0303
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.05 (stress-trends: prinses, justin bieber)",
+    "value": 0.0469
   }
 }
