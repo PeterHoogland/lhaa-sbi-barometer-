@@ -63,6 +63,8 @@ MAD-gebaseerde Z-scores zijn *niet* equivalent aan klassieke Z-scores. Een Z_sho
 
 > Dit hoofdstuk documenteert de werkelijke implementatie in `app/engine/src/methodology/zscore.ts` en `app/engine/src/runtime.ts`, die strikter is dan de vereenvoudigde formule in §2.1. Bij verschil tussen §2.1 en deze sectie geldt deze sectie.
 
+**Baseline-venster (amendement §4.1.7, v0.3.3, 2026-06-13):** de MAD-z-baseline is niet langer de volledige beschikbare historie maar een rollend recency-venster: **24 maanden** voor dagbronnen, **60 maanden** voor maand-/jaarritmebronnen (I-D2-001, I-D2-004, I-D3-001, I-D3-003, I-D3-005, I-D3-006, I-D3-007). Lookahead-veilig (alleen punten ≤ rekendatum); STL en de schaal-keten hieronder werken binnen het venster; de eCDF-gate (§2.7) beoordeelt de volle historie en houdt zijn eigen 5-jaars-drift-cap. Zie 00_Pre-Registratie §4.1.7 voor de volledige motivering en meetvoorbeelden.
+
 **Robuuste spreidingsschaal met fallback-keten** (`robustScale()`): de σ in de Z-formule is niet kaal "MAD ×1.4826" maar een keten met expliciete uitval:
 
 1. **MAD ×1.4826** (consistentiefactor naar SD-equivalent voor normale verdelingen; equivalent aan delen door 0.6745). Gebruikt tenzij de geschaalde MAD < `MIN_SCALE` (1e-6).

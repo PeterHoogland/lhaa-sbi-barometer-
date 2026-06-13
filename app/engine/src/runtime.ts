@@ -73,7 +73,10 @@ import {
 // 0.3.2 (2026-06-12, B2/amendement §4.1.6): eCDF-normalisatie pre-geregistreerd
 // met 3-jaarsgate (vandaag kwalificeert geen indicator: gedrag ongewijzigd);
 // normalisatie expliciet "voorlopig" gelabeld tot de gate opent.
-const METHODOLOGY_VERSION = "0.3.2";
+// 0.3.3 (2026-06-13, amendement §4.1.7, Peter GO): geharmoniseerde
+// recency-vensters voor de v0.2 MAD-z-baseline — dagbronnen rollend 24
+// maanden, maand-/jaarritmebronnen rollend 60 maanden; eCDF-pad ongewijzigd.
+const METHODOLOGY_VERSION = "0.3.3";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {
@@ -138,6 +141,35 @@ export interface DailyComputeInput {
  */
 const MIN_HISTORY_FOR_Z = 30;
 
+/**
+ * Amendement §4.1.7 (2026-06-13, Peter GO): geharmoniseerde recency-vensters
+ * voor de v0.2 MAD-z-baseline. Vóór dit amendement woog elke indicator tegen
+ * zijn VOLLEDIGE beschikbare historie (heterogeen: ~2 jaar voor dagbronnen
+ * tot 30 jaar voor brandstof), waardoor "ongewoon" per indicator iets anders
+ * betekende en z-groottes onderling slecht vergelijkbaar waren. Nu:
+ *   • dagbronnen — rollend 24 maanden (dezelfde groundroot als het
+ *     gepubliceerde 24m-seizoenspercentiel);
+ *   • maand-/jaarritmebronnen — rollend 60 maanden (n ≈ 58-62 punten voor een
+ *     stabiele MAD; een 24m-venster zou met n ≈ 24 onder MIN_HISTORY_FOR_Z
+ *     duiken en die bronnen uit de index gooien; 60m is consistent met de
+ *     pre-geregistreerde eCDF-drift-cap van 5 jaar, §4.1.6).
+ * Het venster is voortschuivend en lookahead-veilig (sliceTrailing neemt
+ * uitsluitend punten ≤ de rekendatum) en geldt ALLEEN voor het MAD-z-pad:
+ * de eCDF-gate beoordeelt de volle historie (anders kan hij nooit openen).
+ */
+const Z_WINDOW_MONTHS_DAILY = 24;
+const Z_WINDOW_MONTHS_SLOW = 60;
+/** Bronnen met maand- of jaarritme-historie (doc 03 §2-§3; zelfde set als doc 04 §2.7). */
+const SLOW_CADENCE_CODES: ReadonlySet<string> = new Set([
+  "I-D2-001", // filezwaarte — jaarcijfer
+  "I-D2-004", // brandstof — maandelijkse HICP-backfill, dagelijkse be.STAT sinds juni 2026
+  "I-D3-001", // inflatie (CPI)
+  "I-D3-003", // collectieve ontslagen
+  "I-D3-005", // werkloosheid
+  "I-D3-006", // hypotheekrente
+  "I-D3-007", // consumentenvertrouwen
+]);
+
 export function computeDaily(input: DailyComputeInput): DailyOutput {
   // [1] EXTRACT — vul deterministische indicatoren altijd zelf in
   const today = new Date(input.date + "T12:00:00Z");
@@ -181,7 +213,9 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       continue;
     }
 
-    const hist = input.history[code] ?? [];
+    // Volledige historie: alleen voor de eCDF-gate (die heeft ≥3 jaargangen
+    // nodig en kent zijn eigen 5-jaars-drift-cap, §4.1.6).
+    const histFull = input.history[code] ?? [];
 
     // B2 (amendement §4.1.6, methodologie 0.3.2): zodra de seizoensreferentie
     // van een indicator ≥3 jaargangen overspant én ≥90 punten telt (begrensd op
@@ -190,7 +224,7 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     // percentiel). Geen STL hier: het seizoensvenster ís de seizoenscorrectie.
     // Op registratiedatum kwalificeert alleen I-D5-003 (3 jaar dagdata); de
     // rest blijft MAD-z met "voorlopig"-label tot de gate opent.
-    const ecdf = ecdfEligibility(hist, input.date);
+    const ecdf = ecdfEligibility(histFull, input.date);
     if (ecdf.eligible) {
       let z = ecdfZ(x, ecdf.reference);
       if (!Number.isFinite(z)) {
@@ -211,6 +245,14 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       }
       continue;
     }
+
+    // §4.1.7: geharmoniseerd recency-venster voor de MAD-z-baseline
+    // (dag 24m / maand-jaarritme 60m, rollend, lookahead-veilig).
+    const hist = sliceTrailing(
+      histFull,
+      input.date,
+      SLOW_CADENCE_CODES.has(code) ? Z_WINDOW_MONTHS_SLOW : Z_WINDOW_MONTHS_DAILY,
+    );
 
     let effectiveValue = x;
     let baselineValues = hist.map((h) => h.value);

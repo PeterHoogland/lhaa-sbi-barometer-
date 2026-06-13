@@ -431,3 +431,94 @@ describe("Robuuste z-score bij MAD = 0 (review §4.1)", () => {
     expect(Number.isNaN(z)).toBe(true);
   });
 });
+
+describe("Baseline-vensters §4.1.7 (v0.3.3): dag 24m / maand-jaarritme 60m, rollend", () => {
+  const DAY_MS = 86_400_000;
+  /** i hele maanden vóór het anker, op de 1e van de maand (ISO). */
+  const monthBack = (anchor: string, i: number): string => {
+    const d = new Date(anchor + "T00:00:00Z");
+    d.setUTCDate(1);
+    d.setUTCMonth(d.getUTCMonth() - i);
+    return d.toISOString().slice(0, 10);
+  };
+  const dayBack = (anchor: string, i: number): string =>
+    new Date(Date.parse(anchor + "T00:00:00Z") - i * DAY_MS).toISOString().slice(0, 10);
+
+  it("maandbron (I-D3-006) weegt tegen de laatste 60 maanden, niet de volle historie", () => {
+    // 18 jaar maanddata: oud regime ~100, recentste ~59 maanden ~3. Vandaag 3,2:
+    // binnen het 60m-venster gewoon (|z| klein); tegen de volle historie zou de
+    // mediaan ~100 zijn en de z op de winsor-grens -3 klemmen.
+    const hist = Array.from({ length: 216 }, (_, k) => {
+      const i = 215 - k; // oudste eerst
+      return {
+        date: monthBack("2026-06-13", i),
+        value: i < 60 ? 3.0 + (i % 5) * 0.1 : 100 + (i % 5),
+      };
+    });
+    const out = computeDaily({
+      date: "2026-06-13",
+      rawValues: { "I-D3-006": 3.2 },
+      history: { "I-D3-006": hist },
+      compositeHistory: [],
+    });
+    expect(out.data_quality.indicators_missing).not.toContain("I-D3-006");
+    const row = out.indicator_breakdown.find((b) => b.code === "I-D3-006")!;
+    expect(row).toBeDefined();
+    expect(row.z_short).toBeGreaterThan(-3); // niet tegen het oude regime geklemd
+    expect(Math.abs(row.z_short)).toBeLessThan(2); // gewoon binnen het recente regime
+  });
+
+  it("dagbron (I-D5-001): punten ouder dan 24 maanden tellen niet mee in de baseline", () => {
+    // 40 oude punten (ouder dan 24m) + 29 recente: het venster laat n=29 over,
+    // onder MIN_HISTORY_FOR_Z (30) → eerlijk "ontbreekt". Zonder venster zou
+    // n=69 de indicator (tegen verouderde data) gewoon scoren.
+    const oud = Array.from({ length: 40 }, (_, i) => ({
+      date: dayBack("2026-06-13", 800 + i),
+      value: 100 + (i % 3),
+    }));
+    const recent = Array.from({ length: 29 }, (_, i) => ({
+      date: dayBack("2026-06-13", 1 + i),
+      value: 10 + (i % 3),
+    }));
+    const out = computeDaily({
+      date: "2026-06-13",
+      rawValues: { "I-D5-001": 10 },
+      history: { "I-D5-001": [...oud, ...recent] },
+      compositeHistory: [],
+    });
+    expect(out.data_quality.indicators_missing).toContain("I-D5-001");
+
+    // Tegenproef: 31 recente punten → wél gescoord, tegen het recente regime.
+    const recent31 = Array.from({ length: 31 }, (_, i) => ({
+      date: dayBack("2026-06-13", 1 + i),
+      value: 10 + (i % 3),
+    }));
+    const out2 = computeDaily({
+      date: "2026-06-13",
+      rawValues: { "I-D5-001": 10 },
+      history: { "I-D5-001": [...oud, ...recent31] },
+      compositeHistory: [],
+    });
+    expect(out2.data_quality.indicators_missing).not.toContain("I-D5-001");
+    const row = out2.indicator_breakdown.find((b) => b.code === "I-D5-001")!;
+    expect(Math.abs(row.z_short)).toBeLessThan(2); // ~mediaan van het recente regime
+  });
+
+  it("eCDF-gate (§4.1.6) blijft de VOLLE historie zien: 3+ jaargangen dagdata kwalificeert nog steeds", () => {
+    // 3,1 jaar dagdata — het 24m-venster zou de gate (≥3 jaargangen) onmogelijk
+    // maken als hij op de getrimde reeks keek; hij moet op de volle reeks blijven.
+    const hist = Array.from({ length: 1130 }, (_, k) => ({
+      date: dayBack("2026-06-13", 1130 - k),
+      value: 1 + ((k % 11) / 10),
+    }));
+    const out = computeDaily({
+      date: "2026-06-13",
+      rawValues: { "I-D5-001": 1.3 },
+      history: { "I-D5-001": hist },
+      compositeHistory: [],
+    });
+    const row = out.indicator_breakdown.find((b) => b.code === "I-D5-001")!;
+    expect(row).toBeDefined();
+    expect(row.normalization).toBe("ecdf");
+  });
+});

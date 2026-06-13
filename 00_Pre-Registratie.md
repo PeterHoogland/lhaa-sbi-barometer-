@@ -122,6 +122,16 @@ Per indicator schakelt de normalisatie over van de MAD-z-keten (doc 04 §2.6) op
 - **Onzekerheid blijft gemeten:** de B3-bootstrap hertrekt voor eCDF-indicatoren de seizoensreferentie en spiegelt exact dezelfde keten (probit, klemming, winsorize).
 - **Procedure:** vastgelegd vóór OSF-publicatie van dit document; verkorte termijn per de eerlijkheidsverklaring bovenaan §4.1. De Infrabel-maandbestanden gaan ~12 jaar terug; een bewuste baseline-verlenging van I-D2-009 (backfill `--months N`, valideert per maand) zou die indicator binnen de 5-jaarscap door de gate brengen en is een aparte, expliciete beslissing.
 
+### 4.1.7 Amendement: geharmoniseerde recency-vensters voor de MAD-z-baseline (2026-06-13, Peter GO, methodologie 0.3.3)
+
+Vóór dit amendement woog elke MAD-z-indicator tegen zijn **volledige** beschikbare historie. Die diepte was heterogeen (≈2 jaar voor dagbronnen, 16-30 jaar voor de maand-/jaarbronnen brandstof, CPI, werkloosheid, hypotheekrente, ontslagen, consumentenvertrouwen en filezwaarte), waardoor "ongewoon" per indicator iets anders betekende en z-groottes onderling beperkt vergelijkbaar waren. Meting 2026-06-13 (dagwaarden van die dag): inflatie 4,1% scoorde z = +1,12 tegen 18 jaar maar −0,08 tegen 5 jaar; werkloosheid 6,2% scoorde −0,43 tegen 18 jaar maar +1,35 tegen 5 jaar — zelfde meting, omgekeerd teken. Vanaf 0.3.3 geldt één recency-principe (`runtime.ts`, lookahead-veilig via `sliceTrailing`, alleen punten ≤ rekendatum):
+
+- **Dagbronnen: rollend 24 maanden** — dezelfde groundroot als het gepubliceerde 24-maands-seizoenspercentiel.
+- **Maand-/jaarritmebronnen: rollend 60 maanden** (I-D2-001, I-D2-004, I-D3-001, I-D3-003, I-D3-005, I-D3-006, I-D3-007) — n ≈ 58-62 punten voor een stabiele MAD. Een 24-maands venster is hier statistisch onhoudbaar: n ≈ 24 valt onder de minimumdrempel van 30 punten en zou deze bronnen uit de index gooien. De 60 maanden zijn consistent met de eCDF-drift-cap van §4.1.6 ("recentste 5 jaar").
+- **eCDF-pad ongewijzigd:** de gate van §4.1.6 beoordeelt de volle historie (een 24m-venster zou de 3-jaargangen-gate per constructie onmogelijk maken) en kent zijn eigen 5-jaars-drift-cap. STL-seizoenscorrectie blijft gelden binnen het venster; de B3-bootstrap hertrekt automatisch de gevensterde baseline (zelfde `baselineValues`-paren).
+- **Effect bij registratie (smoketest 2026-06-13):** geen indicator valt uit (`indicators_missing` leeg); dagpercentiel verschuift 40 → 34 (CN blijft 1); de percentiel-referentie wordt per run door dezelfde engine herberekend en is dus automatisch venster-consistent. Gedrag gepind in `engine.test.ts` ("Baseline-vensters §4.1.7": maandbron weegt tegen 60m, dagpunten ouder dan 24m tellen niet mee, eCDF-gate blijft de volle historie zien).
+- **Rationale:** het composiet aggregeert z-scores over indicatoren; dat veronderstelt dat ze hetzelfde soort afwijking meten. Eén gedeelde recency-definitie ("ongewoon t.o.v. het recente regime") herstelt die vergelijkbaarheid en sluit aan bij de adaptatie-logica van het construct (mensen ijken hun "normaal" op de recente ervaring, doc 01). Het baseline-drift-argument van doc 04 §8.2 geldt nu uniform voor álle indicatoren, niet alleen voor de eCDF.
+
 ---
 
 ## 5. Inclusiecriteria (uit laag 3)

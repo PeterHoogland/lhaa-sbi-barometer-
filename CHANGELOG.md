@@ -6,6 +6,20 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-13 — Amendement §4.1.7: geharmoniseerde recency-vensters MAD-z-baseline (Peter GO, methodologie 0.3.3)
+
+**Aanleiding:** Peter: "moeten we niet elke indicator afzetten tov 2 jaar terug? is er anders een vertekende situatie?" Meting bevestigde de vertekening: zeven maand-/jaarbronnen wogen tegen 16-30 jaar historie terwijl dagbronnen tegen ~2 jaar wogen — zelfde meting kon van teken wisselen afhankelijk van de vensterdiepte (inflatie 4,1%: z +1,12 tegen 18 j vs −0,08 tegen 5 j; werkloosheid: −0,43 vs +1,35).
+
+**Beslissingen (gekozen uit drie voorgelegde varianten):**
+
+- Eén recency-principe: **dagbronnen rollend 24 maanden** (zelfde groundroot als het gepubliceerde 24m-percentiel), **maand-/jaarritmebronnen rollend 60 maanden** (n ≈ 60 voor stabiele MAD; strikt 24m zou met n ≈ 24 onder de 30-puntsdrempel duiken en die zeven bronnen uit de index gooien). Consistent met de pre-geregistreerde eCDF-drift-cap (5 jaar, §4.1.6).
+- eCDF-pad ongewijzigd: de gate blijft de volle historie beoordelen (anders kan hij nooit openen); I-D5-003 blijft eCDF.
+- Lookahead-veilig via de bestaande `sliceTrailing` (v0.4-helper, nu ook in het v0.2-pad); bootstrap hertrekt automatisch de gevensterde baseline; percentiel-referentie wordt per run door dezelfde engine herberekend en is dus venster-consistent.
+- Amendement §4.1.7 + doc 04 §2.6-notitie + manifest herberekend; methodology_version 0.3.2 → **0.3.3**.
+- Verificatie: 3 nieuwe venstertests gepind (maandbron 60m, dagpunten >24m uitgesloten, eCDF-gate ziet volle historie); engine **164/164**; smoke productiepad: niets valt uit, percentiel 40 → 34, CN blijft 1 (Rust).
+
+---
+
 ## 2026-06-13 — Openingszin herzien, onzekerheids-waarschuwingszin weg, footer alleen afzender (Peter)
 
 **Aanleiding:** Peter, drie UI-beslissingen in één bericht: (1) nieuwe openingszin; (2) de zin "De meting is vandaag onzeker: met 90% zekerheid ligt het cijfer tussen X en Y (de band in de meter)." moet weg; (3) de footer-credit wordt alleen "Een initiatief van Les Hautes Alpes".
