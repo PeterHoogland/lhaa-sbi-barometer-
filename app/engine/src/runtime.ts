@@ -271,10 +271,14 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       }
     }
 
-    if (hist.length < MIN_HISTORY_FOR_Z) {
+    if (baselineValues.length < MIN_HISTORY_FOR_Z) {
       // Onvoldoende historie voor een betrouwbare baseline → behandel als ontbrekend
       // (uitgesloten uit het composiet, state "ontbreekt"), NIET als neutrale 0 die
       // als "normaal" zou lezen (review §0-bis.3).
+      // Adversariële review 13/6: de check staat op baselineValues (de verdeling
+      // waar de z écht tegen weegt), niet op hist — na STL-filtering kan de
+      // residuenset kleiner zijn dan de ruwe historie (punten zonder voorgaand
+      // jaar binnen het venster kunnen niet gedetrend worden en vallen eruit).
       missing.push(code);
       continue;
     }

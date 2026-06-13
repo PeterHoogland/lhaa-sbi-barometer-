@@ -33,11 +33,11 @@ export function ConditionLevelDisplay({
   const cn = ctx.cn as ConditionLevel;
   const score = Math.round(ctx.percentile); // 0-100 percentiel = de score op 100
 
-  // B3: respecteer de bootstrap-onzekerheid. Bij "high" tonen we géén scherp
-  // getal maar het 90%-bereik; bij "medium" het getal mét bandbreedte eronder.
-  // Zodra v0.4 live de score levert (buildContext schakelt dan naar
-  // v04.percentile.lang) hoort de v0.2-CI niet meer bij het getoonde getal:
-  // band en bereik dan onderdrukken tot er een v0.4-CI bestaat (maatdiscipline).
+  // B3-onzekerheid: altijd één getal; de 90%-band staat in de meter en als
+  // sobere bandbreedte-regel eronder (Peter 13/6, derde aanscherping).
+  // LET OP (adversariële review 13/6): zodra v0.4 live de score levert, valt
+  // élke onzekerheidsweergave weg tot er een v0.4-CI bestaat (maatdiscipline).
+  // Vóór de campagne-go-live (22/6) hoort hierover een expliciete beslissing.
   const v04Live = data.v04?.mode === "live";
   const unc = v04Live ? undefined : data.uncertainty;
   const lo = unc ? Math.round(unc.ci_90_lower) : null;
@@ -51,8 +51,8 @@ export function ConditionLevelDisplay({
       <div className="cn-label">STRESS-INDEX OP DIT MOMENT</div>
       <div className="cn-main">
         {/* Productkeuze Peter (13/6): ALTIJD één getal op 100 — ook bij hoge
-            onzekerheid. De eerlijkheid blijft via de band in de meter, de
-            ONZEKER-kicker en de bandbreedte-tekst eronder. */}
+            onzekerheid. De eerlijkheid blijft via de band in de meter en de
+            bandbreedte-regel eronder. */}
         <div className="cn-score" aria-label={`${score} op 100`}>
           <span className="cn-score-num">{score}</span>
           <span className="cn-score-max">/100</span>

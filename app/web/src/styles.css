@@ -380,8 +380,6 @@ main {
   background: var(--cn-accent, var(--lha-blue-deep));
   opacity: 0.22; border-radius: 6px;
 }
-.cn-score-range { letter-spacing: -0.02em; }
-.cn-uncertainty-warning { font-weight: 600; }
 .cn-uncertainty-band { color: var(--c-ink-mute); }
 .cn-meter-axis { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--c-ink-mute); letter-spacing: 0.04em; }
 @media (max-width: 640px) { .cn-score-num { font-size: 5.5rem; } }

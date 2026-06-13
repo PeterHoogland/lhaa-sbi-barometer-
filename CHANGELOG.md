@@ -6,6 +6,24 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-13 — Adversariële review op verzoek van Peter ("advocaat van de duivel"): drie correcties, drie open beslissingen
+
+**Aanleiding:** Peter vroeg een advocaat van de duivel op de wetenschappelijke houdbaarheid van de onzekerheidsweergave en de recente methodologiewijzigingen. Onafhankelijke adversariële review uitgevoerd (verdicten: onzekerheidsweergave HOUDBAAR MET AANPASSING; §4.1.7-vensters HOUDBAAR MET AANPASSING; testmodus-regel-verwijdering HOUDBAAR). Alle technische claims handmatig geverifieerd vóór verwerking.
+
+**Direct gecorrigeerd (deze commit):**
+
+- **§4.1.7-rationale was een mis-citatie van het eigen ankerpaper**: doc 01 §5.1 zegt juist dat cumulatieve blootstelling zwaarder weegt dan acute incidenten (McEwen), niet dat mensen hun "normaal" op recente ervaring ijken. Vervangen door een eerlijke spanningsnotitie (anomalie-index vs cumulatieve last; niveau-perspectief = v0.4 z_lang + halfjaarlijkse audit) + de claim "herstelt vergelijkbaarheid" afgezwakt naar "verbetert wezenlijk".
+- **n≥30-poort stond op de verkeerde variabele**: checkte de ruwe historielengte, terwijl de z weegt tegen de post-STL-residuenset (die binnen het 24m-venster ~12 maanden beslaat omdat eerste-jaars-punten niet gedetrend kunnen worden). Poort verplaatst naar `baselineValues.length`. Smoke: geen gedragsverandering vandaag (alle STL-indicatoren hebben ≥30 residuen); de poort bewaakt nu wel het juiste aantal. Beperking expliciet gedocumenteerd in §4.1.7.
+- **Stale artefacten**: comments die de oude bereik-weergave/ONZEKER-kicker beschreven + dode CSS-klassen (.cn-score-range, .cn-uncertainty-warning) opgeruimd; comment toegevoegd die de v0.4-onzekerheids-black-out als beslispunt vóór 22/6 markeert.
+
+**Open beslissingen voor Peter (niet uitgevoerd, vergen GO):**
+
+1. Band-bewuste kicker: als de 90%-band een niveaugrens kruist (bv. 48-71) doet het enkele niveauwoord een categorische claim die het eigen interval tegenspreekt (IPCC-kalibratieprincipe). Voorstel reviewer: "LAAG TOT VERHOOGD" tonen wanneer band-onder en band-boven een verschillend niveauwoord hebben. Raakt de weergaveregel "altijd één niveauwoord" (doc 07 §13-bis).
+2. STL op het 24m-pad: echte-jaargangen-telling in de STL-gate, dan wel STL uitschakelen op het MAD-z-pad (seizoenswerk aan de eCDF-gate laten). Verandert z-scores; hoort via amendement.
+3. Vóór go-live 22/6: (a) de geplande onzekerheids-black-out zodra v0.4 live de score levert (er bestaat nog geen v0.4-CI); (b) één disclosure-zin op de methodologiepagina (financiering Les Hautes Alpes + campagnemechanisme); (c) "90% zeker"-copy eventueel kwalificeren (interval dekt geen bron-/modelfouten). Gevoeligheidsanalyse uitbreiden met venstervarianten (60m, volle historie) kan bij de halfjaarlijkse audit.
+
+---
+
 ## 2026-06-13 — Merknaam in June20-rood; testmodus-regel uit de footer (Peter, met schermafbeelding)
 
 **Aanleiding:** Peter: de merknaam "De Nationale Stress Barometer" in het June20-signaalrood; de regel "Campagne-koppeling staat in testmodus. Er vuurt niets automatisch." weg. (De June20-bouwer-credit en de onzekerheids-waarschuwingszin op zijn schermafbeelding waren al verwijderd in de vorige commits; die wachtten alleen op de deploy.)
