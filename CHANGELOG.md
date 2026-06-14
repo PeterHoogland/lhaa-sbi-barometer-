@@ -6,6 +6,22 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-14 — Echte oorzaak van het whipsawen gevonden: composiet is bijna pure dagruis; afvlakking is de fix (analyse)
+
+**Aanleiding:** Peter zag het percentiel van pieken (56-80) terugvallen naar 6/100 en eiste consistentie ("er klopt iets niet, zoek"). Dit is een ander, scherper probleem dan de aggregatie: de DAG-TOT-DAG-stabiliteit van het publieke cijfer.
+
+**Diagnose (live + dump):**
+
+- Live sparkline (30d): gemiddelde dag-tot-dag-percentielsprong **14,7**, max **54** (26 mei +54 op één dag; 23-26 mei 52→8→10→64). Onbruikbaar volatiel voor een publieke barometer.
+- Kernoorzaak: de composiet-**dag-tot-dag-sd (0,166) ≈ de TOTALE sd (0,179)** — er is vrijwel geen persistentie; het composiet is bijna pure dagruis, elke dag los van de vorige. Het krappe percentiel vergroot dat uit.
+- Drijvers (gem |Δz| per dag): nieuws I-D5-001 **0,92**, stroomvraag I-D3-009 **0,83**, gebeurtenissen I-D5-003 **0,78**, treinen I-D2-009 **0,71**, lucht I-D1-004 **0,71**. De macro-indicatoren staan dag-tot-dag vrijwel stil. Vijf snelle bronnen whipsawen de barometer.
+
+**Fix (geprototyped):** een voortschrijdend gemiddelde van het composiet vóór het percentiel (referentie ook afgevlakt). `app/pipeline/analysis/smoothing_prototype.py` meet de stabilisatie: 3d snijdt de dag-sprong 2,0×, **7d 3,0×** (composiet dag-sd 0,166→0,034), 14d 3,9×, 21d 4,9×. Een barometer meet zo weer een traag evoluerende toestand i.p.v. nieuws-/stroomruis. Stabiliseert ook de campagne-trigger (die nu op één ruisdag kan vuren).
+
+**Status:** afvlakken verandert het gepubliceerde cijfer → pre-registratie-amendement (harde regel 4), wacht op Peters keuze (ven*sterlengte = stabiliteit vs reactiviteit). NB: één bijvangst om apart te bekijken — stroomvraag I-D3-009 (0,83 dag-volatiliteit) is mogelijk niet weekdag-/weer-gecorrigeerd en meet dan deels "weekend/koude dag" i.p.v. stress.
+
+---
+
 ## 2026-06-14 — CISS-prototype getest en VERWORPEN voor SBI: zonder co-beweging is er niets te versterken (analyse)
 
 **Aanleiding:** vervolg op het aggregatie-variantie-onderzoek. Peter GO om een CISS-achtige (correlatie-bewuste) aggregatie te prototypen met backtest, om te zien of die het composiet realistischer/waardevoller maakt.
