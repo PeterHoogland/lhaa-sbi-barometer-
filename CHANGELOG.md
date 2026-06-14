@@ -6,6 +6,24 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-14 — CISS-prototype getest en VERWORPEN voor SBI: zonder co-beweging is er niets te versterken (analyse)
+
+**Aanleiding:** vervolg op het aggregatie-variantie-onderzoek. Peter GO om een CISS-achtige (correlatie-bewuste) aggregatie te prototypen met backtest, om te zien of die het composiet realistischer/waardevoller maakt.
+
+**Gebouwd:** `app/pipeline/analysis/ciss_prototype.py` — domein-subindices (5 domeinen), EWMA tijd-variërende correlatiematrix, CISS = (w∘s)' C_t (w∘s) (Holló-Kremer-Lo Duca), vergeleken met het huidige domein-gelijk-gewogen composiet over 329 dagen + een gecontroleerde synthetische test.
+
+**Bevinding — CISS helpt NIET voor SBI, en kan zelfs averechts werken:**
+
+- Backtest: op systemische dagen (≥3 domeinen hoog, n=34) CISS-percentiel 87,6 vs equal 86,7; op geïsoleerde pieken (n=92) 34,4 vs 32,6. CISS en equal correleren 0,79 — nauwelijks verschil.
+- Synthetisch (zelfde totale stress, anders verdeeld): "1 geïsoleerde piek" geeft CISS 0,086, "systemisch gespreid" 0,077 — CISS beloont de geïsoleerde piek, het OMGEKEERDE van de bedoeling.
+- **Oorzaak:** CISS versterkt co-beweging via de correlatiematrix. De SBI-domeinen zijn structureel ONGECORRELEERD (gem. correlatie −0,015; een hittegolf correleert niet met een economische schok), dus C_t ≈ identiteit en CISS degenereert tot Σw²s² — een som van kwadraten die juist concentratie (één piek) beloont. CISS werkt voor financiële markten omdat correlaties dáár in een crisis naar 1 schieten; bij onafhankelijke maatschappelijke stressoren is er geen correlatiestructuur om uit te buiten.
+
+**Conclusie (eerlijk):** de lage variantie is FUNDAMENTEEL bij onafhankelijke stressoren — geen aggregatie haalt signaal terug dat er niet is. Het gelijk-gewogen gemiddelde is daarmee de juiste keuze: het negeert (terecht) geïsoleerde pieken en reageert juist sterk op échte brede stress (alle indicatoren +1 → composiet +1 ≈ 5,5 sd boven de ruisvloer → percentiel ~100). De index schreeuwt dus wél bij een echte systemische gebeurtenis. Het prototype heeft een verkeerde wijziging voorkómen.
+
+**Aanbeveling:** aggregatie NIET wijzigen. Resterende, data-gedragen "consistentie"-optie als Peter dat wil: een BREEDTE-poort op de campagne-trigger (alleen vuren als ≥N domeinen tegelijk verhoogd zijn) — een kleine, verdedigbare toevoeging die systemische breedte eist zónder het publieke cijfer te raken; dat is een aparte trigger-amendement-beslissing. Caveat: het venster bevat geen echte crisisperiode; mocht een crisis wél cross-domein-correlatie opwekken, dan zou CISS daar herbeoordeeld moeten worden met crisis-dagdata (die nu ontbreekt).
+
+---
+
 ## 2026-06-14 — Aggregatie-variantie-onderzoek: het gelijk-gewogen composiet is ~96% uitmiddeling, ~4% echte samenhang (analyse, geen wijziging)
 
 **Aanleiding:** Peter vroeg of ~20 indicatoren elkaar niet te sterk uitvlakken — of het gelijke gewicht te veel signaal wegwast, en eiste een onderzoek met consistentie ("dit is niet realistisch en waardevol").
