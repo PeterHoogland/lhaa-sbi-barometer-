@@ -6,6 +6,19 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-14 — Automatische referentie-audit: elke cyclus zelf-controle of het cijfer tegen een consistente referentie staat (Peter GO)
+
+**Aanleiding:** Toen het cijfer onverwacht laag stond, moest een mens (ik) handmatig nagaan of de dag wel tegen een CONSISTENTE referentie werd vergeleken (geen appels-met-peren door een methodologie-wijziging) en of de lage waarde echt was of een artefact. Peter: bouw dat soort controle in zodat het automatisch elke cyclus gebeurt na fetch + verwerking.
+
+**Beslissingen:**
+
+- Nieuwe engine-module `methodology/reference-audit.ts`: `auditReferenceConsistency` reproduceert het gepubliceerde dagpercentiel uit zijn eigen seizoensreferentie (gedeelde helper, dus exact dezelfde set als `seasonalPercentile`) en weegt af op vier assen — **reproduceerbaar** (gepubliceerd == herberekend; zo niet → het cijfer staat tegen een andere referentie dan het record beweert), **niet-degeneraat** (sd > 0), **seizoensmatch** (geen volledige-historie-terugval), **overgevoelig** (extreem percentiel ≤10/≥90 terwijl |z t.o.v. referentie-midden| < 0,5 = fragiel, lage-variantie-vergrootglas). Stempelt de methodologie-versie.
+- `runtime.ts` voegt het blok `reference_audit` toe aan elke output; `types.ts` mee. De canary (`healthcheck.py`, laag 2-bis) leest het verdict: `critical` (niet-reproduceerbaar/degeneraat) breekt de run rood → alarm via de bestaande keten; `degraded` (dun/cross-seizoen/overgevoelig) is een zichtbare notitie en zet ook het canary-verdict op degraded.
+- Doc 08 §1-bis uitgebreid met laag 2-bis; manifest herberekend.
+- Verificatie: engine **174/174** (nieuw bestand `reference-audit.test.ts`, 6 tests: reproduceerbaar/niet-reproduceerbaar/degeneraat/overgevoelig/dun/integratie); pipeline **11 suites** incl. 4 nieuwe healthcheck-tests (backward-compatible, ok, critical-escalatie, degraded-escalatie); end-to-end gedraaid (engine → canary leest de audit). Nevenbevinding: de referentie-sd is ~0,24 — vandaag (−0,20, P6) ligt ~1,1 sd onder het seizoensmidden, dus een echte afwijking, geen overgevoeligheids-artefact (audit bevestigt: niet hypersensitive).
+
+---
+
 ## 2026-06-14 — Scorekaart-uitlijning: kicker op de meterlijn + openingszin in balans (Peter, cosmetisch)
 
 **Aanleiding:** Peter, twee uitlijn-wensen op basis van schermafbeeldingen.

@@ -270,6 +270,29 @@ export interface DailyOutput {
     ecdf_active?: IndicatorCode[];
   };
   /**
+   * Automatische referentie-audit (Peter 14/6): reproduceert het dagpercentiel
+   * uit zijn eigen referentie en weegt af of die consistent, gezond en niet
+   * overgevoelig is. De canary (healthcheck.py) escaleert op het verdict.
+   */
+  reference_audit?: {
+    methodology_version: string;
+    n_reference: number;
+    reference_mode: "seasonal" | "fallback_full";
+    reference_window_days: number;
+    reference_median: number;
+    reference_sd: number;
+    composite: number;
+    composite_z_vs_reference: number;
+    percentile_published: number;
+    percentile_recomputed: number;
+    reproducible: boolean;
+    degenerate_reference: boolean;
+    thin_reference: boolean;
+    hypersensitive: boolean;
+    verdict: "ok" | "degraded" | "critical";
+    notes: string[];
+  };
+  /**
    * B3 — echte bootstrap-onzekerheid rond het dagcijfer (baseline-resampling,
    * ≥2000 trekkingen, deterministisch geseed). Alleen aanwezig wanneer de
    * berekening echt is uitgevoerd (productie-dagschrijvers); afwezig in

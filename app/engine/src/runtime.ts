@@ -43,6 +43,7 @@ import {
   buildSeasonalPercentileHistory,
   seasonalReferenceWithFallback,
 } from "./methodology/seasonal-percentile.js";
+import { auditReferenceConsistency, type ReferenceAudit } from "./methodology/reference-audit.js";
 import {
   bootstrapDayUncertainty,
   seedFromString,
@@ -372,6 +373,18 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
   // venster bij te weinig seizoenspunten. Zie methodology/seasonal-percentile.ts.
   const percShort = seasonalPercentile(equal.composite, input.date, input.compositeHistory);
 
+  // Automatische referentie-audit (Peter 14/6): reproduceer het gepubliceerde
+  // percentiel uit zijn eigen referentie en weeg af of die consistent, gezond en
+  // niet overgevoelig is. Draait elke cyclus; de canary (healthcheck.py) leest
+  // het verdict en alarmeert bij "critical". Zie methodology/reference-audit.ts.
+  const referenceAudit: ReferenceAudit = auditReferenceConsistency(
+    equal.composite,
+    input.date,
+    input.compositeHistory,
+    Math.round(percShort),
+    METHODOLOGY_VERSION,
+  );
+
   // Tier-logica vereist een geschiedenis van (seizoens-)percentielen, lookahead-vrij.
   const percentileHistory = buildSeasonalPercentileHistory(input.compositeHistory, {
     date: input.date,
@@ -509,6 +522,9 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       normalization_provisional: Object.values(normalizationByCode).some((m) => m === "mad_z"),
       ecdf_active: INDICATOR_CODES.filter((c) => normalizationByCode[c] === "ecdf"),
     },
+    // Automatische consistentie-/plausibiliteitscontrole van het dagpercentiel
+    // (Peter 14/6); de canary alarmeert bij "critical".
+    reference_audit: referenceAudit,
     // B3: alleen aanwezig als de bootstrap echt gedraaid heeft (opt-in) — een
     // afwezig veld is eerlijker dan een verzonnen interval.
     ...(uncertainty ? { uncertainty } : {}),

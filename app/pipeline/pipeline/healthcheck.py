@@ -276,12 +276,29 @@ def _check_index(index: dict | None) -> tuple[dict, list[str], bool]:
     if n_missing > THIN_COMPOSITE_MISSING:
         msgs.append(f"let op: {n_missing} indicatoren uitgesloten (ontbreekt) — composiet is dun")
 
+    # Automatische referentie-audit (Peter 14/6): de engine reproduceert elk
+    # cijfer uit zijn eigen referentie en weegt af of die consistent/gezond is.
+    # Hier escaleren we het verdict: "critical" (niet-reproduceerbaar of
+    # degeneraat = methodologie-inconsistentie) breekt de run rood; "degraded"
+    # (dun/cross-seizoen/overgevoelig) is een informatieve notitie.
+    audit = index.get("reference_audit")
+    audit_verdict = None
+    if isinstance(audit, dict):
+        audit_verdict = audit.get("verdict")
+        note = (audit.get("notes") or ["(geen toelichting)"])[0]
+        if audit_verdict == "critical":
+            msgs.append(f"KRITIEK: referentie-audit faalt — {note}")
+            critical = True
+        elif audit_verdict == "degraded":
+            msgs.append(f"let op (referentie-audit): {note}")
+
     summary = {
         "fed": composite_ok and pct_ok and scored == EXPECTED_SCORED_INDICATORS,
         "composite_equal": composite if composite_ok else None,
         "percentile_short_24m": pct if pct_ok else None,
         "scored_indicators": scored,
         "indicators_excluded": n_missing,
+        "reference_audit_verdict": audit_verdict,
         "timestamp": ts,
     }
     return summary, msgs, critical
@@ -346,6 +363,11 @@ def analyze(raw_values: dict, index: dict | None, today: date) -> HealthReport:
         messages.append("KRITIEK: alle nieuws-bronnen (D5) plat — het nieuws-cijfer is blind")
         critical = True
 
+    # De referentie-audit kan zelfstandig degraderen (overgevoelig/dun/cross-
+    # seizoen) ook al staan alle bronnen vers — dan is het cijfer geldig maar
+    # fragiel, en dat hoort zichtbaar in het verdict.
+    audit_degraded = index_summary.get("reference_audit_verdict") == "degraded"
+
     if critical:
         verdict = "critical"
     elif primary_down or secondary_down:
@@ -355,6 +377,8 @@ def analyze(raw_values: dict, index: dict | None, today: date) -> HealthReport:
             f"degraded: {len(down)} bron(nen) niet op verse echte data — "
             + ", ".join(f"{s.code} ({s.status})" for s in down)
         )
+    elif audit_degraded:
+        verdict = "degraded"
     else:
         verdict = "ok"
         stale = [s for s in sources if s.status == "stale"]

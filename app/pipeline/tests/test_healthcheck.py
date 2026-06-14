@@ -219,6 +219,40 @@ def test_dagbron_te_oud_is_stale_maar_niet_degraded():
     assert rep.verdict == "ok"  # stale alleen = geen degraded
 
 
+# --- referentie-audit (Peter 14/6): de canary escaleert op het audit-verdict ---
+
+def _index_with_audit(verdict: str, note: str = "test-notitie") -> dict:
+    idx = _healthy_index()
+    idx["reference_audit"] = {"verdict": verdict, "notes": [note]}
+    return idx
+
+
+def test_geen_referentie_audit_is_backward_compatible():
+    # Oudere records zonder het blok mogen niet falen.
+    rep = hc.analyze(_healthy_raw(), _healthy_index(), TODAY)
+    assert rep.verdict == "ok", rep.messages
+
+
+def test_referentie_audit_ok_blijft_ok():
+    rep = hc.analyze(_healthy_raw(), _index_with_audit("ok"), TODAY)
+    assert rep.verdict == "ok", rep.messages
+
+
+def test_referentie_audit_niet_reproduceerbaar_is_critical():
+    idx = _index_with_audit("critical", "Percentiel niet reproduceerbaar")
+    rep = hc.analyze(_healthy_raw(), idx, TODAY)
+    assert rep.verdict == "critical", rep.messages
+    assert any("referentie-audit" in m for m in rep.messages), rep.messages
+
+
+def test_referentie_audit_overgevoelig_is_degraded():
+    # Alle bronnen vers, maar het cijfer is fragiel → degraded, niet critical.
+    idx = _index_with_audit("degraded", "Overgevoelig: extreem percentiel")
+    rep = hc.analyze(_healthy_raw(), idx, TODAY)
+    assert rep.verdict == "degraded", rep.messages
+    assert any("referentie-audit" in m for m in rep.messages), rep.messages
+
+
 def _run():
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_") and callable(v)]
     failed = 0
