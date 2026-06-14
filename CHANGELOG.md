@@ -6,6 +6,24 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-14 — Aggregatie-variantie-onderzoek: het gelijk-gewogen composiet is ~96% uitmiddeling, ~4% echte samenhang (analyse, geen wijziging)
+
+**Aanleiding:** Peter vroeg of ~20 indicatoren elkaar niet te sterk uitvlakken — of het gelijke gewicht te veel signaal wegwast, en eiste een onderzoek met consistentie ("dit is niet realistisch en waardevol").
+
+**Bevinding (rigoureus, faithfull tegen de engine-z's, 20 gescoorde indicatoren / 329 dagen):**
+
+- Gemiddelde paarsgewijze correlatie tussen de indicatoren: **−0,015** (vrijwel nul). Multicollineariteit-audit (B6): 0 paren |rho|≥0,70, participatieratio 12,6/18.
+- Composiet-sd **0,179** ≈ onafhankelijkheids-floor **0,176** (= 1/√N bij nul correlatie). **Slechts ~4% van de dag-tot-dag-composiet-variantie komt uit echte samenhang; ~96% is het statistisch uitmiddelen van onafhankelijke signalen** (portefeuille-/diversificatie-effect).
+- Dag-coherentie |mean z|/mean|z| = **0,18**: op een gemiddelde dag valt ~82% van het bruto-signaal tegen elkaar weg. Een sterk los signaal (pollen z=+3) draagt maar +3/20 ≈ +0,14 aan het composiet, binnen de normale ruisvloer.
+
+**Interpretatie (eerlijk, met de advocaat van de duivel):** dit is deels het ONTWERP — een brede-druk-index hoort niet door één indicator te schieten; de lage variantie is robuustheid. Een ECHTE systemische gebeurtenis (veel indicatoren die samen bewegen) zou de samenhang-term wél laten pieken en registreren. Maar op normale dagen rangschikt het percentiel grotendeels ruisvloer-wiebel — vandaar dat een rustige dag een willekeurig-aanvoelende lage waarde geeft.
+
+**Geleverd:** `app/pipeline/analysis/aggregation_variance.py` (herbruikbare B-block-audit, schrijft `app/data/analysis/aggregation_variance.json`) + een env-gated diagnostische z-reeks-dump in `generate-fixture.ts` (`SBI_DUMP_Z=1`, nul kosten in productie). Het script vergelijkt ook twee consistentie-bewuste aggregaties die NIET wegmiddelen (`C_breadth` = netto-aandeel verhoogd; `C_rms` = getekende RMS, sd 0,94 = 5× meer behouden signaal, corr 0,79 met equal).
+
+**Niet gedaan (bewust):** de live-aggregatie is NIET gewijzigd. Een andere aggregatie (bv. CISS-correlatie-weging à la Holló-Kremer-Lo Duca — al de bron voor de eCDF — die amplificeert bij co-beweging en dempt bij geïsoleerde ruis) raakt de pre-registratie (harde regel 4) en hoort via een amendement + een backtest over een echte stressperiode, niet via een stille omschakeling. Dit script is de bewijsbasis voor die beslissing.
+
+---
+
 ## 2026-06-14 — Automatische referentie-audit: elke cyclus zelf-controle of het cijfer tegen een consistente referentie staat (Peter GO)
 
 **Aanleiding:** Toen het cijfer onverwacht laag stond, moest een mens (ik) handmatig nagaan of de dag wel tegen een CONSISTENTE referentie werd vergeleken (geen appels-met-peren door een methodologie-wijziging) en of de lage waarde echt was of een artefact. Peter: bouw dat soort controle in zodat het automatisch elke cyclus gebeurt na fetch + verwerking.

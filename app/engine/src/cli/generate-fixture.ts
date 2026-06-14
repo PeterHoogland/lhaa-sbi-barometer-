@@ -361,6 +361,7 @@ async function generate(): Promise<void> {
   const compositeHistory: Array<{ date: string; value: number }> = [];
   const compositeMetingHistory: Array<{ date: string; value: number }> = [];
   const sparkline: Array<{ date: string; composite: number; percentile: number; tier: string }> = [];
+  const _zDump: Array<{ date: string; composite: number; z: Record<string, number | null> }> = [];
 
   for (let i = PERCENTILE_WINDOW_DAYS; i > 0; i--) {
     const d = new Date(TODAY.getTime() - i * 86400000);
@@ -410,6 +411,24 @@ async function generate(): Promise<void> {
         tier: out.tier.current,
       });
     }
+    // Diagnostische hook (Peter 14/6): per-dag z-reeks dumpen voor de
+    // variantie-/aggregatie-analyse (analysis/aggregation_variance.py). Env-gated
+    // (SBI_DUMP_Z), dus nul kosten in productie; faithfull omdat het exact de
+    // engine-z's gebruikt die het composiet vormen.
+    if (process.env.SBI_DUMP_Z) {
+      _zDump.push({
+        date: iso,
+        composite: out.composite.equal,
+        z: Object.fromEntries(out.indicator_breakdown.map((b) => [b.code, b.z_short])),
+      });
+    }
+  }
+  if (process.env.SBI_DUMP_Z) {
+    writeFileSync(
+      resolve(__dirname, "../../../data/analysis/z-series-dump.json"),
+      JSON.stringify(_zDump, null, 0) + "\n",
+      "utf-8",
+    );
   }
 
   // Vandaag — eerst synthetisch invullen, dan ECHTE waarden van de pipeline overschrijven
