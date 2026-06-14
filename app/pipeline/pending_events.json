@@ -8350,5 +8350,23 @@
     "link": "https://www.tvoost.be/nieuws/auto-komt-op-flank-tegen-middenberm-terecht-op-e17-file-in-waasmunster-211552",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-14",
+    "magnitude": 1,
+    "title": "Clashes tussen politie en enkele deelnemers betoging tegen G7 in Genève",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/14/2929dbb4-6548-431b-87ac-7fda75f101db.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-14",
+    "magnitude": 1,
+    "title": "Dader (47) keert onder zware bewaking terug naar Roeselare voor eerste reconstructie drievoudige moord: “Ook voor ons is zijn motief nog een raadsel”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/roeselare/dader-47-keert-onder-zware-bewaking-terug-naar-roeselare-voor-eerste-reconstructie-drievoudige-moord-ook-voor-ons-is-zijn-motief-nog-een-raadsel~ab4cb58d/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
