@@ -100,21 +100,22 @@ export function ConditionLevelDisplay({
         </div>
       </div>
       <div className="cn-secondary">
-        <span>Vandaag hoger dan op {score}% van de dagen rond deze tijd van het jaar.</span>
-        {/* Peter 13/6 (derde aanscherping): geen waarschuwingszin meer bij hoge
-            onzekerheid — altijd dezelfde sobere bandbreedte-regel. Bij
-            thin_reference (interval dekt de dunne-referentie-onzekerheid niet)
-            blijft de "90% zeker"-claim eerlijk achterwege. */}
+        <span>
+          Vandaag hoger dan op {score}% van de dagen rond deze tijd van het jaar,
+          gemeten over de laatste twee jaar.
+        </span>
+        {/* Peter 14/6: de zichtbare bandbreedte-regel is verwijderd; de
+            onzekerheid blijft visueel als 90%-band in de meter. Voor
+            schermlezers (de meter is aria-hidden) houden we de band hier als
+            sr-only-tekst, zodat een score nooit zónder onzekerheid wordt
+            uitgeleverd. Bij thin_reference blijft de "90% zeker"-claim eerlijk
+            achterwege. */}
         {unc && lo !== null && hi !== null && (
-          intervalCoversFlag ? (
-            <span className="cn-uncertainty-band">
-              Bandbreedte (90% zeker): {lo} tot {hi}.
-            </span>
-          ) : (
-            <span className="cn-uncertainty-band">
-              Bandbreedte (indicatief): {lo} tot {hi}.
-            </span>
-          )
+          <span className="sr-only">
+            {intervalCoversFlag
+              ? `90% zeker: tussen ${lo} en ${hi}.`
+              : `Indicatief bereik: tussen ${lo} en ${hi}.`}
+          </span>
         )}
         <span className="cn-stamp">
           De Nationale Stress Barometer werd gecontroleerd en bijgestuurd · laatst om {lastRunTime}

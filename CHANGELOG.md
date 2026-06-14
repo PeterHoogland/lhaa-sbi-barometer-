@@ -6,6 +6,18 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-14 — Percentielzin noemt de 2-jaars-groundroot; zichtbare bandbreedte-regel weg (Peter)
+
+**Aanleiding:** Peter, twee aanscherpingen op de scorekaart: (1) de referentieperiode terug in de percentielzin ("in vergelijking met 2 jaar terug"); (2) de regel "Bandbreedte (90% zeker): X tot Y." weg.
+
+**Beslissingen:**
+
+- Percentielzin: "Vandaag hoger dan op X% van de dagen rond deze tijd van het jaar, **gemeten over de laatste twee jaar**." Maakt de 24-maands-groundroot (= `short_24m`) expliciet, naast het ±45-daags seizoensvenster.
+- Zichtbare bandbreedte-regel verwijderd. De onzekerheid blijft als **90%-band in de meter** (primaire visuele weergave). Voor schermlezers (de meter is `aria-hidden`) blijft de band als `sr-only`-tekst behouden, zodat een score nooit zónder onzekerheid wordt uitgeleverd — het principe achter de v0.4-CI-bouw blijft intact. Bij `thin_reference` luidt die tekst "indicatief bereik".
+- Dode CSS opgeruimd (`.cn-uncertainty-band` verwijderd, `.sr-only` toegevoegd). Doc 07 §13-bis bijgewerkt; manifest herberekend. Verificatie: web bouwt, tsc schoon, screenshot (2-jaars-zin zichtbaar, bandbreedte-regel weg). Geen engine-/datawijziging.
+
+---
+
 ## 2026-06-14 — Niveauschaal relatief + band-bewuste kicker + mediaan-scharnier op de meter (Peter GO)
 
 **Aanleiding:** Peter, na het advocaat-van-de-duivel-overleg over de woordenschat: (1) de kicker-woorden moeten relatief en consistent; "GEMIDDELD" voor P50-70 is oneerlijk want dat ligt al boven de mediaan; (2) de weergave moet al bij de mediaan reageren; (3) toon dat ook op de kleurbalk; (4) band-bewuste kicker (eerder goedgekeurd).
