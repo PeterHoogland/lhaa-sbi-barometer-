@@ -1,25 +1,39 @@
 import type { ConditionLevel, DailyOutput } from "../types";
 import { buildContext } from "../lib/explainer";
+import { scoreBand, BAND_LABEL } from "../copy";
 
 /**
- * Kicker-woord. Volgt de PERCENTIEL-band (zoals de meter-zones 0-50-70-90-100),
- * niet het conditie-niveau. Reden: het cijfer leest gevoelsmatig vreemd als 71
- * "gemiddeld" heet terwijl de meter-stip al in de verhoogde (amber) zone staat.
- * De banner/campagne-logica blijft onveranderd op de pre-geregistreerde tier-regel
- * (dagregel ≥P70), dus een verhoogde DAGwaarde geeft hier wel het juiste woord
- * maar nog geen vals alarm. Brand-safety (CN 5) overschrijft met een pauze-woord.
+ * Kicker-woord. Volgt de PERCENTIEL-band via de gedeelde scoreBand/BAND_LABEL
+ * (geen eigen drempel-duplicaat meer): RUSTIG < 50 ≤ NORMAAL < 70 ≤ VERHOOGD
+ * < 90 ≤ UITZONDERLIJK. De mediaan (50) is het scharnier — RUSTIG (rustiger
+ * dan gewoonlijk) kantelt daar naar NORMAAL (een gewone-tot-drukkere dag).
+ * Relatieve woorden, want het cijfer is een percentiel (anomalie t.o.v.
+ * normaal), geen absolute meting. Brand-safety (CN 5) overschrijft met pauze.
  *
- * Peter 13/6: de kicker is ALTIJD een niveauwoord op de schaal laag → extreem
- * (methodologie-conform: de P50/P70/P90-banden; "extreem" = de top-10%-band,
- * zelfde register als de indicator-states). Nooit "ONZEKER": onzekerheid is
- * geen niveau en staat in de bandbreedte-regel + de band in de meter.
+ * Band-bewust (Peter 14/6, IPCC-kalibratieprincipe): kruist de 90%-band een
+ * niveaugrens, dan toont de kicker het bereik ("RUSTIG TOT VERHOOGD") i.p.v.
+ * één woord dat het eigen interval tegenspreekt. Binnen één niveau blijft het
+ * één woord. Het cijfer blijft ALTIJD één getal op 100; alleen het woord wordt
+ * soms een bereik. Nooit "ONZEKER": onzekerheid is geen niveau.
+ *
+ * De banner/campagne-logica blijft onveranderd op de pre-geregistreerde
+ * tier-regel (dagregel ≥P70), los van dit weergave-woord: de weergave reageert
+ * bij de mediaan, de campagne pas in de bovenste staart.
  */
-function kickerWord(cn: ConditionLevel, score: number): string {
+function kickerWord(
+  cn: ConditionLevel,
+  score: number,
+  lo: number | null,
+  hi: number | null,
+): string {
   if (cn === 5) return "EVEN OP PAUZE";
-  if (score >= 90) return "EXTREEM";
-  if (score >= 70) return "VERHOOGD";
-  if (score >= 50) return "GEMIDDELD";
-  return "LAAG";
+  if (lo !== null && hi !== null) {
+    const wLo = BAND_LABEL[scoreBand(lo)];
+    const wHi = BAND_LABEL[scoreBand(hi)];
+    if (wLo !== wHi) return `${wLo} TOT ${wHi}`;
+    return wLo;
+  }
+  return BAND_LABEL[scoreBand(score)];
 }
 
 export function ConditionLevelDisplay({
@@ -61,6 +75,7 @@ export function ConditionLevelDisplay({
         <div className="cn-meter" aria-hidden="true">
           <div className="cn-meter-track">
             <span className="cn-meter-zone cn-meter-green" />
+            <span className="cn-meter-zone cn-meter-normal" />
             <span className="cn-meter-zone cn-meter-amber" />
             <span className="cn-meter-zone cn-meter-red" />
             {unc && lo !== null && hi !== null && (
@@ -75,7 +90,13 @@ export function ConditionLevelDisplay({
           <div className="cn-meter-axis"><span>0</span><span>50</span><span>100</span></div>
         </div>
         <div className="cn-side">
-          <div className="cn-kicker">{kickerWord(cn, score)}</div>
+          {(() => {
+            const kicker = kickerWord(cn, score, lo, hi);
+            const isRange = kicker.includes(" TOT ");
+            return (
+              <div className={`cn-kicker${isRange ? " cn-kicker-range" : ""}`}>{kicker}</div>
+            );
+          })()}
         </div>
       </div>
       <div className="cn-secondary">

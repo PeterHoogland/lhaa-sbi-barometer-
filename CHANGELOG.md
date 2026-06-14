@@ -6,6 +6,20 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-14 — Niveauschaal relatief + band-bewuste kicker + mediaan-scharnier op de meter (Peter GO)
+
+**Aanleiding:** Peter, na het advocaat-van-de-duivel-overleg over de woordenschat: (1) de kicker-woorden moeten relatief en consistent; "GEMIDDELD" voor P50-70 is oneerlijk want dat ligt al boven de mediaan; (2) de weergave moet al bij de mediaan reageren; (3) toon dat ook op de kleurbalk; (4) band-bewuste kicker (eerder goedgekeurd).
+
+**Beslissingen:**
+
+- **Relatieve woordenschat** (één register, vervangt LAAG/GEMIDDELD/VERHOOGD/EXTREEM): **RUSTIG < 50 ≤ NORMAAL < 70 ≤ VERHOOGD < 90 ≤ UITZONDERLIJK**. Relatief omdat het cijfer een percentiel-anomalie is, niet een absolute meting; "RUSTIG/NORMAAL" sluiten aan op de CN-namen, "UITZONDERLIJK" op het indicator-woord. `copy.ts BAND_LABEL` is de enige bron; `kickerWord` gebruikt nu `scoreBand`+`BAND_LABEL` (drempel-duplicaat verwijderd).
+- **Band-bewuste kicker:** kruist de 90%-band een niveaugrens, dan toont de kicker het bereik ("RUSTIG TOT VERHOOGD") i.p.v. één woord dat het eigen interval tegenspreekt (IPCC-kalibratie). Binnen één niveau één woord. Hoofdcijfer blijft altijd één getal op 100. Nieuwe `cn-kicker-range`-stijl (compacter, afbreekbaar) — visueel geverifieerd: bereik wrapt netjes over twee regels.
+- **Mediaan-scharnier op de meter:** de groene zone gesplitst in rustig (0-50, lichter) en normaal (50-70, dieper groen), zodat de mediaan zichtbaar is als kantelpunt. Amber 70-90, rood blijft alleen de top-10% (merkkeuze rust = groen behouden).
+- **Bewust NIET gewijzigd (advocaat van de duivel):** de campagne-/trigger-drempel blijft P70/P90. "Reageren bij de mediaan" geldt alleen de wéérgave (woord + kleur); de campagne bij P50 laten vuren zou ~50% van alle dagen "verhoogd" maken en de anomalie-betekenis breken — dat vergt een apart, expliciet pre-registratie-amendement en is afgeraden. De campagnebanner staat op de publieke site sowieso uit.
+- Doc 07 §13-bis bijgewerkt; manifest herberekend. Verificatie: web bouwt, tsc schoon, twee screenshots (RUSTIG enkelvoudig + RUSTIG TOT VERHOOGD bereik). Geen engine-/datawijziging.
+
+---
+
 ## 2026-06-13 — v0.4-onzekerheid: bootstrap-CI rond percentile.lang; onzekerheids-black-out opgeheven (Peter GO na advocaat-van-de-duivel-overleg)
 
 **Aanleiding:** open beslispunt uit de adversariële review. Zodra de campagne live gaat stuurt de v0.4-kern de publieke kop, maar er bestond geen v0.4-CI — `ConditionLevelDisplay` onderdrukte dan élke onzekerheidsweergave (black-out), precies op de dag van maximale exposure. Overlegd met de advocaat van de duivel; uitkomst: niet ontkoppelen (P4) of accepteren (P1), maar de CI bouwen (P3) — de bootstrap-infrastructuur stond er al.

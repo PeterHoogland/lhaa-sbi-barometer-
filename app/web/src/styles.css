@@ -365,7 +365,11 @@ main {
 .cn-meter { display: flex; flex-direction: column; gap: 7px; padding: 0 4px; }
 .cn-meter-track { position: relative; height: 12px; border-radius: 6px; overflow: hidden; display: flex; }
 .cn-meter-zone { height: 100%; }
-.cn-meter-green { width: 70%; background: var(--c-green); opacity: 0.30; }
+/* Vier zones = de vier niveauwoorden, met de MEDIAAN (50) als zichtbaar
+   scharnier: rustig (0-50) kantelt naar normaal (50-70) als een dieper-groene
+   stap. Rood blijft bewust alleen de top-10% (merkkeuze: rust = groen). */
+.cn-meter-green { width: 50%; background: var(--c-green); opacity: 0.26; }
+.cn-meter-normal { width: 20%; background: var(--c-green); opacity: 0.5; }
 .cn-meter-amber { width: 20%; background: var(--c-amber); opacity: 0.45; }
 .cn-meter-red { width: 10%; background: var(--c-red); opacity: 0.5; }
 .cn-meter-dot {
@@ -390,6 +394,15 @@ main {
   color: var(--cn-accent, var(--lha-blue-deep));
   font-weight: 600;
   margin-bottom: 4px;
+}
+/* Band-bewust bereik ("RUSTIG TOT VERHOOGD"): langer, dus iets compacter en
+   met afbreekruimte zodat het de scorekaart niet uit balans trekt. */
+.cn-kicker-range {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  max-width: 9rem;
+  margin-left: auto;
 }
 .cn-meta {
   font-family: var(--f-mono);

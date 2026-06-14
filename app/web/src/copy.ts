@@ -27,14 +27,18 @@ export function scoreBand(score: number): ScoreBand {
   if (score >= 50) return "gemiddeld";
   return "laag";
 }
-// Peter 13/6: de publieke niveauschaal loopt van laag naar EXTREEM (de
-// top-10%-band heet "extreem", zelfde register als de indicator-states en de
-// P90-band in de methodologie). De interne bandnaam "hoog" blijft ongewijzigd.
+// Peter 14/6: relatieve (anomalie-)woordenschat, één register overal.
+// Het cijfer is een percentiel ("hoe ongewoon is vandaag t.o.v. normaal"),
+// dus relatieve woorden (verhoogd = hoger dan normaal) zijn correcter dan
+// absolute (hoog). De mediaan (50) is het scharnier: onder = rustiger dan
+// gewoonlijk, erboven = een gewone-tot-drukkere dag. "RUSTIG/NORMAAL" sluiten
+// aan op de CN-namen (Rust/Normaal), "UITZONDERLIJK" op het indicator-woord.
+// De interne bandsleutels (laag/gemiddeld/verhoogd/hoog) blijven ongewijzigd.
 export const BAND_LABEL: Record<ScoreBand, string> = {
-  laag: "LAAG",
-  gemiddeld: "GEMIDDELD",
+  laag: "RUSTIG",
+  gemiddeld: "NORMAAL",
   verhoogd: "VERHOOGD",
-  hoog: "EXTREEM",
+  hoog: "UITZONDERLIJK",
 };
 export const BAND_HEADLINE: Record<ScoreBand, string> = {
   laag: "Vandaag is een rustige dag.",
