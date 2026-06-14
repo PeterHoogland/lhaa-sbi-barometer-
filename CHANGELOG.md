@@ -6,6 +6,17 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-14 — Scorekaart-uitlijning: kicker op de meterlijn + openingszin in balans (Peter, cosmetisch)
+
+**Aanleiding:** Peter, twee uitlijn-wensen op basis van schermafbeeldingen.
+
+**Beslissingen (alleen CSS, geen gedrag/data):**
+
+- Kicker (RUSTIG/NORMAAL/…) op de verlengde van de meterlijn: de meterkolom is track + as, dus center-uitlijning zette het woord op de as. `transform: translateY(-10px)` tilt het naar het hart van de balk (gereset in de mobiele gestapelde layout).
+- Openingszin onder de merknaam met `text-wrap: balance`: twee even lange regels in plaats van een korte stub-regel. Visueel geverifieerd.
+
+---
+
 ## 2026-06-14 — Percentielzin noemt de 2-jaars-groundroot; zichtbare bandbreedte-regel weg (Peter)
 
 **Aanleiding:** Peter, twee aanscherpingen op de scorekaart: (1) de referentieperiode terug in de percentielzin ("in vergelijking met 2 jaar terug"); (2) de regel "Bandbreedte (90% zeker): X tot Y." weg.

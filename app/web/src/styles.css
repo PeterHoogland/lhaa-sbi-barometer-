@@ -234,6 +234,9 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
   color: rgba(255, 255, 255, 0.85);
   margin: 0 auto 18px;
   max-width: 42rem;
+  /* Evenwaardige regels onder de merknaam (Peter 14/6): balanceer de afbreking
+     zodat beide regels ~even lang zijn i.p.v. een korte stub-regel. */
+  text-wrap: balance;
 }
 
 /* C3: meetgebied vs afzender, direct onder de openingszin. */
@@ -304,6 +307,8 @@ main {
 @media (max-width: 640px) {
   .cn-main { grid-template-columns: auto 1fr; gap: 18px; }
   .cn-side { grid-column: 1 / -1; text-align: left; }
+  /* Onder de meter gestapeld: geen meterlijn-nudge nodig. */
+  .cn-kicker { transform: none; }
 }
 .cn-main .cn-scale { justify-content: center; }
 
@@ -397,6 +402,10 @@ main {
   color: var(--cn-accent, var(--lha-blue-deep));
   font-weight: 600;
   margin-bottom: 4px;
+  /* Op de verlengde van de meterlijn (Peter 14/6): de meterkolom is track + as,
+     dus center-uitlijning zet het woord op de as i.p.v. op de balk. Nudge omhoog
+     naar het hart van de track. */
+  transform: translateY(-10px);
 }
 /* Band-bewust bereik ("RUSTIG TOT VERHOOGD"): langer, dus iets compacter en
    met afbreekruimte zodat het de scorekaart niet uit balans trekt. */
