@@ -6,6 +6,20 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-14 — Amendement §4.1.8: afvlakking van het gepubliceerde percentiel (7-daags trailing gemiddelde), methodologie 0.3.4 (Peter GO)
+
+**Aanleiding:** uitvoering van de afvlak-fix na de whipsaw-diagnose (zie vorige entry). Peter koos het 7-daagse venster.
+
+**Wijziging:** het gepubliceerde dagpercentiel rust niet langer op het ruwe dagcomposiet maar op het **7-daags trailing gemiddelde** ervan, tegen de evenzo afgevlakte referentiehistorie (afgevlakt tegen afgevlakt). Consistent over de hele keten: percentiel, tier/campagnelogica, B3-bootstrap-band (elke trekking afgevlakt met de vaste voorgaande dagen) én de referentie-audit. Lookahead-vrij. Nieuwe module `methodology/smoothing.ts`.
+
+**Transparantie:** het ruwe dagcomposiet blijft in de output (`composite.equal`) naast het afgevlakte (`composite.equal_smoothed`); `percentile.smoothing_window_days = 7`. De media-bijdrage-diagnostiek blijft like-for-like op de ruwe basis.
+
+**Effect (smoketest):** dag-tot-dag-percentielsprong van gemiddeld ~15 naar ~3 (max 54 → 20), ~5× stabieler; de laatste 7 dagen lopen vloeiend (24→24→30→35→37→34→39) i.p.v. te whipsawen. Een echte brede stressbeweging blijft volledig doorkomen — ruis gedempt, geen signaal. Referentie-audit bevestigt: het afgevlakte percentiel is reproduceerbaar tegen de afgevlakte referentie, niet overgevoelig.
+
+**Discipline:** methodology_version 0.3.3 → **0.3.4**; amendement §4.1.8 + doc 06 §2.1-notitie + manifest. Engine **182/182** (nieuw `smoothing.test.ts`, 8 tests). Pipeline 11 suites groen. Reikwijdte: v0.2-publiekspad nu; v0.4-`percentile.lang` krijgt dezelfde afvlakking bij go-live als publieke kop.
+
+---
+
 ## 2026-06-14 — Echte oorzaak van het whipsawen gevonden: composiet is bijna pure dagruis; afvlakking is de fix (analyse)
 
 **Aanleiding:** Peter zag het percentiel van pieken (56-80) terugvallen naar 6/100 en eiste consistentie ("er klopt iets niet, zoek"). Dit is een ander, scherper probleem dan de aggregatie: de DAG-TOT-DAG-stabiliteit van het publieke cijfer.

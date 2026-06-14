@@ -44,6 +44,7 @@ import {
   seasonalReferenceWithFallback,
 } from "./methodology/seasonal-percentile.js";
 import { auditReferenceConsistency, type ReferenceAudit } from "./methodology/reference-audit.js";
+import { SMOOTHING_WINDOW_DAYS, trailingPastSum, smoothTrailing } from "./methodology/smoothing.js";
 import {
   bootstrapDayUncertainty,
   seedFromString,
@@ -77,7 +78,13 @@ import {
 // 0.3.3 (2026-06-13, amendement §4.1.7, Peter GO): geharmoniseerde
 // recency-vensters voor de v0.2 MAD-z-baseline — dagbronnen rollend 24
 // maanden, maand-/jaarritmebronnen rollend 60 maanden; eCDF-pad ongewijzigd.
-const METHODOLOGY_VERSION = "0.3.3";
+// 0.3.4 (2026-06-14, amendement §4.1.8, Peter GO): afvlakking — het gepubliceerde
+// percentiel rust op het 7-daags trailing gemiddelde van het composiet (tegen de
+// evenzo afgevlakte referentie); tier, bootstrap-band en referentie-audit volgen.
+// Lost het whipsawen op (composiet had bijna geen persistentie). Ruw composiet
+// blijft zichtbaar (composite.equal); v0.4-pad krijgt dezelfde behandeling bij
+// zijn go-live.
+const METHODOLOGY_VERSION = "0.3.4";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {
@@ -334,16 +341,25 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
   const evidence = computeComposite(zShort, "evidence");
   const withoutD5 = computeCompositeWithoutD5(zShort, "equal");
 
+  // §4.1.8 — Afvlakking: het gepubliceerde cijfer is het 7-daags trailing
+  // gemiddelde van het composiet (tegen de evenzo afgevlakte referentie), zodat
+  // de barometer een traag evoluerende toestand toont i.p.v. dagruis. Het RUWE
+  // composiet blijft in de output (transparantie). Zie methodology/smoothing.ts.
+  const histValues = input.compositeHistory.map((h) => h.value);
+  const { pastSum, count } = trailingPastSum(histValues, SMOOTHING_WINDOW_DAYS);
+  const smoothedComposite = (pastSum + equal.composite) / count;
+  const smoothedHistory = smoothTrailing(input.compositeHistory, SMOOTHING_WINDOW_DAYS);
+
   // B3 — echte bootstrap-onzekerheid rond het dagcijfer. Opt-in (zie
   // DailyComputeInput.computeUncertainty): de referentieset is exact dezelfde
-  // als die van seasonalPercentile hieronder (seizoensvenster met terugval).
+  // (afgevlakte) als die van seasonalPercentile hieronder, en elke trekking
+  // wordt met dezelfde trailing-afvlakking doorgerekend (§4.1.8).
   let uncertainty: DayUncertainty | undefined;
   if (input.computeUncertainty) {
     uncertainty = bootstrapDayUncertainty({
       indicators: bootstrapInputs,
-      // Gedeelde helper: per constructie dezelfde referentieset als
-      // seasonalPercentile hieronder gebruikt voor het gepubliceerde cijfer.
-      percentileReference: seasonalReferenceWithFallback(input.compositeHistory, input.date),
+      percentileReference: seasonalReferenceWithFallback(smoothedHistory, input.date),
+      smoothing: { pastSum, count },
       nDraws: input.bootstrapDraws,
       seed: seedFromString(input.date),
     });
@@ -371,24 +387,29 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
   // rustige junidag wordt zo tegen vroegere junidagen gewogen i.p.v. tegen winters
   // (eerlijker + minder cross-seizoen-grilligheid). Terugval op het volledige
   // venster bij te weinig seizoenspunten. Zie methodology/seasonal-percentile.ts.
-  const percShort = seasonalPercentile(equal.composite, input.date, input.compositeHistory);
+  // Gepubliceerd cijfer: seizoenspercentiel van het AFGEVLAKTE composiet tegen
+  // de afgevlakte referentie (§4.1.8). Het ruwe percentiel houden we apart voor
+  // de media-diagnostiek hieronder (raw vs raw, like-for-like).
+  const percShort = seasonalPercentile(smoothedComposite, input.date, smoothedHistory);
+  const percShortRaw = seasonalPercentile(equal.composite, input.date, input.compositeHistory);
 
   // Automatische referentie-audit (Peter 14/6): reproduceer het gepubliceerde
-  // percentiel uit zijn eigen referentie en weeg af of die consistent, gezond en
-  // niet overgevoelig is. Draait elke cyclus; de canary (healthcheck.py) leest
-  // het verdict en alarmeert bij "critical". Zie methodology/reference-audit.ts.
+  // percentiel uit zijn eigen (afgevlakte) referentie en weeg af of die
+  // consistent, gezond en niet overgevoelig is. Draait elke cyclus; de canary
+  // (healthcheck.py) leest het verdict. Zie methodology/reference-audit.ts.
   const referenceAudit: ReferenceAudit = auditReferenceConsistency(
-    equal.composite,
+    smoothedComposite,
     input.date,
-    input.compositeHistory,
+    smoothedHistory,
     Math.round(percShort),
     METHODOLOGY_VERSION,
   );
 
-  // Tier-logica vereist een geschiedenis van (seizoens-)percentielen, lookahead-vrij.
-  const percentileHistory = buildSeasonalPercentileHistory(input.compositeHistory, {
+  // Tier-logica vereist een geschiedenis van (seizoens-)percentielen, lookahead-vrij;
+  // op het AFGEVLAKTE composiet, zodat ook de tier/campagne niet op dagruis flipt.
+  const percentileHistory = buildSeasonalPercentileHistory(smoothedHistory, {
     date: input.date,
-    value: equal.composite,
+    value: smoothedComposite,
   });
   const tierResult = computeTier(percentileHistory);
 
@@ -499,6 +520,9 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     },
     composite: {
       equal: round2(equal.composite),
+      // §4.1.8: het 7-daags afgevlakte composiet dat het percentiel voedt
+      // (transparant naast het ruwe dagcomposiet).
+      equal_smoothed: round2(smoothedComposite),
       evidence_graded: round2(evidence.composite),
       demographic: round2(computeDemographicComposite(zShort)),
       weight_sensitivity: {
@@ -513,6 +537,9 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     },
     percentile: {
       short_24m: Math.round(percShort),
+      // §4.1.8: het venster waarover het composiet is afgevlakt vóór dit
+      // percentiel (transparant; 0/afwezig zou "ruw" betekenen).
+      smoothing_window_days: SMOOTHING_WINDOW_DAYS,
       // Niet berekend: vereist een aparte vaste 2010–2019 baseline (review §0-bis.1).
       // Geen kopie van short_24m onder een andere naam publiceren.
       fixed_2010_2019: null,
@@ -551,8 +578,10 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     media_cluster_diagnostic: {
       d5_cross_correlation_7d: round2(d5Cross),
       composite_without_d5: round2(withoutD5),
+      // Like-for-like op de RUWE basis (withoutD5 heeft geen eigen afgevlakte
+      // historie): raw percentiel zónder D5 vs raw percentiel mét D5.
       media_contribution_percentile_points: Math.abs(
-        Math.round(seasonalPercentile(withoutD5, input.date, input.compositeHistory) - percShort),
+        Math.round(seasonalPercentile(withoutD5, input.date, input.compositeHistory) - percShortRaw),
       ),
     },
     brand_safety: input.brandSafety

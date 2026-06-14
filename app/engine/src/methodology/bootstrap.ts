@@ -126,6 +126,14 @@ export interface BootstrapDayInput {
    * een (mogelijk lege) zMap.
    */
   aggregate?: (zMap: ZMap) => number;
+  /**
+   * Afvlakking (§4.1.8): wanneer het gepubliceerde cijfer een trailing
+   * gemiddelde is, wordt elke getrokken DAGcomposiet eerst afgevlakt met de
+   * (vaste) voorgaande dagen — smoothed = (pastSum + draw) / count — vóór het
+   * percentiel, zodat de band exact de onzekerheid van het AFGEVLAKTE cijfer
+   * dekt en niet die van een ruwe dag. De referentie is dan ook afgevlakt.
+   */
+  smoothing?: { pastSum: number; count: number };
 }
 
 /**
@@ -202,7 +210,12 @@ export function bootstrapDayUncertainty(input: BootstrapDayInput): DayUncertaint
     }
     const composite = aggregate(zMap);
     compositeDraws[b] = composite;
-    percentileDraws[b] = percentileRank(composite, ref);
+    // §4.1.8: vlak de getrokken dagcomposiet af met de vaste voorgaande dagen
+    // vóór het percentiel, als het gepubliceerde cijfer afgevlakt is.
+    const published = input.smoothing
+      ? (input.smoothing.pastSum + composite) / input.smoothing.count
+      : composite;
+    percentileDraws[b] = percentileRank(published, ref);
   }
 
   percentileDraws.sort((a, b) => a - b);

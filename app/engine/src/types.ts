@@ -249,6 +249,8 @@ export interface DailyOutput {
   };
   composite: {
     equal: number;
+    /** §4.1.8: het 7-daags afgevlakte composiet dat het percentiel voedt. */
+    equal_smoothed?: number;
     evidence_graded: number;
     /** Schema 3 — demografische reikwijdte-weging (parallel, amendement). */
     demographic: number;
@@ -261,6 +263,8 @@ export interface DailyOutput {
   };
   percentile: {
     short_24m: number;
+    /** §4.1.8: het venster waarover het composiet is afgevlakt vóór dit percentiel. */
+    smoothing_window_days?: number;
     fixed_2010_2019: number | null;
     fixed_2010_2019_status?: "not_computed";
     /** B2: true zolang minstens één gescoorde indicator op de voorlopige

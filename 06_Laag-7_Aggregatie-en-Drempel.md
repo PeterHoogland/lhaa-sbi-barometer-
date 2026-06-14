@@ -55,6 +55,8 @@ Composiet C(t) is dimensieloos.
 
 Een MAD-Z-score van +1.8 op het composiet zegt weinig zonder context. Een percentiel-positie ("vandaag is in de top 12% van alle dagen van de laatste 24 maanden") is interpreteerbaar en historisch geankerd.
 
+> **Afvlakking (amendement §4.1.8, v0.3.4, 2026-06-14):** het gepubliceerde percentiel rust sinds 0.3.4 niet op het ruwe dagcomposiet maar op het **7-daags trailing gemiddelde** ervan (tegen de evenzo afgevlakte referentie). Reden: het ruwe composiet had vrijwel geen persistentie (dag-tot-dag-sd ≈ totale sd) en het krappe percentiel blies die dagruis op tot sprongen van ~15-54 punten per dag. Tier, bootstrap-band en referentie-audit volgen het afgevlakte cijfer; het ruwe composiet blijft zichtbaar (`composite.equal`). Zie 00_Pre-Registratie §4.1.8.
+
 ### 2.2 Definitie
 
 P(t) = rang van C(t) binnen de verdeling van C-waarden over de afgelopen 24 maanden, uitgedrukt als percentiel (0-100).
