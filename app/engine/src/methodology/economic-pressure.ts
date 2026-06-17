@@ -36,7 +36,7 @@
 
 import type { IndicatorCode, EconomicPressure } from "../types.js";
 import { INDICATORS } from "../indicators/registry.js";
-import { median, madScaled } from "./zscore.js";
+import { median, robustScale } from "./zscore.js";
 import { winsorize } from "./winsorize.js";
 import { DEMOGRAPHIC_REACH } from "./demographic-reach.js";
 
@@ -68,7 +68,27 @@ export const ECONOMIC_PRESSURE_CODES: IndicatorCode[] = [
  * druk t.o.v. normale tijden, geen individuele stress. Geen em-dash (harde regel 9).
  */
 export const ECONOMIC_PRESSURE_LABEL =
-  "Economische druk op gezinnen t.o.v. normale tijden (2010-2019). Sinds 17/6 het publieke hoofdcijfer van de Index.";
+  "Economische druk op gezinnen t.o.v. normale tijden (2010-2019).";
+
+/**
+ * De BREDE absolute meting (amendement §4.1.11, Peter GO 17/6): de 5 economische
+ * + weer (hitte/koude) + energie. Deze drie kregen via backfill een echte
+ * pre-2020-baseline met exact dezelfde maat als de live-fetcher (open-meteo
+ * 2010-2019 voor Tmax/Tmin; energy-charts 2016-2019 dag-gemiddelde EUR/MWh).
+ * Lucht/nieuws/Wikipedia ontbreken bewust: hun historische maat is niet
+ * betrouwbaar te reproduceren (geen RSS-archief / Pattern.nl-lexicon voor
+ * 2016-2019), dus geen Hitte-bug-risico. Eerlijke, uitbreidbare datagrens.
+ */
+export const BROAD_PRESSURE_CODES: IndicatorCode[] = [
+  ...ECONOMIC_PRESSURE_CODES,
+  "I-D1-002", // hitte: max(0, Tmax - 30)
+  "I-D1-003", // koude: max(0, -5 - Tmin)
+  "I-D3-002", // energieprijs: dag-gemiddelde EUR/MWh
+];
+
+/** Bindend, user-facing. Publieke hoofdcijfer-label (§4.1.11). Geen em-dash. */
+export const BROAD_PRESSURE_LABEL =
+  "Brede druk t.o.v. normale tijden (2010-2019): kosten van levensonderhoud, energie en weer. Geen meting van individuele stress.";
 
 export const ECONOMIC_PRESSURE_MAPPING = "normal_cdf" as const;
 
@@ -114,6 +134,7 @@ function round3(x: number): number {
 
 function notComputed(
   indicators: EconomicPressure["indicators"],
+  label: string,
   reason: string,
 ): EconomicPressure {
   return {
@@ -124,7 +145,7 @@ function notComputed(
     score_demographic: null,
     baseline_window: ECONOMIC_BASELINE_WINDOW,
     mapping: ECONOMIC_PRESSURE_MAPPING,
-    label: ECONOMIC_PRESSURE_LABEL,
+    label,
     n_indicators: indicators.length,
     indicators,
     not_computed_reason: reason,
@@ -132,18 +153,21 @@ function notComputed(
 }
 
 /**
- * Bereken de absolute economische stress-meting voor `asOf` uit de meegegeven
- * historie. Lookahead-veilig (latest = laatste punt <= asOf; baseline strikt
- * 2010-2019). not_computed wanneer minder dan MIN_ECONOMIC_INDICATORS een
- * toereikende baseline hebben.
+ * Bereken een absolute "vs normale tijden"-meting voor `asOf` over `codes`. Per
+ * indicator: MAD-z van de laatste waarde (<= asOf, lookahead-veilig) tegen de
+ * 2010-2019-baseline van diezelfde reeks (energie heeft daarbinnen 2016-2019),
+ * inverse-codering + winsorize, gemapt via 100*Phi(zbar). not_computed wanneer
+ * minder dan MIN_ECONOMIC_INDICATORS een toereikende baseline hebben.
  */
-export function computeEconomicPressure(
+export function computeAbsolutePressure(
+  codes: IndicatorCode[],
+  label: string,
   history: Partial<Record<IndicatorCode, DatedValue[]>>,
   asOf: string,
 ): EconomicPressure {
   const indicators: EconomicPressure["indicators"] = [];
 
-  for (const code of ECONOMIC_PRESSURE_CODES) {
+  for (const code of codes) {
     const series = history[code] ?? [];
     const baseline = series
       .filter((p) => p.date >= ECONOMIC_BASELINE_START && p.date <= ECONOMIC_BASELINE_END)
@@ -155,12 +179,21 @@ export function computeEconomicPressure(
     if (!latest) continue;
 
     const med = median(baseline);
-    const mad = madScaled(baseline);
-    // Geen bruikbare schaal (vlakke baseline) -> eerlijk uitsluiten, niet z=0.
-    if (!Number.isFinite(mad) || mad <= 0) continue;
-
+    // robustScale = MAD -> IQR -> SD (zoals engine/zscore.ts), zodat een vlakke
+    // baseline (bv. weer: meestal 0) niet stilletjes wordt uitgesloten.
+    const scale = robustScale(baseline);
     const meta = INDICATORS[code];
-    let z = (latest.value - med) / mad;
+    let z: number;
+    if (Number.isFinite(scale) && scale > 0) {
+      z = (latest.value - med) / scale;
+    } else if (!meta.inverseCoded && latest.value <= med) {
+      // Vlakke baseline + dagwaarde op/onder de mediaan = gemeten "geen
+      // uitschieter" -> z = 0 (zoals de hoofd-engine), MEETELLEN, niet uitsluiten.
+      // Anders zou een neutrale indicator (weer) de meting omhoog vertekenen.
+      z = 0;
+    } else {
+      continue; // geen schaal en wel een uitschieter -> eerlijk uitsluiten
+    }
     if (meta.inverseCoded) z = -z;
     z = winsorize(z).value;
 
@@ -170,7 +203,7 @@ export function computeEconomicPressure(
       latest_value: round3(latest.value),
       latest_date: latest.date,
       baseline_median: round3(med),
-      baseline_mad: round3(mad),
+      baseline_mad: round3(Number.isFinite(scale) ? scale : 0),
       n_baseline: baseline.length,
       z: round2(z),
       inverse_coded: meta.inverseCoded,
@@ -180,8 +213,9 @@ export function computeEconomicPressure(
   if (indicators.length < MIN_ECONOMIC_INDICATORS) {
     return notComputed(
       indicators,
-      `slechts ${indicators.length} van ${ECONOMIC_PRESSURE_CODES.length} economische ` +
-        `indicatoren hebben een toereikende 2010-2019-baseline (min ${MIN_ECONOMIC_INDICATORS})`,
+      label,
+      `slechts ${indicators.length} van ${codes.length} indicatoren hebben een ` +
+        `toereikende baseline (min ${MIN_ECONOMIC_INDICATORS})`,
     );
   }
 
@@ -204,8 +238,24 @@ export function computeEconomicPressure(
     score_demographic: Math.round(100 * normalCdf(zbarDem)),
     baseline_window: ECONOMIC_BASELINE_WINDOW,
     mapping: ECONOMIC_PRESSURE_MAPPING,
-    label: ECONOMIC_PRESSURE_LABEL,
+    label,
     n_indicators: indicators.length,
     indicators,
   };
+}
+
+/** Economie-only absolute meting (§4.1.9) — behouden voor transparantie. */
+export function computeEconomicPressure(
+  history: Partial<Record<IndicatorCode, DatedValue[]>>,
+  asOf: string,
+): EconomicPressure {
+  return computeAbsolutePressure(ECONOMIC_PRESSURE_CODES, ECONOMIC_PRESSURE_LABEL, history, asOf);
+}
+
+/** BREDE absolute meting (§4.1.11) — economie + energie + weer; publiek hoofdcijfer. */
+export function computeBroadPressure(
+  history: Partial<Record<IndicatorCode, DatedValue[]>>,
+  asOf: string,
+): EconomicPressure {
+  return computeAbsolutePressure(BROAD_PRESSURE_CODES, BROAD_PRESSURE_LABEL, history, asOf);
 }

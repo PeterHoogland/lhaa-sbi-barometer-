@@ -32,12 +32,15 @@ export function ConditionLevelDisplay({
 }) {
   const ctx = buildContext(data);
 
-  // HOOFDCIJFER (amendement §4.1.10): de absolute economische druk "vs normale
-  // tijden". Terugval op het relatieve seizoenspercentiel alleen als de absolute
-  // meting (nog) niet berekend is (te dunne 2010-2019-historie).
-  const eco = data.economic_pressure;
-  const useEco = !!eco && eco.status === "computed" && eco.score !== null;
-  const score = useEco ? (eco!.score as number) : Math.round(ctx.percentile);
+  // HOOFDCIJFER = de BREDE absolute meting "vs normale tijden" (amendement §4.1.11:
+  // economie + energie + weer). Terugval op de economie-only meting (§4.1.10) en
+  // dan het relatieve seizoenspercentiel, mocht de brede meting niet berekend zijn.
+  const measure =
+    data.broad_pressure?.status === "computed" && data.broad_pressure.score !== null
+      ? data.broad_pressure
+      : data.economic_pressure;
+  const useAbs = !!measure && measure.status === "computed" && measure.score !== null;
+  const score = useAbs ? (measure!.score as number) : Math.round(ctx.percentile);
   const cn = (ctx.cn === 5 ? 5 : absoluteCn(score)) as ConditionLevel;
 
   // Volledige update-datum + tijd (Brussel) onder het cijfer (Peter 17/6).
@@ -77,9 +80,9 @@ export function ConditionLevelDisplay({
           Laatste update van De Nationale Stress Index: {dateStr}, {lastRunTime}
         </span>
         <span className="cn-stamp">
-          Dit cijfer meet de economische druk op gezinnen, inflatie, koopkracht, energie en wonen, vergeleken
-          met normale tijden (2010-2019). 50 is het normale niveau van dat decennium; vandaag ligt de druk
-          duidelijk hoger. Het is geen meting van individuele stress.
+          Dit cijfer vergelijkt de omstandigheden vandaag, kosten van levensonderhoud, energie en weer, met
+          normale tijden (2010-2019). 50 is het normale niveau van dat decennium; vandaag ligt de druk
+          duidelijk hoger, vooral door inflatie en energie. Het is geen meting van individuele stress.
         </span>
       </div>
     </section>

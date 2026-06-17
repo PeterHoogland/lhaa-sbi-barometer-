@@ -45,7 +45,7 @@ import {
 } from "./methodology/seasonal-percentile.js";
 import { auditReferenceConsistency, type ReferenceAudit } from "./methodology/reference-audit.js";
 import { SMOOTHING_WINDOW_DAYS, trailingPastSum, smoothTrailing } from "./methodology/smoothing.js";
-import { computeEconomicPressure } from "./methodology/economic-pressure.js";
+import { computeEconomicPressure, computeBroadPressure } from "./methodology/economic-pressure.js";
 import {
   bootstrapDayUncertainty,
   seedFromString,
@@ -98,7 +98,13 @@ import {
 // eerlijk hoe verheven de economische druk is t.o.v. normale tijden. De engine-
 // BEREKENING is ongewijzigd (composiet/percentiel blijven berekend en in de output
 // voor transparantie); de wijziging zit in de gepubliceerde KOP + claim-mitigatie.
-const METHODOLOGY_VERSION = "0.3.6";
+// 0.3.7 (2026-06-17, amendement §4.1.11, Peter GO): het hoofdcijfer verbreed van
+// economie-only naar een BREDE absolute meting (economie + energie + weer), elk
+// tegen zijn eigen 2010-2019-normaal. Weer (hitte/koude) en energie kregen via
+// backfill een echte pre-2020-baseline met exact de live-fetcher-maat. Lost de
+// 87-vs-19-incoherentie op: één coherent breed cijfer. Lucht/nieuws/Wikipedia
+// blijven relatief (geen betrouwbare historische maat), eerlijke datagrens.
+const METHODOLOGY_VERSION = "0.3.7";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {
@@ -572,9 +578,12 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     // afwezig veld is eerlijker dan een verzonnen interval.
     ...(uncertainty ? { uncertainty } : {}),
     // Absolute economische stress-meting "vs normale tijden" (2010-2019),
-    // amendement §4.1.9. Additief en EXPLICIET apart van het brede cijfer;
-    // not_computed bij te dunne baseline (zie methodology/economic-pressure.ts).
+    // amendement §4.1.9. Behouden voor transparantie (economie-only sub-view).
     economic_pressure: computeEconomicPressure(input.history, input.date),
+    // BREDE absolute meting (§4.1.11): economie + energie + weer, elk vs zijn eigen
+    // 2010-2019-normaal. Sinds 0.3.7 het publieke hoofdcijfer (frontend leest
+    // broad_pressure.score). Zie methodology/economic-pressure.ts.
+    broad_pressure: computeBroadPressure(input.history, input.date),
     tier: {
       current: tierResult.tier,
       days_in_tier: tierResult.daysInTier,

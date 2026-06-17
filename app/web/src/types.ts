@@ -180,6 +180,8 @@ export interface DailyOutput {
   };
   /** Absolute economische stress-meting "vs normale tijden" (2010-2019), §4.1.9. */
   economic_pressure?: EconomicPressure;
+  /** BREDE absolute meting (economie + energie + weer), §4.1.11; publiek hoofdcijfer. */
+  broad_pressure?: EconomicPressure;
   /** SBI v0.4 meet- + trigger-laag (optioneel — oudere records missen dit). */
   v04?: V04Output;
 }

@@ -6,6 +6,18 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-17 — Amendement §4.1.11: hoofdcijfer verbreed naar een BREDE absolute meting (economie + energie + weer), methodologie 0.3.7 (Peter GO)
+
+**Aanleiding:** het economie-only hoofdcijfer (§4.1.10, 87) botste zichtbaar met het brede relatieve cijfer (~19) — "87 economisch hoog, de rest 19 laag" klopt niet als verhaal (andere referentie). Peter koos voor de zuivere oplossing: zoveel mogelijk indicatoren absoluut "vs normale tijden" meten, voor één coherent breed cijfer.
+
+**Wijziging:** het hoofdcijfer is nu `broad_pressure` over 8 indicatoren (5 economisch + hitte + koude + energie), elk MAD-z vs zijn eigen 2010-2019-baseline, 100·Φ(z̄). Stand 17/6: **86/100, VERHOOGD** (z̄ +1,09). Weer en energie kregen via backfill een echte pre-2020-baseline met exact de live-fetcher-maat (`backfill_absolute_baselines.py`: open-meteo Tmax/Tmin 2010-2019; energy-charts dag-gemiddelde EUR/MWh 2016-2019). Pre-2020 alleen toegevoegd; 2024+ onaangeroerd; relatieve keten (rolling vensters §4.1.7, eCDF-cap) ziet pre-2020 niet en verandert niet.
+
+**Eerlijkheid:** weer telt MEE als z=0 (vandaag 0, decennium meestal 0; via robustScale, niet uitgesloten) — anders zou weglaten het cijfer naar 93 vertekenen. Datagrens: lucht/nieuws/Wikipedia blijven relatief (geen betrouwbare historische maat voor 2016-2019, Hitte-bug-risico); uitbreidbaar. `economic_pressure` blijft als economie-only sub-view; relatief composiet/percentiel blijven berekend en zichtbaar.
+
+**Discipline:** methodology_version 0.3.6 → **0.3.7**; amendement §4.1.11 + manifest; backfill-script + validatie. Engine **195/195**, tsc schoon. Prototype `broad_absolute_prototype.py`. Frontend leest `broad_pressure.score` (terugval economic_pressure -> relatief).
+
+---
+
 ## 2026-06-17 — Amendement §4.1.10: herdefinitie publieke hoofdcijfer naar de absolute "vs normale tijden"-meting, methodologie 0.3.6 (Peter GO)
 
 **Aanleiding:** het relatieve seizoenspercentiel (§4.1.8) leest in 2026 structureel laag (~13-20) omdat het vergelijkt met de zware crisisjaren 2024-2025. Op een publieke "stress-index" communiceert "13 / RUSTIG" misleidend "geen druk", terwijl de economische druk t.o.v. normale tijden juist uitzonderlijk hoog is. Peter koos (na de eerlijke analyse, drie opties voorgelegd) voor de gedocumenteerde herdefinitie i.p.v. het cijfer manipuleren of herkaderen.

@@ -404,6 +404,11 @@ export interface DailyOutput {
    * dunne baseline (bv. de bridge met een kort raw-history-venster).
    */
   economic_pressure?: EconomicPressure;
+  /**
+   * BREDE absolute meting "vs normale tijden" (economie + energie + weer),
+   * amendement §4.1.11. Sinds 0.3.7 het publieke hoofdcijfer.
+   */
+  broad_pressure?: EconomicPressure;
   /** SBI v0.4 meet- + trigger-laag. Optioneel: ouder geschreven records missen dit. */
   v04?: V04Output;
 }
