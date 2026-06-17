@@ -90,6 +90,32 @@ export interface DayUncertainty {
   seed: number;
 }
 
+/** Absolute economische stress-meting "vs normale tijden" (2010-2019), §4.1.9.
+ *  Apart van het brede cijfer; optioneel (oudere records missen dit). */
+export interface EconomicPressure {
+  status: "computed" | "not_computed";
+  score: number | null;
+  zbar_equal: number | null;
+  zbar_demographic: number | null;
+  score_demographic: number | null;
+  baseline_window: string;
+  mapping: "normal_cdf";
+  label: string;
+  n_indicators: number;
+  indicators: Array<{
+    code: string;
+    plain_name: string;
+    latest_value: number;
+    latest_date: string;
+    baseline_median: number;
+    baseline_mad: number;
+    n_baseline: number;
+    z: number;
+    inverse_coded: boolean;
+  }>;
+  not_computed_reason?: string;
+}
+
 export interface DailyOutput {
   timestamp: string;
   week_iso: string;
@@ -152,6 +178,8 @@ export interface DailyOutput {
     methodology_version: string;
     implementation_stage: string;
   };
+  /** Absolute economische stress-meting "vs normale tijden" (2010-2019), §4.1.9. */
+  economic_pressure?: EconomicPressure;
   /** SBI v0.4 meet- + trigger-laag (optioneel — oudere records missen dit). */
   v04?: V04Output;
 }

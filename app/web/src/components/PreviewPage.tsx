@@ -100,7 +100,7 @@ export function PreviewPage() {
   return (
     <div className="preview-page">
       <header className="preview-header">
-        <div className="brand-name">SBI · BAROMETER</div>
+        <div className="brand-name">SBI · INDEX</div>
         <h1>Banner-preview, alle 5 conditie-niveaus</h1>
         <p className="muted">
           Voor abonnees: zo ziet de banner eruit op elk van de 5 conditie-niveaus.
@@ -135,7 +135,7 @@ export function PreviewPage() {
       </section>
 
       <p className="preview-back">
-        <a href="/">← terug naar live barometer</a>
+        <a href="/">← terug naar live index</a>
       </p>
     </div>
   );

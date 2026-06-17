@@ -1,24 +1,21 @@
 import { useState } from "react";
 import type { IndicatorBreakdown, DomainCode } from "../types";
-import { DOMAIN_LABELS } from "../copy";
-import { isKern } from "../lib/kern";
-import { GRADE_LABELS, stateColor, stateLabelFor, stateIcon } from "./indicator-utils";
+import { DOMAIN_LABELS, DOMAIN_NUMBER } from "../copy";
+import { stateColor, stateLabelFor, stateIcon } from "./indicator-utils";
 import { IndicatorDetail } from "./IndicatorDetail";
-import { observationGranularity } from "../lib/format-date";
 
 const DOMAIN_SUBTITLES: Record<DomainCode, string> = {
-  D1: "Hoe de buitenwereld vandaag aanvoelt",
-  D2: "Hoe makkelijk of zwaar verplaatsen vandaag is",
-  D3: "De druk van geld en prijzen op het gezin",
-  D4: "Wat werk en gezin van ons vragen deze week",
-  D5: "Wat er in het nieuws en in het land gebeurt",
-  D6: "Waar we in de week en het jaar zitten",
+  D1: "De impact van temperatuur, pollen en de lucht die we inademen.",
+  D2: "Verkeers- en mobiliteitsgerelateerde stressfactoren.",
+  D3: "Financiële en economische druk als drijfveren van stress.",
+  D4: "Uitdagingen rond professionele deadlines, de zorg voor kinderen en de rust thuis.",
+  D5: "Wat er gebeurt in de actualiteit en hoe we daarop reageren.",
+  D6: "Waar we in de week en het jaar zitten.",
 };
 
 function IndicatorRow({ ind }: { ind: IndicatorBreakdown }) {
   const [open, setOpen] = useState(false);
   const color = stateColor(ind.state);
-  const prov = provenance(ind);
   return (
     <div className={`ind-row ind-state-${ind.state}`}>
       <button
@@ -29,22 +26,7 @@ function IndicatorRow({ ind }: { ind: IndicatorBreakdown }) {
         <span className="ind-icon" style={{ color }} aria-hidden="true">
           {stateIcon(ind.state)}
         </span>
-        <span className="ind-name">
-          {ind.plain_name}
-          {prov && (
-            <span className={`ind-prov ${prov.cls}`} title="Herkomst van de data">
-              ● {prov.label}
-            </span>
-          )}
-          {ind.grade && (
-            <span
-              className={`ind-grade grade-${ind.grade}`}
-              title={`Bewijskracht ${ind.grade}: ${GRADE_LABELS[ind.grade]}`}
-            >
-              bewijs {ind.grade}
-            </span>
-          )}
-        </span>
+        <span className="ind-name">{ind.plain_name}</span>
         <span className="ind-state" style={{ color }}>{stateLabelFor(ind.state, ind.inverseCoded)}</span>
         <span className="ind-toggle">{open ? "−" : "+"}</span>
       </button>
@@ -53,51 +35,11 @@ function IndicatorRow({ ind }: { ind: IndicatorBreakdown }) {
   );
 }
 
-/** Eerlijke herkomst per indicator (review §1.3): echt / vertraagd (jaar-/maandcijfer) / demo. */
-function provenance(ind: IndicatorBreakdown): { label: string; cls: string } | null {
-  if (ind.state === "ontbreekt") return null; // de status toont al "ontbreekt"
-  if (ind.simulated) return { label: "demo", cls: "prov-demo" };
-  const obs = ind.observation_date;
-  if (observationGranularity(obs) === "maand" || /^\d{4}$/.test(obs)) {
-    return { label: "vertraagd", cls: "prov-lag" };
-  }
-  // Cache-terugval (A8): echte waarde maar de verse fetch mislukte vandaag. Eerlijk
-  // als "verouderd" tonen i.p.v. als verse dagmeting.
-  if (ind.imputed) return { label: "verouderd", cls: "prov-lag" };
-  return { label: "echt", cls: "prov-real" };
-}
-
-/** Honest samenvatting onder de lijst — moet kloppen met de som van de per-rij-labels. */
-function provenanceSummary(breakdown: IndicatorBreakdown[]): string {
-  const demo = breakdown.filter((b) => b.simulated).length;
-  const lag = breakdown.filter(
-    (b) =>
-      !b.simulated &&
-      b.state !== "ontbreekt" &&
-      (observationGranularity(b.observation_date) === "maand" || /^\d{4}$/.test(b.observation_date)),
-  ).length;
-  const cache = breakdown.filter(
-    (b) =>
-      !b.simulated &&
-      b.state !== "ontbreekt" &&
-      b.imputed &&
-      !(observationGranularity(b.observation_date) === "maand" || /^\d{4}$/.test(b.observation_date)),
-  ).length;
-  if (demo === 0 && lag === 0 && cache === 0) return "Elke meting draait op een echte, actuele bron.";
-  const bits: string[] = [];
-  if (demo > 0) bits.push(`${demo} op demo-data (gemarkeerd "demo")`);
-  if (lag > 0) bits.push(`${lag} jaar-/maandcijfers (gemarkeerd "vertraagd")`);
-  if (cache > 0) bits.push(`${cache} op een recente cache-waarde (gemarkeerd "verouderd")`);
-  return `Per meting staat de herkomst erbij: ${bits.join(", ")}; de rest op echte dagbronnen.`;
-}
-
 export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }) {
-  // Grade-D-indicatoren (review §3: media-toon, zoek-/leesaandacht, ontslagen-proxy)
-  // tellen niet mee in het cijfer en worden hier niet getoond. We laten ze
-  // ongelabeld weg; ze blijven wel in de data (en in de trigger-/bronpanelen).
+  // Grade-D-indicatoren (review §3) tellen niet mee in het cijfer en staan niet
+  // in deze publieke lijst.
   const visible = breakdown.filter((b) => b.grade !== "D");
-  const kernShown = visible.filter((b) => isKern(b.code)).length;
-  // A6: D6 (kalendercontext) zit niet meer in de breakdown — lege domeinen niet renderen.
+  // A6: D6 (kalendercontext) zit niet in de breakdown — lege domeinen niet renderen.
   const byDomain = (["D1", "D2", "D3", "D4", "D5", "D6"] as DomainCode[])
     .map((d) => ({
       domain: d,
@@ -108,20 +50,19 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
   return (
     <section className="indicator-list">
       <header className="indicator-list-header">
-        <h2>Wat we allemaal bekijken</h2>
+        <h2>De omstandigheden die we volgen</h2>
         <p className="panel-lead">
-          In het cijfer tellen {visible.length} indicatoren mee, verdeeld over {byDomain.length} levensdomeinen; {kernShown} daarvan
-          vormen de kern-meting. De vier kalendersignalen van het domein Kalender en ritme tonen we apart als
-          context; die tellen niet mee in het cijfer. Daarnaast lopen secundaire/diagnostische signalen mee die
-          evenmin meetellen. Klik er één open om te zien wat we precies meten, waar de data vandaan komt en welke
-          wetenschappelijke onderbouwing erachter zit.
+          Het hoofdcijfer bovenaan meet de economische druk vergeleken met normale tijden. Daarnaast volgen we
+          dagelijks {visible.length} bredere omstandigheden, verdeeld over {byDomain.length} categorieën, zodat je
+          het volledige beeld ziet, ook waar het juist rustig is. Klik op een indicator naar keuze om te zien wat
+          we precies meten, waar onze data vandaan komt en welke wetenschappelijke onderbouwing erachter zit.
         </p>
       </header>
 
       {byDomain.map(({ domain, indicators }) => (
         <div key={domain} className="domain-group">
           <div className={`domain-group-header dh-${domain}`}>
-            <div className="domain-group-code">{domain}</div>
+            <div className="domain-group-code">{DOMAIN_NUMBER[domain]}</div>
             <div className="domain-group-name">{DOMAIN_LABELS[domain]}</div>
             <div className="domain-group-sub">{DOMAIN_SUBTITLES[domain]}</div>
           </div>
@@ -135,7 +76,7 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
 
       <footer className="indicator-list-footer">
         <p>
-          <strong>Hoe lees je dit?</strong>{" "}
+          <strong>Wat betekenen de icoontjes?</strong>{" "}
           <span style={{ color: "var(--c-green)" }}>○ lager dan gewoonlijk</span>
           {" · "}
           <span style={{ color: "var(--c-ink-mute)" }}>● gemiddeld</span>
@@ -145,17 +86,15 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
           <span style={{ color: "var(--c-red)" }}>▲▲ uitzonderlijk hoog</span>
         </p>
         <p className="muted small">
-          Met "gemiddeld" bedoelen we: vergeleken met dezelfde periode in de afgelopen twee jaar.{" "}
-          {provenanceSummary(visible)}
+          Als we spreken over een "gemiddelde", vergelijken we de situatie van vandaag met dezelfde periode in de
+          afgelopen twee jaar. Omdat data uit verschillende kanalen komt, zie je per meting hoe actueel de bron is.
+          De meeste indicatoren draaien op live dagbronnen.
         </p>
         <p className="muted small">
-          <strong>Bewijskracht per indicator:</strong> A = sterk en herhaald onderzoek, B = consistent
-          onderzoek (vooral via welzijn en gezondheid), C = indirect bewijs. De grade zegt hoe sterk het
-          onderzoek achter een indicator is, niet hoe zwaar hij in het cijfer weegt: in het hoofdcijfer
-          wegen de vijf categorieën even zwaar, en binnen een categorie telt elke indicator gelijk mee
-          (een indicator in een kleine categorie weegt daardoor iets zwaarder dan één in een grote).
-          Signalen met grade D meten iets anders dan druk; die tellen niet mee en staan niet in deze
-          lijst. Klik een indicator open voor wat het bewijs precies wel en niet draagt.
+          Elke indicator krijgt ook een wetenschappelijke score (Grade). Dit label (A = ijzersterk onderzoek,
+          B = consistent onderzoek, C = indirect bewijs) toont puur de bewijskracht aan, niet het gewicht van de
+          indicator. Voor het uiteindelijke stresscijfer wegen de 5 hoofdcategorieën namelijk allemaal even zwaar,
+          en binnen die categorieën telt elke indicator voor een gelijk deel mee.
         </p>
       </footer>
     </section>

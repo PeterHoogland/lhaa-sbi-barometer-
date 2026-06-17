@@ -1881,3 +1881,41 @@ main {
   background: var(--c-red-bg);
 }
 .demo-banner .bs-label { color: var(--st-alert); }
+
+/* ============================================================
+   TWEE METINGEN NAAST ELKAAR (Peter 17/6): brede Index + economische druk
+   t.o.v. normale tijden. Label A: apart gelabeld, niet één cijfer.
+   ============================================================ */
+.cn-measures-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+@media (max-width: 720px) {
+  .cn-measures-two { grid-template-columns: 1fr; }
+}
+.cn-measures-two .cn-display { height: 100%; }
+/* Absolute economische meting krijgt haar accent via cn-eco-* (geen cn-level). */
+.cn-eco-green { --cn-accent: var(--st-rust); --cn-tint: #f1f6f2; }
+.cn-eco-amber { --cn-accent: var(--c-amber); --cn-tint: var(--c-amber-bg); }
+.cn-eco-red   { --cn-accent: var(--c-red);   --cn-tint: var(--c-red-bg); }
+
+/* ============================================================
+   OVER LES HAUTES-ALPES (footer-blok, Peter 17/6)
+   ============================================================ */
+.lha-about {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 36px 32px 8px;
+}
+.lha-about h2 { font-size: 1.1rem; margin: 0 0 10px; color: var(--lha-snow); }
+.lha-about p { color: rgba(255, 255, 255, 0.78); line-height: 1.6; margin: 0 0 12px; max-width: 70ch; }
+.lha-about a { color: var(--j20-lila); }
+.lha-about-logos {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}

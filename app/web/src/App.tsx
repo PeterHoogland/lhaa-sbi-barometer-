@@ -11,6 +11,7 @@ import { ContextSignals } from "./components/ContextSignals";
 import { HeroBanner } from "./components/HeroBanner";
 import { LHALogo } from "./components/LHALogo";
 import { ButtonPanels } from "./components/ButtonPanels";
+import { IndicatorList } from "./components/IndicatorList";
 import { enrichKern } from "./lib/explainer";
 import { FOOTER_NOTES } from "./copy";
 
@@ -72,7 +73,7 @@ export function App() {
   }
 
   if (!data) {
-    return <div className="loading">Barometer laadt…</div>;
+    return <div className="loading">De Nationale Stress Index laadt…</div>;
   }
 
   const stamp = new Date(data.timestamp);
@@ -128,24 +129,51 @@ export function App() {
           </CollapseBar>
         </section>
 
+        {/* Hoe is het cijfer opgebouwd? — de volledige indicatorlijst staat nu
+            prominent op de pagina (Peter 17/6), niet meer achter "Expert view". */}
+        <IndicatorList breakdown={data.indicator_breakdown} />
+
         <ButtonPanels data={expertData ?? data} sparkline={sparkline} />
       </main>
 
       <footer className="footer">
-        <div className="footer-inner footer-center">
-          {/* Afzender + bouwer in de onderste balk (Peter 13/6): het LHA-logo
-              verhuisde hierheen uit de header — afzender, geen meetgebied. */}
-          <div className="footer-mark">
+        {/* Over Les Hautes-Alpes (Peter 17/6): afzender + uitnodiging. */}
+        <div className="lha-about">
+          <h2>De Nationale Stress Index is een initiatief van Les Hautes-Alpes.</h2>
+          <p>
+            De Hautes-Alpes verenigen de charme van de Zuid-Franse Alpen met een ongeëvenaard gevoel van
+            ruimte en vrijheid. Deze nog relatief onontdekte regio verrast met een indrukwekkend landschap
+            van bergen, bossen, meren en meer dan 1.800 kilometer aan langeafstandswandelpaden. Wie op zoek
+            is naar rust, vindt er een ontspannen en authentieke sfeer om volop van te genieten.
+          </p>
+          <p>
+            Ontdek wat Les Hautes-Alpes allemaal te bieden heeft op{" "}
+            <a href="https://www.leshautesalpes.be" target="_blank" rel="noopener noreferrer">
+              www.leshautesalpes.be
+            </a>
+            .
+          </p>
+          <div className="lha-about-logos">
+            <span
+              className="footer-indexmark"
+              style={{
+                fontWeight: 600,
+                fontSize: "0.95rem",
+                color: "var(--lha-snow)",
+                border: "1px solid rgba(255,255,255,0.22)",
+                borderRadius: "4px",
+                padding: "8px 14px",
+              }}
+            >
+              De Nationale Stress Index
+            </span>
             <LHALogo size={52} />
-            <div className="footer-mark-text">{FOOTER_NOTES.tagline}</div>
           </div>
-          {/* Peter 13/6: alleen de afzender, geen bouwer-credit. */}
+        </div>
+        <div className="footer-inner footer-center">
           <div className="footer-credits">
-            <span>Een initiatief van Les Hautes Alpes</span>
+            <span>Een initiatief van Les Hautes Alpes · {FOOTER_NOTES.tagline}</span>
           </div>
-          {/* Testmodus-melding verwijderd (Peter 13/6): de campagne-CTA staat op
-              de hoofdsite toch uit, dus de regel beschreef iets onzichtbaars.
-              De mode zelf blijft in data.v04.mode (API) eerlijk zichtbaar. */}
         </div>
       </footer>
     </div>

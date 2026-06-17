@@ -85,13 +85,19 @@ export const BRAND_SAFETY_OVERRIDE = {
 } as const;
 
 export const DOMAIN_LABELS = {
-  D1: "Weer & lucht",
-  D2: "Verkeer & verplaatsingen",
+  D1: "Weer en lucht",
+  D2: "Verkeer en verplaatsing",
   D3: "Economie",
-  D4: "Werk & gezin",
-  D5: "Nieuws & gebeurtenissen",
+  D4: "Werk en gezin",
+  D5: "Nieuws en gebeurtenissen",
   D6: "Kalender",
 } as const;
+
+// Volgnummer per categorie (1-5) voor de publieke koppen "1. Weer en lucht" ...
+// i.p.v. de interne domeincodes D1-D5 (Peter 17/6: geen "D" voor het cijfer).
+export const DOMAIN_NUMBER: Record<string, number> = {
+  D1: 1, D2: 2, D3: 3, D4: 4, D5: 5, D6: 6,
+};
 
 export const METHODOLOGY_DISCLAIMER = [
   "Dit is een teller voor heel België, niet voor jou persoonlijk.",

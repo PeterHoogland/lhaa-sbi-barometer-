@@ -2,7 +2,6 @@ import { useState } from "react";
 import type { DailyOutput, SparklinePoint } from "../types";
 import { Sparkline } from "./Sparkline";
 import { KernIndicators } from "./KernIndicators";
-import { IndicatorList } from "./IndicatorList";
 import { IndicatorZView } from "./IndicatorZView";
 import { SecondarySignals } from "./SecondarySignals";
 import { Methodology } from "./Methodology";
@@ -54,14 +53,14 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
       : []),
     {
       key: "verloop",
-      label: "Hoe was het de laatste 60 dagen?",
-      sub: "Het dag-per-dag-verloop van de teller, met de drempels",
+      label: "Evolutie in de laatste 60 dagen",
+      sub: "De dagelijkse evolutie van De Nationale Stress Index",
       render: () => (
         <section className="sparkline-panel">
           <p className="panel-lead">
-            Elke stip is één dag. Hoe hoger op de grafiek, hoe meer signalen tegelijk hoog staan.
-            De gekleurde banden tonen de drempels: <strong>gemiddeld</strong>,
-            <strong> hoger dan gewoonlijk</strong> (vanaf 70%),
+            Hoe verandert de Index van dag tot dag? Elke stip staat voor een dag. Hoe hoger op de grafiek,
+            hoe meer signalen tegelijk hoog staan. De gekleurde banden tonen de drempels:
+            <strong> gemiddeld</strong>, <strong>hoger dan gewoonlijk</strong> (vanaf 70%),
             <strong> uitzonderlijk hoog</strong> (vanaf 90%).
           </p>
           <Sparkline points={sparkline} />
@@ -90,11 +89,10 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
     },
     {
       key: "expert",
-      label: "Extra Expert view",
-      sub: "Alle metingen op een rij: hoe hoog of laag ze vandaag staan, plus de signalen die we apart in de gaten houden.",
+      label: "Indicatoren als z-scores en losse signalen",
+      sub: "De technische z-weergave per indicator en de secundaire signalen die niet meetellen in het cijfer.",
       render: () => (
         <>
-          <IndicatorList breakdown={data.indicator_breakdown} />
           <IndicatorZView breakdown={data.indicator_breakdown} />
           <SecondarySignals signals={data.secondary_signals} />
         </>
@@ -102,15 +100,14 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
     },
     {
       key: "bronnen",
-      label: "De databronnen die we gebruiken",
-      sub: "Alle externe bronnen waar de cijfers vandaan komen, aanklikbaar",
-      render: () => <AllSources breakdown={data.indicator_breakdown} />,
-    },
-    {
-      key: "wetenschap",
-      label: "Wetenschappelijke bronnen",
-      sub: "De peer-reviewed onderbouwing waarop de SBI gebouwd is",
-      render: () => <ScienceReferences breakdown={data.indicator_breakdown} />,
+      label: "Databronnen en wetenschappelijke bronnen",
+      sub: "Alle externe data-leveranciers en de peer-reviewed onderbouwing, op één plek",
+      render: () => (
+        <>
+          <AllSources breakdown={data.indicator_breakdown} />
+          <ScienceReferences breakdown={data.indicator_breakdown} />
+        </>
+      ),
     },
   ];
 

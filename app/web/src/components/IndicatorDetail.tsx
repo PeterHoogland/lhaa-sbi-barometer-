@@ -45,8 +45,6 @@ export function IndicatorDetail({ ind, hideWhy = false }: { ind: IndicatorBreakd
         </div>
       </div>
 
-      <p className="ind-reach-rationale">{ind.reach_rationale}</p>
-
       {ind.grade && (
         <div className="ind-evidence">
           <div className="ind-meta-label">Bewijskracht</div>

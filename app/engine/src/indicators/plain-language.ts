@@ -42,7 +42,7 @@ export interface PlainLanguageMeta {
 export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   "I-D1-001": {
     plain: "Daglicht",
-    why: "Als de zon vaker schijnt, voelen mensen zich gemiddeld beter.",
+    why: "De hoeveelheid zonlicht heeft invloed op hoe mensen zich voelen.",
     reads: "Hoeveel uur het vandaag licht is.",
     evidenceNote: "Winterdepressie en het effect van lichttherapie zijn in herhaald onderzoek aangetoond. Dat bewijs gaat over individuele stemming; wij rekenen het daglicht zelf uit, een vast seizoenspatroon en geen meting van hoe mensen zich vandaag voelen.",
     unit: "uur",
@@ -54,7 +54,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   },
   "I-D1-002": {
     plain: "Hitte",
-    why: "Hitte maakt slapen moeilijker en zorgt voor extra spanning in het lichaam.",
+    why: "Hitte bemoeilijkt de nachtrust en treft vooral kwetsbare bevolkingsgroepen.",
     reads: "Hoeveel graden warmer dan 30°C het vandaag is.",
     evidenceNote: "Hittegolven gaan in bevolkingsonderzoek samen met meer sterfte en meer psychiatrische opnames. Dat bewijs is het sterkst voor aanhoudende hitte; het effect van een enkele warme dag is kleiner.",
     unit: "°C boven 30",
@@ -66,7 +66,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   },
   "I-D1-003": {
     plain: "Koude",
-    why: "Extreme kou belast de gezondheid én de portefeuille (verwarming).",
+    why: "Naast de impact op gezondheid en gemoedsrust kan kou ons ook financieel belasten.",
     reads: "Hoeveel graden kouder dan -5°C het vannacht was.",
     evidenceNote: "Strenge kou is gekoppeld aan meer gezondheidsklachten en hogere stookkosten. Het bewijs voor het effect op stemming en spanning is minder direct dan bij hitte; daarom een lager bewijsniveau.",
     unit: "°C onder -5",
@@ -88,8 +88,8 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     ],
   },
   "I-D2-001": {
-    plain: "Verkeersdrukte",
-    why: "Lang in de file is geassocieerd met hogere bloeddruk en meer ervaren druk (op individueel niveau); een snelle stijging betekent toenemende druk.",
+    plain: "File's op de baan",
+    why: "Hoeveel files meten we vandaag? Urenlang stilstaan in het verkeer is een bekende stressor.",
     reads: "De verandering van de officiële filezwaarte (jaargemiddelde van het Verkeerscentrum) t.o.v. een jaar eerder. Een jaarcijfer, geen dagmeting.",
     evidenceNote: "Onderzoek bij pendelaars koppelt lang filerijden aan hogere bloeddruk en meer ervaren spanning. Dat is op individueel niveau gemeten, niet als landelijk dagcijfer, en wij gebruiken hier bovendien een jaarcijfer.",
     unit: "% t.o.v. vorig jaar",
@@ -111,8 +111,8 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     ],
   },
   "I-D3-001": {
-    plain: "Inflatie (prijzen stijgen)",
-    why: "Als alles duurder wordt, valt geld korter, dat geeft druk.",
+    plain: "Inflatie (stijgende prijzen)",
+    why: "Prijsstijgingen maken het moeilijker om rond te komen en zorgen voor druk.",
     reads: "Hoeveel duurder de gemiddelde boodschap is dan een jaar geleden.",
     evidenceNote: "Het verband tussen geldzorgen en lager welzijn is breed en herhaald aangetoond. Inflatie raakt vrijwel iedereen tegelijk; hoe zwaar dat weegt verschilt wel per gezin.",
     unit: "% per jaar",
@@ -123,8 +123,8 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     ],
   },
   "I-D3-002": {
-    plain: "Energieprijs",
-    why: "Verwarming en elektriciteit zijn een grote uitgave die je moeilijk kan vermijden.",
+    plain: "Energieprijzen",
+    why: "Verwarming en elektriciteit zijn vaste, moeilijk te vermijden kosten die voor stress kunnen zorgen.",
     reads: "De wekelijkse spotprijs voor gas en elektriciteit.",
     evidenceNote: "Een van de best onderbouwde verbanden in deze index: wie zijn energierekening moeilijk kan betalen, rapporteert in groot Europees onderzoek meetbaar lager welzijn en meer depressieve klachten.",
     unit: "€/MWh",
@@ -148,7 +148,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   },
   "I-D3-005": {
     plain: "Werkloosheid",
-    why: "Hogere werkloosheid betekent dat meer mensen het moeilijk hebben, economische druk op het land.",
+    why: "Hogere werkloosheid betekent meer mensen in moeilijkheden, economische druk en stress in het land.",
     reads: "Het percentage werkzoekenden in de beroepsbevolking.",
     evidenceNote: "Werkloosheid behoort tot de sterkst onderbouwde oorzaken van gezondheids- en welzijnsverlies, ook op bevolkingsniveau. Het cijfer beweegt traag en zegt iets over achtergronddruk, niet over vandaag.",
     unit: "%",
@@ -170,7 +170,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   },
   "I-D3-007": {
     plain: "Consumentenvertrouwen",
-    why: "Als mensen somber zijn over hun financiën en de economie, weegt dat op het hele land. Een laag vertrouwen telt hier als hogere druk.",
+    why: "Somber financieel en economisch sentiment remt de economie, laag vertrouwen verhoogt de druk.",
     reads: "Het maandelijkse consumentenvertrouwen-saldo: hoe optimistisch of pessimistisch gezinnen zijn over hun toekomst.",
     evidenceNote: "Dit is een maandelijkse enquête waarin Belgische gezinnen zelf zeggen hoe somber of optimistisch ze zijn. Dat is een directe vraag aan mensen, maar over hun verwachtingen, niet over stressklachten.",
     unit: "saldo",
@@ -181,7 +181,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   },
   "I-D4-001": {
     plain: "Werk-deadlines",
-    why: "Bepaalde weken pieken samen, belastingaangifte, kwartaaleinde, jaareinde.",
+    why: "Piekende werkeisen, belastingaangifte, kwartaaleinde, jaareinde.",
     reads: "Hoeveel grote deadlines er deze week samenvallen.",
     evidenceNote: "Dat piekende werkeisen belastend zijn, is goed onderbouwd in werkdrukonderzoek. Wanneer die pieken precies vallen, leiden we af uit de kalender; dat deel is een aanname, geen meting.",
     unit: "score 0–3",
@@ -192,8 +192,8 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     ],
   },
   "I-D4-002": {
-    plain: "Schoolvakantie",
-    why: "Vakantie zonder opvang vraagt extra puzzelwerk van ouders.",
+    plain: "Schoolvakanties",
+    why: "Zonder opvang in de vakantie komt er extra organisatie bij ouders kijken.",
     reads: "Of we in een schoolvakantie zitten, hoe meer dagen nog te gaan hoe zwaarder.",
     evidenceNote: "De combinatie van werk en kinderopvang is een gedocumenteerde belasting voor ouders. Dat een specifieke vakantieweek zwaarder is, leiden we af uit de kalender; dat deel is een aanname, geen meting.",
     unit: "score 0–2",
@@ -204,7 +204,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   },
   "I-D5-001": {
     plain: "Hoe negatief is het nieuws?",
-    why: "Hoe negatief de toon van het Belgische nieuws is. Veel negatief nieuws hangt samen met een gespannener, somberder stemming bij de bevolking. Mediatoon blijft wel een indirecte maat voor druk; daarom krijgt deze indicator een laag bewijsniveau.",
+    why: "Negatief nieuws hangt samen met een somberdere stemming bij de bevolking. (Omdat mediatoon slechts een indirecte maat voor druk is, krijgt deze indicator een lager bewijsniveau.)",
     reads: "We meten de gemiddelde toon van het Belgische nieuws via GDELT, een wetenschappelijk project dat wereldwijd nieuwsberichten leest en de toon ervan scoort. Het grote voordeel: GDELT heeft een echte historie van twee jaar, zodat we vandaag eerlijk kunnen vergelijken met hoe negatief het nieuws gewoonlijk is. Daarnaast lezen we elk uur de titels en intro's van dertien Belgische RSS-bronnen met het Pattern.nl-valentielexicon (Universiteit Antwerpen, 3.000+ woorden, peer-reviewed) en wegen we die naar het leeftijdsprofiel van elk publiek. Bijna-duplicaten worden er eerst uitgefilterd (Jaccard ≥ 0,8), zodat één gebeurtenis niet tienvoudig telt. Per cyclus bewaren we de meest negatieve headlines, zodat elk hoog cijfer terug te leiden is naar concrete koppen.",
     evidenceNote: "Mensen reageren aantoonbaar sterker op negatief nieuws dan op positief nieuws. Maar het beste experiment vond geen direct effect van nieuws op stresshormonen, alleen een verhoogde gevoeligheid voor een latere stressor bij een kleine groep. Mediatoon is dus een indirecte aanwijzing; vandaar het lage bewijsniveau.",
     unit: "toon-score",
@@ -218,7 +218,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
   },
   "I-D5-002": {
     plain: "Hoeveel mensen lezen over stress?",
-    why: "Hoe vaak mensen informatie opzoeken over stress, burn-out of slaapproblemen, vertelt iets over wat er leeft. (Niet perfect, maar wel een bruikbare aanwijzing.)",
+    why: "Hoe vaak zoeken mensen informatie op over stress, burn-out of slaapproblemen?",
     reads: "We tellen elke dag hoe vaak zes Nederlandstalige Wikipedia-artikels over stress-thema's worden bekeken: Stress, Burn-out, Depressie, Angststoornis, Overspannenheid en Slapeloosheid. We delen dat door het totale Wikipedia-verkeer van die dag, zodat alleen de relatieve aandacht voor stress telt en niet de algemene groei of krimp van Wikipedia. Daarna nemen we het gemiddelde over zeven dagen, zodat het weekendeffect wegvalt. We gebruiken Wikipedia in plaats van Google Trends omdat Google zoekdata blokkeert voor servers, terwijl Wikipedia open, betrouwbaar en reproduceerbaar is.",
     evidenceNote: "Lees- en zoekgedrag kan meebewegen met wat er leeft, maar het stijgt ook door een nieuwsbericht of een documentaire. De wetenschap waarschuwt expliciet dat zulke aandachtscijfers geen betrouwbare gezondheidsmeting zijn (zie de Google Flu-waarschuwing bij de bronnen); vandaar het lage bewijsniveau.",
     unit: "per miljoen weergaven",
@@ -230,8 +230,8 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     ],
   },
   "I-D5-003": {
-    plain: "Grote gebeurtenis",
-    why: "Rampen, terreur, of nationale rouw raken een heel land tegelijk.",
+    plain: "Grote negatieve gebeurtenis",
+    why: "Denk aan rampen, terreur, of nationale rouw of andere nieuwsberichten die een heel land tegelijk raken.",
     reads: "Of er recent zo'n gebeurtenis was, met afnemend effect over 7 dagen.",
     evidenceNote: "Acute stressreacties in de bevolking na rampen en aanslagen zijn goed gedocumenteerd, ook bij mensen die het alleen via media volgden. De ernst-score per gebeurtenis is menselijke codering en blijft een inschatting.",
     unit: "magnitude 0–15",
@@ -288,8 +288,8 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     ],
   },
   "I-D1-009": {
-    plain: "Staat het water gevaarlijk hoog?",
-    why: "Hoogwater bedreigt huizen en bezit; de dreiging zelf, ook zonder ramp, veroorzaakt al angst en waakzaamheid.",
+    plain: "Te hoog waterpeil",
+    why: "Hoogwater vormt een risico voor huizen en bezittingen. Die dreiging alleen al kan voor onrust zorgen.",
     reads: "We tellen het debiet (hoeveel water er door de rivieren stroomt) op in Vlaanderen én Wallonië, waaronder de Vesdre en Ourthe die in 2021 overstroomden. Hoe voller de rivieren, hoe groter de overstromingsdruk.",
     evidenceNote: "Bij mensen die een overstroming meemaakten zijn angst- en stressklachten goed gedocumenteerd. Wij meten de dreiging (hoeveel water door de rivieren stroomt), niet een ramp zelf; dat is een stap verwijderd van het bewijs.",
     unit: "m³/s (som)",
@@ -300,8 +300,8 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     ],
   },
   "I-D1-010": {
-    plain: "Hoeveel pollen zit er in de lucht?",
-    why: "Hooikoorts verstoort slaap, concentratie en humeur bij heel veel mensen, een seizoensgebonden maar brede stressor.",
+    plain: "Pollen",
+    why: "Hooikoorts zorgt bij veel mensen voor slaapproblemen en concentratieverlies.",
     reads: "We tellen voor Brussel hoeveel pollenkorrels van vijf plantensoorten in de lucht zweven: els, berk, gras, bijvoet en ambrosia. Meer korrels betekent meer niezen, jeuk en vermoeidheid.",
     evidenceNote: "Hooikoorts verstoort aantoonbaar slaap, concentratie en humeur, maar vooral bij de 20 tot 30 procent van de mensen met een allergie. Het cijfer komt bovendien uit een Europees rekenmodel, niet uit een Belgische telling.",
     unit: "pollenkorrels/m³",
@@ -312,8 +312,8 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     ],
   },
   "I-D2-009": {
-    plain: "Hoeveel treinen rijden er in de soep?",
-    why: "Onaangekondigde spoorvertragingen ontnemen pendelaars de controle over hun tijd en aankomst, een directe dagelijkse stressor.",
+    plain: "Treinvertraging",
+    why: "Onaangekondigde vertragingen maken reizen onzeker en stressvol voor pendelaars.",
     reads: "Het aandeel treinen dat met 6 minuten of meer vertraging aankomt, gemeten op de officiële Infrabel-meetpunten (Brussel en eindbestemmingen), over de meetdag tot 20 uur.",
     evidenceNote: "Onbetrouwbaar pendelen hangt in onderzoek samen met lager welzijn en meer ervaren spanning bij reizigers. Dat bewijs is bij individuele pendelaars verzameld; de vertaling naar een dagcijfer voor het hele land is onze aanname.",
     unit: "% vertraagde treinen",
@@ -324,8 +324,8 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     ],
   },
   "I-D3-009": {
-    plain: "Trekt België meer stroom dan verwacht?",
-    why: "Een stroomnet dat boven de prognose draait is krapper; krapte voedt prijspieken en, zeldzaam, afschakelrisico, een sluimerende collectieve stressor.",
+    plain: "Mogelijke energieschaarste",
+    why: "Een overvol stroomnet kan leiden tot piekprijzen of zelfs stroomuitval. Dit zorgt voor collectieve stress en onzekerheid.",
     reads: "Elia, de netbeheerder, voorspelt elke dag hoeveel stroom België zal verbruiken. Wij delen het echte verbruik door die voorspelling. 1,0 betekent precies zoals verwacht, hoger betekent een drukker net.",
     evidenceNote: "Het bewijs loopt via energie-onzekerheid: onzekerheid over de voorziening en prijspieken drukken het welzijn. Een direct gemeten stressreactie op netdrukte bestaat niet; dit is een afgeleide aanwijzing.",
     unit: "ratio gemeten/voorspeld",

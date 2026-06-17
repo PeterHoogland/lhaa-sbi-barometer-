@@ -8,7 +8,7 @@ export function HeroBanner() {
   return (
     <header className="site-header">
       <div className="hero-top">
-        <div className="hero-brand">De Nationale Stress Barometer</div>
+        <div className="hero-brand">De Nationale Stress Index</div>
       </div>
       <div className="hero-rule" aria-hidden="true" />
       <div className="hero-content">
