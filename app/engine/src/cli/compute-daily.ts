@@ -49,6 +49,7 @@ interface PipelineBatch {
 const SECONDARY_NAMES: Record<string, string> = {
   "I-D5-006S": "Reddit-sentiment (onderstroom-peiling)",
   "I-D2-009S": "Treinverstoringen iRail-teller (ongeplande storingen)",
+  "I-D2-flights": "Vluchtvertragingen Brussel (AeroDataBox, aandeel >= 15 min, in opbouw)",
 };
 
 function loadOrFail(path: string, what: string): string {
