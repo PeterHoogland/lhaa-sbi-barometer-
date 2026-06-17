@@ -7,7 +7,6 @@ import { DemoBanner } from "./components/DemoBanner";
 import { ConditionLevelDisplay } from "./components/ConditionLevelDisplay";
 import { PreviewPage } from "./components/PreviewPage";
 import { TopInfluences } from "./components/TopInfluences";
-import { ContextSignals } from "./components/ContextSignals";
 import { HeroBanner } from "./components/HeroBanner";
 import { LHALogo } from "./components/LHALogo";
 import { ButtonPanels } from "./components/ButtonPanels";
@@ -120,12 +119,6 @@ export function App() {
                   : data.indicator_breakdown
               }
             />
-          </CollapseBar>
-          <CollapseBar
-            label="Context - Niet in het cijfer"
-            sub="De vier kalendersignalen: duiding naast het cijfer, ze tellen niet mee"
-          >
-            <ContextSignals bare signals={data.context_signals ?? []} />
           </CollapseBar>
         </section>
 
