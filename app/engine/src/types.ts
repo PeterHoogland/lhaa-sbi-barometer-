@@ -237,6 +237,53 @@ export interface V04Output {
   };
 }
 
+/**
+ * Absolute economische stress-meting "vs normale tijden" (amendement §4.1.9).
+ *
+ * Een tweede, EXPLICIET aparte meting naast het brede relatieve cijfer. Waar het
+ * brede cijfer een rollend SEIZOENSPERCENTIEL is (hoe ongewoon vs de laatste 24
+ * maanden), meet dit hoe verheven de economische stressoren zijn t.o.v. een VASTE
+ * normale periode (2010-2019). Alleen indicatoren met een echte 2010-2019-historie
+ * tellen mee (de overige domeinen bestaan pas sinds 2024 en hebben geen ijkpunt;
+ * energie I-D3-002 start pas in 2024 en valt er dus ook uit). Mapping: 100*Phi(zbar).
+ *
+ * EERLIJK (bindende label-mitigatie): dit is GEEN "de Nationale Stress Barometer op
+ * dit moment" — dat label hoort bij de brede meting. Dit is "economische druk t.o.v.
+ * normale tijden". Het brede composiet-percentiel kan NIET tegen 2010-2019 (de
+ * meeste indicatoren bestaan niet voor 2024), dus percentile.fixed_2010_2019 blijft
+ * bewust null/not_computed; dit blok is een apart, smaller construct.
+ */
+export interface EconomicPressure {
+  status: "computed" | "not_computed";
+  /** 0-100 = round(100*Phi(zbar_equal)); null wanneer not_computed (harde regel 2). */
+  score: number | null;
+  /** Composiet-z (equal weight, primaire maat) van de meetellende indicatoren. */
+  zbar_equal: number | null;
+  /** Parallel: demografische-reikwijdte-gewogen composiet-z + bijbehorende score. */
+  zbar_demographic: number | null;
+  score_demographic: number | null;
+  /** Vaste baselineperiode, bv. "2010-2019". */
+  baseline_window: string;
+  mapping: "normal_cdf";
+  /** Permanente label-mitigatie; user-facing (geen em-dash, harde regel 9). */
+  label: string;
+  n_indicators: number;
+  indicators: Array<{
+    code: IndicatorCode;
+    plain_name: string;
+    latest_value: number;
+    latest_date: string;
+    baseline_median: number;
+    baseline_mad: number;
+    n_baseline: number;
+    /** z na inverse-codering + winsorize (±3), zoals de brede engine-keten. */
+    z: number;
+    inverse_coded: boolean;
+  }>;
+  /** Reden wanneer status = not_computed (te dunne 2010-2019-historie). */
+  not_computed_reason?: string;
+}
+
 /** Volledig daily-output-record — conform doc 06 §4.1. */
 export interface DailyOutput {
   timestamp: string; // ISO
@@ -351,6 +398,12 @@ export interface DailyOutput {
     methodology_version: string;
     implementation_stage: "minimum_viable_pipeline" | "target_architecture";
   };
+  /**
+   * Absolute economische stress-meting "vs normale tijden" (2010-2019), amendement
+   * §4.1.9. Additief en EXPLICIET apart van het brede cijfer; not_computed bij te
+   * dunne baseline (bv. de bridge met een kort raw-history-venster).
+   */
+  economic_pressure?: EconomicPressure;
   /** SBI v0.4 meet- + trigger-laag. Optioneel: ouder geschreven records missen dit. */
   v04?: V04Output;
 }

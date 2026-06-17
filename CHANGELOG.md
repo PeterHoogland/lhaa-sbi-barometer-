@@ -6,6 +6,52 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-17 — Amendement §4.1.10: herdefinitie publieke hoofdcijfer naar de absolute "vs normale tijden"-meting, methodologie 0.3.6 (Peter GO)
+
+**Aanleiding:** het relatieve seizoenspercentiel (§4.1.8) leest in 2026 structureel laag (~13-20) omdat het vergelijkt met de zware crisisjaren 2024-2025. Op een publieke "stress-index" communiceert "13 / RUSTIG" misleidend "geen druk", terwijl de economische druk t.o.v. normale tijden juist uitzonderlijk hoog is. Peter koos (na de eerlijke analyse, drie opties voorgelegd) voor de gedocumenteerde herdefinitie i.p.v. het cijfer manipuleren of herkaderen.
+
+**Wijziging:** het publieke hoofdgetal van De Nationale Stress Index is voortaan de **absolute economische meting "vs normale tijden"** (`economic_pressure.score`, §4.1.9), niet langer het relatieve percentiel. Stand 17/6: **87/100, VERHOOGD** (z̄ +1,14 vs het decennium 2010-2019). 50 = normaal niveau.
+
+**Eerlijkheid:** bindende claim-mitigatie onder het cijfer (meet economische druk op gezinnen vs 2010-2019, geen individuele stress); harde datagrens (alleen de 5 economische indicatoren met echte pre-2024-historie dragen het cijfer); de bredere omstandigheden blijven zichtbaar als context ("De omstandigheden die we volgen"). De engine-berekening is ongewijzigd: composiet en relatief percentiel blijven berekend en in de output voor transparantie; alleen de gepubliceerde KOP verandert.
+
+**Frontend:** hoofdcijfer = `economic_pressure.score` (ConditionLevelDisplay), met meter (50 = normaal), kicker via de bandschaal, en de claim-mitigatie-regel. Naam overal "De Nationale Stress Index". Indicatorlijst herkaderd naar context.
+
+**Discipline:** methodology_version 0.3.5 → **0.3.6**; amendement §4.1.10 + engine-label + manifest. Engine-tests groen. NB: presentatie-herdefinitie, geen reken-wijziging; een echt brede absolute meting vergt later 2010-2019-baselines voor de niet-economische indicatoren (apart traject).
+
+---
+
+## 2026-06-17 — Nieuwe ECHTE databron: vluchtvertraging Brussel (I-D2-flights, AeroDataBox), secundair (Peter GO)
+
+**Aanleiding:** Peter wil een vluchtvertraging-indicator. De oorspronkelijke gratis EUROCONTROL-bron (ATFM-delay) bleek volledig achter een Cloudflare bot-challenge te zitten — een CI-fetcher (GitHub Actions datacenter-IP) krijgt overal 403, en de publicatie is maandelijks. Geen bruikbare automatische dagbron. Peter koos expliciet voor een betaalde, echte API (geen mocks): AeroDataBox via RapidAPI (gratis BASIC-tier, 600 calls/maand, ruim voldoende).
+
+**Wijziging:** nieuwe fetcher `app/pipeline/pipeline/fetchers/aerodatabox.py`. Maat: aandeel aankomsten >= 15 min vertraagd (%) op Brussels Airport (EBBR), over de volledige vorige meetdag (D-1), via het AeroDataBox FIDS-endpoint (2 calls van 12u). Geannuleerde vluchten en vluchten zonder werkelijke tijd tellen niet in de noemer. Live geverifieerd 2026-06-15: 295 aankomsten, 68 >= 15 min → **23,1%** (mediaan +2 min). Vereist het secret `AERODATABOX_API_KEY` (toegevoegd aan daily.yml).
+
+**SECUNDAIR, niet in het cijfer (bewust):** de gratis tier heeft geen diepe historie-API, dus er is nog geen "vs normaal"-baseline. Net als datex_traffic/stib/delijn/sciensano_pollen start deze bron daarom als secundair signaal dat VOORUIT een echte baseline opbouwt (`append_to_history`); promotie tot gescoorde D2-indicator volgt later via een §4.1-amendement zodra er een baseline is. Een gloednieuwe indicator meteen scoren zou hem op "ontbreekt" zetten én zijn domein verwateren (D2 1/3 → 1/4 met een altijd-missende).
+
+**Geen synthetische fallback (harde regel 1, Peters eis):** ladder = live D-1 → cache (eerlijk gedateerd) → "geen data" (simulated, value 0, nooit een verzonnen vertragingsgetal; uit historie en uit strict-real-output). Sleutel ontbreekt → eerlijk "geen data", geen mock.
+
+**Discipline:** geen scored-set-wijziging (geen registry/types/pre-registratie/manifest-impact). CHANGELOG-only, zoals de andere secundaire bronnen. Pipeline-suite **12** (nieuw `test_aerodatabox.py`, 8 tests). Friendly name in beide dagschrijvers; `AERODATABOX_API_KEY`-passthrough in daily.yml.
+
+---
+
+## 2026-06-17 — Amendement §4.1.9: absolute economische stress-meting "vs normale tijden" (vaste 2010-2019 baseline), methodologie 0.3.5 (Peter GO)
+
+**Aanleiding:** Peter wil hogere cijfers voor de campagne. De lage brede score (~20) is echter grondig onderzocht en ECHT (sessieverslag 07 §2; 2024/2025 was 50-83, 2026 genuinely kalmer) — niet terugdraaien/manipuleren (harde regel 1). De enige eerlijke hogere-cijfer-hefboom is een **absolute** meting tegen normale tijden i.p.v. het rollende relatieve percentiel.
+
+**Wijziging:** nieuw additief, expliciet apart blok `economic_pressure` in de dag-output (`methodology/economic-pressure.ts`). Per economische indicator MAD-z van de laatste waarde tegen de **2010-2019-waarden van dezelfde reeks** (zelfde eenheid, geen STL, inverse-codering + winsorize ±3 zoals de brede keten), equal-weight gemiddeld (parallel demografisch gewogen), gemapt naar 0-100 via de **normale CDF** (`round(100·Φ(z̄))`, z̄=0 → 50). Operationaliseert de in §6.1 al pre-geregistreerde vaste 2010-2019-baseline binnen zijn eerlijke datagrens.
+
+**Harde datagrens:** alléén de vijf economische indicatoren met echte pre-2024-historie tellen mee (inflatie I-D3-001, brandstof I-D2-004, consumentenvertrouwen I-D3-007, werkloosheid I-D3-005, hypotheekrente I-D3-006). Energie I-D3-002 start pas in 2024 en valt eruit; de brede index kan dus géén eerlijke 2010-2019-meting krijgen (`percentile.fixed_2010_2019` blijft null/not_computed).
+
+**Label-eerlijkheid (bindend):** het blok draagt een permanent `label` dat zegt dat dit NIET het brede Barometer-cijfer is, maar "economische druk t.o.v. normale tijden". De hoofd-index op dit cijfer zetten vergt een formele herdefinitie (apart amendement).
+
+**Stand (live historie 2026-06-17):** inflatie z +1,94, brandstof +1,27, consumentenvertrouwen +3,00 (gewinsorized), hypotheek +0,76, werkloosheid **−1,26 (gunstig, meegerekend, niet weggecherrypickt)** → z̄ +1,14 → **score 87** (demografisch 90). Pompt niets op: zakt vanzelf bij een rustiger economie.
+
+**Effect op het brede cijfer:** nul. Geen wijziging aan composiet/percentiel/tier/condition-level/trigger. `not_computed` + `score: null` bij te dunne baseline (harde regel 2).
+
+**Discipline:** methodology_version 0.3.4 → **0.3.5**; amendement §4.1.9 + manifest. Engine **195/195** (nieuw `economic-pressure.test.ts`, 13 tests; was 182). Reproductie-prototype `app/pipeline/analysis/absolute_economic_prototype.py`. Mapping-keuze (normale CDF i.p.v. lineaire compressie) is Peters expliciete beslissing 2026-06-17.
+
+---
+
 ## 2026-06-14 — Amendement §4.1.8: afvlakking van het gepubliceerde percentiel (7-daags trailing gemiddelde), methodologie 0.3.4 (Peter GO)
 
 **Aanleiding:** uitvoering van de afvlak-fix na de whipsaw-diagnose (zie vorige entry). Peter koos het 7-daagse venster.

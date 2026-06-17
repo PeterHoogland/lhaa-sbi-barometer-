@@ -45,6 +45,7 @@ import {
 } from "./methodology/seasonal-percentile.js";
 import { auditReferenceConsistency, type ReferenceAudit } from "./methodology/reference-audit.js";
 import { SMOOTHING_WINDOW_DAYS, trailingPastSum, smoothTrailing } from "./methodology/smoothing.js";
+import { computeEconomicPressure } from "./methodology/economic-pressure.js";
 import {
   bootstrapDayUncertainty,
   seedFromString,
@@ -84,7 +85,20 @@ import {
 // Lost het whipsawen op (composiet had bijna geen persistentie). Ruw composiet
 // blijft zichtbaar (composite.equal); v0.4-pad krijgt dezelfde behandeling bij
 // zijn go-live.
-const METHODOLOGY_VERSION = "0.3.4";
+// 0.3.5 (2026-06-17, amendement §4.1.9, Peter GO): additieve absolute economische
+// stress-meting "vs normale tijden" (vaste 2010-2019 baseline, 100*Phi(zbar),
+// economie-only) als apart `economic_pressure`-blok. Verandert NIETS aan het brede
+// cijfer/percentiel/composiet; operationaliseert de in §6.1 pre-geregistreerde
+// vaste baseline binnen zijn eerlijke datagrens. Zie methodology/economic-pressure.ts.
+// 0.3.6 (2026-06-17, amendement §4.1.10, Peter GO): formele HERDEFINITIE van het
+// publieke hoofdcijfer. De Index toont voortaan de absolute economische meting
+// "vs normale tijden" (economic_pressure.score) als hoofdgetal i.p.v. het relatieve
+// seizoenspercentiel. Reden: het relatieve percentiel leest misleidend laag omdat
+// het tegen de zware crisisjaren 2024-2025 vergelijkt; de absolute meting toont
+// eerlijk hoe verheven de economische druk is t.o.v. normale tijden. De engine-
+// BEREKENING is ongewijzigd (composiet/percentiel blijven berekend en in de output
+// voor transparantie); de wijziging zit in de gepubliceerde KOP + claim-mitigatie.
+const METHODOLOGY_VERSION = "0.3.6";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {
@@ -540,8 +554,10 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
       // §4.1.8: het venster waarover het composiet is afgevlakt vóór dit
       // percentiel (transparant; 0/afwezig zou "ruw" betekenen).
       smoothing_window_days: SMOOTHING_WINDOW_DAYS,
-      // Niet berekend: vereist een aparte vaste 2010–2019 baseline (review §0-bis.1).
-      // Geen kopie van short_24m onder een andere naam publiceren.
+      // Niet berekend: het BREDE composiet kan niet tegen een vaste 2010-2019
+      // baseline (de meeste indicatoren bestaan pas sinds 2024). Blijft eerlijk
+      // null/not_computed (review §0-bis.1). De economie-ONLY variant "vs normale
+      // tijden" leeft apart in output.economic_pressure (amendement §4.1.9).
       fixed_2010_2019: null,
       fixed_2010_2019_status: "not_computed",
       // B2: eerlijk "voorlopig" zolang niet elke gescoorde indicator de
@@ -555,6 +571,10 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     // B3: alleen aanwezig als de bootstrap echt gedraaid heeft (opt-in) — een
     // afwezig veld is eerlijker dan een verzonnen interval.
     ...(uncertainty ? { uncertainty } : {}),
+    // Absolute economische stress-meting "vs normale tijden" (2010-2019),
+    // amendement §4.1.9. Additief en EXPLICIET apart van het brede cijfer;
+    // not_computed bij te dunne baseline (zie methodology/economic-pressure.ts).
+    economic_pressure: computeEconomicPressure(input.history, input.date),
     tier: {
       current: tierResult.tier,
       days_in_tier: tierResult.daysInTier,
