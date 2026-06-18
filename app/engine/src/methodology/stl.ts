@@ -88,3 +88,45 @@ export function stlResidual(
   const seasonal = median(sameSeasonValues);
   return { residual: value - seasonal, seasonalComponent: seasonal, applied: true };
 }
+
+/**
+ * Batch-variant van stlResidual voor een hele reeks. Geeft de residuen van ALLE
+ * punten die "applied" zijn, EXACT equivalent aan
+ *   series.map((p) => stlResidual(p.value, p.date, series))
+ *         .filter((r) => r.applied).map((r) => r.residual)
+ * maar veel sneller: elke datum wordt ÉÉN keer ontleed in een platte numerieke
+ * array, zodat de O(n²) seizoensvergelijking pure rekenkunde is in plaats van n²
+ * Map-lookups (parseDate). Dat domineerde de looptijd bij lange dagreeksen
+ * (bv. de weer-/energie-baseline 2010-2019 in het v0.4 lange venster). Puur een
+ * snelheidsoptimalisatie, geen semantiekwijziging (de tests pinnen de waarden).
+ */
+export function stlResidualSeries(
+  series: Array<{ date: string; value: number }>,
+): number[] {
+  const n = series.length;
+  if (n === 0) return [];
+  const pts = new Array<{ year: number; doy: number; value: number }>(n);
+  const years = new Set<number>();
+  for (let i = 0; i < n; i++) {
+    const pd = parseDate(series[i].date);
+    pts[i] = { year: pd.year, doy: pd.doy, value: series[i].value };
+    years.add(pd.year);
+  }
+  if (years.size < MIN_CYCLES_FOR_STL) return [];
+  const window = 7;
+  const out: number[] = [];
+  for (let i = 0; i < n; i++) {
+    const p = pts[i];
+    const same: number[] = [];
+    for (let j = 0; j < n; j++) {
+      const h = pts[j];
+      if (h.year >= p.year) continue;
+      const ad = Math.abs(h.doy - p.doy);
+      const diff = ad < DAYS_PER_YEAR - ad ? ad : DAYS_PER_YEAR - ad;
+      if (diff <= window) same.push(h.value);
+    }
+    if (same.length < 10) continue; // applied === false → uitgesloten, zoals het origineel
+    out.push(p.value - median(same));
+  }
+  return out;
+}

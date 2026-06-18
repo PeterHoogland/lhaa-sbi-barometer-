@@ -17,7 +17,7 @@
 
 import type { IndicatorMeta } from "../types.js";
 import { computeBaseline, zscore } from "./zscore.js";
-import { stlResidual } from "./stl.js";
+import { stlResidual, stlResidualSeries } from "./stl.js";
 
 export interface HistPoint {
   date: string; // ISO YYYY-MM-DD
@@ -45,27 +45,27 @@ function toUtc(date: string): number {
 
 /** Punten binnen het voortschuivende venster (asOf − months, asOf]. */
 export function sliceTrailing(series: HistPoint[], asOf: string, months: number): HistPoint[] {
-  const asOfTime = toUtc(asOf);
-  const cutoff = new Date(asOfTime);
+  // Perf: bereken de venstergrens één keer als ISO-datumstring en filter met
+  // string-vergelijking (ISO-datums zijn lexicografisch geordend) i.p.v. elke
+  // historiedatum te Date.parse'en. Bij lange baselines scheelt dat miljoenen parses
+  // per warm-up-dag; het resultaat is identiek (zelfde grens, dag-granulariteit).
+  const cutoff = new Date(toUtc(asOf));
   cutoff.setUTCMonth(cutoff.getUTCMonth() - months);
-  const cutoffTime = cutoff.getTime();
-  return series.filter((p) => {
-    const t = toUtc(p.date);
-    return Number.isFinite(t) && t > cutoffTime && t <= asOfTime;
-  });
+  const cutoffDate = cutoff.toISOString().slice(0, 10);
+  return series.filter((p) => p.date > cutoffDate && p.date <= asOf);
 }
 
 /** Aantal jaren dat een (gesorteerde) slice beslaat — voedt baseline_lang_jaren. */
 export function spanYears(slice: HistPoint[]): number {
   if (slice.length < 2) return 0;
-  let min = Infinity;
-  let max = -Infinity;
+  // Perf: bepaal min/max via string-vergelijking (ISO-datums) en parse alleen die twee.
+  let minDate = slice[0].date;
+  let maxDate = slice[0].date;
   for (const p of slice) {
-    const t = toUtc(p.date);
-    if (t < min) min = t;
-    if (t > max) max = t;
+    if (p.date < minDate) minDate = p.date;
+    if (p.date > maxDate) maxDate = p.date;
   }
-  return (max - min) / MS_PER_DAY / DAYS_PER_YEAR;
+  return (toUtc(maxDate) - toUtc(minDate)) / MS_PER_DAY / DAYS_PER_YEAR;
 }
 
 export interface WindowedZ {
@@ -116,10 +116,10 @@ export function windowedZ(
   if (meta.applyStl) {
     const stl = stlResidual(value, asOf, slice);
     if (stl.applied) {
-      const residuals = slice
-        .map((p) => stlResidual(p.value, p.date, slice))
-        .filter((r) => r.applied)
-        .map((r) => r.residual);
+      // Batch (perf): exact equivalent aan de per-punt map+filter, maar zonder de
+      // O(n²) Map-lookups die bij lange dagreeksen (weer/energie-baseline) de
+      // looptijd domineerden.
+      const residuals = stlResidualSeries(slice);
       // Alleen overschakelen op de residu-schaal als er genoeg residuen overblijven.
       if (residuals.length >= MIN_POINTS_FOR_Z) {
         effectiveValue = stl.residual;

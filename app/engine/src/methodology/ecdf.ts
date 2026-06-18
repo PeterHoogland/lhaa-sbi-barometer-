@@ -107,8 +107,13 @@ export function ecdfEligibility(
   asOf: string,
   windowDays: number = SEASONAL_WINDOW_DAYS,
 ): EcdfEligibility {
+  // Perf: vergelijk ISO-datums als string (lexicografisch geordend) i.p.v. elke
+  // historiedatum te Date.parse'en. Bij lange baselines (bv. weer 2010-2019, 3652
+  // punten) scheelt dat miljoenen parses per warm-up-dag; de cutoff wordt één keer
+  // berekend en op dag-granulariteit afgerond (identiek gedrag voor dagdata).
   const cutoffMs = Date.parse(asOf + "T00:00:00Z") - ECDF_MAX_YEARS * 365.25 * 86_400_000;
-  const recent = history.filter((h) => Date.parse(h.date + "T00:00:00Z") >= cutoffMs);
+  const cutoffDate = new Date(cutoffMs).toISOString().slice(0, 10);
+  const recent = history.filter((h) => h.date >= cutoffDate);
   let minDate = "";
   let maxDate = "";
   let n = 0;
