@@ -1,7 +1,6 @@
 name: SBI Test Alert (tijdelijk - na test verwijderen)
 
-# Eenmalige handmatige test van ALLE alarm-kanalen (e-mail, Telegram, WhatsApp).
-# Probeert elk geconfigureerd kanaal; niet-ingestelde kanalen worden overgeslagen.
+# Eenmalige handmatige test van ALLE alarm-kanalen + Telegram-diagnose.
 # Wordt na de test verwijderd. Alleen handmatig te starten (workflow_dispatch).
 on:
   workflow_dispatch: {}
@@ -17,6 +16,37 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
+      - name: Telegram-diagnose (getMe + getUpdates -> juiste chat_id)
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python3 - <<'PY'
+          import os, json, urllib.request
+          tok = os.environ.get("TELEGRAM_BOT_TOKEN","")
+          chat = os.environ.get("TELEGRAM_CHAT_ID","")
+          def call(m):
+              with urllib.request.urlopen(f"https://api.telegram.org/bot{tok}/{m}", timeout=20) as r:
+                  return json.load(r)
+          me = call("getMe").get("result", {})
+          print("BOT getMe -> id:", me.get("id"), "| username: @"+str(me.get("username")))
+          print("Ingestelde TELEGRAM_CHAT_ID == bot-id?", str(me.get("id")) == chat,
+                "(chat_id eindigt op ...%s)" % (chat[-4:] if chat else "leeg"))
+          ups = call("getUpdates").get("result", [])
+          found = {}
+          for u in ups:
+              msg = u.get("message") or u.get("edited_message") or {}
+              c = msg.get("chat", {})
+              if c.get("type") == "private" and not c.get("is_bot"):
+                  found[c.get("id")] = (c.get("first_name",""), c.get("username",""))
+          print("=== JUISTE chat_id(s) — persoonlijke chats die de bot een bericht stuurden ===")
+          for cid,(fn,un) in found.items():
+              print("   >>> CHAT_ID =", cid, " | naam:", fn, " | @"+un)
+          if not found:
+              print("   (leeg: stuur in Telegram een bericht of /start naar je SBI-bot en run opnieuw)")
+          PY
+
       - name: Stuur testmelding via alert.py (alle kanalen)
         working-directory: app/pipeline
         env:
