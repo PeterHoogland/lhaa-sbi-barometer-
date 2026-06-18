@@ -40,6 +40,11 @@ def main_test() -> int:
     ok("CallMeBot (phone+apikey) = whatsapp-kanaal",
        configured_channels({"CALLMEBOT_PHONE": "+32", "CALLMEBOT_APIKEY": "k"}) == ["whatsapp"])
     ok("onvolledige CallMeBot telt niet", configured_channels({"CALLMEBOT_PHONE": "+32"}) == [])
+    ok("Twilio (sid+token+from+to) = twilio-kanaal",
+       configured_channels({"TWILIO_ACCOUNT_SID": "s", "TWILIO_AUTH_TOKEN": "t",
+                            "TWILIO_WHATSAPP_FROM": "+1", "TWILIO_WHATSAPP_TO": "+32"}) == ["twilio"])
+    ok("onvolledige Twilio telt niet",
+       configured_channels({"TWILIO_ACCOUNT_SID": "s", "TWILIO_AUTH_TOKEN": "t"}) == [])
     all_env = {**both, "TELEGRAM_BOT_TOKEN": "t", "TELEGRAM_CHAT_ID": "c",
                "CALLMEBOT_PHONE": "+32", "CALLMEBOT_APIKEY": "k"}
     ok("alle vier kanalen tegelijk", configured_channels(all_env) == ["smtp", "webhook", "telegram", "whatsapp"])

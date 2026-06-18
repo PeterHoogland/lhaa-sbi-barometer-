@@ -15,9 +15,11 @@ kanaal blokkeert het andere niet):
      default 587 STARTTLS). Bv. Gmail: smtp.gmail.com + app-wachtwoord.
   2. Telegram Bot API (gratis). Vereist TELEGRAM_BOT_TOKEN (@BotFather) + TELEGRAM_CHAT_ID.
   3. WhatsApp via de gratis CallMeBot-relay. Vereist CALLMEBOT_PHONE + CALLMEBOT_APIKEY.
-  4. ALERT_WEBHOOK_URL (bv. Zapier/Make "Catch Hook -> e-mail"); bestond al voor
+  4. WhatsApp via Twilio (betaald, betrouwbaar). Vereist TWILIO_ACCOUNT_SID,
+     TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_FROM, TWILIO_WHATSAPP_TO.
+  5. ALERT_WEBHOOK_URL (bv. Zapier/Make "Catch Hook -> e-mail"); bestond al voor
      de healthcheck-canary en wordt hier hergebruikt.
-  5. (buiten dit script) rollende GitHub-issue + rode run -> GitHub-notificatie-
+  6. (buiten dit script) rollende GitHub-issue + rode run -> GitHub-notificatie-
      mail. Dat vangnet blijft altijd staan, ook zonder secrets.
 
 EERLIJK: zonder SMTP-/webhook-secrets kan dit script niet mailen; het zegt dat
@@ -29,6 +31,7 @@ Exit altijd 0: alarmering mag de oorspronkelijke fout nooit maskeren.
 from __future__ import annotations
 
 import argparse
+import base64
 import json
 import os
 import smtplib
@@ -53,6 +56,11 @@ def configured_channels(env: dict[str, str]) -> list[str]:
         channels.append("telegram")
     if env.get("CALLMEBOT_PHONE") and env.get("CALLMEBOT_APIKEY"):
         channels.append("whatsapp")
+    if (
+        env.get("TWILIO_ACCOUNT_SID") and env.get("TWILIO_AUTH_TOKEN")
+        and env.get("TWILIO_WHATSAPP_FROM") and env.get("TWILIO_WHATSAPP_TO")
+    ):
+        channels.append("twilio")
     return channels
 
 
@@ -140,6 +148,31 @@ def send_whatsapp(subject: str, body: str, env: dict[str, str]) -> str:
     return f"whatsapp (callmebot) geaccepteerd (HTTP {_http(urllib.request.Request(url))})"
 
 
+def send_twilio_whatsapp(subject: str, body: str, env: dict[str, str]) -> str:
+    """WhatsApp via Twilio (betaald, betrouwbaar; geen 24u-sandbox-verval bij een
+    goedgekeurde sender). Vereist TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN,
+    TWILIO_WHATSAPP_FROM (de Twilio-sender) en TWILIO_WHATSAPP_TO (ontvanger). Nummers
+    met of zonder 'whatsapp:'-prefix mogen; we normaliseren."""
+    sid = env["TWILIO_ACCOUNT_SID"]
+    token = env["TWILIO_AUTH_TOKEN"]
+
+    def _wa(n: str) -> str:
+        return n if n.startswith("whatsapp:") else "whatsapp:" + n
+
+    data = urllib.parse.urlencode(
+        {
+            "From": _wa(env["TWILIO_WHATSAPP_FROM"]),
+            "To": _wa(env["TWILIO_WHATSAPP_TO"]),
+            "Body": f"{subject}\n\n{body}",
+        }
+    ).encode("utf-8")
+    req = urllib.request.Request(
+        f"https://api.twilio.com/2010-04-01/Accounts/{sid}/Messages.json", data=data
+    )
+    req.add_header("Authorization", "Basic " + base64.b64encode(f"{sid}:{token}".encode()).decode())
+    return f"twilio-whatsapp geaccepteerd (HTTP {_http(req)})"
+
+
 def dispatch(subject: str, body: str, env: dict[str, str], dry_run: bool = False) -> dict[str, str]:
     """Probeer alle geconfigureerde kanalen; rapporteer per kanaal het resultaat.
     Gooit nooit: een alarmkanaal dat faalt wordt gerapporteerd, niet fataal."""
@@ -147,9 +180,8 @@ def dispatch(subject: str, body: str, env: dict[str, str], dry_run: bool = False
     channels = configured_channels(env)
     if not channels:
         results["none"] = (
-            "geen kanalen geconfigureerd (SMTP_*, ALERT_WEBHOOK_URL, "
-            "TELEGRAM_BOT_TOKEN+TELEGRAM_CHAT_ID, of CALLMEBOT_PHONE+CALLMEBOT_APIKEY); "
-            "vangnet = rollende GitHub-issue + rode run"
+            "geen kanalen geconfigureerd (SMTP_*, ALERT_WEBHOOK_URL, TELEGRAM_*, "
+            "CALLMEBOT_*, of TWILIO_*); vangnet = rollende GitHub-issue + rode run"
         )
         return results
     senders = {
@@ -157,6 +189,7 @@ def dispatch(subject: str, body: str, env: dict[str, str], dry_run: bool = False
         "webhook": send_webhook,
         "telegram": send_telegram,
         "whatsapp": send_whatsapp,
+        "twilio": send_twilio_whatsapp,
     }
     for ch in channels:
         if dry_run:

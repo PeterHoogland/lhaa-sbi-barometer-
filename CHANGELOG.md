@@ -6,6 +6,14 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-18 — Alarmering: Twilio-WhatsApp-kanaal toegevoegd (Peter heeft Twilio-abonnement)
+
+**Aanleiding:** CallMeBot (gratis WhatsApp-relay) reageerde niet betrouwbaar; Peter heeft een Twilio-abonnement, wat de betrouwbare route is (geen 24u-sandbox-verval bij een goedgekeurde sender).
+
+**Wijziging:** `pipeline/alert.py` kreeg een Twilio-WhatsApp-kanaal (`send_twilio_whatsapp`, Twilio Messages API met HTTP Basic Auth, alleen stdlib). `configured_channels` detecteert het wanneer `TWILIO_ACCOUNT_SID` + `TWILIO_AUTH_TOKEN` + `TWILIO_WHATSAPP_FROM` + `TWILIO_WHATSAPP_TO` gezet zijn; nummers met of zonder `whatsapp:`-prefix worden genormaliseerd. `dispatch` routeert via de senders-map. De alert-stappen in `daily.yml` + `monitor.yml` geven de 4 Twilio-secrets door. test_alert.py 24 checks. Peter zet de 4 Twilio-secrets (Account SID, Auth Token, WhatsApp-sender, eigen nummer).
+
+---
+
 ## 2026-06-18 — Alarmering: extra ontvanger(s) via ALERT_TO-secret (Peter: frankdebauw@gmail.com mee in cc)
 
 **Wijziging:** de ontvanger van de alarm-mail is instelbaar via de `ALERT_TO`-secret (komma-gescheiden meerdere adressen toegestaan; smtplib stuurt naar elk). Helper `alert_to(env)` met `env.get("ALERT_TO") or DEFAULT_TO` vangt zowel ontbrekende als lege waarde op (default `peter@hoogland.be`). De alert-stappen in `daily.yml` + `monitor.yml` geven `ALERT_TO` door. Adressen blijven zo UIT de (richting OSF/publiek gaande) code. Regressietests toegevoegd (`test_alert.py` 22 checks). Peter zet `ALERT_TO = peter@hoogland.be,frankdebauw@gmail.com`.
