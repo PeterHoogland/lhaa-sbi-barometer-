@@ -6,6 +6,14 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-18 — Fix: alarm-mail crashte op een lege SMTP_PORT (int("") bug)
+
+**Aanleiding:** bij het instellen van de SMTP-alarmmail (Peter zette SMTP_HOST/USER/PASS) bleek bij een live testverzending dat `alert.py` crashte: `invalid literal for int() with base 10: ''`. De workflows geven `SMTP_PORT: ${{ secrets.SMTP_PORT }}` door; is die secret niet gezet, dan is de waarde een LEGE string (niet "afwezig"). `int(env.get("SMTP_PORT", "587"))` gebruikt de default alleen bij afwezigheid, dus `int("")` crashte — de echte alarm-mail in daily.yml/monitor.yml zou dus óók gefaald zijn.
+
+**Wijziging:** `pipeline/alert.py` poort-parsing naar een testbare helper `smtp_port(env)` met `int(env.get("SMTP_PORT") or "587")` — vangt zowel ontbrekende als lege SMTP_PORT op (default 587 STARTTLS). Regressietest toegevoegd in `tests/test_alert.py` (nu 14 checks). Daarna live geverifieerd: testmail verstuurd.
+
+---
+
 ## 2026-06-18 — CI: push-naar-main triggert nu meteen een deploy (Peter)
 
 **Aanleiding:** code-wijzigingen bleven onzichtbaar omdat `daily.yml` alleen op schedule/cron-Worker draaide; die gratis schedulers zijn best-effort en sloegen ticks over, en de zelfherstel-bewaker (monitor.yml) hertriggert op DATA-stilstand, niet op "nieuwste code nog niet gedeployed". Een push kon zo wachten op de volgende geslaagde tick.

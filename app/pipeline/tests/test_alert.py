@@ -9,7 +9,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from pipeline.alert import build_message, configured_channels, dispatch, main  # noqa: E402
+from pipeline.alert import build_message, configured_channels, dispatch, main, smtp_port  # noqa: E402
 
 PASSED = 0
 
@@ -41,6 +41,11 @@ def main_test() -> int:
     msg2 = build_message("ond", "body", {**smtp_env, "ALERT_TO": "ander@x.be"})
     ok("ALERT_TO overschrijft de ontvanger", msg2["To"] == "ander@x.be")
     ok("onderwerp en inhoud staan erin", msg["Subject"] == "ond" and "body" in msg.get_content())
+
+    # --- SMTP-poort: lege string mag niet crashen (regressie 18/6: int("") bug) --
+    ok("lege SMTP_PORT -> 587 (regressie)", smtp_port({"SMTP_PORT": ""}) == 587)
+    ok("ontbrekende SMTP_PORT -> 587", smtp_port({}) == 587)
+    ok("gezette SMTP_PORT wordt gebruikt", smtp_port({"SMTP_PORT": "465"}) == 465)
 
     # --- dispatch (dry-run: nooit echt versturen in tests) ----------------------
     r0 = dispatch("s", "b", {}, dry_run=True)

@@ -57,9 +57,17 @@ def build_message(subject: str, body: str, env: dict[str, str]) -> EmailMessage:
     return msg
 
 
+def smtp_port(env: dict[str, str]) -> int:
+    """SMTP-poort uit de env. `or "587"` vangt zowel een ONTBREKENDE als een LEGE
+    SMTP_PORT op: een workflow die `${{ secrets.SMTP_PORT }}` doorgeeft terwijl die
+    secret niet bestaat levert een lege string (niet "afwezig"), en int("") zou
+    crashen. Default = 587 (STARTTLS)."""
+    return int(env.get("SMTP_PORT") or "587")
+
+
 def send_smtp(subject: str, body: str, env: dict[str, str]) -> str:
     host = env["SMTP_HOST"]
-    port = int(env.get("SMTP_PORT", "587"))
+    port = smtp_port(env)
     msg = build_message(subject, body, env)
     with smtplib.SMTP(host, port, timeout=30) as smtp:
         smtp.starttls(context=ssl.create_default_context())
