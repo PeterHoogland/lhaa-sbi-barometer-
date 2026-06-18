@@ -55,11 +55,19 @@ def configured_channels(env: dict[str, str]) -> list[str]:
     return channels
 
 
+def alert_to(env: dict[str, str]) -> str:
+    """Ontvanger(s) van de alarm-mail; meerdere adressen mogen komma-gescheiden
+    (smtplib stuurt dan naar elk). `or DEFAULT_TO` vangt zowel een ontbrekende ALS
+    een lege ALERT_TO op (een workflow die ${{ secrets.ALERT_TO }} doorgeeft zonder
+    die secret levert een lege string, en een leeg To-veld zou de verzending breken)."""
+    return env.get("ALERT_TO") or DEFAULT_TO
+
+
 def build_message(subject: str, body: str, env: dict[str, str]) -> EmailMessage:
     msg = EmailMessage()
     msg["Subject"] = subject
     msg["From"] = env.get("SMTP_USER", "sbi-monitor")
-    msg["To"] = env.get("ALERT_TO", DEFAULT_TO)
+    msg["To"] = alert_to(env)
     msg.set_content(body)
     return msg
 
@@ -85,7 +93,7 @@ def send_smtp(subject: str, body: str, env: dict[str, str]) -> str:
 
 def send_webhook(subject: str, body: str, env: dict[str, str]) -> str:
     payload = json.dumps(
-        {"to": env.get("ALERT_TO", DEFAULT_TO), "subject": subject, "message": body}
+        {"to": alert_to(env), "subject": subject, "message": body}
     ).encode("utf-8")
     req = urllib.request.Request(
         env["ALERT_WEBHOOK_URL"], data=payload, headers={"Content-Type": "application/json"}

@@ -6,6 +6,12 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-18 — Alarmering: extra ontvanger(s) via ALERT_TO-secret (Peter: frankdebauw@gmail.com mee in cc)
+
+**Wijziging:** de ontvanger van de alarm-mail is instelbaar via de `ALERT_TO`-secret (komma-gescheiden meerdere adressen toegestaan; smtplib stuurt naar elk). Helper `alert_to(env)` met `env.get("ALERT_TO") or DEFAULT_TO` vangt zowel ontbrekende als lege waarde op (default `peter@hoogland.be`). De alert-stappen in `daily.yml` + `monitor.yml` geven `ALERT_TO` door. Adressen blijven zo UIT de (richting OSF/publiek gaande) code. Regressietests toegevoegd (`test_alert.py` 22 checks). Peter zet `ALERT_TO = peter@hoogland.be,frankdebauw@gmail.com`.
+
+---
+
 ## 2026-06-18 — Alarmering: Telegram- en WhatsApp(CallMeBot)-kanaal toegevoegd naast e-mail (Peter)
 
 **Aanleiding:** Peter wil naast de e-mail ook een telefoonmelding bij een storing.
