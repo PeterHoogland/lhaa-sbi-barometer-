@@ -6,6 +6,14 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-18 — CI: push-naar-main triggert nu meteen een deploy (Peter)
+
+**Aanleiding:** code-wijzigingen bleven onzichtbaar omdat `daily.yml` alleen op schedule/cron-Worker draaide; die gratis schedulers zijn best-effort en sloegen ticks over, en de zelfherstel-bewaker (monitor.yml) hertriggert op DATA-stilstand, niet op "nieuwste code nog niet gedeployed". Een push kon zo wachten op de volgende geslaagde tick.
+
+**Wijziging:** `on:` in `daily.yml` kreeg een `push: branches: [main]`-trigger, zodat elke code-push meteen de volledige fetch-build-deploy draait. De CI-data-commits dragen `[skip ci]` en triggeren dus niet (geen lus). De time-guard geldt alleen voor `schedule` (de Time-guard-stap checkt `github.event_name == "schedule"`), dus een bewuste push deployt ook buiten 06-20u BE. Concurrency-groep `deploy-${{ github.ref }}` voorkomt botsende deploys.
+
+---
+
 ## 2026-06-18 — UI/copy: hero-intro herschreven, "Wat speelt vandaag" verwijderd, indicatorlijst hernoemd (Peter)
 
 **Wijziging (Peter, presentatie):** (1) Hero-intro onder de titel vervangen door een nieuwe publieksformulering ("Hoe stressvol is het leven van de Belg op dit moment? ... Dankzij een live, altijd up-to-date cijfer, zie je meteen wanneer het hoog tijd is om even te ontspannen"). De BINDENDE claim-mitigatie ("geen meting van individuele stress") blijft onder het cijfer in `ConditionLevelDisplay` staan (B7-discipline). (2) De uitklapbalk "Wat speelt vandaag het meest mee?" (top-3, TopInfluences) is verwijderd; ongebruikte imports (TopInfluences, enrichKern) opgeruimd. (3) De eerste uitklapbalk onder het cijfer is hernoemd van "De omstandigheden die we volgen" naar **"Bekijk hoe we dit berekenen"**.

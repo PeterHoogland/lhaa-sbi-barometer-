@@ -1,6 +1,12 @@
 name: SBI Daily Update
 
 on:
+  # Code-push naar main deployt METEEN (Peter 18/6: wijzigingen automatisch live,
+  # niet wachten op een grillige scheduler-tick). De CI-data-commits dragen [skip ci]
+  # en triggeren dus niet (geen deploy-lus). De time-guard hieronder geldt alleen voor
+  # 'schedule' (zie de Time-guard-stap), dus een bewuste push deployt ook buiten 06-20u.
+  push:
+    branches: [main]
   schedule:
     # FALLBACK (op :30). De BETROUWBARE uurlijkse trigger is nu de Cloudflare
     # Cron-Worker `lhaa-sbi-cron` (app/cron-worker), die workflow_dispatch exact op
