@@ -6,6 +6,38 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-18 — Datafix: weer/energie-baseline conform §4.1.11 gemaakt + eerlijk per-indicator venster in de output
+
+**Aanleiding:** ketenintegriteit-audit ontdekte dat de gedeployde historie de in §4.1.11 beschreven baselines NIET dekte: weer (I-D1-002/003) had alleen 2019 (325 punten) en energie (I-D3-002) alleen 2017-05..2019 (958 punten), terwijl de output en de frontend "normale tijden (2010-2019)" claimden. Een overspannen claim (prime directive + harde regel 1/9): het label beloofde een decennium dat de data niet droeg.
+
+**Wijziging:** `backfill_absolute_baselines.py` opnieuw gedraaid (de pre-2020-rijen waren nooit volledig geland, vermoedelijk verloren bij een eerdere `git checkout --`). Resultaat, exact de live-fetcher-maat (harde regel 5): I-D1-002/003 nu **2010-01-01..2019-12-31 (3652 punten)**, I-D3-002 nu **2015-12-31..2019-12-31 (1462 punten)** — de data conformeert nu aan het reeds in §4.1.11 vastgelegde venster (weer 2010-2019, energie 2016-2019). 2024+ onaangeroerd, 0 duplicaten. GEEN methodologiewijziging (geen indicator/weging/transform veranderd) → geen nieuw amendement, geen manifest-herberekening.
+
+**Transparantie:** `economic-pressure.ts` zendt nu per indicator het ECHTE `baseline_start`/`baseline_end` (uit de gebruikte baselinedata) i.p.v. een blanket "2010-2019"; energie toont eerlijk 2016-2019. Engine + web `types.ts` bijgewerkt.
+
+**Validatie:** hoofdcijfer blijft **86** (z̄ 1,08), economie 87 — stabiel want hitte/koude dragen vandaag 0 ongeacht baseline en energie blijft op de winsorize-kap (3,0). Engine **195/195**, tsc schoon, fixture hervalideerd.
+
+---
+
+## 2026-06-18 — Perf: v0.4 lange-venster-STL van O(n²) Map-lookups naar batch met één parse per datum (generate-fixture 12 min -> 122 s)
+
+**Aanleiding:** na de weer/energie-backfill (4x grotere dagreeksen) liep `generate-fixture` op van ~150 s naar **12 minuten** — onhoudbaar voor de uurlijkse CI (daily.yml draait generate-fixture). Oorzaak: de v0.4 KERN-laag (hitte/koude/energie zitten in KERN_CODES) berekent per warm-up-dag een lange-venster (120 maanden) STL die voor élk punt `stlResidual(p.value, p.date, slice)` aanriep -> O(slice^2), met per inner-iteratie een `parseDate` Map-lookup. Met de backfilled pre-2020-dagdata in het 120m-venster werden dat miljarden Map-lookups.
+
+**Wijziging:** (1) `stl.ts` kreeg `stlResidualSeries(slice)` — batch-equivalent dat elke datum EEN keer ontleedt in een platte numerieke array, daarna pure rekenkunde; `baseline-window.ts` gebruikt dit i.p.v. de per-punt map. (2) `ecdfEligibility` (ecdf.ts) en `sliceTrailing`/`spanYears` (baseline-window.ts) vergelijken ISO-datums nu als string i.p.v. `Date.parse` per historiedatum. Allemaal zuivere snelheidsoptimalisaties, geen semantiekwijziging.
+
+**Validatie:** engine **195/195** (de v04/smoothing-tests pinnen de residu-waarden = bewijs identiek), generate-fixture **121,8 s** (sneller dan de oude ~150 s baseline), broad-cijfer ongewijzigd 86.
+
+---
+
+## 2026-06-18 — UI: "De omstandigheden die we volgen" achter uitklapbalk, 3 expert-balken onder een knop, gelijke tussenafstand (Peter)
+
+**Wijziging:** (1) De volledige indicatorlijst staat nu achter een `CollapseBar` "De omstandigheden die we volgen" (zelfde stijl als "Wat speelt vandaag het meest mee?"); `IndicatorList` kreeg een `bare`-prop die de dubbele kop weglaat. (2) De drie technische balken (inzichten, z-scores, databronnen) zijn samengevoegd tot een: **"Voor wetenschappers, journalisten en reviewers"** (`ButtonPanels`). (3) Alle uitklapbalken staan nu in EEN `bp-section` (ButtonPanels rendert geen eigen sectie meer) zodat de tussenafstand overal de gelijke 10px-gap is i.p.v. wisselende sectiemarges.
+
+**Copy:** intro van de indicatorlijst en de footer-uitleg bijgewerkt van de oude "economische druk"/"5 categorieen wegen even zwaar" naar de actuele brede 8-indicator-opbouw. Dode `FOOTER`-export uit `Sections.tsx` verwijderd (App.tsx rendert zijn eigen footer). Web `types.ts` gesynchroniseerd met de engine (`reference_audit`, `composite.equal_smoothed`, `percentile.smoothing_window_days`).
+
+**Validatie:** `npm run build` + tsc schoon; visuele preview-check: 6 balken alle ingeklapt 77px (gelijke spacing), "De omstandigheden" klapt correct open/dicht, samengevoegde expert-balk bevat alle drie de secties, geen console-fouten.
+
+---
+
 ## 2026-06-17 — Amendement §4.1.11: hoofdcijfer verbreed naar een BREDE absolute meting (economie + energie + weer), methodologie 0.3.7 (Peter GO)
 
 **Aanleiding:** het economie-only hoofdcijfer (§4.1.10, 87) botste zichtbaar met het brede relatieve cijfer (~19) — "87 economisch hoog, de rest 19 laag" klopt niet als verhaal (andere referentie). Peter koos voor de zuivere oplossing: zoveel mogelijk indicatoren absoluut "vs normale tijden" meten, voor één coherent breed cijfer.

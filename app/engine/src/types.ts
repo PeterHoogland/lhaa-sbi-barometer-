@@ -276,6 +276,10 @@ export interface EconomicPressure {
     baseline_median: number;
     baseline_mad: number;
     n_baseline: number;
+    /** Echte eerste/laatste baselinedatum binnen het referentiedecennium die deze
+     *  indicator bijdraagt (energie reikt maar tot 2016; harde regel 1). */
+    baseline_start: string;
+    baseline_end: string;
     /** z na inverse-codering + winsorize (±3), zoals de brede engine-keten. */
     z: number;
     inverse_coded: boolean;

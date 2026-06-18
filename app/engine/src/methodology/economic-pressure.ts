@@ -169,11 +169,20 @@ export function computeAbsolutePressure(
 
   for (const code of codes) {
     const series = history[code] ?? [];
-    const baseline = series
+    const baselinePoints = series
       .filter((p) => p.date >= ECONOMIC_BASELINE_START && p.date <= ECONOMIC_BASELINE_END)
-      .map((p) => p.value)
-      .filter((v) => Number.isFinite(v));
-    if (baseline.length < MIN_ECONOMIC_BASELINE_POINTS) continue;
+      .filter((p) => Number.isFinite(p.value));
+    if (baselinePoints.length < MIN_ECONOMIC_BASELINE_POINTS) continue;
+    const baseline = baselinePoints.map((p) => p.value);
+    // Eerlijk venster (harde regel 1, geen overspannen claim): de ECHTE eerste/laatste
+    // baselinedatum die deze indicator bijdraagt binnen het referentiedecennium. Energie
+    // reikt bv. maar tot 2016 (energy-charts BE-historie), weer + economie tot 2010.
+    let baselineStart = baselinePoints[0].date;
+    let baselineEnd = baselinePoints[0].date;
+    for (const p of baselinePoints) {
+      if (p.date < baselineStart) baselineStart = p.date;
+      if (p.date > baselineEnd) baselineEnd = p.date;
+    }
 
     const latest = latestAtOrBefore(series, asOf);
     if (!latest) continue;
@@ -205,6 +214,8 @@ export function computeAbsolutePressure(
       baseline_median: round3(med),
       baseline_mad: round3(Number.isFinite(scale) ? scale : 0),
       n_baseline: baseline.length,
+      baseline_start: baselineStart,
+      baseline_end: baselineEnd,
       z: round2(z),
       inverse_coded: meta.inverseCoded,
     });

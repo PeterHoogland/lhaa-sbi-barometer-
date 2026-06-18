@@ -110,6 +110,10 @@ export interface EconomicPressure {
     baseline_median: number;
     baseline_mad: number;
     n_baseline: number;
+    /** Echte eerste/laatste baselinedatum die deze indicator bijdraagt (energie
+     *  reikt maar tot 2016; weer + economie tot 2010). Optioneel: oudere records missen het. */
+    baseline_start?: string;
+    baseline_end?: string;
     z: number;
     inverse_coded: boolean;
   }>;
@@ -127,6 +131,8 @@ export interface DailyOutput {
   };
   composite: {
     equal: number;
+    /** §4.1.8: het 7-daags afgevlakte composiet dat het percentiel voedt. */
+    equal_smoothed?: number;
     evidence_graded: number;
     demographic: number;
     weight_sensitivity: {
@@ -138,12 +144,34 @@ export interface DailyOutput {
   };
   percentile: {
     short_24m: number;
+    /** §4.1.8: het venster waarover het composiet is afgevlakt vóór dit percentiel. */
+    smoothing_window_days?: number;
     fixed_2010_2019: number | null;
     fixed_2010_2019_status?: "not_computed";
     /** B2: true zolang minstens één gescoorde indicator op voorlopige MAD-z draait. */
     normalization_provisional?: boolean;
     /** B2: indicatoren die de eCDF-gate (>=3 jaar seizoenshistorie) haalden. */
     ecdf_active?: string[];
+  };
+  /** Referentie-audit (Peter 14/6): de canary reproduceert het dagpercentiel uit zijn
+   *  eigen referentie. Optioneel: oudere records missen dit veld. */
+  reference_audit?: {
+    methodology_version: string;
+    n_reference: number;
+    reference_mode: "seasonal" | "fallback_full";
+    reference_window_days: number;
+    reference_median: number;
+    reference_sd: number;
+    composite: number;
+    composite_z_vs_reference: number;
+    percentile_published: number;
+    percentile_recomputed: number;
+    reproducible: boolean;
+    degenerate_reference: boolean;
+    thin_reference: boolean;
+    hypersensitive: boolean;
+    verdict: "ok" | "degraded" | "critical";
+    notes: string[];
   };
   /** B3 — alleen aanwezig wanneer de bootstrap echt is uitgevoerd. */
   uncertainty?: DayUncertainty;
