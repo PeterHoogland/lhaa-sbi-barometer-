@@ -1,0 +1,36 @@
+name: SBI Test Alert (tijdelijk - na test verwijderen)
+
+# Eenmalige handmatige test van ALLE alarm-kanalen (e-mail, Telegram, WhatsApp).
+# Probeert elk geconfigureerd kanaal; niet-ingestelde kanalen worden overgeslagen.
+# Wordt na de test verwijderd. Alleen handmatig te starten (workflow_dispatch).
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  test-alert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Stuur testmelding via alert.py (alle kanalen)
+        working-directory: app/pipeline
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          ALERT_TO: ${{ secrets.ALERT_TO }}
+          ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          CALLMEBOT_PHONE: ${{ secrets.CALLMEBOT_PHONE }}
+          CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
+        run: |
+          python -m pipeline.alert \
+            --subject "SBI test-alarm (alle kanalen)" \
+            --body "Test van De Nationale Stress Index. Ontvang je dit op Telegram en/of in je mailbox, dan werkt de alarmering. Geen actie nodig."
