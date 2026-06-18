@@ -6,12 +6,10 @@ import { BrandSafetyBanner } from "./components/BrandSafetyBanner";
 import { DemoBanner } from "./components/DemoBanner";
 import { ConditionLevelDisplay } from "./components/ConditionLevelDisplay";
 import { PreviewPage } from "./components/PreviewPage";
-import { TopInfluences } from "./components/TopInfluences";
 import { HeroBanner } from "./components/HeroBanner";
 import { LHALogo } from "./components/LHALogo";
 import { ButtonPanels } from "./components/ButtonPanels";
 import { IndicatorList } from "./components/IndicatorList";
-import { enrichKern } from "./lib/explainer";
 import { FOOTER_NOTES } from "./copy";
 
 export function App() {
@@ -103,30 +101,15 @@ export function App() {
             <CallToAction tier={data.tier.current} brandSafety={data.brand_safety.flag} /> */}
 
         {/* Alle uitklapbalken in ÉÉN bp-section (Peter 18/6) zodat de tussenafstand
-            overal gelijk is: "Wat speelt vandaag", "De omstandigheden", en de
-            verdiepingsbalken uit ButtonPanels (dat zelf geen sectie meer rendert). */}
-        <section className="bp-section" aria-label="Vandaag, omstandigheden en verdieping">
-          <CollapseBar
-            label="Wat speelt vandaag het meest mee?"
-            sub="De drie indicatoren met vandaag de meeste invloed op het cijfer"
-          >
-            <TopInfluences
-              bare
-              breakdown={
-                // Gate op mode (A3), niet op aanwezigheid: een test-modus-v04 mag de
-                // publieke top-3 nooit voeden, ook niet als een publisher vergeet te strippen.
-                data.v04?.mode === "live"
-                  ? data.v04.kern_breakdown.map((k) => enrichKern(k, data.indicator_breakdown))
-                  : data.indicator_breakdown
-              }
-            />
-          </CollapseBar>
-
-          {/* De volledige indicatorlijst staat sinds Peter 18/6 achter een uitklapbalk;
+            overal gelijk is. "Wat speelt vandaag het meest mee?" is op verzoek van
+            Peter (18/6) verwijderd. */}
+        <section className="bp-section" aria-label="Verdieping en verantwoording">
+          {/* Eerste blok onder het cijfer (Peter 18/6): de volledige indicatorlijst
+              achter "Bekijk hoe we dit berekenen" (was "De omstandigheden die we volgen");
               bare-modus laat de dubbele kop weg. */}
           <CollapseBar
-            label="De omstandigheden die we volgen"
-            sub="De bredere omstandigheden die we dagelijks volgen, per categorie"
+            label="Bekijk hoe we dit berekenen"
+            sub="De omstandigheden die we volgen, per categorie"
           >
             <IndicatorList bare breakdown={data.indicator_breakdown} />
           </CollapseBar>

@@ -6,6 +6,14 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-18 — UI/copy: hero-intro herschreven, "Wat speelt vandaag" verwijderd, indicatorlijst hernoemd (Peter)
+
+**Wijziging (Peter, presentatie):** (1) Hero-intro onder de titel vervangen door een nieuwe publieksformulering ("Hoe stressvol is het leven van de Belg op dit moment? ... Dankzij een live, altijd up-to-date cijfer, zie je meteen wanneer het hoog tijd is om even te ontspannen"). De BINDENDE claim-mitigatie ("geen meting van individuele stress") blijft onder het cijfer in `ConditionLevelDisplay` staan (B7-discipline). (2) De uitklapbalk "Wat speelt vandaag het meest mee?" (top-3, TopInfluences) is verwijderd; ongebruikte imports (TopInfluences, enrichKern) opgeruimd. (3) De eerste uitklapbalk onder het cijfer is hernoemd van "De omstandigheden die we volgen" naar **"Bekijk hoe we dit berekenen"**.
+
+**Noot:** de balk "Context - Niet in het cijfer" was al verwijderd (commit 511463e, 17/6) en is niet opnieuw geraakt. Build + tsc schoon; preview geverifieerd (5 balken, hero-tekst, geen console-fouten).
+
+---
+
 ## 2026-06-18 — Datafix: weer/energie-baseline conform §4.1.11 gemaakt + eerlijk per-indicator venster in de output
 
 **Aanleiding:** ketenintegriteit-audit ontdekte dat de gedeployde historie de in §4.1.11 beschreven baselines NIET dekte: weer (I-D1-002/003) had alleen 2019 (325 punten) en energie (I-D3-002) alleen 2017-05..2019 (958 punten), terwijl de output en de frontend "normale tijden (2010-2019)" claimden. Een overspannen claim (prime directive + harde regel 1/9): het label beloofde een decennium dat de data niet droeg.

@@ -12,14 +12,15 @@ export function HeroBanner() {
       </div>
       <div className="hero-rule" aria-hidden="true" />
       <div className="hero-content">
-        {/* Eerlijke openingszin (formulering Peter 13/6, herzien zelfde dag) —
-            de permanente claim-mitigatie bij de Stress-naam (B7-discipline):
-            we meten omstandigheden die op mensen KUNNEN inwerken, geen gemeten
-            gevoelens. Niet verwijderen of afzwakken zonder nieuwe
-            naamkeuze-beslissing; zie 09_Brand-Message-Style-Guide. */}
+        {/* Hero-intro (Peter 18/6). De BINDENDE claim-mitigatie ("geen meting van
+            individuele stress") staat onder het cijfer in ConditionLevelDisplay en
+            blijft daar staan (B7-discipline, 09_Brand-Message-Style-Guide). */}
         <div className="intro-subtitle">
-          Deze index meet elke dag en elk uur hoe omstandigheden in heel België
-          op mensen kunnen inwerken.
+          Hoe stressvol is het leven van de Belg op dit moment? De Nationale Stress Index meet
+          het via diverse parameters. De index analyseert continu verschillende realtime
+          indicatoren die een directe impact hebben op ons dagelijkse stressniveau. Dankzij een
+          live, altijd up-to-date cijfer, zie je meteen wanneer het hoog tijd is om even te
+          ontspannen.
         </div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
         {/* C3: meetgebied expliciet; de afzender staat in de footer. */}
