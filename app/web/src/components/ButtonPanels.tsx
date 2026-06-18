@@ -68,42 +68,29 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
       ),
     },
     {
-      key: "technisch",
-      label: "Inzichten voor wetenschappers, journalisten en adversariële reviewer",
-      sub: "De volledige meet- en trigger-laag, percentielen en diagnostiek",
-      render: () => (
-        <div className="technical-stack">
-          {data.v04 && <V04Technical v04={data.v04} />}
-          <TierIndicator score={data.percentile.short_24m} />
-          <PercentileDisplay
-            shortP={data.percentile.short_24m}
-            fixedP={data.percentile.fixed_2010_2019}
-            composite={data.composite.equal}
-            evidenceComposite={data.composite.evidence_graded}
-            demographicComposite={data.composite.demographic}
-          />
-          <DomainContributions contributions={data.top_contributing_domains} />
-          <MEDIA_DIAGNOSTIC diagnostic={data.media_cluster_diagnostic} />
-        </div>
-      ),
-    },
-    {
+      // Eén knop voor de volledige expert-/verantwoordingslaag (Peter 18/6): de drie
+      // losse technische balken (inzichten, z-scores, databronnen) staan nu samen
+      // onder deze ene uitklapper.
       key: "expert",
-      label: "Indicatoren als z-scores en losse signalen",
-      sub: "De technische z-weergave per indicator en de secundaire signalen die niet meetellen in het cijfer.",
+      label: "Voor wetenschappers, journalisten en reviewers",
+      sub: "De volledige meetlaag: z-scores, percentielen, diagnostiek, databronnen en wetenschappelijke onderbouwing",
       render: () => (
         <>
+          <div className="technical-stack">
+            {data.v04 && <V04Technical v04={data.v04} />}
+            <TierIndicator score={data.percentile.short_24m} />
+            <PercentileDisplay
+              shortP={data.percentile.short_24m}
+              fixedP={data.percentile.fixed_2010_2019}
+              composite={data.composite.equal}
+              evidenceComposite={data.composite.evidence_graded}
+              demographicComposite={data.composite.demographic}
+            />
+            <DomainContributions contributions={data.top_contributing_domains} />
+            <MEDIA_DIAGNOSTIC diagnostic={data.media_cluster_diagnostic} />
+          </div>
           <IndicatorZView breakdown={data.indicator_breakdown} />
           <SecondarySignals signals={data.secondary_signals} />
-        </>
-      ),
-    },
-    {
-      key: "bronnen",
-      label: "Databronnen en wetenschappelijke bronnen",
-      sub: "Alle externe data-leveranciers en de peer-reviewed onderbouwing, op één plek",
-      render: () => (
-        <>
           <AllSources breakdown={data.indicator_breakdown} />
           <ScienceReferences breakdown={data.indicator_breakdown} />
         </>
@@ -111,8 +98,10 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
     },
   ];
 
+  // Geen eigen bp-section meer (Peter 18/6): App.tsx bundelt alle uitklapbalken in
+  // één bp-section zodat de tussenafstand overal gelijk is. Hier enkel de rijen.
   return (
-    <section className="bp-section" aria-label="Verdieping en verantwoording">
+    <>
       {panels.map((p) => {
         const isOpen = open.has(p.key);
         return (
@@ -132,6 +121,6 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
           </div>
         );
       })}
-    </section>
+    </>
   );
 }

@@ -1,5 +1,4 @@
 import type { DailyOutput } from "../types";
-import { FOOTER_NOTES } from "../copy";
 
 export function MEDIA_DIAGNOSTIC({ diagnostic }: { diagnostic: DailyOutput["media_cluster_diagnostic"] }) {
   return (
@@ -33,24 +32,6 @@ export function MEDIA_DIAGNOSTIC({ diagnostic }: { diagnostic: DailyOutput["medi
   );
 }
 
-export function FOOTER({ methodologyVersion }: { methodologyVersion: string }) {
-  return (
-    <footer className="footer">
-      <div className="footer-row">
-        <span>SBI v{methodologyVersion}</span>
-        <span>·</span>
-        <span>{FOOTER_NOTES.implementationStage}</span>
-      </div>
-      <div className="footer-row muted">{FOOTER_NOTES.methodologyRef}</div>
-      <div className="footer-row muted small">{FOOTER_NOTES.ondersteunend}</div>
-      <div className="footer-row muted small">
-        De volledige methodologie staat beschreven in documenten 00–09 (projectroot).
-        Publicatie van code en pre-registratie (OSF) is voorbereid maar nog niet live.
-      </div>
-      {/* Onderste balk (Peter 13/6): alleen de afzender, geen bouwer-credit. */}
-      <div className="footer-row footer-credits">
-        <span>Een initiatief van Les Hautes Alpes</span>
-      </div>
-    </footer>
-  );
-}
+// FOOTER-component verwijderd (18/6): dood sinds App.tsx zijn eigen <footer> rendert
+// (Peter 17/6). De LHA-afzenderfooter leeft in App.tsx; deze export werd nergens nog
+// geïmporteerd.

@@ -102,9 +102,10 @@ export function App() {
             Heractiveren = deze regel terugzetten:
             <CallToAction tier={data.tier.current} brandSafety={data.brand_safety.flag} /> */}
 
-        {/* Peter 13/6: deze twee blokken staan niet langer open op de pagina
-            maar achter uitklikbalken, in dezelfde stijl als de balken eronder. */}
-        <section className="bp-section" aria-label="Vandaag uitgelicht">
+        {/* Alle uitklapbalken in ÉÉN bp-section (Peter 18/6) zodat de tussenafstand
+            overal gelijk is: "Wat speelt vandaag", "De omstandigheden", en de
+            verdiepingsbalken uit ButtonPanels (dat zelf geen sectie meer rendert). */}
+        <section className="bp-section" aria-label="Vandaag, omstandigheden en verdieping">
           <CollapseBar
             label="Wat speelt vandaag het meest mee?"
             sub="De drie indicatoren met vandaag de meeste invloed op het cijfer"
@@ -120,13 +121,18 @@ export function App() {
               }
             />
           </CollapseBar>
+
+          {/* De volledige indicatorlijst staat sinds Peter 18/6 achter een uitklapbalk;
+              bare-modus laat de dubbele kop weg. */}
+          <CollapseBar
+            label="De omstandigheden die we volgen"
+            sub="De bredere omstandigheden die we dagelijks volgen, per categorie"
+          >
+            <IndicatorList bare breakdown={data.indicator_breakdown} />
+          </CollapseBar>
+
+          <ButtonPanels data={expertData ?? data} sparkline={sparkline} />
         </section>
-
-        {/* Hoe is het cijfer opgebouwd? — de volledige indicatorlijst staat nu
-            prominent op de pagina (Peter 17/6), niet meer achter "Expert view". */}
-        <IndicatorList breakdown={data.indicator_breakdown} />
-
-        <ButtonPanels data={expertData ?? data} sparkline={sparkline} />
       </main>
 
       <footer className="footer">

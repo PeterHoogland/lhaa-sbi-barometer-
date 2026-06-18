@@ -35,7 +35,13 @@ function IndicatorRow({ ind }: { ind: IndicatorBreakdown }) {
   );
 }
 
-export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }) {
+export function IndicatorList({
+  breakdown,
+  bare = false,
+}: {
+  breakdown: IndicatorBreakdown[];
+  bare?: boolean;
+}) {
   // Grade-D-indicatoren (review §3) tellen niet mee in het cijfer en staan niet
   // in deze publieke lijst.
   const visible = breakdown.filter((b) => b.grade !== "D");
@@ -50,9 +56,12 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
   return (
     <section className="indicator-list">
       <header className="indicator-list-header">
-        <h2>De omstandigheden die we volgen</h2>
+        {/* In bare-modus levert de uitklikbalk (CollapseBar) al de kop; de intro
+            blijft als context binnen het opengeklapte paneel. */}
+        {!bare && <h2>De omstandigheden die we volgen</h2>}
         <p className="panel-lead">
-          Het hoofdcijfer bovenaan meet de economische druk vergeleken met normale tijden. Daarnaast volgen we
+          Het hoofdcijfer bovenaan meet de brede druk (kosten van levensonderhoud, energie en weer) vergeleken met
+          normale tijden. Daarnaast volgen we
           dagelijks {visible.length} bredere omstandigheden, verdeeld over {byDomain.length} categorieën, zodat je
           het volledige beeld ziet, ook waar het juist rustig is. Klik op een indicator naar keuze om te zien wat
           we precies meten, waar onze data vandaan komt en welke wetenschappelijke onderbouwing erachter zit.
@@ -93,8 +102,8 @@ export function IndicatorList({ breakdown }: { breakdown: IndicatorBreakdown[] }
         <p className="muted small">
           Elke indicator krijgt ook een wetenschappelijke score (Grade). Dit label (A = ijzersterk onderzoek,
           B = consistent onderzoek, C = indirect bewijs) toont puur de bewijskracht aan, niet het gewicht van de
-          indicator. Voor het uiteindelijke stresscijfer wegen de 5 hoofdcategorieën namelijk allemaal even zwaar,
-          en binnen die categorieën telt elke indicator voor een gelijk deel mee.
+          indicator. Het hoofdcijfer bovenaan telt acht indicatoren (kosten van levensonderhoud, energie en weer)
+          elk even zwaar mee, telkens vergeleken met hun normale niveau in het referentiedecennium.
         </p>
       </footer>
     </section>
