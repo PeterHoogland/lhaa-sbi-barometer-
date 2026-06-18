@@ -34,6 +34,7 @@ import os
 import smtplib
 import ssl
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 from email.message import EmailMessage
@@ -91,6 +92,19 @@ def send_smtp(subject: str, body: str, env: dict[str, str]) -> str:
     return f"mail verstuurd naar {msg['To']} via {host}"
 
 
+def _http(req: urllib.request.Request) -> int:
+    """Voer een HTTP-request uit; bij een foutstatus de RESPONSE-BODY meenemen in de
+    fout. Telegram en CallMeBot zetten de echte reden in de body (bv. 'Forbidden: bot
+    can't initiate conversation with a user') — zonder dit zie je enkel 'HTTP Error 403'
+    en kun je een alarm-kanaal niet diagnosticeren."""
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            return resp.status
+    except urllib.error.HTTPError as e:
+        detail = e.read().decode("utf-8", "replace").strip()[:300]
+        raise RuntimeError(f"HTTP {e.code}: {detail}") from e
+
+
 def send_webhook(subject: str, body: str, env: dict[str, str]) -> str:
     payload = json.dumps(
         {"to": alert_to(env), "subject": subject, "message": body}
@@ -98,8 +112,7 @@ def send_webhook(subject: str, body: str, env: dict[str, str]) -> str:
     req = urllib.request.Request(
         env["ALERT_WEBHOOK_URL"], data=payload, headers={"Content-Type": "application/json"}
     )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return f"webhook geaccepteerd (HTTP {resp.status})"
+    return f"webhook geaccepteerd (HTTP {_http(req)})"
 
 
 def send_telegram(subject: str, body: str, env: dict[str, str]) -> str:
@@ -114,8 +127,7 @@ def send_telegram(subject: str, body: str, env: dict[str, str]) -> str:
         data=payload,
         headers={"Content-Type": "application/json"},
     )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return f"telegram geaccepteerd (HTTP {resp.status})"
+    return f"telegram geaccepteerd (HTTP {_http(req)})"
 
 
 def send_whatsapp(subject: str, body: str, env: dict[str, str]) -> str:
@@ -125,8 +137,7 @@ def send_whatsapp(subject: str, body: str, env: dict[str, str]) -> str:
     url = "https://api.callmebot.com/whatsapp.php?" + urllib.parse.urlencode(
         {"phone": env["CALLMEBOT_PHONE"], "text": f"{subject}\n\n{body}", "apikey": env["CALLMEBOT_APIKEY"]}
     )
-    with urllib.request.urlopen(urllib.request.Request(url), timeout=30) as resp:
-        return f"whatsapp (callmebot) geaccepteerd (HTTP {resp.status})"
+    return f"whatsapp (callmebot) geaccepteerd (HTTP {_http(urllib.request.Request(url))})"
 
 
 def dispatch(subject: str, body: str, env: dict[str, str], dry_run: bool = False) -> dict[str, str]:
