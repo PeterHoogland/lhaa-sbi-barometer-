@@ -6,6 +6,14 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-18 — Alarmering: Telegram- en WhatsApp(CallMeBot)-kanaal toegevoegd naast e-mail (Peter)
+
+**Aanleiding:** Peter wil naast de e-mail ook een telefoonmelding bij een storing.
+
+**Wijziging:** `pipeline/alert.py` kreeg twee extra kanalen naast SMTP + generieke webhook: **Telegram** (Bot API, gratis, geen tussenpartij — secrets `TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID`) en **WhatsApp via CallMeBot** (gratis relay — secrets `CALLMEBOT_PHONE` + `CALLMEBOT_APIKEY`). `configured_channels` detecteert ze, `dispatch` routeert via een senders-map; alle geconfigureerde kanalen worden geprobeerd (een falend kanaal blokkeert de rest niet). Een niet-ingesteld kanaal (lege secret-string) wordt gewoon overgeslagen. De alert-stappen in `daily.yml` + `monitor.yml` geven de 4 nieuwe secrets door. Tests uitgebreid (`test_alert.py` 19 checks: detectie van telegram/whatsapp + alle-vier-tegelijk).
+
+---
+
 ## 2026-06-18 — Fix: alarm-mail crashte op een lege SMTP_PORT (int("") bug)
 
 **Aanleiding:** bij het instellen van de SMTP-alarmmail (Peter zette SMTP_HOST/USER/PASS) bleek bij een live testverzending dat `alert.py` crashte: `invalid literal for int() with base 10: ''`. De workflows geven `SMTP_PORT: ${{ secrets.SMTP_PORT }}` door; is die secret niet gezet, dan is de waarde een LEGE string (niet "afwezig"). `int(env.get("SMTP_PORT", "587"))` gebruikt de default alleen bij afwezigheid, dus `int("")` crashte — de echte alarm-mail in daily.yml/monitor.yml zou dus óók gefaald zijn.

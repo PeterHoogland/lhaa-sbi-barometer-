@@ -34,6 +34,15 @@ def main_test() -> int:
     ok("volledige SMTP = smtp-kanaal", configured_channels(smtp_env) == ["smtp"])
     both = {**smtp_env, "ALERT_WEBHOOK_URL": "https://hook"}
     ok("beide secrets = beide kanalen (redundantie)", configured_channels(both) == ["smtp", "webhook"])
+    ok("Telegram (token+chat_id) = telegram-kanaal",
+       configured_channels({"TELEGRAM_BOT_TOKEN": "t", "TELEGRAM_CHAT_ID": "c"}) == ["telegram"])
+    ok("onvolledige Telegram telt niet", configured_channels({"TELEGRAM_BOT_TOKEN": "t"}) == [])
+    ok("CallMeBot (phone+apikey) = whatsapp-kanaal",
+       configured_channels({"CALLMEBOT_PHONE": "+32", "CALLMEBOT_APIKEY": "k"}) == ["whatsapp"])
+    ok("onvolledige CallMeBot telt niet", configured_channels({"CALLMEBOT_PHONE": "+32"}) == [])
+    all_env = {**both, "TELEGRAM_BOT_TOKEN": "t", "TELEGRAM_CHAT_ID": "c",
+               "CALLMEBOT_PHONE": "+32", "CALLMEBOT_APIKEY": "k"}
+    ok("alle vier kanalen tegelijk", configured_channels(all_env) == ["smtp", "webhook", "telegram", "whatsapp"])
 
     # --- bericht-opbouw --------------------------------------------------------
     msg = build_message("ond", "body", smtp_env)

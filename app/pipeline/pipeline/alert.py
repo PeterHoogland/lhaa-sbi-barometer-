@@ -13,9 +13,11 @@ kanaal blokkeert het andere niet):
   1. SMTP-mail, direct naar ALERT_TO (default peter@hoogland.be).
      Vereist secrets: SMTP_HOST, SMTP_USER, SMTP_PASS (optioneel SMTP_PORT,
      default 587 STARTTLS). Bv. Gmail: smtp.gmail.com + app-wachtwoord.
-  2. ALERT_WEBHOOK_URL (bv. Zapier/Make "Catch Hook -> e-mail"); bestond al voor
+  2. Telegram Bot API (gratis). Vereist TELEGRAM_BOT_TOKEN (@BotFather) + TELEGRAM_CHAT_ID.
+  3. WhatsApp via de gratis CallMeBot-relay. Vereist CALLMEBOT_PHONE + CALLMEBOT_APIKEY.
+  4. ALERT_WEBHOOK_URL (bv. Zapier/Make "Catch Hook -> e-mail"); bestond al voor
      de healthcheck-canary en wordt hier hergebruikt.
-  3. (buiten dit script) rollende GitHub-issue + rode run -> GitHub-notificatie-
+  5. (buiten dit script) rollende GitHub-issue + rode run -> GitHub-notificatie-
      mail. Dat vangnet blijft altijd staan, ook zonder secrets.
 
 EERLIJK: zonder SMTP-/webhook-secrets kan dit script niet mailen; het zegt dat
@@ -32,6 +34,7 @@ import os
 import smtplib
 import ssl
 import sys
+import urllib.parse
 import urllib.request
 from email.message import EmailMessage
 
@@ -45,6 +48,10 @@ def configured_channels(env: dict[str, str]) -> list[str]:
         channels.append("smtp")
     if env.get("ALERT_WEBHOOK_URL"):
         channels.append("webhook")
+    if env.get("TELEGRAM_BOT_TOKEN") and env.get("TELEGRAM_CHAT_ID"):
+        channels.append("telegram")
+    if env.get("CALLMEBOT_PHONE") and env.get("CALLMEBOT_APIKEY"):
+        channels.append("whatsapp")
     return channels
 
 
@@ -87,6 +94,33 @@ def send_webhook(subject: str, body: str, env: dict[str, str]) -> str:
         return f"webhook geaccepteerd (HTTP {resp.status})"
 
 
+def send_telegram(subject: str, body: str, env: dict[str, str]) -> str:
+    """Telegram Bot API (gratis, geen tussenpartij). Vereist TELEGRAM_BOT_TOKEN
+    (van @BotFather) + TELEGRAM_CHAT_ID (jouw chat met de bot)."""
+    token = env["TELEGRAM_BOT_TOKEN"]
+    payload = json.dumps(
+        {"chat_id": env["TELEGRAM_CHAT_ID"], "text": f"{subject}\n\n{body}"}
+    ).encode("utf-8")
+    req = urllib.request.Request(
+        f"https://api.telegram.org/bot{token}/sendMessage",
+        data=payload,
+        headers={"Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return f"telegram geaccepteerd (HTTP {resp.status})"
+
+
+def send_whatsapp(subject: str, body: str, env: dict[str, str]) -> str:
+    """WhatsApp via de gratis CallMeBot-relay. Vereist CALLMEBOT_PHONE (met landcode,
+    bv. +324...) + CALLMEBOT_APIKEY (eenmalig bij CallMeBot opgevraagd). Externe dienst:
+    best-effort, draait naast de andere kanalen (een falen blokkeert de rest niet)."""
+    url = "https://api.callmebot.com/whatsapp.php?" + urllib.parse.urlencode(
+        {"phone": env["CALLMEBOT_PHONE"], "text": f"{subject}\n\n{body}", "apikey": env["CALLMEBOT_APIKEY"]}
+    )
+    with urllib.request.urlopen(urllib.request.Request(url), timeout=30) as resp:
+        return f"whatsapp (callmebot) geaccepteerd (HTTP {resp.status})"
+
+
 def dispatch(subject: str, body: str, env: dict[str, str], dry_run: bool = False) -> dict[str, str]:
     """Probeer alle geconfigureerde kanalen; rapporteer per kanaal het resultaat.
     Gooit nooit: een alarmkanaal dat faalt wordt gerapporteerd, niet fataal."""
@@ -94,16 +128,23 @@ def dispatch(subject: str, body: str, env: dict[str, str], dry_run: bool = False
     channels = configured_channels(env)
     if not channels:
         results["none"] = (
-            "geen mail-/webhook-secrets gezet (SMTP_HOST/SMTP_USER/SMTP_PASS of "
-            "ALERT_WEBHOOK_URL); vangnet = rollende GitHub-issue + rode run"
+            "geen kanalen geconfigureerd (SMTP_*, ALERT_WEBHOOK_URL, "
+            "TELEGRAM_BOT_TOKEN+TELEGRAM_CHAT_ID, of CALLMEBOT_PHONE+CALLMEBOT_APIKEY); "
+            "vangnet = rollende GitHub-issue + rode run"
         )
         return results
+    senders = {
+        "smtp": send_smtp,
+        "webhook": send_webhook,
+        "telegram": send_telegram,
+        "whatsapp": send_whatsapp,
+    }
     for ch in channels:
         if dry_run:
             results[ch] = "dry-run: niet verstuurd"
             continue
         try:
-            results[ch] = send_smtp(subject, body, env) if ch == "smtp" else send_webhook(subject, body, env)
+            results[ch] = senders[ch](subject, body, env)
         except Exception as e:  # noqa: BLE001 — alarmering mag nooit zelf crashen
             results[ch] = f"FAALDE: {e}"
     return results
