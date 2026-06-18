@@ -5,7 +5,7 @@ België zijn op 21 gemeten indicatoren (20 gescoord + 1 diagnostisch) in 5
 domeinen, plus 4 kalendercontext-signalen — weer, economie, nieuws, kalender.
 Niet voor individuele meting; voor het collectief.
 
-🌐 **Live**: [les-hautes-alpes-sbi.surge.sh](https://les-hautes-alpes-sbi.surge.sh)
+🌐 **Live**: [les-hautes-alpes-sbi.brainwolves.workers.dev](https://les-hautes-alpes-sbi.brainwolves.workers.dev)
 
 ## Wat zit waar
 
@@ -47,16 +47,21 @@ cd app/engine && npm run generate-fixture
 cd app/web && npm install && npm run dev
 ```
 
-## Productie-deploy (handmatig)
+## Productie-deploy
 
-```bash
-cd app/web && npm run build && npx surge dist les-hautes-alpes-sbi.surge.sh
-```
+Cloudflare Workers (static assets) via `wrangler` (config: `app/web/wrangler.jsonc`).
+Handmatig: `cd app/web && npm run build && npx wrangler@4 deploy`.
 
-## Automatische dagelijkse update
+## Automatische update + deploy
 
-GitHub Actions cron — zie `.github/workflows/daily.yml`. Vereist één secret:
-- `SURGE_TOKEN` (gegenereerd via `npx surge token`)
+GitHub Actions `.github/workflows/daily.yml` (fetch -> build -> `wrangler deploy` ->
+post-deploy `verify_live`):
+- **Uurlijks** (06-20u BE), getriggerd door de Cloudflare cron-Worker + een GitHub-cron-fallback.
+- **Bij elke push naar `main`** (sinds 18/6): een code-wijziging deployt meteen.
+- `monitor.yml` (elke 20 min) hertriggert zelf bij data-stilstand.
+- Forceren: `gh workflow run daily.yml --ref main`.
+
+Vereist secret: `CLOUDFLARE_API_TOKEN` (zonder wordt de deploy-stap overgeslagen).
 
 ## Welke indicatoren zijn echt vs mock?
 
