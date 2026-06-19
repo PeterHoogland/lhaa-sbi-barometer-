@@ -11383,5 +11383,32 @@
     "link": "https://www.nieuwsblad.be/regio/limburg/hasselt/tiener-gewond-bij-ongeval-in-hasselt/157483922.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-19",
+    "magnitude": 1,
+    "title": "Passagier overleden na zwaar verkeersongeval op A12 in Grimbergen",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/19/f9783a54-9079-4644-95f9-863e151a8b12.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-19",
+    "magnitude": 1,
+    "title": "Ongeval met motor in Houthalen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/houthalen-helchteren/ongeval-met-motor-in-houthalen/157485489.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-19",
+    "magnitude": 1,
+    "title": "Drie gewonden bij twee ongevallen in Genk",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/oudsbergen/drie-gewonden-bij-twee-ongevallen-in-genk/157485363.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
