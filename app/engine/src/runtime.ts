@@ -108,7 +108,11 @@ import {
 // nul-zware weerindicatoren (hitte/koude) in broad_pressure — de spreiding wordt over
 // het niet-nul-regime van de 2010-2019-baseline berekend, zodat een milde warme dag
 // een gradient geeft i.p.v. meteen de +3-kap (onderscheid hittegolf vs mooi weer).
-const METHODOLOGY_VERSION = "0.3.8";
+// 0.3.9 (2026-06-19, amendement §4.1.13, Peter GO): nieuws (I-D5-001 GDELT-negativiteit)
+// toegevoegd aan broad_pressure als 9e indicator, met een echte 2017-2019-baseline
+// (zelfde gdelt_tone_series-maat als de dagwaarde). Het hoofdcijfer beweegt nu mee met
+// de nieuwscyclus (kalm nieuws verlaagt, zwaar nieuws verhoogt).
+const METHODOLOGY_VERSION = "0.3.9";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {

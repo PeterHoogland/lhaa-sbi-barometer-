@@ -6,6 +6,38 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-19 — Nieuws (GDELT-nieuwstoon) toegevoegd aan het brede hoofdcijfer (amendement §4.1.13, methodologie 0.3.9)
+
+**Aanleiding:** Peter wilde negatief nieuws expliciet laten meewegen in het hoofdcijfer. §4.1.11 sloot het uit omdat de RSS/lexicon-meting (secundair) niet reproduceerbaar is voor 2016-2019. Maar de PRIMAIRE I-D5-001 = GDELT-nieuwstoon (`gdelt_tone_series`, negativity = -AvgTone), met een reproduceerbaar GDELT DOC v2-archief tot ~2017.
+
+**Beslissing (Peter GO):** I-D5-001 toegevoegd aan `BROAD_PRESSURE_CODES` (9e indicator). Backfill 2017-2019 GDELT-toon (~910 dagpunten; 2017 Q2-Q3 ontbreekt door GDELT-rate-limiting, voor een niet-seizoensgebonden bron onbezwaarlijk) in `data/history/I-D5-001.json` — ALLEEN pre-2020-rijen toegevoegd; de bevroren 2024-2026-rijen (harde regel 3) bleven byte-voor-byte intact (assert-gecontroleerd, expliciete Peter-go). Zelfde GDELT-maat voor baseline én dagwaarde (schaaldiscipline). Borging: baseline-integriteit-check voor I-D5-001 in `verify_live.py`.
+
+**Effect:** het hoofdcijfer beweegt nu mee met de nieuwscyclus — een kalme nieuwsdag verlaagt het (z -3 → ~81), een normale dag ~ongewijzigd (~91), een zware-nieuwsdag verhoogt het (z +3 → ~94). Bewust gedrag (nieuws is de snelst bewegende bron).
+
+**Eerlijke datagrens (onderzocht via agents 19/6):** pollen (ander model + alleen seizoensskill), trein (ruwe Infrabel-bestanden valideren niet binnen 0,75pp — zelfde reden als de afgewezen 2023-backfill), verkeer (alleen Vlaanderen + login-muur + maatverschil), OV (De Lijn/STIB) en social (geen pre-2024-historie) blijven UIT het hoofdcijfer; ze leven in de relatieve laag.
+
+**Verificatie:** engine tsc + tests, pipeline 12 suites, generate-fixture toont 9 broad-indicatoren.
+
+---
+
+## 2026-06-19 — Brandstof-fetcher: toekomstdatum geklemd (FOD vooruit-gepubliceerde maximumprijs)
+
+**Aanleiding:** in de live-breakdown stond I-D2-004 met `observation_date 2026-06-22` (3 dagen in de toekomst). De FOD publiceert de officiële maximumprijs vooruit; `_try_bestat` pakte de eerste (vooruit-gepubliceerde) rij. `broad_pressure` ving het op (lookahead-veilig: ≤ vandaag), maar de relatieve breakdown toonde de rauwe toekomstdatum.
+
+**Beslissing:** `_try_bestat(max_date)` (`fod_economie.py`) negeert nu toekomst-rijen en neemt de laatste prijs met ingangsdatum ≤ target_date. Het waarde-anker-gedrag (de Eurostat-baseline-aanroep zonder max_date) blijft ongewijzigd.
+
+**Verificatie:** synthetische toekomst-rij geklemd (getest), 12 pipeline-suites groen.
+
+---
+
+## 2026-06-19 — Sciensano-pollensignaal verwijderd (secundair; CAMS dekt pollen al)
+
+**Aanleiding:** Peter — het Sciensano-signaal (Belgisch pollenmeetnet, secundair, in opbouw) is redundant: pollen wordt al gescoord via het Europese CAMS (I-D1-010, in het cijfer). Onderzoek bevestigde bovendien dat Sciensano geen reproduceerbare historische bron heeft.
+
+**Beslissing:** `sciensano_pollen.fetch_sciensano_pollen` uit `run.py` verwijderd (aanroep + import). Secundaire signalen nu 11 (≥ 9, `verify_live` ok).
+
+---
+
 ## 2026-06-19 — Weer-recalibratie: active-regime-schaal voor hitte/koude (amendement §4.1.12, methodologie 0.3.8)
 
 **Aanleiding:** nadat de baseline-trim-bug (hieronder) was gedicht en de complete 2010-2019-weerbaseline weer aanwezig was, bleek dat hitte/koude (0 op >98% van de dagen) met de standaard `robustScale` over alle dagen een minuscule schaal (~0,27) kregen. Daardoor raakte elke milde tropische dag (31°C, waarde 1) meteen de winsorize-kap +3, even zwaar als een 38°C-hittegolf, en kon het hoofdcijfer op een gewone warme dag 7 punten springen (86 → 93). Geen onderscheid tussen mooi weer en een hittegolf.

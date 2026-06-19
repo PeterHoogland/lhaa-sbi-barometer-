@@ -135,6 +135,7 @@ def assess(latest: dict, health: dict | None, now: datetime) -> tuple[list[str],
             "I-D1-002": ("2012-01-01", 3000),  # hitte: 2010-2019 dagdata
             "I-D1-003": ("2012-01-01", 3000),  # koude: 2010-2019 dagdata
             "I-D3-002": ("2017-06-01", 1000),  # energie: 2016-2019 (energy-charts bronlimiet)
+            "I-D5-001": ("2018-01-01", 800),   # nieuws: GDELT 2017-2019 (§4.1.13)
         }
         for code, (max_start, min_n) in baseline_floor.items():
             ind = bp_inds.get(code)

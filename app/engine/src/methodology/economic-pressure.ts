@@ -84,11 +84,12 @@ export const BROAD_PRESSURE_CODES: IndicatorCode[] = [
   "I-D1-002", // hitte: max(0, Tmax - 30)
   "I-D1-003", // koude: max(0, -5 - Tmin)
   "I-D3-002", // energieprijs: dag-gemiddelde EUR/MWh
+  "I-D5-001", // nieuwstoon: GDELT negativity (-AvgTone), baseline 2017-2019 (§4.1.13, Peter GO 19/6)
 ];
 
 /** Bindend, user-facing. Publieke hoofdcijfer-label (§4.1.11). Geen em-dash. */
 export const BROAD_PRESSURE_LABEL =
-  "Brede druk t.o.v. normale tijden (2010-2019): kosten van levensonderhoud, energie en weer. Geen meting van individuele stress.";
+  "Brede druk t.o.v. normale tijden (2010-2019): kosten van levensonderhoud, energie, weer en nieuws. Geen meting van individuele stress.";
 
 export const ECONOMIC_PRESSURE_MAPPING = "normal_cdf" as const;
 

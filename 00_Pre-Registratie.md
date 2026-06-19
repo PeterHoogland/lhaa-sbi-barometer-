@@ -195,6 +195,17 @@ Het publieke hoofdcijfer was het rollende seizoenspercentiel (§4.1.8): "hoe ong
 - **Reikwijdte:** raakt alleen hitte/koude in `broad_pressure`. `economic_pressure` (5 economische) en het relatieve composiet/percentiel zijn ongewijzigd. Gepind in `app/engine/test/economic-pressure.test.ts` ("active-regime schaal voor nul-zware weerindicatoren").
 - **Presentatie:** de uitleg van deze gradient (waarom een hittegolf zwaarder weegt dan een losse warme dag) staat in de publieke per-indicator-uitklap (`plain-language.ts`, hitte/koude) en deze methodologie-annex, niet in het hoofdblok met het cijfer (Peter 2026-06-19).
 
+### 4.1.13 Amendement: nieuws (GDELT-nieuwstoon) toegevoegd aan het brede hoofdcijfer (2026-06-19, Peter GO, methodologie 0.3.9)
+
+§4.1.11 sloot nieuws uit het hoofdcijfer omdat de RSS/lexicon-meting (de secundaire I-D5-001-rss/emotie) niet reproduceerbaar is voor 2016-2019 (geen RSS-archief, geen Pattern.nl-lexicon op oude headlines). Maar de PRIMAIRE I-D5-001 is GDELT-nieuwstoon (`gdelt_tone_series`, negativity = -AvgTone), en die heeft via de GDELT DOC v2-API wél een reproduceerbaar archief tot ~2017. Peter (19/6) wilde negatief nieuws expliciet in het hoofdcijfer meewegen; dat is eerlijk haalbaar omdat baseline en dagwaarde dezelfde GDELT-maat dragen (schaaldiscipline intact). De RSS/lexicon-signalen blijven secundair.
+
+**Regel (vanaf 0.3.9):** I-D5-001 (nieuwsnegativiteits-index, GDELT) is de 9e indicator in `BROAD_PRESSURE_CODES`. Baseline: 2017-2019 GDELT-nieuwstoon (backfill via `gdelt_tone_series`, ~910 dagpunten; 2017 Q2-Q3 ontbreekt door GDELT-rate-limiting, voor een niet-seizoensgebonden bron niet bezwaarlijk). Niet-inverse (hoge negativiteit = meer stress), MAD-z, winsorize ±3, equal-weight zoals de andere acht.
+
+- **Effect:** nieuws beweegt het hoofdcijfer beide kanten op — een kalme nieuwsdag verlaagt het (value 0,53 << baseline-mediaan 1,21 → z = -3 → ~81), een normale dag (value ~1,33 ≈ baseline) laat het ~ongewijzigd (~91), een zware-nieuwsdag verhoogt het (z +3 → ~94). Het hoofdcijfer volgt nu de nieuwscyclus (nieuws is de snelst bewegende bron). Dit is bewust: Peter wilde dat negatief nieuws meeweegt.
+- **Bevroren bestand (harde regel 3):** de backfill voegde ALLEEN pre-2020-rijen toe aan `data/history/I-D5-001.json`; de bevroren 2024-2026-rijen bleven byte-voor-byte intact (assert-gecontroleerd). Expliciete Peter-go 2026-06-19.
+- **Reikwijdte:** raakt alleen `broad_pressure`. `economic_pressure` (5 economische) en het relatieve composiet/percentiel zijn ongewijzigd (I-D5-001 zat daar al in). Geborgd in `verify_live.py` (baseline-integriteit I-D5-001).
+- **Eerlijke datagrens (onderzocht 19/6, agents):** pollen, verkeer, trein, OV (De Lijn/STIB) en social blijven uit het hoofdcijfer — geen reproduceerbaar 2010-2019-archief met dezelfde maat (pollen: ander model + alleen seizoensskill; trein: ruwe Infrabel-bestanden valideren niet binnen 0,75pp, zelfde reden als de afgewezen 2023-backfill; verkeer: alleen Vlaanderen + login-muur + maatverschil; OV/social: bestaan pas sinds 2024). Ze blijven in de relatieve laag.
+
 ---
 
 ## 5. Inclusiecriteria (uit laag 3)

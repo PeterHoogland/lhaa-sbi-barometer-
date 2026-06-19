@@ -16,7 +16,7 @@ from datetime import date, timedelta
 from pathlib import Path
 
 from .util import FetchBatch, DATA_DIR, write_json, daterange, iso
-from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, infrabel, elia, waterinfo, pollen, datex_traffic, google_trends, mastodon, stib, delijn, consumer_confidence, sciensano_pollen, aerodatabox
+from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, infrabel, elia, waterinfo, pollen, datex_traffic, google_trends, mastodon, stib, delijn, consumer_confidence, aerodatabox
 
 
 # Maximaal aantal RECENTE punten dat we per indicator in de doorlopende historie
@@ -146,10 +146,6 @@ def fetch_one_day(d: date) -> FetchBatch:
     batch.add_secondary(stib.fetch_stib_disruptions(d))
     # De Lijn Vlaamse bus/tram-omleidingen (vereist DELIJN_API_KEY-secret). Bouwt historie.
     batch.add_secondary(delijn.fetch_delijn_disruptions(d))
-    # Belgisch pollensignaal (Sciensano AirAllergy) — SECUNDAIR. Echte Belgische
-    # metingen die de meetlat VOORUIT opbouwen (geen historie-API), om CAMS (I-D1-010)
-    # later in het cijfer te vervangen. Tot dan blijft CAMS eerlijk-gelabeld in het cijfer.
-    batch.add_secondary(sciensano_pollen.fetch_sciensano_pollen(d))
     # Vluchtvertraging Brussel (AeroDataBox FIDS, vereist AERODATABOX_API_KEY-secret)
     # — SECUNDAIR. Aandeel aankomsten >= 15 min vertraagd op EBBR; bouwt VOORUIT een
     # echte baseline op om later via amendement een gescoorde D2-indicator te worden

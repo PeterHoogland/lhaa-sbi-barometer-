@@ -152,6 +152,7 @@ def _healthy_broad(weer_start: str = "2010-01-01", weer_n: int = 3652) -> dict:
             ind("I-D1-002", weer_start, weer_n),
             ind("I-D1-003", weer_start, weer_n),
             ind("I-D3-002", "2015-12-31", 1462),
+            ind("I-D5-001", "2017-01-01", 910),
         ],
     }
 

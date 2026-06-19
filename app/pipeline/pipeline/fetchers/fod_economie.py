@@ -73,8 +73,15 @@ def _parse_bestat_dag(dag: str) -> str | None:
         return None
 
 
-def _try_bestat() -> tuple[float, str] | None:
-    """Return (euro_per_l, observation_date_iso) of None."""
+def _try_bestat(max_date: str | None = None) -> tuple[float, str] | None:
+    """Return (euro_per_l, observation_date_iso) of None.
+
+    De FOD publiceert de officiele maximumprijs VOORUIT: de prijs die pas vanaf een
+    toekomstige datum geldt staat al in de be.STAT-view. Geef `max_date` (ISO
+    YYYY-MM-DD) mee om die toekomst-rijen te negeren en de LAATSTE prijs met
+    ingangsdatum <= max_date te nemen, zodat de observation_date nooit in de toekomst
+    ligt (lookahead-veilig; voorkwam een 2026-06-22-datum op 2026-06-19 in de
+    breakdown). Zonder max_date (enkel de waarde-als-anker nodig) telt de eerste match."""
     ok, body = safe_request(
         BESTAT_FUEL_URL, timeout=25,
         headers={"Accept": "application/json"},
@@ -84,21 +91,26 @@ def _try_bestat() -> tuple[float, str] | None:
     facts = body.get("facts")
     if not isinstance(facts, list):
         return None
+    best: tuple[str, float] | None = None  # (datum_iso, prijs), laatste <= max_date
     for fact in facts:
-        if not isinstance(fact, dict):
+        if not isinstance(fact, dict) or fact.get("Product") != BESTAT_PRODUCT:
             continue
-        if fact.get("Product") != BESTAT_PRODUCT:
-            continue
-        price = fact.get("Prijs incl. BTW")
         try:
-            val = float(price)
+            val = float(fact.get("Prijs incl. BTW"))
         except (TypeError, ValueError):
             continue
         if not (0.5 < val < 5.0):
             continue
-        obs = _parse_bestat_dag(fact.get("Dag", "")) or None
-        return round(val, 3), obs
-    return None
+        iso = _parse_bestat_dag(fact.get("Dag", ""))
+        if max_date is None:
+            return round(val, 3), iso or None  # waarde-anker: eerste match volstaat
+        if not iso or iso > max_date:
+            continue  # negeer vooruit-gepubliceerde maximumprijzen
+        if best is None or iso > best[0]:
+            best = (iso, round(val, 3))
+    if best is None:
+        return None
+    return best[1], best[0]
 
 
 def bestat_fuel_series() -> list[dict]:
@@ -226,8 +238,9 @@ def _try_scrape(url: str) -> float | None:
 
 
 def fetch_fuel_prices(target_date: date) -> FetchResult:
-    # 1) be.STAT — officiele dagelijkse maximumprijs (FOD Economie)
-    bestat = _try_bestat()
+    # 1) be.STAT — officiele dagelijkse maximumprijs (FOD Economie). max_date klemt de
+    #    observation_date op <= vandaag (de FOD publiceert de maximumprijs vooruit).
+    bestat = _try_bestat(target_date.isoformat())
     if bestat is not None:
         value, obs = bestat
         return FetchResult(

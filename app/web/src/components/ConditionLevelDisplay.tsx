@@ -80,9 +80,9 @@ export function ConditionLevelDisplay({
           Laatste update van De Nationale Stress Index: {dateStr}, {lastRunTime}
         </span>
         <span className="cn-stamp">
-          Dit cijfer vergelijkt de omstandigheden vandaag, kosten van levensonderhoud, energie en weer, met
-          normale tijden (2010-2019). 50 is het normale niveau van dat decennium; vandaag ligt de druk
-          duidelijk hoger, vooral door inflatie en energie. Het is geen meting van individuele stress.
+          Dit cijfer vergelijkt de omstandigheden vandaag, kosten van levensonderhoud, energie, weer en
+          nieuws, met normale tijden (2010-2019). 50 is het normale niveau van dat decennium; vandaag ligt
+          de druk duidelijk hoger, vooral door inflatie en energie. Het is geen meting van individuele stress.
         </span>
       </div>
     </section>
