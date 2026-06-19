@@ -40,24 +40,6 @@ export const BAND_LABEL: Record<ScoreBand, string> = {
   verhoogd: "VERHOOGD",
   hoog: "UITZONDERLIJK",
 };
-export const BAND_HEADLINE: Record<ScoreBand, string> = {
-  laag: "Vandaag is een rustige dag.",
-  gemiddeld: "Vandaag is een gewone dag.",
-  verhoogd: "Vandaag is het drukker dan gewoonlijk.",
-  hoog: "Vandaag staan veel signalen uitzonderlijk hoog.",
-};
-export const BAND_SUBLINE: Record<ScoreBand, string> = {
-  laag: "Lagere druk dan gewoonlijk voor deze tijd van het jaar.",
-  gemiddeld: "Geen verhoogde druk op de hele bevolking.",
-  verhoogd: "Meerdere stress-factoren staan verhoogd voor deze tijd van het jaar.",
-  hoog: "We zitten in de zwaarste 10% van de vergelijkbare dagen.",
-};
-export const BAND_COLOR: Record<ScoreBand, "green" | "amber" | "red"> = {
-  laag: "green",
-  gemiddeld: "green",
-  verhoogd: "amber",
-  hoog: "red",
-};
 
 export const LES_HAUTES_ALPES_CTA = {
   green: null,

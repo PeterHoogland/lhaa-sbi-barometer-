@@ -7,7 +7,6 @@ import { SecondarySignals } from "./SecondarySignals";
 import { Methodology } from "./Methodology";
 import { AllSources } from "./AllSources";
 import { ScienceReferences } from "./ScienceReferences";
-import { TierIndicator } from "./TierIndicator";
 import { PercentileDisplay } from "./PercentileDisplay";
 import { DomainContributions } from "./DomainContributions";
 import { MEDIA_DIAGNOSTIC } from "./Sections";
@@ -78,7 +77,6 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
         <>
           <div className="technical-stack">
             {data.v04 && <V04Technical v04={data.v04} />}
-            <TierIndicator score={data.percentile.short_24m} />
             <PercentileDisplay
               shortP={data.percentile.short_24m}
               fixedP={data.percentile.fixed_2010_2019}
