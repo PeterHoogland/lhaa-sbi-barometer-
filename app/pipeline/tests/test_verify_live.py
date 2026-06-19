@@ -141,6 +141,36 @@ def test_geen_latest_faalt():
     assert p and "geen latest.json" in p[0]
 
 
+def _healthy_broad(weer_start: str = "2010-01-01", weer_n: int = 3652) -> dict:
+    """Een geldig broad_pressure-blok (status computed) met de drie baseline-kritische
+    indicatoren. Default = complete 2010-2019/2016-2019-baseline."""
+    def ind(code, start, n):
+        return {"code": code, "baseline_start": start, "baseline_end": "2019-12-31", "n_baseline": n}
+    return {
+        "status": "computed",
+        "indicators": [
+            ind("I-D1-002", weer_start, weer_n),
+            ind("I-D1-003", weer_start, weer_n),
+            ind("I-D3-002", "2015-12-31", 1462),
+        ],
+    }
+
+
+def test_baseline_compleet_is_ok():
+    l = _healthy_latest()
+    l["broad_pressure"] = _healthy_broad()
+    p, _ = vl.assess(l, _OK, NOW)
+    assert p == [], p
+
+
+def test_baseline_gesnoeid_faalt():
+    # weer-baseline teruggesnoeid tot alleen 2019 (de bug 2026-06-19) → run moet rood.
+    l = _healthy_latest()
+    l["broad_pressure"] = _healthy_broad(weer_start="2019-02-11", weer_n=324)
+    p, _ = vl.assess(l, _OK, NOW)
+    assert any(("gesnoeid" in x or "te dun" in x) for x in p), p
+
+
 def _run():
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_") and callable(v)]
     failed = 0

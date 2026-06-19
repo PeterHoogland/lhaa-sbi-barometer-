@@ -19,9 +19,33 @@ from .util import FetchBatch, DATA_DIR, write_json, daterange, iso
 from .fetchers import kmi, irceline, verkeerscentrum, fod_economie, statbel, energy_charts, fod_waso, nbb, gdelt, wikipedia, events, reddit, layoff_radar, irail, infrabel, elia, waterinfo, pollen, datex_traffic, google_trends, mastodon, stib, delijn, consumer_confidence, sciensano_pollen, aerodatabox
 
 
-# Maximaal aantal punten dat we per indicator in de doorlopende historie houden
-# (~3 jaar dagdata; voorkomt onbegrensd groeiende bestanden).
+# Maximaal aantal RECENTE punten dat we per indicator in de doorlopende historie
+# houden (~3 jaar dagdata; voorkomt onbegrensd groeiende bestanden). Geldt ALLEEN
+# voor de rolling staart vanaf _BASELINE_CUTOFF; de vaste pre-2020-baseline blijft.
 _HISTORY_CAP = 1100
+
+# Grens van de vaste "normale tijden"-baseline (amendement §4.1.11). Rijen vóór deze
+# datum vormen het onveranderlijke 2010-2019-ijkpunt dat de brede absolute meting
+# (broad_pressure) inleest. Die worden NOOIT gesnoeid: een blinde rows[-CAP:]-snoei
+# at de backfilled baseline telkens weer op, waardoor de publieke "2010-2019"-belofte
+# voor weer/energie onwaar werd (bug 2026-06-19; Hitte-bug-klasse, harde regel 5).
+# Identiek aan ECONOMIC_BASELINE_END (engine) en de cutoff in backfill_absolute_baselines.py.
+_BASELINE_CUTOFF = "2020-01-01"
+
+
+def _cap_history(rows: list[dict]) -> list[dict]:
+    """Begrens de doorlopende historie zonder de vaste pre-2020-baseline te raken.
+
+    `rows` moet op datum gesorteerd zijn. Pre-2020-rijen (het 2010-2019-ijkpunt)
+    blijven integraal staan; alleen de recente staart (>= _BASELINE_CUTOFF) wordt
+    tot _HISTORY_CAP begrensd. Zonder deze splitsing duwt de groeiende dagdata de
+    backfilled baseline eruit en wordt de absolute meting oneerlijk.
+    """
+    baseline = [r for r in rows if str(r.get("date", "")) < _BASELINE_CUTOFF]
+    recent = [r for r in rows if str(r.get("date", "")) >= _BASELINE_CUTOFF]
+    if len(recent) > _HISTORY_CAP:
+        recent = recent[-_HISTORY_CAP:]
+    return baseline + recent
 
 
 def append_to_history(batch: FetchBatch) -> None:
@@ -57,8 +81,7 @@ def append_to_history(batch: FetchBatch) -> None:
         rows = [row for row in rows if row.get("date") != obs]
         rows.append({"date": obs, "value": round(float(r.value), 4)})
         rows.sort(key=lambda x: str(x.get("date", "")))
-        if len(rows) > _HISTORY_CAP:
-            rows = rows[-_HISTORY_CAP:]
+        rows = _cap_history(rows)
         path.write_text(json.dumps(rows, indent=2), encoding="utf-8")
 
 

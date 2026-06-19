@@ -184,6 +184,17 @@ Het publieke hoofdcijfer was het rollende seizoenspercentiel (§4.1.8): "hoe ong
 - **Transparantie:** `economic_pressure` (economie-only, §4.1.9) blijft als sub-view in de output; `broad_pressure` is het hoofdcijfer; het relatieve composiet en seizoenspercentiel blijven berekend en zichtbaar in de data en diagnostiek.
 - **Effect:** lost de 87-vs-19-incoherentie op met één coherent breed cijfer (86). Geen reken-wijziging aan het relatieve composiet/percentiel.
 
+### 4.1.12 Amendement: active-regime-schaal voor de nul-zware weerindicatoren (hitte/koude) (2026-06-19, Peter GO, methodologie 0.3.8)
+
+§4.1.11 nam hitte en koude op in het brede hoofdcijfer met de standaard `robustScale` over de VOLLEDIGE 2010-2019-baseline. Dat verborg een schaalprobleem: hitte (max(0, Tmax-30)) en koude (max(0, -5-Tmin)) zijn 0 op >98% van de dagen, dus de all-days-MAD/IQR is 0 en `robustScale` valt terug op de SD over alle dagen (~0,27 voor hitte). Die is minuscuul omdat de structurele nullen domineren. Gevolg: ELKE milde tropische dag (31°C, waarde 1) gaf z ≈ 3,7 → winsorize-kap +3, even zwaar als een 38°C-hittegolf. Het hoofdcijfer kon zo op een gewone warme zomerdag 7 punten springen (86 → 93), zonder onderscheid tussen mooi weer en een echte hittegolf. (Deze landmijn werd pas zichtbaar nadat de baseline-trim-bug van 2026-06-19 was gedicht en de echte, complete 2010-2019-weerbaseline weer aanwezig was; zie CHANGELOG 2026-06-19.)
+
+**Regel (vanaf 0.3.8):** voor hitte (I-D1-002) en koude (I-D1-003) wordt in de absolute meting de SPREIDING berekend over het ACTIEVE (niet-nul) regime van de baseline (`robustScale(baseline.filter(v > 0))`), niet over alle dagen. De MEDIAAN (= het normale niveau, 0) blijft over de volledige baseline. Implementatie: de set `ACTIVE_REGIME_SCALE_CODES` in `app/engine/src/methodology/economic-pressure.ts`.
+
+- **Wetenschappelijke verankering (KMI/RMI + gezondheid):** zomerdag = Tmax ≥ 25°C; tropische dag = Tmax ≥ 30°C; officiële hittegolf = ≥5 dagen op rij ≥ 25°C waarvan ≥3 ≥ 30°C (Ukkel). De gezondheidsliteratuur legt de morbiditeitsdrempel rond 30°C en de mortaliteitsdrempel rond 33°C, met steile risicostijging daarboven (o.a. Seoul- en Zwitserse mortaliteitsstudies). De active-regime-schaal (~1,04 voor hitte 2010-2019) reproduceert die gradient: 31°C → z ≈ 0,96; 33°C → ~1,9; 35°C+ → kap +3.
+- **Effect:** een milde warme dag tilt het hoofdcijfer licht (86 → ~88) i.p.v. vol (93); alleen een echte hittegolf bereikt de kap. Een dag zonder hitte blijft z = 0 (meetelt, neutraal); het hoofdcijfer vandaag (hitte = 0) blijft 86. Schaaldiscipline (harde regel 5) intact: dezelfde maat én dezelfde uit-de-baseline-afgeleide schaal voor baseline en dagwaarde; geen herbackfill nodig.
+- **Reikwijdte:** raakt alleen hitte/koude in `broad_pressure`. `economic_pressure` (5 economische) en het relatieve composiet/percentiel zijn ongewijzigd. Gepind in `app/engine/test/economic-pressure.test.ts` ("active-regime schaal voor nul-zware weerindicatoren").
+- **Presentatie:** de uitleg van deze gradient (waarom een hittegolf zwaarder weegt dan een losse warme dag) staat in de publieke per-indicator-uitklap (`plain-language.ts`, hitte/koude) en deze methodologie-annex, niet in het hoofdblok met het cijfer (Peter 2026-06-19).
+
 ---
 
 ## 5. Inclusiecriteria (uit laag 3)

@@ -7,6 +7,7 @@
 import { describe, it, expect } from "vitest";
 import {
   computeEconomicPressure,
+  computeBroadPressure,
   normalCdf,
   ECONOMIC_PRESSURE_CODES,
 } from "../src/methodology/economic-pressure.js";
@@ -198,5 +199,50 @@ describe("label-eerlijkheid", () => {
     expect(ep.label.toLowerCase()).toContain("economische druk");
     expect(ep.label.toLowerCase()).toContain("normale tijden");
     expect(ep.label).not.toContain("—"); // geen em-dash (harde regel 9)
+  });
+});
+
+describe("computeBroadPressure — active-regime schaal voor nul-zware weerindicatoren (§4.1.12)", () => {
+  // Hitte-baseline 2010-2019: 200 koele dagen (waarde 0) + 36 hete dagen cyclisch
+  // [2,3,4]. median(volledig) = 0; robustScale(niet-nul) = MAD_SCALE_FACTOR (MAD = 1).
+  function weatherBaseline(values: number[]): Array<{ date: string; value: number }> {
+    return values.map((value, i) => {
+      const year = 2010 + Math.floor(i / 40); // 40/jaar -> blijft binnen 2010-2019
+      const month = String((i % 12) + 1).padStart(2, "0");
+      const day = String((i % 28) + 1).padStart(2, "0");
+      return { date: `${year}-${month}-${day}`, value };
+    });
+  }
+  const cool = new Array(200).fill(0) as number[];
+  const hot = Array.from({ length: 36 }, (_, i) => [2, 3, 4][i % 3]);
+  const base = weatherBaseline([...cool, ...hot]);
+
+  function hitteFor(latest: number) {
+    const econ = economicHistory({
+      "I-D3-001": { z: 0 }, "I-D2-004": { z: 0 }, "I-D3-007": { z: 0, inverse: true },
+      "I-D3-005": { z: 0 }, "I-D3-006": { z: 0 },
+    });
+    const hist = { ...econ, "I-D1-002": [...base, { date: "2026-06-15", value: latest }] };
+    return computeBroadPressure(hist, "2026-06-17").indicators.find((i) => i.code === "I-D1-002")!;
+  }
+
+  it("een dag zonder hitte (waarde 0) telt neutraal mee: z = 0", () => {
+    expect(hitteFor(0).z).toBe(0);
+  });
+
+  it("een milde tropische dag (waarde 3, ~33°C) geeft een GRADIENT, niet de +3-kap", () => {
+    const hitte = hitteFor(3);
+    // robustScale(niet-nul) = MAD_SCALE_FACTOR -> z = 3 / 1.4826 ~ 2.02 (niet gekapt).
+    // Onder de oude all-days-schaal (~0,27, gedomineerd door de nullen) zou dit +3 zijn.
+    expect(hitte.z).toBeCloseTo(3 / MAD, 1);
+    expect(hitte.z).toBeLessThan(3);
+    expect(hitte.z).toBeGreaterThan(1.5);
+    // de gerapporteerde schaal is die van het actieve regime, niet ~0
+    expect(hitte.baseline_mad).toBeCloseTo(MAD, 1);
+  });
+
+  it("een echte hittegolf (waarde 10, ~40°C) kapt wel op +3, en weegt zwaarder dan een milde dag", () => {
+    expect(hitteFor(10).z).toBe(3);
+    expect(hitteFor(10).z).toBeGreaterThan(hitteFor(3).z);
   });
 });

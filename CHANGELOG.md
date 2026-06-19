@@ -6,6 +6,38 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-19 — Weer-recalibratie: active-regime-schaal voor hitte/koude (amendement §4.1.12, methodologie 0.3.8)
+
+**Aanleiding:** nadat de baseline-trim-bug (hieronder) was gedicht en de complete 2010-2019-weerbaseline weer aanwezig was, bleek dat hitte/koude (0 op >98% van de dagen) met de standaard `robustScale` over alle dagen een minuscule schaal (~0,27) kregen. Daardoor raakte elke milde tropische dag (31°C, waarde 1) meteen de winsorize-kap +3, even zwaar als een 38°C-hittegolf, en kon het hoofdcijfer op een gewone warme dag 7 punten springen (86 → 93). Geen onderscheid tussen mooi weer en een hittegolf.
+
+**Beslissing (Peter GO):** weer blijft in het hoofdcijfer, maar de spreiding wordt voor hitte (I-D1-002) en koude (I-D1-003) over het ACTIEVE (niet-nul) regime van de baseline berekend (`ACTIVE_REGIME_SCALE_CODES` in `economic-pressure.ts`); de mediaan (= 0) blijft over de volledige baseline. Verankerd op de KMI/gezondheidsdrempels (zomerdag 25°C, tropische dag 30°C, mortaliteit ~33°C, hittegolf 35°C+). De uitleg staat in de per-indicator-uitklap (`plain-language.ts`) + methodologie-annex, niet bij het hoofdcijfer.
+
+**Effect:** milde warme dag tilt licht (86 → ~88) i.p.v. vol (93); een echte hittegolf (35°C+) bereikt nog steeds de kap; een dag zonder hitte blijft z=0 (vandaag 86). `economic_pressure` en het relatieve composiet/percentiel ongewijzigd.
+
+**Verificatie:** `tsc` schoon, engine 198/198 (nieuw blok in `economic-pressure.test.ts`); `generate-fixture` toont schaal hitte 0,27 → 1,04, z warme dag +3 → +0,96, score warme dag 93 → 88.
+
+---
+
+## 2026-06-19 — Baseline-trim-bug gedicht: pre-2020-baseline gevrijwaard van de 1100-snoei (+ herbackfill)
+
+**Aanleiding:** `append_to_history` (`run.py`) snoeide elk historie-bestand tot de laatste 1100 rijen (`_HISTORY_CAP`). Voor de DAGELIJKSE reeksen (hitte/koude/energie) duwde de groeiende recente staart de 2010-2019-backfill er stelselmatig uit. Gevolg: de publieke belofte "vs normale tijden (2010-2019)" klopte live niet meer voor weer (alleen 2019 over, 324 punten) en energie (alleen ~2017-2019). De economische maandreeksen (≤ ~200 rijen) bleven onder de cap en dus heel.
+
+**Beslissing:** de cap raakt nu alleen de recente staart (≥ 2020-01-01); pre-2020-rijen (het vaste 2010-2019-ijkpunt) blijven integraal staan (`_cap_history` in `run.py`, `_BASELINE_CUTOFF = "2020-01-01"`). Daarna `backfill_absolute_baselines.py` opnieuw gedraaid: hitte/koude terug naar 3652 dagpunten (2010-2019), energie 1462 (2016-2019). Geen methodologiewijziging — herstelt de in §4.1.11 al geregistreerde baseline.
+
+**Borging:** nieuwe baseline-integriteit-check in `verify_live.py` (regel 10): de run faalt als een broad_pressure-indicator zijn geregistreerde venster niet meer dekt, zodat deze regressie niet stil terugkeert.
+
+**Verificatie:** `_cap_history` unit-getest (pre-2020 behouden, recente staart op 1100 gekapt); engine 198/198; `generate-fixture` toont weer baseline_start 2010-01-01 (n=3652), energie 2015-12-31 (n=1462), score vandaag onveranderd 86.
+
+---
+
+## 2026-06-19 — CI-cadans teruggebracht van ~uurlijks naar 6 runs/dag
+
+**Aanleiding:** het hoofdcijfer verandert hooguit 1x/dag (4 maandbronnen + 4 dagbronnen die ook 1x/dag verversen), terwijl de pijplijn ~20-30x/dag een volledige fetch → generate-fixture → build → deploy → verify-cyclus draaide. Uurlijks is veerkracht, geen correctheidseis.
+
+**Beslissing (Peter):** 6 runs/dag op 07:00, 08:00, 12:00, 15:00, 17:30, 20:00 BE. Aangepast in zowel de Cloudflare Cron-Worker (`app/cron-worker/wrangler.jsonc`, de echte trigger) als de GitHub-fallback (`daily.yml`). `monitor.yml` (elke 20 min) blijft het vangnet dat bij data-stilstand hertriggert. Crons zijn UTC/zomertijd; in wintertijd schuiven de BE-tijden 1u vroeger (binnen de 06-20u-tijd-guard).
+
+---
+
 ## 2026-06-18 — Alarmering: Twilio-WhatsApp-kanaal toegevoegd (Peter heeft Twilio-abonnement)
 
 **Aanleiding:** CallMeBot (gratis WhatsApp-relay) reageerde niet betrouwbaar; Peter heeft een Twilio-abonnement, wat de betrouwbare route is (geen 24u-sandbox-verval bij een goedgekeurde sender).

@@ -56,7 +56,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     plain: "Hitte",
     why: "Hitte bemoeilijkt de nachtrust en treft vooral kwetsbare bevolkingsgroepen.",
     reads: "Hoeveel graden warmer dan 30°C het vandaag is.",
-    evidenceNote: "Hittegolven gaan in bevolkingsonderzoek samen met meer sterfte en meer psychiatrische opnames. Dat bewijs is het sterkst voor aanhoudende hitte; het effect van een enkele warme dag is kleiner.",
+    evidenceNote: "Hittegolven gaan in bevolkingsonderzoek samen met meer sterfte en meer psychiatrische opnames. Dat bewijs is het sterkst voor aanhoudende hitte; het effect van een enkele warme dag is kleiner. Daarom weegt de index een echte hittegolf zwaarder dan een losse warme dag: rond 30 graden (een tropische dag) telt licht mee, vanaf ongeveer 33 graden fors, en een aanhoudende hittegolf het zwaarst.",
     unit: "°C boven 30",
     dataSource: { name: "KMI (via open-meteo)", url: "https://www.meteo.be" },
     references: [
@@ -68,7 +68,7 @@ export const PLAIN: Record<IndicatorCode, PlainLanguageMeta> = {
     plain: "Koude",
     why: "Naast de impact op gezondheid en gemoedsrust kan kou ons ook financieel belasten.",
     reads: "Hoeveel graden kouder dan -5°C het vannacht was.",
-    evidenceNote: "Strenge kou is gekoppeld aan meer gezondheidsklachten en hogere stookkosten. Het bewijs voor het effect op stemming en spanning is minder direct dan bij hitte; daarom een lager bewijsniveau.",
+    evidenceNote: "Strenge kou is gekoppeld aan meer gezondheidsklachten en hogere stookkosten. Het bewijs voor het effect op stemming en spanning is minder direct dan bij hitte; daarom een lager bewijsniveau. Net als bij hitte weegt de index een echte koudegolf zwaarder dan een losse koude nacht.",
     unit: "°C onder -5",
     dataSource: { name: "KMI (via open-meteo)", url: "https://www.meteo.be" },
     references: [

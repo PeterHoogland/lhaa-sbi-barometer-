@@ -8,13 +8,15 @@ on:
   push:
     branches: [main]
   schedule:
-    # FALLBACK (op :30). De BETROUWBARE uurlijkse trigger is nu de Cloudflare
-    # Cron-Worker `lhaa-sbi-cron` (app/cron-worker), die workflow_dispatch exact op
-    # tijd aanroept, ook als niemands computer aanstaat. GitHub's eigen scheduled-cron
-    # is best-effort; hij blijft hier enkel als dead-man's-switch: vuurt hij toch, dan
-    # vangt hij een eventuele Worker-uitval op. De tijd-guard laat alleen 06-20u BE
-    # écht door (elk heel uur van 06:00 t/m 20:00). Peter 2026-06-04.
-    - cron: "3,33 * * * *"
+    # FALLBACK / dead-man's-switch. De BETROUWBARE trigger is de Cloudflare Cron-Worker
+    # `lhaa-sbi-cron` (app/cron-worker), die workflow_dispatch exact op tijd aanroept.
+    # Deze GitHub-cron is best-effort en vangt enkel een Worker-uitval op.
+    # Cadans (Peter 2026-06-19): 6 runs/dag op 07:00, 08:00, 12:00, 15:00, 17:30, 20:00 BE
+    # (zomertijd CEST = UTC+2; in wintertijd schuiven ze 1u vroeger op de BE-klok). De
+    # tijd-guard hieronder laat sowieso enkel 06-20u BE door. monitor.yml (elke 20 min)
+    # blijft het echte vangnet dat bij data-stilstand hertriggert.
+    - cron: "0 5,6,10,13,18 * * *"
+    - cron: "30 15 * * *"
   workflow_dispatch: {}
 
 permissions:

@@ -121,6 +121,35 @@ def assess(latest: dict, health: dict | None, now: datetime) -> tuple[list[str],
                 "fallback-waarde staat op een verkeerde schaal t.o.v. de baseline"
             )
 
+    # 10) BREDE-BASELINE-INTEGRITEIT — de absolute meting (broad_pressure) belooft publiek
+    #     "vs normale tijden 2010-2019". De doorlopende-historie-snoei (run.py _HISTORY_CAP)
+    #     at die baseline vroeger telkens weg voor de DAGELIJKSE reeksen (weer/energie), waardoor
+    #     "2010-2019" onwaar werd (bug 2026-06-19; gedicht via _cap_history + amendement §4.1.12).
+    #     Deze regel vangt die regressie autonoom: elke broad_pressure-indicator moet zijn
+    #     geregistreerde venster nog dekken.
+    bp = latest.get("broad_pressure") or {}
+    if bp.get("status") == "computed":
+        bp_inds = {i.get("code"): i for i in (bp.get("indicators") or [])}
+        baseline_floor = {
+            # code: (max toegestane baseline_start, min n_baseline)
+            "I-D1-002": ("2012-01-01", 3000),  # hitte: 2010-2019 dagdata
+            "I-D1-003": ("2012-01-01", 3000),  # koude: 2010-2019 dagdata
+            "I-D3-002": ("2017-06-01", 1000),  # energie: 2016-2019 (energy-charts bronlimiet)
+        }
+        for code, (max_start, min_n) in baseline_floor.items():
+            ind = bp_inds.get(code)
+            if not ind:
+                problems.append(f"broad_pressure mist {code} (baseline-integriteit)")
+                continue
+            start, n = ind.get("baseline_start"), ind.get("n_baseline")
+            if not (isinstance(start, str) and start <= max_start):
+                problems.append(
+                    f"{code}: baseline_start={start!r} > {max_start} — 2010-2019-baseline gesnoeid "
+                    "(publieke 'vs normale tijden'-belofte onwaar)"
+                )
+            if not (isinstance(n, int) and n >= min_n):
+                problems.append(f"{code}: n_baseline={n!r} < {min_n} — baseline te dun (gesnoeid?)")
+
     return problems, notes
 
 

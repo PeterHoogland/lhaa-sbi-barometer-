@@ -104,7 +104,11 @@ import {
 // backfill een echte pre-2020-baseline met exact de live-fetcher-maat. Lost de
 // 87-vs-19-incoherentie op: één coherent breed cijfer. Lucht/nieuws/Wikipedia
 // blijven relatief (geen betrouwbare historische maat), eerlijke datagrens.
-const METHODOLOGY_VERSION = "0.3.7";
+// 0.3.8 (2026-06-19, amendement §4.1.12, Peter GO): active-regime-schaal voor de
+// nul-zware weerindicatoren (hitte/koude) in broad_pressure — de spreiding wordt over
+// het niet-nul-regime van de 2010-2019-baseline berekend, zodat een milde warme dag
+// een gradient geeft i.p.v. meteen de +3-kap (onderscheid hittegolf vs mooi weer).
+const METHODOLOGY_VERSION = "0.3.8";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {

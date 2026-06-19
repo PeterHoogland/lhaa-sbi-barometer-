@@ -92,6 +92,22 @@ export const BROAD_PRESSURE_LABEL =
 
 export const ECONOMIC_PRESSURE_MAPPING = "normal_cdf" as const;
 
+/**
+ * Nul-zware omgevingsindicatoren waarvoor de spreiding over het ACTIEVE (niet-nul)
+ * regime van de baseline wordt berekend (amendement §4.1.12, Peter GO 2026-06-19).
+ *
+ * Hitte (max(0, Tmax-30)) en koude (max(0, -5-Tmin)) zijn 0 op >98% van de dagen.
+ * De all-days-MAD/SD wordt daardoor gedomineerd door de structurele nullen en is
+ * minuscuul (~0,27 voor hitte 2010-2019), waardoor ELKE milde warme dag (31°C, waarde 1)
+ * meteen de winsorize-kap (+3) raakt en even zwaar telt als een 38°C-hittegolf. Door de
+ * spreiding alleen over de niet-nul-dagen te meten (~1,5) ontstaat een gradient die
+ * verankerd is op de KMI/gezondheidsdrempels (zomerdag 25°C, tropische dag 30°C,
+ * mortaliteitsdrempel ~33°C, hittegolf 35°C+): een milde tropische dag telt licht,
+ * alleen een echte hittegolf vol. De MEDIAAN (= het normale niveau, 0) blijft over de
+ * VOLLEDIGE baseline, zodat een dag zonder hitte gewoon z=0 geeft (meetelt, neutraal).
+ */
+const ACTIVE_REGIME_SCALE_CODES = new Set<IndicatorCode>(["I-D1-002", "I-D1-003"]);
+
 export interface DatedValue {
   date: string; // ISO YYYY-MM-DD
   value: number;
@@ -189,8 +205,14 @@ export function computeAbsolutePressure(
 
     const med = median(baseline);
     // robustScale = MAD -> IQR -> SD (zoals engine/zscore.ts), zodat een vlakke
-    // baseline (bv. weer: meestal 0) niet stilletjes wordt uitgesloten.
-    const scale = robustScale(baseline);
+    // baseline (bv. weer: meestal 0) niet stilletjes wordt uitgesloten. Voor nul-zware
+    // omgevingsindicatoren (hitte/koude, §4.1.12) wordt de spreiding over het ACTIEVE
+    // (niet-nul) regime berekend; de mediaan blijft over de volledige baseline (= 0),
+    // zodat een dag zonder hitte z=0 geeft maar een echte hittegolf niet meteen kapt.
+    const scaleBasis = ACTIVE_REGIME_SCALE_CODES.has(code)
+      ? baseline.filter((v) => v > 0)
+      : baseline;
+    const scale = robustScale(scaleBasis);
     const meta = INDICATORS[code];
     let z: number;
     if (Number.isFinite(scale) && scale > 0) {
