@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:30:01.862428",
+    "fetched_at": "2026-06-19T17:42:49.315371",
     "observation_date": "2026-06-19",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 1.11
   },
   "I-D1-009": {
     "date": "2026-06-18",
-    "fetched_at": "2026-06-19T17:30:05.156264",
+    "fetched_at": "2026-06-19T17:42:51.974672",
     "observation_date": "2026-06-18",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 10.8
   },
   "I-D1-010": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:30:05.562640",
+    "fetched_at": "2026-06-19T17:42:52.373082",
     "observation_date": "2026-06-19",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 46.01666666666666
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:35:32.854140",
+    "fetched_at": "2026-06-19T17:46:58.679185",
     "observation_date": "2026-06-19",
-    "source": "Verkeerscentrum DATEX II v3 — 3 files, 5.57 km totale filelengte (langste 4.12 km), snapshot 2026-06-19",
-    "value": 5.57
+    "source": "Verkeerscentrum DATEX II v3 — 3 files, 8.9 km totale filelengte (langste 4.47 km), snapshot 2026-06-19",
+    "value": 8.9
   },
   "I-D2-009": {
     "date": "2026-06-18",
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:34:57.384526",
+    "fetched_at": "2026-06-19T17:46:20.073937",
     "observation_date": "2026-06-19",
     "source": "iRail API (NMBS/SNCB-verstoringen, 8 ongepland)",
     "value": 8.0
   },
   "I-D2-delijn": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:35:35.859841",
+    "fetched_at": "2026-06-19T17:47:01.363868",
     "observation_date": "2026-06-19",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 409 vertraagd (≥3min), 10 service-alerts (Vlaanderen)",
-    "value": 409.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 388 vertraagd (≥3min), 10 service-alerts (Vlaanderen)",
+    "value": 388.0
   },
   "I-D2-stib": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:35:34.534725",
+    "fetched_at": "2026-06-19T17:46:59.385420",
     "observation_date": "2026-06-19",
     "source": "STIB/MIVB TravellersInformation (Brussel, 379 actieve items; CC BY 4.0)",
     "value": 379.0
   },
   "I-D3-001": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:30:11.472296",
+    "fetched_at": "2026-06-19T17:42:55.024568",
     "observation_date": "2026-05",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.0
   },
   "I-D3-002": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:30:13.051061",
+    "fetched_at": "2026-06-19T17:42:55.857311",
     "observation_date": "2026-06-19",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 110.87738636363635
   },
   "I-D3-003": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:30:13.789305",
+    "fetched_at": "2026-06-19T17:42:56.456205",
     "observation_date": "2026-04",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:35:31.507354",
+    "fetched_at": "2026-06-19T17:46:57.166056",
     "observation_date": "2026-06-19",
     "source": "Ontslag-radar: 9 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~40 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 9.0
   },
   "I-D3-005": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:30:14.379061",
+    "fetched_at": "2026-06-19T17:42:57.019515",
     "observation_date": "2026-04",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.2
   },
   "I-D3-006": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:30:15.003397",
+    "fetched_at": "2026-06-19T17:42:57.514722",
     "observation_date": "2026-04",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.52
   },
   "I-D3-007": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:30:16.837096",
+    "fetched_at": "2026-06-19T17:42:58.688222",
     "observation_date": "2026-05",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -20.0
   },
   "I-D3-009": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:30:16.481560",
+    "fetched_at": "2026-06-19T17:42:58.350715",
     "observation_date": "2026-06-19",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0617255884688697
   },
   "I-D5-001": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:32:05.508350",
+    "fetched_at": "2026-06-19T17:43:48.196829",
     "observation_date": "2026-06-19",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1035/1096 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.31 / midden +0.32 / ouder +0.32. Negatiefste headlines: «Elektrische step veroorzaakt opnieuw brand in Schaarbeek In Schaarbeek heeft dinsdagavond een brand gewoed in een flatge · Hastière : un blessé léger dans un accident entre deux véhicules La collision s’est produite ce vendredi 19 juin 2026. L · Speurtocht naar herkomst extreem energierijk deeltje leidt naar sterrenstelsel 11 miljard lichtjaar verderop»; emotie-profiel headlines (matches/100 woorden): woede 0.11 / angst 0.11 / verdriet 0.16 / walging 0.01 (dominant: verdriet)",
-    "value": 1.3604
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1031/1095 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.34 / midden +0.36 / ouder +0.37. Negatiefste headlines: «Elektrische step veroorzaakt opnieuw brand in Schaarbeek In Schaarbeek heeft dinsdagavond een brand gewoed in een flatge · Hastière : un blessé léger dans un accident entre deux véhicules La collision s’est produite ce vendredi 19 juin 2026. L · Speurtocht naar herkomst extreem energierijk deeltje leidt naar sterrenstelsel 11 miljard lichtjaar verderop»; emotie-profiel headlines (matches/100 woorden): woede 0.11 / angst 0.11 / verdriet 0.16 / walging 0.01 (dominant: verdriet)",
+    "value": 1.3623
   },
   "I-D5-002": {
     "date": "2026-06-18",
-    "fetched_at": "2026-06-19T17:32:05.886704",
+    "fetched_at": "2026-06-19T17:43:48.663138",
     "observation_date": "2026-06-18",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 27.473
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:34:57.078203",
+    "fetched_at": "2026-06-19T17:46:19.772867",
     "observation_date": "2026-06-19",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.15357093334600022
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.11300481203876439
   },
   "I-D5-mastodon": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:34:58.717172",
+    "fetched_at": "2026-06-19T17:46:21.143139",
     "observation_date": "2026-06-19",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.1741276513736611
   },
   "I-D5-trends": {
     "date": "2026-06-19",
-    "fetched_at": "2026-06-19T17:35:31.919482",
+    "fetched_at": "2026-06-19T17:46:57.666686",
     "observation_date": "2026-06-19",
-    "source": "Google Trends trending RSS (geo=BE) — 4/10 trends stress-relevant, aandeel zoekvolume 0.26 (stress-trends: politiezone noord-limburg, dessel, rock werchter, ontslag)",
-    "value": 0.2553
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.29 (stress-trends: politiezone noord-limburg, dessel, rock werchter)",
+    "value": 0.2917
   }
 }
