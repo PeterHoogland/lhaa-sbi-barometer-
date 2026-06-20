@@ -46,6 +46,7 @@ import {
 import { auditReferenceConsistency, type ReferenceAudit } from "./methodology/reference-audit.js";
 import { SMOOTHING_WINDOW_DAYS, trailingPastSum, smoothTrailing } from "./methodology/smoothing.js";
 import { computeEconomicPressure, computeBroadPressure } from "./methodology/economic-pressure.js";
+import { computeHybridHeadline } from "./methodology/hybrid-headline.js";
 import {
   bootstrapDayUncertainty,
   seedFromString,
@@ -112,7 +113,11 @@ import {
 // toegevoegd aan broad_pressure als 9e indicator, met een echte 2017-2019-baseline
 // (zelfde gdelt_tone_series-maat als de dagwaarde). Het hoofdcijfer beweegt nu mee met
 // de nieuwscyclus (kalm nieuws verlaagt, zwaar nieuws verhoogt).
-const METHODOLOGY_VERSION = "0.3.9";
+// 0.4.0 (2026-06-19, amendement §4.1.14, Peter GO): HYBRIDE DAGKOP (daily_pressure) =
+// structureel anker (kosten + energie, vs 2010-2019) Phi-geblend met de dagelijkse
+// beweging (weer/nieuws + DATEX-verkeer), w_fast=0.30. Sinds nu het publieke hoofdcijfer;
+// broad_pressure blijft als sub-view. Zie methodology/hybrid-headline.ts.
+const METHODOLOGY_VERSION = "0.4.0";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {
@@ -132,6 +137,11 @@ export interface DailyComputeInput {
   observationDates?: Partial<Record<IndicatorCode, string>>;
   /** Secundaire signalen (Reddit e.d.) — passthrough, niet in composiet. */
   secondarySignals?: SecondarySignal[];
+  /**
+   * Dagelijks verkeer (DATEX I-D2-001-rt): waarde van vandaag + eigen historie,
+   * voor de hybride dagkop (§4.1.14). Ontbreekt = verkeer telt eerlijk niet mee.
+   */
+  dailyTraffic?: { value: number; history: Array<{ date: string; value: number }> };
   /** Brand-safety override — typisch bij nationale rouw (doc 06 §7). */
   brandSafety?: { flag: "elevated" | "block"; reason: string; expires_estimated: string };
   // --- SBI v0.4 inputs (optioneel; ontbreken = lege/neutrale defaults) ---
@@ -537,6 +547,16 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     bootstrapDraws: input.bootstrapDraws,
   });
 
+  // BREDE absolute meting (§4.1.11) + HYBRIDE DAGKOP (§4.1.14): het anker
+  // (broad_pressure's trage codes) gecombineerd met de dagelijkse beweging
+  // (weer/nieuws + DATEX-verkeer). Eén keer berekend, hergebruikt in de output.
+  const broadPressure = computeBroadPressure(input.history, input.date);
+  const dailyPressure = computeHybridHeadline(
+    broadPressure.indicators.map((i) => ({ code: i.code, z: i.z })),
+    input.dailyTraffic?.value ?? null,
+    (input.dailyTraffic?.history ?? []).map((h) => h.value),
+  );
+
   return {
     timestamp: new Date().toISOString(),
     week_iso: isoWeek(input.date),
@@ -589,9 +609,12 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     // amendement §4.1.9. Behouden voor transparantie (economie-only sub-view).
     economic_pressure: computeEconomicPressure(input.history, input.date),
     // BREDE absolute meting (§4.1.11): economie + energie + weer, elk vs zijn eigen
-    // 2010-2019-normaal. Sinds 0.3.7 het publieke hoofdcijfer (frontend leest
-    // broad_pressure.score). Zie methodology/economic-pressure.ts.
-    broad_pressure: computeBroadPressure(input.history, input.date),
+    // 2010-2019-normaal. Sinds 0.4.0 sub-view onder de hybride dagkop (transparantie).
+    broad_pressure: broadPressure,
+    // HYBRIDE DAGKOP (§4.1.14): structureel anker + dagelijkse beweging (weer/nieuws +
+    // DATEX-verkeer). Sinds 0.4.0 het publieke hoofdcijfer (frontend leest
+    // daily_pressure.score). Zie methodology/hybrid-headline.ts.
+    daily_pressure: dailyPressure,
     tier: {
       current: tierResult.tier,
       days_in_tier: tierResult.daysInTier,

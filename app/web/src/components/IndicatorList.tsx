@@ -60,8 +60,8 @@ export function IndicatorList({
             blijft als context binnen het opengeklapte paneel. */}
         {!bare && <h2>De omstandigheden die we volgen</h2>}
         <p className="panel-lead">
-          Het hoofdcijfer bovenaan meet de brede druk (kosten van levensonderhoud, energie en weer) vergeleken met
-          normale tijden. Daarnaast volgen we
+          Het hoofdcijfer bovenaan combineert de structurele druk (kosten van levensonderhoud, energie) met de
+          omstandigheden van vandaag (weer, nieuws, verkeer), vergeleken met normale tijden. Daarnaast volgen we
           dagelijks {visible.length} bredere omstandigheden, verdeeld over {byDomain.length} categorieën, zodat je
           het volledige beeld ziet, ook waar het juist rustig is. Klik op een indicator naar keuze om te zien wat
           we precies meten, waar onze data vandaan komt en welke wetenschappelijke onderbouwing erachter zit.

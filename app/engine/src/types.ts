@@ -288,6 +288,32 @@ export interface EconomicPressure {
   not_computed_reason?: string;
 }
 
+/**
+ * Hybride dagkop "niveau x beweging" (amendement §4.1.14): structureel anker
+ * (kosten + energie, vs 2010-2019) gecombineerd met de dagelijkse beweging
+ * (weer/nieuws + verkeer). Zie methodology/hybrid-headline.ts.
+ */
+export interface HybridComponent {
+  code: string;
+  z: number;
+  band: "slow" | "fast";
+}
+export interface HybridHeadline {
+  status: "computed" | "not_computed";
+  /** 0-100 = round(100*Phi((1-w_fast)*z_slow + w_fast*z_fast)); null bij not_computed. */
+  score: number | null;
+  z_slow: number | null;
+  z_fast: number | null;
+  w_fast: number;
+  combined_z: number | null;
+  /** Verkeer (DATEX-dagsignaal) als het meetelt; null bij te dunne historie. */
+  traffic: { value: number; z: number; n_reference: number } | null;
+  components: HybridComponent[];
+  /** User-facing label (geen em-dash, harde regel 9). */
+  label: string;
+  not_computed_reason?: string;
+}
+
 /** Volledig daily-output-record — conform doc 06 §4.1. */
 export interface DailyOutput {
   timestamp: string; // ISO
@@ -413,6 +439,12 @@ export interface DailyOutput {
    * amendement §4.1.11. Sinds 0.3.7 het publieke hoofdcijfer.
    */
   broad_pressure?: EconomicPressure;
+  /**
+   * HYBRIDE DAGKOP (§4.1.14): het structurele anker (broad_pressure's trage
+   * codes) gecombineerd met de dagelijkse beweging (weer/nieuws + DATEX-verkeer).
+   * Sinds 0.4.0 het publieke hoofdcijfer; broad_pressure blijft als sub-view.
+   */
+  daily_pressure?: HybridHeadline;
   /** SBI v0.4 meet- + trigger-laag. Optioneel: ouder geschreven records missen dit. */
   v04?: V04Output;
 }

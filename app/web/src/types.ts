@@ -208,10 +208,26 @@ export interface DailyOutput {
   };
   /** Absolute economische stress-meting "vs normale tijden" (2010-2019), §4.1.9. */
   economic_pressure?: EconomicPressure;
-  /** BREDE absolute meting (economie + energie + weer), §4.1.11; publiek hoofdcijfer. */
+  /** BREDE absolute meting (economie + energie + weer), §4.1.11; sub-view onder de dagkop. */
   broad_pressure?: EconomicPressure;
+  /** HYBRIDE DAGKOP (§4.1.14): structureel anker + dagelijkse beweging; publiek hoofdcijfer sinds 0.4.0. */
+  daily_pressure?: HybridHeadline;
   /** SBI v0.4 meet- + trigger-laag (optioneel — oudere records missen dit). */
   v04?: V04Output;
+}
+
+/** Hybride dagkop "niveau x beweging" (§4.1.14) — mirror van engine HybridHeadline. */
+export interface HybridHeadline {
+  status: "computed" | "not_computed";
+  score: number | null;
+  z_slow: number | null;
+  z_fast: number | null;
+  w_fast: number;
+  combined_z: number | null;
+  traffic: { value: number; z: number; n_reference: number } | null;
+  components: Array<{ code: string; z: number; band: "slow" | "fast" }>;
+  label: string;
+  not_computed_reason?: string;
 }
 
 // --- SBI v0.4 — meet- + trigger-laag (mirror van engine V04Output) ---

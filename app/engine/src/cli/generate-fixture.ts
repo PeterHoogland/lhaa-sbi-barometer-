@@ -493,12 +493,23 @@ async function generate(): Promise<void> {
     todayIso,
   );
 
+  // DATEX-dagverkeer (I-D2-001-rt) voor de hybride dagkop (§4.1.14): de waarde van
+  // vandaag (secundair signaal) + de eigen historie (excl. vandaag) als ECDF-referentie.
+  const trafficSignal = secondarySignals.find((s) => s.code === "I-D2-001-rt");
+  let dailyTraffic: { value: number; history: Array<{ date: string; value: number }> } | undefined;
+  const trafficPath = resolve(HISTORY_DIR, "I-D2-001-rt.json");
+  if (existsSync(trafficPath) && trafficSignal && Number.isFinite(trafficSignal.value)) {
+    const rows = JSON.parse(readFileSync(trafficPath, "utf-8")) as Array<{ date: string; value: number }>;
+    dailyTraffic = { value: trafficSignal.value, history: rows.filter((r) => r.date < todayIso) };
+  }
+
   const todayOutput = computeDaily({
     date: todayIso,
     rawValues: { ...todayRaw, ...detToday } as Partial<Record<IndicatorCode, number>>,
     history,
     compositeHistory,
     compositeMetingHistory,
+    dailyTraffic,
     // B3: alleen de dag-output van vandaag bootstrapt (de warm-up-loop hierboven
     // niet — die draait honderden dagen en heeft geen publiek CI nodig).
     computeUncertainty: true,

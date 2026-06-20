@@ -6,6 +6,20 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-19 — Hybride dagkop "niveau x beweging" wordt het publieke hoofdcijfer (amendement §4.1.14, methodologie 0.4.0)
+
+**Aanleiding:** `broad_pressure` (91) leest eerlijk-hoog maar beweegt nauwelijks van dag tot dag (3 indicatoren op de winsor-kap, hoge economische bodem, Phi-verzadiging) en verkeer zit er niet in. Peter wil een dagelijks getal dat de structurele druk combineert met de omstandigheden van vandaag, eerlijk-hoog verankerd maar zichtbaar ademend. Wetenschappelijke kern (Peter): het relatieve cijfer (~23) leest laag door zijn crisisjaren-referentie, niet inherent; de snelle factoren tegen hun NORMALE-jaren-referentie meten lost dat aan de bron op.
+
+**Beslissing:** Nieuw `daily_pressure` (`methodology/hybrid-headline.ts`): `round(100*Phi((1-w_fast)*z_slow + w_fast*z_fast))`. z_slow = 6 structurele codes (kosten + energie, hergebruik van de broad_pressure-z's vs 2010-2019). z_fast = weer/nieuws (vs 2010-2019/2017-2019) + DATEX-dagverkeer (I-D2-001-rt) als dagsignaal via ECDF van zijn eigen aangroeiende historie (geen 2010-2019-archief; eerlijk als dagsignaal gemarkeerd, n_reference gerapporteerd, valt weg < 10 dagpunten). w_fast = 0,30. Phi-blend (geen additieve plak-punten) om plafond-verzadiging te vermijden.
+
+**Effect:** vandaag ~90 (dicht bij de oude 91, geen schok), ademt ~79-93 (hittegolf breekt -3, kalme dag ~84, zware dag ~94). Een kalme dag blijft eerlijk VERHOOGD, nooit misleidend laag.
+
+**Reikwijdte:** alleen de publieke kop. `broad_pressure` blijft als sub-view (transparantie); `economic_pressure` en het relatieve composiet/percentiel ongewijzigd. Frontend `ConditionLevelDisplay` leest `daily_pressure.score` (terugval op broad_pressure tijdens het data-overgangsvenster). Copy onder het cijfer + `IndicatorList` herschreven (verkeer + "beweegt mee met de dag"). Bronlabel hitte/koude gecorrigeerd naar "KMI synop (open-meteo als fallback)" (provenance, harde regel 1).
+
+**Geborgd:** engine `npx tsc --noEmit && npm test` (205 tests, 14 bestanden; nieuw `hybrid-headline.test.ts` 7). generate-fixture voedt `dailyTraffic` (DATEX-historie excl. vandaag). Methodologie 0.4.0.
+
+---
+
 ## 2026-06-19 — Nieuws (GDELT-nieuwstoon) toegevoegd aan het brede hoofdcijfer (amendement §4.1.13, methodologie 0.3.9)
 
 **Aanleiding:** Peter wilde negatief nieuws expliciet laten meewegen in het hoofdcijfer. §4.1.11 sloot het uit omdat de RSS/lexicon-meting (secundair) niet reproduceerbaar is voor 2016-2019. Maar de PRIMAIRE I-D5-001 = GDELT-nieuwstoon (`gdelt_tone_series`, negativity = -AvgTone), met een reproduceerbaar GDELT DOC v2-archief tot ~2017.

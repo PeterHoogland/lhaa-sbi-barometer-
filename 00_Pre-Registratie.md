@@ -206,6 +206,24 @@ Het publieke hoofdcijfer was het rollende seizoenspercentiel (§4.1.8): "hoe ong
 - **Reikwijdte:** raakt alleen `broad_pressure`. `economic_pressure` (5 economische) en het relatieve composiet/percentiel zijn ongewijzigd (I-D5-001 zat daar al in). Geborgd in `verify_live.py` (baseline-integriteit I-D5-001).
 - **Eerlijke datagrens (onderzocht 19/6, agents):** pollen, verkeer, trein, OV (De Lijn/STIB) en social blijven uit het hoofdcijfer — geen reproduceerbaar 2010-2019-archief met dezelfde maat (pollen: ander model + alleen seizoensskill; trein: ruwe Infrabel-bestanden valideren niet binnen 0,75pp, zelfde reden als de afgewezen 2023-backfill; verkeer: alleen Vlaanderen + login-muur + maatverschil; OV/social: bestaan pas sinds 2024). Ze blijven in de relatieve laag.
 
+### 4.1.14 Amendement: hybride dagkop "niveau x beweging" (2026-06-19, Peter GO, methodologie 0.4.0)
+
+§4.1.11/§4.1.13 maakten `broad_pressure` (9 indicatoren, absoluut vs 2010-2019, equal-weight, 100*Phi(z̄)) het hoofdcijfer. Dat leest eerlijk-hoog maar beweegt nauwelijks van dag tot dag: drie indicatoren staan op de winsor-kap, de economische grondlast pint een hoge bodem, en Phi verzadigt aan de top (~1,6 punt per 0,1 z̄ rond z̄=1,36). Verkeer zit er bovendien niet in (geen 2010-2019-archief). Peter (19/6) wil één dagelijks getal dat de STRUCTURELE druk (kosten van levensonderhoud, energie) combineert met de DAGELIJKSE omstandigheden (weer, nieuws, verkeer), eerlijk-hoog verankerd maar zichtbaar ademend.
+
+Wetenschappelijke kern (Peter, 19/6): het relatieve seizoenspercentiel (~23) ademt wél dagelijks maar leest laag, NIET inherent, maar omdat het de crisisjaren 2024-2025 als referentie heeft. De hybride lost dat aan de bron op door de snelle factoren tegen hun NORMALE-jaren-referentie te meten (weer: 2010-2019; nieuws: 2017-2019), niet tegen de recente jaren.
+
+**Regel (vanaf 0.4.0):** `daily_pressure` = `round(100 * Phi( (1 - w_fast) * z_slow + w_fast * z_fast ))`, met:
+- **z_slow** (traag anker) = gemiddelde MAD-z van de 6 structurele codes vs hun 2010-2019/2016-2019-baseline: I-D3-001 inflatie, I-D2-004 brandstof, I-D3-007 consumentenvertrouwen, I-D3-005 werkloosheid, I-D3-006 hypotheekrente, I-D3-002 energieprijs. Hergebruikt exact de `broad_pressure`-z's (zelfde maat, scale-discipline harde regel 5).
+- **z_fast** (snelle beweging) = gemiddelde z van de snelle codes (I-D1-002 hitte, I-D1-003 koude, I-D5-001 nieuws, elk vs zijn 2010-2019/2017-2019-normaal) plus **verkeer**.
+- **w_fast = 0,30** (de ademknop; Phi-blend i.p.v. additief om plafond-verzadiging te vermijden).
+- **mapping:** dezelfde normale CDF als `broad_pressure` (z̄=0 -> 50).
+
+**Verkeer (I-D2-001-rt, DATEX-dagfilezwaarte):** geen 2010-2019-archief, dus geen "vs normaal"-anker mogelijk; weegt mee als **dagsignaal** via de empirische CDF van zijn eigen (nog korte, aangroeiende) historie -> probit-z, gewinsoriseerd. `n_reference` wordt gerapporteerd zodat de dunne basis zichtbaar blijft; onder 10 dagpunten valt verkeer eerlijk weg. Dit is een eerlijke uitzondering (harde regel 1): verkeer wordt NIET "vs normale jaren" geclaimd, maar als dagelijkse afwijking van zijn eigen norm. De historie bouwt verder op.
+
+- **Effect (19/6):** vandaag ~90 (dicht bij de oude 91 -> geen schok bij overgang), ademt ~79-93: een hittegolf die breekt zakt het ~3 punten, een rustige filedag + kalm nieuws ~84, een zware dag (file-spike + zwaar nieuws + hitte) ~94. Een kalme dag blijft eerlijk VERHOOGD (verankerd op de structurele druk), nooit misleidend laag.
+- **Reikwijdte:** raakt alleen de PUBLIEKE KOP. `broad_pressure` (§4.1.11) blijft berekend als sub-view (transparantie); `economic_pressure` (5 economische, §4.1.9) en het relatieve composiet/percentiel zijn ongewijzigd. Frontend leest `daily_pressure.score` (terugval op `broad_pressure` tijdens het data-overgangsvenster).
+- **Geborgd:** `app/engine/test/hybrid-headline.test.ts` (7 tests: blend-mapping, anker, verkeer als dagsignaal, ademhaling, not_computed). `economic-pressure.ts` (de z-keten) ongewijzigd.
+
 ---
 
 ## 5. Inclusiecriteria (uit laag 3)

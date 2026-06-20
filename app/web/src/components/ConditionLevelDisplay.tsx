@@ -32,15 +32,21 @@ export function ConditionLevelDisplay({
 }) {
   const ctx = buildContext(data);
 
-  // HOOFDCIJFER = de BREDE absolute meting "vs normale tijden" (amendement §4.1.11:
-  // economie + energie + weer). Terugval op de economie-only meting (§4.1.10) en
-  // dan het relatieve seizoenspercentiel, mocht de brede meting niet berekend zijn.
-  const measure =
-    data.broad_pressure?.status === "computed" && data.broad_pressure.score !== null
-      ? data.broad_pressure
-      : data.economic_pressure;
-  const useAbs = !!measure && measure.status === "computed" && measure.score !== null;
-  const score = useAbs ? (measure!.score as number) : Math.round(ctx.percentile);
+  // HOOFDCIJFER = de HYBRIDE DAGKOP (amendement §4.1.14): het structurele anker
+  // (kosten + energie, vs 2010-2019) gecombineerd met de dagelijkse beweging
+  // (weer/nieuws + DATEX-verkeer). Terugval (ook tijdens het data-overgangsvenster)
+  // op de brede absolute meting (§4.1.11), dan economie-only, dan het relatieve
+  // seizoenspercentiel, mocht de dagkop nog niet in de output staan.
+  const absScore =
+    data.daily_pressure?.status === "computed" && data.daily_pressure.score !== null
+      ? data.daily_pressure.score
+      : data.broad_pressure?.status === "computed" && data.broad_pressure.score !== null
+        ? data.broad_pressure.score
+        : data.economic_pressure?.status === "computed" && data.economic_pressure.score !== null
+          ? data.economic_pressure.score
+          : null;
+  const useAbs = absScore !== null;
+  const score = useAbs ? (absScore as number) : Math.round(ctx.percentile);
   const cn = (ctx.cn === 5 ? 5 : absoluteCn(score)) as ConditionLevel;
 
   // Volledige update-datum + tijd (Brussel) onder het cijfer (Peter 17/6).
@@ -80,9 +86,10 @@ export function ConditionLevelDisplay({
           Laatste update van De Nationale Stress Index: {dateStr}, {lastRunTime}
         </span>
         <span className="cn-stamp">
-          Dit cijfer vergelijkt de omstandigheden vandaag, kosten van levensonderhoud, energie, weer en
-          nieuws, met normale tijden (2010-2019). 50 is het normale niveau van dat decennium; vandaag ligt
-          de druk duidelijk hoger, vooral door inflatie en energie. Het is geen meting van individuele stress.
+          Dit cijfer combineert de structurele druk (kosten van levensonderhoud, energie) met de
+          omstandigheden van vandaag (weer, nieuws, verkeer), vergeleken met normale tijden (2010-2019).
+          50 is het normale niveau van dat decennium; vandaag ligt de druk duidelijk hoger, vooral door
+          inflatie en energie. Het beweegt mee met de dag en is geen meting van individuele stress.
         </span>
       </div>
     </section>
