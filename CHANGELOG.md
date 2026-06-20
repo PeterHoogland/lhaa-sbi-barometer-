@@ -6,6 +6,16 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-20 — "Signalen die we wel meten maar niet meetellen"-paneel verwijderd (UI, geen methodologiewijziging)
+
+**Aanleiding:** Peter (laatste instructie 20/6): "haal die uit de tabel" voor alle niet-meetellende signalen. Sinds OV (STIB/De Lijn) en DATEX-verkeer in de hybride dagkop meetellen, bevatte het "telt niet mee"-paneel alleen nog dubbele/kapotte/niet-representatieve signalen (RSS, emotie, iRail, Reddit, Mastodon, ontslag-radar, Trends). Dat zaaide verwarring zonder iets toe te voegen.
+
+**Beslissing:** `SecondarySignals` rendert nu `return null` — het hele paneel verdwijnt uit de expert-uitklap. Minimale, omkeerbare ingreep (terugzetten = git revert). De niet-meetellende signalen blijven volledig gedocumenteerd in het methodologie-pakket (de harde grens, §4.1.14/§4.1.15 + 00_Pre-Registratie); ze worden nog steeds gemeten en in de data weggeschreven, alleen niet meer in deze tabel getoond.
+
+**Geborgd:** web-build groen (tsc -b + vite). Geen weging/indicator gewijzigd, dus geen pre-registratie-amendement nodig; geen docs 00-09, dus geen OSF-manifest-herberekening.
+
+---
+
 ## 2026-06-20 — Openbaar vervoer (STIB + De Lijn) telt nu mee als dagsignaal (amendement §4.1.15, methodologie 0.4.1)
 
 **Aanleiding:** Peter wil de OV-verstoringen in de weging. Dat kan eerlijk: OV meet iets nieuws (openbaar-vervoer-druk), geen dubbeltelling. Het wordt op exact dezelfde manier behandeld als DATEX-verkeer (§4.1.14): dagsignaal via de eigen ECDF, geen 2010-2019-anker, n_reference gerapporteerd.
