@@ -3,12 +3,12 @@ import { buildContext } from "../lib/explainer";
 import { scoreBand, BAND_LABEL } from "../copy";
 
 /**
- * Kicker-woord voor het HOOFDCIJFER. Sinds amendement §4.1.10 (Peter 17/6) is het
- * hoofdcijfer de ABSOLUTE economische druk "vs normale tijden" (2010-2019), op
- * een 0-100-schaal waar 50 het normale decennium is. De bandwoorden blijven
- * RUSTIG < 50 ≤ NORMAAL < 70 ≤ VERHOOGD < 90 ≤ UITZONDERLIJK, nu absoluut gelezen:
- * onder 50 = lichter dan normaal, boven 70 = duidelijk verhoogd. Brand-safety
- * (CN 5) overschrijft met pauze.
+ * Kicker-woord voor het HOOFDCIJFER. Sinds amendement §4.1.14 is het hoofdcijfer de
+ * HYBRIDE dagkop (daily_pressure): het structurele anker (kosten van levensonderhoud
+ * en energie, vs 2010-2019) gecombineerd met de dagelijkse beweging (weer, nieuwstoon,
+ * verkeer en openbaar vervoer). Schaal 0-100 waar 50 het normale decennium is. De
+ * bandwoorden blijven RUSTIG < 50, NORMAAL 50-70, VERHOOGD 70-90, UITZONDERLIJK 90+.
+ * Brand-safety (CN 5) overschrijft met pauze.
  */
 function kickerWord(cn: ConditionLevel, score: number): string {
   if (cn === 5) return "EVEN OP PAUZE";
@@ -34,7 +34,7 @@ export function ConditionLevelDisplay({
 
   // HOOFDCIJFER = de HYBRIDE DAGKOP (amendement §4.1.14): het structurele anker
   // (kosten + energie, vs 2010-2019) gecombineerd met de dagelijkse beweging
-  // (weer/nieuws + DATEX-verkeer). Terugval (ook tijdens het data-overgangsvenster)
+  // (weer/nieuws + DATEX-verkeer + OV: STIB en De Lijn). Terugval (ook tijdens het data-overgangsvenster)
   // op de brede absolute meting (§4.1.11), dan economie-only, dan het relatieve
   // seizoenspercentiel, mocht de dagkop nog niet in de output staan.
   const absScore =

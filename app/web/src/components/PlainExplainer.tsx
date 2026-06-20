@@ -2,6 +2,13 @@ import type { DailyOutput } from "../types";
 import { buildContext, buildHeadline, buildBody } from "../lib/explainer";
 
 /**
+ * NIET MOUNTEN zonder fix (audit 2026-06-20): dit blok is momenteel NIET in gebruik
+ * (App.tsx en ButtonPanels renderen het niet). Zonder v04-blok in de output draaien
+ * buildHeadline/buildBody op het relatieve seizoenspercentiel en tonen ze dat als kop,
+ * in plaats van het hoofdcijfer daily_pressure (canon-overtreding, amendement §4.1.14).
+ * Koppel het eerst aan daily_pressure (zoals ConditionLevelDisplay) voor je het opnieuw
+ * inhangt.
+ *
  * Context-bewust uitleg-blok.
  * Headline + body worden dynamisch gebouwd uit:
  *  - condition_level (1-5)

@@ -121,7 +121,7 @@ export function App() {
       <footer className="footer">
         {/* Over Les Hautes-Alpes (Peter 17/6): afzender + uitnodiging. */}
         <div className="lha-about">
-          <h2>De Nationale Stress Index is een initiatief van Les Hautes-Alpes.</h2>
+          <h2>De Nationale Stress Index is een initiatief van June20, in samenwerking met het toeristisch agentschap van Les Hautes-Alpes.</h2>
           <p>
             De Hautes-Alpes verenigen de charme van de Zuid-Franse Alpen met een ongeëvenaard gevoel van
             ruimte en vrijheid. Deze nog relatief onontdekte regio verrast met een indrukwekkend landschap
@@ -154,7 +154,7 @@ export function App() {
         </div>
         <div className="footer-inner footer-center">
           <div className="footer-credits">
-            <span>Een initiatief van Les Hautes Alpes · {FOOTER_NOTES.tagline}</span>
+            <span>Een initiatief van June20, in samenwerking met Les Hautes Alpes · {FOOTER_NOTES.tagline}</span>
           </div>
         </div>
       </footer>

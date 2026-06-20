@@ -1505,22 +1505,6 @@ main {
   font-weight: 600;
   color: var(--lha-stone-soft);
 }
-.secondary-mock {
-  padding: 1px 7px;
-  border-radius: 10px;
-  background: var(--lha-sun-soft);
-  color: var(--lha-stone);
-  font-size: 0.7rem;
-}
-.secondary-reason {
-  font-size: 0.86rem;
-  color: var(--c-ink);
-  line-height: 1.5;
-  margin: 6px 0 3px;
-}
-.secondary-reason strong {
-  color: var(--c-red);
-}
 .secondary-source {
   font-size: 0.8rem;
   color: var(--c-ink-soft);

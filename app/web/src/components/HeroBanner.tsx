@@ -16,11 +16,11 @@ export function HeroBanner() {
             individuele stress") staat onder het cijfer in ConditionLevelDisplay en
             blijft daar staan (B7-discipline, 09_Brand-Message-Style-Guide). */}
         <div className="intro-subtitle">
-          Hoe stressvol is het leven van de Belg op dit moment? De Nationale Stress Index meet
-          het via diverse parameters. De index analyseert continu verschillende realtime
-          indicatoren die een directe impact hebben op ons dagelijkse stressniveau. Dankzij een
-          live, altijd up-to-date cijfer, zie je meteen wanneer het hoog tijd is om even te
-          ontspannen.
+          Hoeveel druk staat er vandaag op het dagelijks leven in België? De Nationale Stress
+          Index meet de omstandigheden die op ons wegen, niet de stress die jij persoonlijk
+          voelt. We kijken continu naar veel signalen tegelijk, van het weer en het verkeer tot
+          de kosten van het leven, en bundelen ze tot één cijfer dat elke dag meebeweegt. Zo
+          zie je in één oogopslag wanneer het een goed moment is om even op adem te komen.
         </div>
         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
         {/* C3: meetgebied expliciet; de afzender staat in de footer. */}

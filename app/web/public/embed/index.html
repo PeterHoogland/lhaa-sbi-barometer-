@@ -2,7 +2,7 @@
 <html lang="nl-BE">
 <head>
   <meta charset="UTF-8">
-  <title>SBI Banner Embed · Klant-test</title>
+  <title>De Nationale Stress Index, banner-embed (klant-test)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body { font-family: system-ui, sans-serif; max-width: 760px; margin: 40px auto; padding: 0 24px; color: #1d3557; line-height: 1.55; }
@@ -17,19 +17,19 @@
   </style>
 </head>
 <body>
-  <h1>SBI Banner Embed — voor abonnees</h1>
+  <h1>De Nationale Stress Index, banner-embed voor abonnees</h1>
   <p>
     Hieronder zie je de banner zoals hij op uw site verschijnt. Eén script-tag, automatische
-    sync met de centrale SBI-meting, geen tracking.
+    sync met de centrale meting van De Nationale Stress Index, geen tracking.
   </p>
 
   <h2>Live banner (vandaag's signal)</h2>
   <div class="demo-zone">
-    <div class="demo-zone-label">UW SITE — DEMO</div>
+    <div class="demo-zone-label">UW SITE, DEMO</div>
     <div id="sbi-banner-live"></div>
   </div>
 
-  <h2>Forced previews — alle 5 niveaus</h2>
+  <h2>Voorbeelden van alle 5 niveaus</h2>
   <div class="controls">
     <button data-cn="1">CN 1 (Rust)</button>
     <button data-cn="2">CN 2 (Normaal)</button>
@@ -44,11 +44,11 @@
 
   <h2>Integratie-code</h2>
   <pre>&lt;div id="sbi-banner"&gt;&lt;/div&gt;
-&lt;script src="https://barometer.sbi/embed/banner.js" defer&gt;&lt;/script&gt;
+&lt;script src="https://nationalestressindex.be/embed/banner.js" defer&gt;&lt;/script&gt;
 &lt;script&gt;
   window.addEventListener('load', () =&gt; SBI.mount({
     target: '#sbi-banner',
-    apiUrl: 'https://barometer.sbi/api/v1/signal',
+    apiUrl: 'https://nationalestressindex.be/data/latest.json',
     brand: 'Les Hautes Alpes',
     ctaUrl: 'https://www.hautes-alpes.net'
   }));
@@ -58,21 +58,21 @@
   <ul>
     <li>Haalt eens per pagina-load het huidige SBI-signal op</li>
     <li>Render banner-variant op basis van conditie-niveau 1-5</li>
-    <li>Bij CN 1, 2, 5: geen banner — fail-silent, geen visuele ruis</li>
+    <li>Bij CN 1, 2, 5: geen banner, stil uitgeschakeld, geen visuele ruis</li>
     <li>Brand-safety-override automatisch (CN 5 onderdrukt commerciële uitnodiging)</li>
     <li>Geen cookies, geen tracking, geen externe dependencies</li>
   </ul>
 
   <h3>Naleving stijlgids (doc 09)</h3>
   <ul>
-    <li class="ok">✓ Copy is hard-gecodeerd in het script — abonnee kan deze niet wijzigen</li>
+    <li class="ok">✓ Copy is hard-gecodeerd in het script, de abonnee kan deze niet wijzigen</li>
     <li class="ok">✓ Brand-naam en CTA-URL zijn de enige configureerbare velden</li>
     <li class="ok">✓ Bij brand-safety-vlag: automatische onderdrukking</li>
     <li class="ok">✓ Methodologie-link altijd zichtbaar in de banner-footer</li>
   </ul>
 
   <p style="margin-top:32px;font-size:0.85rem;color:#6c7a93">
-    <a href="/" style="color:#1d3557">← terug naar publieke barometer</a> ·
+    <a href="/" style="color:#1d3557">← terug naar De Nationale Stress Index</a> ·
     <a href="/preview" style="color:#1d3557">alle 5 niveaus naast elkaar</a>
   </p>
 

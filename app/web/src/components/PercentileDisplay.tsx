@@ -34,7 +34,7 @@ export function PercentileDisplay({ shortP, fixedP, composite, evidenceComposite
         )}
         {fixedP !== null && (
           <div className="meta-row">
-            <span className="meta-key">Percentiel · 2010–2019 baseline</span>
+            <span className="meta-key">Percentiel · 2010-2019 baseline</span>
             <span className="meta-value">P {fixedP}</span>
           </div>
         )}

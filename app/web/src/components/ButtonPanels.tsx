@@ -3,7 +3,6 @@ import type { DailyOutput, SparklinePoint } from "../types";
 import { Sparkline } from "./Sparkline";
 import { KernIndicators } from "./KernIndicators";
 import { IndicatorZView } from "./IndicatorZView";
-import { SecondarySignals } from "./SecondarySignals";
 import { Methodology } from "./Methodology";
 import { AllSources } from "./AllSources";
 import { ScienceReferences } from "./ScienceReferences";
@@ -88,7 +87,6 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
             <MEDIA_DIAGNOSTIC diagnostic={data.media_cluster_diagnostic} />
           </div>
           <IndicatorZView breakdown={data.indicator_breakdown} />
-          <SecondarySignals signals={data.secondary_signals} />
           <AllSources breakdown={data.indicator_breakdown} />
           <ScienceReferences breakdown={data.indicator_breakdown} />
         </>

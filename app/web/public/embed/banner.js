@@ -8,11 +8,11 @@
  *
  * Gebruik:
  *   <div id="sbi-banner"></div>
- *   <script src="https://barometer.sbi/embed/banner.js" defer></script>
+ *   <script src="https://nationalestressindex.be/embed/banner.js" defer></script>
  *   <script>
  *     window.addEventListener('load', () => SBI.mount({
  *       target: '#sbi-banner',
- *       apiUrl: 'https://barometer.sbi/api/v1/signal',
+ *       apiUrl: 'https://nationalestressindex.be/data/latest.json',
  *       brand: 'Les Hautes Alpes',
  *       ctaUrl: 'https://www.hautes-alpes.net'
  *     }));
@@ -35,7 +35,7 @@
     4: {
       active: true,
       headline: "Blootstellings-conditie op piekniveau.",
-      body: "Statistisch gezien is dit een goed moment voor herstel — preventief, terwijl het kan.",
+      body: "Statistisch gezien is dit een goed moment voor herstel, preventief, terwijl het kan.",
       action: "Bekijk de bestemmingen",
     },
     5: {
@@ -100,7 +100,7 @@
       + ctaHtml
       + '<div class="sbi-b-meta">De Nationale Stress Index &middot; niveau ' + level + "/5"
       + (dateStr ? " &middot; " + escapeHtml(dateStr) : "")
-      + " &middot; <a href=\"https://barometer.sbi/methodologie\">methodologie</a>"
+      + " &middot; <a href=\"https://nationalestressindex.be/methodologie\">methodologie</a>"
       + "</div>"
       + "</div>";
     target.setAttribute("data-sbi-cn", String(level));

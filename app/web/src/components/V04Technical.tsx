@@ -8,7 +8,7 @@ import type { V04Output } from "../types";
  */
 
 function fmt(v: number | null): string {
-  return v === null ? "—" : v.toFixed(2);
+  return v === null ? "-" : v.toFixed(2);
 }
 
 export function V04Technical({ v04 }: { v04: V04Output }) {
@@ -46,7 +46,7 @@ export function V04Technical({ v04 }: { v04: V04Output }) {
                 <td className="mono">{fmt(k.z_kort)}</td>
                 <td className="mono">{fmt(k.z_lang)}</td>
                 <td className="mono">{fmt(k.delta_1d)}</td>
-                <td className="mono">{k.percentile_lang ?? "—"}</td>
+                <td className="mono">{k.percentile_lang ?? "-"}</td>
                 <td className="mono">{k.baseline_lang_jaren}j</td>
                 <td className="mono">{k.w_meting.toFixed(3)}</td>
               </tr>

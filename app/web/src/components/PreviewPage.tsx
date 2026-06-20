@@ -100,7 +100,7 @@ export function PreviewPage() {
   return (
     <div className="preview-page">
       <header className="preview-header">
-        <div className="brand-name">SBI · INDEX</div>
+        <div className="brand-name">De Nationale Stress Index</div>
         <h1>Banner-preview, alle 5 conditie-niveaus</h1>
         <p className="muted">
           Voor abonnees: zo ziet de banner eruit op elk van de 5 conditie-niveaus.
@@ -119,11 +119,11 @@ export function PreviewPage() {
         <h2>Embedden op uw site</h2>
         <p className="panel-lead">Plak dit ergens binnen je &lt;body&gt; tag:</p>
         <pre className="code-block">{`<div id="sbi-banner"></div>
-<script src="https://barometer.sbi/embed/banner.js" defer></script>
+<script src="https://nationalestressindex.be/embed/banner.js" defer></script>
 <script>
   window.addEventListener('load', () => SBI.mount({
     target: '#sbi-banner',
-    apiUrl: '/data/latest.json',   // production: https://barometer.sbi/api/v1/signal
+    apiUrl: '/data/latest.json',   // production: https://nationalestressindex.be/data/latest.json
     brand: 'Les Hautes Alpes',
     ctaUrl: 'https://plus.hautes-alpes.net/'
   }));

@@ -6,6 +6,22 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-20 — Frontend-vensters consistent gemaakt + afzender naar June20 + plain language (UI/copy, geen methodologiewijziging)
+
+**Aanleiding:** Peter vroeg om (a) een keuze over de afzender-framing en (b) alle vensters te controleren op onderlinge tegenspraak, met eenvoudige teksten die een 20-jarige begrijpt. Een multi-agent consistentie-audit (6 dimensies, adversarieel geverifieerd) leverde 22 bevestigde bevindingen.
+
+**Afzender (Peter-keuze 20/6):** standaard wordt nu de framing van het mainstream-persbericht: "een initiatief van June20, in samenwerking met het toeristisch agentschap van Les Hautes-Alpes." Doorgevoerd op de site (footer-h2 + footer-credits in App.tsx) en de meta-description (index.html). De Les Hautes Alpes-CTA en de embed-brand blijven LHA (partner-stem, geen afzenderclaim).
+
+**Claim-grens hersteld (high):** de hero-intro (HeroBanner) claimde "hoe stressvol is het leven van de Belg" en "directe impact op ons dagelijkse stressniveau" - dat is individueel ervaren stress + een causale claim, tegen de bindende claim-mitigatie in. Herschreven naar "meet de omstandigheden die op ons wegen, niet de stress die jij persoonlijk voelt", in plain language.
+
+**Verwijderd-paneel-opruiming:** dode `SecondarySignals`-bedrading (import + render in ButtonPanels) weg; wees-CSS (.secondary-mock, .secondary-reason) verwijderd; de nog-gebruikte secondary-* classes (ContextSignals) bewust behouden. PlainExplainer kreeg een NIET-MOUNTEN-waarschuwing (dode component zou anders het relatieve percentiel als kop tonen).
+
+**Naam + copy:** "SBI"/"barometer" als publiekskop weg uit de preview/embed (PreviewPage, public/embed) -> "De Nationale Stress Index"; em-dashes uit user-facing embed-copy + banner.js (rendert op abonnee-sites); dood placeholder-domein barometer.sbi -> nationalestressindex.be (domein-deployment is een go-live-punt); en-dash in PercentileDisplay -> koppelteken; plain-language in Methodology (CISS-uitleg) en V04Technical-placeholders. Stale doc-comments in ConditionLevelDisplay geactualiseerd naar §4.1.14 (hybride dagkop incl. OV).
+
+**Geborgd:** web-build groen (tsc -b + vite, SecondarySignals tree-shaken), engine 206/206. Geen weging/indicator gewijzigd, dus geen pre-registratie-amendement; geen docs 00-09, dus geen OSF-manifest-herberekening.
+
+---
+
 ## 2026-06-20 — "Signalen die we wel meten maar niet meetellen"-paneel verwijderd (UI, geen methodologiewijziging)
 
 **Aanleiding:** Peter (laatste instructie 20/6): "haal die uit de tabel" voor alle niet-meetellende signalen. Sinds OV (STIB/De Lijn) en DATEX-verkeer in de hybride dagkop meetellen, bevatte het "telt niet mee"-paneel alleen nog dubbele/kapotte/niet-representatieve signalen (RSS, emotie, iRail, Reddit, Mastodon, ontslag-radar, Trends). Dat zaaide verwarring zonder iets toe te voegen.
