@@ -2,36 +2,47 @@ import type { SecondarySignal } from "../types";
 import { formatObservationDate } from "../lib/format-date";
 
 /**
- * Secundaire signalen — sensitiviteit, NIET in het composiet/cijfer.
- * Expliciet experimenteel en niet-representatief. Bron: doc 02, secundaire set.
+ * Secundaire signalen — we meten ze wel, maar ze tellen NIET mee in het cijfer.
+ * Doel van dit paneel (Peter 2026-06-20): super duidelijk maken WAT er niet
+ * meetelt en WAAROM, in taal die iedereen begrijpt. Per signaal staat de reden
+ * in één regel.
  *
- * Uit dit paneel gefilterd (correctie 2026-06-20):
- *  - I-D2-001-rt (DATEX-dagverkeer): voedt sinds 0.4.0 de hybride dagkop
- *    (daily_pressure, §4.1.14) als dagsignaal en hoort dus NIET meer bij
- *    "niet in het cijfer".
- *  - simulated/demo-signalen (bv. vluchten zonder bereikbare bron): geen echte
- *    meting, dus niet tonen alsof het een signaal is.
+ * Uit dit paneel gefilterd:
+ *  - I-D2-001-rt (DATEX-dagverkeer): voedt sinds 0.4.0 de hybride dagkop (telt dus WEL mee).
+ *  - I-D5-trends (Google Trends): verwarrend + schaal-artefact (meestal 0, één dag knalt
+ *    naar de kap), niet representatief — bewust niet getoond (Peter 2026-06-20).
+ *  - simulated/demo-signalen: geen echte meting.
  */
-const IN_HEADLINE = new Set<string>(["I-D2-001-rt"]);
+const HIDDEN = new Set<string>(["I-D2-001-rt", "I-D5-trends"]);
+
+// Eén korte, heldere reden per signaal waarom het niet meetelt.
+const REASON: Record<string, string> = {
+  "I-D5-006S": "Gaat over wie op Reddit post (jonger, stedelijker), niet over heel België.",
+  "I-D5-mastodon": "Klein, niche publiek; niet representatief voor België.",
+  "I-D2-009S": "De treinstiptheid telt al mee via een betere bron (Infrabel).",
+  "I-D3-003S": "Telt nieuwsartikels; kan uitschieten als één zaak veel in het nieuws komt.",
+  "I-D5-emotie": "Gaat over het nieuws, dat al meetelt via een betere bron (GDELT).",
+  "I-D5-001-rss": "Meet hetzelfde nieuws dat al meetelt via een betere bron (GDELT); dit is een controle.",
+  "I-D2-stib": "Bestaat pas sinds juni 2026: te kort om te weten wat normaal is.",
+  "I-D2-delijn": "Bestaat pas sinds juni 2026: te kort om te weten wat normaal is.",
+};
+function reasonFor(code: string): string {
+  return REASON[code] ?? "Heeft nog geen eerlijke, lang genoeg gemeten meetlat.";
+}
 
 export function SecondarySignals({ signals }: { signals: SecondarySignal[] }) {
-  const shown = (signals ?? []).filter((s) => !IN_HEADLINE.has(s.code) && !s.simulated);
+  const shown = (signals ?? []).filter((s) => !HIDDEN.has(s.code) && !s.simulated);
   if (shown.length === 0) return null;
 
   return (
     <section className="panel secondary-panel">
-      <div className="secondary-badge">SECUNDAIR · NIET IN HET CIJFER</div>
-      <h2>Signalen naast het cijfer</h2>
+      <div className="secondary-badge">TELT NIET MEE IN HET CIJFER</div>
+      <h2>Signalen die we wel meten, maar niet meetellen</h2>
       <p className="panel-lead">
-        Dit zijn <strong>experimentele signalen</strong> die we apart meten maar
-        die <strong>bewust niet meetellen</strong> in het cijfer (0-100) of in de
-        banner-activatie. Ze komen uit verschillende lagen: de sociale onderstroom
-        (Reddit, Mastodon), het zoekgedrag (Google Trends), nieuws-afgeleiden
-        (ontslag-radar, emotionele lading, een RSS-controle naast GDELT) en
-        real-time openbaar vervoer (STIB, De Lijn, treinverstoringen). Ze missen
-        ofwel een lange eigen meetlat, ofwel een representatieve doorsnede van de
-        bevolking, dus ze horen nog niet in de officiële meting. We tonen ze hier
-        ter vergelijking, voor wie nieuwsgierig is.
+        Deze signalen tellen <strong>niet mee</strong> in het cijfer bovenaan. We meten ze wel,
+        en laten ze hier zien voor wie nieuwsgierig is. Bij elk staat in één regel waarom het
+        niet meetelt. De korte regel: een signaal telt pas mee als het lang genoeg eerlijk
+        gemeten kan worden, niet iets dubbel meet dat al meetelt, en over heel België gaat.
       </p>
 
       <div className="secondary-list">
@@ -45,20 +56,13 @@ export function SecondarySignals({ signals }: { signals: SecondarySignal[] }) {
               <span className="secondary-code">{s.code}</span>
               <span>Gemeten: {formatObservationDate(s.observation_date)}</span>
             </div>
-            <div className="secondary-source">{s.source}</div>
+            <div className="secondary-reason">
+              <strong>Telt niet mee:</strong> {reasonFor(s.code)}
+            </div>
+            <div className="secondary-source muted small">{s.source}</div>
           </div>
         ))}
       </div>
-
-      <p className="secondary-disclaimer">
-        Waarom apart? Twee voorbeelden maken het concreet. De Reddit- en
-        Mastodon-peilingen steunen op een publiek dat jonger, stedelijker en hoger
-        opgeleid is dan de gemiddelde Belg, en zijn dus niet representatief. De
-        ontslag-radar telt nieuwsartikels en kan uitschieten wanneer er veel
-        duiding rond één gebeurtenis is. Zulke signalen zijn vers en nuttig om mee
-        te kijken, maar nog niet betrouwbaar genoeg voor het officiële cijfer. Lees
-        per signaal de bronregel.
-      </p>
     </section>
   );
 }
