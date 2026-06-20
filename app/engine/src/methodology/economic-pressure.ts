@@ -62,10 +62,11 @@ export const ECONOMIC_PRESSURE_CODES: IndicatorCode[] = [
 ];
 
 /**
- * User-facing label. Sinds amendement §4.1.10 (Peter GO 17/6) is deze absolute
- * meting HET publieke hoofdcijfer van de Index (niet langer enkel een parallelle
- * tweede meting). De claim-mitigatie verschuift mee: het cijfer meet economische
- * druk t.o.v. normale tijden, geen individuele stress. Geen em-dash (harde regel 9).
+ * User-facing label. §4.1.9: een absolute meting "vs normale tijden" (2010-2019).
+ * §4.1.10/§4.1.11 maakten eerst deze (en daarna broad_pressure) het hoofdcijfer;
+ * sinds 0.4.0 (§4.1.14) is de publieke kop de hybride dagkop (daily_pressure) en
+ * zijn economic_pressure + broad_pressure sub-views. De claim-mitigatie blijft:
+ * het cijfer meet druk t.o.v. normale tijden, geen individuele stress. Geen em-dash.
  */
 export const ECONOMIC_PRESSURE_LABEL =
   "Economische druk op gezinnen t.o.v. normale tijden (2010-2019).";

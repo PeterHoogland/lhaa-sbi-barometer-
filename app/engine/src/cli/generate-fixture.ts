@@ -361,7 +361,7 @@ async function generate(): Promise<void> {
   const SPARKLINE_DAYS = 60;
   const compositeHistory: Array<{ date: string; value: number }> = [];
   const compositeMetingHistory: Array<{ date: string; value: number }> = [];
-  const sparkline: Array<{ date: string; composite: number; percentile: number; tier: string }> = [];
+  const sparkline: Array<{ date: string; composite: number; percentile: number; daily_pressure: number | null; tier: string }> = [];
   const _zDump: Array<{ date: string; composite: number; z: Record<string, number | null> }> = [];
 
   for (let i = PERCENTILE_WINDOW_DAYS; i > 0; i--) {
@@ -409,6 +409,10 @@ async function generate(): Promise<void> {
         date: iso,
         composite: out.composite.equal,
         percentile: out.percentile.short_24m,
+        // Hybride dagkop (§4.1.14) = de publieke kop; de Evolutie-grafiek plot deze
+        // i.p.v. het relatieve percentiel (anders spreekt de grafiek de kop tegen).
+        // Warm-up draait zonder dailyTraffic, dus verkeer telt voor oude dagen niet mee.
+        daily_pressure: out.daily_pressure?.score ?? null,
         tier: out.tier.current,
       });
     }
@@ -550,6 +554,7 @@ async function generate(): Promise<void> {
     date: todayIso,
     composite: todayOutput.composite.equal,
     percentile: todayOutput.percentile.short_24m,
+    daily_pressure: todayOutput.daily_pressure?.score ?? null,
     tier: todayOutput.tier.current,
   });
 

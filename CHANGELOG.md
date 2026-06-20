@@ -6,6 +6,21 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-20 — Frontend volledig consistent gemaakt met de hybride dagkop (geen UI-discrepanties meer)
+
+**Aanleiding:** na de 0.4.0-kopwijziging (§4.1.14) toonden enkele panelen nog de OUDE relatieve laag (~13-29), wat de absolute kop (~90) zichtbaar tegensprak. Een uitputtende audit (3 agents over componenten, copy/meta en engine-labels) bracht alle discrepanties in kaart.
+
+**Fixes (geen methodologiewijziging, alleen weergave/copy):**
+- **Evolutie-grafiek** plot nu het hoofdcijfer (`daily_pressure`) i.p.v. het relatieve percentiel; banden heten "verhoogd"/"uitzonderlijk"; `generate-fixture` schrijft `daily_pressure` mee in de 60-daagse sparkline-historie.
+- **"De kern van de meting"** herkaderd als tweede lens ("Vandaag vs de afgelopen twee jaar", "geen tegenspraak maar een ander ijkpunt") i.p.v. een concurrerende "scherpere meting".
+- **Secundaire-signalen-paneel** filtert DATEX-verkeer (zit sinds 0.4.0 in de kop) en demo/gesimuleerde signalen weg; intro/disclaimer herschreven.
+- **Methodology + IndicatorList** beschrijven nu de hybride kop (structureel anker vs 2010-2019 + dagelijkse beweging) i.p.v. de oude relatieve methode ("afgelopen 24 maanden", equal-weight, "acht indicatoren").
+- **PreviewPage** "dagpercentiel" → "score"; **AllSources** "kunnen niet achteraf bijgestuurd worden" → eerlijke amendement-formulering; **meta-description** geankerd op 2010-2019. Stale comment in `economic-pressure.ts` bijgewerkt.
+
+**Geborgd:** engine `tsc` schoon + **205 tests groen**, web-build groen, geen em-dash, DOM-spotcheck bevestigt alle oude framing weg en de nieuwe aanwezig.
+
+---
+
 ## 2026-06-19 — Hybride dagkop "niveau x beweging" wordt het publieke hoofdcijfer (amendement §4.1.14, methodologie 0.4.0)
 
 **Aanleiding:** `broad_pressure` (91) leest eerlijk-hoog maar beweegt nauwelijks van dag tot dag (3 indicatoren op de winsor-kap, hoge economische bodem, Phi-verzadiging) en verkeer zit er niet in. Peter wil een dagelijks getal dat de structurele druk combineert met de omstandigheden van vandaag, eerlijk-hoog verankerd maar zichtbaar ademend. Wetenschappelijke kern (Peter): het relatieve cijfer (~23) leest laag door zijn crisisjaren-referentie, niet inherent; de snelle factoren tegen hun NORMALE-jaren-referentie meten lost dat aan de bron op.

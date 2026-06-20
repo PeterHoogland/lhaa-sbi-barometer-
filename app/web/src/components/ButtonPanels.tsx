@@ -57,10 +57,10 @@ export function ButtonPanels({ data, sparkline }: { data: DailyOutput; sparkline
       render: () => (
         <section className="sparkline-panel">
           <p className="panel-lead">
-            Hoe verandert de Index van dag tot dag? Elke stip staat voor een dag. Hoe hoger op de grafiek,
-            hoe meer signalen tegelijk hoog staan. De gekleurde banden tonen de drempels:
-            <strong> gemiddeld</strong>, <strong>hoger dan gewoonlijk</strong> (vanaf 70%),
-            <strong> uitzonderlijk hoog</strong> (vanaf 90%).
+            Hoe verandert het hoofdcijfer van dag tot dag? Elke stip is de Index van die dag
+            (0-100, vergeleken met normale tijden). De gekleurde banden tonen de niveaus:
+            <strong> normaal</strong>, <strong>verhoogd</strong> (vanaf 70) en
+            <strong> uitzonderlijk</strong> (vanaf 90).
           </p>
           <Sparkline points={sparkline} />
         </section>

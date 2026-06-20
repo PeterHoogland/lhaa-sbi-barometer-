@@ -18,9 +18,9 @@ export function V04Technical({ v04 }: { v04: V04Output }) {
         <h3>Meet- en trigger-laag</h3>
       </header>
       <p className="muted small">
-        Dit is een tweede, scherpere meting die meeloopt naast het hoofdcijfer en de
-        campagne-signalen aanstuurt. De campagne-triggers vereisen handmatige goedkeuring,
-        er vuurt niets automatisch.
+        Dit is een tweede meting met een ander ijkpunt (vergeleken met de afgelopen twee jaar)
+        die naast het hoofdcijfer meeloopt en de campagne-signalen aanstuurt. De campagne-triggers
+        vereisen handmatige goedkeuring, er vuurt niets automatisch.
       </p>
 
       <div className="v04-stat-row">

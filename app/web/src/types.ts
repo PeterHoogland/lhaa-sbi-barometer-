@@ -301,5 +301,7 @@ export interface SparklinePoint {
   date: string;
   composite: number;
   percentile: number;
+  /** Hybride dagkop (§4.1.14) van die dag = het publieke hoofdcijfer; de Evolutie-grafiek plot dit. */
+  daily_pressure?: number | null;
   tier: Tier;
 }

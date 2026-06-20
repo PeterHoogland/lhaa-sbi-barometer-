@@ -37,8 +37,10 @@ export function AllSources({ breakdown }: { breakdown: IndicatorBreakdown[] }) {
 
       <p className="muted small all-sources-note">
         De volledige methodologie (lagen 1 tot 8) is open en publiek beschikbaar.
-        Alle keuzes, drempels, gewichten en formules staan vooraf vast en kunnen
-        niet achteraf bijgestuurd worden.
+        Alle keuzes, drempels, gewichten en formules staan vooraf vast in de
+        methodologie. Wijzigen kan alleen via een gedocumenteerd amendement met
+        logboek-vermelding, niet achteraf om een cijfer bij te sturen; automatische
+        tests laten de bouw falen bij een stille wijziging.
       </p>
     </section>
   );

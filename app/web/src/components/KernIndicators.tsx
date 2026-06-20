@@ -56,15 +56,18 @@ export function KernIndicators({ v04 }: { v04: V04Output }) {
         <span className="kern-badge">kern</span>
       </header>
       <p className="panel-lead">
-        Dit is de scherpere meting. We wegen een kern van negen signalen (weer tonen we als
-        hitte én koude) tegen twee tijdvensters tegelijk: een kort venster dat plotse pieken
-        snel oppikt, en een lang venster dat rustig en betrouwbaar het niveau bewaakt. Zo zie
-        je sneller én stabieler wat er speelt.
+        Dit is een tweede lens naast het hoofdcijfer, met een andere vraag. Het hoofdcijfer
+        bovenaan vergelijkt vandaag met normale tijden (2010-2019); hier vergelijken we juist
+        met de afgelopen twee jaar. We wegen een kern van negen signalen (weer tonen we als
+        hitte én koude) tegen twee tijdvensters: een kort venster dat plotse pieken snel oppikt,
+        en een lang venster dat rustig het niveau bewaakt. Omdat 2024-2025 zelf zware jaren waren,
+        valt deze vergelijking vaak lager uit dan het hoofdcijfer. Dat is geen tegenspraak maar
+        een ander ijkpunt.
       </p>
 
       <div className="kern-readout">
         <div className="kern-readout-cell">
-          <div className="kern-readout-label">De kern-meting vandaag</div>
+          <div className="kern-readout-label">Vandaag vs de afgelopen twee jaar</div>
           <div className="kern-readout-value">{meting}</div>
           <div className="kern-readout-sub">
             hoger dan op {Math.round(v04.percentile.lang)}% van de vergelijkbare dagen in de voorbije twee jaar
@@ -98,7 +101,7 @@ export function KernIndicators({ v04 }: { v04: V04Output }) {
 
       {wachten.length > 0 && (
         <p className="muted small kern-wachten">
-          Nog niet meegerekend — te weinig eigen historie, dit bouwt dag na dag vanzelf op:{" "}
+          Nog niet meegerekend, te weinig eigen historie, dit bouwt dag na dag vanzelf op:{" "}
           {wachten.map((k) => k.plain_name).join(", ")}.
         </p>
       )}

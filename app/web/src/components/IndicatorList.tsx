@@ -95,15 +95,16 @@ export function IndicatorList({
           <span style={{ color: "var(--c-red)" }}>▲▲ uitzonderlijk hoog</span>
         </p>
         <p className="muted small">
-          Als we spreken over een "gemiddelde", vergelijken we de situatie van vandaag met dezelfde periode in de
-          afgelopen twee jaar. Omdat data uit verschillende kanalen komt, zie je per meting hoe actueel de bron is.
-          De meeste indicatoren draaien op live dagbronnen.
+          Het statuslabel per indicator ("gemiddeld", "hoger dan gewoonlijk") vergelijkt de situatie van vandaag
+          met dezelfde periode in de afgelopen twee jaar. Het hoofdcijfer bovenaan gebruikt een ander ijkpunt:
+          normale tijden (2010-2019). Omdat data uit verschillende kanalen komt, zie je per meting hoe actueel de
+          bron is. De meeste indicatoren draaien op live dagbronnen.
         </p>
         <p className="muted small">
           Elke indicator krijgt ook een wetenschappelijke score (Grade). Dit label (A = ijzersterk onderzoek,
           B = consistent onderzoek, C = indirect bewijs) toont puur de bewijskracht aan, niet het gewicht van de
-          indicator. Het hoofdcijfer bovenaan telt acht indicatoren (kosten van levensonderhoud, energie en weer)
-          elk even zwaar mee, telkens vergeleken met hun normale niveau in het referentiedecennium.
+          indicator. Het hoofdcijfer bovenaan combineert de structurele druk (kosten van levensonderhoud en energie,
+          gemeten tegen 2010-2019) met de omstandigheden van vandaag (weer, nieuws en verkeer).
         </p>
       </footer>
     </section>
