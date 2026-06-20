@@ -7,7 +7,8 @@
     "indicator.spike:I-D1-002": "2026-06-18T19:00:02.775Z",
     "indicator.spike:I-D1-003": "2026-06-04T11:46:59.582Z",
     "indicator.red:I-D1-002": "2026-06-18T14:35:03.229Z",
-    "indicator.red:I-D1-003": "2026-06-04T11:46:59.582Z"
+    "indicator.red:I-D1-003": "2026-06-04T11:46:59.582Z",
+    "indicator.red:I-D5-001": "2026-06-20T10:46:27.747Z"
   },
   "recent": [
     {
@@ -88,6 +89,11 @@
     {
       "key": "composite.red:composite",
       "fired_at": "2026-06-18T19:00:02.775Z",
+      "severity": "hoog"
+    },
+    {
+      "key": "indicator.red:I-D5-001",
+      "fired_at": "2026-06-20T10:46:27.747Z",
       "severity": "hoog"
     }
   ]

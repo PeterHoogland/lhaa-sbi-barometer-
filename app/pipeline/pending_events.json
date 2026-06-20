@@ -11788,5 +11788,41 @@
     "link": "https://www.nieuwsblad.be/binnenland/duizenden-baby-zeehondjes-gestorven-op-afgelegen-eiland-wetenschappers-denken-nu-te-weten-hoe-dat-komt/157524900.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-20",
+    "magnitude": 1,
+    "title": "Staatsveiligheid slachtoffer van cyberaanval: mogelijk gegevens van agenten gestolen",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2025/03/14/b3841d0c-2858-4883-8e2b-bbacd8623aaf.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-20",
+    "magnitude": 3,
+    "title": "President van Bolivia kondigt noodtoestand af na 6 weken van straatprotest en wegblokkades",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/05/44c717d6-cf44-4682-9e56-0a876b03e18d.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-20",
+    "magnitude": 3,
+    "title": "“Geen ruimte meer voor dialoog”: Bolivia roept noodtoestand uit na wekenlange protesten",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/geen-ruimte-meer-voor-dialoog-bolivia-roept-noodtoestand-uit-na-wekenlange-protesten~adbdedf3/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-20",
+    "magnitude": 1,
+    "title": "Enorme vuurzee raast door luxeresort op Dominicaanse Republiek: toeriste omgekomen, 1.700 gasten geëvacueerd",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/buitenland/enorme-vuurzee-raast-door-luxeresort-op-dominicaanse-republiek-toeriste-omgekomen-1.700-gasten-geevacueerd/157524799.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
