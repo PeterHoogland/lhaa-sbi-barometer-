@@ -43,6 +43,15 @@ function achtergrond(loadFactor: number): { label: string; color: string } {
   return { label: "laag", color: "var(--c-green)" };
 }
 
+// Wat de chip feitelijk meet, vergeleken met dezelfde tijd van het jaar. Voor
+// hitte/koude is de drempel cruciaal: "Hitte" is graden BOVEN 30°C (een gezondheids-
+// drempel), niet "is het warm". Een warme dag onder 30°C leest daarom "gemiddeld".
+function chipBasis(code: string): string {
+  if (code === "I-D1-002") return "graden boven 30°C, vergeleken met dezelfde tijd van het jaar";
+  if (code === "I-D1-003") return "graden onder -5°C, vergeleken met dezelfde tijd van het jaar";
+  return "vergeleken met dezelfde tijd van het jaar";
+}
+
 export function KernIndicators({ v04 }: { v04: V04Output }) {
   const meting = metingPhrase(v04.percentile.lang);
   const achter = achtergrond(v04.composite.load_factor);
@@ -93,7 +102,7 @@ export function KernIndicators({ v04 }: { v04: V04Output }) {
               {kernLabel(k.state)}
             </span>
             <span className="kern-chip-base muted small">
-              vergeleken met dezelfde tijd van het jaar
+              {chipBasis(k.code)}
             </span>
           </div>
         ))}
