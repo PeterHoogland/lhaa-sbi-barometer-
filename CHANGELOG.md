@@ -6,6 +6,16 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-20 — Automatische, datum-gegrendelde campagne go-live (SBI_STRICT_REAL vanaf 2026-06-22, server-side)
+
+**Aanleiding:** Peter wil dat de campagnemodus volautomatisch live gaat op maandag 2026-06-22 (07:00 BE-cron), zonder handmatige stap en zonder afhankelijkheid van een open app of push-rechten op de dag zelf.
+
+**Beslissing:** in `.github/workflows/daily.yml` een datum-gate-step toegevoegd vlak vóór de engine-compute (`generate-fixture`). Vanaf de Brusselse datum 2026-06-22 zet elke CI-run `SBI_STRICT_REAL=1` via `$GITHUB_ENV`; daarvoor blijft het uit, zodat er niets te vroeg live gaat. Strict-real laat de synthetische fallbacks weg zodat alleen echte metingen meetellen en `indicators_simulated` leeg is (gedrag uit `generate-fixture.ts`). Puur server-side: de bestaande cron draait de eerste strict-real-run op 22/6. Geen CTA-banner-wijziging; geen weging-, indicator- of engine-wijziging.
+
+**Geborgd:** YAML gevalideerd; datum-logica getest (20-21/6 UIT, vanaf 22/6 AAN; echte datum nu = 20/6 -> UIT); `monitor.yml` compute/deployt niet zelf, dus de gate in daily.yml volstaat. De eerder voor dezelfde go-live geplande lokale agent is uitgeschakeld (deze server-side gate vervangt hem en is betrouwbaarder).
+
+---
+
 ## 2026-06-20 — Frontend-vensters consistent gemaakt + afzender naar June20 + plain language (UI/copy, geen methodologiewijziging)
 
 **Aanleiding:** Peter vroeg om (a) een keuze over de afzender-framing en (b) alle vensters te controleren op onderlinge tegenspraak, met eenvoudige teksten die een 20-jarige begrijpt. Een multi-agent consistentie-audit (6 dimensies, adversarieel geverifieerd) leverde 22 bevestigde bevindingen.

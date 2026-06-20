@@ -91,6 +91,22 @@ jobs:
         working-directory: app/engine
         run: npm install
 
+      - name: Campagne go-live-gate (SBI_STRICT_REAL vanaf 2026-06-22, Brussel)
+        # Automatische, datum-gegrendelde go-live (Peter 2026-06-20): vanaf maandag
+        # 2026-06-22 (Brusselse datum) draait elke CI-run in strict-real-modus
+        # (geen synthetische fallback in het cijfer; indicators_simulated leeg).
+        # Daarvoor blijft het uit, zodat er niets te vroeg live gaat. Geen agent,
+        # geen handmatige push nodig; puur server-side. Terugdraaien = deze step weg.
+        if: steps.timecheck.outputs.skip != 'true'
+        run: |
+          TODAY=$(TZ=Europe/Brussels date +%Y%m%d)
+          if [ "$TODAY" -ge 20260622 ]; then
+            echo "SBI_STRICT_REAL=1" >> "$GITHUB_ENV"
+            echo "Go-live actief: strict-real AAN (datum $TODAY Brussel >= 20260622)."
+          else
+            echo "Pre-go-live: strict-real UIT (datum $TODAY Brussel < 20260622)."
+          fi
+
       - name: Generate daily output (hybrid real + synthetic)
         if: steps.timecheck.outputs.skip != 'true'
         working-directory: app/engine
