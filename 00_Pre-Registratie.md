@@ -222,7 +222,18 @@ Wetenschappelijke kern (Peter, 19/6): het relatieve seizoenspercentiel (~23) ade
 
 - **Effect (19/6):** vandaag ~90 (dicht bij de oude 91 -> geen schok bij overgang), ademt ~79-93: een hittegolf die breekt zakt het ~3 punten, een rustige filedag + kalm nieuws ~84, een zware dag (file-spike + zwaar nieuws + hitte) ~94. Een kalme dag blijft eerlijk VERHOOGD (verankerd op de structurele druk), nooit misleidend laag.
 - **Reikwijdte:** raakt alleen de PUBLIEKE KOP. `broad_pressure` (§4.1.11) blijft berekend als sub-view (transparantie); `economic_pressure` (5 economische, §4.1.9) en het relatieve composiet/percentiel zijn ongewijzigd. Frontend leest `daily_pressure.score` (terugval op `broad_pressure` tijdens het data-overgangsvenster).
-- **Geborgd:** `app/engine/test/hybrid-headline.test.ts` (7 tests: blend-mapping, anker, verkeer als dagsignaal, ademhaling, not_computed). `economic-pressure.ts` (de z-keten) ongewijzigd.
+- **Geborgd:** `app/engine/test/hybrid-headline.test.ts` (blend-mapping, anker, dagsignaal, ademhaling, not_computed). `economic-pressure.ts` (de z-keten) ongewijzigd.
+
+### 4.1.15 Amendement: openbaar vervoer (STIB + De Lijn) als dagsignaal in de hybride dagkop (2026-06-20, Peter GO, methodologie 0.4.1)
+
+§4.1.14 nam verkeer (I-D2-001-rt, DATEX-filezwaarte) op als DAGSIGNAAL in de snelle beweging van de hybride dagkop, via de empirische CDF van zijn eigen korte, aangroeiende historie (geen 2010-2019-anker mogelijk). Peter (20/6) wil de OV-verstoringen op dezelfde manier laten meewegen. Dat is consistent en verdedigbaar: STIB (I-D2-stib, actieve reisinfo-items) en De Lijn (I-D2-delijn, vertraagde/geannuleerde ritten) meten iets NIEUWS (openbaar-vervoer-druk), geen dubbeltelling met een al meetellende bron.
+
+**Regel (vanaf 0.4.1):** I-D2-stib en I-D2-delijn worden, naast verkeer, als dagsignaal toegevoegd aan `z_fast` van `daily_pressure`. Per signaal: ECDF van vandaag binnen zijn eigen historie -> probit-z, gewinsoriseerd; `n_reference` per signaal in de output; onder 10 dagpunten valt het signaal eerlijk weg; een gesimuleerde/mock-waarde telt NIET mee (alleen echte metingen). De rekenwijze (`computeHybridHeadline`) is gegeneraliseerd van één verkeer-input naar een lijst dagsignalen.
+
+- **Eerlijke grens (waarom alleen OV, niet "alle besproken signalen"):** nieuws-varianten (I-D5-001-rss RSS-toon, I-D5-emotie) zouden het nieuws DUBBEL tellen (de primaire GDELT-nieuwstoon I-D5-001 zit al in `z_fast`); Google Trends (I-D5-trends) is een schaal-artefact (nul-zwaar, één dag knalt naar de kap) en niet-representatief; Reddit/Mastodon zijn niet-representatief. Die blijven dus secundair. OV is het enige besproken signaal dat iets nieuws meet zonder dubbeltelling.
+- **Eerlijke datagrens:** OV heeft geen 2010-2019-archief (bestaat pas sinds juni 2026), dus geen "vs normaal"-anker; het weegt expliciet als DAGSIGNAAL (dezelfde behandeling en eerlijke labeling als verkeer), niet als absolute meting. De historie groeit; `n_reference` toont de dunne basis.
+- **Reikwijdte:** raakt alleen `daily_pressure`. Frontend: OV verdwijnt automatisch uit het "telt niet mee"-paneel (het telt nu mee); de copy onder het cijfer noemt nu "weer, nieuws, verkeer en openbaar vervoer".
+- **Geborgd:** `hybrid-headline.test.ts` (nieuw: OV als extra dagsignaal, hoge waarde -> positieve z). Engine 206/206.
 
 ---
 

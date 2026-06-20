@@ -7,13 +7,14 @@ import { formatObservationDate } from "../lib/format-date";
  * meetelt en WAAROM, in taal die iedereen begrijpt. Per signaal staat de reden
  * in één regel.
  *
- * Uit dit paneel gefilterd:
- *  - I-D2-001-rt (DATEX-dagverkeer): voedt sinds 0.4.0 de hybride dagkop (telt dus WEL mee).
+ * Uit dit paneel gefilterd (tellen WEL mee of zijn ruis):
+ *  - I-D2-001-rt (DATEX-verkeer), I-D2-stib + I-D2-delijn (OV): voeden sinds 0.4.0/0.4.1
+ *    de hybride dagkop als dagsignaal (§4.1.14/§4.1.15) -> tellen dus mee.
  *  - I-D5-trends (Google Trends): verwarrend + schaal-artefact (meestal 0, één dag knalt
  *    naar de kap), niet representatief — bewust niet getoond (Peter 2026-06-20).
  *  - simulated/demo-signalen: geen echte meting.
  */
-const HIDDEN = new Set<string>(["I-D2-001-rt", "I-D5-trends"]);
+const HIDDEN = new Set<string>(["I-D2-001-rt", "I-D2-stib", "I-D2-delijn", "I-D5-trends"]);
 
 // Eén korte, heldere reden per signaal waarom het niet meetelt.
 const REASON: Record<string, string> = {

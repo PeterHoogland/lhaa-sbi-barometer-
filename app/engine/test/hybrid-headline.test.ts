@@ -3,7 +3,7 @@ import {
   computeHybridHeadline,
   blendHeadlineScore,
   HYBRID_W_FAST,
-  HYBRID_MIN_TRAFFIC_POINTS,
+  HYBRID_MIN_DAY_POINTS,
 } from "../src/methodology/hybrid-headline.js";
 import { normalCdf } from "../src/methodology/economic-pressure.js";
 import type { IndicatorCode } from "../src/types.js";
@@ -20,11 +20,17 @@ const BROAD = [
   { code: "I-D1-003" as IndicatorCode, z: 0.0 }, //  koude       fast
   { code: "I-D5-001" as IndicatorCode, z: 0.66 }, // nieuws      fast
 ];
-// 18 dagen DATEX-historie (I-D2-001-rt), vandaag = 5.6.
+// 17 dagen DATEX-historie (I-D2-001-rt), vandaag = 5.6.
 const TRAFFIC_HIST = [
   0.8, 3.1, 30.7, 56.2, 14.2, 7.2, 4.3, 127.6, 0.6, 104.7, 6.3, 2.5, 5.1, 3.5, 107.2, 4.3, 2.3,
 ];
 const TRAFFIC_TODAY = 5.6;
+// dagsignaal-helper: verkeer als enige dagsignaal.
+const traffic = (value: number | null, hist: number[] = TRAFFIC_HIST) => [
+  { code: "I-D2-001-rt", value, history: hist },
+];
+// OV-historie (STIB-achtig, honderden items), vandaag hoog.
+const STIB_HIST = [272, 320, 343, 334, 274, 282, 278, 308, 501, 525, 502, 337, 303, 302, 337, 357, 379];
 
 describe("blendHeadlineScore", () => {
   it("mapt de samengestelde z via de normale CDF (zbar=0 -> 50)", () => {
@@ -41,46 +47,56 @@ describe("blendHeadlineScore", () => {
 
 describe("computeHybridHeadline", () => {
   it("reproduceert de geijkte dagkop (~90) met verkeer als dagsignaal", () => {
-    const r = computeHybridHeadline(BROAD, TRAFFIC_TODAY, TRAFFIC_HIST);
+    const r = computeHybridHeadline(BROAD, traffic(TRAFFIC_TODAY));
     expect(r.status).toBe("computed");
-    // anker = 6 trage codes; z_slow = (1.85+1.27+3-1.26+0.76+3)/6 = 1.437
     expect(r.z_slow).toBeCloseTo(1.44, 1);
     expect(r.w_fast).toBe(HYBRID_W_FAST);
-    // verkeer telt mee (18 punten >= drempel), neutraal vandaag (mediane filedag)
-    expect(r.traffic).not.toBeNull();
-    expect(r.traffic!.n_reference).toBe(TRAFFIC_HIST.length + 1);
-    expect(Math.abs(r.traffic!.z)).toBeLessThan(1); // 5.6 ~ mediaan -> ~neutraal
-    // kop in de geijkte band rond 88-92
+    expect(r.day_signals).toHaveLength(1);
+    expect(r.day_signals[0].code).toBe("I-D2-001-rt");
+    expect(r.day_signals[0].n_reference).toBe(TRAFFIC_HIST.length + 1);
+    expect(Math.abs(r.day_signals[0].z)).toBeLessThan(1); // 5.6 ~ mediaan -> ~neutraal
     expect(r.score).toBeGreaterThanOrEqual(87);
     expect(r.score).toBeLessThanOrEqual(93);
+  });
+
+  it("OV (STIB/De Lijn) telt mee als extra dagsignaal, net als verkeer (§4.1.15)", () => {
+    const r = computeHybridHeadline(BROAD, [
+      { code: "I-D2-001-rt", value: TRAFFIC_TODAY, history: TRAFFIC_HIST },
+      { code: "I-D2-stib", value: 525, history: STIB_HIST }, // hoog -> stress omhoog
+      { code: "I-D2-delijn", value: 413, history: STIB_HIST },
+    ]);
+    expect(r.status).toBe("computed");
+    expect(r.day_signals.map((d) => d.code)).toEqual(["I-D2-001-rt", "I-D2-stib", "I-D2-delijn"]);
+    // hoge STIB-waarde (525 = top van de eigen historie) geeft positieve z
+    expect(r.day_signals.find((d) => d.code === "I-D2-stib")!.z).toBeGreaterThan(0);
+    expect(r.components.filter((c) => c.band === "fast").length).toBe(3 + 3); // 3 broad-fast + 3 dagsignalen
   });
 
   it("ademt: een kalme dag (geen hitte, rustig verkeer, kalm nieuws) leest lager", () => {
     const calmBroad = BROAD.map((i) =>
       i.code === "I-D1-002" ? { ...i, z: 0 } : i.code === "I-D5-001" ? { ...i, z: -1.5 } : i,
     );
-    const hot = computeHybridHeadline(BROAD, TRAFFIC_TODAY, TRAFFIC_HIST).score!;
-    const calm = computeHybridHeadline(calmBroad, 2.0, TRAFFIC_HIST).score!;
+    const hot = computeHybridHeadline(BROAD, traffic(TRAFFIC_TODAY)).score!;
+    const calm = computeHybridHeadline(calmBroad, traffic(2.0)).score!;
     expect(calm).toBeLessThan(hot);
-    // blijft eerlijk verankerd (niet misleidend laag): VERHOOGD-band
     expect(calm).toBeGreaterThanOrEqual(70);
   });
 
   it("verkeer-spike duwt de kop omhoog t.o.v. een rustige filedag", () => {
-    const spike = computeHybridHeadline(BROAD, 110, TRAFFIC_HIST).score!;
-    const quiet = computeHybridHeadline(BROAD, 2.0, TRAFFIC_HIST).score!;
+    const spike = computeHybridHeadline(BROAD, traffic(110)).score!;
+    const quiet = computeHybridHeadline(BROAD, traffic(2.0)).score!;
     expect(spike).toBeGreaterThan(quiet);
   });
 
-  it("laat verkeer eerlijk weg bij te dunne historie (< drempel)", () => {
-    const r = computeHybridHeadline(BROAD, TRAFFIC_TODAY, TRAFFIC_HIST.slice(0, HYBRID_MIN_TRAFFIC_POINTS - 1));
-    expect(r.traffic).toBeNull();
+  it("laat een dagsignaal eerlijk weg bij te dunne historie (< drempel)", () => {
+    const r = computeHybridHeadline(BROAD, traffic(TRAFFIC_TODAY, TRAFFIC_HIST.slice(0, HYBRID_MIN_DAY_POINTS - 1)));
+    expect(r.day_signals).toHaveLength(0);
     expect(r.status).toBe("computed"); // snel telt nog op weer+nieuws
     expect(r.components.find((c) => c.code === "I-D2-001-rt")).toBeUndefined();
   });
 
   it("not_computed bij onvoldoende structurele dekking", () => {
-    const r = computeHybridHeadline(BROAD.slice(6), null, []); // alleen de 3 snelle
+    const r = computeHybridHeadline(BROAD.slice(6), []); // alleen de 3 snelle, geen dagsignalen
     expect(r.status).toBe("not_computed");
     expect(r.score).toBeNull();
   });

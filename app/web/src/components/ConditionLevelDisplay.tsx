@@ -87,7 +87,7 @@ export function ConditionLevelDisplay({
         </span>
         <span className="cn-stamp">
           Dit cijfer combineert de structurele druk (kosten van levensonderhoud, energie) met de
-          omstandigheden van vandaag (weer, nieuws, verkeer), vergeleken met normale tijden (2010-2019).
+          omstandigheden van vandaag (weer, nieuws, verkeer en openbaar vervoer), vergeleken met normale tijden (2010-2019).
           50 is het normale niveau van dat decennium; vandaag ligt de druk duidelijk hoger, vooral door
           inflatie en energie. Het beweegt mee met de dag en is geen meting van individuele stress.
         </span>

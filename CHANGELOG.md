@@ -6,6 +6,20 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-06-20 — Openbaar vervoer (STIB + De Lijn) telt nu mee als dagsignaal (amendement §4.1.15, methodologie 0.4.1)
+
+**Aanleiding:** Peter wil de OV-verstoringen in de weging. Dat kan eerlijk: OV meet iets nieuws (openbaar-vervoer-druk), geen dubbeltelling. Het wordt op exact dezelfde manier behandeld als DATEX-verkeer (§4.1.14): dagsignaal via de eigen ECDF, geen 2010-2019-anker, n_reference gerapporteerd.
+
+**Beslissing:** `computeHybridHeadline` gegeneraliseerd van één verkeer-input naar een lijst dagsignalen; I-D2-stib en I-D2-delijn toegevoegd naast I-D2-001-rt in `z_fast`. Gesimuleerde/mock-waarden tellen niet mee. Het cijfer beweegt nu ook met OV-verstoringen (lokaal getest: STIB z=1.38 bij een drukke dag).
+
+**Bewust NIET toegevoegd (zou het cijfer fout maken):** RSS-nieuws + emotie-nieuws (dubbel met de GDELT-nieuwstoon die al meetelt), Google Trends (schaal-artefact, niet-representatief), Reddit/Mastodon (niet-representatief). Die blijven secundair.
+
+**Frontend:** OV verdwijnt automatisch uit het "telt niet mee"-paneel; copy onder het cijfer + Methodology/IndicatorList noemen nu "weer, nieuws, verkeer en openbaar vervoer".
+
+**Geborgd:** engine `tsc` schoon + **206 tests** (nieuw OV-dagsignaal-test), web-build groen, §4.1.15-amendement + OSF-manifest herberekend. Methodologie 0.4.1.
+
+---
+
 ## 2026-06-20 — Frontend volledig consistent gemaakt met de hybride dagkop (geen UI-discrepanties meer)
 
 **Aanleiding:** na de 0.4.0-kopwijziging (§4.1.14) toonden enkele panelen nog de OUDE relatieve laag (~13-29), wat de absolute kop (~90) zichtbaar tegensprak. Een uitputtende audit (3 agents over componenten, copy/meta en engine-labels) bracht alle discrepanties in kaart.

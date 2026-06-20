@@ -216,7 +216,7 @@ export interface DailyOutput {
   v04?: V04Output;
 }
 
-/** Hybride dagkop "niveau x beweging" (§4.1.14) — mirror van engine HybridHeadline. */
+/** Hybride dagkop "niveau x beweging" (§4.1.14/§4.1.15) — mirror van engine HybridHeadline. */
 export interface HybridHeadline {
   status: "computed" | "not_computed";
   score: number | null;
@@ -224,7 +224,7 @@ export interface HybridHeadline {
   z_fast: number | null;
   w_fast: number;
   combined_z: number | null;
-  traffic: { value: number; z: number; n_reference: number } | null;
+  day_signals: Array<{ code: string; value: number; z: number; n_reference: number }>;
   components: Array<{ code: string; z: number; band: "slow" | "fast" }>;
   label: string;
   not_computed_reason?: string;

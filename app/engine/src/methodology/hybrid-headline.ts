@@ -18,17 +18,19 @@
  * Eén samengestelde z-score -> normale CDF (zelfde mapping als broad_pressure,
  * geen additieve plak-punten -> geen plafond-verzadiging). w_fast is de ademknop.
  *
- * VERKEER (I-D2-001-rt, DATEX-dagfilezwaarte). Geen 2010-2019-archief, dus geen
- * "vs normaal"-anker mogelijk; het weegt mee als DAGSIGNAAL via de empirische CDF
- * van zijn eigen (nog korte, aangroeiende) historie -> probit-z. Per constructie
- * begrensd; n_reference wordt gerapporteerd zodat de dunne basis zichtbaar blijft.
- * Onder MIN_TRAFFIC_POINTS valt verkeer eerlijk weg (z_fast dan zonder verkeer).
+ * DAGSIGNALEN (verkeer I-D2-001-rt DATEX-filezwaarte; OV I-D2-stib + I-D2-delijn,
+ * §4.1.15). Geen 2010-2019-archief, dus geen "vs normaal"-anker mogelijk; ze wegen
+ * mee als DAGSIGNAAL via de empirische CDF van hun eigen (nog korte, aangroeiende)
+ * historie -> probit-z. Per constructie begrensd; n_reference per signaal gerapporteerd
+ * zodat de dunne basis zichtbaar blijft. Onder MIN_DAY_POINTS valt een dagsignaal
+ * eerlijk weg (z_fast dan zonder dat signaal). OV meet iets NIEUWS (geen dubbeltelling),
+ * vandaar opname; nieuws-/social-varianten blijven secundair (zouden dubbel tellen).
  *
- * PUUR. Geen file-IO; de aanroeper (runtime) levert de broad_pressure-indicatoren,
- * de verkeerswaarde en zijn historie.
+ * PUUR. Geen file-IO; de aanroeper (runtime) levert de broad_pressure-indicatoren
+ * en de dagsignalen (code + waarde + eigen historie).
  */
 
-import type { IndicatorCode, HybridComponent, HybridHeadline } from "../types.js";
+import type { IndicatorCode, HybridComponent, HybridHeadline, HybridDaySignal } from "../types.js";
 import { normalCdf } from "./economic-pressure.js";
 import { ecdfZ } from "./ecdf.js";
 import { winsorize } from "./winsorize.js";
@@ -56,14 +58,21 @@ export const HYBRID_W_FAST = 0.30;
 /** Minimale dekking voor een geldige kop. */
 export const HYBRID_MIN_SLOW = 4;
 export const HYBRID_MIN_FAST = 2;
-/** Verkeer telt pas mee als dagsignaal vanaf zoveel historische dagpunten. */
-export const HYBRID_MIN_TRAFFIC_POINTS = 10;
+/** Een dagsignaal (verkeer/OV) telt pas mee vanaf zoveel historische dagpunten. */
+export const HYBRID_MIN_DAY_POINTS = 10;
 
 /** Bindend, user-facing. Geen em-dash (harde regel 9). */
 export const HYBRID_LABEL =
   "Dagelijkse druk t.o.v. normale tijden (2010-2019): de structurele kosten van " +
   "levensonderhoud en energie, gecombineerd met de omstandigheden van vandaag " +
-  "(weer, nieuws, verkeer). Geen meting van individuele stress.";
+  "(weer, nieuws, verkeer en openbaar vervoer). Geen meting van individuele stress.";
+
+/** Een dagsignaal-input: code + waarde van vandaag + eigen (korte) historie. */
+export interface DayProxyInput {
+  code: string;
+  value: number | null;
+  history: ReadonlyArray<number>;
+}
 
 function mean(xs: number[]): number {
   return xs.reduce((s, x) => s + x, 0) / xs.length;
@@ -79,13 +88,12 @@ export function blendHeadlineScore(zSlow: number, zFast: number, wFast: number):
 
 /**
  * Bereken de hybride dagkop uit de broad_pressure-indicatoren (met hun z) plus
- * het dagelijkse verkeer (waarde + eigen historie). not_computed wanneer er te
- * weinig structurele of snelle codes met een eindige z aanwezig zijn.
+ * de dagsignalen (verkeer + OV: waarde + eigen historie). not_computed wanneer er
+ * te weinig structurele of snelle codes met een eindige z aanwezig zijn.
  */
 export function computeHybridHeadline(
   broadIndicators: ReadonlyArray<{ code: IndicatorCode; z: number }>,
-  trafficValue: number | null,
-  trafficHistory: ReadonlyArray<number>,
+  dayProxies: ReadonlyArray<DayProxyInput>,
   wFast: number = HYBRID_W_FAST,
 ): HybridHeadline {
   const zByCode = new Map<string, number>();
@@ -109,20 +117,20 @@ export function computeHybridHeadline(
     components.push({ code, z, band: "fast" });
   }
 
-  // Verkeer als dagsignaal: ECDF van vandaag binnen zijn eigen (aangroeiende)
-  // historie -> probit-z, gewinsoriseerd. Self-inclusief, per constructie begrensd.
-  let traffic: HybridHeadline["traffic"] = null;
-  const finiteHist = trafficHistory.filter((v) => Number.isFinite(v));
-  if (
-    trafficValue !== null &&
-    Number.isFinite(trafficValue) &&
-    finiteHist.length >= HYBRID_MIN_TRAFFIC_POINTS
-  ) {
-    const reference = [...finiteHist, trafficValue];
-    const tz = Math.round(winsorize(ecdfZ(trafficValue, reference)).value * 100) / 100;
-    traffic = { value: Math.round(trafficValue * 1000) / 1000, z: tz, n_reference: reference.length };
-    fastZ.push(tz);
-    components.push({ code: "I-D2-001-rt", z: tz, band: "fast" });
+  // Dagsignalen (verkeer + OV) als dagsignaal: ECDF van vandaag binnen de eigen
+  // (aangroeiende) historie -> probit-z, gewinsoriseerd. Self-inclusief, begrensd.
+  // Geen 2010-2019-anker; n_reference per signaal toont de dunne basis.
+  const daySignals: HybridDaySignal[] = [];
+  for (const dp of dayProxies) {
+    const finiteHist = (dp.history ?? []).filter((v) => Number.isFinite(v));
+    if (dp.value === null || !Number.isFinite(dp.value) || finiteHist.length < HYBRID_MIN_DAY_POINTS) {
+      continue;
+    }
+    const reference = [...finiteHist, dp.value];
+    const z = Math.round(winsorize(ecdfZ(dp.value, reference)).value * 100) / 100;
+    daySignals.push({ code: dp.code, value: Math.round(dp.value * 1000) / 1000, z, n_reference: reference.length });
+    fastZ.push(z);
+    components.push({ code: dp.code, z, band: "fast" });
   }
 
   if (slowZ.length < HYBRID_MIN_SLOW || fastZ.length < HYBRID_MIN_FAST) {
@@ -133,7 +141,7 @@ export function computeHybridHeadline(
       z_fast: null,
       w_fast: wFast,
       combined_z: null,
-      traffic,
+      day_signals: daySignals,
       components,
       label: HYBRID_LABEL,
       not_computed_reason:
@@ -152,7 +160,7 @@ export function computeHybridHeadline(
     z_fast: Math.round(zFast * 100) / 100,
     w_fast: wFast,
     combined_z: Math.round(combined * 100) / 100,
-    traffic,
+    day_signals: daySignals,
     components,
     label: HYBRID_LABEL,
   };

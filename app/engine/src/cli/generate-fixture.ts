@@ -497,14 +497,18 @@ async function generate(): Promise<void> {
     todayIso,
   );
 
-  // DATEX-dagverkeer (I-D2-001-rt) voor de hybride dagkop (§4.1.14): de waarde van
-  // vandaag (secundair signaal) + de eigen historie (excl. vandaag) als ECDF-referentie.
-  const trafficSignal = secondarySignals.find((s) => s.code === "I-D2-001-rt");
-  let dailyTraffic: { value: number; history: Array<{ date: string; value: number }> } | undefined;
-  const trafficPath = resolve(HISTORY_DIR, "I-D2-001-rt.json");
-  if (existsSync(trafficPath) && trafficSignal && Number.isFinite(trafficSignal.value)) {
-    const rows = JSON.parse(readFileSync(trafficPath, "utf-8")) as Array<{ date: string; value: number }>;
-    dailyTraffic = { value: trafficSignal.value, history: rows.filter((r) => r.date < todayIso) };
+  // Dagsignalen voor de hybride dagkop: verkeer (§4.1.14) + OV (§4.1.15). Elk = de
+  // waarde van vandaag (secundair signaal, alleen als ECHT gemeten) + de eigen historie
+  // (excl. vandaag) als ECDF-referentie. OV meet iets nieuws (geen dubbeltelling).
+  const DAY_SIGNAL_CODES = ["I-D2-001-rt", "I-D2-stib", "I-D2-delijn"];
+  const daySignals: Array<{ code: string; value: number | null; history: Array<{ date: string; value: number }> }> = [];
+  for (const code of DAY_SIGNAL_CODES) {
+    const sig = secondarySignals.find((s) => s.code === code);
+    const p = resolve(HISTORY_DIR, `${code}.json`);
+    if (sig && !sig.simulated && Number.isFinite(sig.value) && existsSync(p)) {
+      const rows = JSON.parse(readFileSync(p, "utf-8")) as Array<{ date: string; value: number }>;
+      daySignals.push({ code, value: sig.value, history: rows.filter((r) => r.date < todayIso) });
+    }
   }
 
   const todayOutput = computeDaily({
@@ -513,7 +517,7 @@ async function generate(): Promise<void> {
     history,
     compositeHistory,
     compositeMetingHistory,
-    dailyTraffic,
+    daySignals,
     // B3: alleen de dag-output van vandaag bootstrapt (de warm-up-loop hierboven
     // niet — die draait honderden dagen en heeft geen publiek CI nodig).
     computeUncertainty: true,

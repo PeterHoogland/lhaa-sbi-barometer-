@@ -117,7 +117,11 @@ import {
 // structureel anker (kosten + energie, vs 2010-2019) Phi-geblend met de dagelijkse
 // beweging (weer/nieuws + DATEX-verkeer), w_fast=0.30. Sinds nu het publieke hoofdcijfer;
 // broad_pressure blijft als sub-view. Zie methodology/hybrid-headline.ts.
-const METHODOLOGY_VERSION = "0.4.0";
+// 0.4.1 (2026-06-20, amendement §4.1.15, Peter GO): OV als dagsignaal in de hybride
+// dagkop (I-D2-stib + I-D2-delijn), exact zoals DATEX-verkeer (ECDF over eigen historie,
+// gevlagd als jong). Meet iets nieuws (geen dubbeltelling); nieuws-/social-varianten
+// blijven secundair. Het cijfer beweegt nu ook met OV-verstoringen.
+const METHODOLOGY_VERSION = "0.4.1";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {
@@ -138,10 +142,11 @@ export interface DailyComputeInput {
   /** Secundaire signalen (Reddit e.d.) — passthrough, niet in composiet. */
   secondarySignals?: SecondarySignal[];
   /**
-   * Dagelijks verkeer (DATEX I-D2-001-rt): waarde van vandaag + eigen historie,
-   * voor de hybride dagkop (§4.1.14). Ontbreekt = verkeer telt eerlijk niet mee.
+   * Dagsignalen voor de hybride dagkop (§4.1.14/§4.1.15): verkeer (I-D2-001-rt) en
+   * OV (I-D2-stib, I-D2-delijn), elk met waarde van vandaag + eigen historie. Elk
+   * signaal met te dunne historie valt eerlijk weg (telt dan niet mee).
    */
-  dailyTraffic?: { value: number; history: Array<{ date: string; value: number }> };
+  daySignals?: Array<{ code: string; value: number | null; history: Array<{ date: string; value: number }> }>;
   /** Brand-safety override — typisch bij nationale rouw (doc 06 §7). */
   brandSafety?: { flag: "elevated" | "block"; reason: string; expires_estimated: string };
   // --- SBI v0.4 inputs (optioneel; ontbreken = lege/neutrale defaults) ---
@@ -547,14 +552,17 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
     bootstrapDraws: input.bootstrapDraws,
   });
 
-  // BREDE absolute meting (§4.1.11) + HYBRIDE DAGKOP (§4.1.14): het anker
+  // BREDE absolute meting (§4.1.11) + HYBRIDE DAGKOP (§4.1.14/§4.1.15): het anker
   // (broad_pressure's trage codes) gecombineerd met de dagelijkse beweging
-  // (weer/nieuws + DATEX-verkeer). Eén keer berekend, hergebruikt in de output.
+  // (weer/nieuws + DATEX-verkeer + OV). Eén keer berekend, hergebruikt in de output.
   const broadPressure = computeBroadPressure(input.history, input.date);
   const dailyPressure = computeHybridHeadline(
     broadPressure.indicators.map((i) => ({ code: i.code, z: i.z })),
-    input.dailyTraffic?.value ?? null,
-    (input.dailyTraffic?.history ?? []).map((h) => h.value),
+    (input.daySignals ?? []).map((d) => ({
+      code: d.code,
+      value: d.value,
+      history: (d.history ?? []).map((h) => h.value),
+    })),
   );
 
   return {

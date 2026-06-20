@@ -298,6 +298,13 @@ export interface HybridComponent {
   z: number;
   band: "slow" | "fast";
 }
+/** Dagsignaal (verkeer/OV) dat via zijn eigen ECDF in de snelle beweging meetelt. */
+export interface HybridDaySignal {
+  code: string;
+  value: number;
+  z: number;
+  n_reference: number;
+}
 export interface HybridHeadline {
   status: "computed" | "not_computed";
   /** 0-100 = round(100*Phi((1-w_fast)*z_slow + w_fast*z_fast)); null bij not_computed. */
@@ -306,8 +313,8 @@ export interface HybridHeadline {
   z_fast: number | null;
   w_fast: number;
   combined_z: number | null;
-  /** Verkeer (DATEX-dagsignaal) als het meetelt; null bij te dunne historie. */
-  traffic: { value: number; z: number; n_reference: number } | null;
+  /** Dagsignalen (verkeer + OV) die meetellen; leeg bij te dunne historie. */
+  day_signals: HybridDaySignal[];
   components: HybridComponent[];
   /** User-facing label (geen em-dash, harde regel 9). */
   label: string;

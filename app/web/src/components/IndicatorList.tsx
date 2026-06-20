@@ -61,7 +61,7 @@ export function IndicatorList({
         {!bare && <h2>De omstandigheden die we volgen</h2>}
         <p className="panel-lead">
           Het hoofdcijfer bovenaan combineert de structurele druk (kosten van levensonderhoud, energie) met de
-          omstandigheden van vandaag (weer, nieuws, verkeer), vergeleken met normale tijden. Daarnaast volgen we
+          omstandigheden van vandaag (weer, nieuws, verkeer en openbaar vervoer), vergeleken met normale tijden. Daarnaast volgen we
           dagelijks {visible.length} bredere omstandigheden, verdeeld over {byDomain.length} categorieën, zodat je
           het volledige beeld ziet, ook waar het juist rustig is. Klik op een indicator naar keuze om te zien wat
           we precies meten, waar onze data vandaan komt en welke wetenschappelijke onderbouwing erachter zit.
@@ -104,7 +104,7 @@ export function IndicatorList({
           Elke indicator krijgt ook een wetenschappelijke score (Grade). Dit label (A = ijzersterk onderzoek,
           B = consistent onderzoek, C = indirect bewijs) toont puur de bewijskracht aan, niet het gewicht van de
           indicator. Het hoofdcijfer bovenaan combineert de structurele druk (kosten van levensonderhoud en energie,
-          gemeten tegen 2010-2019) met de omstandigheden van vandaag (weer, nieuws en verkeer).
+          gemeten tegen 2010-2019) met de omstandigheden van vandaag (weer, nieuws, verkeer en openbaar vervoer).
         </p>
       </footer>
     </section>
