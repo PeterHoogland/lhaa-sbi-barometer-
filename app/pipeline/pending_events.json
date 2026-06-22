@@ -12949,5 +12949,59 @@
     "link": "https://www.tvoost.be/?reel=ZjYEsdCSyD20",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-22",
+    "magnitude": 1,
+    "title": "Torhout vervangt tijdelijke betonblokken door vaste verkeerseilanden na ongeval",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/22/2c905eeb-65d7-4bdf-b80f-44badc1d7e36.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-22",
+    "magnitude": 1,
+    "title": "10 actievoerders opgepakt tijdens protest tegen Israëlische vlag aan Antwerps stadhuis",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/antwerpen/10-actievoerders-opgepakt-tijdens-protest-tegen-israelische-vlag-aan-antwerps-stadhuis~a2f78bfe/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-22",
+    "magnitude": 1,
+    "title": "Treinverkeer tussen Bornem en Temse ondebroken na ongeval",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/rivierenland/bornem/treinverkeer-tussen-bornem-en-temse-ondebroken-na-ongeval/157631852.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-22",
+    "magnitude": 1,
+    "title": "Bromfietser gegrepen door trein op overweg in Hoboken: slachtoffer zwaargewond, treinverkeer hersteld",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/hoboken/bromfietser-gegrepen-door-trein-op-overweg-in-hoboken-slachtoffer-zwaargewond-treinverkeer-hersteld/157621028.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-22",
+    "magnitude": 1,
+    "title": "Twee bestuurders zwaargewond na frontale botsing op kruispunt, brandweer bevrijdt slachtoffers",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/twee-bestuurders-zwaargewond-na-frontale-botsing-op-kruispunt-brandweer-bevrijdt-slachtoffers/157630703.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-22",
+    "magnitude": 1,
+    "title": "Twee bestuurders zwaargewond bij frontale aanrijding in Edegem",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/edegem/twee-bestuurders-zwaargewond-bij-frontale-aanrijding-in-edegem/157630213.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
