@@ -78,10 +78,17 @@ def _try_bestat(max_date: str | None = None) -> tuple[float, str] | None:
 
     De FOD publiceert de officiele maximumprijs VOORUIT: de prijs die pas vanaf een
     toekomstige datum geldt staat al in de be.STAT-view. Geef `max_date` (ISO
-    YYYY-MM-DD) mee om die toekomst-rijen te negeren en de LAATSTE prijs met
-    ingangsdatum <= max_date te nemen, zodat de observation_date nooit in de toekomst
-    ligt (lookahead-veilig; voorkwam een 2026-06-22-datum op 2026-06-19 in de
-    breakdown). Zonder max_date (enkel de waarde-als-anker nodig) telt de eerste match."""
+    YYYY-MM-DD) mee om de LAATSTE prijs met ingangsdatum <= max_date te nemen,
+    zodat de observation_date nooit in de toekomst ligt (lookahead-veilig;
+    voorkwam een 2026-06-22-datum op 2026-06-19 in de breakdown).
+
+    Belangrijk: de view bevat soms ALLEEN nog-niet-ingegane prijzen (bv. op 23 jun
+    staat enkel de prijs die ingaat op 24 jun). Vroeger gaf dat None -> terugval op
+    de stale Eurostat-maandschatting. Nu nemen we in dat geval de EERSTVOLGENDE
+    vooruit-prijs (de actuele officiele maximumprijs) maar klemmen we de
+    observation_date op max_date, zodat de echte verse prijs meetelt zonder dat er
+    een toekomstdatum in de breakdown lekt. Zonder max_date (enkel de waarde-als-anker
+    nodig) telt de eerste match."""
     ok, body = safe_request(
         BESTAT_FUEL_URL, timeout=25,
         headers={"Accept": "application/json"},
@@ -92,6 +99,7 @@ def _try_bestat(max_date: str | None = None) -> tuple[float, str] | None:
     if not isinstance(facts, list):
         return None
     best: tuple[str, float] | None = None  # (datum_iso, prijs), laatste <= max_date
+    earliest_future: tuple[str, float] | None = None  # vroegst-ingaande vooruit-prijs
     for fact in facts:
         if not isinstance(fact, dict) or fact.get("Product") != BESTAT_PRODUCT:
             continue
@@ -104,13 +112,20 @@ def _try_bestat(max_date: str | None = None) -> tuple[float, str] | None:
         iso = _parse_bestat_dag(fact.get("Dag", ""))
         if max_date is None:
             return round(val, 3), iso or None  # waarde-anker: eerste match volstaat
-        if not iso or iso > max_date:
-            continue  # negeer vooruit-gepubliceerde maximumprijzen
-        if best is None or iso > best[0]:
-            best = (iso, round(val, 3))
-    if best is None:
-        return None
-    return best[1], best[0]
+        if not iso:
+            continue
+        if iso <= max_date:
+            if best is None or iso > best[0]:
+                best = (iso, round(val, 3))
+        elif earliest_future is None or iso < earliest_future[0]:
+            earliest_future = (iso, round(val, 3))
+    if best is not None:
+        return best[1], best[0]
+    if earliest_future is not None:
+        # Enkel vooruit-prijzen beschikbaar: gebruik de eerstvolgende echte prijs,
+        # observation_date geklemd op vandaag (lookahead-veilig).
+        return earliest_future[1], max_date
+    return None
 
 
 def bestat_fuel_series() -> list[dict]:
