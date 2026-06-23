@@ -13570,5 +13570,41 @@
     "link": "https://www.tvoost.be/nieuws/drie-vrachtwagens-betrokken-bij-ongeval-op-e17-in-waasmunster-211794",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-23",
+    "magnitude": 1,
+    "title": "Spontane staking bij onderaannemer De Lijn in Maaseik: \"Emmer overgelopen door defecte airco's en agressie\"",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/23/5ab71bda-6eda-4e39-8a9a-31d501ecfdb7.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-23",
+    "magnitude": 1,
+    "title": "Reconstructie drievoudige moord in Roeselare bezig: \"Door de omvang van de feiten gespreid over 2 dagen\"",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/23/61353241-6269-4bd7-a097-87cf59edb2fb.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-23",
+    "magnitude": 1,
+    "title": "Twee jaar cel gevorderd na uit de hand gelopen date: “Hij probeerde hem te wurgen en dreigde met een mes”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/rivierenland/mechelen/twee-jaar-cel-gevorderd-na-uit-de-hand-gelopen-date-hij-probeerde-hem-te-wurgen-en-dreigde-met-een-mes/157663218.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-23",
+    "magnitude": 5,
+    "title": "Il a poignardé l’ex-compagnon criminel de sa petite-amie et s’est enfui aux États-Unis: “Sa maison a été incendiée”",
+    "source": "7sur7",
+    "link": "https://www.7sur7.be/faits-divers/il-a-poignarde-lex-compagnon-criminel-de-sa-petite-amie-et-sest-enfui-aux-etats-unis-sa-maison-a-ete-incendiee~ad64767b/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
