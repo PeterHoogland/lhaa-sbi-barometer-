@@ -13390,5 +13390,41 @@
     "link": "https://www.tvoost.be/nieuws/schade-expert-geeft-tips-om-je-woning-te-beveiligen-bij-noodweer-211748",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-23",
+    "magnitude": 1,
+    "title": "Bromfietser (18) overleden na aanrijding met trein in Hoboken",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/22/bd39d9e4-033a-46d8-b9c5-1f399dcc9e09.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-23",
+    "magnitude": 1,
+    "title": "Groot lek bij Fortinet maakt ook in ons land slachtoffers",
+    "source": "Trends",
+    "link": "https://trends.knack.be/ai-en-tech/cybersecurity/groot-lek-bij-fortinet-maakt-ook-in-ons-land-slachtoffers/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-23",
+    "magnitude": 1,
+    "title": "Dodelijke hotels aan de Côte d’Azur voor het White Lotus‑effect",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/dodelijke-hotels-aan-de-cote-dazur-voor-het-white-lotus-effect/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-23",
+    "magnitude": 1,
+    "title": "Hevige chaletbrand in Maaseik: mogelijk dodelijk slachtoffer, parket voert onderzoek",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/hevige-chaletbrand-in-maaseik-mogelijk-dodelijk-slachtoffer-parket-voert-onderzoek/157640925.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
