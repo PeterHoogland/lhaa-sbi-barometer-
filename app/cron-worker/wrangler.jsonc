@@ -4,11 +4,14 @@
   "main": "src/index.js",
   "compatibility_date": "2026-06-01",
   "account_id": "90650c9157a45b740546805924c8c42e",
-  // Cadans (Peter 2026-06-19): 6 runs/dag op 07:00, 08:00, 12:00, 15:00, 17:30, 20:00 BE.
+  // Cadans (Peter 2026-06-23): 8 runs/dag op 07:00, 08:00, 12:00, 13:00, 16:00, 17:00,
+  // 19:00, 20:00 BE. De 20:00-run is de TREIN-finalizer (I-D2-009, CUTOFF_HOUR=20): zonder
+  // een run >=20u BE wordt de volledige treindag nooit vastgelegd en bevriest die. De
+  // 07:00-ochtendrun toont die dan als afgewerkte vorige dag.
   // Cron is UTC; hieronder zomertijd (CEST = UTC+2). In wintertijd (CET = UTC+1) schuiven
   // de BE-tijden 1u vroeger; de tijd-guard in daily.yml (06-20u BE) laat ze sowieso door.
   "triggers": {
-    "crons": ["0 5,6,10,13,18 * * *", "30 15 * * *"]
+    "crons": ["0 5,6,10,11,14,15,17,18 * * *"]
   },
   "observability": {
     "enabled": true
