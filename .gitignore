@@ -57,3 +57,6 @@ app/web/.surge
 .wrangler/
 .claude/
 app/data/analysis/
+
+# Office tijdelijke lock-bestanden (Word laat ~$... achter) — vanaf nu negeren
+~$*
