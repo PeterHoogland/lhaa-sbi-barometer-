@@ -14389,5 +14389,59 @@
     "link": "https://www.tvoost.be/nieuws/nog-geen-maand-na-dodelijk-busdrama-chauffeur-t-ros-beiaard-ontslagen-na-positieve-ademtest-211855",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-24",
+    "magnitude": 1,
+    "title": "Eerst samen op restaurant, daarna werd hij dood gevonden langs de weg: vrouw (53) aangehouden nadat partner (56) sterft bij aanrijding in De Haan",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/de-haan/eerst-samen-op-restaurant-daarna-werd-hij-dood-gevonden-langs-de-weg-vrouw-53-aangehouden-nadat-partner-56-sterft-bij-aanrijding-in-de-haan~afd66167/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-24",
+    "magnitude": 1,
+    "title": "Vrouw op speedpedelec lichtgewond bij ongeval",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/genk/vrouw-op-speedpedelec-lichtgewond-bij-ongeval/157757895.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-24",
+    "magnitude": 1,
+    "title": "Aardappelboer Chris Vanhaverbeke en ex-vrouw zien elkaar voor het eerst in rechtszaal na moord op dochtertjes Ona (5) en Maud (8): “Ze is doodsbang van hem”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/crimi/aardappelboer-chris-vanhaverbeke-en-ex-vrouw-zien-elkaar-voor-het-eerst-in-rechtszaal-na-moord-op-dochtertjes-ona-5-en-maud-8-ze-is-doodsbang-van-hem/157713704.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-24",
+    "magnitude": 1,
+    "title": "Auto over de kop op Chaussée d’Amour",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/sint-truiden/auto-over-de-kop-op-chaussee-damour/157757902.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-24",
+    "magnitude": 1,
+    "title": "6-jarig dochtertje ziet hoe moeder wordt neergestoken en zoekt hulp in Restaurant El Greco wat verderop: “Hij probeerde moeder te vermoorden”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/midwest/roeselare/6-jarig-dochtertje-ziet-hoe-moeder-wordt-neergestoken-en-zoekt-hulp-in-restaurant-el-greco-wat-verderop-hij-probeerde-moeder-te-vermoorden/157681742.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-24",
+    "magnitude": 1,
+    "title": "Aardappelboer Chris Vanhaverbeke en ex-vrouw zien elkaar in rechtszaal na moord op dochtertjes Ona (5) en Maud (8): “Ze is doodsbang van hem”",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/crimi/aardappelboer-chris-vanhaverbeke-en-ex-vrouw-zien-elkaar-in-rechtszaal-na-moord-op-dochtertjes-ona-5-en-maud-8-ze-is-doodsbang-van-hem/157748108.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
