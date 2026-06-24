@@ -26,12 +26,19 @@ export function App() {
     if (isPreview) return;
     const load = async () => {
       try {
+        // Cache-busten verplicht (methodologie). latest.json en sparkline-30d.json
+        // zijn APARTE bestanden; zonder cache-bust kan de CDN/browser het ene vers
+        // serveren en het andere uit een oudere cache -> het hoofdcijfer (kop) en de
+        // grafiek lopen dan uiteen (bv. 90 boven, 85 in de grafiek). Eén gedeelde
+        // bust-token + no-store garandeert dat beide uit dezelfde verse run komen.
+        const bust = `?t=${Date.now()}`;
+        const noStore: RequestInit = { cache: "no-store" };
         const [latest, spark] = await Promise.all([
-          fetch("/data/latest.json").then((r) => {
+          fetch(`/data/latest.json${bust}`, noStore).then((r) => {
             if (!r.ok) throw new Error("latest.json niet gevonden");
             return r.json() as Promise<DailyOutput>;
           }),
-          fetch("/data/sparkline-30d.json").then((r) => {
+          fetch(`/data/sparkline-30d.json${bust}`, noStore).then((r) => {
             if (!r.ok) throw new Error("sparkline-30d.json niet gevonden");
             return r.json() as Promise<SparklinePoint[]>;
           }),
@@ -41,7 +48,7 @@ export function App() {
         // Expert/test-kanaal (v0.4) — optioneel; faalt stil als het er niet is,
         // dan tonen de expert-panelen enkel de v0.2-velden.
         try {
-          const r = await fetch("/data/latest-expert.json");
+          const r = await fetch(`/data/latest-expert.json${bust}`, noStore);
           if (r.ok) setExpertData((await r.json()) as DailyOutput);
         } catch {
           /* geen expert-data beschikbaar */
