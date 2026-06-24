@@ -1,0 +1,51 @@
+name: SBI Test Alarm
+
+# Handmatig testpad (workflow_dispatch): stuurt een DUIDELIJK gemarkeerd TEST-alarm via
+# alle geconfigureerde kanalen (pipeline.alert), zodat je kunt bevestigen dat een echt
+# alarm je daadwerkelijk bereikt. Raakt de data, het cijfer of de deploy NIET. Geen
+# schedule: draait alleen als je 'm zelf (of Claude) start.
+
+on:
+  workflow_dispatch:
+    inputs:
+      note:
+        description: "Optionele extra tekst in het testbericht"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  test-alert:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Stuur TEST-alarm via alle geconfigureerde kanalen
+        working-directory: app/pipeline
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          ALERT_TO: ${{ secrets.ALERT_TO }}
+          ALERT_WEBHOOK_URL: ${{ secrets.ALERT_WEBHOOK_URL }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          CALLMEBOT_PHONE: ${{ secrets.CALLMEBOT_PHONE }}
+          CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
+          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          TWILIO_WHATSAPP_FROM: ${{ secrets.TWILIO_WHATSAPP_FROM }}
+          TWILIO_WHATSAPP_TO: ${{ secrets.TWILIO_WHATSAPP_TO }}
+        run: |
+          python -m pipeline.alert \
+            --subject "SBI TEST-ALARM ($(TZ='Europe/Brussels' date '+%F %H:%M') BE) - dit is een TEST, geen storing" \
+            --body "Dit is een handmatig test-alarm om te bevestigen dat alarmering je bereikt. Er is GEEN echte storing. ${{ inputs.note }}
+
+          Live: https://les-hautes-alpes-sbi.brainwolves.workers.dev
+          Getriggerd via de Test Alarm-workflow (.github/workflows/test-alert.yml)."
