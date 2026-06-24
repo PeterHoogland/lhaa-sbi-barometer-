@@ -14326,5 +14326,59 @@
     "link": "https://www.nieuwsblad.be/nieuws/drie-personen-gewond-nadat-bestuurster-inrijdt-op-bestelwagen-op-e403/157729986.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-24",
+    "magnitude": 1,
+    "title": "Vrouw in rolstoel steelt luchtverfrissers uit supermarkt in Overijse",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2019/08/06/658d7afb-b817-11e9-abcc-02b7b76bf47f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-24",
+    "magnitude": 1,
+    "title": "Vrouw (53) aangehouden nadat haar partner (56) sterft bij aanrijding in De Haan: “Ze wordt verdacht van doodslag en vluchtmisdrijf”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/de-haan/vrouw-53-aangehouden-nadat-haar-partner-56-sterft-bij-aanrijding-in-de-haan-ze-wordt-verdacht-van-doodslag-en-vluchtmisdrijf~afd66167/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-24",
+    "magnitude": 1,
+    "title": "Staking in Griekenland: personeel in toerisme en horeca klaagt over “hongerlonen” en werkdagen van 13 uur",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/staking-in-griekenland-personeel-in-toerisme-en-horeca-klaagt-over-hongerlonen-en-werkdagen-van-13-uur~a41ebca7/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-24",
+    "magnitude": 1,
+    "title": "Twee doden en een veroordeling later: Gent blijft de kritiek betwisten, maar sleutelde wel aan het stormbeleid",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/gent/twee-doden-en-een-veroordeling-later-gent-blijft-de-kritiek-betwisten-maar-sleutelde-wel-aan-het-stormbeleid/157712635.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-24",
+    "magnitude": 3,
+    "title": "Vrouw (53) aangehouden voor doodslag en vluchtmisdrijf na dodelijke aanrijding op eigen partner (56)",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/middenkust/de-haan/vrouw-53-aangehouden-voor-doodslag-en-vluchtmisdrijf-na-dodelijke-aanrijding-op-eigen-partner-56/157664737.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-24",
+    "magnitude": 1,
+    "title": "E19 versperd na ongeval met auto en vrachtwagen in Nimy: twee doden en zwaargewonde",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/e19-versperd-na-ongeval-met-auto-en-vrachtwagen-in-nimy-twee-doden-en-zwaargewonde/157748102.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
