@@ -121,7 +121,14 @@ import {
 // dagkop (I-D2-stib + I-D2-delijn), exact zoals DATEX-verkeer (ECDF over eigen historie,
 // gevlagd als jong). Meet iets nieuws (geen dubbeltelling); nieuws-/social-varianten
 // blijven secundair. Het cijfer beweegt nu ook met OV-verstoringen.
-const METHODOLOGY_VERSION = "0.4.1";
+// 0.4.2 (2026-06-24, amendement §4.1.16, Peter GO): de snelle laag (z_fast) scheidt
+// STRESS (hitte/koude/nieuws + pollen + luchtkwaliteit) van MOBILITEIT (verkeer/OV).
+// (1) Mobiliteit is een kleine, BEGRENSDE modificator (gewicht 0.20, verlichting gevloerd
+// op -0.5), zodat een rustige avondspits een hittegolf niet langer uitvlakt. (2) Hitte
+// escaleert tot winsor-cap +5 i.p.v. +3, zodat 35°C+ zwaarder weegt dan een tropische dag.
+// (3) Pollen (I-D1-010) + luchtkwaliteit (I-D1-004) dragen nu bij aan de kop (als
+// stress-dagsignaal, eigen historie), niet langer alleen aan het relatieve percentiel.
+const METHODOLOGY_VERSION = "0.4.2";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {
@@ -556,13 +563,28 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
   // (broad_pressure's trage codes) gecombineerd met de dagelijkse beweging
   // (weer/nieuws + DATEX-verkeer + OV). Eén keer berekend, hergebruikt in de output.
   const broadPressure = computeBroadPressure(input.history, input.date);
+  // Omgevings-stress dagsignalen (§4.1.16): pollen (I-D1-010) + luchtkwaliteit (I-D1-004)
+  // hebben geen reproduceerbaar 2010-2019-anker en zitten dus niet in broad_pressure;
+  // ze komen als dagsignaal binnen (waarde van vandaag + eigen historie) en worden door
+  // computeHybridHeadline als STRESS geteld (niet als mobiliteit). Zo dragen ze nu bij
+  // aan het hoofdcijfer op een dag dat ze extreem/verhoogd staan.
+  const envStressSignals = (["I-D1-010", "I-D1-004"] as IndicatorCode[]).flatMap((code) => {
+    const series = sortByDate(input.history[code] ?? []).filter((h) => Number.isFinite(h.value));
+    if (series.length < 1) return [];
+    const value = series[series.length - 1].value;
+    const history = series.slice(0, -1).map((h) => h.value);
+    return [{ code: code as string, value, history }];
+  });
   const dailyPressure = computeHybridHeadline(
     broadPressure.indicators.map((i) => ({ code: i.code, z: i.z })),
-    (input.daySignals ?? []).map((d) => ({
-      code: d.code,
-      value: d.value,
-      history: (d.history ?? []).map((h) => h.value),
-    })),
+    [
+      ...(input.daySignals ?? []).map((d) => ({
+        code: d.code,
+        value: d.value,
+        history: (d.history ?? []).map((h) => h.value),
+      })),
+      ...envStressSignals,
+    ],
   );
 
   return {

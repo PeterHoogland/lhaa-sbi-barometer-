@@ -100,4 +100,26 @@ describe("computeHybridHeadline", () => {
     expect(r.status).toBe("not_computed");
     expect(r.score).toBeNull();
   });
+
+  it("pollen + lucht tellen als STRESS-dagsignaal mee in de kop (§4.1.16)", () => {
+    const POLLEN_HIST = [5, 8, 12, 6, 20, 15, 9, 11, 7, 18, 25, 10, 14, 22, 4]; // 15 punten
+    const withoutEnv = computeHybridHeadline(BROAD, traffic(TRAFFIC_TODAY)).score!;
+    const withPollen = computeHybridHeadline(BROAD, [
+      { code: "I-D2-001-rt", value: TRAFFIC_TODAY, history: TRAFFIC_HIST },
+      { code: "I-D1-010", value: 60, history: POLLEN_HIST }, // 60 = boven heel de historie -> extreem
+    ]).score!;
+    expect(withPollen).toBeGreaterThan(withoutEnv);
+    // pollen telt als fast-(stress)component, niet als mobiliteit
+    const r = computeHybridHeadline(BROAD, [{ code: "I-D1-010", value: 60, history: POLLEN_HIST }]);
+    expect(r.components.some((c) => c.code === "I-D1-010" && c.band === "fast")).toBe(true);
+  });
+
+  it("een rustige avondspits maskeert de hitte NIET meer (relief-vloer, §4.1.16)", () => {
+    // hitte op +3; verkeer zeer laag (0.5 = onder heel de historie -> sterk negatieve z).
+    // Onder de oude middeling at dat de hitte op (~85); nu is verlichting gevloerd.
+    const quiet = computeHybridHeadline(BROAD, traffic(0.5)).score!;
+    const neutral = computeHybridHeadline(BROAD, traffic(TRAFFIC_TODAY)).score!;
+    expect(quiet).toBeGreaterThanOrEqual(88); // hitte + anker blijven domineren
+    expect(quiet).toBeGreaterThanOrEqual(neutral - 2); // verlichting is begrensd, geen sloophamer
+  });
 });

@@ -10,6 +10,7 @@ import {
   computeBroadPressure,
   normalCdf,
   ECONOMIC_PRESSURE_CODES,
+  HEAT_ESCALATION_BOUND,
 } from "../src/methodology/economic-pressure.js";
 import { MAD_SCALE_FACTOR } from "../src/methodology/zscore.js";
 import { computeDaily } from "../src/index.js";
@@ -241,8 +242,17 @@ describe("computeBroadPressure — active-regime schaal voor nul-zware weerindic
     expect(hitte.baseline_mad).toBeCloseTo(MAD, 1);
   });
 
-  it("een echte hittegolf (waarde 10, ~40°C) kapt wel op +3, en weegt zwaarder dan een milde dag", () => {
-    expect(hitteFor(10).z).toBe(3);
+  it("een echte hittegolf (waarde 10, ~40°C) escaleert tot de hitte-cap +5 (§4.1.16), zwaarder dan een milde dag", () => {
+    expect(hitteFor(10).z).toBe(HEAT_ESCALATION_BOUND); // +5, niet meer +3
     expect(hitteFor(10).z).toBeGreaterThan(hitteFor(3).z);
+  });
+
+  it("hitte-escalatie onderscheidt nu BOVEN de oude +3-kap: 36°C < 40°C (§4.1.16)", () => {
+    // waarde 6 (~36°C) -> z ~4,05 (tussen 3 en 5, niet langer platgeslagen op 3);
+    // waarde 10 (~40°C) -> +5. Vroeger waren beide exact +3 en dus niet te onderscheiden.
+    const warm = hitteFor(6).z;
+    const heet = hitteFor(10).z;
+    expect(warm).toBeGreaterThan(3);
+    expect(warm).toBeLessThan(heet);
   });
 });

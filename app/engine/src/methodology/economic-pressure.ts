@@ -110,6 +110,17 @@ export const ECONOMIC_PRESSURE_MAPPING = "normal_cdf" as const;
  */
 const ACTIVE_REGIME_SCALE_CODES = new Set<IndicatorCode>(["I-D1-002", "I-D1-003"]);
 
+/**
+ * Hitte-escalatie (amendement §4.1.16, Peter GO 2026-06-24). De generieke winsor-kap
+ * (±3) maakt een echte hittegolf (35°C+, ruwe z ~3,5-5+) bijna gelijk aan een tropische
+ * dag (33°C, z ~2,7): boven 3 wordt alles platgeslagen. Hitte (I-D1-002) krijgt daarom
+ * een HOGERE bovenkap zodat extreme hitte verder kan escaleren en zwaarder weegt dan
+ * gewone warmte. Alle andere indicatoren en de ondergrens blijven ±3. Werkt door in
+ * broad_pressure EN de hybride dagkop (één bron, synchroon).
+ */
+export const HEAT_CODE: IndicatorCode = "I-D1-002";
+export const HEAT_ESCALATION_BOUND = 5;
+
 export interface DatedValue {
   date: string; // ISO YYYY-MM-DD
   value: number;
@@ -228,7 +239,8 @@ export function computeAbsolutePressure(
       continue; // geen schaal en wel een uitschieter -> eerlijk uitsluiten
     }
     if (meta.inverseCoded) z = -z;
-    z = winsorize(z).value;
+    // Hitte escaleert tot HEAT_ESCALATION_BOUND (§4.1.16); de rest blijft op ±3.
+    z = winsorize(z, code === HEAT_CODE ? HEAT_ESCALATION_BOUND : undefined).value;
 
     indicators.push({
       code,
