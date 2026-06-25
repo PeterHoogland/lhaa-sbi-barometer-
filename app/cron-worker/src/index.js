@@ -3,8 +3,9 @@
  *
  * GitHub's eigen `schedule`-cron is best-effort en slaat onder belasting vaak uren
  * over (waardoor het publieke cijfer niet ververst). Deze Worker draait op
- * Cloudflare's eigen, exacte cron en trapt elk uur de GitHub-workflow `daily.yml`
- * af via de officiële `workflow_dispatch`-API. De tijd-guard ín daily.yml zorgt dat
+ * Cloudflare's eigen cron en trapt op elke cron-tijd ZOWEL `daily.yml` (data-refresh)
+ * ALS `monitor.yml` (de watchdog) af via de officiële `workflow_dispatch`-API — zo hangt
+ * ook de monitor niet langer aan GitHub's grillige schedule. De tijd-guard ín daily.yml zorgt dat
  * er enkel tussen 06-21u BE écht data gefetcht + gedeployed wordt; buiten dat
  * venster is de run een snelle no-op. Daardoor mag deze Worker ruim 04-20u UTC
  * vuren (dekt 06-21u BE in zowel zomer- als wintertijd).
@@ -14,14 +15,18 @@
  * Zetten met:  wrangler secret put GITHUB_DISPATCH_TOKEN   (in deze map).
  */
 const REPO = "PeterHoogland/lhaa-sbi-barometer-";
-const WORKFLOW = "daily.yml";
 const REF = "main";
+// De cron-worker is de BETROUWBARE trigger (Cloudflare-cron i.p.v. GitHub's grillige
+// schedule). Hij trapt zowel de data-refresh (daily.yml) ALS de watchdog (monitor.yml)
+// af, zodat de monitor niet langer alleen van GitHub's scheduler afhangt (Peter 2026-06-25).
+const DATA_WORKFLOW = "daily.yml";
+const MONITOR_WORKFLOW = "monitor.yml";
 
-async function dispatch(env) {
+async function dispatch(env, workflow) {
   if (!env.GITHUB_DISPATCH_TOKEN) {
     return { ok: false, status: 0, body: "GITHUB_DISPATCH_TOKEN secret ontbreekt" };
   }
-  const url = `https://api.github.com/repos/${REPO}/actions/workflows/${WORKFLOW}/dispatches`;
+  const url = `https://api.github.com/repos/${REPO}/actions/workflows/${workflow}/dispatches`;
   const resp = await fetch(url, {
     method: "POST",
     headers: {
@@ -40,8 +45,12 @@ async function dispatch(env) {
 export default {
   // Cloudflare roept dit aan op de cron-tijden uit wrangler.jsonc.
   async scheduled(event, env, ctx) {
-    const r = await dispatch(env);
-    console.log(`[cron ${event.cron}] workflow_dispatch ${WORKFLOW} -> HTTP ${r.status}${r.ok ? " (ok)" : " FOUT: " + r.body}`);
+    // Trap eerst de data-refresh af, daarna de onafhankelijke watchdog. Beide via de
+    // betrouwbare Cloudflare-cron, zodat de monitor niet van GitHub's schedule afhangt.
+    for (const wf of [DATA_WORKFLOW, MONITOR_WORKFLOW]) {
+      const r = await dispatch(env, wf);
+      console.log(`[cron ${event.cron}] workflow_dispatch ${wf} -> HTTP ${r.status}${r.ok ? " (ok)" : " FOUT: " + r.body}`);
+    }
   },
 
   // Handmatige test/health: GET met de juiste ?key= (== het token) trapt één run af.
@@ -50,7 +59,7 @@ export default {
     const url = new URL(request.url);
     if (url.pathname === "/trigger" && env.GITHUB_DISPATCH_TOKEN &&
         url.searchParams.get("key") === env.GITHUB_DISPATCH_TOKEN) {
-      const r = await dispatch(env);
+      const r = await dispatch(env, DATA_WORKFLOW);
       return new Response(`dispatch -> HTTP ${r.status}${r.ok ? " (ok)" : " " + r.body}`, { status: r.ok ? 200 : 502 });
     }
     return new Response(
