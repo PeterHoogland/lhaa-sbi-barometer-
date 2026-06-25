@@ -14929,5 +14929,50 @@
     "link": "https://www.bruzz.be/actua/milieu/net-brussel-hervat-afvalophaling-na-staking-2026-06-25",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-25",
+    "magnitude": 1,
+    "title": "Sofiane Kiyine, bekend van spectaculair ongeval in sporthal, test bij tweedeklasser KSC Lokeren",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/voetbal/sofiane-kiyine-bekend-van-spectaculair-ongeval-in-sporthal-test-bij-tweedeklasser-ksc-lokeren~a82f48fa/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-25",
+    "magnitude": 1,
+    "title": "Tientallen Belgen opgelicht via valse MyEbox-mails: drie verdachten opgepakt",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/denderregio/dendermonde/tientallen-belgen-opgelicht-via-valse-myebox-mails-drie-verdachten-opgepakt/157799399.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-25",
+    "magnitude": 1,
+    "title": "Rijweg richting Schilde afgesloten na dodelijk ongeval in Wijnegem",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/wijnegem/rijweg-richting-schilde-afgesloten-na-dodelijk-ongeval-in-wijnegem/157799482.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-25",
+    "magnitude": 1,
+    "title": "Extra maatregelen tijdens Heistse Braderij: “Veldbedden in Zwaneberg voor slachtoffers van hitteslag”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/rivierenland/heist-op-den-berg/extra-maatregelen-tijdens-heistse-braderij-veldbedden-in-zwaneberg-voor-slachtoffers-van-hitteslag/157800162.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-25",
+    "magnitude": 1,
+    "title": "Houtlaan richting Schilde afgesloten na dodelijk ongeval in Wijnegem",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/wijnegem/houtlaan-richting-schilde-afgesloten-na-dodelijk-ongeval-in-wijnegem/157798818.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
