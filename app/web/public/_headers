@@ -1,14 +1,25 @@
 # Cache-discipline (Peter 2026-06-25) — Cloudflare Workers Static Assets leest dit bestand.
-# Doel: geen enkele bezoeker ziet ooit nog een oude bundel.
+# Doel: geen bezoeker ziet ooit nog een oude bundel, EN gehashte assets blijven snel.
 #
-# Regelvolgorde is bewust: de brede /* staat eerst, /assets/* daarna. Bij een conflict
-# wint /assets/* onder BEIDE Cloudflare-interpretaties (most-specific én last-rule-wins),
-# dus de gehashte assets blijven immutable terwijl al het andere no-store is.
+# LET OP: Cloudflare COMBINEERT alle matchende _headers-regels (concat), het laat de
+# specifieke regel NIET de brede overschrijven. Een catch-all /* zou dus ook /assets/*
+# raken en "no-store" bij "immutable" plakken (no-store wint -> assets niet gecachet).
+# Daarom GEEN /*: we sommen de no-store-paden expliciet op zodat /assets/* puur immutable is.
 
-/*
-  Cache-Control: no-store
-
-# Gehashte build-assets (index-<hash>.js/.css): de bestandsnaam verandert bij elke build,
-# dus eeuwig cachen is veilig en snel. Een nieuwe deploy = nieuwe naam = automatisch vers.
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+
+/
+  Cache-Control: no-store
+
+/index.html
+  Cache-Control: no-store
+
+/data/*
+  Cache-Control: no-store
+
+/api/*
+  Cache-Control: no-store
+
+/embed/*
+  Cache-Control: no-store
