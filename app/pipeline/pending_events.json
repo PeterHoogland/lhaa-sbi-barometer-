@@ -15127,5 +15127,41 @@
     "link": "https://www.tvoost.be/nieuws/federale-gerechtelijke-politie-oost-vlaanderen-rolt-europese-phishingbende-op-211876",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-25",
+    "magnitude": 1,
+    "title": "LIVE. Oranje-gekte slaat ook toe in Kansas City, waar noodweer wel eens roet in het eten zou kunnen gooien",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/wk-voetbal/live-oranje-gekte-slaat-ook-toe-in-kansas-city-waar-noodweer-wel-eens-roet-in-het-eten-zou-kunnen-gooien~a1024a54/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-25",
+    "magnitude": 5,
+    "title": "Proces tegen drie medeplichtigen Abdesalem Lassoued vindt begin oktober plaats",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/justitie/proces-tegen-drie-medeplichtigen-abdesalem-lassoued-vindt-begin-oktober-plaats-2026-06-25",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-25",
+    "magnitude": 3,
+    "title": "Polen roept noodtoestand uit door extreme hittegolf",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/polen-roept-noodtoestand-uit-door-extreme-hittegolf/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-25",
+    "magnitude": 1,
+    "title": "LIVE. Tienduizenden vermisten na aardbevingen in Venezuela - Beelden tonen enorme ravage",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/live.-tienduizenden-vermisten-na-aardbevingen-in-venezuela-beelden-tonen-enorme-ravage/157766430.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
