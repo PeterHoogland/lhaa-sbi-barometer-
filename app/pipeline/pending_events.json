@@ -16522,5 +16522,41 @@
     "link": "https://www.tvoost.be/nieuws/nog-geen-maand-na-dodelijk-busdrama-chauffeur-t-ros-beiaard-ontslagen-na-positieve-ademtest-211855",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-27",
+    "magnitude": 1,
+    "title": "Treinverkeer Hasselt-Diest hervat na botsing met tractor op sporen in Kermt",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/26/6ea6b029-01f1-4431-bced-2d2822f53126.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-27",
+    "magnitude": 1,
+    "title": "Gilles (18) ziet auto stranden op sporen na ongeval in Wevelgem en aarzelt geen seconde: “Direct nummer 1711 gebeld om het treinverkeer te laten stilleggen”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/wevelgem/gilles-18-ziet-auto-stranden-op-sporen-na-ongeval-in-wevelgem-en-aarzelt-geen-seconde-direct-nummer-1711-gebeld-om-het-treinverkeer-te-laten-stilleggen~adbab4fa/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-27",
+    "magnitude": 1,
+    "title": "Vrachtwagen eindigt in gracht bij uitwijkmanoeuvre: N8 afgesloten voor takelwerken",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/westhoek/alveringem/vrachtwagen-eindigt-in-gracht-bij-uitwijkmanoeuvre-n8-afgesloten-voor-takelwerken/157909268.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-27",
+    "magnitude": 1,
+    "title": "Ann (58) verloor tien jaar geleden dochter bij verkeersongeval: “Wat het zwaarst weegt, is alles wat Sofie intussen allemaal heeft moeten missen”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/ann-58-verloor-tien-jaar-geleden-dochter-bij-verkeersongeval-wat-het-zwaarst-weegt-is-alles-wat-sofie-intussen-allemaal-heeft-moeten-missen/157845306.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
