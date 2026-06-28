@@ -17125,5 +17125,32 @@
     "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/zestigtal-oproepen-door-noodweer-bij-antwerpse-brandweerploegen/157932387.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-28",
+    "magnitude": 1,
+    "title": "11 mensen omgekomen in vliegtuigcrash bij Nancy in Frankrijk",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2024/06/18/6fb148d4-2db3-11ef-92ff-02b7b76bf47f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-28",
+    "magnitude": 1,
+    "title": "Organistor Couleur Café: 'Gelukkig geen gewonden, maar mentaal een zware slag'",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/samenleving/dennis-corbesier-van-couleur-cafe-gelukkig-geen-gewonden-maar-mentaal-een-zware-slag-2026-06-28",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-28",
+    "magnitude": 1,
+    "title": "Vliegtuig met parachutisten stort neer in Frankrijk: 11 dodelijke slachtoffers",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/vliegtuig-met-parachutisten-stort-neer-in-frankrijk-11-dodelijke-slachtoffers/157936167.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
