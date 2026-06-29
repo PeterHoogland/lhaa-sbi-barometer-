@@ -17647,5 +17647,68 @@
     "link": "https://images.vrt.be/width1280/2026/06/29/7659353c-b029-469b-a8fc-c9f4190bb985.jpg",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-29",
+    "magnitude": 5,
+    "title": "Tot 5 jaar cel voor aanslag tegen Mexicaans restaurant in Antwerpen",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2023/12/11/87947dfa-97e3-11ee-b483-02b7b76bf47f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-29",
+    "magnitude": 1,
+    "title": "'s Ochtends uit de VS gezet, 's avonds bedolven onder het puin: het tragische verhaal van 147 Venezolaanse migranten",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/29/3c7279b5-f6aa-4ea8-b4de-8337939177e4.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-29",
+    "magnitude": 1,
+    "title": "Voor en na: satellietbeelden tonen grote verwoesting na aardbeving in Venezuela",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/29/beac3422-b9a8-4b92-9e19-5ae99e9c0f63.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-29",
+    "magnitude": 1,
+    "title": "Parachutiste Hélène ontsnapt aan dodelijke vliegtuigcrash in Frankrijk: “Onze sprong werd vervroegd”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/parachutiste-helene-ontsnapt-aan-dodelijke-vliegtuigcrash-in-frankrijk-onze-sprong-werd-vervroegd~a97de694/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-29",
+    "magnitude": 1,
+    "title": "Staking aan de gang in alle Belgische gevangenissen",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/justitie/staking-aan-de-gang-alle-belgische-gevangenissen-2026-06-29",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-29",
+    "magnitude": 1,
+    "title": "Politieachtervolging na vermoedelijke diefstal eindigt in crash in Aartselaar: “Twee verdachten gearresteerd”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/aartselaar/politieachtervolging-na-vermoedelijke-diefstal-eindigt-in-crash-in-aartselaar-twee-verdachten-gearresteerd/157983045.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-29",
+    "magnitude": 1,
+    "title": "Joyride met auto van vader eindigt in crash: 200 uur werkstraf en drie maanden rijverbod",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/regio/oost-vlaanderen/waasland/beveren-kruibeke-zwijndrecht/joyride-met-auto-van-vader-eindigt-in-crash-200-uur-werkstraf-en-drie-maanden-rijverbod/157979121.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
