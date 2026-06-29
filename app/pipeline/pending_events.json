@@ -17800,5 +17800,41 @@
     "link": "https://www.tvoost.be/nieuws/tv-oost-nieuws-van-maandag-29062026-212009",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-06-29",
+    "magnitude": 1,
+    "title": "Man uit Lommel krijgt werkstraf voor oplichting van tiental slachtoffers, voor 68.000 euro",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2020/04/02/f18d531d-74fd-11ea-aae0-02b7b76bf47f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-29",
+    "magnitude": 1,
+    "title": "Dodentol loopt op tot boven de 1.700 in Venezuela, meer dan 5.000 gewonden geteld",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/06/29/ca7672ba-ceeb-4150-9687-b750a94a246f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-29",
+    "magnitude": 1,
+    "title": "Zes medewerkers van zorginstelling in Duitsland bekopen voogdijconflict over baby met hun leven, politie overmeestert vluchtende schutter",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/zes-medewerkers-van-zorginstelling-in-duitsland-bekopen-voogdijconflict-over-baby-met-hun-leven-politie-overmeestert-vluchtende-schutter~vaaca447c/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-06-29",
+    "magnitude": 1,
+    "title": "Groen-voorzitter Aimen Horch opgepakt tijdens pro-Palestinabetoging: “Een schandplek voor onze stad”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/groen-voorzitter-aimen-horch-opgepakt-tijdens-pro-palestinabetoging-een-schandplek-voor-onze-stad/158003655.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
