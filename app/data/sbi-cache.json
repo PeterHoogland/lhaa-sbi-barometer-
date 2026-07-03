@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:13:58.859688",
+    "fetched_at": "2026-07-03T17:53:50.288224",
     "observation_date": "2026-07-03",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 1.0212
+    "value": 1.0556
   },
   "I-D1-009": {
     "date": "2026-07-02",
-    "fetched_at": "2026-07-03T16:14:02.586997",
+    "fetched_at": "2026-07-03T17:53:53.012597",
     "observation_date": "2026-07-02",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 7.81
   },
   "I-D1-010": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:14:03.247893",
+    "fetched_at": "2026-07-03T17:53:53.475573",
     "observation_date": "2026-07-03",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 65.99583333333334
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:17:32.259931",
+    "fetched_at": "2026-07-03T17:58:32.800556",
     "observation_date": "2026-07-03",
-    "source": "Verkeerscentrum DATEX II v3 — 26 files, 67.69 km totale filelengte (langste 8.11 km), snapshot 2026-07-03",
-    "value": 67.69
+    "source": "Verkeerscentrum DATEX II v3 — 4 files, 4.93 km totale filelengte (langste 1.8 km), snapshot 2026-07-03",
+    "value": 4.93
   },
   "I-D2-009": {
     "date": "2026-07-02",
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:16:54.316476",
+    "fetched_at": "2026-07-03T17:57:59.550994",
     "observation_date": "2026-07-03",
     "source": "iRail API (NMBS/SNCB-verstoringen, 3 ongepland)",
     "value": 3.0
   },
   "I-D2-delijn": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:17:35.470153",
+    "fetched_at": "2026-07-03T17:58:34.883017",
     "observation_date": "2026-07-03",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 700 vertraagd (≥3min), 11 service-alerts (Vlaanderen)",
-    "value": 700.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 362 vertraagd (≥3min), 12 service-alerts (Vlaanderen)",
+    "value": 362.0
   },
   "I-D2-stib": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:17:33.415197",
+    "fetched_at": "2026-07-03T17:58:33.523130",
     "observation_date": "2026-07-03",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 401 actieve items; CC BY 4.0)",
-    "value": 401.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 400 actieve items; CC BY 4.0)",
+    "value": 400.0
   },
   "I-D3-001": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:14:05.962625",
+    "fetched_at": "2026-07-03T17:53:55.402152",
     "observation_date": "2026-06",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.0
   },
   "I-D3-002": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:14:07.007614",
+    "fetched_at": "2026-07-03T17:53:56.155743",
     "observation_date": "2026-07-03",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 70.66659090909091
   },
   "I-D3-003": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:14:07.738352",
+    "fetched_at": "2026-07-03T17:53:56.605955",
     "observation_date": "2026-05",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.10pp, ~4999 werkzoekenden, proxy voor ontslagen)",
     "value": 8.5173931714189
   },
   "I-D3-003S": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:17:30.072985",
+    "fetched_at": "2026-07-03T17:58:31.344772",
     "observation_date": "2026-07-03",
     "source": "Ontslag-radar: 1 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 1.0
   },
   "I-D3-005": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:14:08.285757",
+    "fetched_at": "2026-07-03T17:53:57.062496",
     "observation_date": "2026-05",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:14:08.936440",
+    "fetched_at": "2026-07-03T17:53:57.518704",
     "observation_date": "2026-05",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.55
   },
   "I-D3-007": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:14:10.798659",
+    "fetched_at": "2026-07-03T17:53:58.788198",
     "observation_date": "2026-06",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.8
   },
   "I-D3-009": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:14:10.291339",
+    "fetched_at": "2026-07-03T17:53:58.470892",
     "observation_date": "2026-07-03",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9563274874069885
   },
   "I-D5-001": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:15:19.610277",
+    "fetched_at": "2026-07-03T17:55:01.681083",
     "observation_date": "2026-07-03",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1056/1103 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.52 / midden +0.49 / ouder +0.53. Negatiefste headlines: «The Last Dinner Party vs. Viagra Boys: koolmijn of decadent drama? · Selon une étude, la guerre en Ukraine a fait plus de 2 millions de victimes militaires La guerre en Ukraine a fait plus  · 71-jarige fietser gewond bij ongeval in Vlijtingen»; emotie-profiel headlines (matches/100 woorden): woede 0.08 / angst 0.10 / verdriet 0.16 / walging 0.04 (dominant: verdriet)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1050/1101 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.37 / midden +0.36 / ouder +0.43. Negatiefste headlines: «Waarom België tijdens de hittegolf meer doden telt dan Frankrijk of Nederland · Fietsster gewond bij ongeval op Kattenbos · The Last Dinner Party vs. Viagra Boys: koolmijn of decadent drama?»; emotie-profiel headlines (matches/100 woorden): woede 0.07 / angst 0.11 / verdriet 0.14 / walging 0.04 (dominant: verdriet)",
     "value": 1.7743
   },
   "I-D5-002": {
     "date": "2026-07-01",
-    "fetched_at": "2026-07-03T16:15:20.552203",
+    "fetched_at": "2026-07-03T17:55:02.244381",
     "observation_date": "2026-07-01",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 27.112
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:16:54.078898",
+    "fetched_at": "2026-07-03T17:57:59.105024",
     "observation_date": "2026-07-03",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.9717171075670457
+    "value": 1.004093175943114
   },
   "I-D5-mastodon": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:16:56.205583",
+    "fetched_at": "2026-07-03T17:58:00.994936",
     "observation_date": "2026-07-03",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.2713252158356084
   },
   "I-D5-trends": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-03T16:17:30.564879",
+    "fetched_at": "2026-07-03T17:58:31.796801",
     "observation_date": "2026-07-03",
-    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.05 (stress-trends: cruiseschip)",
-    "value": 0.0476
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.48 (stress-trends: cruiseschip)",
+    "value": 0.4762
   }
 }
