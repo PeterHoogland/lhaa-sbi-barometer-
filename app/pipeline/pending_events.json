@@ -20059,5 +20059,23 @@
     "link": "https://www.tvoost.be/nieuws/de-lijn-over-incident-met-jongen-die-vergeten-was-op-schoolbus-van-t-ros-beiaard-miscommunicatie-ligt-aan-de-basis-van-de-fout-212063",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-03",
+    "magnitude": 1,
+    "title": "Russische aanval op Kiev: dodental loopt op tot 30",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/russische-aanval-op-kiev-dodental-loopt-op-tot-30/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-03",
+    "magnitude": 1,
+    "title": "Uit de hand gelopen ruzie in Poppel: “Een persoon kreeg messteek, andere werd aangereden”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/ravels/uit-de-hand-gelopen-ruzie-in-poppel-een-persoon-kreeg-messteek-andere-werd-aangereden/158207282.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
