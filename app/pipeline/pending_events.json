@@ -20221,5 +20221,23 @@
     "link": "https://www.nieuwsblad.be/regio/limburg/heusden-zolder/drie-personen-raken-gewond-nadat-bestelwagen-inrijdt-op-eerder-ongeval-op-e314-in-zolder/158222506.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-03",
+    "magnitude": 1,
+    "title": "Staking in distributiecentrum AB Inbev Leuven: Levering van drank aan horeca kan vertraging oplopen",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2022/05/31/adad1469-e0bb-11ec-b07d-02b7b76bf47f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-03",
+    "magnitude": 1,
+    "title": "Drie inzittenden gewond na aanrijding tussen taxi en personenwagen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/vlaams-brabant/oost-brabant/leuven/drie-inzittenden-gewond-na-aanrijding-tussen-taxi-en-personenwagen/158222592.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
