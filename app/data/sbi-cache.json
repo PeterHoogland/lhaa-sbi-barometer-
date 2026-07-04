@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:14:49.896121",
+    "fetched_at": "2026-07-04T15:08:19.467976",
     "observation_date": "2026-07-04",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.905
   },
   "I-D1-009": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-04T14:14:53.700488",
+    "fetched_at": "2026-07-04T15:08:23.397308",
     "observation_date": "2026-07-03",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 8.13
   },
   "I-D1-010": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:14:54.275373",
+    "fetched_at": "2026-07-04T15:08:23.994915",
     "observation_date": "2026-07-04",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 81.0625
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:20:00.006143",
+    "fetched_at": "2026-07-04T15:11:35.163084",
     "observation_date": "2026-07-04",
     "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
     "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:20:42.045938",
+    "fetched_at": "2026-07-04T15:12:16.731081",
     "observation_date": "2026-07-04",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 481 vertraagd (≥3min), 10 service-alerts (Vlaanderen)",
-    "value": 481.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 455 vertraagd (≥3min), 10 service-alerts (Vlaanderen)",
+    "value": 455.0
   },
   "I-D2-stib": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:20:39.926164",
+    "fetched_at": "2026-07-04T15:12:15.094542",
     "observation_date": "2026-07-04",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 351 actieve items; CC BY 4.0)",
-    "value": 351.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 348 actieve items; CC BY 4.0)",
+    "value": 348.0
   },
   "I-D3-001": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:14:57.146796",
+    "fetched_at": "2026-07-04T15:08:26.309812",
     "observation_date": "2026-06",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.0
   },
   "I-D3-002": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:14:58.166787",
+    "fetched_at": "2026-07-04T15:08:27.885220",
     "observation_date": "2026-07-04",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 55.778409090909115
   },
   "I-D3-003": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:14:58.986756",
+    "fetched_at": "2026-07-04T15:08:28.768212",
     "observation_date": "2026-05",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.10pp, ~4999 werkzoekenden, proxy voor ontslagen)",
     "value": 8.5173931714189
   },
   "I-D3-003S": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:20:36.979475",
+    "fetched_at": "2026-07-04T15:12:11.862912",
     "observation_date": "2026-07-04",
-    "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 3.0
+    "source": "Ontslag-radar: 2 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 2.0
   },
   "I-D3-005": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:14:59.677044",
+    "fetched_at": "2026-07-04T15:08:29.423119",
     "observation_date": "2026-05",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:15:00.396334",
+    "fetched_at": "2026-07-04T15:08:29.967445",
     "observation_date": "2026-05",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.55
   },
   "I-D3-007": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:15:02.966967",
+    "fetched_at": "2026-07-04T15:08:31.410983",
     "observation_date": "2026-06",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.8
   },
   "I-D3-009": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:15:02.442191",
+    "fetched_at": "2026-07-04T15:08:30.903955",
     "observation_date": "2026-07-04",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9728749739031561
   },
   "I-D5-001": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T09:30:45.925124",
+    "fetched_at": "2026-07-04T15:09:35.619808",
     "observation_date": "2026-07-04",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1049/1106 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.55 / midden +0.60 / ouder +0.77. Negatiefste headlines: «Spaanse brandweer strijdt tegen bosbrand aan Costa Brava, 2 zwaargewonden in Portugal · Waarom België tijdens de hittegolf meer doden telt dan Frankrijk of Nederland · Accident près de Gembloux: une automobiliste blessée Une collision entre deux voitures s'est produite ce vendredi 3 juil»; emotie-profiel headlines (matches/100 woorden): woede 0.05 / angst 0.12 / verdriet 0.18 / walging 0.03 (dominant: verdriet)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1038/1105 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.48 / midden +0.48 / ouder +0.62. Negatiefste headlines: «Spaanse brandweer strijdt tegen bosbrand aan Costa Brava, 2 zwaargewonden in Portugal · Waarom België tijdens de hittegolf meer doden telt dan Frankrijk of Nederland · Twintiger riskeert vijftien maanden cel voor diefstal met geweld Het Brusselse parket heeft vrijdag een gevangenisstraf »; emotie-profiel headlines (matches/100 woorden): woede 0.06 / angst 0.10 / verdriet 0.11 / walging 0.03 (dominant: verdriet)",
     "value": 1.7743
   },
   "I-D5-002": {
     "date": "2026-07-03",
-    "fetched_at": "2026-07-04T14:16:59.126958",
+    "fetched_at": "2026-07-04T15:09:36.616821",
     "observation_date": "2026-07-03",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 26.142
   },
   "I-D5-003": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T12:41:50.438864",
+    "fetched_at": "2026-07-04T15:10:54.668807",
     "observation_date": "2026-07-04",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 34 RSS-kandidaten naar pending voor menselijke review",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 31 RSS-kandidaten naar pending voor menselijke review",
     "value": 0.083167
   },
   "I-D5-006S": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:19:59.573621",
+    "fetched_at": "2026-07-04T15:11:34.573488",
     "observation_date": "2026-07-04",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.676189859838366
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.6529024706668919
   },
   "I-D5-mastodon": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:20:01.615429",
+    "fetched_at": "2026-07-04T15:11:36.813150",
     "observation_date": "2026-07-04",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.17757521583560842
   },
   "I-D5-trends": {
     "date": "2026-07-04",
-    "fetched_at": "2026-07-04T14:20:37.515643",
+    "fetched_at": "2026-07-04T15:12:12.491402",
     "observation_date": "2026-07-04",
-    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.33 (stress-trends: frankrijk)",
-    "value": 0.3333
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.21 (stress-trends: appartement)",
+    "value": 0.2083
   }
 }
