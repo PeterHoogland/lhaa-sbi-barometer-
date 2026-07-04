@@ -20923,5 +20923,32 @@
     "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/stekene/motorrijder-gewond-na-aanrijding-bij-mcdonalds/158264129.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-04",
+    "magnitude": 1,
+    "title": "Conflict escaleert in Poppel: vrouw (44) neergestoken, man (54) opzettelijk overreden",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/07/02/82fa7442-0f05-4ef9-83cc-24a1eff235b4.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-04",
+    "magnitude": 1,
+    "title": "Massale betoging tegen Duitse AfD in Erfurt: partijkantoor bestookt met vuurwerk en verfbommen",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/massale-betoging-tegen-duitse-afd-in-erfurt-partijkantoor-bestookt-met-vuurwerk-en-verfbommen~a305534a/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-04",
+    "magnitude": 1,
+    "title": "Stepper zwaargewond na aanrijding met brandweerwagen op IJzerlaan",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/stepper-zwaargewond-na-aanrijding-met-brandweerwagen-op-ijzerlaan/158266247.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
