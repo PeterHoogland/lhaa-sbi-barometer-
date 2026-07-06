@@ -22066,5 +22066,23 @@
     "link": "https://www.gva.be/regio/antwerpen/kempen/grobbendonk/bestuurster-80-belandt-met-auto-in-gracht/158338010.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-06",
+    "magnitude": 1,
+    "title": "Vijf dagen na dodelijke brand op Linkeroever mogen enkele bewoners kort terug naar appartement voor essentiële spullen",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/antwerpen/vijf-dagen-na-dodelijke-brand-op-linkeroever-mogen-enkele-bewoners-kort-terug-naar-appartement-voor-essentiele-spullen~a9ff7f74/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-06",
+    "magnitude": 1,
+    "title": "Jonge bromfietser lichtgewond na aanrijding met wagen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/regio-brugge/torhout/jonge-bromfietser-lichtgewond-na-aanrijding-met-wagen/158349854.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
