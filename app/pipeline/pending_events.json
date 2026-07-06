@@ -21895,5 +21895,41 @@
     "link": "https://www.tvoost.be/nieuws/stepper-32-raakt-levensgevaarlijk-gewond-na-aanrijding-met-auto-in-sint-niklaas-212140",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-06",
+    "magnitude": 5,
+    "title": "Mogelijk chemische aanslag op school in Hasselt verijdeld na onderschepte TikTok-berichten",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/02/26/0e8d9bae-9164-41f3-80b5-2e7c03d43716.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-06",
+    "magnitude": 1,
+    "title": "“Een stakingsactie staat op het punt los te barsten”: vakbond ACV dient stakingsaanzegging in op luchthaven van Zaventem",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/een-stakingsactie-staat-op-het-punt-los-te-barsten-vakbond-acv-dient-stakingsaanzegging-in-op-luchthaven-van-zaventem~ac953374/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-06",
+    "magnitude": 1,
+    "title": "Mercedes van ‘Sterren op de dansvloer’-jurylid Anouchka Balsing gestolen uit ondergrondse garage: “Niet te vatten”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/antwerpen/mercedes-van-sterren-op-de-dansvloer-jurylid-anouchka-balsing-gestolen-uit-ondergrondse-garage-niet-te-vatten~af1c67a9/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-06",
+    "magnitude": 1,
+    "title": "Fietsster raakt lichtgewond bij aanrijding",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/westerlo/fietsster-raakt-lichtgewond-bij-aanrijding/158316076.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
