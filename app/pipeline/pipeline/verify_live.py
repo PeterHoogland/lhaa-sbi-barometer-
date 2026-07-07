@@ -16,7 +16,7 @@ from __future__ import annotations
 import os
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 BASE = "https://les-hautes-alpes-sbi.brainwolves.workers.dev"
 EXPECTED_INDICATORS = 21  # 25 registry-codes - 4 D6-kalendercontext (A6: context_signals, niet gescoord)
@@ -171,8 +171,52 @@ def _get(path: str, tries: int = 6, wait: int = 10) -> dict | None:
     return None
 
 
+def _is_fresh(latest: dict, now: datetime) -> bool:
+    """Is de live timestamp binnen de verse-drempel? Een ongeldige/ontbrekende
+    timestamp geeft True terug — dan stoppen we met pollen en laat assess() het als
+    hard probleem melden (i.p.v. eindeloos wachten op iets dat nooit vers wordt)."""
+    ts = latest.get("timestamp")
+    try:
+        t = datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
+        return (now - t).total_seconds() / 60 <= FRESH_MAX_MIN
+    except (ValueError, TypeError, AttributeError):
+        return True
+
+
+def _get_fresh(
+    path: str = "/data/latest.json",
+    *,
+    max_wait: int = 180,
+    interval: int = 15,
+    fetch=_get,
+    now_fn=lambda: datetime.now(timezone.utc),
+    sleep=time.sleep,
+) -> dict | None:
+    """Haal de live latest.json op, maar geef de edge tijd om de ZOJUIST gedeployde
+    build te propageren. Cloudflare/Surge serveren vlak na een deploy soms nog kort
+    de vórige versie; die in één keer lezen gaf een vals-rode verse-gate — hij mat de
+    leeftijd van de VORIGE deploy i.p.v. van deze run (2026-07: uitsluitend
+    off-cadence workflow_dispatch-runs faalden zo, terwijl de data feitelijk correct
+    en vers gedeployd was). We pollen daarom tot de verse build zichtbaar is
+    (timestamp ≤ FRESH_MAX_MIN oud) of tot de deadline verstrijkt. Propageert de build
+    echt niet binnen de deadline, dan geven we de laatste (mogelijk stale) respons
+    terug zodat assess() eerlijk rood gaat — een echte propagatie-/deploy-fout blijft
+    dus zichtbaar; alleen de race met de edge-propagatie is weg."""
+    deadline = now_fn() + timedelta(seconds=max_wait)
+    last: dict | None = None
+    while True:
+        latest = fetch(path)
+        if latest:
+            last = latest
+            if _is_fresh(latest, now_fn()):
+                return latest
+        if now_fn() >= deadline:
+            return last
+        sleep(interval)
+
+
 def main() -> int:
-    latest = _get("/data/latest.json")          # met retries → wacht op Cloudflare-propagatie
+    latest = _get_fresh("/data/latest.json")     # pollt tot de verse build gepropageerd is
     health = _get("/data/health-report.json", tries=2, wait=5)
     now = datetime.now(timezone.utc)
 

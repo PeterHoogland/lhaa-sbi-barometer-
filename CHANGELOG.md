@@ -6,6 +6,16 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-07-08 — verify_live propagatie-bestendig: geen vals-rode runs meer door edge-cache-race
+
+**Aanleiding:** De uurlijkse runs faalden intermitterend (5 van de laatste 23 workflow_dispatch-runs, 0 van 17 scheduled) op de laatste stap `Post-deploy live-eindresultaat-verificatie` met "live data N min oud (> 45)". Diagnose (hard, met tijdstempels): de verse-gate las de live-URL onmiddellijk na de Cloudflare/Surge-deploy, vóór de edge de nieuwe assets had gepropageerd, en mat daardoor de leeftijd van de VÓRIGE deploy. Bewijs: run 28862070560 (11:17) las bij verificatie timestamp = 08:32 (de 08:25-run) terwijl het verse cijfer percentiel=81 al gedeployd was. Uitsluitend off-cadence runs met een groot gat sinds de vorige deploy tikten zo de 45-min-drempel aan → run rood → alarm-mail/Telegram/issue #48. Dit is de bron van de foutmeldingen die Peter kreeg.
+
+**Beslissing:** `app/pipeline/pipeline/verify_live.py` haalt de live latest.json nu op via `_get_fresh()`, dat pollt tot de zojuist gedeployde build zichtbaar is (timestamp ≤ FRESH_MAX_MIN oud) of tot een deadline van 180s. De pure controle `assess()` is ONGEWIJZIGD — de echte staleness-detectie blijft: propageert de build echt niet binnen de deadline, dan geeft `_get_fresh()` de laatste (stale) respons terug en faalt de run nog steeds eerlijk. Alleen de race met de edge-propagatie is weg. De 45-min-semantiek en alle andere gates (compleetheid, composiet=Σcontributies, harde-eis mode=live, baseline-integriteit, canary) blijven exact gelijk.
+
+**Geborgd:** `assess()` niet aangeraakt → de 16 bestaande tests intact; 2 nieuwe tests toegevoegd (`test_get_fresh_stopt_zodra_vers` = pollt door tot de verse build en negeert de eerste stale 200; `test_get_fresh_faalt_eerlijk_als_niet_propageert` = echte propagatiefout faalt nog steeds). Alle 12 pipeline-suites groen (154 tests). Geen weging-, indicator- of engine-wijziging; puur robuustheid van de post-deploy-verificatie.
+
+---
+
 ## 2026-06-20 — Automatische, datum-gegrendelde campagne go-live (SBI_STRICT_REAL vanaf 2026-06-22, server-side)
 
 **Aanleiding:** Peter wil dat de campagnemodus volautomatisch live gaat op maandag 2026-06-22 (07:00 BE-cron), zonder handmatige stap en zonder afhankelijkheid van een open app of push-rechten op de dag zelf.

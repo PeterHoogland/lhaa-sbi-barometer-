@@ -8,7 +8,7 @@ uitgesloten resultaat schoon doorkomt.
 """
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -170,6 +170,44 @@ def test_baseline_gesnoeid_faalt():
     l["broad_pressure"] = _healthy_broad(weer_start="2019-02-11", weer_n=324)
     p, _ = vl.assess(l, _OK, NOW)
     assert any(("gesnoeid" in x or "te dun" in x) for x in p), p
+
+
+def test_get_fresh_stopt_zodra_vers():
+    # De edge serveert eerst 2x nog de VORIGE (stale) build, daarna pas de verse.
+    # _get_fresh moet doorpollen tot de verse build zichtbaar is en die teruggeven —
+    # niet vals-rood vertrouwen op de eerste stale 200 (de 2026-07-race).
+    clock = {"t": datetime(2026, 6, 4, 12, 0, 0, tzinfo=timezone.utc)}
+    stale = {"timestamp": "2026-06-04T10:00:00Z"}    # 2 uur oud
+    fresh = {"timestamp": "2026-06-04T11:59:00Z"}    # 1 min oud
+    seq = [stale, stale, fresh]
+    calls = {"i": 0}
+
+    def fetch(_path):
+        r = seq[min(calls["i"], len(seq) - 1)]
+        calls["i"] += 1
+        return r
+
+    def sleep(_s):
+        clock["t"] = clock["t"] + timedelta(seconds=1)  # klok tikt, blijft binnen deadline
+
+    out = vl._get_fresh(max_wait=180, interval=15, fetch=fetch, now_fn=lambda: clock["t"], sleep=sleep)
+    assert out is fresh, out
+    assert calls["i"] == 3, calls["i"]
+
+
+def test_get_fresh_faalt_eerlijk_als_niet_propageert():
+    # Blijft de build stale binnen de deadline (echte propagatie-/deploy-fout), dan geeft
+    # _get_fresh de laatste stale respons terug zodat assess() eerlijk rood gaat.
+    clock = {"t": datetime(2026, 6, 4, 12, 0, 0, tzinfo=timezone.utc)}
+    stale = {"timestamp": "2026-06-04T10:00:00Z"}
+
+    def sleep(_s):
+        clock["t"] = clock["t"] + timedelta(seconds=60)  # tikt richting/voorbij de deadline
+
+    out = vl._get_fresh(max_wait=120, interval=15, fetch=lambda _p: stale, now_fn=lambda: clock["t"], sleep=sleep)
+    assert out is stale, out
+    p, _ = vl.assess(out, _OK, clock["t"])
+    assert any("oud" in x for x in p), p
 
 
 def _run():
