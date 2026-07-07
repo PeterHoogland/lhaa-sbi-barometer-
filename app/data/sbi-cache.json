@@ -1,10 +1,10 @@
 {
   "I-D1-004": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:34:05.393931",
+    "fetched_at": "2026-07-07T18:24:51.076526",
     "observation_date": "2026-07-07",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.905
+    "value": 1.06
   },
   "I-D1-009": {
     "date": "2026-07-06",
@@ -15,7 +15,7 @@
   },
   "I-D1-010": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:34:08.741089",
+    "fetched_at": "2026-07-07T18:26:08.059500",
     "observation_date": "2026-07-07",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 80.61250000000001
@@ -35,99 +35,99 @@
     "value": 32.24
   },
   "I-D2-009": {
-    "date": "2026-07-06",
-    "fetched_at": "2026-07-06T18:57:54.810000",
-    "observation_date": "2026-07-06",
-    "source": "Infrabel stiptheid-van-vandaag-per-uur (3186 metingen, 16 uren, dag tot 20u)",
-    "value": 4.582548650345264
+    "date": "2026-07-07",
+    "fetched_at": "2026-07-07T18:26:09.515095",
+    "observation_date": "2026-07-07",
+    "source": "Infrabel stiptheid-van-vandaag-per-uur (3203 metingen, 16 uren, dag tot 20u)",
+    "value": 5.557290040586949
   },
   "I-D2-009S": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:38:52.421048",
+    "fetched_at": "2026-07-07T18:31:06.510972",
     "observation_date": "2026-07-07",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 4 ongepland)",
-    "value": 4.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 3 ongepland)",
+    "value": 3.0
   },
   "I-D2-delijn": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:39:29.268260",
+    "fetched_at": "2026-07-07T18:32:38.996882",
     "observation_date": "2026-07-07",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 550 vertraagd (≥3min), 15 service-alerts (Vlaanderen)",
-    "value": 550.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 307 vertraagd (≥3min), 15 service-alerts (Vlaanderen)",
+    "value": 307.0
   },
   "I-D2-stib": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:39:27.900958",
+    "fetched_at": "2026-07-07T18:32:37.875403",
     "observation_date": "2026-07-07",
     "source": "STIB/MIVB TravellersInformation (Brussel, 335 actieve items; CC BY 4.0)",
     "value": 335.0
   },
   "I-D3-001": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:34:10.682715",
+    "fetched_at": "2026-07-07T18:26:09.951268",
     "observation_date": "2026-06",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.0
   },
   "I-D3-002": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:34:11.438383",
+    "fetched_at": "2026-07-07T18:26:10.851919",
     "observation_date": "2026-07-07",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 91.32670454545459
   },
   "I-D3-003": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:34:12.197925",
+    "fetched_at": "2026-07-07T18:26:11.381237",
     "observation_date": "2026-05",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.10pp, ~4999 werkzoekenden, proxy voor ontslagen)",
     "value": 8.5173931714189
   },
   "I-D3-003S": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:39:25.512990",
+    "fetched_at": "2026-07-07T18:31:42.685917",
     "observation_date": "2026-07-07",
-    "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~14400 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 4.0
+    "source": "Ontslag-radar: 5 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~14400 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 5.0
   },
   "I-D3-005": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:34:13.030679",
+    "fetched_at": "2026-07-07T18:26:11.820488",
     "observation_date": "2026-05",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:34:13.943618",
+    "fetched_at": "2026-07-07T18:26:12.213066",
     "observation_date": "2026-05",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.55
   },
   "I-D3-007": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:34:15.344721",
+    "fetched_at": "2026-07-07T18:26:13.641184",
     "observation_date": "2026-06",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.8
   },
   "I-D3-009": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:34:14.943840",
+    "fetched_at": "2026-07-07T18:26:13.295711",
     "observation_date": "2026-07-07",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0622588815877492
   },
   "I-D5-001": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T11:18:36.938492",
+    "fetched_at": "2026-07-07T18:28:04.101049",
     "observation_date": "2026-07-07",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1047/1095 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.25 / midden +0.22 / ouder +0.22. Negatiefste headlines: «Zwaar stormweer in China: tornado’s, tyfoons en aardverschuiving zorgen voor minstens 20 doden en 48.000 evacuaties · Twintiger riskeert vijftien maanden cel voor diefstal met geweld Het Brusselse parket heeft vrijdag een gevangenisstraf  · Live - Verdachte bomaanslag Monaco doodgeschoten in Kiev, dader opgepakt • Oekraïne claimt aanval op acht tankers Russis»; emotie-profiel headlines (matches/100 woorden): woede 0.06 / angst 0.14 / verdriet 0.09 / walging 0.02 (dominant: angst)",
-    "value": 1.0669
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1047/1096 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.29 / midden +0.30 / ouder +0.35. Negatiefste headlines: «Franse gemeenschap activeert crisiscel voor hittegolf · Drame à Lisbonne : un bus percute des usagers, deux morts et 20 blessés Un bus a percuté des usagers dans la banlieue de · Twintiger riskeert vijftien maanden cel voor diefstal met geweld Het Brusselse parket heeft vrijdag een gevangenisstraf »; emotie-profiel headlines (matches/100 woorden): woede 0.08 / angst 0.13 / verdriet 0.11 / walging 0.02 (dominant: angst)",
+    "value": 1.1497
   },
   "I-D5-002": {
     "date": "2026-07-06",
-    "fetched_at": "2026-07-07T16:35:56.992461",
+    "fetched_at": "2026-07-07T18:28:04.346713",
     "observation_date": "2026-07-06",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 25.904
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:38:52.139889",
+    "fetched_at": "2026-07-07T18:31:06.148428",
     "observation_date": "2026-07-07",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.36532466576296996
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": -0.09137607647069931
   },
   "I-D5-mastodon": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:38:53.923425",
+    "fetched_at": "2026-07-07T18:31:07.899901",
     "observation_date": "2026-07-07",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.5487964901905624
   },
   "I-D5-trends": {
     "date": "2026-07-07",
-    "fetched_at": "2026-07-07T16:39:26.029851",
+    "fetched_at": "2026-07-07T18:31:43.177632",
     "observation_date": "2026-07-07",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.11 (stress-trends: ironman, dirk baert)",
-    "value": 0.1077
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.13 (stress-trends: wibra)",
+    "value": 0.1333
   }
 }
