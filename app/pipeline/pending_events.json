@@ -23002,5 +23002,32 @@
     "link": "https://www.bruzz.be/actua/stedenbouw/ongeval-elsene-bestuurder-raakt-meerdere-geparkeerde-wagens-en-gevels-2026-07-08",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-08",
+    "magnitude": 1,
+    "title": "Bestuurder ramt geparkeerde wagens en lantaarnpaal in Elsene",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/07/08/06a821c3-f911-46bf-bf60-c0b5df05154d.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-08",
+    "magnitude": 1,
+    "title": "Wat de brand op Linkeroever betekent voor wie het ongeval veroorzaakte",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/wat-de-brand-op-linkeroever-betekent-voor-wie-het-ongeval-veroorzaakte~b4328654/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-08",
+    "magnitude": 1,
+    "title": "Staking van de baan bij grondafhandelaar op Brussels Airport, maar wel mogelijk nieuwe stakingsaanzegging voor luchthaven Charleroi",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/staking-van-de-baan-bij-grondafhandelaar-op-brussels-airport-maar-wel-mogelijk-nieuwe-stakingsaanzegging-voor-luchthaven-charleroi/158465750.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
