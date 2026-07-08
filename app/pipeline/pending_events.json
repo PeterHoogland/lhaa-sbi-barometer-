@@ -22867,5 +22867,32 @@
     "link": "https://www.gva.be/binnenland/slachtoffer-gewond-na-steekincident-aan-station-gent-sint-pieters-verdachte-gearresteerd/158427668.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-08",
+    "magnitude": 1,
+    "title": "Twee aanslagen aan hotel in Syrië waar Franse president Macron verbleef: één dode en tientallen gewonden",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/twee-aanslagen-aan-hotel-in-syrie-waar-franse-president-macron-verbleef-een-dode-en-tientallen-gewonden~abfa300e/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-08",
+    "magnitude": 1,
+    "title": "Belg (43) gestorven in Frankrijk nadat hij zijn twee zonen uit water redt",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/buitenland/belg-43-gestorven-in-frankrijk-nadat-hij-zijn-twee-zonen-uit-water-redt/158437436.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-08",
+    "magnitude": 1,
+    "title": "Nieuw anti-phishingplan op komst: bankieren wordt veiliger, maar trager",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/binnenland/nieuw-anti-phishingplan-op-komst-bankieren-wordt-veiliger-maar-trager/158431482.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
