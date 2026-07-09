@@ -23308,5 +23308,23 @@
     "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/zuid-west-vlaanderen/kortrijk/postbedeling-verstoord-door-spontane-staking-in-distributiecentrum-in-kortrijk-verhoogde-werkdruk-door-de-zomersolden/158492246.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-09",
+    "magnitude": 1,
+    "title": "Ebola: epidemie eist in Congo al 600 doden",
+    "source": "Knack",
+    "link": "https://www.knack.be/nieuws/gezondheid/ebola-epidemie-eist-in-congo-al-600-doden/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-09",
+    "magnitude": 5,
+    "title": "Nederlanders riskeren vier jaar cel na aanslag in Deurne: “Wisten niet dat vuurwerk in België daarvoor gebruikt wordt”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/deurne/nederlanders-riskeren-vier-jaar-cel-na-aanslag-in-deurne-wisten-niet-dat-vuurwerk-in-belgie-daarvoor-gebruikt-wordt/158504262.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
