@@ -24325,5 +24325,23 @@
     "link": "https://newsmonkey.be/aantal-overdoses-onder-jongeren-in-duitsland-stijgt-met-53-procent/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-11",
+    "magnitude": 1,
+    "title": "Dodelijke slachtoffers Spaanse natuurbrand probeerden op eigen houtje vlammen te ontvluchten",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/snelnieuws/dodelijke-slachtoffers-spaanse-natuurbrand-probeerden-op-eigen-houtje-vlammen-te-ontvluchten~b53729b1/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-11",
+    "magnitude": 1,
+    "title": "Dodelijke bacterie ontdekt in afvalwater van Meta-datacenter",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/dodelijke-bacterie-ontdekt-in-afvalwater-van-meta-datacenter/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
