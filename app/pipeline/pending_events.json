@@ -24379,5 +24379,23 @@
     "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/lochristi/op-traject-waar-al-meerdere-dodelijke-ongevallen-gebeurden-botsing-tussen-twee-wagens/158600545.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-11",
+    "magnitude": 1,
+    "title": "Dodental na aardbeving in Venezuela blijft oplopen: al meer dan 4.300 mensen omgekomen",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/07/11/d2e06dba-ee66-4d89-84a0-de224552a2ba.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-11",
+    "magnitude": 1,
+    "title": "Twee wagens botsen op traject waar al meerdere dodelijke ongevallen gebeurden",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/lochristi/twee-wagens-botsen-op-traject-waar-al-meerdere-dodelijke-ongevallen-gebeurden/158600545.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
