@@ -24343,5 +24343,23 @@
     "link": "https://newsmonkey.be/dodelijke-bacterie-ontdekt-in-afvalwater-van-meta-datacenter/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-11",
+    "magnitude": 1,
+    "title": "1 dode en 3 zwaargewonden na ongeval op E40 in Beernem, slachtoffers tussen 75 en 85 jaar",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/07/11/d8511843-2975-4002-9c6d-d6171d86a283.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-11",
+    "magnitude": 1,
+    "title": "Vrouw (82) overleden nadat auto over de kop gaat en in gracht belandt langs E40, man en twee familieleden gewond naar ziekenhuis",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/vrouw-82-overleden-nadat-auto-over-de-kop-gaat-en-in-gracht-belandt-langs-e40-man-en-twee-familieleden-gewond-naar-ziekenhuis/158591447.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
