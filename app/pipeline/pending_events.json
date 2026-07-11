@@ -24298,5 +24298,23 @@
     "link": "https://images.vrt.be/vrtnws_share/2026/07/11/a1512eaf-5051-46a5-9608-602bbdadd430.png",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-11",
+    "magnitude": 1,
+    "title": "Belfius herformuleert regels rond phishing na kritiek: “Slachtoffers voortaan onmiddellijk terugbetaald”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/mijn-geld/belfius-herformuleert-regels-rond-phishing-na-kritiek-slachtoffers-voortaan-onmiddellijk-terugbetaald~aaeec3ac/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-11",
+    "magnitude": 1,
+    "title": "Vijftien doden bij kapseizen van toeristenboot in Vietnam",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/vijftien-doden-bij-kapseizen-van-toeristenboot-in-vietnam/158592262.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
