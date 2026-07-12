@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:42:17.492874",
+    "fetched_at": "2026-07-12T18:01:09.144621",
     "observation_date": "2026-07-12",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 1.195
   },
   "I-D1-009": {
     "date": "2026-07-11",
-    "fetched_at": "2026-07-12T17:42:21.007304",
+    "fetched_at": "2026-07-12T18:01:12.901489",
     "observation_date": "2026-07-11",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 8.02
   },
   "I-D1-010": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:42:21.630294",
+    "fetched_at": "2026-07-12T18:01:13.540438",
     "observation_date": "2026-07-12",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 56.77083333333334
@@ -29,91 +29,91 @@
   },
   "I-D2-001-rt": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:49:30.956982",
+    "fetched_at": "2026-07-12T18:08:05.625083",
     "observation_date": "2026-07-12",
-    "source": "Verkeerscentrum DATEX II v3 — 7 files, 32.74 km totale filelengte (langste 10.76 km), snapshot 2026-07-12",
-    "value": 32.74
+    "source": "Verkeerscentrum DATEX II v3 — 7 files, 33.21 km totale filelengte (langste 8.87 km), snapshot 2026-07-12",
+    "value": 33.21
   },
   "I-D2-009": {
-    "date": "2026-07-10",
-    "fetched_at": "2026-07-10T18:24:50.804957",
-    "observation_date": "2026-07-10",
-    "source": "Infrabel stiptheid-van-vandaag-per-uur (3203 metingen, 16 uren, dag tot 20u)",
-    "value": 5.1514205432407145
+    "date": "2026-07-12",
+    "fetched_at": "2026-07-12T18:01:27.160440",
+    "observation_date": "2026-07-12",
+    "source": "Infrabel stiptheid-van-vandaag-per-uur (2033 metingen, 15 uren, dag tot 20u)",
+    "value": 2.7053615346778193
   },
   "I-D2-009S": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:48:50.763952",
+    "fetched_at": "2026-07-12T18:07:21.232504",
     "observation_date": "2026-07-12",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 4 ongepland)",
-    "value": 4.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 6 ongepland)",
+    "value": 6.0
   },
   "I-D2-delijn": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:49:33.250628",
+    "fetched_at": "2026-07-12T18:08:09.429910",
     "observation_date": "2026-07-12",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 219 vertraagd (≥3min), 5 service-alerts (Vlaanderen)",
-    "value": 219.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 196 vertraagd (≥3min), 5 service-alerts (Vlaanderen)",
+    "value": 196.0
   },
   "I-D2-stib": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:49:31.876278",
+    "fetched_at": "2026-07-12T18:08:07.564326",
     "observation_date": "2026-07-12",
     "source": "STIB/MIVB TravellersInformation (Brussel, 338 actieve items; CC BY 4.0)",
     "value": 338.0
   },
   "I-D3-001": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:43:00.268465",
+    "fetched_at": "2026-07-12T18:01:27.696272",
     "observation_date": "2026-06",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.0
   },
   "I-D3-002": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:43:01.841674",
+    "fetched_at": "2026-07-12T18:01:29.321023",
     "observation_date": "2026-07-12",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 71.50897727272726
   },
   "I-D3-003": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:43:02.847233",
+    "fetched_at": "2026-07-12T18:01:30.481334",
     "observation_date": "2026-05",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.10pp, ~4999 werkzoekenden, proxy voor ontslagen)",
     "value": 8.5173931714189
   },
   "I-D3-003S": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:49:28.839704",
+    "fetched_at": "2026-07-12T18:08:03.435931",
     "observation_date": "2026-07-12",
     "source": "Ontslag-radar: 8 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~151 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 8.0
   },
   "I-D3-005": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:43:03.464128",
+    "fetched_at": "2026-07-12T18:01:31.136738",
     "observation_date": "2026-05",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:43:04.016497",
+    "fetched_at": "2026-07-12T18:01:31.888856",
     "observation_date": "2026-05",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.55
   },
   "I-D3-007": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:43:06.009090",
+    "fetched_at": "2026-07-12T18:01:33.342016",
     "observation_date": "2026-06",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.8
   },
   "I-D3-009": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:43:05.518209",
+    "fetched_at": "2026-07-12T18:01:32.828132",
     "observation_date": "2026-07-12",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0243277754140723
@@ -127,7 +127,7 @@
   },
   "I-D5-002": {
     "date": "2026-07-11",
-    "fetched_at": "2026-07-12T17:44:10.953076",
+    "fetched_at": "2026-07-12T18:03:22.198026",
     "observation_date": "2026-07-11",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 26.02
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:48:50.007393",
+    "fetched_at": "2026-07-12T18:07:20.527499",
     "observation_date": "2026-07-12",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.05074630153358932
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.10354569181895418
   },
   "I-D5-mastodon": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:48:52.519424",
+    "fetched_at": "2026-07-12T18:07:22.788328",
     "observation_date": "2026-07-12",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 1.4669377226294982
   },
   "I-D5-trends": {
     "date": "2026-07-12",
-    "fetched_at": "2026-07-12T17:49:29.518938",
+    "fetched_at": "2026-07-12T18:08:03.858985",
     "observation_date": "2026-07-12",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.08 (stress-trends: bom, zutendaal)",
-    "value": 0.0816
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.01 (stress-trends: zutendaal)",
+    "value": 0.0132
   }
 }
