@@ -3,7 +3,7 @@
     "indicator.spike:I-D3-002": "2026-07-13T10:50:36.653Z",
     "indicator.red:I-D3-002": "2026-06-01T11:56:09.597Z",
     "composite.red": "2026-06-29T09:10:59.478Z",
-    "composite.amber": "2026-06-29T09:57:30.292Z",
+    "composite.amber": "2026-07-13T13:54:50.376Z",
     "indicator.spike:I-D1-002": "2026-06-23T12:46:44.955Z",
     "indicator.spike:I-D1-003": "2026-06-04T11:46:59.582Z",
     "indicator.red:I-D1-002": "2026-07-12T16:14:04.839Z",
@@ -221,6 +221,11 @@
     {
       "key": "indicator.spike:I-D3-002",
       "fired_at": "2026-07-13T10:50:36.653Z",
+      "severity": "let_op"
+    },
+    {
+      "key": "composite.amber:composite",
+      "fired_at": "2026-07-13T13:54:50.376Z",
       "severity": "let_op"
     }
   ]
