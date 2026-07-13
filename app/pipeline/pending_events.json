@@ -25396,5 +25396,32 @@
     "link": "https://www.nieuwsblad.be/regio/limburg/nieuwerkerken/bromfietser-gewond-bij-ongeval-in-nieuwerkerken/158674431.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-13",
+    "magnitude": 1,
+    "title": "Man uit België geïdentificeerd als slachtoffer bosbrand",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/07/13/418ca73a-8e18-495d-b086-76ffdfb35820.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-13",
+    "magnitude": 1,
+    "title": "Live - Bijna heel Frankrijk geteisterd door hitte: Loire staat droog, drie kerncentrales stilgelegd • Code oranje voor brandgevaar in Vlaanderen",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/snelnieuws/live-bijna-heel-frankrijk-geteisterd-door-hitte-loire-staat-droog-drie-kerncentrales-stilgelegd-code-oranje-voor-brandgevaar-in-vlaanderen~b9a760bb/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-13",
+    "magnitude": 1,
+    "title": "Lillie (20) moet veel te vroeg afscheid nemen van papa na ongeval met bandenkraan: “We waren twee handen op één buik”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/westhoek/de-panne/lillie-20-moet-veel-te-vroeg-afscheid-nemen-van-papa-na-ongeval-met-bandenkraan-we-waren-twee-handen-op-een-buik/158673328.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
