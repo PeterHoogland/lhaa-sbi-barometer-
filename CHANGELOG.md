@@ -6,6 +6,14 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-07-13 — deploy-retry: transiente Cloudflare CDN-uploadfout laat de dagrun niet meer rood slaan
+
+**Aanleiding:** Twee dagruns op 13/7 (07:31 en 08:18 UTC) faalden op de stap `Deploy to Cloudflare` met Cloudflare's eigen transiente fout "Upload to CDN failed. Nothing was published. Please try again." — de run om 10:42 slaagde ongewijzigd. Elke faal-run vuurde het volledige alarmpad af (Telegram + issue #48 + Cloudflare-melding bij Peter), terwijl er inhoudelijk niets mis was: data, build en site waren gezond; alleen de upload naar Cloudflare's CDN haperde aan hun kant. De monitor-self-heal herstelde het, maar het alarm was vals-positief in de geest (transient, geen menselijke actie nodig).
+
+**Beslissing:** De deploy-stap in `.github/workflows/daily.yml` doet nu maximaal 3 pogingen met oplopende backoff (60s, 120s) in plaats van één. Pas als alle drie de pogingen falen is het aannemelijk structureel en slaat de run alsnog eerlijk rood (met alarm). Geen wijziging aan wat er gedeployd wordt, geen weging-, indicator- of engine-wijziging; puur robuustheid tegen een gedocumenteerd-transiente fout van de hosting-laag. De alarm-semantiek blijft: een échte deployfout alarmeert nog steeds.
+
+**Geborgd:** YAML gevalideerd; de eerstvolgende push-getriggerde run bewijst het pad end-to-end (poging 1 slaagt = gedrag identiek aan voorheen). Het retry-pad zelf is alleen te raken bij een echte CDN-storing; de exit-code-logica is set-e-veilig geschreven (expliciete if/for, geen `&&`-kortsluiting die onder `set -e` de stap voortijdig afbreekt).
+
 ## 2026-07-08 — verify_live propagatie-bestendig: geen vals-rode runs meer door edge-cache-race
 
 **Aanleiding:** De uurlijkse runs faalden intermitterend (5 van de laatste 23 workflow_dispatch-runs, 0 van 17 scheduled) op de laatste stap `Post-deploy live-eindresultaat-verificatie` met "live data N min oud (> 45)". Diagnose (hard, met tijdstempels): de verse-gate las de live-URL onmiddellijk na de Cloudflare/Surge-deploy, vóór de edge de nieuwe assets had gepropageerd, en mat daardoor de leeftijd van de VÓRIGE deploy. Bewijs: run 28862070560 (11:17) las bij verificatie timestamp = 08:32 (de 08:25-run) terwijl het verse cijfer percentiel=81 al gedeployd was. Uitsluitend off-cadence runs met een groot gat sinds de vorige deploy tikten zo de 45-min-drempel aan → run rood → alarm-mail/Telegram/issue #48. Dit is de bron van de foutmeldingen die Peter kreeg.

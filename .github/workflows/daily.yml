@@ -154,8 +154,26 @@ jobs:
           # CDN-edge zoals Surge). Draait pas écht zodra CLOUDFLARE_API_TOKEN als
           # secret gezet is; tot dan no-op zodat de workflow niet breekt. Daarna mag
           # de Surge-stap hieronder weg (account_id staat in app/web/wrangler.jsonc).
+          # Retry: Cloudflare's "Upload to CDN failed. Nothing was published. Please
+          # try again." is een transiente fout aan hun kant (13/7: twee dagruns rood
+          # + alarm terwijl de eerstvolgende poging gewoon slaagde). Drie pogingen
+          # met backoff; pas als álle drie falen is het structureel en mag het alarm af.
           if [ -n "$CLOUDFLARE_API_TOKEN" ]; then
-            npx --yes wrangler@4 deploy
+            ok=0
+            for poging in 1 2 3; do
+              if npx --yes wrangler@4 deploy; then
+                ok=1
+                break
+              fi
+              echo "::warning::wrangler deploy poging $poging/3 faalde"
+              if [ "$poging" -lt 3 ]; then
+                sleep $((poging * 60))
+              fi
+            done
+            if [ "$ok" -ne 1 ]; then
+              echo "::error::wrangler deploy faalde na 3 pogingen — structureel, alarm terecht"
+              exit 1
+            fi
           else
             echo "CLOUDFLARE_API_TOKEN niet gezet — Cloudflare-deploy overgeslagen (zet de secret om te activeren)."
           fi
