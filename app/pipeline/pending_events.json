@@ -27673,5 +27673,32 @@
     "link": "https://www.tvoost.be/nieuws/zwaar-verkeersongeval-op-n16-drie-zwaargewonden-nadat-auto-over-de-kop-gaat-212393",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-16",
+    "magnitude": 1,
+    "title": "Man (44) gestorven na zwemmen in verboden zone op strand Knokke-Heist",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/07/16/b34c0101-4738-41a4-80e7-eb5b81c155ee.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-16",
+    "magnitude": 1,
+    "title": "Autoroute du Soleil vermoedelijk binnen enkele uren weer open",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/weernieuws/autoroute-du-soleil-vermoedelijk-binnen-enkele-uren-weer-open~afce368d/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-16",
+    "magnitude": 1,
+    "title": "Scheldelaan deels versperd door ongeval: brandweer ruimt olie op wegdek op",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/scheldelaan-deels-versperd-door-ongeval-brandweer-ruimt-olie-op-wegdek-op/158792831.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
