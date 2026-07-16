@@ -8,7 +8,7 @@
     "indicator.spike:I-D1-003": "2026-06-04T11:46:59.582Z",
     "indicator.red:I-D1-002": "2026-07-12T16:14:04.839Z",
     "indicator.red:I-D1-003": "2026-06-04T11:46:59.582Z",
-    "indicator.red:I-D5-001": "2026-07-14T16:58:04.402Z",
+    "indicator.red:I-D5-001": "2026-07-16T17:42:23.526Z",
     "indicator.spike:I-D5-001": "2026-07-15T06:30:16.554Z",
     "emotie.spike": "2026-07-12T09:01:41.725Z"
   },
@@ -242,6 +242,11 @@
       "key": "composite.amber:composite",
       "fired_at": "2026-07-16T06:35:05.104Z",
       "severity": "let_op"
+    },
+    {
+      "key": "indicator.red:I-D5-001",
+      "fired_at": "2026-07-16T17:42:23.526Z",
+      "severity": "hoog"
     }
   ]
 }
