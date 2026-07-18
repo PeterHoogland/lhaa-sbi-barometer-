@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:16:31.214530",
+    "fetched_at": "2026-07-18T17:57:29.922131",
     "observation_date": "2026-07-18",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.975
+    "value": 0.985
   },
   "I-D1-009": {
     "date": "2026-07-17",
-    "fetched_at": "2026-07-18T16:16:34.863492",
+    "fetched_at": "2026-07-18T17:57:33.240599",
     "observation_date": "2026-07-17",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 6.54
   },
   "I-D1-010": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:16:35.247354",
+    "fetched_at": "2026-07-18T17:57:33.625214",
     "observation_date": "2026-07-18",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 18.041666666666664
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:20:45.876511",
+    "fetched_at": "2026-07-18T18:00:51.249487",
     "observation_date": "2026-07-18",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D2-delijn": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:21:22.886755",
+    "fetched_at": "2026-07-18T18:02:26.304469",
     "observation_date": "2026-07-18",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 378 vertraagd (≥3min), 18 service-alerts (Vlaanderen)",
-    "value": 378.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 270 vertraagd (≥3min), 18 service-alerts (Vlaanderen)",
+    "value": 270.0
   },
   "I-D2-stib": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:21:21.358899",
+    "fetched_at": "2026-07-18T18:02:25.268922",
     "observation_date": "2026-07-18",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 455 actieve items; CC BY 4.0)",
-    "value": 455.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 464 actieve items; CC BY 4.0)",
+    "value": 464.0
   },
   "I-D3-001": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:16:37.709339",
+    "fetched_at": "2026-07-18T17:57:35.701027",
     "observation_date": "2026-06",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.3
   },
   "I-D3-002": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:16:38.813736",
+    "fetched_at": "2026-07-18T17:57:36.500651",
     "observation_date": "2026-07-18",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 77.68750000000001
   },
   "I-D3-003": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:16:39.530916",
+    "fetched_at": "2026-07-18T17:57:37.142644",
     "observation_date": "2026-05",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.10pp, ~4999 werkzoekenden, proxy voor ontslagen)",
     "value": 8.5173931714189
   },
   "I-D3-003S": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:21:19.019967",
+    "fetched_at": "2026-07-18T18:02:23.221961",
     "observation_date": "2026-07-18",
     "source": "Ontslag-radar: 1 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~200000 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 1.0
   },
   "I-D3-005": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:16:40.084161",
+    "fetched_at": "2026-07-18T17:57:37.588641",
     "observation_date": "2026-05",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:16:40.555367",
+    "fetched_at": "2026-07-18T17:57:38.035541",
     "observation_date": "2026-05",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.55
   },
   "I-D3-007": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:16:41.881965",
+    "fetched_at": "2026-07-18T17:57:39.104572",
     "observation_date": "2026-06",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.8
   },
   "I-D3-009": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:16:41.557767",
+    "fetched_at": "2026-07-18T17:57:38.747094",
     "observation_date": "2026-07-18",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9786507545404873
   },
   "I-D5-001": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:18:23.893183",
+    "fetched_at": "2026-07-18T17:58:58.216828",
     "observation_date": "2026-07-18",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1033/1101 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.30 / midden +0.30 / ouder +0.37. Negatiefste headlines: «Dodelijke brand OXY-gebouw: kabel in lift blijkt geknapt De eerste resultaten van het onderzoek naar de dodelijke brand  · Minstens 8 doden en 49 gewonden bij Oekraïense droneaanval op Russische magazijnen · Vier van de zes dodelijke slachtoffers zijn Limburgers, twee gewonden kritiek De identificatie van de zes dodelijke slac»; emotie-profiel headlines (matches/100 woorden): woede 0.10 / angst 0.14 / verdriet 0.18 / walging 0.01 (dominant: verdriet)",
-    "value": 1.4026
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1037/1100 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.32 / midden +0.29 / ouder +0.32. Negatiefste headlines: «Dodelijke brand OXY-gebouw: kabel in lift blijkt geknapt De eerste resultaten van het onderzoek naar de dodelijke brand  · Minstens 8 doden en 49 gewonden bij Oekraïense droneaanval op Russische magazijnen · Live - Iraans leider waarschuwt VS voor ‘onvergetelijke lessen’ als aanvallen doorgaan • Twee Amerikaanse militairen omg»; emotie-profiel headlines (matches/100 woorden): woede 0.08 / angst 0.16 / verdriet 0.17 / walging 0.01 (dominant: verdriet)",
+    "value": 1.4557
   },
   "I-D5-002": {
     "date": "2026-07-17",
-    "fetched_at": "2026-07-18T16:18:24.284029",
+    "fetched_at": "2026-07-18T17:58:58.461339",
     "observation_date": "2026-07-17",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 18.215
   },
   "I-D5-003": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:20:08.194678",
+    "fetched_at": "2026-07-18T18:00:13.776806",
     "observation_date": "2026-07-18",
     "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 31 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.0726
+    "value": 0.071167
   },
   "I-D5-006S": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:20:45.503490",
+    "fetched_at": "2026-07-18T18:00:51.082937",
     "observation_date": "2026-07-18",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.32281010982398817
+    "value": 0.9624638946356678
   },
   "I-D5-mastodon": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:20:47.049841",
+    "fetched_at": "2026-07-18T18:00:52.539834",
     "observation_date": "2026-07-18",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.18484767466395596
   },
   "I-D5-trends": {
     "date": "2026-07-18",
-    "fetched_at": "2026-07-18T16:21:19.477595",
+    "fetched_at": "2026-07-18T18:02:23.591447",
     "observation_date": "2026-07-18",
-    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.02 (stress-trends: tour de france vandaag)",
-    "value": 0.0182
+    "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
+    "value": 0.0
   }
 }
