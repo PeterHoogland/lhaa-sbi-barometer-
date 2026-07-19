@@ -29770,5 +29770,32 @@
     "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/denderregio/geraardsbergen/uitslaande-brand-in-idegem-woning-volledig-vernield/158932924.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-19",
+    "magnitude": 1,
+    "title": "Nederlander (59) gearresteerd na dodelijke schietpartij aan Antwerpse discotheek",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/07/19/4c51cd95-bf8a-4e45-97a8-c9930e9c4985.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-19",
+    "magnitude": 1,
+    "title": "Beelden van dodelijke schietpartij aan IKON in Antwerpen tonen hoe ruzie uit de hand loopt",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/antwerpen/beelden-van-dodelijke-schietpartij-aan-ikon-in-antwerpen-tonen-hoe-ruzie-uit-de-hand-loopt~aa7560ca/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-19",
+    "magnitude": 1,
+    "title": "Minstens vijf doden en 21 gewonden bij aardbevingen in Peru",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/minstens-vijf-doden-en-21-gewonden-bij-aardbevingen-in-peru/158937776.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
