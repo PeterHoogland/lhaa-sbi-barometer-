@@ -29725,5 +29725,32 @@
     "link": "https://www.nieuwsblad.be/binnenland/auto-belandt-op-zijn-dak-op-treinsporen-in-gent/158926823.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-19",
+    "magnitude": 1,
+    "title": "Drama op Italiaanse kermis: jongen (15) overlijdt na stroomschok aan voetbalautomaat",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/drama-op-italiaanse-kermis-jongen-15-overlijdt-na-stroomschok-aan-voetbalautomaat~af5c5897/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-19",
+    "magnitude": 1,
+    "title": "Fietsster raakt lichtgewond bij aanrijding in Turnhout",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/turnhout/fietsster-raakt-lichtgewond-bij-aanrijding-in-turnhout/158930479.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-19",
+    "magnitude": 1,
+    "title": "LIVE. Grote bosbrand woedt nabij Madrid: 500 brandweermannen ingezet en 800 inwoners geëvacueerd",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live.-grote-bosbrand-woedt-nabij-madrid-500-brandweermannen-ingezet-en-800-inwoners-geevacueerd/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
