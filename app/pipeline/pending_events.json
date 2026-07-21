@@ -30643,5 +30643,23 @@
     "link": "https://www.tvoost.be/nieuws/woning-en-handelszaak-in-idegem-branden-helemaal-uit-al-minstens-zes-dieren-kunnen-niet-gered-worden-212560",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-21",
+    "magnitude": 1,
+    "title": "BRUZZ 24 over dodelijke brand aan De Brouckèreplein: 'De rook nam alleen maar toe'",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/samenleving/bruzz-24-over-dodelijke-brand-aan-de-brouckereplein-de-rook-nam-alleen-maar-toe-2026-07-14",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-21",
+    "magnitude": 1,
+    "title": "Zes doden door brand in OXY-toren aan De Brouckèreplein, laatste lichaam uit lift gehaald",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/veiligheid/brand-breekt-uit-oxy-toren-aan-brouckere-2026-07-14",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
