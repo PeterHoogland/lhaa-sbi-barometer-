@@ -30661,5 +30661,32 @@
     "link": "https://www.bruzz.be/actua/veiligheid/brand-breekt-uit-oxy-toren-aan-brouckere-2026-07-14",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-21",
+    "magnitude": 1,
+    "title": "Dronken chauffeur rijdt man op scootmobiel dood in Jabbeke",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/07/21/b6fd0fcf-31b5-49df-b949-c8a6cc82467b.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-21",
+    "magnitude": 1,
+    "title": "Stepster (34) zwaargewond na aanrijding in Turnhout",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/turnhout/stepster-34-zwaargewond-na-aanrijding-in-turnhout/158993866.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-21",
+    "magnitude": 1,
+    "title": "Man (67) op scootmobiel sterft na aanrijding door dronken chauffeur in Jabbeke: “Bestuurder (27) gearresteerd”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/man-67-op-scootmobiel-sterft-na-aanrijding-door-dronken-chauffeur-in-jabbeke-bestuurder-27-gearresteerd/158989086.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
