@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:46:07.503396",
+    "fetched_at": "2026-07-21T16:50:30.651305",
     "observation_date": "2026-07-21",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.975
   },
   "I-D1-009": {
     "date": "2026-07-20",
-    "fetched_at": "2026-07-21T15:11:36.908686",
+    "fetched_at": "2026-07-21T16:50:34.571210",
     "observation_date": "2026-07-20",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 6.35
   },
   "I-D1-010": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:47:41.212850",
+    "fetched_at": "2026-07-21T16:50:35.182655",
     "observation_date": "2026-07-21",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 26.770833333333336
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:52:04.634213",
+    "fetched_at": "2026-07-21T16:54:53.846885",
     "observation_date": "2026-07-21",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
-    "value": 2.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
+    "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:52:46.329691",
+    "fetched_at": "2026-07-21T16:55:36.891394",
     "observation_date": "2026-07-21",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 251 vertraagd (≥3min), 5 service-alerts (Vlaanderen)",
-    "value": 251.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 247 vertraagd (≥3min), 5 service-alerts (Vlaanderen)",
+    "value": 247.0
   },
   "I-D2-stib": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:52:44.897560",
+    "fetched_at": "2026-07-21T16:55:35.314263",
     "observation_date": "2026-07-21",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 449 actieve items; CC BY 4.0)",
-    "value": 449.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 442 actieve items; CC BY 4.0)",
+    "value": 442.0
   },
   "I-D3-001": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:47:44.285365",
+    "fetched_at": "2026-07-21T16:50:37.834097",
     "observation_date": "2026-06",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.3
   },
   "I-D3-002": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:47:45.065009",
+    "fetched_at": "2026-07-21T16:50:39.137834",
     "observation_date": "2026-07-21",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 107.6588636363636
   },
   "I-D3-003": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:47:48.337829",
+    "fetched_at": "2026-07-21T16:50:39.908034",
     "observation_date": "2026-05",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.10pp, ~4999 werkzoekenden, proxy voor ontslagen)",
     "value": 8.5173931714189
   },
   "I-D3-003S": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:52:41.862710",
+    "fetched_at": "2026-07-21T16:55:32.418410",
     "observation_date": "2026-07-21",
     "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~200000 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 3.0
   },
   "I-D3-005": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:47:49.042002",
+    "fetched_at": "2026-07-21T16:50:40.710126",
     "observation_date": "2026-05",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:47:49.709263",
+    "fetched_at": "2026-07-21T16:50:41.406223",
     "observation_date": "2026-05",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.55
   },
   "I-D3-007": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:47:51.133198",
+    "fetched_at": "2026-07-21T16:50:42.929181",
     "observation_date": "2026-06",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.8
   },
   "I-D3-009": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:47:50.639768",
+    "fetched_at": "2026-07-21T16:50:42.430375",
     "observation_date": "2026-07-21",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9788519127012125
   },
   "I-D5-001": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:48:54.577379",
+    "fetched_at": "2026-07-21T16:51:49.459572",
     "observation_date": "2026-07-21",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1025/1086 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.75 / midden +0.68 / ouder +0.67. Negatiefste headlines: «Veertien doden bij wederzijdse aanvallen tussen Rusland en Oekraïne · Dodelijke brand OXY-gebouw: kabel in lift blijkt geknapt De eerste resultaten van het onderzoek naar de dodelijke brand  · Man neergestoken bij vechtpartij in Schaarbeek, verdachte opgepakt In de Aarschotstraat in Schaarbeek is zaterdagavond r»; emotie-profiel headlines (matches/100 woorden): woede 0.07 / angst 0.14 / verdriet 0.18 / walging 0.02 (dominant: verdriet)",
-    "value": 1.2018
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1023/1087 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.63 / midden +0.57 / ouder +0.56. Negatiefste headlines: «Man neergestoken bij vechtpartij in Schaarbeek, verdachte opgepakt In de Aarschotstraat in Schaarbeek is zaterdagavond r · Vier van de zes dodelijke slachtoffers zijn Limburgers, twee gewonden kritiek De identificatie van de zes dodelijke slac · Verdachte dodelijke schietpartij in zorginstelling in Duitse stad Stade dood teruggevonden in cel De vermoedelijke dader»; emotie-profiel headlines (matches/100 woorden): woede 0.07 / angst 0.14 / verdriet 0.17 / walging 0.03 (dominant: verdriet)",
+    "value": 1.2043
   },
   "I-D5-002": {
     "date": "2026-07-20",
-    "fetched_at": "2026-07-21T15:48:55.752750",
+    "fetched_at": "2026-07-21T16:51:50.861894",
     "observation_date": "2026-07-20",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 19.267
@@ -141,21 +141,21 @@
   },
   "I-D5-006S": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:52:03.973336",
+    "fetched_at": "2026-07-21T16:54:53.041030",
     "observation_date": "2026-07-21",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.10967214389555693
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": -0.1789358014674966
   },
   "I-D5-mastodon": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:52:06.092892",
+    "fetched_at": "2026-07-21T16:54:55.416247",
     "observation_date": "2026-07-21",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.013564279821224445
   },
   "I-D5-trends": {
     "date": "2026-07-21",
-    "fetched_at": "2026-07-21T15:52:42.498137",
+    "fetched_at": "2026-07-21T16:55:32.927523",
     "observation_date": "2026-07-21",
     "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
     "value": 0.0
