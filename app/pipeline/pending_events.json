@@ -31282,5 +31282,41 @@
     "link": "https://www.gva.be/regio/antwerpen/rivierenland/mechelen/drugskoerier-deelt-klappen-uit-aan-afnemer-en-loopt-twintig-maanden-cel-op-slachtoffer-hield-hersenbloeding-over-aan-het-brute-geweld/159043879.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-22",
+    "magnitude": 1,
+    "title": "Nederlander redt vrouw uit brandende auto in Menen: \"Dit maakt mijn tripje naar Kortrijk wel heel gedenkwaardig\"",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/07/22/93098648-3bad-4656-bb7a-bed4cd6df899.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-22",
+    "magnitude": 1,
+    "title": "Jonge autobestuurster (22) rijdt onder invloed van alcohol en drugs fietser (60) aan: “Slachtoffer werd in levensgevaar afgevoerd”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/bredene/jonge-autobestuurster-22-rijdt-onder-invloed-van-alcohol-en-drugs-fietser-60-aan-slachtoffer-werd-in-levensgevaar-afgevoerd~ae33719f/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-22",
+    "magnitude": 1,
+    "title": "Gestolen gravelbike uit Heerlen in Lanaken te koop aangeboden: verkoper is geïdentificeerd",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/lanaken/gestolen-gravelbike-uit-heerlen-in-lanaken-te-koop-aangeboden-verkoper-is-gedentificeerd/159053969.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-22",
+    "magnitude": 1,
+    "title": "Frituurmedewerker (41) aangehouden op verdenking van poging moord na steekpartij: “Nooit problemen mee in het verleden”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/regio-brugge/blankenberge/frituurmedewerker-41-aangehouden-op-verdenking-van-poging-moord-na-steekpartij-nooit-problemen-mee-in-het-verleden/159052069.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
