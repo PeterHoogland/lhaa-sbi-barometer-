@@ -31147,5 +31147,32 @@
     "link": "https://www.tvoost.be/nieuws/woning-en-handelszaak-in-idegem-branden-helemaal-uit-al-minstens-zes-dieren-kunnen-niet-gered-worden-212560",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-22",
+    "magnitude": 1,
+    "title": "Brandweer Brussel staakt verder en eist \"staalharde garanties\" over personeelstekort",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/07/14/88fd8dc5-8845-40d2-abc6-77b615065a52.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-22",
+    "magnitude": 1,
+    "title": "Staking bij Brusselse brandweer wordt na nationale feestdag voortgezet: “Actiebereidheid is bijzonder groot”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/brussel/staking-bij-brusselse-brandweer-wordt-na-nationale-feestdag-voortgezet-actiebereidheid-is-bijzonder-groot~a4bdcce2/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-22",
+    "magnitude": 1,
+    "title": "Dertien doden en zeven vermisten na noodweer in Chili, tienduizenden mensen van de buitenwereld afgesneden",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/buitenland/dertien-doden-en-zeven-vermisten-na-noodweer-in-chili-tienduizenden-mensen-van-de-buitenwereld-afgesneden/159035980.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
