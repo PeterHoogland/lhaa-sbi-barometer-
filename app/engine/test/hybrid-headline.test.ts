@@ -6,6 +6,7 @@ import {
   HYBRID_MIN_DAY_POINTS,
 } from "../src/methodology/hybrid-headline.js";
 import { normalCdf } from "../src/methodology/economic-pressure.js";
+import { computeDaily } from "../src/runtime.js";
 import type { IndicatorCode } from "../src/types.js";
 
 // Live broad_pressure-indicatoren 19/6 (z vs 2010-2019/2017-2019).
@@ -121,5 +122,44 @@ describe("computeHybridHeadline", () => {
     const neutral = computeHybridHeadline(BROAD, traffic(TRAFFIC_TODAY)).score!;
     expect(quiet).toBeGreaterThanOrEqual(88); // hitte + anker blijven domineren
     expect(quiet).toBeGreaterThanOrEqual(neutral - 2); // verlichting is begrensd, geen sloophamer
+  });
+});
+
+/**
+ * Regressie 2026-07-25 — de omgevings-dagsignalen (pollen I-D1-010, lucht I-D1-004)
+ * werden in runtime.ts uit de historie gehaald ZONDER grens op input.date. Elke
+ * gereconstrueerde dag kreeg daardoor de waarde van VANDAAG (lookahead/carry-back),
+ * waardoor de gepubliceerde reeks naar het niveau van vandaag werd getrokken en
+ * de kop dagenlang op hetzelfde getal bleef staan.
+ */
+describe("omgevings-dagsignalen zijn lookahead-vrij (regressie 2026-07-25)", () => {
+  // 15 dagen t/m 23 juli (>= HYBRID_MIN_DAY_POINTS), daarna een sprong op 24 juli.
+  const POLLEN_SERIES = [
+    ...Array.from({ length: 15 }, (_, i) => ({
+      date: `2026-07-${String(9 + i).padStart(2, "0")}`,
+      value: 5 + i,
+    })),
+    { date: "2026-07-24", value: 200 }, // sprong NA de scoredag
+  ];
+
+  it("een latere pollenwaarde telt niet mee op een eerdere scoredag", () => {
+    const out = computeDaily({
+      date: "2026-07-23",
+      history: { "I-D1-010": POLLEN_SERIES },
+      compositeHistory: [],
+    });
+    const sig = out.daily_pressure?.day_signals?.find((s) => s.code === "I-D1-010");
+    expect(sig).toBeDefined();
+    expect(sig!.value).toBe(19); // de waarde van 23 juli, niet de 200 van 24 juli
+  });
+
+  it("op de laatste dag blijft de nieuwste waarde gewoon gelden", () => {
+    const out = computeDaily({
+      date: "2026-07-24",
+      history: { "I-D1-010": POLLEN_SERIES },
+      compositeHistory: [],
+    });
+    const sig = out.daily_pressure?.day_signals?.find((s) => s.code === "I-D1-010");
+    expect(sig!.value).toBe(200);
   });
 });

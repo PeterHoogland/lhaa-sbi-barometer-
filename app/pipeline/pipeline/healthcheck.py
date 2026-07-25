@@ -176,11 +176,16 @@ class HealthReport:
 
 
 def _parse_obs(obs: str | None) -> date | None:
-    """observation_date kan YYYY-MM-DD of YYYY-MM (maandcijfer) zijn."""
+    """observation_date kan YYYY-MM-DD, YYYY-MM (maandcijfer) of YYYY (jaarcijfer) zijn.
+
+    Het jaar-formaat MOET erbij: zonder "%Y" gaf een jaarcijfer als I-D2-001 ("2024")
+    age=None, waardoor de stale-tak in _check_layer nooit vuurde en de tolerantie van
+    400 dagen onbereikbaar was — de indicator kon per constructie niet verouderd raken.
+    """
     if not obs or not isinstance(obs, str):
         return None
     obs = obs.strip()[:10]
-    for fmt in ("%Y-%m-%d", "%Y-%m"):
+    for fmt in ("%Y-%m-%d", "%Y-%m", "%Y"):
         try:
             return datetime.strptime(obs, fmt).date()
         except ValueError:

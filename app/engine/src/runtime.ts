@@ -568,8 +568,14 @@ export function computeDaily(input: DailyComputeInput): DailyOutput {
   // ze komen als dagsignaal binnen (waarde van vandaag + eigen historie) en worden door
   // computeHybridHeadline als STRESS geteld (niet als mobiliteit). Zo dragen ze nu bij
   // aan het hoofdcijfer op een dag dat ze extreem/verhoogd staan.
+  // De reeks wordt ALTIJD op input.date geklemd (zelfde regel als latestAtOrBefore in
+  // economic-pressure.ts). Zonder die grens pakt elke gereconstrueerde dag de LAATSTE
+  // rij uit de historie — dus de waarde van vandaag — en wordt de gepubliceerde reeks
+  // naar het niveau van vandaag toe getrokken (lookahead; gevonden 2026-07-25).
   const envStressSignals = (["I-D1-010", "I-D1-004"] as IndicatorCode[]).flatMap((code) => {
-    const series = sortByDate(input.history[code] ?? []).filter((h) => Number.isFinite(h.value));
+    const series = sortByDate(input.history[code] ?? []).filter(
+      (h) => Number.isFinite(h.value) && h.date <= input.date,
+    );
     if (series.length < 1) return [];
     const value = series[series.length - 1].value;
     const history = series.slice(0, -1).map((h) => h.value);

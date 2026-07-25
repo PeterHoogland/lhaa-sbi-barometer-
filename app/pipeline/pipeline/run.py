@@ -63,8 +63,15 @@ def append_to_history(batch: FetchBatch) -> None:
     for r in [*batch.results, *batch.secondary]:
         if r.simulated or r.value is None or not math.isfinite(r.value):
             continue
-        # observatiedatum normaliseren naar YYYY-MM-DD (maandcijfers → dag 01)
+        # observatiedatum normaliseren naar YYYY-MM-DD (maandcijfers → dag 01,
+        # jaarcijfers → 1 januari). Het jaar-geval MOET hier staan: zonder die tak
+        # viel een jaarcijfer als I-D2-001 ("2024") terug op de rundatum van vandaag,
+        # waarna de historie 55 opeenvolgende "dagmetingen" van een jaarconstante
+        # bevatte — een geïmputeerde waarde die zich als verse meting voordeed
+        # (harde regel 1). Zie CHANGELOG 2026-07-25.
         obs = (r.observation_date or batch.target_date).strip()
+        if len(obs) == 4:
+            obs = f"{obs}-01-01"
         if len(obs) == 7:
             obs = f"{obs}-01"
         if len(obs) != 10:
