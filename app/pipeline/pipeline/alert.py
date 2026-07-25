@@ -207,12 +207,38 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--subject", required=True)
     ap.add_argument("--body", required=True)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument(
+        "--strict",
+        action="store_true",
+        help=(
+            "Exit 1 als een geconfigureerd kanaal faalt of als er geen enkel kanaal is. "
+            "ALLEEN voor het testpad (test-alert.yml): daar is een stil falend kanaal "
+            "juist het probleem dat je wilt zien. In het echte failure-pad NIET gebruiken."
+        ),
+    )
     args = ap.parse_args(argv)
 
     env = dict(os.environ)
     results = dispatch(args.subject, args.body, env, dry_run=args.dry_run)
     for channel, outcome in results.items():
         print(f"alert[{channel}]: {outcome}")
+
+    mislukt = [ch for ch, uitkomst in results.items() if str(uitkomst).startswith("FAALDE")]
+    if args.strict:
+        # Waarom deze vlag bestaat (2026-07-25): het testalarm meldde "success" terwijl
+        # SMTP al sinds 18/6 werd geweigerd (Gmail 535 BadCredentials). Een testpad dat
+        # groen blijft bij een kapot kanaal is erger dan geen test.
+        # dispatch() geeft bij nul kanalen een informatieve "none"-sleutel terug (geen
+        # "FAALDE"), dus die moet hier expliciet als mislukking gelden.
+        if not results or "none" in results:
+            print("alert[strict]: GEEN ENKEL kanaal geconfigureerd")
+            return 1
+        if mislukt:
+            print(f"alert[strict]: {len(mislukt)} van {len(results)} kanalen faalden: {', '.join(mislukt)}")
+            return 1
+        print(f"alert[strict]: alle {len(results)} geconfigureerde kanalen zijn geslaagd")
+        return 0
+
     # Exit 0, altijd: dit script draait in een failure-pad; de run is al rood en
     # een crash hier zou alleen de diagnose vertroebelen.
     return 0

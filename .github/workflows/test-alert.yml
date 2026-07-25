@@ -42,8 +42,13 @@ jobs:
           TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
           TWILIO_WHATSAPP_FROM: ${{ secrets.TWILIO_WHATSAPP_FROM }}
           TWILIO_WHATSAPP_TO: ${{ secrets.TWILIO_WHATSAPP_TO }}
+        # --strict: de run slaat ROOD als een geconfigureerd kanaal faalt. Zonder die vlag
+        # meldde deze test "success" terwijl SMTP al sinds 18/6 werd geweigerd (Gmail 535
+        # BadCredentials) en alleen Telegram nog aankwam. Een groene test bij een kapot
+        # kanaal is erger dan geen test. Het ECHTE alarmpad (daily.yml/monitor.yml) gebruikt
+        # --strict bewust NIET: daar is de run al rood en mag alert.py niets vertroebelen.
         run: |
-          python -m pipeline.alert \
+          python -m pipeline.alert --strict \
             --subject "SBI TEST-ALARM ($(TZ='Europe/Brussels' date '+%F %H:%M') BE) - dit is een TEST, geen storing" \
             --body "Dit is een handmatig test-alarm om te bevestigen dat alarmering je bereikt. Er is GEEN echte storing. ${{ inputs.note }}
 

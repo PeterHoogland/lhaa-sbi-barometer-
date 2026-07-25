@@ -4,6 +4,7 @@ Run: python3 tests/test_alert.py
 """
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -80,6 +81,29 @@ def main_test() -> int:
 
     # --- main: exit altijd 0 (alarmering maskeert de oorspronkelijke fout nooit) -
     ok("main exit 0 in dry-run", main(["--subject", "s", "--body", "b", "--dry-run"]) == 0)
+
+    # --- --strict: ALLEEN voor het testpad (regressie 2026-07-25) ---------------
+    # Aanleiding: het testalarm meldde "success" terwijl SMTP al sinds 18/6 werd
+    # geweigerd (Gmail 535 BadCredentials) en alleen Telegram nog aankwam. Een groene
+    # test bij een kapot kanaal is erger dan geen test.
+    schoon = {k: v for k, v in os.environ.items()
+              if not k.startswith(("SMTP_", "TELEGRAM_", "CALLMEBOT_", "TWILIO_", "ALERT_"))}
+    oud = dict(os.environ)
+    try:
+        os.environ.clear()
+        os.environ.update(schoon)
+        ok("strict: exit 1 als er GEEN kanaal geconfigureerd is",
+           main(["--subject", "s", "--body", "b", "--strict"]) == 1)
+        ok("zonder strict: exit 0 ook zonder kanalen (echte alarmpad blijft ongemoeid)",
+           main(["--subject", "s", "--body", "b"]) == 0)
+        os.environ["ALERT_WEBHOOK_URL"] = "http://127.0.0.1:1/onbestaand"
+        ok("strict: exit 1 als een geconfigureerd kanaal faalt",
+           main(["--subject", "s", "--body", "b", "--strict"]) == 1)
+        ok("zonder strict: een falend kanaal geeft nog steeds exit 0",
+           main(["--subject", "s", "--body", "b"]) == 0)
+    finally:
+        os.environ.clear()
+        os.environ.update(oud)
 
     print(f"\n{PASSED}/{PASSED} geslaagd")
     return 0

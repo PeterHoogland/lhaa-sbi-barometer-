@@ -6,6 +6,18 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-07-25 (3) — Testalarm faalt nu eerlijk rood: e-mailkanaal bleek sinds 18/6 stil stuk
+
+**Aanleiding:** Peter vroeg te controleren of hij op ál zijn kanalen bericht krijgt bij een gefaalde run. Testalarm afgevuurd via `test-alert.yml`: **Telegram kwam aan (HTTP 200, door Peter bevestigd), e-mail niet.** Gmail weigert de SMTP-login met `535 5.7.8 Username and Password not accepted` (BadCredentials). De secrets SMTP_HOST/USER/PASS staan sinds 18/6 gezet, dus het kanaal is sindsdien vermoedelijk continu stuk geweest zonder dat iemand het merkte.
+
+**Waarom niemand het merkte:** `alert.py` retourneert per ontwerp ALTIJD exit 0 (een crash in het alarmpad zou de oorspronkelijke storing vertroebelen). Dat is juist voor `daily.yml`/`monitor.yml`, maar het maakte ook de TESTworkflow groen terwijl een kanaal faalde. Een groene test bij een kapot kanaal is erger dan geen test.
+
+**Beslissing:** nieuwe vlag `--strict` in `pipeline/alert.py`, exit 1 wanneer een geconfigureerd kanaal faalt of wanneer er helemaal geen kanaal is. `test-alert.yml` gebruikt hem; de echte alarmpaden in `daily.yml` en `monitor.yml` bewust NIET. Geen wijziging aan de verzendlogica zelf.
+
+**Geborgd:** `test_alert.py` 24 → 28 checks (4 nieuw: strict faalt bij nul kanalen, strict faalt bij een falend kanaal, en beide keren blijft het niet-strikte pad exit 0). 12/12 pipeline-suites.
+
+**Openstaand voor Peter (credential, kan ik niet zetten):** SMTP_PASS moet een Google **App-wachtwoord** zijn (16 tekens, vereist 2-staps-verificatie); een gewoon accountwachtwoord wordt door Gmail geweigerd, en een bestaand app-wachtwoord vervalt zodra het accountwachtwoord wijzigt. Tot dat gebeurd is loopt de alarmering op **Telegram** plus GitHub's eigen faalmail.
+
 ## 2026-07-25 (2) — Weekcyclus uit de energieprijs (§4.1.17), ademknop naar 0,40 (§4.1.18), weer-baseline op de KMI-bronmaat — methodologie 0.4.3
 
 **Aanleiding:** Peter, na de ochtendfixes: "het cijfer moet ademen, zonder extremen." Onderzoek naar de grootste dagsprongen wees NIET naar de dagband maar naar de energieprijs in de TRAGE band (70% gewicht). De day-ahead stroomprijs heeft een weekcyclus die niets met maatschappelijke druk te maken heeft: mediaan woensdag 103,4 EUR/MWh, zaterdag 77,7, zondag 65,0 (weekend 27% lager, lage industriële vraag + zon). Dat sloeg recht door: 12 → 13 → 14 juni gaf 82 → 68 → 66, terwijl pollen op die dagen juist hoog stond en hitte/koude nul waren. De grootste uitslagen van de index waren dus een marktartefact.
