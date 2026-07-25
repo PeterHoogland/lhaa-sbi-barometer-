@@ -8,6 +8,7 @@ import {
   trailingPastSum,
   smoothedToday,
   smoothTrailing,
+  smoothTrailingByDate,
 } from "../src/methodology/smoothing.js";
 import { computeDaily } from "../src/index.js";
 
@@ -100,5 +101,44 @@ describe("Afvlakking — integratie in computeDaily (§4.1.8)", () => {
     const hi = out.uncertainty!.ci_90_upper;
     expect(out.percentile.short_24m).toBeGreaterThanOrEqual(lo - 1);
     expect(out.percentile.short_24m).toBeLessThanOrEqual(hi + 1);
+  });
+});
+
+/**
+ * §4.1.17 — datum-bewuste variant. De energiereeks (I-D3-002) heeft een gat
+ * 2020-2024; een positioneel venster zou daar 2019-waarden met 2024-waarden
+ * middelen. Het venster moet dus KALENDERdagen tellen.
+ */
+describe("smoothTrailingByDate telt kalenderdagen, niet posities", () => {
+  it("middelt niet over een gat heen", () => {
+    const reeks = [
+      { date: "2019-12-30", value: 100 },
+      { date: "2019-12-31", value: 100 },
+      { date: "2024-05-21", value: 10 }, // na een gat van jaren
+      { date: "2024-05-22", value: 20 },
+    ];
+    const uit = smoothTrailingByDate(reeks, 7);
+    // het punt na het gat mag ALLEEN zichzelf middelen
+    expect(uit[2].value).toBe(10);
+    // en het volgende punt alleen de twee post-gat-waarden
+    expect(uit[3].value).toBe(15);
+    // positioneel zou 2024-05-21 uitkomen op (100+100+10)/3 = 70
+    expect(smoothTrailing(reeks, 7)[2].value).toBeCloseTo(70, 6);
+  });
+
+  it("vlakt een weekcyclus weg en is lookahead-vrij", () => {
+    // 4 weken: werkdagen 100, weekend 40 (zoals de day-ahead stroomprijs)
+    const reeks = Array.from({ length: 28 }, (_, i) => {
+      const dag = new Date(Date.UTC(2026, 0, 5 + i)); // 5 jan 2026 = maandag
+      const we = dag.getUTCDay() === 0 || dag.getUTCDay() === 6;
+      return { date: dag.toISOString().slice(0, 10), value: we ? 40 : 100 };
+    });
+    const uit = smoothTrailingByDate(reeks, 7);
+    // vanaf dag 7 is elk venster een volledige week -> constant weekgemiddelde
+    const staart = uit.slice(6).map((p) => p.value);
+    const verwacht = (5 * 100 + 2 * 40) / 7;
+    for (const v of staart) expect(v).toBeCloseTo(verwacht, 6);
+    // lookahead-vrij: het eerste punt kent alleen zichzelf
+    expect(uit[0].value).toBe(100);
   });
 });

@@ -1,0 +1,167 @@
+// Mirror van engine output-typen (zie ../../engine/src/types.ts)
+
+export type Tier = "green" | "amber" | "red";
+export type BrandSafety = "normal" | "elevated" | "block";
+export type DomainCode = "D1" | "D2" | "D3" | "D4" | "D5" | "D6";
+
+export interface DomainContribution {
+  domain: DomainCode;
+  contribution: number;
+}
+
+export interface SecondarySignal {
+  code: string;
+  name: string;
+  value: number;
+  source: string;
+  simulated: boolean;
+  observation_date: string;
+}
+
+export type IndicatorState = "rustig" | "normaal" | "verhoogd" | "extreem" | "ontbreekt";
+
+export interface IndicatorBreakdown {
+  code: string;
+  domain: DomainCode;
+  plain_name: string;
+  why: string;
+  reads: string;
+  unit: string;
+  raw_value: number | null;
+  z_short: number | null;
+  contribution: number;
+  state: IndicatorState;
+  source: string;
+  simulated: boolean;
+  data_source: { name: string; url: string };
+  references: Array<{ label: string; url: string }>;
+  observation_date: string;
+  demographic_reach: number;
+  reach_rationale: string;
+}
+
+export type ConditionLevel = 1 | 2 | 3 | 4 | 5;
+
+export interface DailyOutput {
+  timestamp: string;
+  week_iso: string;
+  condition_level: {
+    value: ConditionLevel;
+    name: string;
+    banner_active: boolean;
+    copy_key: string;
+  };
+  composite: {
+    equal: number;
+    evidence_graded: number;
+    demographic: number;
+    weight_sensitivity: {
+      correlation_inverse_vs_equal_12w: number;
+      composite_range_with_dropouts: [number, number];
+      bootstrap_95_ci_around_equal: [number, number];
+    };
+  };
+  percentile: {
+    short_24m: number;
+    fixed_2010_2019: number;
+  };
+  tier: {
+    current: Tier;
+    days_in_tier: number;
+    tier_history_30d: Tier[];
+  };
+  top_contributing_domains: DomainContribution[];
+  indicator_breakdown: IndicatorBreakdown[];
+  secondary_signals: SecondarySignal[];
+  media_cluster_diagnostic: {
+    d5_cross_correlation_7d: number;
+    composite_without_d5: number;
+    media_contribution_percentile_points: number;
+  };
+  brand_safety: {
+    flag: BrandSafety;
+    reason: string | null;
+    expires_estimated: string | null;
+  };
+  data_quality: {
+    indicators_with_imputed_data: string[];
+    indicators_missing: string[];
+    indicators_simulated: string[];
+    pipeline_version: string;
+    methodology_version: string;
+    implementation_stage: string;
+  };
+  /** SBI v0.4 meet- + trigger-laag (optioneel — oudere records missen dit). */
+  v04?: V04Output;
+}
+
+// --- SBI v0.4 — meet- + trigger-laag (mirror van engine V04Output) ---
+
+export type KernKlasseLabel = "direct" | "snel" | "traag";
+export type KernState = "normaal" | "verhoogd" | "rood" | "ontbreekt";
+
+export interface KernBreakdown {
+  code: string;
+  domain: DomainCode;
+  plain_name: string;
+  class: KernKlasseLabel;
+  raw_value: number | null;
+  z_kort: number | null;
+  z_lang: number | null;
+  delta_1d: number | null;
+  percentile_lang: number | null;
+  baseline_lang_jaren: number;
+  state: KernState;
+  w_meting: number;
+  w_trigger: number;
+  contribution_meting: number;
+  simulated: boolean;
+  observation_date: string;
+  data_source: { name: string; url: string };
+}
+
+export interface TriggerEvent {
+  type: "indicator.spike" | "indicator.red" | "composite.amber" | "composite.red";
+  fired_at: string;
+  scope: "indicator" | "composite";
+  code: string | null;
+  domain: DomainCode | null;
+  plain_name: string | null;
+  severity: "hoog" | "let_op";
+  z_kort: number | null;
+  z_lang: number | null;
+  delta_1d: number | null;
+  percentile_lang: number | null;
+  load_factor: number;
+  confirmed_by: string[];
+  campaign_hint: string;
+  require_manual_approval: boolean;
+  cooldown_until: string;
+}
+
+export interface V04Output {
+  schema_version: string;
+  mode: "test" | "live";
+  composite: { meting: number; achtergrond: number; load_factor: number };
+  baseline: {
+    kort_maanden: number;
+    lang_maanden_target: number;
+    lang_rolling: boolean;
+    laatste_herijking: string | null;
+  };
+  percentile: { lang: number; kort: number; fixed_2010_2019: number | null };
+  tier: { current: Tier; days_in_tier: number };
+  kern_breakdown: KernBreakdown[];
+  triggers: TriggerEvent[];
+  trigger_state: {
+    last_fired: Record<string, string>;
+    recent: Array<{ key: string; fired_at: string; severity: string }>;
+  };
+}
+
+export interface SparklinePoint {
+  date: string;
+  composite: number;
+  percentile: number;
+  tier: Tier;
+}

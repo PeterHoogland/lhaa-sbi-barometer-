@@ -104,12 +104,18 @@ describe("computeHybridHeadline", () => {
 
   it("pollen + lucht tellen als STRESS-dagsignaal mee in de kop (§4.1.16)", () => {
     const POLLEN_HIST = [5, 8, 12, 6, 20, 15, 9, 11, 7, 18, 25, 10, 14, 22, 4]; // 15 punten
-    const withoutEnv = computeHybridHeadline(BROAD, traffic(TRAFFIC_TODAY)).score!;
-    const withPollen = computeHybridHeadline(BROAD, [
+    const zonder = computeHybridHeadline(BROAD, traffic(TRAFFIC_TODAY));
+    const met = computeHybridHeadline(BROAD, [
       { code: "I-D2-001-rt", value: TRAFFIC_TODAY, history: TRAFFIC_HIST },
       { code: "I-D1-010", value: 60, history: POLLEN_HIST }, // 60 = boven heel de historie -> extreem
-    ]).score!;
-    expect(withPollen).toBeGreaterThan(withoutEnv);
+    ]);
+    // Toets de MECHANIEK op de onderliggende grootheid, niet op het afgeronde cijfer:
+    // deze BROAD-fixture ligt met combined_z ~1,3 in de Phi-verzadiging, waar 0,05 z
+    // minder dan een heel scorepunt is. Sinds w_fast 0,40 (§4.1.18) vielen beide kanten
+    // daardoor op 90; de bijdrage van pollen was er wel degelijk (1,26 -> 1,31).
+    expect(met.combined_z!).toBeGreaterThan(zonder.combined_z!);
+    expect(met.z_fast!).toBeGreaterThan(zonder.z_fast!);
+    expect(met.score!).toBeGreaterThanOrEqual(zonder.score!);
     // pollen telt als fast-(stress)component, niet als mobiliteit
     const r = computeHybridHeadline(BROAD, [{ code: "I-D1-010", value: 60, history: POLLEN_HIST }]);
     expect(r.components.some((c) => c.code === "I-D1-010" && c.band === "fast")).toBe(true);

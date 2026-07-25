@@ -1,0 +1,59 @@
+name: SBI Backfill (handmatig)
+
+# Draait een backfill-script op GitHub's schone netwerk (geen TLS-onderscheppende
+# sandbox) en commit de opgehaalde historie terug naar main. Handmatig te starten
+# via de Actions-tab of `gh workflow run backfill.yml -f script=<naam>`.
+
+on:
+  workflow_dispatch:
+    inputs:
+      script:
+        description: "Backfill-script in app/pipeline/scripts/"
+        required: true
+        default: "backfill_fuel_baseline.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: backfill-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: app/pipeline/requirements.txt
+
+      - name: Install Python deps
+        working-directory: app/pipeline
+        run: pip install -r requirements.txt
+
+      - name: Run backfill (${{ inputs.script }})
+        working-directory: app/pipeline
+        run: python scripts/${{ inputs.script }}
+
+      - name: Commit opgehaalde historie
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f app/data/history
+          if ! git diff --cached --quiet; then
+            git commit -m "data: backfill historie via handmatige workflow (${{ inputs.script }}) [skip ci]"
+            git pull --rebase origin main || true
+            git push origin main || true
+          else
+            echo "Geen nieuwe historie om te committen."
+          fi

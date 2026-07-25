@@ -1,0 +1,133 @@
+name: SBI Daily Update
+
+on:
+  schedule:
+    # Voorlopig één totale check per dag om 08:00 BE-tijd (06:00 UTC zomer /
+    # 07:00 UTC winter — dual cron + tijd-guard, zoals voorheen).
+    - cron: "0 6 * * *"
+    - cron: "0 7 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  fetch-build-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Time-guard (alleen door bij 08:00 BE-tijd of bij handmatige trigger)
+        id: timecheck
+        run: |
+          BE_HOUR=$(TZ='Europe/Brussels' date +%H)
+          echo "Belgian local hour: $BE_HOUR"
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$BE_HOUR" != "08" ]; then
+            echo "Skip — schedule firing maar BE-uur is $BE_HOUR, niet 08."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Proceed."
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        if: steps.timecheck.outputs.skip != 'true'
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        if: steps.timecheck.outputs.skip != 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+          cache-dependency-path: app/pipeline/requirements.txt
+
+      - name: Set up Node 22 LTS
+        if: steps.timecheck.outputs.skip != 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Python deps
+        if: steps.timecheck.outputs.skip != 'true'
+        working-directory: app/pipeline
+        run: pip install -r requirements.txt
+
+      - name: Fetch real data (Python pipeline)
+        if: steps.timecheck.outputs.skip != 'true'
+        working-directory: app/pipeline
+        run: python -m pipeline.run
+        continue-on-error: true
+
+      - name: Install engine deps
+        if: steps.timecheck.outputs.skip != 'true'
+        working-directory: app/engine
+        run: npm install
+
+      - name: Generate daily output (hybrid real + synthetic)
+        if: steps.timecheck.outputs.skip != 'true'
+        working-directory: app/engine
+        env:
+          # Campagne-webhook (trigger-uitgang). Niet-gezet → dry-run (logt de
+          # payload, verstuurt niets). Zet via `gh secret set CAMPAIGN_WEBHOOK_URL`.
+          CAMPAIGN_WEBHOOK_URL: ${{ secrets.CAMPAIGN_WEBHOOK_URL }}
+          CAMPAIGN_WEBHOOK_TOKEN: ${{ secrets.CAMPAIGN_WEBHOOK_TOKEN }}
+        run: npm run generate-fixture
+
+      - name: Install web deps
+        if: steps.timecheck.outputs.skip != 'true'
+        working-directory: app/web
+        run: npm install
+
+      - name: Build web production bundle
+        if: steps.timecheck.outputs.skip != 'true'
+        working-directory: app/web
+        run: npm run build
+
+      - name: Deploy to Cloudflare (Workers static assets — primair)
+        if: steps.timecheck.outputs.skip != 'true'
+        working-directory: app/web
+        env:
+          # De Cloudflare API-token staat als repo-secret 'LESHAUTES'; we mappen 'm
+          # naar de env-var die wrangler verwacht (CLOUDFLARE_API_TOKEN).
+          CLOUDFLARE_API_TOKEN: ${{ secrets.LESHAUTES }}
+        run: |
+          # Primaire host: instant propagatie + correcte cache-headers (geen sticky
+          # CDN-edge zoals Surge). Draait pas écht zodra CLOUDFLARE_API_TOKEN als
+          # secret gezet is; tot dan no-op zodat de workflow niet breekt. Daarna mag
+          # de Surge-stap hieronder weg (account_id staat in app/web/wrangler.jsonc).
+          if [ -n "$CLOUDFLARE_API_TOKEN" ]; then
+            npx --yes wrangler@4 deploy
+          else
+            echo "CLOUDFLARE_API_TOKEN niet gezet — Cloudflare-deploy overgeslagen (zet de secret om te activeren)."
+          fi
+
+      - name: Deploy to Surge.sh (tijdelijk vangnet — verwijderen na Cloudflare-cutover)
+        if: steps.timecheck.outputs.skip != 'true'
+        working-directory: app/web
+        env:
+          SURGE_LOGIN: peter@hoogland.be
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
+        run: |
+          npm install -g surge
+          surge ./dist les-hautes-alpes-sbi.surge.sh
+
+      - name: Persist cache + doorlopende historie
+        if: steps.timecheck.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f app/data/sbi-cache.json app/pipeline/pending_events.json app/data/history app/data/trigger-state.json 2>/dev/null || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: persist daily fetch cache + historie [skip ci]"
+            git pull --rebase origin main || true
+            git push origin main || true
+          else
+            echo "No cache changes to commit"
+          fi

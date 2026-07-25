@@ -235,6 +235,37 @@ Wetenschappelijke kern (Peter, 19/6): het relatieve seizoenspercentiel (~23) ade
 - **Reikwijdte:** raakt alleen `daily_pressure`. Frontend: OV verdwijnt automatisch uit het "telt niet mee"-paneel (het telt nu mee); de copy onder het cijfer noemt nu "weer, nieuws, verkeer en openbaar vervoer".
 - **Geborgd:** `hybrid-headline.test.ts` (nieuw: OV als extra dagsignaal, hoge waarde -> positieve z). Engine 206/206.
 
+### 4.1.16 Amendement: weer en lucht eerlijk in de kop, hitte-escalatie (2026-06-25, Peter GO, methodologie 0.4.2)
+
+*Retroactief vastgelegd op 2026-07-25: deze wijziging is op 25/6 doorgevoerd en gedeployd (commit `1094590`) maar destijds niet in deze annex opgenomen. De code verwees al naar §4.1.16.*
+
+**Aanleiding:** een rustige avondspits kon een hittegolf maskeren, doordat mobiliteit (verkeer/OV) en stress (hitte/koude/nieuws) ongewogen door elkaar werden gemiddeld in `z_fast`.
+
+**Regel (vanaf 0.4.2):** `z_fast` splitst STRESS (hitte, koude, nieuws + pollen I-D1-010 + luchtkwaliteit I-D1-004) van MOBILITEIT (verkeer, STIB, De Lijn). Mobiliteit weegt `HYBRID_W_MOBILITY` = 0,20 en zijn verlichting is gevloerd op `HYBRID_MOBILITY_RELIEF_FLOOR` = −0,5. Hitte winsoriseert op `HEAT_ESCALATION_BOUND` = +5 in plaats van ±3, zodat 35 °C zwaarder weegt dan 31 °C. Pollen en lucht dragen sindsdien bij aan het hoofdcijfer (waren daarvoor alleen percentiel).
+
+### 4.1.17 Amendement: weekcyclus uit de energieprijs (2026-07-25, methodologie 0.4.3)
+
+**Aanleiding.** De day-ahead stroomprijs (I-D3-002) heeft een systematische WEEKCYCLUS die niets met maatschappelijke druk te maken heeft: lage industriële vraag plus veel zon in het weekend. Gemeten over 2025-2026: mediaan woensdag 103,4 EUR/MWh, zaterdag 77,7, zondag 65,0; weekend ligt 27% onder de werkdagen. Omdat energie in de TRAGE band zit (70% gewicht) sloeg dat recht door naar de publieke kop: 12 → 13 → 14 juni 2026 gaf 82 → 68 → 66, terwijl pollen op die dagen juist hoog stond en hitte/koude nul waren. De grootste dagsprongen in de hele reeks (tot 15 punten) waren dus een marktartefact, geen meting.
+
+**Regel (vanaf 0.4.3):** de reeks van I-D3-002 wordt vóór de vergelijking afgevlakt met een trailing gemiddelde over 7 KALENDERdagen (`smoothTrailingByDate`). Een huishouden voelt niet de spotprijs van zondag maar het weekniveau.
+
+- **Schaaldiscipline (harde regel 5):** de afvlakking gebeurt op de VOLLEDIGE reeks in `computeAbsolutePressure`, vóór baseline en dagwaarde eruit worden afgeleid. Baseline en dagwaarde ondergaan dus per constructie exact dezelfde transformatie; afgevlakt wordt nooit tegen ruw vergeleken.
+- **Waarom kalenderdagen en niet posities:** de energiereeks heeft gaten (onder meer 2020-2024). Een positioneel venster zou 2019-waarden met 2024-waarden middelen. Het baselinevenster 2016-2019 zelf is 100% aaneengesloten met een gebalanceerde weekdagverdeling (209/209/208/208/209/209/209).
+- **Lookahead-vrij:** elk punt middelt uitsluitend zichzelf en voorgaande dagen.
+- **Effect (61 dagen):** grootste dagsprong 15 → 6; sprongen ≥5 punten 10 → 1; bereik 66-91 → 80-91; labelwissels 5 → 3. De gemiddelde dagbeweging zakt daardoor van 2,72 naar 1,48 punt, wat §4.1.18 noodzakelijk maakte.
+- **Geborgd:** `smoothing.test.ts` (2 nieuwe tests: geen middeling over een gat heen, en een volledige weekcyclus vlakt weg). Engine 213/213.
+
+### 4.1.18 Amendement: ademknop `w_fast` van 0,30 naar 0,40 (2026-07-25, Peter GO, methodologie 0.4.3)
+
+**Aanleiding.** Peter: "het cijfer moet ademen, zonder extremen." Na §4.1.17 was de kop met 1,48 punt beweging per dag te vlak geworden.
+
+**Regel (vanaf 0.4.3):** `HYBRID_W_FAST` = 0,40 (was 0,30).
+
+- **Volgorde was bepalend:** het gewicht is pas verhoogd NA het verwijderen van de weekcyclus. Andersom zou een hoger gewicht het marktartefact hebben versterkt in plaats van echt signaal.
+- **Doorgerekend op 61 dagen** (volledige reeks per waarde opnieuw gebouwd): 0,30 → adem 1,48 / max sprong 6; **0,40 → adem 2,08 / max sprong 10**; 0,45 → 2,37 / 11; 0,50 → 2,73 / 13. Bij 0,50 loopt het aantal sprongen ≥5 punten op tot 12, meer dan in de oude (artefact-)toestand; daarom niet gekozen.
+- **Extremen blijven onder de oude toestand:** grootste dagsprong 10 tegen 15, sprongen ≥5 punten 7 tegen 10, labelwissels 2 tegen 5.
+- **Elke resterende grote sprong is herleidbaar tot echt signaal:** 23→24/6 +7 (hitte 0 → 5,3, hittegolf arriveert); 27→28/6 −6 (hittegolf breekt); 4→5/7 −10 (pollen 81 → 51 plus rustiger nieuws); 23→24/7 +5 (pollen meer dan verdubbeld).
+
 ---
 
 ## 5. Inclusiecriteria (uit laag 3)

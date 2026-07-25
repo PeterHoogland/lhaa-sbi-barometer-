@@ -1,0 +1,28 @@
+{
+  "name": "@sbi/engine",
+  "version": "0.2.0",
+  "description": "Stressor-Blootstellings-Index methodology engine (TypeScript)",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "compute": "tsx src/cli/compute-daily.ts",
+    "compute-daily": "tsx src/cli/compute-daily.ts",
+    "generate-fixture": "tsx src/cli/generate-fixture.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  }
+}

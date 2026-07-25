@@ -1,0 +1,3525 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="UTF-8">
+<title>MASTERDOCUMENT</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap">
+<style>
+  body { font-family: Ubuntu, system-ui, sans-serif; color: #22252a; max-width: 880px; margin: 36px auto; padding: 0 36px; line-height: 1.55; }
+  h1 { font-weight: 300; font-size: 2rem; color: #22252a; margin-top: 2.5em; border-bottom: 2px solid #29441f; padding-bottom: .3em; page-break-before: always; }
+  h1:first-of-type { page-break-before: avoid; margin-top: 0; }
+  h2 { font-weight: 500; color: #29441f; margin-top: 2em; font-size: 1.3rem; }
+  h3 { font-weight: 500; color: #22252a; font-size: 1.1rem; }
+  a { color: #29441f; }
+  hr { border: none; border-top: 1px solid #e5e7eb; margin: 2em 0; }
+  code, pre { font-family: "Ubuntu Mono", monospace; font-size: 0.86rem; }
+  pre { background: #f7f8f9; border: 1px solid #e5e7eb; border-radius: 6px; padding: 14px 18px; overflow-x: auto; page-break-inside: avoid; }
+  p code, li code { background: #f0f1f3; padding: 1px 5px; border-radius: 3px; }
+  table { border-collapse: collapse; margin: 1em 0; width: 100%; }
+  th, td { border: 1px solid #e5e7eb; padding: 8px 12px; text-align: left; vertical-align: top; }
+  th { background: #f7f8f9; font-weight: 500; }
+  blockquote { border-left: 3px solid #29441f; padding-left: 14px; color: #52565b; margin-left: 0; }
+  @media print {
+    body { margin: 0; padding: 18mm 16mm; }
+    h1 { page-break-before: always; }
+    h1:first-of-type { page-break-before: avoid; }
+    pre { font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+<div class="meta-print" style="font-size:.8rem;color:#9ca3af;margin-bottom:1em">
+  Hautes-Alpes · SBI-barometer · gegenereerd 2026-05-31
+</div>
+<h1 id="masterdocument-stressor-blootstellings-index-sbi">MASTERDOCUMENT — Stressor-Blootstellings-Index (SBI)</h1>
+<p><strong>Project:</strong> Les Hautes Alpes · Anti-Stress Activator (barometer)
+<strong>Versie:</strong> SBI v0.2 (24 indicatoren, 6 domeinen)
+<strong>Live:</strong> https://les-hautes-alpes-sbi.surge.sh
+<strong>Repo:</strong> https://github.com/PeterHoogland/lhaa-sbi-barometer-
+<strong>Uitgevoerd:</strong> 2026-05-31</p>
+<p>Dit document bundelt de volledige methodologische verantwoording:
+pre-registratie, anker-paper, de zes lagen (indicator-selectie tot
+aggregatie en drempel), het onderhoudsprotocol en de stijlgids.
+Bestemd voor wetenschappelijke verificatie.</p>
+<p>Een apart <code>TOEGANG-EN-INFRASTRUCTUUR.md</code> document bevat alle praktische
+informatie: links, accounts, secrets, externe bronnen, build-instructies.</p>
+<hr />
+<h2 id="inhoud">Inhoud</h2>
+<ol>
+<li><strong>00_Pre-Registratie</strong></li>
+<li><strong>01_Anker-Paper</strong></li>
+<li><strong>02_Laag-3_Indicator-Selectie</strong></li>
+<li><strong>03_Laag-4_Operationalisering</strong></li>
+<li><strong>04_Laag-5_Normalisatie</strong></li>
+<li><strong>05_Laag-6_Weging</strong></li>
+<li><strong>06_Laag-7_Aggregatie-en-Drempel</strong></li>
+<li><strong>07_Laag-8_Validatie-en-Robuustheid</strong></li>
+<li><strong>08_Onderhoud-Protocol</strong></li>
+<li><strong>09_Brand-Message-Style-Guide</strong></li>
+</ol>
+<hr />
+<h1 id="00_pre-registratie">00_Pre-Registratie</h1>
+<p><em>Bronbestand: <code>00_Pre-Registratie.md</code></em></p>
+<h1 id="stressor-blootstellings-index-sbi">Stressor-Blootstellings-Index (SBI)</h1>
+<h2 id="pre-registratie-van-methodologische-keuzes">Pre-registratie van methodologische keuzes</h2>
+<p><strong>Status:</strong> v0.2 — pre-registratie-document
+<strong>Doel:</strong> centraliseren van alle pre-geregistreerde methodologische keuzes uit lagen 1-8
+<strong>Bedoeld voor:</strong> OSF (Open Science Framework) publicatie vóór eerste meting
+<strong>Auteur:</strong> BRAINWOLVES
+<strong>Datum:</strong> mei 2026</p>
+<hr />
+<h2 id="0-wat-dit-document-is">0. Wat dit document is</h2>
+<p>Eén centrale bron van waarheid voor alle keuzes die vóór de eerste meting publiek vastgelegd moeten worden. In v0.1 waren pre-registratie-vereisten verspreid over de laag-1, laag-6 en laag-7 documenten. Dat is fragiel: bij wijziging kunnen documenten uit synchronisatie raken. Dit document consolideert.</p>
+<p>Wijzigingen aan deze keuzes worden uitsluitend toegestaan via het in <code>08_Onderhoud-Protocol.md</code> beschreven proces. Stille aanpassingen zijn verboden — niet door technische beveiliging, maar door publieke audit-trail.</p>
+<hr />
+<h2 id="1-identificatie-van-het-instrument">1. Identificatie van het instrument</h2>
+<ul>
+<li><strong>Naam:</strong> Stressor-Blootstellings-Index</li>
+<li><strong>Afkorting:</strong> SBI</li>
+<li><strong>Versie methodologie:</strong> 0.2</li>
+<li><strong>Werkmarkt:</strong> België</li>
+<li><strong>Tijdsresolutie:</strong> wekelijks (met dagelijkse onderliggende data)</li>
+<li><strong>Eigenaar:</strong> BRAINWOLVES (geen institutionele affiliatie)</li>
+<li><strong>Licentie:</strong> open methodologie (CC BY 4.0 of equivalent); code: open source (MIT of Apache 2.0)</li>
+</ul>
+<hr />
+<h2 id="2-construct-definitie-uit-laag-1">2. Construct-definitie (uit laag 1)</h2>
+<blockquote>
+<p>De SBI meet de aggregaat-blootstelling van een populatie aan omgevings-, economische, sociale en mediaomstandigheden waarvan de literatuur consistent aantoont dat ze geassocieerd zijn met stressrespons op populatieniveau, ten opzichte van een gedocumenteerde historische baseline.</p>
+</blockquote>
+<p><strong>Vier expliciete uitsluitingen</strong> (zie laag 1 §3): geen klinisch instrument, geen individuele meting, geen peer-reviewed wetenschappelijk instrument, geen gedragsvoorspeller.</p>
+<hr />
+<h2 id="3-theoretische-ondersteunende-kaders-uit-laag-1">3. Theoretische ondersteunende kaders (uit laag 1)</h2>
+<ul>
+<li>Allostatic Load Theory (McEwen 1998)</li>
+<li>Social Determinants of Health framework (Marmot/WHO 2008)</li>
+<li>Conservation of Resources (Hobfoll 1989)</li>
+</ul>
+<p><strong>Bewust niet als anker gebruikt:</strong> Lazarus &amp; Folkman (1984) appraisal-model; Holmes-Rahe (1967) Social Readjustment Rating Scale. Reden: zie laag 1 §5.5.</p>
+<hr />
+<h2 id="4-domein-taxonomie-uit-laag-23">4. Domein-taxonomie (uit laag 2/3)</h2>
+<p><strong>Zes domeinen:</strong></p>
+<ol>
+<li>D1 — Omgeving &amp; klimaat (4 indicatoren)</li>
+<li>D2 — Mobiliteit &amp; ruimte (2 indicatoren)</li>
+<li>D3 — Economische conditie (5 indicatoren)</li>
+<li>D4 — Werk &amp; belasting (2 indicatoren)</li>
+<li>D5 — Media &amp; collectieve gebeurtenissen (3 indicatoren)</li>
+<li>D6 — Kalender &amp; ritme (4 indicatoren)</li>
+</ol>
+<p><strong>Totaal: 20 primaire indicatoren</strong> + 6 secundaire (sensitivity) + 4 validatie-variabelen.</p>
+<hr />
+<h2 id="5-inclusiecriteria-uit-laag-3">5. Inclusiecriteria (uit laag 3)</h2>
+<p>Een indicator komt in aanmerking dan en slechts dan als ze aan álle vijf voldoet:</p>
+<ol>
+<li>Theoretische verankering in minstens één ondersteunend kader</li>
+<li>Empirische evidence op systematic-review- of meta-analyse-niveau (grade A of B)</li>
+<li>Publieke beschikbaarheid</li>
+<li>Tijdsresolutie ≤ wekelijks</li>
+<li>Gedocumenteerde confounder-set</li>
+</ol>
+<p>Indicatoren in primaire set met grade A of B; grade C-indicatoren in secundaire set; grade D uitgesloten.</p>
+<hr />
+<h2 id="6-normalisatie-keuzes-uit-laag-5">6. Normalisatie-keuzes (uit laag 5)</h2>
+<h3 id="61-baselines">6.1 Baselines</h3>
+<ul>
+<li><em>Korte baseline:</em> 24 maanden voortschrijdend, mediaan + MAD</li>
+<li><em>Vaste baseline:</em> 2010-2019, mediaan + MAD</li>
+<li>Beide parallel gerapporteerd</li>
+</ul>
+<h3 id="62-stl-decompositie">6.2 STL-decompositie</h3>
+<p>Toegepast op indicatoren waar seizoen confounder is (zie laag 5 §3.2 tabel). Niet toegepast waar seizoen het signaal is (daglichturen, kalender-indicatoren).</p>
+<h3 id="63-winsorization">6.3 Winsorization</h3>
+<p>±3 SD-equivalent (na MAD-Z-scoring), met audit-trail per gewinsorizeerde waarde.</p>
+<hr />
+<h2 id="7-wegings-keuzes-uit-laag-6">7. Wegings-keuzes (uit laag 6)</h2>
+<h3 id="71-drie-parallelle-schemas">7.1 Drie parallelle schema's</h3>
+<ul>
+<li><strong>Schema 1 — Equal weights</strong> (primair publicatie-schema)</li>
+<li>Binnen domein: gelijk</li>
+<li>
+<p>Tussen domein: 1/6 = 0.167</p>
+</li>
+<li>
+<p><strong>Schema 2 — Evidence-graded met balance-correctie</strong> (parallel)</p>
+</li>
+<li>Binnen domein: gewicht ∝ grade (A=3, B=2)</li>
+<li>
+<p>Tussen domein: zie definitieve tabel hieronder</p>
+</li>
+<li>
+<p><strong>Schema 3 — Weegafhankelijkheid-diagnostiek</strong> (rapportage, geen signaal)</p>
+</li>
+<li>Inverse-rank + single-domain-dropouts + Dirichlet-bootstrap</li>
+<li>Gerapporteerd als gevoeligheidsstatistiek</li>
+</ul>
+<h3 id="72-definitieve-schema-2-tabel">7.2 Definitieve Schema-2-tabel</h3>
+<table>
+<thead>
+<tr>
+<th>Domein</th>
+<th>gewicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1 Omgeving &amp; klimaat</td>
+<td>0.211</td>
+</tr>
+<tr>
+<td>D2 Mobiliteit &amp; ruimte</td>
+<td>0.135</td>
+</tr>
+<tr>
+<td>D3 Economische conditie</td>
+<td>0.223</td>
+</tr>
+<tr>
+<td>D4 Werk &amp; belasting</td>
+<td>0.108</td>
+</tr>
+<tr>
+<td>D5 Media &amp; collectieve gebeurtenissen</td>
+<td>0.155</td>
+</tr>
+<tr>
+<td>D6 Kalender &amp; ritme</td>
+<td>0.172</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-drempelwaarde-keuzes-uit-laag-7">8. Drempelwaarde-keuzes (uit laag 7)</h2>
+<h3 id="81-drie-tier-signaal">8.1 Drie-tier-signaal</h3>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Voorwaarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Groen</td>
+<td>P(t) &lt; 70</td>
+</tr>
+<tr>
+<td>Oranje</td>
+<td>70 ≤ P(t) &lt; 90, sustained ≥ 3 opeenvolgende dagen</td>
+</tr>
+<tr>
+<td>Rood</td>
+<td>P(t) ≥ 90, sustained ≥ 3 opeenvolgende dagen</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-decay">8.2 Decay</h3>
+<p>Tier-afschaling pas na 3 dagen onder drempel.</p>
+<h3 id="83-rechtvaardiging">8.3 Rechtvaardiging</h3>
+<p>3-dagen-sustained: cortisol-cyclus-literatuur (3 dagen = 3 cycli minimum). P=90: epidemiologische conventie voor "exceptionele dagen". P=70: waarschuwingsband. Allen alternatief getoetst in laag 8 multiverse.</p>
+<hr />
+<h2 id="9-falsifieerbaarheidscriteria-uit-laag-1">9. Falsifieerbaarheidscriteria (uit laag 1)</h2>
+<p>Bij vervulling van enige criterium → methodologie verworpen (of, voor F4, beperking gedocumenteerd):</p>
+<ul>
+<li><strong>F1.</strong> Inconsistentie bij externe schok (geen stijging tijdens onbetwiste nationale stressor)</li>
+<li><strong>F2.</strong> Mono-causaliteit (één indicator verklaart &gt; 60% variantie composiet)</li>
+<li><strong>F3.</strong> Placebo-doorbraak (placebo-indicator significant effect)</li>
+<li><strong>F4.</strong> Convergentiefalen (geen significante convergentie met gedragsproxies)</li>
+<li><strong>F5.</strong> Reproduceerbaarheidsfalen (replicatie wijkt &gt; 10% af)</li>
+</ul>
+<hr />
+<h2 id="10-validatie-tier-gates-uit-laag-8">10. Validatie-tier-gates (uit laag 8)</h2>
+<p><strong>Tier-1 — Must-pass voor launch:</strong>
+- Toets 1: Natural-experiments (≥ 5/7 events detected)
+- Toets 5: Placebo-test (95% CI omvat 0)
+- Toets 6: Test-retest reliability (≥ 70% tier-agreement)</p>
+<p><strong>Tier-2 — Should-pass voor launch:</strong>
+- Toets 2: Retrospectieve backtest (inter-rater &gt; 80%)
+- Toets 3: Convergente validiteit (≥ 2 proxies rho &gt; 0.40, OF ≥ 3 proxies rho &gt; 0.30)
+- Toets 4: Multiverse (default-pad binnen centrale 95%)</p>
+<p><strong>Tier-3 — Doorlopend, geen launch-gate:</strong>
+- Toets 7: Adversariële review (ontwerp-iteratie)
+- Toets 8: Publieke replicatie-uitdaging</p>
+<hr />
+<h2 id="11-operationele-keuzes-uit-laag-4">11. Operationele keuzes (uit laag 4)</h2>
+<ul>
+<li>Geografische referentie: 50.85°N, 4.35°E (Brussel) voor astronomische metingen</li>
+<li>Missing-data: LCF 3 dagen → linear interpolation 14 dagen → explicit flag</li>
+<li>Tijdsharmonisatie: maand → forward-fill in wekelijks composiet</li>
+<li>Mediacyclus-decorrelatie: protocol §4.4 van laag 4</li>
+<li>Implementatie-stadium: minimum viable pipeline → target architecture stapsgewijs</li>
+</ul>
+<hr />
+<h2 id="12-publicatie-conventies">12. Publicatie-conventies</h2>
+<h3 id="121-publieke-output">12.1 Publieke output</h3>
+<ul>
+<li>Dagelijkse barometer-record (JSON)</li>
+<li>Signal-API (tier + brand-safety-vlag)</li>
+<li>Volledige historische dataset</li>
+</ul>
+<h3 id="122-communicatie-discipline-zie-ook-09_brand-message-style-guidemd">12.2 Communicatie-discipline (zie ook 09_Brand-Message-Style-Guide.md)</h3>
+<p>Toegestane formulering: "blootstellings-conditie hoog", "verhoogd-blootstellings-venster", "extreme omstandigheden".
+Niet toegestaan: "u bent gestrest", "Vlamingen zijn collectief gestrest", individuele attributies.</p>
+<p>Abonnees (campagnes, persgebruik) tekenen voor naleving van deze stijlgids.</p>
+<hr />
+<h2 id="13-wijzigings-protocol">13. Wijzigings-protocol</h2>
+<p>Aanpassingen aan deze pre-registratie:
+- Minimaal 30 dagen vooraf publiek aangekondigd
+- Reden gedocumenteerd in versioned methodology paper
+- Triggert herberekening alle historische data onder beide versies
+- Beide versies parallel beschikbaar tot uitfasering van oude versie</p>
+<p>Toegestane wijzigings-gronden (zie laag 6 §7):</p>
+<ul>
+<li>A1. Nieuwe meta-analyse/SR verandert evidence-grade structureel</li>
+<li>A2. Indicator-toevoeging of -verwijdering door datatoegang</li>
+<li>A3. Falsifieerbaarheidscriteria-falen</li>
+</ul>
+<p>Geen wijziging mag worden gemotiveerd door "het signaal komt niet uit zoals we willen".</p>
+<hr />
+<h2 id="14-datum-van-pre-registratie">14. Datum van pre-registratie</h2>
+<p>Deze pre-registratie wordt gepubliceerd op OSF op datum [TE BEPALEN] vóór eerste meting. SHA-256-hash van het document wordt op datum van OSF-publicatie publiek gemaakt om manipulatie achteraf zichtbaar te maken.</p>
+<hr />
+<h2 id="15-adviesraad-in-opbouw">15. Adviesraad (in opbouw)</h2>
+<p>Vóór livegang: drie tot vijf individuele academici uit tegengestelde methodologische scholen. Identiteit, disclosures en vergoeding publiek bij livegang. Eén adviseur expliciet aangewezen als <em>adversariële collaborator</em> met methodologische veto-positie op specifieke ontwerpkeuzes (welke nog te bepalen voor finale pre-registratie).</p>
+<hr />
+<h1 id="01_anker-paper">01_Anker-Paper</h1>
+<p><em>Bronbestand: <code>01_Anker-Paper.md</code></em></p>
+<h1 id="stressor-blootstellings-index-sbi_1">Stressor-Blootstellings-Index (SBI)</h1>
+<h2 id="anker-paper-construct-theoretisch-fundament-en-scope-afbakening">Anker-paper: construct, theoretisch fundament en scope-afbakening</h2>
+<p><strong>Status:</strong> v0.2 — werkdocument
+<strong>Document:</strong> laag 1 en laag 2 van de methodologie
+<strong>Auteur:</strong> BRAINWOLVES
+<strong>Datum:</strong> mei 2026</p>
+<hr />
+<h2 id="0-samenvatting">0. Samenvatting</h2>
+<p>Dit document legt het wetenschappelijk-onderbouwde fundament vast voor de Stressor-Blootstellings-Index (hierna: SBI) — een gestandaardiseerde, publiek herhaalbare meting van blootstelling aan omgevings-, economische, sociale en mediaomstandigheden waarvan de literatuur consistent aantoont dat ze geassocieerd zijn met stressrespons op populatieniveau.</p>
+<p>Het anker-paper legt vier zaken vast vóór er ook maar één indicator geselecteerd wordt: (1) wat de SBI is en wat hij niet is, (2) welke theoretische tradities het construct <em>ondersteunen</em> (zonder dat de SBI claimt te meten wat die tradities meten), (3) langs welke domein-taxonomie indicatoren worden ingedeeld, en (4) onder welke condities de SBI als methodologisch ongeldig beschouwd moet worden.</p>
+<p>Pas wanneer dit fundament publiek vastligt en pre-geregistreerd is, opent indicator-selectie (laag 3).</p>
+<hr />
+<h2 id="1-terminologische-discipline">1. Terminologische discipline</h2>
+<p>Door alle SBI-documenten heen wordt strikt vastgehouden aan vier woordregels:</p>
+<ul>
+<li><em>"Stressoren"</em> = externe omstandigheden die een stressrespons kunnen uitlokken (technische term in stress-science, niet hetzelfde als "stress")</li>
+<li><em>"Blootstelling"</em> = aanwezigheid van stressoren in de omgeving — exact wat publieke data kan meten</li>
+<li><em>"Literatuur-onderbouwd"</em> in plaats van "wetenschappelijk" — we doen geen wetenschap in strikte zin, we steunen <em>op</em> wetenschap</li>
+<li><em>"Ondersteunende kaders"</em> in plaats van "ankers" — we doen niet wat die kaders doen, we hangen er niet aan vast</li>
+</ul>
+<p>Deze terminologische discipline beschermt tegen scope-creep waarbij een bescheiden methodologie zichzelf in latere documenten tot quasi-wetenschap promoot.</p>
+<hr />
+<h2 id="2-doel-van-dit-document">2. Doel van dit document</h2>
+<p>Dit is geen marketingdocument. Het is een methodologisch fundament met één opzet: vóórdat de SBI iets meet, vastleggen wat ze meet, op grond waarvan, binnen welke grenzen, en wanneer ze als instrument verworpen moet worden.</p>
+<p>De ratio: een index die haar fundament vastlegt ná dataverzameling kan haar uitkomsten kneden tot wat de bouwer wil zien. Door fundament en selectiecriteria vóór dataverzameling vast te leggen — en publiek pre-registreren — wordt latere manipulatie zichtbaar en daarmee onmogelijk zonder reputatieverlies.</p>
+<hr />
+<h2 id="3-wat-dit-niet-is">3. Wat dit niet is</h2>
+<p>Vier expliciete uitsluitingen, vooraan geplaatst om te voorkomen dat de SBI later iets claimt wat ze niet kan dragen.</p>
+<p><strong>De SBI is geen klinisch diagnostisch instrument.</strong>
+Een klinische uitspraak over stress vereist individuele meting via gevalideerde vragenlijsten (PSS-10, DASS-21, MBI), fysiologische data (cortisol, hartritmevariabiliteit, ontstekingsmarkers), klinisch interview en differentiaaldiagnose op basis van DSM-5 of ICD-11. De SBI doet geen van deze. Niemand kan op basis van de SBI worden gediagnosticeerd of gemedicaliseerd.</p>
+<p><strong>De SBI meet geen individuen.</strong>
+De index is een populatie-instrument. Elke uitspraak die uit de SBI-data wordt afgeleid heeft alleen geldigheid op aggregaatniveau. Individuele attributies ("u bent gestrest omdat de index hoog is") zijn ecologische drogredenen en niet ondersteund door het instrument.</p>
+<p><strong>De SBI is geen peer-reviewed wetenschappelijk instrument.</strong>
+Het instrument is gebouwd zonder veldwerk en zonder institutionele affiliatie. Het kan daarom geen aanspraak maken op publicatie in een wetenschappelijk tijdschrift of op validatie via een academisch reviewproces. Wat de SBI wel is: een transparant gedocumenteerde, publiek herhaalbare meting met expliciete methodologische verantwoording.</p>
+<p><strong>De SBI is geen voorspeller van individueel gedrag.</strong>
+Correlatie tussen aggregaatcondities en aggregaatgedrag betekent niet dat de SBI voorspelt of voorschrijft wat enig individu zal of moet doen.</p>
+<hr />
+<h2 id="4-het-construct-wat-de-sbi-meet">4. Het construct: wat de SBI meet</h2>
+<h3 id="41-constructdefinitie">4.1 Constructdefinitie</h3>
+<blockquote>
+<p><strong>De Stressor-Blootstellings-Index meet de aggregaat-blootstelling van een populatie aan omgevings-, economische, sociale en mediaomstandigheden waarvan de literatuur consistent aantoont dat ze geassocieerd zijn met stressrespons op populatieniveau, ten opzichte van een gedocumenteerde historische baseline.</strong></p>
+</blockquote>
+<p>Drie elementen verdienen toelichting:</p>
+<p><em>Aggregaat-blootstelling.</em> De SBI meet hoeveel stressoren-condities aanwezig zijn en in welke mate — niet hoeveel mensen stress <em>ervaren</em>. Het verschil is fundamenteel.</p>
+<p><em>Literatuur consistent aantoont.</em> Elke indicator die in laag 3 wordt opgenomen moet rusten op systematic-review- of meta-analyse-grade evidence.</p>
+<p><em>Geassocieerd met stressrespons op populatieniveau.</em> Het causale verband tussen blootstelling en respons hoeft niet gevestigd; een robuuste associatie volstaat. Maar de associatie moet expliciet gedocumenteerd zijn met bronvermelding.</p>
+<h3 id="42-wat-het-construct-uitsluit">4.2 Wat het construct uitsluit</h3>
+<p>Drie zaken die de SBI bewust niet meet:</p>
+<ol>
+<li>
+<p><em>Subjectieve appraisal.</em> De cognitieve waardering die een individu maakt van demand-vs-resources (Lazarus &amp; Folkman 1984) is per definitie subjectief en alleen via zelfrapportage meetbaar.</p>
+</li>
+<li>
+<p><em>Resources-zijde.</em> Beschermende resources (sociale steun, controlegevoel, slaapkwaliteit, financiële reserve, hersteltijd) zijn niet op hoge frequentie uit publieke data te halen. De SBI meet alleen de demand-zijde. Dit is een expliciete keuze, geen omissie.</p>
+</li>
+<li>
+<p><em>Fysiologische stress-merkers.</em> Cortisolritmes, hartritmevariabiliteit, inflammatie-merkers zijn klinische metingen. De SBI gebruikt geen fysiologische data.</p>
+</li>
+</ol>
+<hr />
+<h2 id="5-ondersteunende-theoretische-kaders">5. Ondersteunende theoretische kaders</h2>
+<p>De SBI steunt <em>op</em> drie wetenschappelijke tradities, zonder te claimen te meten wat zij meten. Elk kader beantwoordt een vraag die de SBI moet beantwoorden.</p>
+<h3 id="51-allostatic-load-theory-mcewen">5.1 Allostatic Load Theory (McEwen)</h3>
+<p><em>Welke vraag beantwoordt het:</em> "wat is stress epidemiologisch, niet klinisch?"</p>
+<p>McEwen (1998, 1993) ontwikkelde <em>allostatic load</em> als concept voor de cumulatieve fysiologische en psychologische belasting die ontstaat wanneer een organisme zich herhaaldelijk aanpast aan demand.</p>
+<p><em>Wat we ervan overnemen:</em> het idee dat cumulatieve blootstelling zwaarder weegt dan acute incidenten; dat populatie-stress legitiem via meerdere indicatoren benaderd kan worden.</p>
+<p><em>Wat we niet overnemen:</em> de biologische merkers (cortisol, bloeddruk, ontsteking) die McEwen zelf gebruikt — die zijn klinisch. We claimen niet allostatic load te meten.</p>
+<h3 id="52-social-determinants-of-health-framework-marmot-who">5.2 Social Determinants of Health framework (Marmot, WHO)</h3>
+<p><em>Welke vraag beantwoordt het:</em> "welke domeinen van publieke conditie zijn legitiem onderdeel van een stressrelevante meting?"</p>
+<p>Marmot (Whitehall-studies; WHO 2008) toonde aan dat sociale, economische en omgevingsdeterminanten op populatieniveau zwaar wegen op gezondheid en welzijn.</p>
+<p><em>Wat we ervan overnemen:</em> de domein-taxonomie als ruggengraat voor indicator-indeling; de legitimering dat publieke determinanten een gerechtvaardigd meetdoel zijn.</p>
+<p><em>Wat we niet overnemen:</em> gezondheidsuitkomsten zelf (de SBI meet condities, niet uitkomsten); de lange tijdshorizon (SDoH meet over decennia; de SBI over dagen tot weken).</p>
+<h3 id="53-conservation-of-resources-theory-hobfoll">5.3 Conservation of Resources theory (Hobfoll)</h3>
+<p><em>Welke vraag beantwoordt het:</em> "waarom werken stressoren in de richting waarin we ze meten?"</p>
+<p>Hobfoll (1989) postuleerde dat stress ontstaat wanneer hulpbronnen bedreigd, verloren of niet aangevuld worden. Hoewel CoR oorspronkelijk individueel-resource-gericht is, biedt het een mechanistische verklaring voor waarom externe condities populatiebreed werken.</p>
+<p><em>Wat we ervan overnemen:</em> het mechanisme dat verlies-, dreiging- en uitputtingscondities relevant zijn als populatie-stressoren.</p>
+<p><em>Wat we niet overnemen:</em> individuele resource-meting; de interventie-implicaties.</p>
+<h3 id="54-eerlijke-beperking-theorie-meet-mismatch">5.4 Eerlijke beperking: theorie-meet-mismatch</h3>
+<p>Geen van deze drie kaders <em>meet</em> wat de SBI meet. McEwen meet biologie; Marmot meet uitkomsten; Hobfoll meet individuen. De SBI meet publieke blootstelling.</p>
+<p>Wat de SBI doet is: de drie kaders gebruiken om <em>te rechtvaardigen welke condities zinvol zijn om te volgen</em>, zonder te claimen die kaders methodologisch te implementeren. Dit is een eerlijke positie. We staan op de schouders van wetenschap die we niet zelf bedrijven.</p>
+<h3 id="55-waarom-lazarus-en-holmes-rahe-niet-als-ondersteunend-kader">5.5 Waarom Lazarus en Holmes-Rahe niet als ondersteunend kader</h3>
+<p>Het transactionele stressmodel (Lazarus &amp; Folkman 1984) is appraisal-gebaseerd en daarmee individueel en subjectief. Het ondersteunt de SBI niet — een methodologie op publieke data kan appraisal niet meten.</p>
+<p>Holmes-Rahe Social Readjustment Rating Scale (1967) is Westers-biased, individu-gericht, statisch, en weegt life events met arbitraire scores. We citeren het niet als precedent.</p>
+<hr />
+<h2 id="6-conceptueel-model">6. Conceptueel model</h2>
+<pre><code>                       ┌─────────────────────────────────┐
+                       │  STRESSOR-BLOOTSTELLINGS-INDEX  │
+                       │              (SBI)              │
+                       │                                 │
+                       │   meet: AGGREGAATBLOOTSTELLING  │
+                       │   uit: PUBLIEKE DATA            │
+                       │   tegen: HISTORISCHE BASELINE   │
+                       └─────────────────┬───────────────┘
+                                         │
+                                         │ signal
+                                         ▼
+                       ┌─────────────────────────────────┐
+                       │  PERCENTIEL-POSITIE             │
+                       │  + verhoogd-blootstellings-     │
+                       │    venster ja/nee               │
+                       └─────────────────────────────────┘
+
+   wat ERTUSSEN zit en NIET door de SBI gemeten wordt:
+   ─────────────────────────────────────────────────────
+   Appraisal (Lazarus) · Individuele resources (Hobfoll) · Coping ·
+   Individuele kwetsbaarheid · Sociale steun · Slaap · Klinische stressrespons
+</code></pre>
+<p>De SBI staat aan de linkerkant van het stressproces: bij de <em>condities</em>. Wat na conditie komt ligt buiten het instrument.</p>
+<hr />
+<h2 id="7-domein-taxonomie-laag-2">7. Domein-taxonomie (laag 2)</h2>
+<h3 id="71-bron-van-de-taxonomie">7.1 Bron van de taxonomie</h3>
+<p>De SBI-domeinen zijn afgeleid van de Social Determinants of Health-domeinen (WHO 2008) en aangevuld met domeinen die in de stressliteratuur consistent voorkomen maar buiten SDoH vallen.</p>
+<h3 id="72-de-zes-sbi-domeinen-v02-consolidatie">7.2 De zes SBI-domeinen (v0.2-consolidatie)</h3>
+<table>
+<thead>
+<tr>
+<th>Domein</th>
+<th>Wetenschappelijke basis</th>
+<th>Voorbeelden van indicator-typen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D1. Omgeving &amp; klimaat</strong></td>
+<td>Environmental psychology; Attention Restoration Theory; chronobiologie</td>
+<td>Weer, licht, luchtkwaliteit</td>
+</tr>
+<tr>
+<td><strong>D2. Mobiliteit &amp; ruimte</strong></td>
+<td>Crowding research (Evans, 1979); commute stress (Novaco et al, 1990)</td>
+<td>Verkeer, drukte, brandstof</td>
+</tr>
+<tr>
+<td><strong>D3. Economische conditie</strong></td>
+<td>SDoH economic stability; behavioral economics</td>
+<td>Prijzen, koopkracht, werkmarkt</td>
+</tr>
+<tr>
+<td><strong>D4. Werk &amp; belasting</strong></td>
+<td>Job Demand-Resources model; Effort-Reward Imbalance</td>
+<td>Deadlinekalender, opvangdruk</td>
+</tr>
+<tr>
+<td><strong>D5. Media &amp; collectieve gebeurtenissen</strong></td>
+<td>Mean World Syndrome (Gerbner); collective trauma literature (Holman et al)</td>
+<td>Nieuwsnegativiteit, gebeurtenissen</td>
+</tr>
+<tr>
+<td><strong>D6. Kalender &amp; ritme</strong></td>
+<td>Chronobiologie; weekly cycle research</td>
+<td>Weekdag, klok verzetten, examens</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verandering tegenover v0.1:</strong> in v0.1 waren D5 (sociaal) en D6 (media) gescheiden, met D5 een placeholder-domein met één event-indicator. In v0.2 zijn ze samengevoegd omdat collectieve gebeurtenissen voornamelijk via mediablootstelling werken, en omdat een 1-indicator-domein geen domein is maar een tag. Voorts is I-D7-004 (seizoensfase) verplaatst naar secundaire set vanwege wiskundige overlap met I-D1-001 (daglichturen) — dit voorkomt dubbeltelling van het seizoenseffect.</p>
+<h3 id="73-inclusiecriteria-voor-indicatoren">7.3 Inclusiecriteria voor indicatoren</h3>
+<p>Een indicator komt in aanmerking dan en slechts dan als ze aan álle vijf voldoet:</p>
+<ol>
+<li><strong>Theoretische verankering</strong> in ten minste één van de drie ondersteunende kaders</li>
+<li><strong>Empirische evidence</strong> op systematic-review- of meta-analyse-niveau van associatie met stressrespons op populatieniveau</li>
+<li><strong>Publieke beschikbaarheid</strong> — geen proprietary data, geen veldwerk</li>
+<li><strong>Tijdsresolutie ≤ wekelijks</strong></li>
+<li><strong>Gedocumenteerde confounder-set</strong></li>
+</ol>
+<p>Indicatoren die niet aan alle vijf voldoen worden expliciet vermeld in de exclusion log met reden.</p>
+<h3 id="74-counter-evidence-discipline">7.4 Counter-evidence-discipline</h3>
+<p>Per indicator in laag 3 wordt een "contrasterend bewijs"-veld opgenomen, om one-sided lit-review te voorkomen. Beperking: dit is een redelijke-search-acknowledgment, geen systematische Cochrane-bias-assessment.</p>
+<hr />
+<h2 id="8-falsifieerbaarheidscriteria">8. Falsifieerbaarheidscriteria</h2>
+<p>In de geest van Popper (1959): een methodologie die onder geen denkbare omstandigheid verworpen kan worden, is geen wetenschap maar geloof. De SBI wordt vooraf gebonden aan vijf condities waarvan vervulling de methodologie als ongeldig kwalificeert.</p>
+<p><strong>F1. Inconsistentie bij externe schok.</strong>
+Indien de SBI niet stijgt boven baseline tijdens een onbetwiste externe stressor van nationale schaal (oorlogsverklaring, pandemie-uitroeping, massale uitval van basisinfrastructuur), is de methodologie verworpen.</p>
+<p><strong>F2. Mono-causaliteit.</strong>
+Indien sensitivity-analyse aantoont dat één enkele indicator meer dan 60% van de variatie in het composiet verklaart, is het composiet feitelijk een verkapte enkelvoudige meting en de methodologie verworpen.</p>
+<p><strong>F3. Placebo-doorbraak.</strong>
+Indien een vooraf gedefinieerde placebo-indicator een statistisch significant effect op het composiet uitoefent, is een methodologische fout aanwezig en de huidige versie verworpen tot identificatie.</p>
+<p><strong>F4. Convergentiefalen.</strong>
+Indien de SBI bij triangulatie tegen onafhankelijke gedragsproxies over een periode van 24 maanden geen statistisch significante convergentie vertoont, is de externe geldigheid onvoldoende en de methodologie verworpen.</p>
+<p><strong>F5. Reproduceerbaarheidsfalen.</strong>
+Indien onafhankelijke replicatie via de gepubliceerde open methodologie tot materieel afwijkende resultaten leidt (verschil &gt; 10% in dagscores over een gemeenschappelijke testperiode), is de specificatie onvolledig en de methodologie verworpen tot herziening.</p>
+<hr />
+<h2 id="9-scope-afbakening">9. Scope-afbakening</h2>
+<p><strong>Bevolking.</strong> De SBI meet condities zoals ze zich voordoen in een gedefinieerd geografisch gebied (werkhypothese: België).</p>
+<p><strong>Tijdsresolutie.</strong> Wekelijkse update als standaard. Dagelijkse uitsplitsing waar databronnen het toelaten.</p>
+<p><strong>Geografische scope.</strong> Eén werkmarkt per index-instantie. Een Belgische SBI bestaat los van een Nederlandse SBI; ze zijn niet onderling vergelijkbaar zonder afzonderlijke validatie.</p>
+<p><strong>Tijdshorizon.</strong> Acute condities (dagen-weken).</p>
+<p><strong>Wat buiten scope valt.</strong> Individuele meting; klinische uitspraak; voorspelling; vergelijking tussen landen; toewijzing aan demografische groepen; causale claim over stressoorzaak van enige gebeurtenis.</p>
+<hr />
+<h2 id="10-output-specificatie">10. Output-specificatie</h2>
+<p>Het systeem levert drie outputs:</p>
+<ol>
+<li>
+<p><strong>Dagelijkse/wekelijkse percentiel-positie</strong> van het composiet ten opzichte van een 24-maands voortschrijdende baseline én een vaste pre-pandemische referentieperiode.</p>
+</li>
+<li>
+<p><strong>Status van het verhoogd-blootstellings-venster</strong> — open / gesloten — gebaseerd op pre-geregistreerde drempelwaarde.</p>
+</li>
+<li>
+<p><strong>Indicator-bijdrage-overzicht</strong> — welke domeinen en indicatoren het meest bijdragen aan de huidige stand.</p>
+</li>
+</ol>
+<p>Het systeem geeft geen aanbeveling, geen waarschuwing, geen diagnose. Het rapporteert positie en signaalstatus.</p>
+<hr />
+<h2 id="11-wetenschappelijke-positionering">11. Wetenschappelijke positionering</h2>
+<p>De SBI is <em>geen</em> peer-reviewed wetenschappelijk instrument. Het zal nooit in een tijdschrift met impact factor verschijnen.</p>
+<p>De SBI <em>is</em> een literatuur-onderbouwde, transparant gedocumenteerde publieke meting met:</p>
+<ul>
+<li>Open methodologie (pre-geregistreerd, publiek vindbaar)</li>
+<li>Open data-bronnen (uitsluitend publiek)</li>
+<li>Open code (reproduceerbaar)</li>
+<li>Open kritiek (bug-bounty model voor methodologische uitdagingen)</li>
+<li>Externe lichte adviesraad (individuele academici uit tegengestelde methodologische scholen)</li>
+</ul>
+<p>Dit is een eerlijk plafond. We positioneren de SBI niet als wetenschap-met-grote-W, maar als rigoureus gedocumenteerde publieke meting.</p>
+<hr />
+<h2 id="12-volgende-stappen">12. Volgende stappen</h2>
+<p>Wanneer dit anker-paper publiek gemaakt en pre-geregistreerd is (zie <code>00_Pre-Registratie.md</code>), opent laag 3: indicator-selectie per domein.</p>
+<p>Vóór laag 3:</p>
+<ol>
+<li>Externe lichte adviesraad samenstellen (minstens drie individuele academici uit verschillende methodologische tradities, met expliciet adversariële rol)</li>
+<li>Pre-registratie indienen op OSF</li>
+<li>Publieke kritiek-periode openen — minimaal 30 dagen</li>
+</ol>
+<p>Pas daarna komt indicator-selectie. Pas daarna komt data. Pas daarna komt meting.</p>
+<hr />
+<h2 id="bronnen">Bronnen</h2>
+<p>Cleveland, R. B., Cleveland, W. S., McRae, J. E., &amp; Terpenning, I. (1990). STL: A seasonal-trend decomposition procedure based on Loess. <em>Journal of Official Statistics</em>, 6(1), 3-73.</p>
+<p>Evans, G. W. (1979). Behavioral and physiological consequences of crowding in humans. <em>Journal of Applied Social Psychology</em>, 9, 27-46.</p>
+<p>Gerbner, G., &amp; Gross, L. (1976). Living with television: The violence profile. <em>Journal of Communication</em>, 26(2), 172-194.</p>
+<p>Hobfoll, S. E. (1989). Conservation of resources: A new attempt at conceptualizing stress. <em>American Psychologist</em>, 44(3), 513-524.</p>
+<p>Holmes, T. H., &amp; Rahe, R. H. (1967). The Social Readjustment Rating Scale. <em>Journal of Psychosomatic Research</em>, 11(2), 213-218.</p>
+<p>Lazarus, R. S., &amp; Folkman, S. (1984). <em>Stress, appraisal, and coping</em>. Springer.</p>
+<p>McEwen, B. S. (1998). Stress, adaptation, and disease. <em>Annals of the New York Academy of Sciences</em>, 840, 33-44.</p>
+<p>McEwen, B. S., &amp; Stellar, E. (1993). Stress and the individual. <em>Archives of Internal Medicine</em>, 153(18), 2093-2101.</p>
+<p>Novaco, R. W., Stokols, D., &amp; Milanesi, L. (1990). Objective and subjective dimensions of travel impedance. <em>American Journal of Community Psychology</em>, 18(2), 231-257.</p>
+<p>Popper, K. R. (1959). <em>The logic of scientific discovery</em>. Hutchinson.</p>
+<p>Seeman, T. E., McEwen, B. S., Rowe, J. W., &amp; Singer, B. H. (2001). Allostatic load as a marker of cumulative biological risk. <em>PNAS</em>, 98(8), 4770-4775.</p>
+<p>Steegen, S., Tuerlinckx, F., Gelman, A., &amp; Vanpaemel, W. (2016). Increasing transparency through a multiverse analysis. <em>Perspectives on Psychological Science</em>, 11(5), 702-712.</p>
+<p>WHO Commission on Social Determinants of Health (2008). <em>Closing the gap in a generation</em>. World Health Organization.</p>
+<hr />
+<h1 id="02_laag-3_indicator-selectie">02_Laag-3_Indicator-Selectie</h1>
+<p><em>Bronbestand: <code>02_Laag-3_Indicator-Selectie.md</code></em></p>
+<h1 id="stressor-blootstellings-index-sbi_2">Stressor-Blootstellings-Index (SBI)</h1>
+<h2 id="laag-3-indicator-selectie-per-domein">Laag 3: Indicator-selectie per domein</h2>
+<p><strong>Status:</strong> v0.2 — werkdocument
+<strong>Document:</strong> laag 3 van de methodologie
+<strong>Bouwt op:</strong> 01_Anker-Paper.md (laag 1 + 2)
+<strong>Auteur:</strong> BRAINWOLVES
+<strong>Datum:</strong> mei 2026</p>
+<hr />
+<h2 id="0-samenvatting_1">0. Samenvatting</h2>
+<p>Dit document selecteert indicatoren voor elk van de zes SBI-domeinen die in het anker-paper zijn vastgelegd. Per domein worden kandidaat-indicatoren beoordeeld langs vijf inclusiecriteria en een vierpunts-evidence-grading. Het document levert vier zaken op: (1) een inclusielijst van indicatoren die het primaire composiet vormen, (2) een secundaire lijst voor sensitivity-analyse, (3) een expliciete exclusion log van overwogen-maar-afgewezen indicatoren, en (4) per indicator een acknowledgement van contrasterend bewijs voor zover bekend.</p>
+<p>Indicator-selectie volgt voor laag 4 (operationalisering), niet andersom.</p>
+<hr />
+<h2 id="1-doel-en-relatie-tot-het-anker-paper">1. Doel en relatie tot het anker-paper</h2>
+<p>Het anker-paper legde vast <em>wat</em> de SBI meet (publieke blootstelling aan stressoren-condities geassocieerd met stressrespons op populatieniveau) en in <em>welke domeinen</em>. Dit document legt vast <em>welke concrete indicatoren</em> in die domeinen voldoen aan de inclusiecriteria.</p>
+<p>Selectie volgt een strikt protocol: een indicator komt in aanmerking dan en slechts dan als ze aan alle vijf criteria voldoet (zie §3). De evidence-strength bepaalt vervolgens of de indicator in de <em>primaire set</em> (composiet) of de <em>secundaire set</em> (sensitivity) terechtkomt.</p>
+<p>Indicatoren die overwogen maar niet geselecteerd worden, gaan naar de exclusion log met expliciete reden. Dit beschermt tegen stille selectie-bias.</p>
+<hr />
+<h2 id="2-evidence-grading-schema">2. Evidence-grading-schema</h2>
+<p>Aangepast van GRADE (Grading of Recommendations Assessment, Development and Evaluation) en Cochrane-conventies, vereenvoudigd voor populatieniveau-stressoren.</p>
+<table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>Criterium</th>
+<th>Lot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A — High</strong></td>
+<td>≥1 meta-analyse OF ≥2 systematic reviews die associatie met stressrespons op populatieniveau ondersteunen</td>
+<td>Primaire set</td>
+</tr>
+<tr>
+<td><strong>B — Moderate</strong></td>
+<td>1 systematic review OF ≥3 consistente cohortstudies</td>
+<td>Primaire set</td>
+</tr>
+<tr>
+<td><strong>C — Low</strong></td>
+<td>Meerdere consistente individuele studies, geen SR</td>
+<td>Secundaire set (sensitivity)</td>
+</tr>
+<tr>
+<td><strong>D — Very Low</strong></td>
+<td>Enkele studie of alleen mechanistische evidentie</td>
+<td>Uitgesloten</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Regel:</strong> alleen grade A en B vormen het primaire composiet. Grade C wordt parallel gerapporteerd in sensitivity-analyse. Grade D komt niet in de index.</p>
+<p><strong>Beperking van de grading:</strong> evidence-grade weerspiegelt <em>hoeveel onderzoek</em> een associatie ondersteunt, niet <em>hoe sterk</em> de associatie is. Een goed-onderzochte zwakke associatie krijgt hoger gewicht dan een matig-onderzochte sterke associatie. Dit is een bekende beperking van evidence-grading-systemen; geaccepteerd omdat alternatieven (effect-size-weging) datawerk vereisen dat buiten scope ligt.</p>
+<hr />
+<h2 id="3-inclusiecriteria">3. Inclusiecriteria</h2>
+<p>Een indicator komt in aanmerking dan en slechts dan als ze aan álle vijf voldoet:</p>
+<ol>
+<li><strong>Theoretische verankering</strong> in minstens één ondersteunend kader (allostatic load, SDoH, CoR)</li>
+<li><strong>Empirische evidence</strong> op SR/MA-niveau (grade A of B)</li>
+<li><strong>Publieke beschikbaarheid</strong> — geen proprietary data, geen veldwerk</li>
+<li><strong>Tijdsresolutie ≤ wekelijks</strong></li>
+<li><strong>Gedocumenteerde confounder-set</strong></li>
+</ol>
+<hr />
+<h2 id="4-domein-d1-omgeving-klimaat">4. Domein D1 — Omgeving &amp; klimaat</h2>
+<h3 id="d11-daglichturen-lichtblootstelling">D1.1 Daglichturen / lichtblootstelling</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> Allostatic Load (chronobiologische component); SDoH neighborhood/environment</li>
+<li><strong>Pathway:</strong> verminderde lichtblootstelling → circadiane verstoring → verlaagde serotonine-/melatonine-functie → verhoogde affectieve dysregulatie en SAD-symptomen op populatieniveau</li>
+<li><strong>Evidence:</strong> Rosenthal et al (1984) primaire SAD-beschrijving; Lam &amp; Levitt (1999) reviewmonograaf; Golden et al (2005, <em>Am J Psychiatry</em>) meta-analyse lichttherapie en stemmingsstoornissen</li>
+<li><strong>Grade:</strong> A</li>
+<li><strong>Contrasterend bewijs:</strong> Mersch et al (1999) toont dat SAD-prevalentie minder consistent is dan vaak gerapporteerd; effectgroottes van lichteffecten op populatieniveau variëren sterk per breedtegraad</li>
+<li><strong>Operationalisering:</strong> uren tussen zonsopgang en zonsondergang per locatie, eventueel gecorrigeerd voor bewolking via solar irradiance (KW/m²)</li>
+<li><strong>Databron:</strong> KMI/RMI (openbare meteodata)</li>
+<li><strong>Resolutie:</strong> dagelijks</li>
+<li><strong>Historische beschikbaarheid:</strong> &gt;50 jaar</li>
+<li><strong>Confounders:</strong> seizoenseffect (gedeeltelijk gewenst signaal); activity levels; sociale isolatie in winter</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<h3 id="d12-temperatuur-extremen-hitte-en-kou">D1.2 Temperatuur-extremen (hitte en kou)</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> Allostatic Load (thermoregulatie); SDoH neighborhood/environment</li>
+<li><strong>Pathway:</strong> thermoregulatieve belasting → slaapverstoring (hitte &gt; 25°C 's nachts) → cumulatieve allostatic load → stressrespons</li>
+<li><strong>Evidence:</strong> Hajat et al (2010, <em>Epidemiology</em>); Thompson et al (2018, <em>Sci Total Environ</em>); Liu et al (2021)</li>
+<li><strong>Grade:</strong> A (hitte), B (kou)</li>
+<li><strong>Contrasterend bewijs:</strong> sommige analyses (Burke et al 2018) suggereren dat acclimatisering hitte-effecten op populatieniveau ten dele neutraliseert; effectgroottes variëren tussen klimaatzones</li>
+<li><strong>Operationalisering:</strong> dagen met Tmax &gt; 30°C; tropische nachten (Tmin &gt; 20°C); koude-episodes (Tmin &lt; -5°C); afwijking van seizoensgemiddelde</li>
+<li><strong>Databron:</strong> KMI/RMI</li>
+<li><strong>Resolutie:</strong> dagelijks</li>
+<li><strong>Confounders:</strong> vochtigheid; sociale gatherings; air-conditioning-toegang naar SES</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair, hitte); INGESLOTEN (primair, kou)</strong></li>
+</ul>
+<h3 id="d13-luchtkwaliteit-pm25-ozon-no2">D1.3 Luchtkwaliteit (PM2.5, ozon, NO₂)</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> Allostatic Load (inflammatoire pathway); SDoH neighborhood/environment</li>
+<li><strong>Pathway:</strong> fijnstof- en ozonblootstelling → systeem-inflammatie + cerebrale ontsteking → verhoogd depressie- en angstrisico</li>
+<li><strong>Evidence:</strong> Braithwaite et al (2019, <em>Environ Health Perspect</em>) meta-analyse; Newbury et al (2019, <em>JAMA Psychiatry</em>); WHO (2021)</li>
+<li><strong>Grade:</strong> A</li>
+<li><strong>Contrasterend bewijs:</strong> effect-omkering bij lage blootstellingen (lineair-niet-drempel-debat in luchtkwaliteit-epidemiologie); methodologische kritieken op cohorts met overlap stedelijke confounders</li>
+<li><strong>Operationalisering:</strong> dagelijkse gemiddelden PM2.5, max ozon, NO₂ — relatief tot WHO-grenswaarden</li>
+<li><strong>Databron:</strong> IRCEL-CELINE (publiek)</li>
+<li><strong>Resolutie:</strong> uurlijks/dagelijks</li>
+<li><strong>Confounders:</strong> correlatie met weer (windstilte), verkeer, seizoen</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<h3 id="d14-luchtdruk-schommelingen">D1.4 Luchtdruk-schommelingen</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> Allostatic Load (chronobiologische/fysiologische component)</li>
+<li><strong>Evidence:</strong> Hoffmann et al (2011); verspreide studies, geen SR op populatieniveau</li>
+<li><strong>Grade:</strong> C</li>
+<li><strong>Contrasterend bewijs:</strong> Hoffmann et al (2015) replicatiepoging vond geen consistent verband; debat over weeromslag-stress is folklore-zwaar</li>
+<li><strong>Beslissing:</strong> <strong>SECUNDAIRE SET</strong></li>
+</ul>
+<h3 id="d15-pollenconcentratie">D1.5 Pollenconcentratie</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> Allostatic Load (allergische inflammatie)</li>
+<li><strong>Evidence:</strong> D'Amato et al (2007) overzicht; verband met depressie minder hard</li>
+<li><strong>Grade:</strong> C</li>
+<li><strong>Contrasterend bewijs:</strong> verband pollen-stress is grotendeels indirect via allergie-symptomen, niet rechtstreeks</li>
+<li><strong>Beslissing:</strong> <strong>SECUNDAIRE SET</strong></li>
+</ul>
+<h3 id="d16-lawaaiblootstelling">D1.6 Lawaaiblootstelling</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> Allostatic Load; SDoH</li>
+<li><strong>Evidence:</strong> WHO Environmental Noise Guidelines (2018) — A-grade voor cardiovasculair/slaap; B voor mentale gezondheid (Hahad et al 2019)</li>
+<li><strong>Grade:</strong> B</li>
+<li><strong>Beslissing:</strong> <strong>UITGESLOTEN</strong> — voldoet niet aan criterium 4 (geen wekelijkse publieke data op populatieniveau beschikbaar in België)</li>
+</ul>
+<hr />
+<h2 id="5-domein-d2-mobiliteit-ruimte">5. Domein D2 — Mobiliteit &amp; ruimte</h2>
+<h3 id="d21-filezwaarte-verkeerscongestie">D2.1 Filezwaarte (verkeerscongestie)</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> Conservation of Resources (tijd, controle); SDoH</li>
+<li><strong>Pathway:</strong> lange/onvoorspelbare reistijd → autonomieverlies + tijdsverlies → cortisol-respons (Novaco et al 1990)</li>
+<li><strong>Evidence:</strong> Novaco et al (1990) originele studie; Stutzer &amp; Frey (2008); Künn-Nelen (2016); Chatterjee et al (2020) systematic review</li>
+<li><strong>Grade:</strong> A</li>
+<li><strong>Contrasterend bewijs:</strong> Lorenz (2018) en sommige studies in stedelijke contexten tonen dat reistijd na controle voor SES en woon-werk-locatiekeuze veel zwakker correleert met welzijn; "commute paradox" suggereert zelfselectie-bias in cross-sectionele studies</li>
+<li><strong>Operationalisering:</strong> totale file-kilometers spitsuur; gemiddelde vertraging in minuten</li>
+<li><strong>Databron:</strong> Vlaams Verkeerscentrum (publiek dagelijks)</li>
+<li><strong>Resolutie:</strong> uurlijks/dagelijks</li>
+<li><strong>Confounders:</strong> weer; vakantieperiodes; ongevallen; wegenwerken</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<h3 id="d22-openbaar-vervoer-verstoringen">D2.2 Openbaar-vervoer-verstoringen</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> CoR (controle, voorspelbaarheid)</li>
+<li><strong>Evidence:</strong> Cheng (2010) train delay and commuter stress</li>
+<li><strong>Grade:</strong> B</li>
+<li><strong>Contrasterend bewijs:</strong> beperkte literatuur, voornamelijk klein-schalige studies</li>
+<li><strong>Beslissing:</strong> <strong>HOLD</strong> — voldoet aan criterium 4 alleen indien dagelijkse aggregaten via NMBS/Infrabel beschikbaar. Te bevestigen in laag 4.</li>
+</ul>
+<h3 id="d23-aangekondigde-stakingen-openbaar-vervoer">D2.3 Aangekondigde stakingen openbaar vervoer</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> CoR (anticipatorische resource-loss)</li>
+<li><strong>Grade:</strong> C</li>
+<li><strong>Beslissing:</strong> <strong>SECUNDAIRE SET</strong></li>
+</ul>
+<h3 id="d24-brandstofprijzen">D2.4 Brandstofprijzen</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> CoR (financiële resource); SDoH economic</li>
+<li><strong>Pathway:</strong> verhoogde brandstofprijs → koopkrachtdruk + mobiliteitsbeperking → cumulatieve stress</li>
+<li><strong>Evidence:</strong> financial stress literature (Brüggen et al 2017)</li>
+<li><strong>Grade:</strong> B</li>
+<li><strong>Contrasterend bewijs:</strong> prijs-effecten op stress zijn sterk gemoduleerd door inkomen; geen direct SR voor brandstofprijs specifiek</li>
+<li><strong>Databron:</strong> FOD Economie maximumprijzen</li>
+<li><strong>Resolutie:</strong> dagelijks</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<h3 id="d25-aangekondigde-grote-wegenwerken">D2.5 Aangekondigde grote wegenwerken</h3>
+<ul>
+<li><strong>Grade:</strong> D</li>
+<li><strong>Beslissing:</strong> <strong>UITGESLOTEN</strong></li>
+</ul>
+<hr />
+<h2 id="6-domein-d3-economische-conditie">6. Domein D3 — Economische conditie</h2>
+<h3 id="d31-consumptieprijsindex-inflatie">D3.1 Consumptieprijsindex (inflatie)</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> CoR (financiële resource); SDoH economic stability</li>
+<li><strong>Evidence:</strong> Brüggen et al (2017); Kahneman &amp; Tversky (1979); meerdere SR financial-strain</li>
+<li><strong>Grade:</strong> A</li>
+<li><strong>Contrasterend bewijs:</strong> Easterlin paradox-debat suggereert dat absolute inkomensniveaus minder voorspellend zijn voor welzijn dan relatieve veranderingen</li>
+<li><strong>Operationalisering:</strong> jaar-op-jaar CPI-stijging</li>
+<li><strong>Databron:</strong> STATBEL</li>
+<li><strong>Resolutie:</strong> maandelijks (forward-filled in wekelijks composiet)</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair, chronische component)</strong></li>
+</ul>
+<h3 id="d32-energieprijzen-gas-elektriciteit">D3.2 Energieprijzen (gas, elektriciteit)</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> CoR; SDoH economic</li>
+<li><strong>Evidence:</strong> Thomson et al (2017); Liddell &amp; Morris (2010) review energy poverty</li>
+<li><strong>Grade:</strong> B</li>
+<li><strong>Contrasterend bewijs:</strong> prijs-effecten gefilterd door energiearmoede-status; niet alle huishoudens even gevoelig</li>
+<li><strong>Databron:</strong> VREG/CREG; Eurostat</li>
+<li><strong>Resolutie:</strong> wekelijks</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<h3 id="d33-aangekondigde-collectieve-ontslagen">D3.3 Aangekondigde collectieve ontslagen</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> CoR (job-resource threat); SDoH economic</li>
+<li><strong>Evidence:</strong> Brand (2015) meta-analyse; Burgard et al (2009); De Witte et al (2016) SR</li>
+<li><strong>Grade:</strong> A</li>
+<li><strong>Contrasterend bewijs:</strong> spillover van aangekondigde ontslagen naar niet-betrokkenen is matig sterk maar niet consistent over alle studies</li>
+<li><strong>Operationalisering:</strong> log(1 + werknemers in collectieve-ontslagprocedures per week)</li>
+<li><strong>Databron:</strong> FOD WASO</li>
+<li><strong>Resolutie:</strong> wekelijks</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<h3 id="d34-beurs-volatiliteit-bel20">D3.4 Beurs-volatiliteit (BEL20)</h3>
+<ul>
+<li><strong>Grade:</strong> C</li>
+<li><strong>Contrasterend bewijs:</strong> populatie-stress-effect via media-transmissie minder hard onderbouwd dan beleggers-effect</li>
+<li><strong>Beslissing:</strong> <strong>SECUNDAIRE SET</strong></li>
+</ul>
+<h3 id="d35-werkloosheidscijfer">D3.5 Werkloosheidscijfer</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> SDoH economic; CoR</li>
+<li><strong>Grade:</strong> A</li>
+<li><strong>Databron:</strong> STATBEL / Steunpunt Werk</li>
+<li><strong>Resolutie:</strong> maandelijks</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair, chronische component)</strong></li>
+</ul>
+<h3 id="d36-hypotheekrente">D3.6 Hypotheekrente</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> CoR; financial stress literature</li>
+<li><strong>Grade:</strong> B</li>
+<li><strong>Databron:</strong> NBB</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair, chronische component)</strong></li>
+</ul>
+<hr />
+<h2 id="7-domein-d4-werk-belasting">7. Domein D4 — Werk &amp; belasting</h2>
+<p><em>Notitie: D4 lijdt structureel onder gebrek aan hoogfrequente publieke werkstress-data.</em></p>
+<h3 id="d41-kalendarische-deadlinepieken">D4.1 Kalendarische deadlinepieken</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> JDR-model (Bakker &amp; Demerouti 2007); CoR</li>
+<li><strong>Evidence:</strong> Bakker &amp; Demerouti (2007, 2017); Sonnentag (2018) recovery-literatuur</li>
+<li><strong>Grade:</strong> B</li>
+<li><strong>Contrasterend bewijs:</strong> literatuur over deadlines is overwegend laboratoriumonderzoek; populatie-effect minder direct gedocumenteerd</li>
+<li><strong>Operationalisering:</strong> binaire vlaggen voor belastingdeadline-week, kwartaaleinde, jaareinde</li>
+<li><strong>Databron:</strong> kalender-deterministisch</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<h3 id="d42-schoolvakantie-zonder-opvang-druk">D4.2 Schoolvakantie-zonder-opvang-druk</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> CoR (tijd, sociale resource); JDR</li>
+<li><strong>Evidence:</strong> Bianchi et al (2012); Crouter et al (2001)</li>
+<li><strong>Grade:</strong> B</li>
+<li><strong>Contrasterend bewijs:</strong> effectgrootte sterk gemodereerd door huishouden-type en gender</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<h3 id="d43-ziekteverzuim-aggregaat">D4.3 Ziekteverzuim-aggregaat</h3>
+<ul>
+<li><strong>Status:</strong> uitkomst, geen stressor — gebruikt als convergente validatie (laag 8)</li>
+<li><strong>Beslissing:</strong> <strong>UITGESLOTEN als input; INGESLOTEN als validatievariabele</strong></li>
+</ul>
+<h3 id="d44-aangekondigde-reorganisaties-herstructureringen">D4.4 Aangekondigde reorganisaties / herstructureringen</h3>
+<ul>
+<li><strong>Beslissing:</strong> <strong>UITGESLOTEN als zelfstandig — onderdeel van D3.3</strong></li>
+</ul>
+<hr />
+<h2 id="8-domein-d5-mediaomgeving-collectieve-gebeurtenissen">8. Domein D5 — Mediaomgeving &amp; collectieve gebeurtenissen</h2>
+<p><em>Dit domein consolideert wat in v0.1 verspreid was over D5 (sociaal) en D6 (media). Aangezien een 1-indicator-domein geen domein is maar een placeholder, en collectieve gebeurtenissen voornamelijk via mediablootstelling werken, zijn beide samengevoegd.</em></p>
+<h3 id="d51-nieuwsnegativiteits-index">D5.1 Nieuwsnegativiteits-index</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> Mean World Syndrome (Gerbner 1976); affective contagion</li>
+<li><strong>Pathway:</strong> consumptie van negatief nieuws → verhoogde threat-appraisal op aggregaatniveau → stressrespons</li>
+<li><strong>Evidence:</strong> Soroka et al (2019, <em>PNAS</em>); Boukes et al (2015); Kleemans &amp; Hendriks Vettehen (2009)</li>
+<li><strong>Grade:</strong> B</li>
+<li><strong>Contrasterend bewijs:</strong> kritiek op tone-analyse-validiteit; Boydstun et al (2014) tonen dat news-tone-metriek inconsistent reageert tussen taalgebieden</li>
+<li><strong>Operationalisering:</strong> GDELT-tone-score voor NL-talige Belgische bronnen, 7-daags voortschrijdend gemiddelde</li>
+<li><strong>Databron:</strong> GDELT (publiek via BigQuery)</li>
+<li><strong>Resolutie:</strong> dagelijks</li>
+<li><strong>Confounders:</strong> mediacyclus; agenda-setting; nieuwsvolume</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<h3 id="d52-google-zoekvolume-voor-stress-gerelateerde-termen">D5.2 Google-zoekvolume voor stress-gerelateerde termen</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> revealed preference; behavioral indicator</li>
+<li><strong>Evidence:</strong> Stephens-Davidowitz (2017); Ayers et al (2013, <em>Am J Prev Med</em>) voor mental health</li>
+<li><strong>Grade:</strong> B</li>
+<li><strong>Contrasterend bewijs:</strong> <strong>Lazer et al (2014, <em>Science</em>) — Google Flu Trends-debacle</strong>. Google Trends-validiteit is sterk afhankelijk van update-algoritme-stabiliteit, demografische sampling-bias, en nieuws-event-amplificatie. Niet alleen acknowledged maar gemitigeerd: zoekvolume-spikes binnen 3 dagen van majeure nieuwsgebeurtenissen worden uit-gefilterd (zie §13.2).</li>
+<li><strong>Operationalisering:</strong> weighted index NL-termen ("stress", "burn-out", "slaapproblemen", "moe", "hoofdpijn", "angst", "uitgeput", "slapeloosheid"), regio België</li>
+<li><strong>Databron:</strong> Google Trends API</li>
+<li><strong>Resolutie:</strong> dagelijks</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair, met mitigatie)</strong></li>
+</ul>
+<h3 id="d53-negatieve-collectieve-gebeurtenissen-was-d51-in-v01">D5.3 Negatieve collectieve gebeurtenissen (was D5.1 in v0.1)</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> SDoH social context; collectieve trauma-literatuur</li>
+<li><strong>Pathway:</strong> mediablootstelling aan collectief trauma → vicariërende stress</li>
+<li><strong>Evidence:</strong> Holman et al (2014, <em>PNAS</em>); Silver et al (2013); Garfin et al (2015)</li>
+<li><strong>Grade:</strong> A</li>
+<li><strong>Contrasterend bewijs:</strong> Pfefferbaum et al (2014) review wijst op publicatie-bias in collectieve-trauma-literatuur; effecten van mediablootstelling gemodereerd door pre-event-kwetsbaarheid</li>
+<li><strong>Operationalisering:</strong> event-tagging met magnitude-coderingsregels (vooraf vastgelegd), 7-daags decay-window</li>
+<li><strong>Codering:</strong> twee onafhankelijke codeurs, inter-rater reliability vooraf testen op 50 historische cases (vereiste κ ≥ 0.75)</li>
+<li><strong>Bron:</strong> nieuwsmonitoring (VRT, De Standaard, HLN), aangevuld met Politiezone-rapporten</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair, met magnitude-drempel)</strong></li>
+<li><strong>Notitie:</strong> codering vereist menselijke beoordeling — vraagt zorgvuldige documentatie van rules. Het magnitude-niveau-systeem (1/3/5) is functioneel verwant aan Holmes-Rahe, met als kritisch verschil dat onze regels worden toegepast op <em>geobserveerde gebeurtenissen</em> binnen een gedocumenteerd codeerprotocol, niet op <em>zelf-gerapporteerde life events</em> zoals bij Holmes-Rahe.</li>
+</ul>
+<h3 id="d54-sociale-media-sentiment-nederlandstalig">D5.4 Sociale-media-sentiment Nederlandstalig</h3>
+<ul>
+<li><strong>Beslissing:</strong> <strong>UITGESLOTEN</strong> — X-API niet vrij sinds 2023, alternatieven onvoldoende representatief (criterium 3)</li>
+</ul>
+<h3 id="d55-algemene-staking-nationale-onrust">D5.5 Algemene staking / nationale onrust</h3>
+<ul>
+<li><strong>Grade:</strong> C</li>
+<li><strong>Beslissing:</strong> <strong>SECUNDAIRE SET</strong></li>
+</ul>
+<h3 id="d56-eenzaamheidsproxies">D5.6 Eenzaamheidsproxies</h3>
+<ul>
+<li><strong>Beslissing:</strong> <strong>UITGESLOTEN</strong> — vereist veldwerk</li>
+</ul>
+<hr />
+<h2 id="9-domein-d6-kalender-ritme">9. Domein D6 — Kalender &amp; ritme</h2>
+<h3 id="d61-dagen-tot-volgende-vakantie">D6.1 Dagen tot volgende vakantie</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> CoR (anticipatie hersteltijd); recovery-literatuur (Sonnentag 2018)</li>
+<li><strong>Evidence:</strong> Sonnentag (2018); Fritz &amp; Sonnentag (2005)</li>
+<li><strong>Grade:</strong> B (recovery-literatuur), C (specifiek voor "afstand tot vakantie")</li>
+<li><strong>Contrasterend bewijs:</strong> "vakantie-effect" op stress is sterker voor afgeronde vakantie dan voor anticipatie volgens De Bloom et al (2009)</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<h3 id="d62-weekdag-cyclus">D6.2 Weekdag-cyclus</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> chronobiologie; weekly cycle research</li>
+<li><strong>Evidence:</strong> Stone et al (2012); Areni &amp; Burger (2008)</li>
+<li><strong>Grade:</strong> B</li>
+<li><strong>Contrasterend bewijs:</strong> Helliwell &amp; Wang (2014) tonen dat weekdag-mood-effect kleiner is dan vaak geclaimd in oudere literatuur</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<h3 id="d63-klok-verzetten-zomer-wintertijd">D6.3 Klok-verzetten (zomer-/wintertijd)</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> Allostatic Load (circadiane verstoring)</li>
+<li><strong>Evidence:</strong> Manfredini et al (2018, <em>J Clin Med</em>); Roenneberg et al (2019)</li>
+<li><strong>Grade:</strong> A</li>
+<li><strong>Contrasterend bewijs:</strong> Diaz Garrido et al (2022) recente review wijst op heterogene effecten per leeftijdsgroep</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<h3 id="d64-seizoensfase-continu-signaal">D6.4 Seizoensfase (continu signaal)</h3>
+<ul>
+<li><strong>Beslissing:</strong> <strong>VERPLAATST NAAR SECUNDAIRE SET</strong> — wiskundig overlappend met I-D1-001 (daglichturen) en met seizoenscomponent van andere indicatoren. Behoud in primaire set zou seizoens-dubbeltelling veroorzaken. Beschikbaar voor sensitivity-analyse waarin expliciet getest wordt of dubbele seizoensbijdrage het signaal verandert.</li>
+</ul>
+<h3 id="d65-examenperiode-vlaggen">D6.5 Examenperiode-vlaggen</h3>
+<ul>
+<li><strong>Ondersteunend kader:</strong> JDR; academic stress literature</li>
+<li><strong>Evidence:</strong> Pascoe et al (2020) academic stress review</li>
+<li><strong>Grade:</strong> B</li>
+<li><strong>Beslissing:</strong> <strong>INGESLOTEN (primair)</strong></li>
+</ul>
+<hr />
+<h2 id="10-geconsolideerde-inclusielijst-na-v02-herziening">10. Geconsolideerde inclusielijst (na v0.2-herziening)</h2>
+<h3 id="primaire-set-composiet">Primaire set (composiet)</h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Indicator</th>
+<th>Domein</th>
+<th>Grade</th>
+<th>Resolutie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I-D1-001</td>
+<td>Daglichturen</td>
+<td>D1</td>
+<td>A</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>I-D1-002</td>
+<td>Hitte (Tmax &gt;30°C, tropische nachten)</td>
+<td>D1</td>
+<td>A</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>I-D1-003</td>
+<td>Kou (Tmin &lt;-5°C)</td>
+<td>D1</td>
+<td>B</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>I-D1-004</td>
+<td>Luchtkwaliteit (PM2.5, O₃, NO₂)</td>
+<td>D1</td>
+<td>A</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>I-D2-001</td>
+<td>Filezwaarte</td>
+<td>D2</td>
+<td>A</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>I-D2-004</td>
+<td>Brandstofprijzen</td>
+<td>D2</td>
+<td>B</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>I-D3-001</td>
+<td>Consumptieprijsindex</td>
+<td>D3</td>
+<td>A</td>
+<td>maandelijks</td>
+</tr>
+<tr>
+<td>I-D3-002</td>
+<td>Energieprijzen</td>
+<td>D3</td>
+<td>B</td>
+<td>wekelijks</td>
+</tr>
+<tr>
+<td>I-D3-003</td>
+<td>Aangekondigde collectieve ontslagen</td>
+<td>D3</td>
+<td>A</td>
+<td>wekelijks</td>
+</tr>
+<tr>
+<td>I-D3-005</td>
+<td>Werkloosheidscijfer</td>
+<td>D3</td>
+<td>A</td>
+<td>maandelijks</td>
+</tr>
+<tr>
+<td>I-D3-006</td>
+<td>Hypotheekrente</td>
+<td>D3</td>
+<td>B</td>
+<td>maandelijks</td>
+</tr>
+<tr>
+<td>I-D4-001</td>
+<td>Kalendarische deadlinepieken</td>
+<td>D4</td>
+<td>B</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>I-D4-002</td>
+<td>Schoolvakantie-zonder-opvang</td>
+<td>D4</td>
+<td>B</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>I-D5-001</td>
+<td>Nieuwsnegativiteits-index</td>
+<td>D5</td>
+<td>B</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>I-D5-002</td>
+<td>Google Trends stress-termen</td>
+<td>D5</td>
+<td>B</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>I-D5-003</td>
+<td>Negatieve collectieve gebeurtenissen</td>
+<td>D5</td>
+<td>A</td>
+<td>event</td>
+</tr>
+<tr>
+<td>I-D6-001</td>
+<td>Dagen tot volgende vakantie</td>
+<td>D6</td>
+<td>B</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>I-D6-002</td>
+<td>Weekdag-cyclus</td>
+<td>D6</td>
+<td>B</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>I-D6-003</td>
+<td>Klok-verzetten</td>
+<td>D6</td>
+<td>A</td>
+<td>event</td>
+</tr>
+<tr>
+<td>I-D6-005</td>
+<td>Examenperiode</td>
+<td>D6</td>
+<td>B</td>
+<td>dagelijks</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Totaal primaire set: 20 indicatoren in 6 domeinen</strong></p>
+<h3 id="secundaire-set-sensitivity-analyse">Secundaire set (sensitivity-analyse)</h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Indicator</th>
+<th>Domein</th>
+<th>Grade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I-D1-004S</td>
+<td>Luchtdruk-schommelingen</td>
+<td>D1</td>
+<td>C</td>
+</tr>
+<tr>
+<td>I-D1-005S</td>
+<td>Pollenconcentratie</td>
+<td>D1</td>
+<td>C</td>
+</tr>
+<tr>
+<td>I-D2-003S</td>
+<td>Aangekondigde OV-stakingen</td>
+<td>D2</td>
+<td>C</td>
+</tr>
+<tr>
+<td>I-D3-004S</td>
+<td>Beurs-volatiliteit</td>
+<td>D3</td>
+<td>C</td>
+</tr>
+<tr>
+<td>I-D5-005S</td>
+<td>Algemene staking / sociale onrust</td>
+<td>D5</td>
+<td>C</td>
+</tr>
+<tr>
+<td>I-D6-004S</td>
+<td>Seizoensfase</td>
+<td>D6</td>
+<td>(overlapping)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Totaal secundaire set: 6 indicatoren</strong></p>
+<h3 id="validatie-set-niet-in-composiet-voor-convergente-validatie">Validatie-set (niet in composiet, voor convergente validatie)</h3>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Variabele</th>
+<th>Domein</th>
+<th>Functie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V-001</td>
+<td>Ziekteverzuim-aggregaat</td>
+<td>D4</td>
+<td>uitkomst-validatie</td>
+</tr>
+<tr>
+<td>V-002</td>
+<td>Retail-bestedingen</td>
+<td>algemeen</td>
+<td>gedragsproxy-validatie</td>
+</tr>
+<tr>
+<td>V-003</td>
+<td>Mentale-gezondheidszorg-utilisatie</td>
+<td>algemeen</td>
+<td>uitkomst-validatie</td>
+</tr>
+<tr>
+<td>V-004</td>
+<td>Alcohol/gokken-omzet</td>
+<td>algemeen</td>
+<td>gedragsproxy-validatie</td>
+</tr>
+</tbody>
+</table>
+<p><em>Notitie: deze publieke datasets (RIZIV-aggregaten, STATBEL retail-index, Belastingdienst-omzetdata) worden gebruikt als publieke data — identiek aan andere publieke bronnen. Gebruik is geen institutionele samenwerking; data is openbaar toegankelijk in geanonimiseerde aggregaatvorm.</em></p>
+<hr />
+<h2 id="11-exclusion-log">11. Exclusion log</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Reden uitsluiting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lawaaiblootstelling</td>
+<td>Geen wekelijkse publieke data op populatieniveau (criterium 4)</td>
+</tr>
+<tr>
+<td>Aangekondigde grote wegenwerken</td>
+<td>Grade D — onvoldoende evidence (criterium 2)</td>
+</tr>
+<tr>
+<td>Aangekondigde reorganisaties</td>
+<td>Overlap met I-D3-003 — uitgesloten om dubbeltelling te vermijden</td>
+</tr>
+<tr>
+<td>Ziekteverzuim als input</td>
+<td>Uitkomst-variabele, geen stressor — gebruikt voor validatie</td>
+</tr>
+<tr>
+<td>Eenzaamheidsproxies</td>
+<td>Vereist veldwerk — geen publieke hoogfrequente bron (criterium 3)</td>
+</tr>
+<tr>
+<td>Sociale-media-sentiment NL</td>
+<td>X-API niet vrij sinds 2023; alternatieven onvoldoende representatief (criterium 3)</td>
+</tr>
+<tr>
+<td>Schoolresultaten / rapporten</td>
+<td>Geen wekelijkse publieke data (criterium 4)</td>
+</tr>
+<tr>
+<td>Familiespanningen rond feestdagen</td>
+<td>Niet meetbaar uit publieke data; behoort tot narratieve laag</td>
+</tr>
+<tr>
+<td>Verkeersongevallen</td>
+<td>Confounder voor I-D2-001 — uit te werken in laag 4</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-counter-evidence-discipline">12. Counter-evidence-discipline</h2>
+<p>Per indicator in dit document is een explicit "contrasterend bewijs"-veld opgenomen. Doel: voorkomen van one-sided lit-review. Beperking: wij hebben <em>niet systematisch</em> gezocht naar tegenbewijs voor elke indicator; we hebben binnen redelijke literatuur-search gemeld wat we tegenkwamen. Dit is een eerlijke beperking, niet een volwaardige Cochrane-bias-assessment.</p>
+<p>In jaarlijkse onderhoudscyclus (zie 08_Onderhoud-Protocol.md) wordt counter-evidence systematischer doorgenomen.</p>
+<hr />
+<h2 id="13-bekende-lacunes-en-methodologische-spanningen">13. Bekende lacunes en methodologische spanningen</h2>
+<h3 id="131-onevenwicht-tussen-domeinen">13.1 Onevenwicht tussen domeinen</h3>
+<p>Met de v0.2-consolidatie hebben we 6 domeinen, met 2-5 indicatoren elk. Beter dan v0.1 (D5 had 1), maar nog steeds heterogeen. In laag 6 (weging) blijft balance-correctie nodig.</p>
+<h3 id="132-mediacyclus-decorrelatie-nieuw-protocol">13.2 Mediacyclus-decorrelatie (nieuw protocol)</h3>
+<p>I-D3-003 (ontslagen), I-D5-001 (nieuwsnegativiteit), I-D5-002 (Google Trends) en I-D5-003 (collectieve gebeurtenissen) zijn allen deels door media-cyclus gedreven. Risico op zelfversterkende feedback in het composiet.</p>
+<p><strong>Decorrelatie-protocol (uit te voeren in laag 4):</strong>
+- Voor I-D5-002 (Google Trends): zoekvolume-spikes binnen 3 dagen van majeure nieuwsgebeurtenissen (uit I-D5-003) worden geïsoleerd via differentiële tijdreeks. Het "newsless residue" wordt in composiet gebruikt; de "newsful spike" beschikbaar als sensitivity.
+- Voor I-D5-001 (nieuwsnegativiteit): cross-correlatie met I-D5-003 wordt continu gemonitord. Indien correlatie &gt; 0.7 voor sustained periode: domein-gewicht voor D5 wordt automatisch gehalveerd in betreffende periode (auto-decorrelatie).
+- Voor sensitivity-rapportage: composiet zonder D5 wordt parallel berekend en gepubliceerd als "non-media baseline".</p>
+<h3 id="133-tijdsresolutie-heterogeniteit">13.3 Tijdsresolutie-heterogeniteit</h3>
+<p>Indicatoren variëren van event-based tot dagelijks tot maandelijks. Voor wekelijks composiet moet laag 4 een tijdsharmonisatie-strategie definiëren (forward-fill, interpolatie, of differentiële weging).</p>
+<h3 id="134-collineariteit-binnen-domeinen">13.4 Collineariteit binnen domeinen</h3>
+<ul>
+<li>I-D1-001 (daglichturen) en I-D6-004S (seizoensfase, nu secundair): grotendeels opgelost door I-D6-004S te verplaatsen naar secundaire set</li>
+<li>I-D1-002 (hitte) × I-D1-004 (luchtkwaliteit, ozon-component): expected matig, sensitivity-analyse vereist</li>
+<li>I-D3-001 (CPI) × I-D3-006 (hypotheekrente): verschillende lag-structuren, te verifiëren in laag 4</li>
+</ul>
+<h3 id="135-cultuur-specifieke-indicatoren-ontbreken">13.5 Cultuur-specifieke indicatoren ontbreken</h3>
+<p>"Belgische gelatenheid", bouwverlof-fenomeen, file-cultuur — culturele specificiteit valt voor het grootste deel buiten meetbare indicatoren. Eerlijke beperking.</p>
+<h3 id="136-codering-i-d5-003-functioneel-verwant-aan-holmes-rahe">13.6 Codering I-D5-003 functioneel verwant aan Holmes-Rahe</h3>
+<p>Het magnitude-niveau-systeem voor collectieve gebeurtenissen lijkt op Holmes-Rahe maar verschilt cruciaal: wij coderen <em>publiek observeerbare</em> gebeurtenissen volgens vooraf vastgelegde regels (niet zelf-gerapporteerde life events met arbitraire gewichten). Dit blijft echter een interpretatieve indicator die zorgvuldige inter-rater-protocol vereist.</p>
+<hr />
+<h2 id="14-volgende-stappen-laag-4-operationalisering">14. Volgende stappen (laag 4: operationalisering)</h2>
+<ol>
+<li><strong>Per indicator:</strong> exacte formule, eenheid, missing-data-strategie, ruis-karakteristiek</li>
+<li><strong>Tijdsharmonisatie:</strong> hoe maandelijkse indicatoren te integreren in wekelijks signaal</li>
+<li><strong>Collineariteit-resolutie:</strong> VIF-analyse en eventuele indicator-consolidatie</li>
+<li><strong>Mediacyclus-decorrelatie-protocol:</strong> technische implementatie</li>
+<li><strong>Datapipeline-specificatie:</strong> target architecture vs minimum viable pipeline</li>
+<li><strong>Robuustheidstest:</strong> wat gebeurt bij missing data van één of meerdere bronnen</li>
+</ol>
+<hr />
+<h2 id="bronnen_1">Bronnen</h2>
+<p>Ayers, J. W., Althouse, B. M., &amp; Dredze, M. (2013). Could behavioral medicine lead the web data revolution? <em>American Journal of Preventive Medicine</em>, 47(5), 678-680.</p>
+<p>Bakker, A. B., &amp; Demerouti, E. (2007). The Job Demands-Resources model: State of the art. <em>Journal of Managerial Psychology</em>, 22(3), 309-328.</p>
+<p>Bakker, A. B., &amp; Demerouti, E. (2017). Job demands-resources theory: Taking stock and looking forward. <em>Journal of Occupational Health Psychology</em>, 22(3), 273-285.</p>
+<p>Bianchi, S. M., Sayer, L. C., Milkie, M. A., &amp; Robinson, J. P. (2012). Housework: Who did, does or will do it, and how much does it matter? <em>Social Forces</em>, 91(1), 55-63.</p>
+<p>Boukes, M., Boomgaarden, H. G., Moorman, M., &amp; de Vreese, C. H. (2015). News with an attitude. <em>Mass Communication and Society</em>, 18(3), 354-378.</p>
+<p>Boydstun, A. E., Highton, B., &amp; Linn, S. (2014). Assessing the relationship between economic conditions and news coverage. <em>Political Communication</em>, 31(4), 607-626.</p>
+<p>Braithwaite, I., Zhang, S., Kirkbride, J. B., et al. (2019). Air pollution exposure and associations with depression, anxiety, bipolar, psychosis and suicide risk: A systematic review and meta-analysis. <em>Environmental Health Perspectives</em>, 127(12), 126002.</p>
+<p>Brand, J. E. (2015). The far-reaching impact of job loss and unemployment. <em>Annual Review of Sociology</em>, 41, 359-375.</p>
+<p>Brüggen, E. C., Hogreve, J., Holmlund, M., Kabadayi, S., &amp; Löfgren, M. (2017). Financial well-being. <em>Journal of Business Research</em>, 79, 228-237.</p>
+<p>Burgard, S. A., Brand, J. E., &amp; House, J. S. (2009). Perceived job insecurity and worker health in the United States. <em>Social Science &amp; Medicine</em>, 69(5), 777-785.</p>
+<p>Burke, M., Hsiang, S. M., &amp; Miguel, E. (2018). Global non-linear effect of temperature on economic production. <em>Nature</em>, 527, 235-239.</p>
+<p>Chatterjee, K., Chng, S., Clark, B., et al. (2020). Commuting and wellbeing: A critical overview. <em>Transport Reviews</em>, 40(1), 5-34.</p>
+<p>Cheng, Y. H. (2010). Exploring passenger anxiety associated with train travel. <em>Transportation</em>, 37(6), 875-896.</p>
+<p>Crouter, A. C., Bumpus, M. F., Head, M. R., &amp; McHale, S. M. (2001). Implications of overwork and overload for the quality of men's family relationships. <em>Journal of Marriage and Family</em>, 63(2), 404-416.</p>
+<p>D'Amato, G., Cecchi, L., Bonini, S., et al. (2007). Allergenic pollen and pollen allergy in Europe. <em>Allergy</em>, 62(9), 976-990.</p>
+<p>De Bloom, J., Geurts, S. A. E., Sonnentag, S., et al. (2009). Effects of vacation from work on health and well-being. <em>Work &amp; Stress</em>, 23(4), 359-378.</p>
+<p>De Witte, H., Pienaar, J., &amp; De Cuyper, N. (2016). Review of 30 years of longitudinal studies on the association between job insecurity and health and well-being. <em>Australian Psychologist</em>, 51(1), 18-31.</p>
+<p>Diaz Garrido, F., Knapen, S., et al. (2022). Daylight saving time and health: a review of recent literature. <em>Sleep Medicine Reviews</em>, 64, 101633.</p>
+<p>Fritz, C., &amp; Sonnentag, S. (2005). Recovery, health, and job performance. <em>Journal of Occupational Health Psychology</em>, 10(3), 187-199.</p>
+<p>Garfin, D. R., Holman, E. A., &amp; Silver, R. C. (2015). Cumulative exposure to prior collective trauma. <em>Psychological Science</em>, 26(6), 675-683.</p>
+<p>Hahad, O., Prochaska, J. H., Daiber, A., &amp; Münzel, T. (2019). Environmental noise-induced effects on stress hormones. <em>Oxidative Medicine and Cellular Longevity</em>, 2019, 4623109.</p>
+<p>Hajat, S., O'Connor, M., &amp; Kosatsky, T. (2010). Health effects of hot weather. <em>The Lancet</em>, 375(9717), 856-863.</p>
+<p>Helliwell, J. F., &amp; Wang, S. (2014). Weekends and subjective well-being. <em>Social Indicators Research</em>, 116(2), 389-407.</p>
+<p>Hoffmann, J., Schirra, T., Lo, H., et al. (2011). The influence of weather on migraine. <em>Annals of Clinical and Translational Neurology</em>, 2(1), 22-28.</p>
+<p>Hoffmann, J., et al. (2015). Replication study on weather and headache. <em>Cephalalgia</em>, 35(8), 658-666.</p>
+<p>Holman, E. A., Garfin, D. R., &amp; Silver, R. C. (2014). Media's role in broadcasting acute stress following the Boston Marathon bombings. <em>PNAS</em>, 111(1), 93-98.</p>
+<p>Kahneman, D., &amp; Tversky, A. (1979). Prospect theory. <em>Econometrica</em>, 47(2), 263-292.</p>
+<p>Kleemans, M., &amp; Hendriks Vettehen, P. G. J. (2009). Sensationalism in television news. <em>Communications</em>, 34(2), 109-131.</p>
+<p>Künn-Nelen, A. (2016). Does commuting affect health? <em>Health Economics</em>, 25(8), 984-1004.</p>
+<p>Lam, R. W., &amp; Levitt, A. J. (Eds.). (1999). <em>Canadian consensus guidelines for the treatment of seasonal affective disorder</em>.</p>
+<p>Lazer, D., Kennedy, R., King, G., &amp; Vespignani, A. (2014). The parable of Google Flu. <em>Science</em>, 343(6176), 1203-1205.</p>
+<p>Liddell, C., &amp; Morris, C. (2010). Fuel poverty and human health. <em>Energy Policy</em>, 38(6), 2987-2997.</p>
+<p>Liu, J., Varghese, B. M., Hansen, A., et al. (2021). Is there an association between hot weather and poor mental health outcomes? <em>Environment International</em>, 153, 106533.</p>
+<p>Lorenz, O. (2018). Does commuting matter to subjective well-being? <em>Journal of Transport Geography</em>, 66, 180-199.</p>
+<p>Manfredini, R., Fabbian, F., Cappadona, R., et al. (2018). Daylight saving time and acute myocardial infarction. <em>Journal of Clinical Medicine</em>, 8(3), 404.</p>
+<p>Mersch, P. P., Middendorp, H. M., Bouhuys, A. L., et al. (1999). Seasonal affective disorder and latitude. <em>Journal of Affective Disorders</em>, 53(1), 35-48.</p>
+<p>Newbury, J. B., Arseneault, L., Beevers, S., et al. (2019). Association of air pollution exposure with psychotic experiences during adolescence. <em>JAMA Psychiatry</em>, 76(6), 614-623.</p>
+<p>Novaco, R. W., Stokols, D., &amp; Milanesi, L. (1990). Objective and subjective dimensions of travel impedance. <em>American Journal of Community Psychology</em>, 18(2), 231-257.</p>
+<p>Pascoe, M. C., Hetrick, S. E., &amp; Parker, A. G. (2020). The impact of stress on students. <em>International Journal of Adolescence and Youth</em>, 25(1), 104-112.</p>
+<p>Pfefferbaum, B., Newman, E., Nelson, S. D., et al. (2014). Disaster media coverage and psychological outcomes. <em>Current Psychiatry Reports</em>, 16(9), 464.</p>
+<p>Roenneberg, T., Wirz-Justice, A., Skene, D. J., et al. (2019). Why should we abolish daylight saving time? <em>Journal of Biological Rhythms</em>, 34(3), 227-230.</p>
+<p>Rosenthal, N. E., Sack, D. A., Gillin, J. C., et al. (1984). Seasonal affective disorder. <em>Archives of General Psychiatry</em>, 41(1), 72-80.</p>
+<p>Silver, R. C., Holman, E. A., Andersen, J. P., et al. (2013). Mental- and physical-health effects of acute exposure to media images. <em>Psychological Science</em>, 24(9), 1623-1634.</p>
+<p>Sonnentag, S. (2018). The recovery paradox. <em>Research in Organizational Behavior</em>, 38, 169-185.</p>
+<p>Soroka, S., Fournier, P., &amp; Nir, L. (2019). Cross-national evidence of a negativity bias. <em>PNAS</em>, 116(38), 18888-18892.</p>
+<p>Stephens-Davidowitz, S. (2017). <em>Everybody lies</em>. Dey Street Books.</p>
+<p>Stone, A. A., Schneider, S., &amp; Harter, J. K. (2012). Day-of-week mood patterns. <em>The Journal of Positive Psychology</em>, 7(4), 306-314.</p>
+<p>Stutzer, A., &amp; Frey, B. S. (2008). Stress that doesn't pay: The commuting paradox. <em>Scandinavian Journal of Economics</em>, 110(2), 339-366.</p>
+<p>Thompson, R., Hornigold, R., Page, L., &amp; Waite, T. (2018). Associations between high ambient temperatures and heat waves with mental health outcomes. <em>Science of the Total Environment</em>, 626, 1213-1224.</p>
+<p>Thomson, H., Snell, C., &amp; Bouzarovski, S. (2017). Health, well-being and energy poverty in Europe. <em>International Journal of Environmental Research and Public Health</em>, 14(6), 584.</p>
+<p>WHO (2018). <em>Environmental Noise Guidelines for the European Region</em>.</p>
+<p>WHO (2021). <em>WHO global air quality guidelines</em>.</p>
+<hr />
+<h1 id="03_laag-4_operationalisering">03_Laag-4_Operationalisering</h1>
+<p><em>Bronbestand: <code>03_Laag-4_Operationalisering.md</code></em></p>
+<h1 id="stressor-blootstellings-index-sbi_3">Stressor-Blootstellings-Index (SBI)</h1>
+<h2 id="laag-4-operationalisering-en-datapipeline">Laag 4: Operationalisering en datapipeline</h2>
+<p><strong>Status:</strong> v0.2 — werkdocument
+<strong>Document:</strong> laag 4 van de methodologie
+<strong>Bouwt op:</strong> 01_Anker-Paper.md, 02_Laag-3_Indicator-Selectie.md
+<strong>Auteur:</strong> BRAINWOLVES
+<strong>Datum:</strong> mei 2026</p>
+<hr />
+<h2 id="0-samenvatting_2">0. Samenvatting</h2>
+<p>Dit document operationaliseert de in laag 3 geselecteerde 20 primaire indicatoren in 6 domeinen. Per indicator wordt de exacte formule, eenheid, missing-data-strategie, ruis-karakteristiek en databron-toegang gespecificeerd. Aanvullend worden vijf methodologische protocollen vastgelegd: tijdsharmonisatie tussen indicatoren van verschillende frequentie, collineariteit-resolutie via VIF, mediacyclus-decorrelatie binnen D5, datapipeline-architectuur (target state én minimum viable pipeline), en robuustheidstest bij dataverlies.</p>
+<hr />
+<h2 id="1-algemene-operationalisering-conventies">1. Algemene operationalisering-conventies</h2>
+<h3 id="11-tijdsreferentie">1.1 Tijdsreferentie</h3>
+<p>Alle indicatoren in CET/CEST, datum-stempel d. Canonieke meetfrequentie: wekelijks, dagelijkse onderliggende data waar beschikbaar.</p>
+<h3 id="12-geografische-scope">1.2 Geografische scope</h3>
+<p>België als werkmarkt. Lokale data gewogen naar bevolkingsdichtheid per provincie (NUTS-2). Voor weers- en astronomische indicatoren wordt 50.85°N, 4.35°E (Brussel) als referentie gebruikt — een bekende keuze die in laag 8 in sensitivity-analyse wordt getest (alternatief: bevolkingsgewogen middelpunt Vlaanderen).</p>
+<h3 id="13-missing-data-strategie">1.3 Missing-data-strategie</h3>
+<p>Drie hiërarchische regels:</p>
+<ol>
+<li><em>Last-observation-carried-forward</em> binnen 3 dagen voor dagelijkse indicatoren</li>
+<li><em>Linear interpolation</em> binnen 14 dagen voor wekelijkse/maandelijkse indicatoren</li>
+<li><em>Explicit missing flag</em> bij grotere gaten — domeinweging wordt herberekend exclusief de ontbrekende indicator</li>
+</ol>
+<p>Elke imputatie wordt gelogd.</p>
+<h3 id="14-ruis-conventies">1.4 Ruis-conventies</h3>
+<p>Per continue indicator wordt ruis-karakteristiek geschat. Indicatoren met verwachte signal-to-noise-ratio &lt; 2 worden uitgesloten — tenzij deterministisch.</p>
+<h3 id="15-eenheid-conventie">1.5 Eenheid-conventie</h3>
+<p>Alle indicatoren worden in laag 5 omgezet naar Z-scores. In dit document staan de ruwe eenheden.</p>
+<hr />
+<h2 id="2-indicator-specificaties">2. Indicator-specificaties</h2>
+<h3 id="21-domein-d1-omgeving-klimaat">2.1 Domein D1 — Omgeving &amp; klimaat</h3>
+<h4 id="i-d1-001-daglichturen">I-D1-001 Daglichturen</h4>
+<ul>
+<li><strong>Formule:</strong> L(d) = uren tussen astronomische zonsopgang en zonsondergang op datum d</li>
+<li><strong>Eenheid:</strong> uren (decimaal)</li>
+<li><strong>Missing:</strong> geen — deterministisch</li>
+<li><strong>Bron:</strong> astronomische berekening (NOAA Solar Calculator-algoritme)</li>
+<li><strong>Resolutie:</strong> dagelijks</li>
+<li><strong>Historiek:</strong> onbeperkt</li>
+</ul>
+<h4 id="i-d1-002-hitte">I-D1-002 Hitte</h4>
+<ul>
+<li><strong>Formules:</strong></li>
+<li>T_max(d), T_min(d) — dagelijkse extremen (°C)</li>
+<li>Trigger H1(d) = 1 indien T_max &gt; 30°C</li>
+<li>Trigger H2(d) = 1 indien T_min &gt; 20°C (tropische nacht)</li>
+<li>Continu: Heat_excess(d) = max(0, T_max - 30)</li>
+<li><strong>Eenheid:</strong> °C; binair voor triggers</li>
+<li><strong>Missing:</strong> nearest-neighbor station (max 50 km)</li>
+<li><strong>Bron:</strong> KMI/RMI</li>
+</ul>
+<h4 id="i-d1-003-kou">I-D1-003 Kou</h4>
+<ul>
+<li><strong>Formules:</strong></li>
+<li>C1(d) = 1 indien T_min &lt; -5°C</li>
+<li>Cold_excess(d) = max(0, -5 - T_min)</li>
+<li><strong>Bron:</strong> KMI/RMI</li>
+</ul>
+<h4 id="i-d1-004-luchtkwaliteit">I-D1-004 Luchtkwaliteit</h4>
+<ul>
+<li><strong>Formules:</strong></li>
+<li>PM25(d), O3_max(d), NO2(d)</li>
+<li>Composite_AQ(d) = max(PM25/15, O3_max/100, NO2/25) — ratio tot WHO 2021-grenswaarden</li>
+<li><strong>Eenheid:</strong> μg/m³ ruw; ratio voor composite</li>
+<li><strong>Missing:</strong> mediaan over 3 dichtstbijzijnde stations</li>
+<li><strong>Bron:</strong> IRCEL-CELINE</li>
+</ul>
+<h3 id="22-domein-d2-mobiliteit-ruimte">2.2 Domein D2 — Mobiliteit &amp; ruimte</h3>
+<h4 id="i-d2-001-filezwaarte">I-D2-001 Filezwaarte</h4>
+<ul>
+<li><strong>Formule:</strong></li>
+<li>F_morn(d) = totaal file-km × file-minuten 06:30-09:30</li>
+<li>F_eve(d) = totaal file-km × file-minuten 16:00-19:00</li>
+<li>F_total(d) = F_morn + F_eve</li>
+<li><strong>Eenheid:</strong> km·min</li>
+<li><strong>Bron:</strong> Vlaams Verkeerscentrum</li>
+<li><strong>Confounder-flag:</strong> weersextremen, ongevallen → afzonderlijk loggen</li>
+</ul>
+<h4 id="i-d2-004-brandstofprijzen">I-D2-004 Brandstofprijzen</h4>
+<ul>
+<li><strong>Formule:</strong></li>
+<li>P_euro95(d), P_diesel(d) — officiële maximumprijzen</li>
+<li>Fuel_combined(d) = 7-daags voortschrijdend gemiddelde</li>
+<li><strong>Eenheid:</strong> €/l</li>
+<li><strong>Bron:</strong> FOD Economie</li>
+</ul>
+<h3 id="23-domein-d3-economische-conditie">2.3 Domein D3 — Economische conditie</h3>
+<h4 id="i-d3-001-consumptieprijsindex-cpi">I-D3-001 Consumptieprijsindex (CPI)</h4>
+<ul>
+<li><strong>Formule:</strong> Infl_yoy(m) = (CPI(m) - CPI(m-12)) / CPI(m-12) × 100</li>
+<li><strong>Wekelijkse SBI:</strong> forward-fill van Infl_yoy(m) over weken in maand m</li>
+<li><strong>Bron:</strong> STATBEL</li>
+</ul>
+<h4 id="i-d3-002-energieprijzen">I-D3-002 Energieprijzen</h4>
+<ul>
+<li><strong>Formules:</strong></li>
+<li>Gas_wk(w), Elec_wk(w) — wekelijkse spotprijzen</li>
+<li>Energy_combined(w) = 0.5 × (Gas_norm + Elec_norm)</li>
+<li><strong>Bron:</strong> Belpex (Epex Spot), gas hub</li>
+</ul>
+<h4 id="i-d3-003-aangekondigde-collectieve-ontslagen">I-D3-003 Aangekondigde collectieve ontslagen</h4>
+<ul>
+<li><strong>Formule:</strong></li>
+<li>CD_workers(w) = werknemers in collectieve-ontslagprocedures, week w</li>
+<li>CD_combined(w) = log(1 + CD_workers(w))</li>
+<li><strong>Bron:</strong> FOD WASO</li>
+</ul>
+<h4 id="i-d3-005-werkloosheidscijfer">I-D3-005 Werkloosheidscijfer</h4>
+<ul>
+<li><strong>Formule:</strong> U(m) = werkzoekenden % beroepsbevolking, seizoensgecorrigeerd</li>
+<li><strong>Bron:</strong> STATBEL / Steunpunt Werk</li>
+</ul>
+<h4 id="i-d3-006-hypotheekrente">I-D3-006 Hypotheekrente</h4>
+<ul>
+<li><strong>Formule:</strong> I_mort(m) = NBB-gemiddelde rente nieuwe hypotheken</li>
+<li><strong>Bron:</strong> Nationale Bank van België</li>
+</ul>
+<h3 id="24-domein-d4-werk-belasting">2.4 Domein D4 — Werk &amp; belasting</h3>
+<h4 id="i-d4-001-kalendarische-deadlinepieken">I-D4-001 Kalendarische deadlinepieken</h4>
+<ul>
+<li><strong>Formule:</strong> D_dl(d) = +1 in belastingaangifte-weken; +1 in kwartaaleinde-week; +2 in jaareinde-week</li>
+<li><strong>Eenheid:</strong> integer 0-3</li>
+<li><strong>Bron:</strong> kalender FOD Financiën</li>
+</ul>
+<h4 id="i-d4-002-schoolvakantie-zonder-opvang">I-D4-002 Schoolvakantie-zonder-opvang</h4>
+<ul>
+<li><strong>Formule:</strong></li>
+<li>SH(d) = 1 indien schoolvakantieperiode én niet-zondag</li>
+<li>SH_weighted(d) = SH(d) × (1 + duration_remaining/total_duration)</li>
+<li><strong>Bron:</strong> Vlaamse onderwijskalender</li>
+</ul>
+<h3 id="25-domein-d5-media-collectieve-gebeurtenissen">2.5 Domein D5 — Media &amp; collectieve gebeurtenissen</h3>
+<h4 id="i-d5-001-nieuwsnegativiteits-index">I-D5-001 Nieuwsnegativiteits-index</h4>
+<ul>
+<li><strong>Formule:</strong></li>
+<li>Tone(d) = gemiddelde GDELT-tonescore voor NL-talige Belgische bronnen</li>
+<li>Negativity(d) = -Tone(d)</li>
+<li>Weekly: 7-daags gemiddelde</li>
+<li><strong>Eenheid:</strong> GDELT tone units (typisch -20 tot +20)</li>
+<li><strong>Bron:</strong> GDELT Project v2 (BigQuery publieke dataset)</li>
+<li><strong>Resolutie:</strong> dagelijks</li>
+</ul>
+<h4 id="i-d5-002-google-trends-stress-termen">I-D5-002 Google Trends — stress-termen</h4>
+<ul>
+<li><strong>Formule:</strong></li>
+<li>GT_set = {stress, burn-out, slaapproblemen, moe, hoofdpijn, angst, uitgeput, slapeloosheid}</li>
+<li>GT_raw(d) = som van Google Trends Interest voor termen in GT_set, regio BE, NL-taal</li>
+<li>GT_score(d) = GT_raw(d) - GT_news_correction(d) (zie §4.4 decorrelatie)</li>
+<li><strong>Eenheid:</strong> relatieve index 0-100</li>
+<li><strong>Bron:</strong> Google Trends API</li>
+</ul>
+<h4 id="i-d5-003-negatieve-collectieve-gebeurtenissen">I-D5-003 Negatieve collectieve gebeurtenissen</h4>
+<ul>
+<li><strong>Formule:</strong> event-tagging met magnitude-coderingsregels:</li>
+<li>Niveau 1 (gewicht 1): regionale ramp, ≥5 doden óf &gt;100 gewonden óf &gt;€10M materiële schade</li>
+<li>Niveau 2 (gewicht 3): nationale ramp, ≥10 doden óf nationale rouw afgekondigd</li>
+<li>Niveau 3 (gewicht 5): terreuraanval, oorlogsverklaring, massa-evacuatie</li>
+<li>Per gebeurtenis: 7-daags exponentieel decay-window</li>
+<li><strong>Eenheid:</strong> continu 0-15</li>
+<li><strong>Codering:</strong> twee onafhankelijke codeurs, inter-rater κ ≥ 0.75 op 50 historische test-cases vereist vóór livegang. Indien κ niet haalbaar: vereenvoudig naar binair (gebeurtenis ja/nee) met magnitude als sensitivity.</li>
+<li><strong>Bron:</strong> nieuwsmonitoring (VRT, De Standaard, HLN, RTBF), aangevuld met Politiezone-rapporten</li>
+</ul>
+<h3 id="26-domein-d6-kalender-ritme">2.6 Domein D6 — Kalender &amp; ritme</h3>
+<h4 id="i-d6-001-dagen-tot-volgende-vakantie">I-D6-001 Dagen tot volgende vakantie</h4>
+<ul>
+<li><strong>Formule:</strong> DV(d) = min(dagen tot volgende officiële feestdag, dagen tot schoolvakantie)</li>
+<li><strong>Eenheid:</strong> dagen</li>
+<li><strong>Notitie:</strong> in laag 5 wordt het signaal omgekeerd zodat meer dagen = hogere stressor-blootstelling</li>
+</ul>
+<h4 id="i-d6-002-weekdag-cyclus">I-D6-002 Weekdag-cyclus</h4>
+<ul>
+<li><strong>Formule:</strong> zes dummies (zondag = referentie)</li>
+<li><strong>Eenheid:</strong> binair per dummy</li>
+</ul>
+<h4 id="i-d6-003-klok-verzetten">I-D6-003 Klok-verzetten</h4>
+<ul>
+<li><strong>Formule:</strong> DST_effect(d) = exp(-(d - d_DST) / 3) voor 0 ≤ (d - d_DST) ≤ 7</li>
+<li><strong>Eenheid:</strong> continu 0-1</li>
+</ul>
+<h4 id="i-d6-005-examenperiode">I-D6-005 Examenperiode</h4>
+<ul>
+<li><strong>Formule:</strong> binair voor:</li>
+<li>1e examenperiode hoger onderwijs (5-30 januari)</li>
+<li>2e examenperiode hoger onderwijs (laatste 2 weken mei + 1e 2 weken juni)</li>
+<li>CSE-periode secundair (typisch juni)</li>
+</ul>
+<hr />
+<h2 id="3-tijdsharmonisatie">3. Tijdsharmonisatie</h2>
+<h3 id="31-heterogeniteit-overzicht">3.1 Heterogeniteit-overzicht</h3>
+<ul>
+<li><em>Dagelijks:</em> alle D1-, D2-, D4-, D5-001, D5-002, D6-indicatoren</li>
+<li><em>Wekelijks:</em> I-D3-002, I-D3-003</li>
+<li><em>Maandelijks:</em> I-D3-001, I-D3-005, I-D3-006</li>
+<li><em>Event-based:</em> I-D5-003, I-D6-003</li>
+</ul>
+<h3 id="32-harmonisatie-protocol">3.2 Harmonisatie-protocol</h3>
+<p><strong>Maandelijkse indicatoren binnen wekelijks composiet:</strong>
+- Forward-fill van laatste publicatie tot volgende publicatie
+- Maandelijkse indicatoren in laag 5 afzonderlijk genormaliseerd om transitie-effecten te vermijden</p>
+<p><strong>Event-indicatoren:</strong>
+- Behouden als continue waarde met decay-window
+- Niet samengedrukt naar wekelijks-binair</p>
+<p><strong>Wekelijkse composiet-cel:</strong>
+- Berekend op zondagavond, voor week eindigend zaterdag</p>
+<hr />
+<h2 id="4-collineariteit-en-decorrelatie">4. Collineariteit en decorrelatie</h2>
+<h3 id="41-vif-protocol">4.1 VIF-protocol</h3>
+<p>Variance Inflation Factor berekend na 24 maanden dataverzameling voor paren binnen elk domein én tussen domeinen.</p>
+<p><strong>Beslisregel:</strong>
+- VIF &lt; 5: indicatoren behouden
+- 5 ≤ VIF &lt; 10: een van beide markeren als secundaire set
+- VIF ≥ 10: hoogste-evidence-grade indicator behouden</p>
+<h3 id="42-vooraf-bekende-collineariteit-risicos">4.2 Vooraf bekende collineariteit-risico's</h3>
+<table>
+<thead>
+<tr>
+<th>Paar</th>
+<th>Verwachte VIF</th>
+<th>Voorgenomen oplossing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I-D1-002 (hitte) × I-D1-004 (luchtkwaliteit)</td>
+<td>Matig (5-10)</td>
+<td>Behouden, sensitivity-analyse</td>
+</tr>
+<tr>
+<td>I-D3-001 (CPI) × I-D3-006 (hypotheekrente)</td>
+<td>Matig</td>
+<td>Behouden — verschillende lag-structuren</td>
+</tr>
+<tr>
+<td>I-D5-001 (nieuwsnegativiteit) × I-D5-003 (collectieve gebeurtenissen)</td>
+<td>Hoog (&gt;5)</td>
+<td>Zie §4.4 decorrelatie-protocol</td>
+</tr>
+<tr>
+<td>I-D5-002 (Google Trends) × I-D5-001 (nieuwsnegativiteit)</td>
+<td>Matig</td>
+<td>Zie §4.4</td>
+</tr>
+</tbody>
+</table>
+<p>Notitie: in v0.1 was er een I-D7-004 (seizoensfase) × I-D1-001 (daglicht) collineariteits-risico. Dit is opgelost door I-D6-004 (was I-D7-004) naar secundaire set te verplaatsen.</p>
+<h3 id="43-documentatie-vereiste">4.3 Documentatie-vereiste</h3>
+<p>Elke collineariteits-beslissing gelogd met VIF-waarde, beslissing en datum.</p>
+<h3 id="44-mediacyclus-decorrelatie-protocol-nieuw-in-v02">4.4 Mediacyclus-decorrelatie-protocol (nieuw in v0.2)</h3>
+<p><strong>Probleem:</strong> I-D5-001, I-D5-002 en I-D5-003 zijn alle gedeeltelijk door media-cyclus gedreven. Risico op zelfversterkende loop.</p>
+<p><strong>Protocol:</strong></p>
+<p><em>Stap 1 — Event-spike-correctie voor Google Trends.</em>
+- Wanneer een I-D5-003 niveau ≥2 gebeurtenis plaatsvindt op dag d_event, wordt I-D5-002 voor de periode [d_event, d_event + 7] aangepast:
+- GT_news_correction(d) = GT_raw(d) - GT_baseline(d)
+- waarbij GT_baseline(d) = gemiddelde van GT_raw over [d-14, d-7] (twee weken vóór event)
+- Het residu (GT_raw - news_correction) wordt als signaal gebruikt; de spike wordt apart geregistreerd</p>
+<p><em>Stap 2 — Continue cross-correlatie-monitor.</em>
+- 7-daagse cross-correlatie tussen I-D5-001 en I-D5-003 wordt continu berekend
+- Indien correlatie &gt; 0.7 over een gehele week: D5-domein-gewicht automatisch gehalveerd in die week
+- Origineel én gehalveerd composiet beide gerapporteerd voor transparantie</p>
+<p><em>Stap 3 — "Non-media baseline" als sensitivity-rapportage.</em>
+- Een composiet zonder D5 wordt parallel berekend
+- Wekelijks gerapporteerd: het verschil ("media-bijdrage") in percentielpunten</p>
+<p>Dit protocol maakt de mediacyclus-circulariteit zichtbaar en mitigeerbaar, niet onzichtbaar.</p>
+<hr />
+<h2 id="5-datapipeline-architectuur">5. Datapipeline-architectuur</h2>
+<h3 id="51-eerlijke-disclaimer-target-state-vs-current-state">5.1 Eerlijke disclaimer: target state vs current state</h3>
+<p>De pipeline-beschrijving hieronder is <em>target state</em>. De <em>current state</em> is een minimum viable pipeline (zie §5.6). Bij elke versie-uitgave wordt expliciet vermeld in welk implementatie-stadium het systeem zich bevindt.</p>
+<h3 id="52-bronnen-stack-target-state">5.2 Bronnen-stack (target state)</h3>
+<table>
+<thead>
+<tr>
+<th>Bron</th>
+<th>Indicatoren</th>
+<th>Toegangsmodus</th>
+<th>Frequentie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>KMI/RMI Open Data</td>
+<td>I-D1-001..003</td>
+<td>API</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>IRCEL-CELINE</td>
+<td>I-D1-004</td>
+<td>API</td>
+<td>uurlijks</td>
+</tr>
+<tr>
+<td>Vlaams Verkeerscentrum</td>
+<td>I-D2-001</td>
+<td>scraping + API</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>FOD Economie</td>
+<td>I-D2-004</td>
+<td>scraping</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>STATBEL</td>
+<td>I-D3-001, I-D3-005</td>
+<td>API</td>
+<td>maandelijks</td>
+</tr>
+<tr>
+<td>Belpex / Epex</td>
+<td>I-D3-002</td>
+<td>API</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>FOD WASO</td>
+<td>I-D3-003</td>
+<td>scraping</td>
+<td>wekelijks</td>
+</tr>
+<tr>
+<td>NBB</td>
+<td>I-D3-006</td>
+<td>API</td>
+<td>maandelijks</td>
+</tr>
+<tr>
+<td>Vlaamse onderwijskalender</td>
+<td>I-D4-002, I-D6-005</td>
+<td>statisch</td>
+<td>jaarlijks</td>
+</tr>
+<tr>
+<td>Nieuwsmonitoring</td>
+<td>I-D5-003</td>
+<td>menselijke codering</td>
+<td>event</td>
+</tr>
+<tr>
+<td>GDELT</td>
+<td>I-D5-001</td>
+<td>BigQuery</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>Google Trends</td>
+<td>I-D5-002</td>
+<td>pytrends API</td>
+<td>dagelijks</td>
+</tr>
+<tr>
+<td>Kalender-deterministisch</td>
+<td>I-D4-001, I-D6-001..003</td>
+<td>lokaal</td>
+<td>dagelijks</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-pipeline-stappen-target-state">5.3 Pipeline-stappen (target state)</h3>
+<pre><code>[1] EXTRACT — scheduled fetch met retry-logica
+[2] VALIDATE — schema- en range-check
+[3] TRANSFORM — formules uit §2 toepassen
+[4] HARMONIZE — tijdsharmonisatie uit §3
+[5] DECORRELATE — protocol §4.4
+[6] AUDIT — sanity checks, anomaly flags
+</code></pre>
+<h3 id="54-opslag-formaat-target-state">5.4 Opslag-formaat (target state)</h3>
+<ul>
+<li>Ruwe data: source-native</li>
+<li>Geharmoniseerde data: Apache Parquet</li>
+<li>Metadata: JSON met versie, bron, fetch-tijd</li>
+</ul>
+<h3 id="55-versionering">5.5 Versionering</h3>
+<ul>
+<li>Elke transformatieregel: semver</li>
+<li>Bij wijziging: alle historische data herberekend</li>
+<li>Oude versies behouden voor reproduceerbaarheid</li>
+</ul>
+<h3 id="56-minimum-viable-pipeline-current-state-vereiste">5.6 Minimum Viable Pipeline (current state vereiste)</h3>
+<p>Voor de eerste 6 maanden na livegang volstaat een minimale pipeline:
+- Python-scripts (lokaal of single VM)
+- Flat-file opslag (CSV + JSON)
+- Handmatige trigger of dagelijks cronjob
+- Versie-control via Git
+- Output: één JSON-file per dag, publiek toegankelijk</p>
+<p>Doel: snelheid van iteratie boven schaalbaarheid. Target-state-architectuur kan stapsgewijs worden opgebouwd zodra het instrument haar waarde heeft bewezen.</p>
+<hr />
+<h2 id="6-robuustheidstest-protocol">6. Robuustheidstest-protocol</h2>
+<p>Vóór composiet operationeel kan uitzenden:</p>
+<h3 id="61-test-1-indicator-dropout">6.1 Test 1 — Indicator-dropout</h3>
+<p>Op willekeurige 24-maands-historische subset:
+- 1 indicator verwijderen → composiet herberekenen → max afwijking &lt; 15%
+- 3 indicatoren verwijderen → &lt; 30%
+- 5 indicatoren verwijderen → &lt; 50%</p>
+<h3 id="62-test-2-bron-dropout">6.2 Test 2 — Bron-dropout</h3>
+<p>Eén bron uitschakelen → composiet werkt via missing-data-protocol. Max afwijking &lt; 20%.</p>
+<h3 id="63-test-3-lag-tolerantie">6.3 Test 3 — Lag-tolerantie</h3>
+<p>Vertraging in publicatie van één bron tot 7 dagen → composiet blijft consistent berekenbaar via forward-fill.</p>
+<hr />
+<h2 id="7-volgende-stap-laag-5-normalisatie">7. Volgende stap (laag 5: normalisatie)</h2>
+<ol>
+<li>Z-scoring per indicator (mediaan + MAD)</li>
+<li>Dubbele baseline-aanpak (24m voortschrijdend + 2010-2019 vast)</li>
+<li>STL-decompositie per indicator</li>
+<li>Winsorization</li>
+<li>Inverse-codering waar nodig</li>
+</ol>
+<hr />
+<h2 id="annex-a-indicator-overzichtstabel-v02">Annex A — Indicator-overzichtstabel (v0.2)</h2>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Indicator</th>
+<th>Eenheid</th>
+<th>Resolutie</th>
+<th>Bron</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I-D1-001</td>
+<td>Daglichturen</td>
+<td>uren</td>
+<td>dagelijks</td>
+<td>astronomisch</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D1-002</td>
+<td>Hitte</td>
+<td>°C / binair</td>
+<td>dagelijks</td>
+<td>KMI</td>
+<td>continu+binair</td>
+</tr>
+<tr>
+<td>I-D1-003</td>
+<td>Kou</td>
+<td>°C / binair</td>
+<td>dagelijks</td>
+<td>KMI</td>
+<td>continu+binair</td>
+</tr>
+<tr>
+<td>I-D1-004</td>
+<td>Luchtkwaliteit</td>
+<td>ratio</td>
+<td>dagelijks</td>
+<td>IRCEL-CELINE</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D2-001</td>
+<td>Filezwaarte</td>
+<td>km·min</td>
+<td>dagelijks</td>
+<td>Verkeerscentrum</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D2-004</td>
+<td>Brandstofprijs</td>
+<td>€/l</td>
+<td>dagelijks</td>
+<td>FOD Economie</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D3-001</td>
+<td>CPI inflatie</td>
+<td>% yoy</td>
+<td>maandelijks</td>
+<td>STATBEL</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D3-002</td>
+<td>Energieprijs</td>
+<td>€/MWh</td>
+<td>wekelijks</td>
+<td>Belpex</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D3-003</td>
+<td>Aangekondigde ontslagen</td>
+<td>log(N)</td>
+<td>wekelijks</td>
+<td>FOD WASO</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D3-005</td>
+<td>Werkloosheid</td>
+<td>%</td>
+<td>maandelijks</td>
+<td>STATBEL</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D3-006</td>
+<td>Hypotheekrente</td>
+<td>%</td>
+<td>maandelijks</td>
+<td>NBB</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D4-001</td>
+<td>Deadlinekalender</td>
+<td>0-3</td>
+<td>dagelijks</td>
+<td>deterministisch</td>
+<td>ordinaal</td>
+</tr>
+<tr>
+<td>I-D4-002</td>
+<td>Schoolvakantie</td>
+<td>0-2</td>
+<td>dagelijks</td>
+<td>onderwijskalender</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D5-001</td>
+<td>Nieuwsnegativiteit</td>
+<td>tone units</td>
+<td>dagelijks</td>
+<td>GDELT</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D5-002</td>
+<td>Google Trends stress</td>
+<td>0-100</td>
+<td>dagelijks</td>
+<td>Google Trends</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D5-003</td>
+<td>Collectieve gebeurtenissen</td>
+<td>0-15</td>
+<td>event</td>
+<td>menselijke codering</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D6-001</td>
+<td>Dagen tot vakantie</td>
+<td>dagen</td>
+<td>dagelijks</td>
+<td>deterministisch</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D6-002</td>
+<td>Weekdag</td>
+<td>6× binair</td>
+<td>dagelijks</td>
+<td>deterministisch</td>
+<td>binair</td>
+</tr>
+<tr>
+<td>I-D6-003</td>
+<td>Klok-verzetten</td>
+<td>0-1</td>
+<td>event</td>
+<td>deterministisch</td>
+<td>continu</td>
+</tr>
+<tr>
+<td>I-D6-005</td>
+<td>Examenperiode</td>
+<td>binair</td>
+<td>dagelijks</td>
+<td>academisch kalender</td>
+<td>binair</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h1 id="04_laag-5_normalisatie">04_Laag-5_Normalisatie</h1>
+<p><em>Bronbestand: <code>04_Laag-5_Normalisatie.md</code></em></p>
+<h1 id="stressor-blootstellings-index-sbi_4">Stressor-Blootstellings-Index (SBI)</h1>
+<h2 id="laag-5-normalisatie-en-seizoenscorrectie">Laag 5: Normalisatie en seizoenscorrectie</h2>
+<p><strong>Status:</strong> v0.2 — werkdocument
+<strong>Document:</strong> laag 5 van de methodologie
+<strong>Bouwt op:</strong> laag 1-4
+<strong>Auteur:</strong> BRAINWOLVES
+<strong>Datum:</strong> mei 2026</p>
+<hr />
+<h2 id="0-samenvatting_3">0. Samenvatting</h2>
+<p>Dit document beschrijft hoe ruwe indicator-waarden uit laag 4 worden omgezet naar vergelijkbare, dimensieloze Z-scores die het composiet kunnen vormen. Drie kernelementen: (1) dubbele baseline-aanpak — elke indicator wordt vergeleken met zowel een 24-maands voortschrijdend mediaangemiddelde als een vaste referentieperiode 2010-2019, (2) STL-decompositie voor indicatoren waar seizoenseffect een confounder is, en (3) winsorization tegen extreme outliers.</p>
+<hr />
+<h2 id="1-doelstellingen">1. Doelstellingen</h2>
+<p>Normalisatie lost drie problemen op: schaal-heterogeniteit, baseline-drift-blindheid, en seizoenseffect-confounding.</p>
+<hr />
+<h2 id="2-dubbele-baseline">2. Dubbele baseline</h2>
+<h3 id="21-korte-baseline-voortschrijdend">2.1 Korte baseline (voortschrijdend)</h3>
+<ul>
+<li>B_short(i, t) = mediaan van indicator i over de 24 maanden voorafgaand aan t</li>
+<li>σ_short(i, t) = MAD over diezelfde 24 maanden, geschaald naar SD-equivalent (×1.4826)</li>
+<li>Z_short(i, t) = (X(i, t) - B_short(i, t)) / σ_short(i, t)</li>
+</ul>
+<p>Doel: detecteert recente afwijkingen ten opzichte van de directe historische context.</p>
+<p><strong>Waarom mediaan + MAD i.p.v. gemiddelde + SD:</strong> robust statistics — een hittegolf of energiecrisis in de baseline-periode trekt het gemiddelde scheef. Mediaan en MAD blijven stabiel.</p>
+<h3 id="22-vaste-baseline">2.2 Vaste baseline</h3>
+<ul>
+<li>B_fixed(i) = mediaan over 1 januari 2010 — 31 december 2019</li>
+<li>σ_fixed(i) = MAD over diezelfde periode</li>
+<li>Z_fixed(i, t) = (X(i, t) - B_fixed(i)) / σ_fixed(i)</li>
+</ul>
+<p>Doel: detecteert structurele verschuiving ten opzichte van pre-pandemisch, pre-energiecrisis decennium.</p>
+<p>Alternatieve referentieperiodes (bv. 2015-2019) worden in laag 8 als sensitivity meegerekend.</p>
+<h3 id="23-welke-baseline-waar-gebruikt-wordt">2.3 Welke baseline waar gebruikt wordt</h3>
+<table>
+<thead>
+<tr>
+<th>Output</th>
+<th>Baseline</th>
+<th>Doel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Wekelijks signaal (productie)</td>
+<td>Korte (24m)</td>
+<td>Acute detectie</td>
+</tr>
+<tr>
+<td>Structurele-drift-rapportage</td>
+<td>Vaste (2010-2019)</td>
+<td>Langetermijn-context</td>
+</tr>
+<tr>
+<td>Persrapportage</td>
+<td>Beide naast elkaar</td>
+<td>Rijker verhaal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-bootstrapping">2.4 Bootstrapping</h3>
+<p>Voor de eerste 24 maanden na opstart: vaste baseline als surrogaat, met expliciete vlag in output.</p>
+<h3 id="25-belangrijke-interpretatie-discipline">2.5 Belangrijke interpretatie-discipline</h3>
+<p>MAD-gebaseerde Z-scores zijn <em>niet</em> equivalent aan klassieke Z-scores. Een Z_short van 2.0 in onze methodologie staat ongeveer overeen met een klassieke Z van 1.5 voor symmetrische verdelingen. In communicatie spreken we daarom uitsluitend over <em>percentielen</em> (uit laag 7), niet over "σ-overschrijdingen", om verwarring met klassieke statistische standaarden te vermijden.</p>
+<hr />
+<h2 id="3-seizoensdecompositie">3. Seizoensdecompositie</h2>
+<h3 id="31-stl-als-techniek">3.1 STL als techniek</h3>
+<p>STL (Cleveland et al, 1990) ontbindt een tijdreeks in: X(t) = T(t) + S(t) + R(t), waarbij T = trend, S = seizoen, R = residu. Bij indicatoren waar seizoen een confounder is, gebruiken we het residu R voor Z-scoring.</p>
+<h3 id="32-beslisregel-per-indicator-v02-update">3.2 Beslisregel per indicator (v0.2-update)</h3>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>STL?</th>
+<th>Reden</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I-D1-001 Daglichturen</td>
+<td>NEE</td>
+<td>Seizoenspatroon ís het signaal</td>
+</tr>
+<tr>
+<td>I-D1-002 Hitte</td>
+<td>DEELS</td>
+<td>Triggers behouden seizoenspatroon; continue T_max krijgt STL</td>
+</tr>
+<tr>
+<td>I-D1-003 Kou</td>
+<td>DEELS</td>
+<td>Idem</td>
+</tr>
+<tr>
+<td>I-D1-004 Luchtkwaliteit</td>
+<td>JA</td>
+<td>Seizoen is confounder (winter-NO₂, zomer-O₃)</td>
+</tr>
+<tr>
+<td>I-D2-001 Filezwaarte</td>
+<td>JA</td>
+<td>Vakantieperiode-effect is confounder</td>
+</tr>
+<tr>
+<td>I-D2-004 Brandstofprijs</td>
+<td>NEE</td>
+<td>Geen sterk seizoenspatroon</td>
+</tr>
+<tr>
+<td>I-D3-001 CPI</td>
+<td>JA</td>
+<td>Seizoensgecorrigeerde reeks via STATBEL</td>
+</tr>
+<tr>
+<td>I-D3-002 Energie</td>
+<td>JA</td>
+<td>Sterk seizoenseffect</td>
+</tr>
+<tr>
+<td>I-D3-003 Ontslagen</td>
+<td>JA</td>
+<td>Eindejaarsperiode-cluster is confounder</td>
+</tr>
+<tr>
+<td>I-D3-005 Werkloosheid</td>
+<td>JA</td>
+<td>Officieel seizoensgecorrigeerde reeks</td>
+</tr>
+<tr>
+<td>I-D3-006 Hypotheekrente</td>
+<td>NEE</td>
+<td>Geen seizoenspatroon</td>
+</tr>
+<tr>
+<td>I-D4-001 Deadlinekalender</td>
+<td>NEE</td>
+<td>Deterministisch</td>
+</tr>
+<tr>
+<td>I-D4-002 Schoolvakantie</td>
+<td>NEE</td>
+<td>Deterministisch</td>
+</tr>
+<tr>
+<td>I-D5-001 Nieuwsnegativiteit</td>
+<td>JA</td>
+<td>"Komkommertijd"-effect zomer</td>
+</tr>
+<tr>
+<td>I-D5-002 Google Trends</td>
+<td>JA</td>
+<td>Seizoenspatroon in zoekgedrag</td>
+</tr>
+<tr>
+<td>I-D5-003 Collectieve gebeurtenissen</td>
+<td>NEE</td>
+<td>Event-driven</td>
+</tr>
+<tr>
+<td>I-D6-001..003, 005</td>
+<td>NEE</td>
+<td>Kalender-deterministisch</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-stl-parameters">3.3 STL-parameters</h3>
+<ul>
+<li>Seizoens-periode: 365 dagen voor dagelijkse reeksen; 52 voor wekelijkse; 12 voor maandelijkse</li>
+<li>Robust mode: aan</li>
+<li>Trend-window: 1.5 × seizoensperiode</li>
+</ul>
+<h3 id="34-stabiliteitsvoorwaarde">3.4 Stabiliteitsvoorwaarde</h3>
+<p>STL betrouwbaar bij ≥ 3 seizoenscycli. Voor indicatoren met &lt; 3 jaar betrouwbare historiek: geen STL toegepast, expliciet gelogd.</p>
+<h3 id="35-bescherming-tegen-seizoens-dubbeltelling">3.5 Bescherming tegen seizoens-dubbeltelling</h3>
+<p>In v0.1 zat seizoenseffect dubbel: één keer expliciet (via I-D7-004 seizoensfase) en één keer impliciet (via daglichturen, hitte, etc.). In v0.2 is I-D6-004 (was I-D7-004) verplaatst naar secundaire set, en wordt seizoensimpact gemeten uitsluitend via:
+- <em>Expliciet:</em> I-D6-002 weekdag-cyclus + I-D6-003 klok-verzetten
+- <em>Impliciet:</em> I-D1-001 daglicht (waar seizoen het signaal is, geen STL)
+- <em>Gecorrigeerd:</em> alle andere indicatoren waar seizoen confounder is (STL toegepast)</p>
+<p>Geen overlap meer.</p>
+<hr />
+<h2 id="4-outlier-bescherming">4. Outlier-bescherming</h2>
+<h3 id="41-winsorization">4.1 Winsorization</h3>
+<p>Voor alle continue indicatoren na Z-scoring:</p>
+<p>Z_winsorized(i, t) = clip(Z(i, t), -3, +3)</p>
+<p>Behoudt richting en relatieve grootte van extremen, voorkomt single-indicator-dominantie.</p>
+<p><strong>Eerlijke disclaimer:</strong> ±3 is een conventionele drempel zonder specifieke empirische basis. In laag 8 (multiverse-analyse) wordt het effect van varieerde drempels (±2.5, ±3.5) systematisch getoetst.</p>
+<h3 id="42-voor-event-indicatoren">4.2 Voor event-indicatoren</h3>
+<p>I-D5-003 en I-D6-003 zijn al ontworpen met begrensde schaal en decay. Geen aanvullende winsorization.</p>
+<h3 id="43-audit-trail">4.3 Audit-trail</h3>
+<p>Elke winsorization gelogd. Beschermt tegen informatieverlies; sensitivity-analyse mogelijk.</p>
+<hr />
+<h2 id="5-inverse-codering">5. Inverse-codering</h2>
+<p>Sommige indicatoren hebben inverse relatie met stressor-blootstelling (hogere ruwe waarde = lagere blootstelling).</p>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Ruwe relatie</th>
+<th>Codering</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I-D1-001 Daglichturen</td>
+<td>meer licht = minder blootstelling</td>
+<td>Z_inv = -Z</td>
+</tr>
+<tr>
+<td>I-D6-001 Dagen tot vakantie</td>
+<td>meer dagen = meer blootstelling</td>
+<td>Z behouden</td>
+</tr>
+</tbody>
+</table>
+<p>Na inverse-codering geldt: hogere Z = hogere stressor-blootstelling. Vereiste voor optelbaarheid in laag 6.</p>
+<hr />
+<h2 id="6-output-van-laag-5">6. Output van laag 5</h2>
+<p>Per indicator per tijdstap vier waarden:</p>
+<ol>
+<li>X(i, t) — ruwe waarde uit laag 4</li>
+<li>Z_short(i, t) — Z-score tegen 24m baseline, na inverse-codering en winsorization</li>
+<li>Z_fixed(i, t) — Z-score tegen 2010-2019 baseline, idem</li>
+<li>R(i, t) — STL-residu (waar toepasselijk)</li>
+</ol>
+<p>Z_short → primair composiet. Z_fixed → structurele-drift. R → indicatoren waar seizoen confounder.</p>
+<hr />
+<h2 id="7-voorbeeld-uitwerking">7. Voorbeeld-uitwerking</h2>
+<p>Hypothetisch voor week 24 van 2026:</p>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>X</th>
+<th>B_short</th>
+<th>σ_short</th>
+<th>Z_short</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I-D1-002 Hitte (T_max)</td>
+<td>34.2°C</td>
+<td>22.1°C</td>
+<td>5.4°C</td>
+<td>+2.24</td>
+</tr>
+<tr>
+<td>I-D2-001 Filezwaarte</td>
+<td>8400 km·min</td>
+<td>6200</td>
+<td>1100</td>
+<td>+2.00</td>
+</tr>
+<tr>
+<td>I-D3-002 Energie</td>
+<td>95 €/MWh</td>
+<td>78</td>
+<td>12</td>
+<td>+1.42</td>
+</tr>
+<tr>
+<td>I-D5-001 Nieuwsneg (na STL)</td>
+<td>residu +3.1</td>
+<td>0</td>
+<td>1.8</td>
+<td>+1.72</td>
+</tr>
+<tr>
+<td>I-D6-001 Dagen tot vakantie</td>
+<td>41</td>
+<td>28</td>
+<td>19</td>
+<td>+0.68</td>
+</tr>
+</tbody>
+</table>
+<p>Deze gaan naar laag 6 voor weging.</p>
+<hr />
+<h2 id="8-bekende-beperkingen">8. Bekende beperkingen</h2>
+<h3 id="81-mediaan-mad-vs-gemiddelde-sd">8.1 Mediaan-MAD vs gemiddelde-SD</h3>
+<p>Robust statistics geven andere uitkomst dan klassieke. We zijn hier expliciet over.</p>
+<h3 id="82-baseline-drift">8.2 Baseline-drift</h3>
+<p>24-maands rolling baseline absorbeert geleidelijke verslechtering. Daarom de parallel vaste baseline 2010-2019.</p>
+<h3 id="83-stl-bij-korte-historiek">8.3 STL bij korte historiek</h3>
+<p>Eerste paar jaar kan STL het seizoenseffect over/onderschatten.</p>
+<h3 id="84-winsorization-vermindert-detectie-van-extremen">8.4 Winsorization vermindert detectie van extremen</h3>
+<p>Bewust ontwerpcompromis. Ruwe Z-waarden separaat beschikbaar voor extremen-rapportage.</p>
+<hr />
+<h2 id="9-volgende-stap-laag-6-weging">9. Volgende stap (laag 6: weging)</h2>
+<p>Reeds gespecificeerd in <code>05_Laag-6_Weging.md</code>: drie wegingsschema's parallel (equal / evidence-graded / weegafhankelijkheid-diagnostiek), met balance-correctie voor 6-domein-structuur.</p>
+<hr />
+<h2 id="bronnen_2">Bronnen</h2>
+<p>Cleveland, R. B., Cleveland, W. S., McRae, J. E., &amp; Terpenning, I. (1990). STL: A seasonal-trend decomposition procedure based on Loess. <em>Journal of Official Statistics</em>, 6(1), 3-73.</p>
+<p>Leys, C., Ley, C., Klein, O., Bernard, P., &amp; Licata, L. (2013). Detecting outliers: Do not use standard deviation around the mean, use absolute deviation around the median. <em>Journal of Experimental Social Psychology</em>, 49(4), 764-766.</p>
+<hr />
+<h1 id="05_laag-6_weging">05_Laag-6_Weging</h1>
+<p><em>Bronbestand: <code>05_Laag-6_Weging.md</code></em></p>
+<h1 id="stressor-blootstellings-index-sbi_5">Stressor-Blootstellings-Index (SBI)</h1>
+<h2 id="laag-6-weging">Laag 6: Weging</h2>
+<p><strong>Status:</strong> v0.2 — werkdocument
+<strong>Document:</strong> laag 6 van de methodologie
+<strong>Bouwt op:</strong> laag 1-5
+<strong>Auteur:</strong> BRAINWOLVES
+<strong>Datum:</strong> mei 2026</p>
+<hr />
+<h2 id="0-samenvatting_4">0. Samenvatting</h2>
+<p>Dit document legt vast hoe de 20 genormaliseerde indicatoren in 6 domeinen worden gewogen tot één composiet. Twee hoofdschema's worden parallel uitgevoerd: een <strong>equal-weights-schema</strong> (transparant, geen verborgen aannames) en een <strong>evidence-graded-schema</strong> (factoren met sterkere wetenschappelijke onderbouwing wegen zwaarder). Een derde schema — <em>weegafhankelijkheid-diagnostiek</em> — is geen pass/fail-toets maar een rapportage-instrument dat de gevoeligheid voor weegkeuzes kwantificeert.</p>
+<p>Het document specificeert verder een domein-balance-correctie en de pre-registratie van gewichten.</p>
+<hr />
+<h2 id="1-twee-fundamentele-wegings-vragen">1. Twee fundamentele wegings-vragen</h2>
+<p><strong>Vraag A: Hoe wegen indicatoren <em>binnen</em> een domein?</strong>
+- Optie 1: gelijk
+- Optie 2: gewogen naar evidence-grade per indicator
+- Optie 3: gewogen naar variance-explanation (datadreven)</p>
+<p><strong>Vraag B: Hoe wegen domeinen <em>tegen elkaar</em>?</strong>
+- Optie 1: gelijk (elk domein = 1/6)
+- Optie 2: gewogen naar aantal indicatoren in domein
+- Optie 3: gewogen naar gecombineerde evidence-grade van het domein
+- Optie 4: gelijk met balance-correctie voor dunne domeinen</p>
+<p>We selecteren combinaties die elk een specifiek wegingsschema vormen.</p>
+<hr />
+<h2 id="2-schema-1-equal-weights-primair-publicatie-schema">2. Schema 1 — Equal Weights (primair publicatie-schema)</h2>
+<h3 id="21-indicator-binnen-domein">2.1 Indicator-binnen-domein</h3>
+<p>Alle indicatoren binnen een domein krijgen identiek gewicht.</p>
+<p>w_indicator(i ∈ D) = 1 / |D|</p>
+<h3 id="22-domein-tussen">2.2 Domein-tussen</h3>
+<p>Alle zes domeinen krijgen gelijk gewicht:</p>
+<p>w_domain(D) = 1/6 ≈ 0.167</p>
+<h3 id="23-composiet-formule-volledige-aggregatie-in-laag-7">2.3 Composiet-formule (volledige aggregatie in laag 7)</h3>
+<p>C_equal(t) = Σ_D [w_domain(D) × Σ_{i ∈ D} (w_indicator(i ∈ D) × Z_short(i, t))]</p>
+<h3 id="24-waarom-dit-het-primaire-schema-is">2.4 Waarom dit het primaire schema is</h3>
+<p>Equal weights heeft drie voordelen die in een methodologie zonder veldwerk dragend zijn:</p>
+<ol>
+<li><em>Transparantie:</em> geen verborgen aannames over relatieve belangrijkheid.</li>
+<li><em>Robuustheid:</em> geen overfitting aan historische data. Niet door achteraf-tuning te vertekenen.</li>
+<li><em>Verdedigbaarheid:</em> "we gaven elke literatuur-onderbouwde stressor gelijk gewicht" is een claim die geen empirische rechtvaardiging vereist die we niet kunnen leveren.</li>
+</ol>
+<h3 id="25-beperking">2.5 Beperking</h3>
+<p>Een file is duidelijk niet even belangrijk als een oorlog. Equal weights verbergt dat verschil. Daarom: het primaire publicatie-schema gebruikt equal weights, maar Schema 2 wordt parallel berekend en gepubliceerd zodat het verschil zichtbaar is.</p>
+<hr />
+<h2 id="3-schema-2-evidence-graded-weights-parallel">3. Schema 2 — Evidence-Graded Weights (parallel)</h2>
+<h3 id="31-indicator-binnen-domein">3.1 Indicator-binnen-domein</h3>
+<p>Gewicht volgt de evidence-grade uit laag 3:</p>
+<table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>Gewicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>3</td>
+</tr>
+<tr>
+<td>B</td>
+<td>2</td>
+</tr>
+<tr>
+<td>C</td>
+<td>1 (alleen secundaire set)</td>
+</tr>
+</tbody>
+</table>
+<p>Genormaliseerd binnen domein:</p>
+<p>w_indicator(i ∈ D) = grade_weight(i) / Σ_{j ∈ D} grade_weight(j)</p>
+<h3 id="32-domein-tussen">3.2 Domein-tussen</h3>
+<p>Domein-gewicht = gemiddelde indicator-evidence-grade × balance-correctie:</p>
+<p>w_domain(D) = (mean_grade(D) × balance(D)) / Σ_D (mean_grade(D) × balance(D))</p>
+<h3 id="33-berekende-waarden-voor-de-6-sbi-domeinen">3.3 Berekende waarden voor de 6 SBI-domeinen</h3>
+<p>Primaire set per domein met evidence-grades:</p>
+<p>| Domein | Indicatoren | |D| | Grades | Mean grade |
+|---|---|---|---|---|
+| D1 Omgeving &amp; klimaat | 4 | 4 | A, A, B, A | 2.75 |
+| D2 Mobiliteit &amp; ruimte | 2 | 2 | A, B | 2.50 |
+| D3 Economische conditie | 5 | 5 | A, B, A, A, B | 2.60 |
+| D4 Werk &amp; belasting | 2 | 2 | B, B | 2.00 |
+| D5 Media &amp; collectieve gebeurtenissen | 3 | 3 | B, B, A | 2.33 |
+| D6 Kalender &amp; ritme | 4 | 4 | B, B, A, B | 2.25 |</p>
+<p>Gemiddelde |D| = 20/6 ≈ 3.33; √(mean|D|) = 1.825</p>
+<p>Balance-correctie balance(D) = √(|D|) / √(mean|D|):</p>
+<table>
+<thead>
+<tr>
+<th>Domein</th>
+<th>√(|D|)</th>
+<th>balance(D)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td>2.000</td>
+<td>1.096</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>1.414</td>
+<td>0.775</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>2.236</td>
+<td>1.225</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>1.414</td>
+<td>0.775</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>1.732</td>
+<td>0.949</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>2.000</td>
+<td>1.096</td>
+</tr>
+</tbody>
+</table>
+<p>Gewicht ongeschaald = mean_grade × balance:</p>
+<table>
+<thead>
+<tr>
+<th>Domein</th>
+<th>mean_grade × balance</th>
+<th>norm gewicht</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1</td>
+<td>2.75 × 1.096 = 3.014</td>
+<td>0.211</td>
+</tr>
+<tr>
+<td>D2</td>
+<td>2.50 × 0.775 = 1.938</td>
+<td>0.135</td>
+</tr>
+<tr>
+<td>D3</td>
+<td>2.60 × 1.225 = 3.185</td>
+<td>0.223</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>2.00 × 0.775 = 1.550</td>
+<td>0.108</td>
+</tr>
+<tr>
+<td>D5</td>
+<td>2.33 × 0.949 = 2.211</td>
+<td>0.155</td>
+</tr>
+<tr>
+<td>D6</td>
+<td>2.25 × 1.096 = 2.466</td>
+<td>0.172</td>
+</tr>
+<tr>
+<td><strong>Totaal</strong></td>
+<td><strong>14.364</strong></td>
+<td><strong>1.000</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-waarom-parallel-rapporteren">3.4 Waarom parallel rapporteren</h3>
+<p>Equal en Evidence-Graded kunnen significant verschillen. Door beide te rapporteren toont de SBI haar gevoeligheid voor weegkeuze. Dit ondersteunt falsifieerbaarheidscriterium F2 (mono-causaliteit) uit het anker-paper.</p>
+<hr />
+<h2 id="4-schema-3-weegafhankelijkheid-diagnostiek">4. Schema 3 — Weegafhankelijkheid-diagnostiek</h2>
+<h3 id="41-doel">4.1 Doel</h3>
+<p>Schema 1 en 2 maken impliciete keuzes over wat "belangrijk" is. Schema 3 <em>kwantificeert hoe sterk</em> het composiet afhangt van die keuzes — zonder pass/fail-drempel. Het is een <strong>rapportage-instrument</strong>, geen toets.</p>
+<h3 id="42-methode">4.2 Methode</h3>
+<p>Drie tegen-intuïtieve gewichtsvariaties worden parallel berekend:</p>
+<ul>
+<li><em>Inverse-rank:</em> w_indicator(i) = 1 / rank_by_grade(i)</li>
+<li><em>Single-domain-dropouts:</em> zes varianten waarbij telkens één domein wordt weggelaten</li>
+<li><em>Random-weight-bootstrap:</em> 1000 trekkingen met willekeurige gewichten uit een Dirichlet-verdeling</li>
+</ul>
+<h3 id="43-output">4.3 Output</h3>
+<p>Niet als signaal gepubliceerd, maar als <strong>gevoeligheidsstatistiek</strong> in de output:</p>
+<pre><code>weight_sensitivity:
+  correlation_inverse_vs_equal_12w: 0.84
+  composite_range_with_dropouts: [1.21, 1.65]   # min..max C(t) over 6 dropouts
+  bootstrap_95_ci_around_equal: [1.32, 1.54]
+</code></pre>
+<h3 id="44-hoe-deze-rapportage-te-lezen">4.4 Hoe deze rapportage te lezen</h3>
+<ul>
+<li><em>Hoge correlatie</em> tussen Schema 1 en inverse-rank betekent: weegkeuze maakt weinig uit — wat impliceert dat indicatoren een sterke gemeenschappelijke factor delen (mogelijk redundant).</li>
+<li><em>Lage correlatie</em> betekent: weegkeuze maakt veel uit — het composiet is fragiel onder weeg-aanname.</li>
+<li>Beide zijn informatie. Geen van beide is "pass" of "fail". De gebruiker (en kritische reviewer) interpreteert naar context.</li>
+</ul>
+<h3 id="45-verschil-met-v01">4.5 Verschil met v0.1</h3>
+<p>In v0.1 werd Schema 3 voorgesteld als pass/fail-toets met drempel 0.85. Dit was logisch kreupel — beide uitkomsten signaleerden een probleem. In v0.2 is de drempel weg en is Schema 3 puur diagnostisch.</p>
+<hr />
+<h2 id="5-domein-balance-correctie">5. Domein-balance-correctie</h2>
+<h3 id="51-probleem">5.1 Probleem</h3>
+<p>Met v0.2-consolidatie hebben domeinen 2-5 indicatoren. Zonder correctie zou een 5-indicatoren-domein (D3) 2.5× meer signaal hebben dan een 2-indicatoren-domein (D2 of D4), louter door indicator-aantal.</p>
+<h3 id="52-correctie">5.2 Correctie</h3>
+<p>Voor evidence-graded schema (Schema 2):</p>
+<p>balance(D) = √(|D|) / √(mean(|D|))</p>
+<p>Wortel-correctie omdat lineaire correctie te zwaar is voor dunne domeinen (kunstmatig opwaardering) en geen correctie te zwaar voor dikke (oververtegenwoordiging).</p>
+<h3 id="53-effect">5.3 Effect</h3>
+<p>In v0.2:
+- D2 en D4 (elk 2 indicatoren) krijgen balance 0.775 — niet ondervertegenwoordigd, niet opgepompt
+- D3 (5 indicatoren) krijgt balance 1.225 — relatief gedempt
+- D1 en D6 (4 indicatoren) krijgen balance 1.096 — milde verhoging
+- D5 (3 indicatoren) krijgt balance 0.949 — neutraal</p>
+<p>Vergeleken met v0.1 (waar D5 met 1 indicator een balance van 0.58 kreeg, leidend tot systematische deflatie van het composiet door een dood domein), is de balansering in v0.2 substantieel gezonder.</p>
+<h3 id="54-alternatieve-aanpak-overwogen-en-verworpen">5.4 Alternatieve aanpak overwogen en verworpen</h3>
+<p>We overwogen: domeinen wegen op basis van <em>theoretisch belang</em> eerder dan databeschikbaarheid. Verworpen omdat dit een subjectieve waardenoordeel-laag introduceert die we expliciet uit de methodologie willen houden.</p>
+<hr />
+<h2 id="6-pre-registratie-van-gewichten">6. Pre-registratie van gewichten</h2>
+<p>Alle wegings-keuzes worden vastgelegd in <code>00_Pre-Registratie.md</code>. Hier samengevat:</p>
+<ol>
+<li><strong>Schema 1</strong> (equal weights) — primair publicatie-schema</li>
+<li><strong>Schema 2</strong> (evidence-graded met balance-correctie) — parallel publicatie-schema</li>
+<li><strong>Schema 3</strong> (weegafhankelijkheid-diagnostiek) — rapportage-instrument, niet als signaal gepubliceerd</li>
+</ol>
+<p>Alle drie worden bij <em>elke</em> wekelijkse berekening uitgevoerd. Output omvat:
+- C_equal(t)
+- C_evidence(t)
+- weight_sensitivity-statistieken</p>
+<p>Pre-registratie vindt plaats op OSF vóór eerste publieke meting. Gewichten kunnen alleen worden gewijzigd via het in 08_Onderhoud-Protocol.md gedocumenteerde proces.</p>
+<hr />
+<h2 id="7-wanneer-mogen-gewichten-herzien-worden">7. Wanneer mogen gewichten herzien worden?</h2>
+<p>Drie legitieme gronden:</p>
+<p><strong>A1. Nieuwe meta-analyse of systematic review</strong> die evidence-grade van een indicator structureel verandert (A→B of B→A).</p>
+<p><strong>A2. Indicator-toevoeging of -verwijdering</strong> uit laag 3 (nieuwe data wordt beschikbaar; oude bron verdwijnt).</p>
+<p><strong>A3. Falsifieerbaarheidscriteria-falen</strong> uit anker-paper §7. Bij F2 (mono-causaliteit) is herziening vereist; bij F1, F4, F5 mogelijk vereist.</p>
+<p>Elke herziening:
+- Wordt minimaal 30 dagen vooraf publiek aangekondigd
+- Wordt gedocumenteerd in versioned methodology paper
+- Triggert herberekening van alle historische data onder beide schema's, gepubliceerd parallel</p>
+<hr />
+<h2 id="8-bekende-spanningen-in-de-wegingslaag">8. Bekende spanningen in de wegingslaag</h2>
+<h3 id="81-equal-weights-versus-inhoudelijke-validiteit">8.1 Equal weights versus inhoudelijke validiteit</h3>
+<p>Equal weights is de meest defensieve keuze, maar de minst inhoudelijk geïnformeerde. Wie inhoudelijke prioritering wil, raadpleegt Schema 2.</p>
+<h3 id="82-evidence-grade-stress-relevantie">8.2 Evidence-grade ≠ stress-relevantie</h3>
+<p>Evidence-grade weerspiegelt <em>hoeveel onderzoek</em> een associatie ondersteunt, niet <em>hoe sterk</em> de associatie is. Geaccepteerde beperking.</p>
+<h3 id="83-d4-zwakte">8.3 D4-zwakte</h3>
+<p>Onder Schema 2 krijgt D4 (werk, beide grade B) het laagste gewicht (0.108). Dit reflecteert eerlijk de relatief zwakkere evidence voor onze gekozen D4-indicatoren — kalendarische deadlines en schoolvakantie, beide grade B. Het is <em>niet</em> een uitspraak dat werkstress onbelangrijk is, maar dat <em>onze publieke proxies</em> matiger onderbouwd zijn dan onze D1-omgevingsproxies.</p>
+<h3 id="84-d5-consolidatie-verbetert-de-structuur">8.4 D5-consolidatie verbetert de structuur</h3>
+<p>Met media en collectieve gebeurtenissen samen in D5 is het composiet niet meer kwetsbaar voor de "zero-deflation" die in v0.1 optrad (toen D5 met één event-indicator 95% van de tijd 0 bijdroeg ondanks ~10% gewicht). In v0.2 draagt D5 in normale weken voortdurend bij via nieuwsnegativiteit en Google Trends.</p>
+<hr />
+<h2 id="9-volgende-stap-laag-7-aggregatie-en-drempel">9. Volgende stap (laag 7: aggregatie en drempel)</h2>
+<ol>
+<li>Composiet-formule met aggregatie-regel</li>
+<li>Percentiel-rangschikking tegen historische verdeling</li>
+<li>Drie-tier-signaal (groen/oranje/rood)</li>
+<li>Decay-regels voor signaal-overgang</li>
+<li>Output-API-specificatie</li>
+</ol>
+<hr />
+<h2 id="annex-a-definitieve-wegingstabel-schema-2-v02-gepre-registreerd">Annex A — Definitieve wegingstabel Schema 2 (v0.2, gepre-registreerd)</h2>
+<p>| Domein | |D| | mean grade | balance | gew_raw | gew_norm |
+|---|---|---|---|---|---|
+| D1 Omgeving &amp; klimaat | 4 | 2.75 | 1.096 | 3.014 | <strong>0.211</strong> |
+| D2 Mobiliteit &amp; ruimte | 2 | 2.50 | 0.775 | 1.938 | <strong>0.135</strong> |
+| D3 Economische conditie | 5 | 2.60 | 1.225 | 3.185 | <strong>0.223</strong> |
+| D4 Werk &amp; belasting | 2 | 2.00 | 0.775 | 1.550 | <strong>0.108</strong> |
+| D5 Media &amp; collectieve gebeurtenissen | 3 | 2.33 | 0.949 | 2.211 | <strong>0.155</strong> |
+| D6 Kalender &amp; ritme | 4 | 2.25 | 1.096 | 2.466 | <strong>0.172</strong> |
+| <strong>Totaal</strong> | <strong>20</strong> | | | <strong>14.364</strong> | <strong>1.000</strong> |</p>
+<p>Onder Schema 1 (equal): elk domein <strong>0.167</strong>.</p>
+<hr />
+<h1 id="06_laag-7_aggregatie-en-drempel">06_Laag-7_Aggregatie-en-Drempel</h1>
+<p><em>Bronbestand: <code>06_Laag-7_Aggregatie-en-Drempel.md</code></em></p>
+<h1 id="stressor-blootstellings-index-sbi_6">Stressor-Blootstellings-Index (SBI)</h1>
+<h2 id="laag-7-aggregatie-en-signaal-logica">Laag 7: Aggregatie en signaal-logica</h2>
+<p><strong>Status:</strong> v0.2 — werkdocument
+<strong>Document:</strong> laag 7 van de methodologie
+<strong>Bouwt op:</strong> laag 1-6
+<strong>Auteur:</strong> BRAINWOLVES
+<strong>Datum:</strong> mei 2026</p>
+<hr />
+<h2 id="0-samenvatting_5">0. Samenvatting</h2>
+<p>Dit document specificeert hoe gewogen indicator-Z-scores uit laag 6 worden geaggregeerd tot één composiet, hoe die waarde wordt vertaald naar een percentiel-positie en hoe die positie omgezet wordt naar een drie-tier-signaal (groen/oranje/rood) met decay-regels. Het document legt ook de output-API-specificatie vast.</p>
+<p>Belangrijk ontwerpprincipe: het composiet zelf is geen binaire ja/nee-uitspraak. Het signaal is een <em>positie</em> in een distributie. Of die positie als "venster open" of "venster gesloten" wordt geïnterpreteerd, hangt af van pre-geregistreerde drempels.</p>
+<hr />
+<h2 id="1-composiet-formule">1. Composiet-formule</h2>
+<h3 id="11-per-indicator">1.1 Per indicator</h3>
+<p>Z_weighted(i, t) = w_indicator(i ∈ D) × Z_short(i, t)</p>
+<h3 id="12-per-domein">1.2 Per domein</h3>
+<p>D_score(D, t) = Σ_{i ∈ D} Z_weighted(i, t)</p>
+<h3 id="13-composiet">1.3 Composiet</h3>
+<p>C(t) = Σ_D [w_domain(D) × D_score(D, t)]</p>
+<p>Onder Schema 1 (equal, 1/6 per domein): C_equal(t)
+Onder Schema 2 (evidence-graded met balance-correctie): C_evidence(t)
+Schema 3 (weegafhankelijkheid-diagnostiek): gerapporteerd als gevoeligheidsstatistiek, niet als signaal.</p>
+<p>C_equal(t) is het primaire publieke signaal.</p>
+<h3 id="14-eenheid">1.4 Eenheid</h3>
+<p>Composiet C(t) is dimensieloos.</p>
+<hr />
+<h2 id="2-percentiel-positie">2. Percentiel-positie</h2>
+<h3 id="21-waarom-percentielen">2.1 Waarom percentielen</h3>
+<p>Een MAD-Z-score van +1.8 op het composiet zegt weinig zonder context. Een percentiel-positie ("vandaag is in de top 12% van alle dagen van de laatste 24 maanden") is interpreteerbaar en historisch geankerd.</p>
+<h3 id="22-definitie">2.2 Definitie</h3>
+<p>P(t) = rang van C(t) binnen de verdeling van C-waarden over de afgelopen 24 maanden, uitgedrukt als percentiel (0-100).</p>
+<h3 id="23-tijdsvenster">2.3 Tijdsvenster</h3>
+<p>24 maanden voortschrijdend. Sluit aan op de korte baseline uit laag 5.</p>
+<h3 id="24-bootstrapping_1">2.4 Bootstrapping</h3>
+<p>Eerste 24 maanden: historische backtest-data 2010-2024 als percentiel-referentie. Vanaf maand 24 schuift het venster mee.</p>
+<h3 id="25-parallelle-percentielen">2.5 Parallelle percentielen</h3>
+<p>Naast P_short(t) (24m venster) wordt P_fixed(t) berekend tegen de gehele backtest-historiek 2010-2019.</p>
+<hr />
+<h2 id="3-drie-tier-signaal">3. Drie-tier-signaal</h2>
+<h3 id="31-definitie">3.1 Definitie</h3>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Symbool</th>
+<th>Voorwaarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Groen</strong></td>
+<td>🟢</td>
+<td>P(t) &lt; 70 OF tier niet gehandhaafd lang genoeg</td>
+</tr>
+<tr>
+<td><strong>Oranje</strong></td>
+<td>🟡</td>
+<td>70 ≤ P(t) &lt; 90, gehandhaafd ≥ 3 opeenvolgende dagen</td>
+</tr>
+<tr>
+<td><strong>Rood</strong></td>
+<td>🔴</td>
+<td>P(t) ≥ 90, gehandhaafd ≥ 3 opeenvolgende dagen</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-sustained-duration-regel">3.2 Sustained-duration-regel</h3>
+<p>Eén dag boven drempel ≠ tier-overgang. Drie opeenvolgende dagen binnen dezelfde band ⇒ tier-overgang.</p>
+<h3 id="33-decay-regel">3.3 Decay-regel</h3>
+<p>Bij daling onder drempel: tier wordt afgeschaald pas na 3 opeenvolgende dagen onder.</p>
+<h3 id="34-asymmetrische-logica">3.4 Asymmetrische logica</h3>
+<p>Het instrument is ontworpen om <em>trage</em> tier-overgangen op te leggen (zowel omhoog als omlaag). Het is geen real-time alarm; het is een rapport over collectieve conditie.</p>
+<h3 id="35-rechtvaardiging-van-de-3-dagen-sustained-regel">3.5 Rechtvaardiging van de 3-dagen-sustained-regel</h3>
+<p>De keuze van 3 dagen is niet arbitrair maar geankerd in twee literatuurlijnen:</p>
+<p><strong>Chronobiologie:</strong> de HPA-as-cortisol-respons heeft een circadiane cyclus van ongeveer 24 uur (Sapolsky 2004; Kirschbaum &amp; Hellhammer 1989). Drie opeenvolgende dagen omvatten drie volledige cortisol-cycli — het minimum om een acute respons (één-daagse stressor, eindigend met herstel) te onderscheiden van een aanhoudende respons (geen herstel-gelegenheid).</p>
+<p><strong>Stress-habituatie-literatuur:</strong> McEwen (2007) toont dat allostatic load mechanismen actief worden na <em>meerdaagse</em> aanhoudende stressor-blootstelling, niet na acute eenmalige blootstelling. Drie dagen valt aan de ondergrens van wat als "aanhoudend" geldt in deze literatuur.</p>
+<p><strong>Sensitivity-test:</strong> in laag 8 (multiverse-analyse) wordt 1d, 3d, 5d en 7d sustained-duration parallel getest. Indien 3d niet robuust blijkt, wordt het criterium herzien.</p>
+<h3 id="36-rechtvaardiging-van-p70-en-p90-eerlijk-geformuleerd">3.6 Rechtvaardiging van P=70 en P=90 (eerlijk geformuleerd)</h3>
+<p>P=90 (top 10%) is een conventionele uitzonderlijkheidsdrempel in epidemiologische literatuur op uitkomst-meting (excess mortality, hospital admissions). Voor stressor-blootstelling-meting bestaat geen vergelijkbare conventie.</p>
+<p>P=70 is gekozen als "waarschuwingsband" vóór rood; het exacte percentiel heeft geen empirische basis maar wordt in de multiverse-toets parallel gevarieerd (P=65, 70, 75) om robuustheid te tonen.</p>
+<p>We zijn over deze keuze expliciet: het zijn redelijke conventies, niet wetenschappelijke noodzakelijkheden.</p>
+<hr />
+<h2 id="4-output-specificatie">4. Output-specificatie</h2>
+<h3 id="41-daily-output-record">4.1 Daily output record</h3>
+<pre><code>{
+  &quot;timestamp&quot;: &quot;2026-05-24T23:00:00+02:00&quot;,
+  &quot;week_iso&quot;: &quot;2026-W21&quot;,
+  &quot;composite&quot;: {
+    &quot;equal&quot;: 1.42,
+    &quot;evidence_graded&quot;: 1.58,
+    &quot;weight_sensitivity&quot;: {
+      &quot;correlation_inverse_vs_equal_12w&quot;: 0.84,
+      &quot;composite_range_with_dropouts&quot;: [1.21, 1.65],
+      &quot;bootstrap_95_ci_around_equal&quot;: [1.32, 1.54]
+    }
+  },
+  &quot;percentile&quot;: {
+    &quot;short_24m&quot;: 87,
+    &quot;fixed_2010_2019&quot;: 92
+  },
+  &quot;tier&quot;: {
+    &quot;current&quot;: &quot;amber&quot;,
+    &quot;days_in_tier&quot;: 5,
+    &quot;tier_history_30d&quot;: [&quot;green&quot;, &quot;green&quot;, &quot;amber&quot;, &quot;amber&quot;, ...]
+  },
+  &quot;top_contributing_domains&quot;: [
+    {&quot;domain&quot;: &quot;D1&quot;, &quot;contribution&quot;: 0.34},
+    {&quot;domain&quot;: &quot;D5&quot;, &quot;contribution&quot;: 0.28},
+    {&quot;domain&quot;: &quot;D2&quot;, &quot;contribution&quot;: 0.22}
+  ],
+  &quot;media_cluster_diagnostic&quot;: {
+    &quot;d5_cross_correlation_7d&quot;: 0.42,
+    &quot;composite_without_d5&quot;: 1.31,
+    &quot;media_contribution_percentile_points&quot;: 8
+  },
+  &quot;data_quality&quot;: {
+    &quot;indicators_with_imputed_data&quot;: [&quot;I-D3-002&quot;],
+    &quot;indicators_missing&quot;: [],
+    &quot;pipeline_version&quot;: &quot;0.2.0&quot;,
+    &quot;implementation_stage&quot;: &quot;minimum_viable_pipeline&quot;
+  }
+}
+</code></pre>
+<h3 id="42-drie-outputs-voor-extern-gebruik">4.2 Drie outputs voor extern gebruik</h3>
+<p><strong>(a) De publieke barometer</strong> — dagelijkse records via publieke website + RSS. Voor pers en publiek.</p>
+<p><strong>(b) Signal-API</strong> — minimal endpoint:</p>
+<pre><code>GET /signal/latest
+{
+  &quot;tier&quot;: &quot;amber&quot;,
+  &quot;timestamp&quot;: &quot;2026-05-24T23:00:00+02:00&quot;,
+  &quot;valid_until&quot;: &quot;2026-05-25T23:00:00+02:00&quot;,
+  &quot;brand_safety_flag&quot;: &quot;normal&quot;
+}
+</code></pre>
+<p><strong>(c) Full dataset</strong> — historische data, alle indicatoren, voor onderzoekers en kritische review.</p>
+<h3 id="43-wat-de-output-niet-doet">4.3 Wat de output <em>niet</em> doet</h3>
+<ul>
+<li>Geen beleidsadvies</li>
+<li>Geen interventie-aanbeveling</li>
+<li>Geen individuele aanbevelingen</li>
+<li>Geen demografische uitsplitsing</li>
+<li>Geen voorspelling van toekomstige tier</li>
+</ul>
+<hr />
+<h2 id="5-transparantie-van-top-contributing-domains">5. Transparantie van top-contributing-domains</h2>
+<h3 id="51-doel">5.1 Doel</h3>
+<p>Voorkomen van black-box-perceptie.</p>
+<h3 id="52-berekening">5.2 Berekening</h3>
+<p>contribution(D, t) = w_domain(D) × D_score(D, t) / C(t)</p>
+<h3 id="53-indicator-niveau-detail">5.3 Indicator-niveau-detail</h3>
+<p>Bij verzoek: contribution per indicator. Niet in hoofdsignaal om overload te vermijden.</p>
+<hr />
+<h2 id="6-signaal-onafhankelijkheid">6. Signaal-onafhankelijkheid</h2>
+<p>Het signaal is een <strong>passief rapport</strong>. Het:
+- Heeft geen kennis van wie abonneert
+- Heeft geen kennis van of een campagne loopt
+- Heeft geen feedback-loop met geconsumeerd gedrag
+- Verandert niet onder commerciële druk</p>
+<p>Ontwerpvereiste, geen optie.</p>
+<hr />
+<h2 id="7-brand-safety-vlag">7. Brand-safety-vlag</h2>
+<h3 id="71-probleem">7.1 Probleem</h3>
+<p>Bij nationale tragedie kan het ongepast zijn dat downstream-systemen commercieel reageren op het signaal.</p>
+<h3 id="72-mechanisme">7.2 Mechanisme</h3>
+<p>Het signaal blijft de gemeten waarde rapporteren — wetenschappelijke integriteit wordt niet aangepast aan gevoeligheid. Wat <em>wel</em> wordt aangepast: een brand-safety-vlag.</p>
+<pre><code>&quot;brand_safety&quot;: {
+  &quot;flag&quot;: &quot;elevated&quot;,
+  &quot;reason&quot;: &quot;national mourning declared&quot;,
+  &quot;expires_estimated&quot;: &quot;2026-05-26T23:00:00+02:00&quot;
+}
+</code></pre>
+<h3 id="73-verantwoordelijkheid">7.3 Verantwoordelijkheid</h3>
+<p>Vlag is een service voor abonnees. Beslissing tot pauze ligt bij abonnee, niet bij meetsysteem.</p>
+<hr />
+<h2 id="8-versies-audit-en-reproduceerbaarheid">8. Versies, audit en reproduceerbaarheid</h2>
+<h3 id="81-versionering">8.1 Versionering</h3>
+<p>Semver per methodologie-versie. Elke output bevat pipeline_version + implementation_stage.</p>
+<h3 id="82-audit-trail">8.2 Audit-trail</h3>
+<p>Alle pipeline-stappen loggen naar publieke audit-log.</p>
+<h3 id="83-reproducibility-package">8.3 Reproducibility package</h3>
+<ul>
+<li>Pipeline-code (open source)</li>
+<li>Configuratiebestanden</li>
+<li>Voorbeelddata</li>
+<li>Stappen-voor-stappen-reproductie-handleiding</li>
+</ul>
+<hr />
+<h2 id="9-bekende-beperkingen">9. Bekende beperkingen</h2>
+<h3 id="91-percentielen-vereisen-baseline">9.1 Percentielen vereisen baseline</h3>
+<p>Eerste 24 maanden minder betrouwbaar — gebaseerd op backtest. Expliciet gemarkeerd.</p>
+<h3 id="92-sustained-duration-vertraagt-detectie">9.2 Sustained-duration vertraagt detectie</h3>
+<p>Acute episode van 1-2 dagen wordt niet als tier-overgang gerapporteerd. Bewust ontwerp.</p>
+<h3 id="93-p70-en-p90-zijn-pre-registratie-geen-wetenschap">9.3 P=70 en P=90 zijn pre-registratie, geen wetenschap</h3>
+<p>Conventionele keuzes, niet wetenschappelijke noodzakelijkheden. Multiverse-getoetst in laag 8.</p>
+<h3 id="94-discrete-tier-grenzen">9.4 Discrete tier-grenzen</h3>
+<p>Een dag op P=89 is "amber", op P=91 is "red". Statistisch ongeveer dezelfde positie, instrumenteel anders gemarkeerd. Voor analytisch gebruik: continue percentielen beschikbaar.</p>
+<hr />
+<h2 id="10-volgende-stap-laag-8-validatie-en-robuustheid">10. Volgende stap (laag 8: validatie en robuustheid)</h2>
+<p>Reeds gespecificeerd in <code>07_Laag-8_Validatie-en-Robuustheid.md</code>: acht toetsen met tier-gates (must-pass / should-pass / continu).</p>
+<hr />
+<h2 id="bronnen_3">Bronnen</h2>
+<p>Kirschbaum, C., &amp; Hellhammer, D. H. (1989). Salivary cortisol in psychoneuroendocrine research. <em>Neuropsychobiology</em>, 22(3), 150-169.</p>
+<p>McEwen, B. S. (2007). Physiology and neurobiology of stress and adaptation: Central role of the brain. <em>Physiological Reviews</em>, 87(3), 873-904.</p>
+<p>Sapolsky, R. M. (2004). <em>Why zebras don't get ulcers</em> (3rd ed.). Holt.</p>
+<hr />
+<h1 id="07_laag-8_validatie-en-robuustheid">07_Laag-8_Validatie-en-Robuustheid</h1>
+<p><em>Bronbestand: <code>07_Laag-8_Validatie-en-Robuustheid.md</code></em></p>
+<h1 id="stressor-blootstellings-index-sbi_7">Stressor-Blootstellings-Index (SBI)</h1>
+<h2 id="laag-8-validatie-en-robuustheid">Laag 8: Validatie en robuustheid</h2>
+<p><strong>Status:</strong> v0.2 — werkdocument
+<strong>Document:</strong> laag 8 van de methodologie
+<strong>Bouwt op:</strong> laag 1-7
+<strong>Auteur:</strong> BRAINWOLVES
+<strong>Datum:</strong> mei 2026</p>
+<hr />
+<h2 id="0-samenvatting_6">0. Samenvatting</h2>
+<p>Dit document specificeert hoe de SBI gevalideerd wordt — niet via een academische peer-review (die structureel niet mogelijk is zonder institutionele affiliatie), maar via <strong>acht onafhankelijke toetsen</strong> in drie hiërarchische tier-gates: must-pass, should-pass, en doorlopend (geen launch-gate). Het 6/8-criterium uit v0.1 — een arbitraire score-drempel die alle toetsen gelijk behandelde — is vervangen door deze gewogen tier-structuur waarin sommige toetsen fataal zijn en andere informatief.</p>
+<hr />
+<h2 id="1-validatie-architectuur-v02-herzien">1. Validatie-architectuur (v0.2 herzien)</h2>
+<p>Acht toetsen in drie tiers:</p>
+<p><strong>Tier-1 — Must-pass (faal = methodologie verworpen):</strong>
+- Toets 1: Natural-experiments
+- Toets 5: Placebo-indicator-test
+- Toets 6: Test-retest reliability</p>
+<p><strong>Tier-2 — Should-pass (faal = waarschuwing, beperking gedocumenteerd):</strong>
+- Toets 2: Retrospectieve backtest
+- Toets 3: Convergente validiteit
+- Toets 4: Multiverse-analyse</p>
+<p><strong>Tier-3 — Continu (geen launch-gate, doorlopend proces):</strong>
+- Toets 7: Adversariële review als ontwerp-iteratie
+- Toets 8: Publieke replicatie-uitdaging</p>
+<h3 id="verschil-met-v01">Verschil met v0.1</h3>
+<p>In v0.1 stond "6/8 toetsen pass" als launch-criterium. Dit was arbitrair en behandelde alle toetsen gelijk. In v0.2:
+- Falen op één tier-1-toets is fataal (geen launch)
+- Falen op tier-2-toets vereist gedocumenteerde beperking maar blokkeert launch niet noodzakelijk
+- Tier-3 is een proces, geen toets</p>
+<hr />
+<h2 id="2-toets-1-natural-experiments-tier-1">2. Toets 1 — Natural-experiments (Tier-1)</h2>
+<h3 id="21-doel">2.1 Doel</h3>
+<p>Toetsen of het instrument piekt tijdens onafhankelijk vastgestelde collectieve stress-episodes.</p>
+<h3 id="22-pre-gedefinieerde-gebeurtenissen">2.2 Pre-gedefinieerde gebeurtenissen</h3>
+<table>
+<thead>
+<tr>
+<th>Periode</th>
+<th>Gebeurtenis</th>
+<th>Verwacht effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maart 2020</td>
+<td>COVID-lockdown 1</td>
+<td>Stijging week 12-15</td>
+</tr>
+<tr>
+<td>Oktober-december 2020</td>
+<td>COVID-lockdown 2</td>
+<td>Stijging tijdens lockdown</td>
+</tr>
+<tr>
+<td>Juli 2019</td>
+<td>Hittegolf (T_max &gt; 38°C)</td>
+<td>Stijging week 30</td>
+</tr>
+<tr>
+<td>Juli 2021</td>
+<td>Watersnood Wallonië</td>
+<td>Lokale piek; nationale stijging</td>
+</tr>
+<tr>
+<td>Oktober 2022 - maart 2023</td>
+<td>Energiecrisis</td>
+<td>Aanhoudende stijging</td>
+</tr>
+<tr>
+<td>22 maart 2016</td>
+<td>Aanslagen Brussel/Zaventem</td>
+<td>Acute piek week 12</td>
+</tr>
+<tr>
+<td>Najaar 2008</td>
+<td>Financiële crisis</td>
+<td>Stijging CPI- en werkloosheidssubindex</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-succescriterium">2.3 Succescriterium</h3>
+<p>Minimaal <strong>5 van 7</strong> gebeurtenissen: SBI in oranje of rode tier (P ≥ 70 sustained).</p>
+<h3 id="24-faalmechanisme">2.4 Faalmechanisme</h3>
+<p>&lt;5 events detected: <strong>F1 geactiveerd → methodologie verworpen</strong>.</p>
+<h3 id="25-beperking_1">2.5 Beperking</h3>
+<p>7 events is statistisch beperkt. Geen formele hypothese-toetsing maar een redelijkheidstoets.</p>
+<hr />
+<h2 id="3-toets-2-retrospectieve-backtest-tier-2">3. Toets 2 — Retrospectieve backtest (Tier-2)</h2>
+<h3 id="31-doel">3.1 Doel</h3>
+<p>Het instrument 14 jaar terug berekenen (2010-2024) en kijken of gedrag intuïtief is.</p>
+<h3 id="32-pipeline">3.2 Pipeline</h3>
+<ol>
+<li>Alle 20 primaire indicatoren ophalen voor 2010-2024</li>
+<li>Pipeline draaien met live-methodologie — geen aanpassing aan historische data</li>
+<li>C(t), P(t), tier produceren per dag</li>
+</ol>
+<h3 id="33-verwachte-patronen">3.3 Verwachte patronen</h3>
+<ul>
+<li>Januari-pieken (Blue Monday, energiekosten)</li>
+<li>Zomer-pieken in hittejaren</li>
+<li>COVID-stijging maart 2020</li>
+<li>Energiecrisis-plateau eind 2022</li>
+</ul>
+<h3 id="34-succescriterium">3.4 Succescriterium</h3>
+<p>Twee onafhankelijke beoordelaars: aanvaardbaarheid &gt; 80%.</p>
+<h3 id="35-faalmechanisme">3.5 Faalmechanisme</h3>
+<p>Onverklaarde extreme pieken → diagnostiek per indicator → identificatie van pipeline-bug.</p>
+<hr />
+<h2 id="4-toets-3-convergente-validiteit-tier-2">4. Toets 3 — Convergente validiteit (Tier-2)</h2>
+<h3 id="41-doel_1">4.1 Doel</h3>
+<p>Triangulatie tegen gerelateerde gedragsproxies.</p>
+<h3 id="42-convergente-variabelen">4.2 Convergente variabelen</h3>
+<table>
+<thead>
+<tr>
+<th>Variabele</th>
+<th>Bron</th>
+<th>Verwachte richting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ziekteverzuim-aggregaat</td>
+<td>RIZIV (publieke aggregaten)</td>
+<td>+ correlatie</td>
+</tr>
+<tr>
+<td>Mentale-gezondheidszorg-utilisatie</td>
+<td>RIZIV/IMA-publieke aggregaten</td>
+<td>+ correlatie, lag mogelijk</td>
+</tr>
+<tr>
+<td>Retail-bestedingen</td>
+<td>STATBEL retail-index</td>
+<td>- correlatie tijdens pieken</td>
+</tr>
+<tr>
+<td>Alcohol/gokken-omzet</td>
+<td>STATBEL/Belastingdienst aggregaten</td>
+<td>+ correlatie (coping)</td>
+</tr>
+</tbody>
+</table>
+<p><em>Notitie: RIZIV-aggregaten zijn publieke data, identiek behandeld als STATBEL of NBB. Dit is geen institutionele samenwerking.</em></p>
+<h3 id="43-methode">4.3 Methode</h3>
+<ul>
+<li>Maandelijkse SBI-gemiddelde</li>
+<li>Spearman-correlatie met variabele over 2010-2024</li>
+<li>Statistische significantie + effect-size</li>
+</ul>
+<h3 id="44-succescriterium-v02-verscherpt">4.4 Succescriterium (v0.2 verscherpt)</h3>
+<p>Minimaal:
+- <strong>2 proxies met Spearman rho &gt; 0.40 en p &lt; 0.05</strong> <em>OF</em>
+- <strong>3 proxies met Spearman rho &gt; 0.30 en p &lt; 0.05</strong></p>
+<p>In v0.1 was de bar rho &gt; 0.25 (zwak in elke statistische standaard). In v0.2 is dit verhoogd naar 0.30 of 0.40 afhankelijk van het aantal proxies. Eerlijkere, scherpere lat.</p>
+<h3 id="45-faalmechanisme">4.5 Faalmechanisme</h3>
+<p>0 of 1 proxy convergeert volgens criterium: <strong>F4 geactiveerd</strong> — beperking gedocumenteerd; launch alleen mogelijk met expliciete acknowledgement van zwakke convergente validiteit.</p>
+<hr />
+<h2 id="5-toets-4-multiverse-analyse-tier-2">5. Toets 4 — Multiverse-analyse (Tier-2)</h2>
+<h3 id="51-doel_1">5.1 Doel</h3>
+<p>Alle redelijke analytische paden uitvoeren; meten hoe robuust de uitkomst is voor methode-keuzes (Steegen et al 2016).</p>
+<h3 id="52-variatie-dimensies">5.2 Variatie-dimensies</h3>
+<ul>
+<li><em>Wegingsschema:</em> {equal, evidence-graded, inverse-rank}</li>
+<li><em>Baseline-window:</em> {12m, 24m, 36m}</li>
+<li><em>Percentiel-drempel oranje:</em> {65, 70, 75}</li>
+<li><em>Percentiel-drempel rood:</em> {85, 90, 95}</li>
+<li><em>Sustained-duration:</em> {1d, 3d, 5d, 7d}</li>
+<li><em>Winsorization:</em> {±2.5, ±3.0, ±3.5}</li>
+<li><em>STL voor twijfelgevallen:</em> {standaard, alle indicatoren STL, geen STL}</li>
+</ul>
+<p>Totaal: 3 × 3 × 3 × 3 × 4 × 3 × 3 = <strong>2916 analytische paden</strong>.</p>
+<h3 id="53-computationele-realiteit">5.3 Computationele realiteit</h3>
+<p>Pipeline op 5 jaar dagelijkse data per pad ≈ enkele seconden. Totaal 2916 paden ≈ 1-2 uur op standaard hardware. Eenmalige run vóór livegang; in onderhoudscyclus per kwartaal herhaald.</p>
+<h3 id="54-succescriterium">5.4 Succescriterium</h3>
+<p>Het <strong>primaire pad</strong> (default-configuratie zoals pre-geregistreerd) moet binnen de <strong>centrale 95%</strong> van de uitkomstenverdeling van alle paden vallen.</p>
+<h3 id="55-faalmechanisme">5.5 Faalmechanisme</h3>
+<p>Default valt buiten centrale 95% → herzie defaults of accepteer multiverse als primair signaal. Beperking gedocumenteerd, launch mogelijk met aanpassing.</p>
+<hr />
+<h2 id="6-toets-5-placebo-indicator-test-tier-1">6. Toets 5 — Placebo-indicator-test (Tier-1)</h2>
+<h3 id="61-doel">6.1 Doel</h3>
+<p>Testen of de pipeline correlaties detecteert die er niet mogen zijn.</p>
+<h3 id="62-placebos">6.2 Placebo's</h3>
+<table>
+<thead>
+<tr>
+<th>Placebo</th>
+<th>Bron</th>
+<th>Hypothese</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1: Maan-fase</td>
+<td>astronomisch</td>
+<td>Geen significant effect</td>
+</tr>
+<tr>
+<td>P2: Pi-decimalen-stream</td>
+<td>wiskundig</td>
+<td>Geen significant effect</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-test">6.3 Test</h3>
+<p>1000 trekkingen met willekeurige timing-offsets van placebo's. Verdeling van placebo-contributie aan composiet.</p>
+<h3 id="64-succescriterium">6.4 Succescriterium</h3>
+<p>95%-CI van placebo-contributie omvat 0.</p>
+<h3 id="65-faalmechanisme">6.5 Faalmechanisme</h3>
+<p>Placebo systematisch contribueert → <strong>F3 geactiveerd → methode-bug → correctie vereist vóór launch</strong>.</p>
+<hr />
+<h2 id="7-toets-6-test-retest-reliability-tier-1">7. Toets 6 — Test-retest reliability (Tier-1)</h2>
+<h3 id="71-doel">7.1 Doel</h3>
+<p>Composiet moet substantieel hetzelfde blijven als 50% van indicatoren weggelaten worden.</p>
+<h3 id="72-methode">7.2 Methode</h3>
+<p>Bootstrap: 1000 trekkingen × 50% van de 20 indicatoren × pipeline herberekenen × tier vergelijken met volledige-set.</p>
+<h3 id="73-succescriterium">7.3 Succescriterium</h3>
+<p>≥ 70% tier-agreement.</p>
+<h3 id="74-faalmechanisme">7.4 Faalmechanisme</h3>
+<p>Lage agreement → composiet hangt te zwaar van specifieke indicatoren af → identificatie en mogelijk herziening vóór launch.</p>
+<hr />
+<h2 id="8-toets-7-adversariele-review-als-ontwerp-iteratie-tier-3">8. Toets 7 — Adversariële review als ontwerp-iteratie (Tier-3)</h2>
+<h3 id="81-verschil-met-v01">8.1 Verschil met v0.1</h3>
+<p>In v0.1 was "vijandige review" een launch-gate. In v0.2 is het <strong>een ontwerp-iteratie-stap</strong> — uitgevoerd vóór livegang om het ontwerp te verbeteren, niet om het te gate-en. Reden: indien een review fundamentele problemen blootlegt en het ontwerp wordt aangepast, is dat <em>bouwen</em>, geen <em>valideren</em>.</p>
+<h3 id="82-werving">8.2 Werving</h3>
+<p>Drie tot vijf individuele academici, niet hun instellingen, uit verschillende methodologische scholen:
+- Eén positivist-kwantitatief
+- Eén kritisch-kwalitatief
+- Eén psychometricus
+- Eén epidemioloog of sociale-data-scientist
+- Optioneel: één gedragseconoom</p>
+<h3 id="83-vergoeding">8.3 Vergoeding</h3>
+<p>Marktconform (€500-1500 per review). Disclosures publiek.</p>
+<h3 id="84-procedure">8.4 Procedure</h3>
+<ul>
+<li>Reviewer ontvangt complete methodologie-paper</li>
+<li>Schrijft formele kritiek (5-10 pagina's)</li>
+<li>Methodologie-team reageert op elk punt</li>
+<li>Beide gepubliceerd als annex</li>
+</ul>
+<h3 id="85-output">8.5 Output</h3>
+<p>Verbeterd ontwerp én publiek-gemaakte kritiek met respons. Lezers zien wat critici aanmerkten.</p>
+<h3 id="86-geen-passfail">8.6 Geen pass/fail</h3>
+<p>De review is een verbetercyclus, geen toets. Indien een reviewer een fataal probleem identificeert dat niet opgelost kan worden, wordt dit gedocumenteerd als beperking.</p>
+<hr />
+<h2 id="9-toets-8-publieke-replicatie-uitdaging-tier-3">9. Toets 8 — Publieke replicatie-uitdaging (Tier-3)</h2>
+<h3 id="91-doel">9.1 Doel</h3>
+<p>Onafhankelijke derden moeten hetzelfde resultaat krijgen.</p>
+<h3 id="92-procedure">9.2 Procedure</h3>
+<p>Bij livegang publieke:
+- Volledige code (open source)
+- Configuratiebestanden
+- Voorbeelddata voor testperiode
+- Reproductie-handleiding</p>
+<p>Publieke uitnodiging op OSF en GitHub. Replicaties krijgen citatie.</p>
+<h3 id="93-succescriterium">9.3 Succescriterium</h3>
+<p>Binnen 12 maanden na livegang: ≥ 2 onafhankelijke replicaties die SBI-scores reproduceren binnen 10%.</p>
+<h3 id="94-faalmechanisme">9.4 Faalmechanisme</h3>
+<p>0 replicaties of &gt; 10% afwijkingen → <strong>F5 geactiveerd</strong> → documentatie van niet-reproduceerbaarheid → mogelijke methodologie-update.</p>
+<h3 id="95-doorlopend-proces-geen-launch-gate">9.5 Doorlopend proces, geen launch-gate</h3>
+<p>Replicatie kost tijd. Launch wacht niet op replicatie. Indien jaar 2 nog steeds 0 replicaties: serieuze herziening.</p>
+<hr />
+<h2 id="10-tier-gate-beslismatrix-voor-launch">10. Tier-gate-beslismatrix voor launch</h2>
+<table>
+<thead>
+<tr>
+<th>Tier-1 (Must-pass)</th>
+<th>Tier-2 (Should-pass)</th>
+<th>Beslissing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3/3 pass</td>
+<td>3/3 pass</td>
+<td><strong>Launch</strong></td>
+</tr>
+<tr>
+<td>3/3 pass</td>
+<td>2/3 pass</td>
+<td><strong>Launch</strong> met gedocumenteerde beperking</td>
+</tr>
+<tr>
+<td>3/3 pass</td>
+<td>≤1/3 pass</td>
+<td><strong>Stop</strong> — heroverweeg ontwerp</td>
+</tr>
+<tr>
+<td>&lt;3/3 pass</td>
+<td>enig</td>
+<td><strong>Stop</strong> — methodologie verworpen</td>
+</tr>
+</tbody>
+</table>
+<p>Tier-3 is geen launch-input maar doorlopend programma.</p>
+<hr />
+<h2 id="11-validatie-rapport-template">11. Validatie-rapport-template</h2>
+<p>Bij elke versie-uitgave:</p>
+<table>
+<thead>
+<tr>
+<th>Toets</th>
+<th>Tier</th>
+<th>Status</th>
+<th>Score</th>
+<th>Notitie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Natural-experiments</td>
+<td>1</td>
+<td>pass/fail</td>
+<td>X/7 events detected</td>
+<td></td>
+</tr>
+<tr>
+<td>5. Placebo-test</td>
+<td>1</td>
+<td>pass/fail</td>
+<td>95% CI bevat 0: ja/nee</td>
+<td></td>
+</tr>
+<tr>
+<td>6. Test-retest</td>
+<td>1</td>
+<td>pass/fail</td>
+<td>X% agreement</td>
+<td></td>
+</tr>
+<tr>
+<td>2. Retrospectieve backtest</td>
+<td>2</td>
+<td>pass/fail</td>
+<td>inter-rater X%</td>
+<td></td>
+</tr>
+<tr>
+<td>3. Convergente validiteit</td>
+<td>2</td>
+<td>pass/fail</td>
+<td>rho-overzicht</td>
+<td></td>
+</tr>
+<tr>
+<td>4. Multiverse</td>
+<td>2</td>
+<td>pass/fail</td>
+<td>default percentiel-positie</td>
+<td></td>
+</tr>
+<tr>
+<td>7. Adversariële review</td>
+<td>3</td>
+<td>uitgevoerd/openstaand</td>
+<td>X reviewers, Y aanpassingen</td>
+<td></td>
+</tr>
+<tr>
+<td>8. Publieke replicatie</td>
+<td>3</td>
+<td>aantal replicaties, % match</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-doorlopende-monitoring-zie-ook-08_onderhoud-protocolmd">12. Doorlopende monitoring (zie ook 08_Onderhoud-Protocol.md)</h2>
+<h3 id="121-jaarlijkse-heraudit">12.1 Jaarlijkse heraudit</h3>
+<p>Externe reviewer (jaarlijks andere) audit pipeline, methodologie, output. Audit-rapport publiek.</p>
+<h3 id="122-quartaal-multiverse-monitor">12.2 Quartaal-multiverse-monitor</h3>
+<p>Multiverse-analyse per kwartaal herhaald met groeiende dataset.</p>
+<h3 id="123-bug-bounty-programma">12.3 Bug-bounty-programma</h3>
+<p>Publieke uitnodiging voor methodologische uitdagingen.</p>
+<hr />
+<h2 id="13-wat-validatie-niet-doet">13. Wat validatie <em>niet</em> doet</h2>
+<ul>
+<li>Bewijst geen causaliteit</li>
+<li>Bewijst geen klinische relevantie</li>
+<li>Bewijst geen universele toepasbaarheid</li>
+<li>Bewijst geen voorspellende kracht</li>
+</ul>
+<hr />
+<h2 id="14-sluiting-van-de-methodologie-build">14. Sluiting van de methodologie-build</h2>
+<p>Met laag 8 voltooid (v0.2) is de volledige SBI-methodologie gedocumenteerd op acht lagen, plus drie ondersteunende documenten:</p>
+<ul>
+<li><em>Laag 1+2 — Anker:</em> construct, theorie, scope, falsifieerbaarheid → <code>01_Anker-Paper.md</code></li>
+<li><em>Laag 3 — Indicator-selectie:</em> 20 primair, 6 secundair, 9 uitgesloten → <code>02_Laag-3_Indicator-Selectie.md</code></li>
+<li><em>Laag 4 — Operationalisering:</em> formules, data, pipeline, decorrelatie → <code>03_Laag-4_Operationalisering.md</code></li>
+<li><em>Laag 5 — Normalisatie:</em> dubbele baseline, STL, winsorization → <code>04_Laag-5_Normalisatie.md</code></li>
+<li><em>Laag 6 — Weging:</em> drie schema's, balance-correctie, 6 domeinen → <code>05_Laag-6_Weging.md</code></li>
+<li><em>Laag 7 — Aggregatie &amp; signaal:</em> drie-tier, percentielen, output-API → <code>06_Laag-7_Aggregatie-en-Drempel.md</code></li>
+<li><em>Laag 8 — Validatie:</em> acht toetsen, tier-gates, jaarlijkse audit → dit document</li>
+</ul>
+<p>Ondersteunende documenten:
+- <code>00_Pre-Registratie.md</code> — alle pre-geregistreerde keuzes
+- <code>08_Onderhoud-Protocol.md</code> — review-kalender, update-procedures
+- <code>09_Brand-Message-Style-Guide.md</code> — communicatie-vereisten voor abonnees</p>
+<hr />
+<h2 id="bronnen_4">Bronnen</h2>
+<p>Borsboom, D., Mellenbergh, G. J., &amp; van Heerden, J. (2004). The concept of validity. <em>Psychological Review</em>, 111(4), 1061-1071.</p>
+<p>Cronbach, L. J., &amp; Meehl, P. E. (1955). Construct validity in psychological tests. <em>Psychological Bulletin</em>, 52(4), 281-302.</p>
+<p>Mellers, B., Hertwig, R., &amp; Kahneman, D. (2001). Do frequency representations eliminate conjunction effects? An exercise in adversarial collaboration. <em>Psychological Science</em>, 12(4), 269-275.</p>
+<p>Munafò, M. R., Nosek, B. A., Bishop, D. V. M., et al. (2017). A manifesto for reproducible science. <em>Nature Human Behaviour</em>, 1, 0021.</p>
+<p>Open Science Collaboration (2015). Estimating the reproducibility of psychological science. <em>Science</em>, 349(6251), aac4716.</p>
+<p>Steegen, S., Tuerlinckx, F., Gelman, A., &amp; Vanpaemel, W. (2016). Increasing transparency through a multiverse analysis. <em>Perspectives on Psychological Science</em>, 11(5), 702-712.</p>
+<hr />
+<h1 id="08_onderhoud-protocol">08_Onderhoud-Protocol</h1>
+<p><em>Bronbestand: <code>08_Onderhoud-Protocol.md</code></em></p>
+<h1 id="stressor-blootstellings-index-sbi_8">Stressor-Blootstellings-Index (SBI)</h1>
+<h2 id="onderhouds-protocol">Onderhouds-protocol</h2>
+<p><strong>Status:</strong> v0.2 — werkdocument
+<strong>Doel:</strong> specificatie van continue-onderhoud-cyclus na livegang
+<strong>Auteur:</strong> BRAINWOLVES
+<strong>Datum:</strong> mei 2026</p>
+<hr />
+<h2 id="0-waarom-een-onderhouds-protocol">0. Waarom een onderhouds-protocol</h2>
+<p>Een meetinstrument zonder onderhoud verstart. Indicatoren-evidence verandert (nieuwe meta-analyses), databronnen verdwijnen of veranderen format, methodologische velden ontwikkelen door, en publieke kritiek genereert verbeter-mogelijkheden.</p>
+<p>Zonder gedocumenteerde onderhouds-kalender vervalt elke pre-registratie tot fictie: keuzes raken stilletjes verouderd of worden ad-hoc aangepast. Dit document legt vast wanneer, hoe en door wie de SBI wordt herijkt.</p>
+<hr />
+<h2 id="1-cyclische-review-momenten">1. Cyclische review-momenten</h2>
+<h3 id="11-doorlopend-continue-processen">1.1 Doorlopend (continue processen)</h3>
+<table>
+<thead>
+<tr>
+<th>Activiteit</th>
+<th>Frequentie</th>
+<th>Verantwoordelijke</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pipeline-monitoring (uptime, data-integriteit)</td>
+<td>dagelijks-geautomatiseerd</td>
+<td>technisch beheer</td>
+</tr>
+<tr>
+<td>Bug-bounty-respons</td>
+<td>binnen 14 dagen na inzending</td>
+<td>methodologie-team</td>
+</tr>
+<tr>
+<td>Replicatie-rapport-respons</td>
+<td>binnen 30 dagen</td>
+<td>methodologie-team</td>
+</tr>
+<tr>
+<td>Brand-safety-vlag-handhaving</td>
+<td>real-time bij events</td>
+<td>brand-safety-coördinator</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-per-kwartaal">1.2 Per kwartaal</h3>
+<table>
+<thead>
+<tr>
+<th>Activiteit</th>
+<th>Wat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Multiverse-monitor</td>
+<td>Multiverse-analyse (laag 8 toets 4) herhaald met groeiende dataset; rapport publiek</td>
+</tr>
+<tr>
+<td>Confounder-monitor</td>
+<td>Per indicator: nieuwe confounders gedetecteerd? Cross-correlatie-trends?</td>
+</tr>
+<tr>
+<td>Indicator-beschikbaarheid-check</td>
+<td>Data-pipelines stabiel? Bronnen veranderd?</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-per-half-jaar">1.3 Per half jaar</h3>
+<table>
+<thead>
+<tr>
+<th>Activiteit</th>
+<th>Wat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schema-2-gewichten-herberekening</td>
+<td>Indien evidence-grade van enige indicator gewijzigd is sinds laatste publicatie</td>
+</tr>
+<tr>
+<td>Pre-COVID-baseline-stabiliteitstest</td>
+<td>Is 2010-2019-baseline nog steeds representatief, of vraagt het om verschuiving naar bv. 2015-2024?</td>
+</tr>
+</tbody>
+</table>
+<h3 id="14-jaarlijks">1.4 Jaarlijks</h3>
+<table>
+<thead>
+<tr>
+<th>Activiteit</th>
+<th>Wat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Literatuur-review evidence-grades</td>
+<td>Q4 elk jaar: systematische zoekactie naar nieuwe SR/MA voor elke primaire indicator. Evidence-grades worden herwaardeerd.</td>
+</tr>
+<tr>
+<td>Externe heraudit</td>
+<td>Jaarlijks een <em>andere</em> externe reviewer dan vorige jaar. Audit-rapport publiek.</td>
+</tr>
+<tr>
+<td>Counter-evidence-update</td>
+<td>Per indicator wordt het "contrasterend bewijs"-veld systematischer gevuld dan in oorspronkelijke laag-3-build.</td>
+</tr>
+<tr>
+<td>Validatie-rapport-update</td>
+<td>Toets-1 t/m 8 status, met name natural-experiments toegevoegd indien nieuwe stress-episodes plaatsvonden</td>
+</tr>
+</tbody>
+</table>
+<h3 id="15-per-3-jaar">1.5 Per 3 jaar</h3>
+<table>
+<thead>
+<tr>
+<th>Activiteit</th>
+<th>Wat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vaste-baseline-evaluatie</td>
+<td>Is 2010-2019 nog steeds bruikbaar? Of moet baseline-periode vernieuwd worden?</td>
+</tr>
+<tr>
+<td>Methodologische-architectuur-review</td>
+<td>Hele build doorlichten op herontwerpsignalen</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-triggers-voor-onmiddellijke-review">2. Triggers voor onmiddellijke review</h2>
+<p>Niet-cyclische review-momenten:</p>
+<h3 id="21-falsifieerbaarheidscriterium-geactiveerd">2.1 Falsifieerbaarheidscriterium geactiveerd</h3>
+<p>Bij detectie van F1-F5 (zie laag 1 §8): onmiddellijke methodologie-bevriezing, diagnostiek, en publieke verslag binnen 30 dagen.</p>
+<h3 id="22-methodologische-defect-via-bug-bounty">2.2 Methodologische defect via bug-bounty</h3>
+<p>Onafhankelijke kritiek die een fundamentele fout aantoont:
+- Klacht gepubliceerd binnen 7 dagen
+- Methodologie-respons binnen 30 dagen
+- Indien defect bevestigd: correctie + herberekening historische data + versie-update</p>
+<h3 id="23-indicator-data-bron-uitval">2.3 Indicator-data-bron uitval</h3>
+<p>Bij uitval van een bron &gt; 14 dagen:
+- Tijdelijke missing-flag in output
+- Onderzoek alternatieve bron
+- Indien permanent verlies: indicator-uitsluiting en herweging-proces</p>
+<h3 id="24-mediacyclus-decorrelatie-falen">2.4 Mediacyclus-decorrelatie-falen</h3>
+<p>Indien sustained correlatie tussen I-D5-001, I-D5-002 en I-D5-003 &gt; 0.7 over meerdere maanden: protocol §4.4 van laag 4 wordt aangescherpt of D5-architectuur wordt herzien.</p>
+<hr />
+<h2 id="3-versie-beheer">3. Versie-beheer</h2>
+<h3 id="31-semver-conventie">3.1 Semver-conventie</h3>
+<ul>
+<li><strong>Major (X.0.0):</strong> breaking change in methodologie (nieuwe weegstructuur, anker-wijziging, indicator-set-wijziging &gt; 20%)</li>
+<li><strong>Minor (0.X.0):</strong> indicator-toevoeging of -verwijdering binnen bestaande domeinen, drempelwaarde-wijziging</li>
+<li><strong>Patch (0.0.X):</strong> bug-fix, documentatie-aanpassing, geen meet-impact</li>
+</ul>
+<h3 id="32-wijzigings-aankondiging">3.2 Wijzigings-aankondiging</h3>
+<table>
+<thead>
+<tr>
+<th>Wijzigings-niveau</th>
+<th>Vooraf-aankondiging</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Major</td>
+<td>60 dagen vooraf publiek</td>
+</tr>
+<tr>
+<td>Minor</td>
+<td>30 dagen vooraf publiek</td>
+</tr>
+<tr>
+<td>Patch</td>
+<td>direct met changelog</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-backwards-compatibiliteit">3.3 Backwards-compatibiliteit</h3>
+<p>Bij major-wijziging:
+- Oude versie blijft 6 maanden draaien naast nieuwe
+- Beide outputs publiek beschikbaar
+- Migratie-handleiding voor abonnees</p>
+<h3 id="34-data-herberekening">3.4 Data-herberekening</h3>
+<p>Bij major en minor wijzigingen: hele historische dataset herberekend onder nieuwe methodologie en gepubliceerd naast originele.</p>
+<hr />
+<h2 id="4-adviesraad-rotatie">4. Adviesraad-rotatie</h2>
+<h3 id="41-standaard-rotatie">4.1 Standaard-rotatie</h3>
+<p>Adviesraad-leden (3-5 individuele academici): twee jaar termijn, met overlap (geen volledige vervanging tegelijk).</p>
+<h3 id="42-adversariele-collaborator">4.2 Adversariële collaborator</h3>
+<p>Eén lid expliciet met <em>adversariële rol</em>: aanwijzen voor 1 jaar, rotation expliciet om risico op consensus-bias te beperken.</p>
+<h3 id="43-disclosure-discipline">4.3 Disclosure-discipline</h3>
+<p>Bij elke termijn-aanvang: publieke disclosure van financiële, professionele en intellectuele relaties van het lid met BRAINWOLVES of methodologie-onderwerpen.</p>
+<hr />
+<h2 id="5-update-proces-in-detail">5. Update-proces in detail</h2>
+<h3 id="51-stap-1-detectie">5.1 Stap 1 — Detectie</h3>
+<p>Een wijzigings-noodzaak detecteren via een van: cyclische review, falsifieerbaarheids-criterium, bug-bounty, externe heraudit, adviesraad-aanbeveling.</p>
+<h3 id="52-stap-2-documentatie">5.2 Stap 2 — Documentatie</h3>
+<p>Wijzigings-voorstel schrijven met:
+- Aanleiding (welke aanleiding triggerde dit)
+- Voorgestelde wijziging (specifiek)
+- Impact (welke documenten/keuzes raken eraan)
+- Risico's (wat kan slechter worden)
+- Backwards-compatibiliteit (hoe blijft de historische SBI bruikbaar)</p>
+<h3 id="53-stap-3-adviesraad-consultatie">5.3 Stap 3 — Adviesraad-consultatie</h3>
+<p>Adviesraad krijgt 14 dagen voor commentaar. Adversariële collaborator heeft expliciete uitnodiging tot tegenstand.</p>
+<h3 id="54-stap-4-publieke-aankondiging">5.4 Stap 4 — Publieke aankondiging</h3>
+<p>Wijzigingsvoorstel publiek met 30/60-dagen-vooraf-venster afhankelijk van major/minor.</p>
+<h3 id="55-stap-5-implementatie">5.5 Stap 5 — Implementatie</h3>
+<p>Code-wijziging, data-herberekening, parallelle publicatie oude+nieuwe versie.</p>
+<h3 id="56-stap-6-audit-trail">5.6 Stap 6 — Audit-trail</h3>
+<p>Wijziging gelogd in <code>CHANGELOG.md</code> met datum, aanleiding, beslissing en eventuele dissenting opinions van adviesraadleden.</p>
+<hr />
+<h2 id="6-verantwoordelijkheden-matrix">6. Verantwoordelijkheden-matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Activiteit</th>
+<th>Methodologie-team</th>
+<th>Adviesraad</th>
+<th>Externe reviewer</th>
+<th>Publiek</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dagelijkse pipeline</td>
+<td>uitvoerend</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Kwartaal-multiverse</td>
+<td>uitvoerend</td>
+<td>informeren</td>
+<td>—</td>
+<td>publiek</td>
+</tr>
+<tr>
+<td>Jaarlijkse lit-review</td>
+<td>uitvoerend</td>
+<td>adviseren</td>
+<td>—</td>
+<td>publiek</td>
+</tr>
+<tr>
+<td>Jaarlijkse audit</td>
+<td>leveren materiaal</td>
+<td>informeren</td>
+<td>uitvoerend</td>
+<td>publiek</td>
+</tr>
+<tr>
+<td>Major wijziging</td>
+<td>voorstellen</td>
+<td>adviseren / aanvechten</td>
+<td>onafhankelijke check optioneel</td>
+<td>publieke consultatie</td>
+</tr>
+<tr>
+<td>Bug-bounty</td>
+<td>reageren</td>
+<td>informeren</td>
+<td>—</td>
+<td>indienen, ontvangen</td>
+</tr>
+<tr>
+<td>Replicatie-rapport</td>
+<td>reageren</td>
+<td>informeren</td>
+<td>—</td>
+<td>indienen</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-sluiting-van-het-instrument">7. Sluiting van het instrument</h2>
+<p>Het is mogelijk dat de SBI uiteindelijk wordt afgeschaft — vrijwillig of na opeenvolgend falen van validatie-toetsen. In dat geval:
+- Publieke aankondiging 90 dagen vooraf
+- Historische dataset blijft 5 jaar publiek beschikbaar
+- Methodologie-documenten blijven publiek als wetenschappelijk-werk-document
+- Geen stille verdwijning</p>
+<p>Een instrument met een end-of-life-protocol is geloofwaardiger dan een instrument dat eeuwig durft te draaien zonder zelfkritische exit-clausule.</p>
+<hr />
+<h1 id="09_brand-message-style-guide">09_Brand-Message-Style-Guide</h1>
+<p><em>Bronbestand: <code>09_Brand-Message-Style-Guide.md</code></em></p>
+<h1 id="stressor-blootstellings-index-sbi_9">Stressor-Blootstellings-Index (SBI)</h1>
+<h2 id="communicatie-stijlgids-voor-abonnees-en-publieke-berichtgeving">Communicatie-stijlgids voor abonnees en publieke berichtgeving</h2>
+<p><strong>Status:</strong> v0.2 — bindende stijlgids
+<strong>Doel:</strong> voorkomen dat downstream-communicatie de methodologische beperkingen van de SBI overschrijdt
+<strong>Geldt voor:</strong> elke partij die het SBI-signaal consumeert (campagnes, persgebruik, publieke woordvoering)
+<strong>Auteur:</strong> BRAINWOLVES
+<strong>Datum:</strong> mei 2026</p>
+<hr />
+<h2 id="0-waarom-deze-stijlgids-bestaat">0. Waarom deze stijlgids bestaat</h2>
+<p>De SBI is gebouwd met expliciete methodologische zorgvuldigheid: het meet <em>condities</em>, niet <em>stress</em>. Het meet <em>populaties</em>, niet <em>individuen</em>. Het is <em>literatuur-onderbouwd</em>, niet <em>peer-reviewed</em>.</p>
+<p>Maar zodra het signaal in een banner, persbericht of social-mediaboodschap verschijnt, kan al die zorgvuldigheid in één formulering ongedaan worden gemaakt. "U bent gestrest, ga op vakantie" schendt vier methodologische beperkingen tegelijk.</p>
+<p>Deze stijlgids beschermt zowel de SBI als de abonnee. Een merk dat methodologische claims verbreekt, krijgt PR-terugslag wanneer een journalist of academicus dat aankaart. Door communicatie binnen de methodologische scope te houden, blijft het verhaal verdedigbaar onder elke vorm van scrutiny.</p>
+<hr />
+<h2 id="1-vier-kernregels">1. Vier kernregels</h2>
+<h3 id="11-spreek-over-condities-niet-over-mensen">1.1 Spreek over <em>condities</em>, niet over <em>mensen</em></h3>
+<ul>
+<li>✅ "De omstandigheden zijn extreem"</li>
+<li>✅ "Collectieve druk in de hoogste zone"</li>
+<li>✅ "Blootstellings-conditie op piekniveau"</li>
+<li>❌ "U bent gestrest"</li>
+<li>❌ "Vlamingen zijn collectief gestrest"</li>
+<li>❌ "Iedereen heeft een burn-out"</li>
+</ul>
+<h3 id="12-spreek-over-de-index-niet-over-stress">1.2 Spreek over de <em>index</em>, niet over <em>stress</em></h3>
+<ul>
+<li>✅ "De Stressor-Blootstellings-Index staat op rood"</li>
+<li>✅ "Verhoogd-blootstellings-venster geopend"</li>
+<li>✅ "Index in oranje zone, derde dag op rij"</li>
+<li>❌ "De Vlaamse stress staat op recordhoogte"</li>
+<li>❌ "Het land is gestrest"</li>
+</ul>
+<h3 id="13-spreek-over-populatie-niet-over-individuen">1.3 Spreek over <em>populatie</em>, niet over <em>individuen</em></h3>
+<ul>
+<li>✅ "Op populatieniveau geassocieerd met verhoogde stressrespons"</li>
+<li>✅ "Statistisch een moment waarop herstel zinvol is"</li>
+<li>❌ "U heeft nu meer kans op een burn-out"</li>
+<li>❌ "Uw stress is gemeten"</li>
+</ul>
+<h3 id="14-spreek-over-publieke-meting-niet-over-wetenschap">1.4 Spreek over <em>publieke meting</em>, niet over <em>wetenschap</em></h3>
+<ul>
+<li>✅ "Literatuur-onderbouwde publieke meting"</li>
+<li>✅ "Methodologisch transparant gedocumenteerd"</li>
+<li>✅ "Op basis van wetenschappelijke literatuur"</li>
+<li>❌ "Wetenschappelijk gevalideerde stress-meting"</li>
+<li>❌ "Peer-reviewed onderzoek toont aan"</li>
+<li>❌ "Klinische bevestiging dat..."</li>
+</ul>
+<hr />
+<h2 id="2-goede-en-slechte-formulering-voorbeelden-per-kanaal">2. Goede en slechte formulering — voorbeelden per kanaal</h2>
+<h3 id="21-banner-advertentie">2.1 Banner / advertentie</h3>
+<table>
+<thead>
+<tr>
+<th>✅ Toegestaan</th>
+<th>❌ Niet toegestaan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Verhoogd-blootstellings-venster open. Tijd voor rust."</td>
+<td>"Je bent gestrest. Ga op vakantie."</td>
+</tr>
+<tr>
+<td>"Conditie extreem. Herstel-moment."</td>
+<td>"Vlaamse burn-out-piek bereikt."</td>
+</tr>
+<tr>
+<td>"De index zegt: pauzeer."</td>
+<td>"Wetenschap bewijst: jij bent oververmoeid."</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-persbericht-nieuwsbericht">2.2 Persbericht / nieuwsbericht</h3>
+<table>
+<thead>
+<tr>
+<th>✅ Toegestaan</th>
+<th>❌ Niet toegestaan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"De Stressor-Blootstellings-Index registreert vandaag een uitzonderlijke samenloop van stressoren-condities."</td>
+<td>"Wetenschappers stellen vast dat Vlamingen massaal gestrest zijn."</td>
+</tr>
+<tr>
+<td>"Volgens de publiek beschikbare SBI bevindt België zich in een verhoogd-blootstellings-venster."</td>
+<td>"De Belgische stress-index toont dat we collectief ziek zijn."</td>
+</tr>
+<tr>
+<td>"Het signaal staat in de top 8% van blootstellings-condities van de laatste 24 maanden."</td>
+<td>"8 op 10 Vlamingen heeft burn-out."</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-social-media">2.3 Social media</h3>
+<table>
+<thead>
+<tr>
+<th>✅ Toegestaan</th>
+<th>❌ Niet toegestaan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"SBI vandaag op P=92. Derde dag op rij in rood. Conditie-extreem."</td>
+<td>"We zijn allemaal gestrest. Take a break."</td>
+</tr>
+<tr>
+<td>"De index meet de omstandigheden, niet jou. De omstandigheden zijn extreem."</td>
+<td>"Jouw stress-score is hoger dan ooit."</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-campagne-call-to-action">2.4 Campagne-call-to-action</h3>
+<table>
+<thead>
+<tr>
+<th>✅ Toegestaan</th>
+<th>❌ Niet toegestaan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"Statistisch gezien is dit een goed moment voor recovery."</td>
+<td>"U <em>moet</em> nu uitrusten."</td>
+</tr>
+<tr>
+<td>"Wanneer de condities extreem zijn, weegt rust extra zwaar."</td>
+<td>"U bent ongezond gestrest."</td>
+</tr>
+<tr>
+<td>"Preventief herstel — terwijl het kan."</td>
+<td>"Klinisch advies: ga op vakantie."</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-verboden-claims-hard">3. Verboden claims (hard)</h2>
+<p>Onder geen enkele communicatie-omstandigheid:</p>
+<ol>
+<li><em>Individuele attributie.</em> Niet "u bent gestrest", niet "Jan heeft burn-out", niet "uw stress-niveau".</li>
+<li><em>Klinische taal.</em> Niet "diagnose", niet "klinisch verhoogd", niet "medische bevinding".</li>
+<li><em>Wetenschappelijke peer-review-claim.</em> Niet "peer-reviewed", niet "gevalideerd onderzoek", niet "wetenschappelijk bewezen".</li>
+<li><em>Causale claims.</em> Niet "X veroorzaakt stress", niet "de file maakt u ziek".</li>
+<li><em>Voorspellende claims over gedrag.</em> Niet "u zult een burn-out krijgen", niet "uw productiviteit zal dalen".</li>
+<li><em>Demografische uitsplitsing.</em> Niet "vrouwen gestresseerder dan mannen", niet "millennials in rood". De SBI meet geen demografie.</li>
+</ol>
+<hr />
+<h2 id="4-toon-richtlijnen">4. Toon-richtlijnen</h2>
+<h3 id="41-niet-activerend-wel-informatief">4.1 Niet activerend, wel informatief</h3>
+<p>Vermijd alarmerende toon. De SBI is een <strong>rapport</strong>, geen <strong>alarm</strong>. Communicatie volgt die geest:</p>
+<ul>
+<li>✅ "De index staat momenteel op rood."</li>
+<li>❌ "PAS OP! STRESS-PEAK!"</li>
+</ul>
+<h3 id="42-geen-schuldtoekenning">4.2 Geen schuldtoekenning</h3>
+<p>Niet de bevolking opvoeden of moraliseren:</p>
+<ul>
+<li>✅ "Conditie-piek. Een moment om bewuste keuzes te maken."</li>
+<li>❌ "U moet beter voor uzelf zorgen."</li>
+</ul>
+<h3 id="43-geen-utopisme">4.3 Geen utopisme</h3>
+<p>Geen belofte van transformatie via een product:</p>
+<ul>
+<li>✅ "Recovery in extreme omstandigheden."</li>
+<li>❌ "Alle stress weg na één weekend in [bestemming]."</li>
+</ul>
+<hr />
+<h2 id="5-brand-safety-en-kill-switch">5. Brand-safety en kill-switch</h2>
+<p>Bij activering van de brand-safety-vlag (zie laag 7 §7):</p>
+<ul>
+<li>Stop alle commerciële boodschappen die het signaal als trigger gebruiken</li>
+<li>Continueer (indien gewenst) de neutrale rapportage van de index-stand zonder commerciële call-to-action</li>
+<li>Wacht op vlag-deactivatie vóór hervatting</li>
+</ul>
+<p>Voorbeeld: bij nationale rouw is "verhoogd-blootstellings-venster open, tijd voor rust in [bestemming]" <em>niet</em> gepast. "De SBI registreert de impact van [gebeurtenis] op blootstellings-condities" is wel gepast — informatief, niet commercieel.</p>
+<hr />
+<h2 id="6-vertaling-en-buitenlandse-markten">6. Vertaling en buitenlandse markten</h2>
+<p>De stijlgids geldt in elke taal. Vertalingen mogen geen subjectieve drift introduceren ("blootstellings-conditie" → "stress" zou een vertaal-overtreding zijn). In het Frans: "Indice d'Exposition aux Stresseurs". In het Engels: "Stressor Exposure Index".</p>
+<hr />
+<h2 id="7-naleving-en-handhaving">7. Naleving en handhaving</h2>
+<h3 id="71-abonnement-voorwaarde">7.1 Abonnement-voorwaarde</h3>
+<p>Alle abonnees op de Signal-API tekenen voor naleving van deze stijlgids als voorwaarde voor toegang.</p>
+<h3 id="72-schendings-procedure">7.2 Schendings-procedure</h3>
+<p>Stap 1: schriftelijke waarschuwing binnen 7 dagen na detectie
+Stap 2: bij herhaling — opschorting toegang Signal-API voor 30 dagen
+Stap 3: bij ernstige of herhaalde schending — permanente intrekking abonnement</p>
+<h3 id="73-publieke-meldingen">7.3 Publieke meldingen</h3>
+<p>Het methodologie-team ontvangt klachten over abonnee-schendingen via een publiek meldpunt. Klachten worden onderzocht; uitspraken publiek gemaakt.</p>
+<h3 id="74-reputatie-bescherming">7.4 Reputatie-bescherming</h3>
+<p>Een merk dat zich aan deze stijlgids houdt, kan zijn communicatie met overtuiging verdedigen tegen elke kritische scrutiny. Een merk dat de stijlgids breekt, ondermijnt zijn eigen verhaal én dat van de SBI.</p>
+<hr />
+<h2 id="8-updates-van-deze-stijlgids">8. Updates van deze stijlgids</h2>
+<p>Wijzigingen volgen het proces uit <code>08_Onderhoud-Protocol.md</code>. Substantiële aanscherpingen worden 30 dagen vooraf aan abonnees aangekondigd. Verzachtingen vereisen adviesraad-goedkeuring.</p>
+<hr />
+<h2 id="9-eindgedachte-voor-abonnees">9. Eindgedachte voor abonnees</h2>
+<p>De waarde van het SBI-signaal hangt voor 100% af van de geloofwaardigheid van de methodologie. Die geloofwaardigheid bouwen we op met elke maand zorgvuldige meting. We kunnen die in één banner verliezen.</p>
+<p>Deze stijlgids is geen lastige clausule, het is de verzekering dat het instrument dat u abonneert blijft werken — voor u en voor elke andere abonnee.</p>
+<hr />
+</body>
+</html>

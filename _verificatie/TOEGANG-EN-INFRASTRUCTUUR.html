@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+<meta charset="UTF-8">
+<title>TOEGANG-EN-INFRASTRUCTUUR</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap">
+<style>
+  body { font-family: Ubuntu, system-ui, sans-serif; color: #22252a; max-width: 880px; margin: 36px auto; padding: 0 36px; line-height: 1.55; }
+  h1 { font-weight: 300; font-size: 2rem; color: #22252a; margin-top: 2.5em; border-bottom: 2px solid #29441f; padding-bottom: .3em; page-break-before: always; }
+  h1:first-of-type { page-break-before: avoid; margin-top: 0; }
+  h2 { font-weight: 500; color: #29441f; margin-top: 2em; font-size: 1.3rem; }
+  h3 { font-weight: 500; color: #22252a; font-size: 1.1rem; }
+  a { color: #29441f; }
+  hr { border: none; border-top: 1px solid #e5e7eb; margin: 2em 0; }
+  code, pre { font-family: "Ubuntu Mono", monospace; font-size: 0.86rem; }
+  pre { background: #f7f8f9; border: 1px solid #e5e7eb; border-radius: 6px; padding: 14px 18px; overflow-x: auto; page-break-inside: avoid; }
+  p code, li code { background: #f0f1f3; padding: 1px 5px; border-radius: 3px; }
+  table { border-collapse: collapse; margin: 1em 0; width: 100%; }
+  th, td { border: 1px solid #e5e7eb; padding: 8px 12px; text-align: left; vertical-align: top; }
+  th { background: #f7f8f9; font-weight: 500; }
+  blockquote { border-left: 3px solid #29441f; padding-left: 14px; color: #52565b; margin-left: 0; }
+  @media print {
+    body { margin: 0; padding: 18mm 16mm; }
+    h1 { page-break-before: always; }
+    h1:first-of-type { page-break-before: avoid; }
+    pre { font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+<div class="meta-print" style="font-size:.8rem;color:#9ca3af;margin-bottom:1em">
+  Hautes-Alpes · SBI-barometer · gegenereerd 2026-05-31
+</div>
+<h1 id="toegang-infrastructuur-sbi-barometer">TOEGANG &amp; INFRASTRUCTUUR — SBI Barometer</h1>
+<p><strong>Project:</strong> Les Hautes Alpes · Anti-Stress Activator (barometer)
+<strong>Versie:</strong> SBI v0.2 (24 indicatoren + 2 secundair, 6 domeinen)
+<strong>Status:</strong> Live, dagelijks bijgewerkt om 09:00 Belgische tijd
+<strong>Document uitgevoerd:</strong> 2026-05-31</p>
+<p>Dit document bundelt alles wat een externe reviewer/beheerder/collaborator
+nodig heeft om het project te verifiëren, lokaal te draaien of te onderhouden.</p>
+<hr />
+<h2 id="1-live-toegang-publiek-geen-login">1. Live-toegang (publiek, geen login)</h2>
+<table>
+<thead>
+<tr>
+<th>Wat</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Website</td>
+<td>https://les-hautes-alpes-sbi.surge.sh</td>
+</tr>
+<tr>
+<td>Volledige data (JSON)</td>
+<td>https://les-hautes-alpes-sbi.surge.sh/data/latest.json</td>
+</tr>
+<tr>
+<td>Sparkline 60 dagen</td>
+<td>https://les-hautes-alpes-sbi.surge.sh/data/sparkline-30d.json</td>
+</tr>
+<tr>
+<td>Compacte signal-API (banner-embed)</td>
+<td>https://les-hautes-alpes-sbi.surge.sh/api/v1/signal.json</td>
+</tr>
+</tbody>
+</table>
+<p>De site is statisch (geen backend, geen database, geen login). Alle data is
+publiek. Embedbaar via de signal-API + een JS-snippet.</p>
+<hr />
+<h2 id="2-broncode-github">2. Broncode (GitHub)</h2>
+<table>
+<thead>
+<tr>
+<th>Wat</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repository</td>
+<td>https://github.com/PeterHoogland/lhaa-sbi-barometer-</td>
+</tr>
+<tr>
+<td>Issues</td>
+<td>https://github.com/PeterHoogland/lhaa-sbi-barometer-/issues</td>
+</tr>
+<tr>
+<td>Actions (cron-runs)</td>
+<td>https://github.com/PeterHoogland/lhaa-sbi-barometer-/actions</td>
+</tr>
+<tr>
+<td>Settings → Collaborators</td>
+<td>https://github.com/PeterHoogland/lhaa-sbi-barometer-/settings/access</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Laatste commit:</strong> <code>36702fc · 2026-05-21 22:05:08 +0200 · Header groter logo + scheidingslijn; domeinen als fotokaarten</code></p>
+<hr />
+<h2 id="3-mensen-met-toegang">3. Mensen met toegang</h2>
+<table>
+<thead>
+<tr>
+<th>GitHub-handle</th>
+<th>Rol</th>
+<th>Wat ze kunnen</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/PeterHoogland">PeterHoogland</a></td>
+<td>admin</td>
+<td>Admin — volledig beheer (code, secrets, mensen, settings, deploy).</td>
+</tr>
+<tr>
+<td><a href="https://github.com/laurentjune20">laurentjune20</a></td>
+<td>admin</td>
+<td>Admin — volledig beheer (code, secrets, mensen, settings, deploy).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Iemand toevoegen:</strong> https://github.com/PeterHoogland/lhaa-sbi-barometer-/settings/access → <em>Add people</em> → username of e-mail.
+Of via CLI: <code>gh api -X PUT repos/PeterHoogland/lhaa-sbi-barometer-/collaborators/USER -f permission=push|admin</code>.</p>
+<hr />
+<h2 id="4-hosting-deploy">4. Hosting &amp; deploy</h2>
+<table>
+<thead>
+<tr>
+<th>Onderdeel</th>
+<th>Configuratie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Front-end-hosting</td>
+<td><strong>Surge.sh</strong> (statisch, gratis tier)</td>
+</tr>
+<tr>
+<td>Subdomain</td>
+<td><code>les-hautes-alpes-sbi.surge.sh</code></td>
+</tr>
+<tr>
+<td>Surge-account</td>
+<td><code>peter@hoogland.be</code></td>
+</tr>
+<tr>
+<td>Build &amp; deploy</td>
+<td><strong>GitHub Actions</strong> — dagelijks 09:00 BE-tijd + bij elke push naar <code>main</code></td>
+</tr>
+<tr>
+<td>Workflow-bestand</td>
+<td><code>.github/workflows/daily.yml</code></td>
+</tr>
+<tr>
+<td>Pipeline-runtime</td>
+<td>Python 3.11 + Node 22 LTS (geforceerd Node 24 voor <code>actions/*</code>)</td>
+</tr>
+<tr>
+<td>Cron (dual)</td>
+<td><code>0 7 * * *</code> (UTC, zomer) + <code>0 8 * * *</code> (UTC, winter), met BE-tijdwacht</td>
+</tr>
+<tr>
+<td>Auto-commit</td>
+<td>Cache (<code>sbi-cache.json</code>), pending events en historie worden teruggecommit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deploy-flow">Deploy-flow</h3>
+<pre><code>push naar main  ─┐
+                 ▼
+        GitHub Actions trigger
+                 │
+                 ├── python -m pipeline.run         (haalt 17 echte bronnen op)
+                 │       │
+                 │       ▼
+                 │   schrijft  app/data/raw-values.json
+                 │   appended  app/data/history/*.json   (echte baselines)
+                 │
+                 ├── npm run generate-fixture       (TS-engine berekent composiet)
+                 │       │
+                 │       ▼
+                 │   schrijft  app/web/public/data/{latest,signal,sparkline-30d}.json
+                 │
+                 ├── npm run build                  (Vite bouwt React-bundle)
+                 │
+                 └── surge ./dist les-hautes-alpes-sbi.surge.sh
+                         │
+                         ▼
+                     Site live
+                 │
+                 ▼
+        Auto-commit: cache + historie
+                 │
+                 ▼
+        Nieuwe baseline-data in git
+</code></pre>
+<h3 id="github-secrets-alleen-namen-niet-de-waarden">GitHub-secrets (alleen namen, niet de waarden)</h3>
+<ul>
+<li><code>SURGE_TOKEN</code> — bijgewerkt op 2026-05-20</li>
+<li><code>GITHUB_TOKEN</code> — automatisch door GitHub geleverd aan elke run.</li>
+</ul>
+<p><strong>Token roteren (Surge):</strong></p>
+<pre><code># 1. nieuwe token genereren
+surge token
+
+# 2. in GitHub plaatsen
+gh secret set SURGE_TOKEN --body &quot;&lt;nieuwe-token&gt;&quot; --repo PeterHoogland/lhaa-sbi-barometer-
+</code></pre>
+<hr />
+<h2 id="5-externe-data-bronnen-24-primair-2-secundair">5. Externe data-bronnen (24 primair + 2 secundair)</h2>
+<p>Alle bronnen zijn open / publiek. Geen betaalde API's. Geen tokens nodig
+(behalve de Surge-deploy-token hierboven).</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Dom</th>
+<th>Indicator</th>
+<th>Databron</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>I-D1-001</code></td>
+<td>D1</td>
+<td>Daglicht</td>
+<td><a href="https://gml.noaa.gov/grad/solcalc/">NOAA Solar Calculator (astronomisch)</a></td>
+</tr>
+<tr>
+<td><code>I-D1-002</code></td>
+<td>D1</td>
+<td>Hitte</td>
+<td><a href="https://www.meteo.be">KMI (via open-meteo)</a></td>
+</tr>
+<tr>
+<td><code>I-D1-003</code></td>
+<td>D1</td>
+<td>Koude</td>
+<td><a href="https://www.meteo.be">KMI (via open-meteo)</a></td>
+</tr>
+<tr>
+<td><code>I-D1-004</code></td>
+<td>D1</td>
+<td>Luchtkwaliteit</td>
+<td><a href="https://www.irceline.be">IRCEL-CELINE</a></td>
+</tr>
+<tr>
+<td><code>I-D1-009</code></td>
+<td>D1</td>
+<td>Staat het water gevaarlijk hoog?</td>
+<td><a href="https://www.waterinfo.be/">Waterinfo.be (VMM / HIC)</a></td>
+</tr>
+<tr>
+<td><code>I-D1-010</code></td>
+<td>D1</td>
+<td>Hoeveel pollen zit er in de lucht?</td>
+<td><a href="https://open-meteo.com/">open-meteo Air Quality (CAMS)</a></td>
+</tr>
+<tr>
+<td><code>I-D2-001</code></td>
+<td>D2</td>
+<td>Verkeersdrukte</td>
+<td><a href="https://www.verkeerscentrum.be">Vlaams Verkeerscentrum</a></td>
+</tr>
+<tr>
+<td><code>I-D2-004</code></td>
+<td>D2</td>
+<td>Brandstofprijs</td>
+<td><a href="https://economie.fgov.be/nl/themas/energie/energieprijzen">FOD Economie</a></td>
+</tr>
+<tr>
+<td><code>I-D2-009</code></td>
+<td>D2</td>
+<td>Hoeveel treinen rijden er in de soep?</td>
+<td><a href="https://api.irail.be/">iRail API (NMBS/Infrabel)</a></td>
+</tr>
+<tr>
+<td><code>I-D3-001</code></td>
+<td>D3</td>
+<td>Inflatie (prijzen stijgen)</td>
+<td><a href="https://statbel.fgov.be/nl/themas/consumptieprijzen/consumptieprijsindex">STATBEL</a></td>
+</tr>
+<tr>
+<td><code>I-D3-002</code></td>
+<td>D3</td>
+<td>Energieprijs</td>
+<td><a href="https://transparency.entsoe.eu">ENTSO-E Transparency</a></td>
+</tr>
+<tr>
+<td><code>I-D3-003</code></td>
+<td>D3</td>
+<td>Ontslagen aangekondigd</td>
+<td><a href="https://werk.belgie.be/nl/themas/herstructureringen">FOD WASO</a></td>
+</tr>
+<tr>
+<td><code>I-D3-005</code></td>
+<td>D3</td>
+<td>Werkloosheid</td>
+<td><a href="https://statbel.fgov.be/nl/themas/werk-opleiding/werkloosheid">STATBEL: Werkloosheid</a></td>
+</tr>
+<tr>
+<td><code>I-D3-006</code></td>
+<td>D3</td>
+<td>Hypotheekrente</td>
+<td><a href="https://stat.nbb.be">Nationale Bank van België</a></td>
+</tr>
+<tr>
+<td><code>I-D3-009</code></td>
+<td>D3</td>
+<td>Trekt België meer stroom dan verwacht?</td>
+<td><a href="https://opendata.elia.be/">Elia Open Data</a></td>
+</tr>
+<tr>
+<td><code>I-D4-001</code></td>
+<td>D4</td>
+<td>Werk-deadlines</td>
+<td><a href="https://financien.belgium.be/nl/particulieren/belastingaangifte">FOD Financiën (fiscale kalender)</a></td>
+</tr>
+<tr>
+<td><code>I-D4-002</code></td>
+<td>D4</td>
+<td>Schoolvakantie</td>
+<td><a href="https://onderwijs.vlaanderen.be/nl/schoolvakanties">Vlaamse onderwijskalender</a></td>
+</tr>
+<tr>
+<td><code>I-D5-001</code></td>
+<td>D5</td>
+<td>Hoe negatief is het nieuws?</td>
+<td><a href="https://www.gdeltproject.org/">GDELT DOC 2.0 nieuwstoon BE + RSS-controle van 13 BE-bronnen</a></td>
+</tr>
+<tr>
+<td><code>I-D5-002</code></td>
+<td>D5</td>
+<td>Hoeveel mensen lezen over stress?</td>
+<td><a href="https://wikimedia.org/api/rest_v1/">Wikimedia Pageviews API (nl.wikipedia)</a></td>
+</tr>
+<tr>
+<td><code>I-D5-003</code></td>
+<td>D5</td>
+<td>Grote gebeurtenis</td>
+<td><a href="https://www.vrt.be/vrtnws/">Nieuwsmonitoring + menselijke codering</a></td>
+</tr>
+<tr>
+<td><code>I-D6-001</code></td>
+<td>D6</td>
+<td>Tot de volgende vakantie</td>
+<td><a href="https://onderwijs.vlaanderen.be/nl/schoolvakanties">Federale feestdagen + Vlaamse onderwijskalender</a></td>
+</tr>
+<tr>
+<td><code>I-D6-002</code></td>
+<td>D6</td>
+<td>Welke dag van de week</td>
+<td><a href="https://nl.wikipedia.org/wiki/Week_(tijdsaanduiding)">Kalender (deterministisch)</a></td>
+</tr>
+<tr>
+<td><code>I-D6-003</code></td>
+<td>D6</td>
+<td>Zomertijd/wintertijd</td>
+<td><a href="https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX:32000L0084">Wettelijke DST-data EU</a></td>
+</tr>
+<tr>
+<td><code>I-D6-005</code></td>
+<td>D6</td>
+<td>Examens</td>
+<td><a href="https://onderwijs.vlaanderen.be">Academische kalender</a></td>
+</tr>
+<tr>
+<td><code>I-D5-006S</code></td>
+<td>SEC</td>
+<td>Reddit-sentiment (onderstroom-peiling)</td>
+<td>cache (laatst succesvol: Reddit r/belgium + r/Vlaanderen, 200 posts, NL valentie-lexicon (299 woorden, nl-valence-0.1); SECUNDAIR, niet-representatief, niet in composiet)</td>
+</tr>
+<tr>
+<td><code>I-D3-003S</code></td>
+<td>SEC</td>
+<td>Ontslag-radar (nieuws-detectie)</td>
+<td>Ontslag-radar: 3 artikels met collectief-ontslag-thema in 11 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet</td>
+</tr>
+</tbody>
+</table>
+<h3 id="historische-baselines">Historische baselines</h3>
+<p>24-maands-historie per indicator staat in <code>app/data/history/&lt;CODE&gt;.json</code>
+en wordt elke dag bijgewerkt door de pipeline (<code>append_to_history</code> in
+<code>run.py</code>). De backfill-scripts in <code>app/pipeline/scripts/</code> halen voor
+specifieke bronnen ineens de volledige geschiedenis op:</p>
+<ul>
+<li><code>backfill_gdelt_baseline.py</code> — nieuwstoon GDELT (24m).</li>
+<li><code>backfill_wikipedia_baseline.py</code> — Wikipedia-aandacht (~11m).</li>
+<li><code>backfill_weather_baseline.py</code> — KMI/open-meteo (24m, 3 indicatoren).</li>
+<li><code>backfill_macro_baseline.py</code> — ECB + Energy-Charts (8-18 jaar, 5 indicatoren).</li>
+<li><code>backfill_flood_baseline.py</code> — GloFAS rivierafvoer (24m).</li>
+<li><code>backfill_pollen_baseline.py</code> — open-meteo CAMS-pollen (24m).</li>
+<li><code>backfill_elia_baseline.py</code> — Elia stroomnet (24m).</li>
+</ul>
+<hr />
+<h2 id="6-lokaal-draaien-cheat-sheet">6. Lokaal draaien (cheat-sheet)</h2>
+<pre><code class="language-bash">git clone https://github.com/PeterHoogland/lhaa-sbi-barometer-.git
+cd lhaa-sbi-barometer-
+
+# python-pipeline
+cd app/pipeline
+pip install -r requirements.txt
+python -m pipeline.run                  # haalt vandaag's data
+
+# TS-engine + UI
+cd ../engine
+npm install
+npm test                                # 29 tests, moet groen zijn
+npm run generate-fixture                # schrijft latest.json
+cd ../web
+npm install
+npm run dev                             # localhost:5173
+
+# build voor productie
+npm run build                           # output in dist/
+</code></pre>
+<hr />
+<h2 id="7-verificatie-checklist-voor-de-reviewer">7. Verificatie-checklist voor de reviewer</h2>
+<ul>
+<li>[ ] Methodologie consistent met pre-registratie (zie <code>00_Pre-Registratie.md</code> t.e.m. <code>08_Onderhoud-Protocol.md</code>).</li>
+<li>[ ] Pre-registratie-amendementen expliciet gedocumenteerd (Schema 3 demografisch, Wikipedia ipv Google Trends, 4 nieuwe indicatoren).</li>
+<li>[ ] 29 engine-unittests groen (<code>cd app/engine &amp;&amp; npm test</code>).</li>
+<li>[ ] TypeScript schoon (<code>npx tsc --noEmit</code>).</li>
+<li>[ ] Alle 24 fetchers leveren echte data (<code>/data/latest.json</code> → <code>data_quality.indicators_simulated</code> is leeg).</li>
+<li>[ ] 20 van de 24 indicatoren wegen tegen een echte historische baseline (zie <code>app/data/history/</code>).</li>
+<li>[ ] De resterende 4 (verkeer, brandstof, treinen, gebeurtenissen) accumuleren forward via <code>append_to_history</code>.</li>
+<li>[ ] Daily cron draait om 09:00 BE-tijd (zie https://github.com/PeterHoogland/lhaa-sbi-barometer-/actions).</li>
+</ul>
+<hr />
+<h2 id="8-contact">8. Contact</h2>
+<table>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Persoon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eigenaar / opdrachtgever</td>
+<td>Peter Hoogland — peter@hoogland.be</td>
+</tr>
+<tr>
+<td>Verificatie / beheer</td>
+<td>Laurent — laurent@june20.be (GitHub: <code>laurentjune20</code>)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Einde toegang &amp; infrastructuur-document.</em></p>
+</body>
+</html>

@@ -39,6 +39,7 @@ import { INDICATORS } from "../indicators/registry.js";
 import { median, robustScale } from "./zscore.js";
 import { winsorize } from "./winsorize.js";
 import { DEMOGRAPHIC_REACH } from "./demographic-reach.js";
+import { smoothTrailingByDate } from "./smoothing.js";
 
 export const ECONOMIC_BASELINE_START = "2010-01-01";
 export const ECONOMIC_BASELINE_END = "2019-12-31";
@@ -109,6 +110,14 @@ export const ECONOMIC_PRESSURE_MAPPING = "normal_cdf" as const;
  * VOLLEDIGE baseline, zodat een dag zonder hitte gewoon z=0 geeft (meetelt, neutraal).
  */
 const ACTIVE_REGIME_SCALE_CODES = new Set<IndicatorCode>(["I-D1-002", "I-D1-003"]);
+
+/**
+ * Codes met een systematische WEEKCYCLUS die niets met maatschappelijke druk te maken
+ * heeft en die daarom over 7 kalenderdagen wordt afgevlakt vóór de vergelijking
+ * (amendement §4.1.17). Nu alleen de day-ahead stroomprijs; een huishouden voelt niet
+ * de spotprijs van zondag maar het weekniveau.
+ */
+const WEEKLY_CYCLE_CODES = new Set<IndicatorCode>(["I-D3-002"]);
 
 /**
  * Hitte-escalatie (amendement §4.1.16, Peter GO 2026-06-24). De generieke winsor-kap
@@ -197,7 +206,17 @@ export function computeAbsolutePressure(
   const indicators: EconomicPressure["indicators"] = [];
 
   for (const code of codes) {
-    const series = history[code] ?? [];
+    // §4.1.17 — reeksen met een WEEKCYCLUS worden vóór de vergelijking afgevlakt over
+    // 7 kalenderdagen. De day-ahead stroomprijs (I-D3-002) ligt in het weekend ~27%
+    // lager (mediaan zondag 65,0 vs woensdag 103,4 EUR/MWh) door lage industriele vraag
+    // en veel zon. Dat is een marktpatroon, geen maatschappelijke druk, en het
+    // veroorzaakte kop-sprongen tot 15 punten op zaterdag/zondag (bv. 12->14 juni 2026:
+    // 82 -> 68 -> 66). De afvlakking gebeurt hier op de VOLLEDIGE reeks, dus baseline en
+    // dagwaarde ondergaan exact dezelfde transformatie (harde regel 5, schaaldiscipline).
+    const rawSeries = history[code] ?? [];
+    const series = WEEKLY_CYCLE_CODES.has(code)
+      ? smoothTrailingByDate(rawSeries)
+      : rawSeries;
     const baselinePoints = series
       .filter((p) => p.date >= ECONOMIC_BASELINE_START && p.date <= ECONOMIC_BASELINE_END)
       .filter((p) => Number.isFinite(p.value));

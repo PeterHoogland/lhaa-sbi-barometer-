@@ -71,8 +71,21 @@ export const HYBRID_MOBILITY_DAY_CODES: ReadonlySet<string> = new Set([
   "I-D2-delijn",
 ]);
 
-/** Ademknop: gewicht van de snelle beweging in de samengestelde z (Peter 19/6). */
-export const HYBRID_W_FAST = 0.30;
+/**
+ * Ademknop: gewicht van de snelle beweging in de samengestelde z (Peter 19/6).
+ *
+ * 0,30 -> 0,40 op 2026-07-25 (amendement §4.1.18, Peter GO "het cijfer moet ademen,
+ * zonder extremen"). Volgorde was bepalend: eerst is de WEEKCYCLUS uit de energieprijs
+ * gehaald (§4.1.17), want die veroorzaakte kop-sprongen tot 15 punten in het weekend.
+ * Zonder die correctie zou een hoger gewicht een marktartefact hebben versterkt.
+ * Na de correctie zakte de dagbeweging naar 1,48 punt; 0,40 brengt die op 2,08 terwijl
+ * de extremen ONDER de oude toestand blijven (grootste dagsprong 10 tegen 15, sprongen
+ * >=5 punten 7 tegen 10). Elke resterende grote sprong is naar echt signaal te
+ * herleiden (hittegolf 23->24/6 +7; hittegolf breekt 27->28/6 -6; pollen 81->51 op
+ * 4->5/7 -10). Doorgerekend op 61 dagen: 0,45 en 0,50 lieten de extremen wel
+ * wegschieten (12 sprongen >=5 punten bij 0,50).
+ */
+export const HYBRID_W_FAST = 0.40;
 
 /**
  * Binnen z_fast: gewicht van de mobiliteits-(verlichtings-)term t.o.v. de stress-term

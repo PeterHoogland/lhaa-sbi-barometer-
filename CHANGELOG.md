@@ -6,6 +6,32 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-07-25 (2) — Weekcyclus uit de energieprijs (§4.1.17), ademknop naar 0,40 (§4.1.18), weer-baseline op de KMI-bronmaat — methodologie 0.4.3
+
+**Aanleiding:** Peter, na de ochtendfixes: "het cijfer moet ademen, zonder extremen." Onderzoek naar de grootste dagsprongen wees NIET naar de dagband maar naar de energieprijs in de TRAGE band (70% gewicht). De day-ahead stroomprijs heeft een weekcyclus die niets met maatschappelijke druk te maken heeft: mediaan woensdag 103,4 EUR/MWh, zaterdag 77,7, zondag 65,0 (weekend 27% lager, lage industriële vraag + zon). Dat sloeg recht door: 12 → 13 → 14 juni gaf 82 → 68 → 66, terwijl pollen op die dagen juist hoog stond en hitte/koude nul waren. De grootste uitslagen van de index waren dus een marktartefact.
+
+Daarnaast, bij het uitwerken van een hitte-voorstel gevonden: de 2010-2019 baseline van hitte/koude stond op een ANDERE meetset dan de dagmeting. De baseline was gebackfilld uit open-meteo/ERA5 met Brusselse dagafbakening; de live-fetcher meet KMI-station Ukkel op UTC-dagen. Over 3652 baselinedagen: 60 dagen wijken >0,05 af, tot 2,80; 47 tegen 58 niet-nul dagen. Zichtbaar in het paar 1/2 juli 2015 (+1,5 en −1,5: hitte verschoven naar de buurdag). Dat is harde regel 5, terwijl het backfill-script in zijn eigen docstring "EXACT de live-fetcher-maat" belooft.
+
+**Beslissing:** (1) **§4.1.17** — de reeks van I-D3-002 wordt vóór de vergelijking afgevlakt over 7 KALENDERdagen (`smoothTrailingByDate`, nieuw). De afvlakking gebeurt op de VOLLEDIGE reeks in `computeAbsolutePressure`, vóór baseline en dagwaarde eruit worden afgeleid, dus beide ondergaan per constructie dezelfde transformatie (regel 5). Kalenderdagen en niet posities, want de energiereeks heeft gaten (o.a. 2020-2024) en een positioneel venster zou 2019 met 2024 middelen. (2) **§4.1.18** — `HYBRID_W_FAST` 0,30 → 0,40, PAS NA (1); andersom zou een hoger gewicht het artefact hebben versterkt. (3) **Bugfix, geen herdefinitie** — de baselines van I-D1-002 en I-D1-003 zijn vervangen door KMI Ukkel op exact de fetcher-maat (station 6447, veld `temp`, UTC-kalenderdag): 71 hitte- en 59 koudewaarden gecorrigeerd, rijaantallen ongewijzigd (4465), volledige dekking.
+
+**Geborgd:** Engine **213/213** (14 bestanden; 2 nieuwe tests in `smoothing.test.ts`: geen middeling over een gat heen, en een volledige weekcyclus vlakt weg). `tsc --noEmit` schoon, 12/12 pipeline-suites. De replicatie van de KMI-fetcher is EXACT geverifieerd: over de 55 dagen die de live-pipeline zelf schreef is het verschil 0,0000 voor zowel hitte als koude. Alle varianten zijn gemeten door de volledige reeks (61 dagen) per instelling opnieuw te bouwen, niet benaderd.
+
+**Effect, in cijfers:**
+
+| | vóór | na §4.1.17 | na §4.1.17+18 |
+|---|---|---|---|
+| gem. dagbeweging | 2,72 | 1,48 | **2,08** |
+| grootste dagsprong | 15 | 6 | **10** |
+| sprongen ≥5 punten | 10 | 1 | **7** |
+| bereik | 66-91 | 80-91 | **75-92** |
+| labelwissels | 5 | 3 | **2** |
+
+De extremen blijven dus ONDER de oude toestand terwijl de beweging vergelijkbaar is, en elke resterende grote sprong is herleidbaar tot echt signaal: 23→24/6 +7 (hitte 0 → 5,3, hittegolf arriveert), 27→28/6 −6 (hittegolf breekt), 4→5/7 −10 (pollen 81 → 51 plus rustiger nieuws), 23→24/7 +5 (pollen meer dan verdubbeld). 0,45 en 0,50 zijn afgewezen: bij 0,50 loopt het aantal sprongen ≥5 punten op tot 12, méér dan in de oude artefact-toestand.
+
+**Zichtbaar voor bezoekers:** de gepubliceerde grafiek verandert. De juni-weekends stijgen fors (13/6 van 68 naar 83, 14/6 van 66 naar 81) omdat de stroombeurs-dip eruit is, en de hittegolfpiek zakt van 92 naar 90 door de bronconsistente baseline. Beide zijn correcties van artefacten.
+
+**Ook meegenomen:** §4.1.16 (weer/lucht in de kop + hitte-escalatie, 25/6 gedeployd) is alsnog retroactief in de amendement-annex opgenomen; de code verwees er al naar maar het stond niet in `00_Pre-Registratie.md`. Dat sluit het openstaande punt §3.2 uit de handover van 25/6. `SHA256-MANIFEST.txt` is in dezelfde commit herberekend (regel 10).
+
 ## 2026-07-25 — Lookahead in de omgevings-dagsignalen gedicht + jaarcijfers verliezen hun observatieperiode niet meer
 
 **Aanleiding:** Melding dat het hoofdcijfer "al twee dagen hetzelfde" stond. Diagnose op de live data: de kop stond 23, 24 en 25 juli op 87, terwijl de onderliggende signalen wel degelijk bewogen (pollen 14,3 -> 32,0 -> 48,8). Drie oorzaken gevonden, waarvan twee echte defecten:

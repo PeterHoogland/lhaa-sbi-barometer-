@@ -70,3 +70,28 @@ export function smoothTrailing(
   }
   return out;
 }
+
+/**
+ * Als smoothTrailing, maar het venster telt KALENDERdagen in plaats van
+ * array-posities. Nodig voor reeksen met gaten: de energiereeks (I-D3-002) heeft
+ * een gat 2020-2024, en een positioneel venster zou daar 2019-waarden met
+ * 2024-waarden middelen. Sorteert zelf, dus de aanroeper hoeft dat niet te
+ * garanderen. LOOKAHEAD-VRIJ: elk punt middelt uitsluitend zichzelf en
+ * voorgaande dagen binnen het venster.
+ */
+export function smoothTrailingByDate(
+  history: DatedValue[],
+  window: number = SMOOTHING_WINDOW_DAYS,
+): DatedValue[] {
+  const sorted = [...history].sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+  const day = sorted.map((p) => Math.floor(Date.parse(`${p.date}T00:00:00Z`) / 86400000));
+  const out: DatedValue[] = new Array(sorted.length);
+  let lo = 0;
+  for (let i = 0; i < sorted.length; i++) {
+    while (day[i] - day[lo] > window - 1) lo++;
+    let sum = 0;
+    for (let j = lo; j <= i; j++) sum += sorted[j].value;
+    out[i] = { date: sorted[i].date, value: sum / (i - lo + 1) };
+  }
+  return out;
+}

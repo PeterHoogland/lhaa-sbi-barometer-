@@ -1,0 +1,774 @@
+diff --git a/app/web/index.html b/app/web/index.html
+index 7d44f7a..bdee949 100644
+--- a/app/web/index.html
++++ b/app/web/index.html
+@@ -4,11 +4,11 @@
+     <meta charset="UTF-8" />
+     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+-    <meta name="description" content="De Nationale Stress Index meet dagelijks hoe ongewoon zwaar de omstandigheden in België zijn. Een initiatief van Les Hautes-Alpes." />
++    <meta name="description" content="De Nationale Stress Barometer meet dagelijks hoe ongewoon zwaar de omstandigheden zijn die in heel België op mensen kunnen inwerken. Een initiatief van Les Hautes Alpes, gebouwd door de June20 Business Innovation OS." />
+     <link rel="preconnect" href="https://fonts.googleapis.com" />
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" />
+-    <title>De Nationale Stress Index</title>
++    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
++    <title>De Nationale Stress Barometer</title>
+   </head>
+   <body>
+     <div id="root"></div>
+diff --git a/app/web/src/App.tsx b/app/web/src/App.tsx
+index ee22aea..3eeb15a 100644
+--- a/app/web/src/App.tsx
++++ b/app/web/src/App.tsx
+@@ -1,6 +1,7 @@
+ import { useEffect, useState } from "react";
+ import type { DailyOutput, SparklinePoint } from "./types";
+ // CallToAction bewust niet meer gerenderd (Peter 2026-06-12) — zie <main> hieronder.
++import { CollapseBar } from "./components/CollapseBar";
+ import { BrandSafetyBanner } from "./components/BrandSafetyBanner";
+ import { DemoBanner } from "./components/DemoBanner";
+ import { ConditionLevelDisplay } from "./components/ConditionLevelDisplay";
+@@ -101,34 +102,50 @@ export function App() {
+             Heractiveren = deze regel terugzetten:
+             <CallToAction tier={data.tier.current} brandSafety={data.brand_safety.flag} /> */}
+ 
+-        <TopInfluences
+-          breakdown={
+-            // Gate op mode (A3), niet op aanwezigheid: een test-modus-v04 mag de
+-            // publieke top-3 nooit voeden, ook niet als een publisher vergeet te strippen.
+-            data.v04?.mode === "live"
+-              ? data.v04.kern_breakdown.map((k) => enrichKern(k, data.indicator_breakdown))
+-              : data.indicator_breakdown
+-          }
+-        />
+-
+-        <ContextSignals signals={data.context_signals ?? []} />
++        {/* Peter 13/6: deze twee blokken staan niet langer open op de pagina
++            maar achter uitklikbalken, in dezelfde stijl als de balken eronder. */}
++        <section className="bp-section" aria-label="Vandaag uitgelicht">
++          <CollapseBar
++            label="Wat speelt vandaag het meest mee?"
++            sub="De drie indicatoren met vandaag de meeste invloed op het cijfer"
++          >
++            <TopInfluences
++              bare
++              breakdown={
++                // Gate op mode (A3), niet op aanwezigheid: een test-modus-v04 mag de
++                // publieke top-3 nooit voeden, ook niet als een publisher vergeet te strippen.
++                data.v04?.mode === "live"
++                  ? data.v04.kern_breakdown.map((k) => enrichKern(k, data.indicator_breakdown))
++                  : data.indicator_breakdown
++              }
++            />
++          </CollapseBar>
++          <CollapseBar
++            label="Context - Niet in het cijfer"
++            sub="De vier kalendersignalen: duiding naast het cijfer, ze tellen niet mee"
++          >
++            <ContextSignals bare signals={data.context_signals ?? []} />
++          </CollapseBar>
++        </section>
+ 
+         <ButtonPanels data={expertData ?? data} sparkline={sparkline} />
+       </main>
+ 
+       <footer className="footer">
+         <div className="footer-inner footer-center">
++          {/* Afzender + bouwer in de onderste balk (Peter 13/6): het LHA-logo
++              verhuisde hierheen uit de header — afzender, geen meetgebied. */}
+           <div className="footer-mark">
+             <LHALogo size={52} />
+             <div className="footer-mark-text">{FOOTER_NOTES.tagline}</div>
+           </div>
+-          {/* A5: eerlijke, nuchtere testmodus-melding. Gate op mode (A3): de regel
+-              verdwijnt pas wanneer de campagne-koppeling écht live staat. */}
+-          {data.v04?.mode !== "live" && (
+-            <p style={{ fontSize: "0.78rem", opacity: 0.55, marginTop: "0.9rem" }}>
+-              Campagne-koppeling staat in testmodus. Er vuurt niets automatisch.
+-            </p>
+-          )}
++          {/* Peter 13/6: alleen de afzender, geen bouwer-credit. */}
++          <div className="footer-credits">
++            <span>Een initiatief van Les Hautes Alpes</span>
++          </div>
++          {/* Testmodus-melding verwijderd (Peter 13/6): de campagne-CTA staat op
++              de hoofdsite toch uit, dus de regel beschreef iets onzichtbaars.
++              De mode zelf blijft in data.v04.mode (API) eerlijk zichtbaar. */}
+         </div>
+       </footer>
+     </div>
+diff --git a/app/web/src/components/CollapseBar.tsx b/app/web/src/components/CollapseBar.tsx
+new file mode 100644
+index 0000000..3a32dee
+--- /dev/null
++++ b/app/web/src/components/CollapseBar.tsx
+@@ -0,0 +1,32 @@
++import { useState, type ReactNode } from "react";
++
++/**
++ * Losse uitklikbalk in exact dezelfde stijl als de ButtonPanels-rijen
++ * (Peter 13/6): de blokken "Wat speelt vandaag het meest mee?" en
++ * "Context - Niet in het cijfer" staan niet langer open op de pagina maar
++ * achter zo'n balk, net als alles lager op de site. Hergebruikt de
++ * bp-*-klassen zodat look en gedrag gegarandeerd identiek zijn.
++ */
++export function CollapseBar({
++  label,
++  sub,
++  children,
++}: {
++  label: string;
++  sub?: string;
++  children: ReactNode;
++}) {
++  const [open, setOpen] = useState(false);
++  return (
++    <div className={`bp-row ${open ? "open" : ""}`}>
++      <button className="bp-button" onClick={() => setOpen(!open)} aria-expanded={open}>
++        <span className="bp-text">
++          <span className="bp-label">{label}</span>
++          {sub && <span className="bp-sub">{sub}</span>}
++        </span>
++        <span className="bp-icon" aria-hidden="true">{open ? "−" : "+"}</span>
++      </button>
++      {open && <div className="bp-panel">{children}</div>}
++    </div>
++  );
++}
+diff --git a/app/web/src/components/ConditionLevelDisplay.tsx b/app/web/src/components/ConditionLevelDisplay.tsx
+index b25bac9..29f91e9 100644
+--- a/app/web/src/components/ConditionLevelDisplay.tsx
++++ b/app/web/src/components/ConditionLevelDisplay.tsx
+@@ -1,20 +1,39 @@
+ import type { ConditionLevel, DailyOutput } from "../types";
+ import { buildContext } from "../lib/explainer";
++import { scoreBand, BAND_LABEL } from "../copy";
+ 
+ /**
+- * Kicker-woord. Volgt de PERCENTIEL-band (zoals de meter-zones 0-50-70-90-100),
+- * niet het conditie-niveau. Reden: het cijfer leest gevoelsmatig vreemd als 71
+- * "gemiddeld" heet terwijl de meter-stip al in de verhoogde (amber) zone staat.
+- * De banner/campagne-logica blijft onveranderd op de pre-geregistreerde tier-regel
+- * (sustained ≥P70), dus een verhoogde DAGwaarde geeft hier wel het juiste woord
+- * maar nog geen vals alarm. Brand-safety (CN 5) overschrijft met een pauze-woord.
++ * Kicker-woord. Volgt de PERCENTIEL-band via de gedeelde scoreBand/BAND_LABEL
++ * (geen eigen drempel-duplicaat meer): RUSTIG < 50 ≤ NORMAAL < 70 ≤ VERHOOGD
++ * < 90 ≤ UITZONDERLIJK. De mediaan (50) is het scharnier — RUSTIG (rustiger
++ * dan gewoonlijk) kantelt daar naar NORMAAL (een gewone-tot-drukkere dag).
++ * Relatieve woorden, want het cijfer is een percentiel (anomalie t.o.v.
++ * normaal), geen absolute meting. Brand-safety (CN 5) overschrijft met pauze.
++ *
++ * Band-bewust (Peter 14/6, IPCC-kalibratieprincipe): kruist de 90%-band een
++ * niveaugrens, dan toont de kicker het bereik ("RUSTIG TOT VERHOOGD") i.p.v.
++ * één woord dat het eigen interval tegenspreekt. Binnen één niveau blijft het
++ * één woord. Het cijfer blijft ALTIJD één getal op 100; alleen het woord wordt
++ * soms een bereik. Nooit "ONZEKER": onzekerheid is geen niveau.
++ *
++ * De banner/campagne-logica blijft onveranderd op de pre-geregistreerde
++ * tier-regel (dagregel ≥P70), los van dit weergave-woord: de weergave reageert
++ * bij de mediaan, de campagne pas in de bovenste staart.
+  */
+-function kickerWord(cn: ConditionLevel, score: number): string {
++function kickerWord(
++  cn: ConditionLevel,
++  score: number,
++  lo: number | null,
++  hi: number | null,
++): string {
+   if (cn === 5) return "EVEN OP PAUZE";
+-  if (score >= 90) return "HOOG";
+-  if (score >= 70) return "VERHOOGD";
+-  if (score >= 50) return "GEMIDDELD";
+-  return "LAAG";
++  if (lo !== null && hi !== null) {
++    const wLo = BAND_LABEL[scoreBand(lo)];
++    const wHi = BAND_LABEL[scoreBand(hi)];
++    if (wLo !== wHi) return `${wLo} TOT ${wHi}`;
++    return wLo;
++  }
++  return BAND_LABEL[scoreBand(score)];
+ }
+ 
+ export function ConditionLevelDisplay({
+@@ -28,16 +47,16 @@ export function ConditionLevelDisplay({
+   const cn = ctx.cn as ConditionLevel;
+   const score = Math.round(ctx.percentile); // 0-100 percentiel = de score op 100
+ 
+-  // B3: respecteer de bootstrap-onzekerheid. Bij "high" tonen we géén scherp
+-  // getal maar het 90%-bereik; bij "medium" het getal mét bandbreedte eronder.
+-  // Zodra v0.4 live de score levert (buildContext schakelt dan naar
+-  // v04.percentile.lang) hoort de v0.2-CI niet meer bij het getoonde getal:
+-  // band en bereik dan onderdrukken tot er een v0.4-CI bestaat (maatdiscipline).
++  // B3-onzekerheid: altijd één getal; de 90%-band staat in de meter en als
++  // sobere bandbreedte-regel eronder (Peter 13/6, derde aanscherping).
++  // In live-modus stuurt de v0.4-kern het getal én levert hij zijn EIGEN
++  // bootstrap-CI (kern-gewichten) — band en getal staan dan op dezelfde maat.
++  // Geen black-out meer (besluit Peter 13/6 na adversariële review): er is geen
++  // toestand waarin een score zonder onzekerheidsweergave publiek gaat.
+   const v04Live = data.v04?.mode === "live";
+-  const unc = v04Live ? undefined : data.uncertainty;
++  const unc = v04Live ? data.v04?.uncertainty : data.uncertainty;
+   const lo = unc ? Math.round(unc.ci_90_lower) : null;
+   const hi = unc ? Math.round(unc.ci_90_upper) : null;
+-  const highUncertainty = unc?.uncertainty_flag === "high";
+   // thin_reference/no_scored_indicators: het interval dekt die onzekerheid
+   // juist NIET — claim dan geen "90% zekerheid" (zie bootstrap.ts flag_reason).
+   const intervalCoversFlag = unc?.flag_reason === "ci_width";
+@@ -46,20 +65,17 @@ export function ConditionLevelDisplay({
+     <section className={`cn-display cn-level-${cn}`}>
+       <div className="cn-label">STRESS-INDEX OP DIT MOMENT</div>
+       <div className="cn-main">
+-        {highUncertainty && lo !== null && hi !== null ? (
+-          <div className="cn-score" aria-label={`tussen ${lo} en ${hi} op 100`}>
+-            <span className="cn-score-num cn-score-range">{lo}&ndash;{hi}</span>
+-            <span className="cn-score-max">/100</span>
+-          </div>
+-        ) : (
+-          <div className="cn-score" aria-label={`${score} op 100`}>
+-            <span className="cn-score-num">{score}</span>
+-            <span className="cn-score-max">/100</span>
+-          </div>
+-        )}
++        {/* Productkeuze Peter (13/6): ALTIJD één getal op 100 — ook bij hoge
++            onzekerheid. De eerlijkheid blijft via de band in de meter en de
++            bandbreedte-regel eronder. */}
++        <div className="cn-score" aria-label={`${score} op 100`}>
++          <span className="cn-score-num">{score}</span>
++          <span className="cn-score-max">/100</span>
++        </div>
+         <div className="cn-meter" aria-hidden="true">
+           <div className="cn-meter-track">
+             <span className="cn-meter-zone cn-meter-green" />
++            <span className="cn-meter-zone cn-meter-normal" />
+             <span className="cn-meter-zone cn-meter-amber" />
+             <span className="cn-meter-zone cn-meter-red" />
+             {unc && lo !== null && hi !== null && (
+@@ -69,42 +85,40 @@ export function ConditionLevelDisplay({
+                 title={`90%-bereik: ${lo} tot ${hi}`}
+               />
+             )}
+-            {/* Bij high géén exacte stip: de copy zegt net dat een scherp getal niet kan. */}
+-            {!highUncertainty && <span className="cn-meter-dot" style={{ left: `${score}%` }} />}
++            <span className="cn-meter-dot" style={{ left: `${score}%` }} />
+           </div>
+           <div className="cn-meter-axis"><span>0</span><span>50</span><span>100</span></div>
+         </div>
+         <div className="cn-side">
+-          {/* CN 5 (brand-safety) behoudt zijn pauze-woord — die override staat
+-              hiërarchisch boven de onzekerheidsmelding (zie kickerWord). */}
+-          <div className="cn-kicker">
+-            {cn !== 5 && highUncertainty ? "ONZEKER" : kickerWord(cn, score)}
+-          </div>
++          {(() => {
++            const kicker = kickerWord(cn, score, lo, hi);
++            const isRange = kicker.includes(" TOT ");
++            return (
++              <div className={`cn-kicker${isRange ? " cn-kicker-range" : ""}`}>{kicker}</div>
++            );
++          })()}
+         </div>
+       </div>
+       <div className="cn-secondary">
+-        {highUncertainty && lo !== null && hi !== null ? (
+-          intervalCoversFlag ? (
+-            <span className="cn-uncertainty-warning">
+-              De meting is vandaag te onzeker voor één scherp getal: het ligt met 90% zekerheid
+-              tussen {lo} en {hi}. We tonen daarom het bereik.
+-            </span>
+-          ) : (
+-            <span className="cn-uncertainty-warning">
+-              Er zijn nog te weinig vergelijkbare dagen om dit cijfer betrouwbaar te plaatsen.
+-              We tonen daarom een indicatief bereik ({lo} tot {hi}), geen scherp getal.
+-            </span>
+-          )
+-        ) : (
+-          <span>Vandaag hoger dan op {score}% van de dagen rond deze tijd van het jaar.</span>
+-        )}
+-        {unc && !highUncertainty && lo !== null && hi !== null && (
+-          <span className="cn-uncertainty-band">
+-            Bandbreedte (90% zeker): {lo} tot {hi}.
++        <span>
++          Vandaag hoger dan op {score}% van de dagen rond deze tijd van het jaar,
++          gemeten over de laatste twee jaar.
++        </span>
++        {/* Peter 14/6: de zichtbare bandbreedte-regel is verwijderd; de
++            onzekerheid blijft visueel als 90%-band in de meter. Voor
++            schermlezers (de meter is aria-hidden) houden we de band hier als
++            sr-only-tekst, zodat een score nooit zónder onzekerheid wordt
++            uitgeleverd. Bij thin_reference blijft de "90% zeker"-claim eerlijk
++            achterwege. */}
++        {unc && lo !== null && hi !== null && (
++          <span className="sr-only">
++            {intervalCoversFlag
++              ? `90% zeker: tussen ${lo} en ${hi}.`
++              : `Indicatief bereik: tussen ${lo} en ${hi}.`}
+           </span>
+         )}
+         <span className="cn-stamp">
+-          De Nationale Stress Index werd gecontroleerd en bijgestuurd · laatst om {lastRunTime}
++          De Nationale Stress Barometer werd gecontroleerd en bijgestuurd · laatst om {lastRunTime}
+         </span>
+       </div>
+     </section>
+diff --git a/app/web/src/components/ContextSignals.tsx b/app/web/src/components/ContextSignals.tsx
+index bd3afd2..e586238 100644
+--- a/app/web/src/components/ContextSignals.tsx
++++ b/app/web/src/components/ContextSignals.tsx
+@@ -9,13 +9,15 @@ import { GRADE_LABELS } from "./indicator-utils";
+  * zonder state en zonder bijdrage: "het is examenperiode" is duiding,
+  * geen gemeten stress.
+  */
+-export function ContextSignals({ signals }: { signals: ContextSignal[] }) {
++export function ContextSignals({ signals, bare = false }: { signals: ContextSignal[]; bare?: boolean }) {
+   if (!signals || signals.length === 0) return null;
+ 
+   return (
+-    <section className="panel secondary-panel context-panel">
+-      <div className="secondary-badge">CONTEXT · NIET IN HET CIJFER</div>
+-      <h2>De kalender als context</h2>
++    // `bare` (Peter 13/6): binnen de uitklikbalk "Context - Niet in het cijfer"
++    // levert de balk de titel — badge en h2 zijn daar dubbelop en blijven weg.
++    <section className={bare ? "context-panel" : "panel secondary-panel context-panel"}>
++      {!bare && <div className="secondary-badge">CONTEXT · NIET IN HET CIJFER</div>}
++      {!bare && <h2>De kalender als context</h2>}
+       <p className="panel-lead">
+         Deze ritmes lees je af aan de kalender, we meten ze niet. Examens,
+         vakanties en het klok-verzetten kleuren hoe een dag aanvoelt, maar een
+diff --git a/app/web/src/components/HeroBanner.tsx b/app/web/src/components/HeroBanner.tsx
+index 44a77d1..2834cbb 100644
+--- a/app/web/src/components/HeroBanner.tsx
++++ b/app/web/src/components/HeroBanner.tsx
+@@ -1,53 +1,29 @@
+-import { LHALogo } from "./LHALogo";
+-
+ /**
+- * Site-header: een licht geblurde alpenfoto over de volle breedte, met het
+- * Hautes-Alpes-logo groot en gecentreerd bovenaan, een dunne scheidingslijn
+- * eronder (zoals op plus.hautes-alpes.net), en daaronder het titelblok.
+- *
+- * v0.4: spreekt expliciet over 10 kern-indicatoren en uurlijkse bijstelling.
++ * Site-header (June20-branding, Peter 13/6): de merknaam bovenaan — het
++ * Les Hautes-Alpes-logo, de tagline en de site-link zijn naar de onderste
++ * balk verhuisd (afzender, geen meetgebied). Daaronder de eerlijke
++ * openingszin, de grote vraag en het meetgebied.
+  */
+ export function HeroBanner() {
+   return (
+     <header className="site-header">
+-      <a
+-        className="site-back"
+-        href="https://plus.hautes-alpes.net/"
+-        target="_blank"
+-        rel="noopener noreferrer"
+-      >
+-        Naar hautes-alpes.net ↗
+-      </a>
+       <div className="hero-top">
+-        <a
+-          className="site-logo"
+-          href="https://plus.hautes-alpes.net/"
+-          target="_blank"
+-          rel="noopener noreferrer"
+-          aria-label="Hautes-Alpes"
+-        >
+-          <LHALogo size={60} />
+-        </a>
+-        <div className="hero-tagline">Natuurlijk in het hart van de Alpen.</div>
++        <div className="hero-brand">De Nationale Stress Barometer</div>
+       </div>
+       <div className="hero-rule" aria-hidden="true" />
+       <div className="hero-content">
+-        {/* Publieksnaam (Peter GO 12/6): De Nationale Stress Index. De eerlijke
+-            subtitel hieronder is de PERMANENTE claim-mitigatie bij deze naam
+-            (beslismemo B7, optie B-discipline): nooit verwijderen of afzwakken
+-            zonder nieuwe naamkeuze-beslissing. De methodologische motornaam
+-            blijft SBI (footer + docs). */}
+-        <div className="intro-eyebrow">De Nationale Stress Index</div>
++        {/* Eerlijke openingszin (formulering Peter 13/6, herzien zelfde dag) —
++            de permanente claim-mitigatie bij de Stress-naam (B7-discipline):
++            we meten omstandigheden die op mensen KUNNEN inwerken, geen gemeten
++            gevoelens. Niet verwijderen of afzwakken zonder nieuwe
++            naamkeuze-beslissing; zie 09_Brand-Message-Style-Guide. */}
+         <div className="intro-subtitle">
+-          Deze index meet hoe ongewoon zwaar de omstandigheden vandaag zijn voor heel
+-          België, niet of mensen zich gestrest voelen.
+-        </div>
+-        {/* C3: afzender en meetgebied expliciet gescheiden — de alpenbranding
+-            hierboven mag niet suggereren dat we de Hautes-Alpes meten. */}
+-        <div className="intro-geo">
+-          Meetgebied: België · een initiatief van Les Hautes-Alpes (Frankrijk)
++          Deze index meet elke dag en elk uur hoe omstandigheden in heel België
++          op mensen kunnen inwerken.
+         </div>
+         <h1 className="intro-title">Hoe staat het er vandaag voor?</h1>
++        {/* C3: meetgebied expliciet; de afzender staat in de footer. */}
++        <div className="intro-geo">Meetgebied: België</div>
+       </div>
+     </header>
+   );
+diff --git a/app/web/src/components/June20Mark.tsx b/app/web/src/components/June20Mark.tsx
+new file mode 100644
+index 0000000..53562c7
+--- /dev/null
++++ b/app/web/src/components/June20Mark.tsx
+@@ -0,0 +1,14 @@
++/**
++ * Gereconstrueerd JUNE20-woordmerk (bron: poster, Peter 13/6). Puur
++ * typografisch nagebouwd — geen beeldmateriaal overgenomen: Inter Black in
++ * het June20-signaalrood, met de karakteristieke 180 graden gedraaide J.
++ * De rest van de poster (waveform) is bewust genegeerd.
++ */
++export function June20Mark() {
++  return (
++    <span className="j20-mark" aria-label="JUNE20">
++      <span className="j20-mark-j" aria-hidden="true">J</span>
++      <span aria-hidden="true">UNE20</span>
++    </span>
++  );
++}
+diff --git a/app/web/src/components/Sections.tsx b/app/web/src/components/Sections.tsx
+index f1c00cb..293c02a 100644
+--- a/app/web/src/components/Sections.tsx
++++ b/app/web/src/components/Sections.tsx
+@@ -47,6 +47,10 @@ export function FOOTER({ methodologyVersion }: { methodologyVersion: string }) {
+         De volledige methodologie staat beschreven in documenten 00–09 (projectroot).
+         Publicatie van code en pre-registratie (OSF) is voorbereid maar nog niet live.
+       </div>
++      {/* Onderste balk (Peter 13/6): alleen de afzender, geen bouwer-credit. */}
++      <div className="footer-row footer-credits">
++        <span>Een initiatief van Les Hautes Alpes</span>
++      </div>
+     </footer>
+   );
+ }
+diff --git a/app/web/src/components/TopInfluences.tsx b/app/web/src/components/TopInfluences.tsx
+index 74fade9..3f48f12 100644
+--- a/app/web/src/components/TopInfluences.tsx
++++ b/app/web/src/components/TopInfluences.tsx
+@@ -34,7 +34,7 @@ function TopItem({ ind, rank }: { ind: IndicatorBreakdown; rank: number }) {
+  * 15-jarig taalniveau. Elke kaart klikt open met hetzelfde detailvenster als de
+  * volledige indicatorlijst.
+  */
+-export function TopInfluences({ breakdown }: { breakdown: IndicatorBreakdown[] }) {
++export function TopInfluences({ breakdown, bare = false }: { breakdown: IndicatorBreakdown[]; bare?: boolean }) {
+   // Trage/structurele grondlast-indicatoren horen niet in de "vandaag"-lijst:
+   // ze bewegen op jaar-/maandschaal, maar lezen met een live-klinkend label
+   // alsof er nú iets verandert. Energie (I-D3-002, dagprijs) blijft wél staan.
+@@ -47,8 +47,10 @@ export function TopInfluences({ breakdown }: { breakdown: IndicatorBreakdown[] }
+   if (top.length === 0) return null;
+ 
+   return (
+-    <section className="panel top-influences">
+-      <h2>Wat speelt vandaag het meest mee?</h2>
++    // `bare` (Peter 13/6): binnen een uitklikbalk levert de balk zelf de titel
++    // en het paneel-chroom — dan geen eigen .panel-kader en h2 (dubbelop).
++    <section className={bare ? "top-influences" : "panel top-influences"}>
++      {!bare && <h2>Wat speelt vandaag het meest mee?</h2>}
+       <p className="panel-lead">
+         Van de kern-indicatoren die we bekijken, zijn dit de drie die vandaag
+         de meeste invloed hebben op het cijfer.
+diff --git a/app/web/src/copy.ts b/app/web/src/copy.ts
+index 08ef865..8552a25 100644
+--- a/app/web/src/copy.ts
++++ b/app/web/src/copy.ts
+@@ -27,11 +27,18 @@ export function scoreBand(score: number): ScoreBand {
+   if (score >= 50) return "gemiddeld";
+   return "laag";
+ }
++// Peter 14/6: relatieve (anomalie-)woordenschat, één register overal.
++// Het cijfer is een percentiel ("hoe ongewoon is vandaag t.o.v. normaal"),
++// dus relatieve woorden (verhoogd = hoger dan normaal) zijn correcter dan
++// absolute (hoog). De mediaan (50) is het scharnier: onder = rustiger dan
++// gewoonlijk, erboven = een gewone-tot-drukkere dag. "RUSTIG/NORMAAL" sluiten
++// aan op de CN-namen (Rust/Normaal), "UITZONDERLIJK" op het indicator-woord.
++// De interne bandsleutels (laag/gemiddeld/verhoogd/hoog) blijven ongewijzigd.
+ export const BAND_LABEL: Record<ScoreBand, string> = {
+-  laag: "LAAG",
+-  gemiddeld: "GEMIDDELD",
++  laag: "RUSTIG",
++  gemiddeld: "NORMAAL",
+   verhoogd: "VERHOOGD",
+-  hoog: "HOOG",
++  hoog: "UITZONDERLIJK",
+ };
+ export const BAND_HEADLINE: Record<ScoreBand, string> = {
+   laag: "Vandaag is een rustige dag.",
+diff --git a/app/web/src/styles.css b/app/web/src/styles.css
+index ed4c6ca..9fec901 100644
+--- a/app/web/src/styles.css
++++ b/app/web/src/styles.css
+@@ -1,32 +1,41 @@
+ /* ============================================================
+-   Hautes-Alpes · Barometer
+-   Visueel register: minimalistisch, rustig — in lijn met
+-   plus.hautes-alpes.net. Wit + zachte grijzen, één alpine-groen
+-   accent (#29441f). Typografie: Ubuntu. Pill-vormige knoppen.
++   De Nationale Stress Index
++   Visueel register: June20-branding (Peter GO 13/6, bron:
++   june20.be/innovationscan). Vlak warm off-black (#211419),
++   wit, signaalrood accent (#e6371e), Inter, strakke 4px-hoeken.
++   Variabelenamen (lha-*) behouden zodat alle bestaande regels
++   blijven werken; alleen de waarden zijn herijkt.
++   NB: het June20-displayfont "Ethereal" is een custom woff die we
++   niet mogen herdistribueren; Inter draagt de identiteit tot Peter
++   het fontbestand aanlevert.
+    ============================================================ */
+ 
+ :root {
+-  /* plus.hautes-alpes.net — palet (variabelenamen behouden voor de
+-     bestaande regels; waarden herijkt naar het nieuwe, kalme register) */
+-  --lha-blue-deep:   #29441f;   /* alpine-groen — primair accent */
+-  --lha-blue-mid:    #1d3216;   /* donkerder groen — hover/header */
+-  --lha-blue-soft:   #3c5c2e;   /* mid-groen */
+-  --lha-sky:         #efe9e1;   /* zacht warm licht (zonsopgang) */
+-  --lha-sky-pale:    #f8f5f0;   /* zachte warme sectie-achtergrond */
+-  --lha-snow:        #ffffff;   /* puur wit */
+-  --lha-sun:         #c98a3c;   /* gedempt amber — secundair accent */
+-  --lha-sun-soft:    #e0b375;   /* zacht amber */
+-  --lha-clay:        #b87d58;   /* warme klei/terracotta — negatieve (omlaag) bijdrage, leesbaar maar geen status-amber/rood */
+-  --lha-stone:       #22252a;   /* inkt, donkere tekst */
+-  --lha-stone-soft:  #52565b;   /* zachte tekst */
+-  --lha-mist:        #9ca3af;   /* gedempt grijs */
+-  --lha-fog:         #e5e7eb;   /* haarlijn-grijs */
+-
+-  /* Status-kleuren — gedempt, kalm */
++  /* June20 — kernpalet */
++  --j20-off-black:   #211419;
++  --j20-red:         #e6371e;
++  --j20-red-dark:    #c02b0a;
++  --j20-lila:        #f0c8eb;
++
++  --lha-blue-deep:   var(--j20-red);      /* primair accent (was alpine-groen) */
++  --lha-blue-mid:    var(--j20-off-black);/* paginadonker — body/header */
++  --lha-blue-soft:   var(--j20-red-dark); /* mid-accent / hover */
++  --lha-sky:         #f3f4f6;             /* lichte sectie-tint (June20 line-soft) */
++  --lha-sky-pale:    #fafafa;             /* zachte sectie-achtergrond */
++  --lha-snow:        #ffffff;             /* puur wit */
++  --lha-sun:         #c98a3c;             /* gedempt amber — status, functioneel */
++  --lha-sun-soft:    #e0b375;             /* zacht amber */
++  --lha-clay:        #b87d58;             /* terracotta — negatieve bijdrage, geen status-rood */
++  --lha-stone:       #211419;             /* inkt op licht = off-black (June20) */
++  --lha-stone-soft:  #4b5563;             /* zachte tekst (June20 ink-soft) */
++  --lha-mist:        #6b7280;             /* gedempt grijs (June20 ink-mute) */
++  --lha-fog:         #e5e7eb;             /* haarlijn-grijs */
++
++  /* Status-kleuren — functioneel (tier-semantiek), afgestemd op het palet */
+   --st-rust:   #4f7a5b;         /* rustig groen */
+   --st-norm:   var(--lha-mist);
+   --st-warn:   #c98a3c;         /* gedempt amber */
+-  --st-alert:  #a64242;         /* gedempt rood */
++  --st-alert:  var(--j20-red-dark); /* alarm in de June20-roodfamilie */
+ 
+   /* Aliassen voor de bestaande code */
+   --c-ink:        var(--lha-stone);
+@@ -51,14 +60,15 @@
+   --c-shadow:     rgb(0 0 0 / 0.05);
+   --c-shadow-lg:  rgb(0 0 0 / 0.09);
+ 
+-  --rad: 8px;
+-  --rad-lg: 12px;
++  /* June20: strakke hoeken (4px), pills blijven rond */
++  --rad: 4px;
++  --rad-lg: 4px;
+   --rad-pill: 9999px;
+ 
+   --max-w: 1040px;
+ 
+-  --f-display: "Ubuntu", system-ui, -apple-system, sans-serif;
+-  --f-sans: "Ubuntu", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
++  --f-display: "Inter", system-ui, -apple-system, sans-serif;
++  --f-sans: "Inter", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+   --f-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+ }
+ 
+@@ -76,27 +86,14 @@ body {
+ /* Paginabrede achtergrondfoto (hautes-alpes.net) — fixed, loopt door op de
+    zijkanten én in de gaten tussen de witte blokken. De blokken zijn
+    ondoorzichtig, dus de foto zit nooit ÍN het informatieblok. */
++/* June20-branding (13/6): vlak warm off-black — de geblurde alpenfoto en de
++   zonsopgang-gradient zijn uit. Heractiveren = de twee blokken hieronder
++   terugzetten (foto: /hero.webp). */
+ body::before {
+-  content: "";
+-  position: fixed;
+-  inset: -24px; /* overhang zodat de blur-rand buiten beeld valt */
+-  z-index: -2;
+-  background-image: url("/hero.webp");
+-  background-size: cover;
+-  background-position: center;
+-  filter: blur(4px);
++  content: none;
+ }
+ body::after {
+-  content: "";
+-  position: fixed;
+-  inset: 0;
+-  z-index: -1;
+-  /* warme tint (zonsopgang): donker-warm bovenaan (header-tekst leesbaar),
+-     lichter eronder zodat de foto op de zijkanten zichtbaar blijft */
+-  background: linear-gradient(180deg,
+-    rgba(43, 32, 25, 0.60) 0%,
+-    rgba(43, 32, 25, 0.44) 24%,
+-    rgba(43, 32, 25, 0.38) 100%);
++  content: none;
+ }
+ 
+ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
+@@ -136,6 +133,35 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
+   letter-spacing: 0.05em;
+   color: rgba(255, 255, 255, 0.85);
+ }
++
++/* Merkkop in de header (Peter 13/6) — June20-posterregister: zwaar, wit, caps. */
++.hero-brand {
++  font-family: var(--f-display);
++  font-weight: 900;
++  font-size: clamp(1.1rem, 3.2vw, 1.7rem);
++  letter-spacing: 0.08em;
++  text-transform: uppercase;
++  color: var(--j20-red); /* merknaam in June20-signaalrood (Peter 13/6) */
++  padding: 12px 0 8px;
++  text-align: center;
++}
++
++/* Gereconstrueerd JUNE20-woordmerk: Inter Black, signaalrood, 180°-gedraaide J
++   (typografische reconstructie van de poster; geen beeldmateriaal). */
++.j20-mark {
++  font-weight: 900;
++  color: var(--j20-red);
++  letter-spacing: 0.02em;
++  white-space: nowrap;
++}
++.j20-mark-j { display: inline-block; transform: rotate(180deg); }
++
++/* Onderste balk: afzender + bouwer (verhuisd uit de header, Peter 13/6). */
++.footer-credits {
++  margin-top: 10px;
++  padding-top: 10px;
++  border-top: 1px solid rgba(255, 255, 255, 0.18);
++}
+ /* dunne scheidingslijn onder het logo, volle breedte */
+ .hero-rule {
+   position: relative;
+@@ -208,6 +234,9 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
+   color: rgba(255, 255, 255, 0.85);
+   margin: 0 auto 18px;
+   max-width: 42rem;
++  /* Evenwaardige regels onder de merknaam (Peter 14/6): balanceer de afbreking
++     zodat beide regels ~even lang zijn i.p.v. een korte stub-regel. */
++  text-wrap: balance;
+ }
+ 
+ /* C3: meetgebied vs afzender, direct onder de openingszin. */
+@@ -215,7 +244,8 @@ code, .mono { font-family: var(--f-mono); font-size: 0.9em; }
+   font-size: 0.8rem;
+   letter-spacing: 0.05em;
+   color: rgba(255, 255, 255, 0.7);
+-  margin: -8px auto 16px;
++  /* Staat sinds 13/6 ONDER de titel (was erboven, met negatieve marge). */
++  margin: 14px auto 0;
+   max-width: 42rem;
+ }
+ 
+@@ -248,8 +278,10 @@ main {
+ /* Kleuren evolueren met het niveau: rustig groen → mid-groen → amber → rood →
+    grijs (pauze). Elk niveau zet een accent + een zachte kaart-tint, zodat het
+    hele blok meekleurt met de stand. */
+-.cn-display.cn-level-1 { --cn-accent: var(--lha-blue-deep);  --cn-tint: #f1f6f2; }
+-.cn-display.cn-level-2 { --cn-accent: var(--lha-blue-soft);  --cn-tint: #eef4ef; }
++/* CN 1/2 NIET aan het rode merkaccent koppelen: een rustige dag mag niet
++   alarmkleurig ogen (stoplicht-semantiek: rood is voorbehouden aan CN 4). */
++.cn-display.cn-level-1 { --cn-accent: var(--st-rust);    --cn-tint: #f1f6f2; }
++.cn-display.cn-level-2 { --cn-accent: var(--lha-stone);  --cn-tint: #f3f4f6; }
+ .cn-display.cn-level-3 { --cn-accent: var(--c-amber);        --cn-tint: var(--c-amber-bg); }
+ .cn-display.cn-level-4 { --cn-accent: var(--c-red);          --cn-tint: var(--c-red-bg); }
+ .cn-display.cn-level-5 { --cn-accent: var(--lha-stone-soft); --cn-tint: #f1efea; }
+@@ -275,6 +307,8 @@ main {
+ @media (max-width: 640px) {
+   .cn-main { grid-template-columns: auto 1fr; gap: 18px; }
+   .cn-side { grid-column: 1 / -1; text-align: left; }
++  /* Onder de meter gestapeld: geen meterlijn-nudge nodig. */
++  .cn-kicker { transform: none; }
+ }
+ .cn-main .cn-scale { justify-content: center; }
+ 
+@@ -331,11 +365,16 @@ main {
+   font-family: var(--f-display); font-weight: 300; font-size: 7rem; line-height: 0.85;
+   color: var(--cn-accent, var(--lha-blue-deep)); letter-spacing: -0.04em; transition: color 320ms ease;
+ }
+-.cn-score-max { font-family: var(--f-display); font-weight: 300; font-size: 1.7rem; color: var(--c-ink-mute); }
++/* Peter 13/6: de "/100" 50% groter (1.7rem -> 2.55rem). */
++.cn-score-max { font-family: var(--f-display); font-weight: 300; font-size: 2.55rem; color: var(--c-ink-mute); }
+ .cn-meter { display: flex; flex-direction: column; gap: 7px; padding: 0 4px; }
+ .cn-meter-track { position: relative; height: 12px; border-radius: 6px; overflow: hidden; display: flex; }
+ .cn-meter-zone { height: 100%; }
+-.cn-meter-green { width: 70%; background: var(--c-green); opacity: 0.30; }
++/* Vier zones = de vier niveauwoorden, met de MEDIAAN (50) als zichtbaar
++   scharnier: rustig (0-50) kantelt naar normaal (50-70) als een dieper-groene
++   stap. Rood blijft bewust alleen de top-10% (merkkeuze: rust = groen). */
++.cn-meter-green { width: 50%; background: var(--c-green); opacity: 0.26; }
++.cn-meter-normal { width: 20%; background: var(--c-green); opacity: 0.5; }
+ .cn-meter-amber { width: 20%; background: var(--c-amber); opacity: 0.45; }
+ .cn-meter-red { width: 10%; background: var(--c-red); opacity: 0.5; }
+ .cn-meter-dot {
+@@ -350,9 +389,10 @@ main {
+   background: var(--cn-accent, var(--lha-blue-deep));
+   opacity: 0.22; border-radius: 6px;
+ }
+-.cn-score-range { letter-spacing: -0.02em; }
+-.cn-uncertainty-warning { font-weight: 600; }
+-.cn-uncertainty-band { color: var(--c-ink-mute); }
++.sr-only {
++  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
++  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
++}
+ .cn-meter-axis { display: flex; justify-content: space-between; font-size: 0.68rem; color: var(--c-ink-mute); letter-spacing: 0.04em; }
+ @media (max-width: 640px) { .cn-score-num { font-size: 5.5rem; } }
+ .cn-kicker {
+@@ -362,6 +402,19 @@ main {
+   color: var(--cn-accent, var(--lha-blue-deep));
+   font-weight: 600;
+   margin-bottom: 4px;
++  /* Op de verlengde van de meterlijn (Peter 14/6): de meterkolom is track + as,
++     dus center-uitlijning zet het woord op de as i.p.v. op de balk. Nudge omhoog
++     naar het hart van de track. */
++  transform: translateY(-10px);
++}
++/* Band-bewust bereik ("RUSTIG TOT VERHOOGD"): langer, dus iets compacter en
++   met afbreekruimte zodat het de scorekaart niet uit balans trekt. */
++.cn-kicker-range {
++  font-size: 0.7rem;
++  letter-spacing: 0.12em;
++  line-height: 1.35;
++  max-width: 9rem;
++  margin-left: auto;
+ }
+ .cn-meta {
+   font-family: var(--f-mono);
+@@ -935,9 +988,8 @@ main {
+ .footer {
+   margin-top: 56px;
+   padding: 36px 32px 32px;
+-  /* Warm charcoal uit het palet van de hero-foto (zonsopgang-bivak), i.p.v. het
+-     alpine-groen — sluit aan bij de foto onderaan de pagina. */
+-  background: #2b2019;
++  /* June20-off-black (13/6) — zelfde vlak als de paginadonker. */
++  background: var(--j20-off-black);
+   color: rgba(255, 255, 255, 0.75);
+   font-size: 0.85rem;
+ }
+diff --git a/app/web/src/types.ts b/app/web/src/types.ts
+index 2ea2055..809fe3a 100644
+--- a/app/web/src/types.ts
++++ b/app/web/src/types.ts
+@@ -218,6 +218,9 @@ export interface V04Output {
+     last_fired: Record<string, string>;
+     recent: Array<{ key: string; fired_at: string; severity: string }>;
+   };
++  /** B3 voor de v0.4-laag: bootstrap-CI rond percentile.lang. Aanwezig zodra
++   *  de productie-dagschrijvers de berekening uitvoeren. */
++  uncertainty?: DayUncertainty;
+ }
+ 
+ export interface SparklinePoint {

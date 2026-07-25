@@ -1,0 +1,17 @@
+{
+  // Cloudflare Workers static-assets deploy voor de SBI-barometer.
+  // Serveert de Vite-build (./dist) als statische site met correcte cache-headers:
+  // gehashte assets immutable-gecached, index.html altijd opnieuw opgehaald
+  // (geen sticky CDN-edge zoals Surge) → bezoekers zien altijd de nieuwste deploy.
+  //
+  // Lokaal:  npx wrangler deploy            (gebruikt je `wrangler login`-OAuth)
+  // CI:      vereist CLOUDFLARE_API_TOKEN (+ CLOUDFLARE_ACCOUNT_ID) als secret.
+  "name": "les-hautes-alpes-sbi",
+  "account_id": "90650c9157a45b740546805924c8c42e",
+  "compatibility_date": "2026-06-01",
+  "assets": {
+    "directory": "./dist",
+    // SPA-achtig: onbekende paden vallen terug op index.html (404→200 single page).
+    "not_found_handling": "single-page-application"
+  }
+}

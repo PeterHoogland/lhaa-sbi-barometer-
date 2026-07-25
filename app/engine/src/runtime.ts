@@ -128,7 +128,11 @@ import {
 // escaleert tot winsor-cap +5 i.p.v. +3, zodat 35°C+ zwaarder weegt dan een tropische dag.
 // (3) Pollen (I-D1-010) + luchtkwaliteit (I-D1-004) dragen nu bij aan de kop (als
 // stress-dagsignaal, eigen historie), niet langer alleen aan het relatieve percentiel.
-const METHODOLOGY_VERSION = "0.4.2";
+// 0.4.3 (2026-07-25): (1) §4.1.17 de weekcyclus is uit de energieprijs gehaald (weekend
+// lag 27% lager door lage industriele vraag + zon; dat gaf kop-sprongen tot 15 punten),
+// (2) §4.1.18 ademknop w_fast 0,30 -> 0,40 nu de valse beweging weg is, (3) bugfixes:
+// lookahead in de omgevings-dagsignalen + weer-baseline op de KMI-bronmaat.
+const METHODOLOGY_VERSION = "0.4.3";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {
