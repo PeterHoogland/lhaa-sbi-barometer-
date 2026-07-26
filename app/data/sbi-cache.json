@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:00:42.020019",
+    "fetched_at": "2026-07-26T06:00:40.796642",
     "observation_date": "2026-07-26",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.81
   },
   "I-D1-009": {
     "date": "2026-07-25",
-    "fetched_at": "2026-07-26T05:00:45.331802",
+    "fetched_at": "2026-07-26T06:00:43.790697",
     "observation_date": "2026-07-25",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 6.66
   },
   "I-D1-010": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:00:45.701456",
+    "fetched_at": "2026-07-26T06:00:44.200172",
     "observation_date": "2026-07-26",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 26.429166666666664
@@ -43,77 +43,77 @@
   },
   "I-D2-009S": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:05:42.255483",
+    "fetched_at": "2026-07-26T06:05:39.553749",
     "observation_date": "2026-07-26",
     "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
     "value": 2.0
   },
   "I-D2-delijn": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:06:19.722632",
+    "fetched_at": "2026-07-26T06:06:13.247717",
     "observation_date": "2026-07-26",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 68 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
-    "value": 68.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 114 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
+    "value": 114.0
   },
   "I-D2-stib": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:06:18.673454",
+    "fetched_at": "2026-07-26T06:06:12.228922",
     "observation_date": "2026-07-26",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 323 actieve items; CC BY 4.0)",
-    "value": 323.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 322 actieve items; CC BY 4.0)",
+    "value": 322.0
   },
   "I-D3-001": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:00:50.094195",
+    "fetched_at": "2026-07-26T06:00:50.121640",
     "observation_date": "2026-06",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.3
   },
   "I-D3-002": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:00:51.271788",
+    "fetched_at": "2026-07-26T06:00:50.823987",
     "observation_date": "2026-07-26",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 82.61079545454547
   },
   "I-D3-003": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:00:51.859698",
+    "fetched_at": "2026-07-26T06:00:51.560382",
     "observation_date": "2026-05",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.10pp, ~4999 werkzoekenden, proxy voor ontslagen)",
     "value": 8.5173931714189
   },
   "I-D3-003S": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:06:16.555822",
+    "fetched_at": "2026-07-26T06:06:10.043055",
     "observation_date": "2026-07-26",
     "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 4.0
   },
   "I-D3-005": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:00:52.482697",
+    "fetched_at": "2026-07-26T06:00:51.988611",
     "observation_date": "2026-05",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:00:53.038452",
+    "fetched_at": "2026-07-26T06:00:52.494646",
     "observation_date": "2026-05",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.55
   },
   "I-D3-007": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:00:54.403612",
+    "fetched_at": "2026-07-26T06:00:54.037326",
     "observation_date": "2026-06",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.8
   },
   "I-D3-009": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:00:54.046907",
+    "fetched_at": "2026-07-26T06:00:53.710980",
     "observation_date": "2026-07-26",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9463054349688802
@@ -127,7 +127,7 @@
   },
   "I-D5-002": {
     "date": "2026-07-25",
-    "fetched_at": "2026-07-26T05:02:34.304191",
+    "fetched_at": "2026-07-26T06:02:40.884791",
     "observation_date": "2026-07-25",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 22.431
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:05:41.894806",
+    "fetched_at": "2026-07-26T06:05:39.298160",
     "observation_date": "2026-07-26",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.41260030536767234
   },
   "I-D5-mastodon": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:05:43.683725",
+    "fetched_at": "2026-07-26T06:05:40.799980",
     "observation_date": "2026-07-26",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.1521919819128598
   },
   "I-D5-trends": {
     "date": "2026-07-26",
-    "fetched_at": "2026-07-26T05:06:17.215552",
+    "fetched_at": "2026-07-26T06:06:10.649189",
     "observation_date": "2026-07-26",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.55 (stress-trends: weer, pride berlijn)",
-    "value": 0.5543
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.60 (stress-trends: duitsland, weer, pride berlijn)",
+    "value": 0.6047
   }
 }
