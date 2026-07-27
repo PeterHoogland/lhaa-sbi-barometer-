@@ -34963,5 +34963,41 @@
     "link": "https://www.lalibre.be/culture/cinema/2026/07/25/pendant-trois-ans-cette-bete-feroce-a-seme-la-terreur-et-devore-une-centaine-de-femmes-et-denfants-R6JB6XOE3VEHJP2DMB4ELH6XDI/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-07-27",
+    "magnitude": 1,
+    "title": "Live - Amerikaanse regering herbekijkt procedure rekrutering ICE na dodelijk incident",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/snelnieuws/live-democraten-maine-kiezen-nieuwe-kandidaat-voor-senaatszetel~b13cc951/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-27",
+    "magnitude": 5,
+    "title": "Na aanslag Berlijn hoopt Antwerp Pride op massale opkomst: ‘De pride mag wat combatiever worden’",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/na-aanslag-berlijn-hoopt-antwerp-pride-op-massale-opkomst-de-pride-mag-wat-combatiever-worden~b037ec9d/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-27",
+    "magnitude": 5,
+    "title": "‘We merken dat de haat van internet naar de straat is verplaatst’: angst en woede na de aanslag op de pride in Berlijn",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/we-merken-dat-de-haat-van-internet-naar-de-straat-is-verplaatst-angst-en-woede-na-de-aanslag-op-de-pride-in-berlijn~bf360888/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-07-27",
+    "magnitude": 1,
+    "title": "Dodelijk incident door ICE-agent met gewelddadig verleden leidt tot onderzoek rekruteringsprocedure immigratiedienst",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/dodelijk-incident-door-ice-agent-met-gewelddadig-verleden-leidt-tot-onderzoek-rekruteringsprocedure-immigratiedienst~a5129548/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
