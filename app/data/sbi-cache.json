@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:00:38.727282",
+    "fetched_at": "2026-07-31T18:22:22.489708",
     "observation_date": "2026-07-31",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.925
   },
   "I-D1-009": {
     "date": "2026-07-30",
-    "fetched_at": "2026-07-31T18:00:42.028889",
+    "fetched_at": "2026-07-31T18:22:25.573478",
     "observation_date": "2026-07-30",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 6.27
   },
   "I-D1-010": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:00:42.435215",
+    "fetched_at": "2026-07-31T18:22:26.004907",
     "observation_date": "2026-07-31",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 27.591666666666665
@@ -36,10 +36,10 @@
   },
   "I-D2-009": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:00:43.995429",
+    "fetched_at": "2026-07-31T18:22:27.755522",
     "observation_date": "2026-07-31",
-    "source": "Infrabel stiptheid-van-vandaag-per-uur (3079 metingen, 16 uren, dag tot 20u)",
-    "value": 7.5673920103929815
+    "source": "Infrabel stiptheid-van-vandaag-per-uur (3138 metingen, 16 uren, dag tot 20u)",
+    "value": 7.648183556405352
   },
   "I-D2-009S": {
     "date": "2026-07-31",
@@ -50,114 +50,114 @@
   },
   "I-D2-delijn": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:07:35.645858",
+    "fetched_at": "2026-07-31T18:26:13.097356",
     "observation_date": "2026-07-31",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 277 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
-    "value": 277.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 285 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
+    "value": 285.0
   },
   "I-D2-stib": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:07:33.595225",
+    "fetched_at": "2026-07-31T18:26:11.687244",
     "observation_date": "2026-07-31",
     "source": "STIB/MIVB TravellersInformation (Brussel, 417 actieve items; CC BY 4.0)",
     "value": 417.0
   },
   "I-D3-001": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:00:44.450857",
+    "fetched_at": "2026-07-31T18:22:28.158533",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.5
   },
   "I-D3-002": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:00:45.425882",
+    "fetched_at": "2026-07-31T18:22:29.209733",
     "observation_date": "2026-07-31",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 141.38488636363638
   },
   "I-D3-003": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:00:46.275779",
+    "fetched_at": "2026-07-31T18:22:30.044452",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:07:31.231748",
+    "fetched_at": "2026-07-31T18:26:09.388236",
     "observation_date": "2026-07-31",
     "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 6.0
   },
   "I-D3-005": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:00:46.999358",
+    "fetched_at": "2026-07-31T18:22:30.587821",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:00:47.659628",
+    "fetched_at": "2026-07-31T18:22:31.267216",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:00:49.315983",
+    "fetched_at": "2026-07-31T18:22:32.651236",
     "observation_date": "2026-07",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -15.9
   },
   "I-D3-009": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:00:48.992946",
+    "fetched_at": "2026-07-31T18:22:32.284128",
     "observation_date": "2026-07-31",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9765740932888559
   },
   "I-D5-001": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T17:02:17.671408",
+    "fetched_at": "2026-07-31T18:23:30.882516",
     "observation_date": "2026-07-31",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1032/1091 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.42 / midden +0.35 / ouder +0.39. Negatiefste headlines: «BRUZZ 24 over de dodelijke brand in Schaarbeek: ‘Er was maar één uitgang’ Bij de dodelijke brand in een gebouw in de Haa · Is Amerika op weg naar een budgettaire catastrofe? Zo zorgwekkend is die staatsschuld echt · Incendie dans une résidence de soin en Flandre à cause d’un matelas en feu, des résidents évacués Une résidence de soin »; emotie-profiel headlines (matches/100 woorden): woede 0.07 / angst 0.13 / verdriet 0.19 / walging 0.01 (dominant: verdriet)",
-    "value": 1.801
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1035/1090 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.52 / midden +0.44 / ouder +0.50. Negatiefste headlines: «BRUZZ 24 over de dodelijke brand in Schaarbeek: ‘Er was maar één uitgang’ Bij de dodelijke brand in een gebouw in de Haa · Is Amerika op weg naar een budgettaire catastrofe? Zo zorgwekkend is die staatsschuld echt · Incendie dans une résidence de soin en Flandre à cause d’un matelas en feu, des résidents évacués Une résidence de soin »; emotie-profiel headlines (matches/100 woorden): woede 0.07 / angst 0.14 / verdriet 0.19 / walging 0.02 (dominant: verdriet)",
+    "value": 1.8143
   },
   "I-D5-002": {
     "date": "2026-07-30",
-    "fetched_at": "2026-07-31T18:03:34.047615",
+    "fetched_at": "2026-07-31T18:23:31.204534",
     "observation_date": "2026-07-30",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 20.239
   },
   "I-D5-003": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T14:05:04.180503",
+    "fetched_at": "2026-07-31T18:24:44.392112",
     "observation_date": "2026-07-31",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 45 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.083533
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 43 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.089267
   },
   "I-D5-006S": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:06:43.540335",
+    "fetched_at": "2026-07-31T18:25:22.617998",
     "observation_date": "2026-07-31",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.25168999564506556
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": -0.09229801681360074
   },
   "I-D5-mastodon": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:06:54.344204",
+    "fetched_at": "2026-07-31T18:25:33.492526",
     "observation_date": "2026-07-31",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.024044043950475824
   },
   "I-D5-trends": {
     "date": "2026-07-31",
-    "fetched_at": "2026-07-31T18:07:31.682662",
+    "fetched_at": "2026-07-31T18:26:09.820454",
     "observation_date": "2026-07-31",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.12 (stress-trends: pascale van damme, marijke de roover)",
-    "value": 0.1154
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.04 (stress-trends: marijke de roover)",
+    "value": 0.0364
   }
 }
