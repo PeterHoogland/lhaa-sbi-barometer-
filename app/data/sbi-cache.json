@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:00:33.169158",
+    "fetched_at": "2026-08-01T07:29:00.074983",
     "observation_date": "2026-08-01",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.62
+    "value": 0.6257
   },
   "I-D1-009": {
     "date": "2026-07-31",
-    "fetched_at": "2026-08-01T06:00:36.282902",
+    "fetched_at": "2026-08-01T07:29:14.473839",
     "observation_date": "2026-07-31",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 6.32
   },
   "I-D1-010": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:00:36.667407",
+    "fetched_at": "2026-08-01T07:29:14.859617",
     "observation_date": "2026-08-01",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 23.475
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:06:39.094608",
+    "fetched_at": "2026-08-01T07:34:28.025100",
     "observation_date": "2026-08-01",
-    "source": "Verkeerscentrum DATEX II v3 — 1 files, 1.08 km totale filelengte (langste 1.08 km), snapshot 2026-08-01",
-    "value": 1.08
+    "source": "Verkeerscentrum DATEX II v3 — 2 files, 1.58 km totale filelengte (langste 0.97 km), snapshot 2026-08-01",
+    "value": 1.58
   },
   "I-D2-009": {
     "date": "2026-07-31",
@@ -50,84 +50,84 @@
   },
   "I-D2-delijn": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:06:41.803856",
+    "fetched_at": "2026-08-01T07:34:30.092178",
     "observation_date": "2026-08-01",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 165 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
-    "value": 165.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 248 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
+    "value": 248.0
   },
   "I-D2-stib": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:06:39.828674",
+    "fetched_at": "2026-08-01T07:34:28.763980",
     "observation_date": "2026-08-01",
     "source": "STIB/MIVB TravellersInformation (Brussel, 415 actieve items; CC BY 4.0)",
     "value": 415.0
   },
   "I-D3-001": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:00:39.532598",
+    "fetched_at": "2026-08-01T07:29:16.739291",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.5
   },
   "I-D3-002": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:00:40.639106",
+    "fetched_at": "2026-08-01T07:29:17.769999",
     "observation_date": "2026-08-01",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 110.47795454545462
   },
   "I-D3-003": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:00:41.259351",
+    "fetched_at": "2026-08-01T07:29:18.391088",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:06:37.719618",
+    "fetched_at": "2026-08-01T07:34:26.706181",
     "observation_date": "2026-08-01",
     "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 6.0
   },
   "I-D3-005": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:00:41.792257",
+    "fetched_at": "2026-08-01T07:29:18.897599",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:00:42.278415",
+    "fetched_at": "2026-08-01T07:29:19.364688",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:00:43.770000",
+    "fetched_at": "2026-08-01T07:29:20.646221",
     "observation_date": "2026-07",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -15.9
   },
   "I-D3-009": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:00:43.446825",
+    "fetched_at": "2026-08-01T07:29:20.300394",
     "observation_date": "2026-08-01",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.967168766418498
   },
   "I-D5-001": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:02:39.660711",
+    "fetched_at": "2026-08-01T07:30:24.256464",
     "observation_date": "2026-08-01",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1004/1090 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +1.04 / midden +1.04 / ouder +1.18. Negatiefste headlines: «BRUZZ 24 over de dodelijke brand in Schaarbeek: ‘Er was maar één uitgang’ Bij de dodelijke brand in een gebouw in de Haa · Is Amerika op weg naar een budgettaire catastrofe? Zo zorgwekkend is die staatsschuld echt · Dode en tien gewonden door zware storm in Duitse deelstaat Saksen Een hevige storm heeft vrijdag in de Duitse deelstaat »; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.11 / verdriet 0.19 / walging 0.02 (dominant: verdriet)",
-    "value": 2.4834
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1003/1089 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.97 / midden +0.96 / ouder +1.08. Negatiefste headlines: «BRUZZ 24 over de dodelijke brand in Schaarbeek: ‘Er was maar één uitgang’ Bij de dodelijke brand in een gebouw in de Haa · Is Amerika op weg naar een budgettaire catastrofe? Zo zorgwekkend is die staatsschuld echt · Dode en tien gewonden door zware storm in Duitse deelstaat Saksen Een hevige storm heeft vrijdag in de Duitse deelstaat »; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.11 / verdriet 0.19 / walging 0.02 (dominant: verdriet)",
+    "value": 1.7547
   },
   "I-D5-002": {
     "date": "2026-07-31",
-    "fetched_at": "2026-08-01T06:02:40.065550",
+    "fetched_at": "2026-08-01T07:30:24.650754",
     "observation_date": "2026-07-31",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 20.78
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:05:52.593337",
+    "fetched_at": "2026-08-01T07:33:40.147839",
     "observation_date": "2026-08-01",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.3055371831553406
+    "value": -0.29701237463053215
   },
   "I-D5-mastodon": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:06:03.586961",
+    "fetched_at": "2026-08-01T07:33:51.317378",
     "observation_date": "2026-08-01",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.024044043950475824
   },
   "I-D5-trends": {
     "date": "2026-08-01",
-    "fetched_at": "2026-08-01T06:06:38.182603",
+    "fetched_at": "2026-08-01T07:34:27.100413",
     "observation_date": "2026-08-01",
-    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.28 (stress-trends: rune herregodts, megan desaever, huis)",
-    "value": 0.2778
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.38 (stress-trends: brand, rune herregodts, pedro sánchez)",
+    "value": 0.381
   }
 }
