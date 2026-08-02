@@ -40381,5 +40381,23 @@
     "link": "https://www.tvoost.be/nieuws/fietser-levensgevaarlijk-gewond-in-erpe-mere-212847",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-02",
+    "magnitude": 1,
+    "title": "Bij 1 op de 4 ongevallen waarbij voetganger gewond raakt, pleegt dader vluchtmisdrijf",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2024/12/27/97bfad44-f932-41e5-981e-59c647b89bcf.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-02",
+    "magnitude": 1,
+    "title": "Bij één op de vier ongevallen waarbij voetganger gewond raakt, neemt dader de vlucht",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/bij-een-op-de-vier-ongevallen-waarbij-voetganger-gewond-raakt-neemt-dader-de-vlucht/159501912.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
