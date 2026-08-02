@@ -1,24 +1,24 @@
 {
   "I-D1-004": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:00:33.069622",
-    "observation_date": "2026-08-01",
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:01:28.895337",
+    "observation_date": "2026-08-02",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 1.04
+    "value": 0.74
   },
   "I-D1-009": {
-    "date": "2026-07-31",
-    "fetched_at": "2026-08-01T18:00:36.184131",
-    "observation_date": "2026-07-31",
+    "date": "2026-08-01",
+    "fetched_at": "2026-08-02T05:01:32.992138",
+    "observation_date": "2026-08-01",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
-    "value": 6.32
+    "value": 6.49
   },
   "I-D1-010": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:00:36.566104",
-    "observation_date": "2026-08-01",
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:01:33.651687",
+    "observation_date": "2026-08-02",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
-    "value": 27.083333333333336
+    "value": 30.695833333333336
   },
   "I-D1-010-sci": {
     "date": "2026-06-18",
@@ -49,115 +49,115 @@
     "value": 5.0
   },
   "I-D2-delijn": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:04:58.334218",
-    "observation_date": "2026-08-01",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 243 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
-    "value": 243.0
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:06:15.954647",
+    "observation_date": "2026-08-02",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 60 vertraagd (≥3min), 7 service-alerts (Vlaanderen)",
+    "value": 60.0
   },
   "I-D2-stib": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:04:57.086235",
-    "observation_date": "2026-08-01",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 412 actieve items; CC BY 4.0)",
-    "value": 412.0
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:06:14.558768",
+    "observation_date": "2026-08-02",
+    "source": "STIB/MIVB TravellersInformation (Brussel, 416 actieve items; CC BY 4.0)",
+    "value": 416.0
   },
   "I-D3-001": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:00:38.905331",
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:01:37.133496",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.5
   },
   "I-D3-002": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:00:39.734017",
-    "observation_date": "2026-08-01",
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:01:38.788846",
+    "observation_date": "2026-08-02",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
-    "value": 110.47795454545462
+    "value": 98.59931818181816
   },
   "I-D3-003": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:00:40.217648",
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:01:39.917912",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:04:54.993758",
-    "observation_date": "2026-08-01",
-    "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 6.0
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:06:11.585732",
+    "observation_date": "2026-08-02",
+    "source": "Ontslag-radar: 7 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 7.0
   },
   "I-D3-005": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:00:40.778435",
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:01:40.748443",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:00:41.233742",
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:01:41.584479",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:00:42.629767",
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:01:43.195642",
     "observation_date": "2026-07",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -15.9
   },
   "I-D3-009": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:00:42.313698",
-    "observation_date": "2026-08-01",
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:01:42.657237",
+    "observation_date": "2026-08-02",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 0.9669884883541149
+    "value": 0.9746876980812841
   },
   "I-D5-001": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T16:40:11.634599",
-    "observation_date": "2026-08-01",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1026/1094 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.80 / midden +0.80 / ouder +0.82. Negatiefste headlines: «Nirmal Purja, bekende bergbeklimmer van Netflix-documentaire ‘14 Peaks’, omgekomen in lawine · Is Amerika op weg naar een budgettaire catastrofe? Zo zorgwekkend is die staatsschuld echt · Incendie dans une résidence de soin en Flandre à cause d’un matelas en feu, des résidents évacués Une résidence de soin »; emotie-profiel headlines (matches/100 woorden): woede 0.10 / angst 0.12 / verdriet 0.20 / walging 0.02 (dominant: verdriet)",
-    "value": 2.0989
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:03:33.428118",
+    "observation_date": "2026-08-02",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1023/1092 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.87 / midden +0.86 / ouder +0.88. Negatiefste headlines: «Nirmal Purja, bekende bergbeklimmer van Netflix-documentaire ‘14 Peaks’, omgekomen in lawine · Is Amerika op weg naar een budgettaire catastrofe? Zo zorgwekkend is die staatsschuld echt · Meerdere doden en gewonden bij schietpartij in pas geopende hamburgerzaak in Amerikaanse staat Idaho Bij een schietparti»; emotie-profiel headlines (matches/100 woorden): woede 0.08 / angst 0.11 / verdriet 0.19 / walging 0.02 (dominant: verdriet)",
+    "value": 1.7502
   },
   "I-D5-002": {
-    "date": "2026-07-31",
-    "fetched_at": "2026-08-01T18:02:33.844163",
-    "observation_date": "2026-07-31",
+    "date": "2026-08-01",
+    "fetched_at": "2026-08-02T05:03:43.773565",
+    "observation_date": "2026-08-01",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
-    "value": 20.78
+    "value": 17.96
   },
   "I-D5-003": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:03:28.137056",
-    "observation_date": "2026-08-01",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 44 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.087833
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:04:44.930117",
+    "observation_date": "2026-08-02",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 37 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.064933
   },
   "I-D5-006S": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:04:06.317859",
-    "observation_date": "2026-08-01",
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:05:23.862503",
+    "observation_date": "2026-08-02",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.1873911805947093
+    "value": 0.16462150122667585
   },
   "I-D5-mastodon": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:04:17.243049",
-    "observation_date": "2026-08-01",
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:05:35.967625",
+    "observation_date": "2026-08-02",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.024044043950475824
   },
   "I-D5-trends": {
-    "date": "2026-08-01",
-    "fetched_at": "2026-08-01T18:04:55.392193",
-    "observation_date": "2026-08-01",
-    "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
-    "value": 0.0
+    "date": "2026-08-02",
+    "fetched_at": "2026-08-02T05:06:12.073716",
+    "observation_date": "2026-08-02",
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.62 (stress-trends: kmi weer, vliegtuig, algemeen dagblad)",
+    "value": 0.619
   }
 }
