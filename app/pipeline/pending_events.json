@@ -40426,5 +40426,50 @@
     "link": "https://www.knack.be/nieuws/wereld/live/spanningen-midden-oosten/perimeters-van-een-akkoord-trump-blaast-aanval-op-iran-af-maar-dreigt-tegelijk-met-militaire-terreur-1695268/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-02",
+    "magnitude": 5,
+    "title": "Explosie in Moskou was een aanslag, doelwit was waarschijnlijk generaal die betrokken was bij bloedbad in Boetsja",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/explosie-in-moskou-was-een-aanslag-doelwit-was-waarschijnlijk-generaal-die-betrokken-was-bij-bloedbad-in-boetsja~aa75b7d4/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-02",
+    "magnitude": 3,
+    "title": "Noodtoestand uitgeroepen in Spokane, Washington door bosbranden: nu al drukste bosbrandenseizoen ooit",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/noodtoestand-uitgeroepen-in-spokane-washington-door-bosbranden-nu-al-drukste-bosbrandenseizoen-ooit~a6d9f3d8/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-02",
+    "magnitude": 1,
+    "title": "Bejaarde vrouw bestolen na babbeltruc",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/sint-niklaas/bejaarde-vrouw-bestolen-na-babbeltruc/159505419.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-02",
+    "magnitude": 1,
+    "title": "Minstens vijf doden en 41 vermisten na brand op veerboot voor Indonesisch eiland",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/minstens-vijf-doden-en-41-vermisten-na-brand-op-veerboot-voor-indonesisch-eiland/159504869.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-02",
+    "magnitude": 3,
+    "title": "LIVE HITTE. Noodtoestand in staat Washington door snel oprukkende bosbranden - Griekse bosbrand breidt uit en bedreigt Megara",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live-hitte.-noodtoestand-in-staat-washington-door-snel-oprukkende-bosbranden-griekse-bosbrand-breidt-uit-en-bedreigt-megara/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
