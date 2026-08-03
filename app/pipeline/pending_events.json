@@ -40948,5 +40948,23 @@
     "link": "https://www.tvoost.be/nieuws/2-jarig-meisje-in-levensgevaar-na-val-van-tweede-verdieping-in-opvangcentrum-sint-niklaas-212859",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-03",
+    "magnitude": 1,
+    "title": "Spaanse exclave Ceuta telt 88 doden na migrantenoversteek, meesten verdronken",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/spaanse-exclave-ceuta-telt-88-doden-na-migrantenoversteek-meesten-verdronken~ad9f534b/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-03",
+    "magnitude": 1,
+    "title": "Aardbeving met kracht van 5,6 treft oosten van Egypte",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/nieuws/aardbeving-met-kracht-van-56-treft-oosten-van-egypte/159531512.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
