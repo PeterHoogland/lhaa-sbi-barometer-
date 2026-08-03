@@ -45,27 +45,45 @@ import requests
 from pipeline import verify_live as vl
 
 STALE_MIN = 90                       # ouder dan dit -> de uurlijkse update is overgeslagen
+STALE_HARD_FAILS = 2                  # data oud EN zoveel opeenvolgende dagruns gefaald -> hard alarm (zelf-herstel werkt niet)
 AGENTIC_MODEL = "claude-haiku-4-5-20251001"
 GH_API = "https://api.github.com"
 
 
-def latest_run(repo: str, token: str) -> dict | None:
-    """Status van de recentste daily.yml-run (conclusion + url + tijd)."""
+def recent_daily_runs(repo: str, token: str, n: int = 8) -> list[dict]:
+    """De recentste daily.yml-runs (nieuwste eerst): status + conclusion + url."""
     try:
         r = requests.get(
-            f"{GH_API}/repos/{repo}/actions/workflows/daily.yml/runs?per_page=1",
+            f"{GH_API}/repos/{repo}/actions/workflows/daily.yml/runs?per_page={n}",
             headers={"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"},
             timeout=20,
         )
         r.raise_for_status()
-        runs = r.json().get("workflow_runs") or []
-        if not runs:
-            return None
-        w = runs[0]
-        return {"status": w.get("status"), "conclusion": w.get("conclusion"), "url": w.get("html_url")}
+        return [
+            {"status": w.get("status"), "conclusion": w.get("conclusion"), "url": w.get("html_url")}
+            for w in (r.json().get("workflow_runs") or [])
+        ]
     except Exception as e:  # noqa: BLE001
         print(f"  (waarschuwing) kon run-status niet ophalen: {e}", file=sys.stderr)
-        return None
+        return []
+
+
+def consecutive_failures(runs: list[dict]) -> int:
+    """Aantal meest recente, opeenvolgende VOLTOOIDE dagruns met conclusion=failure.
+    Nog-lopende en geannuleerde runs worden overgeslagen (tellen niet, stoppen de teller
+    niet); de teller stopt zodra een succesvolle run bereikt wordt. 0 = de laatste
+    beslissende run slaagde, dus geen aanhoudend faalpatroon."""
+    c = 0
+    for w in runs:
+        if w.get("status") != "completed":
+            continue
+        concl = w.get("conclusion")
+        if concl == "success":
+            break
+        if concl == "failure":
+            c += 1
+        # cancelled/skipped/neutral -> negeer, tel niet, stop de teller niet
+    return c
 
 
 def retrigger(repo: str, token: str) -> bool:
@@ -135,15 +153,29 @@ def agentic_review(latest: dict, problems: list[str], notes: list[str], api_key:
         return None
 
 
-def decide(latest: dict, problems: list[str], run: dict | None, now: datetime) -> tuple[bool, list[str]]:
+def decide(latest: dict, problems: list[str], run: dict | None, now: datetime, consec_fail: int = 0) -> tuple[bool, list[str]]:
     """Beslis of we daily.yml moeten hertriggeren en welke problemen HARD alarmeren.
-    Staleness en een gefaalde/uitgebleven run = zelf-herstel (hertrigger, geen alarm op
-    zich). Structurele problemen (inconsistent cijfer, kritieke canary, fallback-vangrail)
-    = hard alarm. Pure functie zodat ze testbaar is."""
+    Een enkele stale-check of gefaalde run = zelf-herstel (hertrigger, geen alarm op
+    zich; transiente hobbels horen vanzelf te herstellen). MAAR blijft de data oud
+    terwijl het zelf-herstel aantoonbaar niet werkt (>= STALE_HARD_FAILS opeenvolgende
+    gefaalde dagruns, binnen het update-venster 06-20u BE), dan is het geen hobbel meer
+    maar een structureel probleem -> hard alarm. Structurele problemen (inconsistent
+    cijfer, kritieke canary, fallback-vangrail) alarmeren sowieso hard. Pure functie
+    zodat ze testbaar is."""
     stale = any("oud" in p for p in problems)
     run_failed = bool(run and run.get("status") == "completed" and run.get("conclusion") not in (None, "success"))
     should_retrigger = stale or run_failed or (run is None and not latest)
     hard = [p for p in problems if "oud" not in p]
+    # Escalatie: aanhoudende staleness ondanks een faalpatroon = zelf-herstel werkt niet.
+    # Alleen binnen het venster waar het cijfer HOORT te verversen ('s nachts is oud normaal).
+    be_hour = now.astimezone(ZoneInfo("Europe/Brussels")).hour
+    if stale and (6 <= be_hour <= 20) and consec_fail >= STALE_HARD_FAILS:
+        hard = hard + [
+            f"live-data blijft oud terwijl {consec_fail} opeenvolgende dagruns faalden — "
+            "zelf-herstel (hertrigger) werkt niet, dus dit herstelt niet vanzelf. "
+            "Waarschijnlijk een dode Cloudflare-deploytoken (secret LESHAUTES, fout 9109/10000) "
+            "of een aanhoudende Cloudflare-storing. Handmatige actie nodig."
+        ]
     return should_retrigger, hard
 
 
@@ -156,9 +188,11 @@ def main() -> int:
     health = vl._get("/data/health-report.json", tries=2, wait=5)
     now = datetime.now(timezone.utc)
     problems, notes = vl.assess(latest or {}, health, now)
-    run = latest_run(repo, token) if token else None
+    runs = recent_daily_runs(repo, token) if token else []
+    run = runs[0] if runs else None
+    consec_fail = consecutive_failures(runs)
 
-    should_retrigger, hard = decide(latest or {}, problems, run, now)
+    should_retrigger, hard = decide(latest or {}, problems, run, now, consec_fail)
 
     # Alleen hertriggeren binnen het update-venster (06-20u BE). 's Nachts hoort het cijfer
     # niet te verversen, dus "stale" is dan geen reden om af te trappen. Harde problemen

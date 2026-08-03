@@ -6,6 +6,12 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-08-03 — Onafhankelijke monitor escaleert nu aanhoudende staleness (blinde vlek van de dode deploytoken)
+
+**Aanleiding:** Op 3/8 was de Cloudflare-deploytoken (secret `LESHAUTES`) ongeldig geworden (`Invalid access token [9109]` / `Authentication error [10000]`); elke dagrun bouwde correct maar faalde op de deploy-stap, waardoor de live data ~een halve dag bevroren bleef op de vorige waarde. De onafhankelijke `monitor.yml` bleef daily.yml wél hertriggeren, maar alarmeerde niet: in `agentic_monitor.decide()` was staleness bewust NOOIT een "hard probleem" (`hard = [p for p in problems if "oud" not in p]`), alleen een reden tot hertrigger. Zo bleef een structurele, niet-zelf-herstelbare storing onzichtbaar tot ze handmatig werd opgemerkt.
+
+**Beslissing:** `decide()` escaleert staleness nu naar een hard alarm zodra het zelf-herstel aantoonbaar niet werkt: **data oud ÉN ≥ `STALE_HARD_FAILS` (2) opeenvolgende gefaalde dagruns, binnen het update-venster 06-20u BE**. Een enkele transiente faalrun (bv. een 522) blijft zelf-herstel zonder alarm; 's nachts escaleert niets (oud is dan normaal, geen runs). Nieuw: `recent_daily_runs()` + `consecutive_failures()` (negeert lopende/geannuleerde runs, stopt bij de eerste success). Het alarm loopt via het bestaande pad (`monitor.yml` `failure()` → `alert.py` → Telegram werkt; e-mail zodra `SMTP_PASS` hersteld is). Cause-agnostisch: vangt een dode token, een aanhoudende Cloudflare-storing én een gebroken build. Tests: 10/10 in `test_agentic_monitor.py` (5 nieuw), pipeline 12/12 suites.
+
 ## 2026-07-25 (3) — Testalarm faalt nu eerlijk rood: e-mailkanaal bleek sinds 18/6 stil stuk
 
 **Aanleiding:** Peter vroeg te controleren of hij op ál zijn kanalen bericht krijgt bij een gefaalde run. Testalarm afgevuurd via `test-alert.yml`: **Telegram kwam aan (HTTP 200, door Peter bevestigd), e-mail niet.** Gmail weigert de SMTP-login met `535 5.7.8 Username and Password not accepted` (BadCredentials). De secrets SMTP_HOST/USER/PASS staan sinds 18/6 gezet, dus het kanaal is sindsdien vermoedelijk continu stuk geweest zonder dat iemand het merkte.
