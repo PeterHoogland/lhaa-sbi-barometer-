@@ -40966,5 +40966,50 @@
     "link": "https://www.nieuwsblad.be/nieuws/aardbeving-met-kracht-van-56-treft-oosten-van-egypte/159531512.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-03",
+    "magnitude": 1,
+    "title": "30-jarige fietster zwaargewond na aanrijding met vrachtwagen in Oostende",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/03/555b2757-648d-43d9-a3bd-aa46073414e7.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-03",
+    "magnitude": 1,
+    "title": "Twee gewonden bij vechtpartij met mes en vuurwapen in café Molenbeek",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/03/59593bbc-4b93-45ac-95bc-538506b2f859.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-03",
+    "magnitude": 3,
+    "title": "Amerikaanse Claire (13) gebeten door barracuda op verjaardagsvakantie: “Het leek wel een horrorfilm”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/amerikaanse-claire-13-gebeten-door-barracuda-op-verjaardagsvakantie-het-leek-wel-een-horrorfilm~a0a865ea/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-03",
+    "magnitude": 1,
+    "title": "Bromfietser lichtgewond na aanrijding met wagen op Tiensesteenweg",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/vlaams-brabant/oost-brabant/leuven/bromfietser-lichtgewond-na-aanrijding-met-wagen-op-tiensesteenweg/159529567.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-03",
+    "magnitude": 1,
+    "title": "Fietsster zwaargewond na aanrijding met vrachtwagen: “Ze verkeerde even in levensgevaar”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/middenkust/oostende/fietsster-zwaargewond-na-aanrijding-met-vrachtwagen-ze-verkeerde-even-in-levensgevaar/159531755.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
