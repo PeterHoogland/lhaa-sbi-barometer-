@@ -41911,5 +41911,23 @@
     "link": "https://www.tvoost.be/nieuws/jonge-autobestuurder-aan-verwondingen-overleden-na-ongeval-in-sint-lievens-houtem-212986",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-04",
+    "magnitude": 1,
+    "title": "Ierse vrouwelijke politici doelwit van gecoördineerde intimidatiecampagne",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/ierse-vrouwelijke-politici-doelwit-van-gecoordineerde-intimidatiecampagne/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-04",
+    "magnitude": 1,
+    "title": "Vrachtwagens botsen op E19: ruim een uur file op snelweg, ook aanschuiven op alternatieve wegen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/rivierenland/mechelen/vrachtwagens-botsen-op-e19-ruim-een-uur-file-op-snelweg-ook-aanschuiven-op-alternatieve-wegen/159608179.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
