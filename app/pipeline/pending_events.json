@@ -43216,5 +43216,32 @@
     "link": "https://images.vrt.be/vrtnws_share/2026/08/06/e1f1e02a-975c-40bf-9b9e-eca38a9e5438.jpg",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-06",
+    "magnitude": 5,
+    "title": "Levenslang voor aanslag op vakbondsbetoging in München",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/nieuws/levenslang-voor-aanslag-op-vakbondsbetoging-in-munchen/159682534.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-06",
+    "magnitude": 1,
+    "title": "LIVE HITTE. Duitsland stelt aantal hittedoden bij naar bijna 12.000 - Minder appels en peren door droge zomer en hagelbuien",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live-hitte.-duitsland-stelt-aantal-hittedoden-bij-naar-bijna-12.000-minder-appels-en-peren-door-droge-zomer-en-hagelbuien/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-06",
+    "magnitude": 1,
+    "title": "Man zwaargewond na val in Brusselse Magdalenastraat",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/brussel/brussel/man-zwaargewond-na-val-in-brusselse-magdalenastraat/159678650.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
