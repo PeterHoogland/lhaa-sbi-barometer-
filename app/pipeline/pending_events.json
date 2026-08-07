@@ -44080,5 +44080,59 @@
     "link": "https://www.tijd.be/r/t/1/id/10681554",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "KLJ-voorzitter reageert op onderzoek naar voyeurisme op kamp: ‘Mogelijk ook leden slachtoffer’",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/klj-voorzitter-reageert-op-onderzoek-naar-voyeurisme-op-kamp-mogelijk-ook-leden-slachtoffer~beb9d638/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "Emoties komen boven bij Expo 50 jaar Memorial Van Damme: “Wat een mooi avontuur zijn we toen begonnen, en zie nu”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/memorial-van-damme/emoties-komen-boven-bij-expo-50-jaar-memorial-van-damme-wat-een-mooi-avontuur-zijn-we-toen-begonnen-en-zie-nu~a328efce/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 5,
+    "title": "Een Antwerp Pride met problemen: ‘Eén uitgeregende editie en we zijn failliet’",
+    "source": "De Tijd",
+    "link": "https://www.tijd.be/r/t/1/id/10681360",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "Na datalek bij logistieke partner van Bol.com: “Op dit moment geen klantgegevens op het dark web”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/nieuws/na-datalek-bij-logistieke-partner-van-bol.com-op-dit-moment-geen-klantgegevens-op-het-dark-web/159760069.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "Jongeman (21) blijft in cel na fatale schietpartij op klaarlichte dag",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/middenkust/oostende/jongeman-21-blijft-in-cel-na-fatale-schietpartij-op-klaarlichte-dag/159757816.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "Gezin in Overijse slachtoffer van home-invasion: daders doen zich voor als agenten, en kunnen ontsnappen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/gezin-in-overijse-slachtoffer-van-home-invasion-daders-doen-zich-voor-als-agenten-en-kunnen-ontsnappen/159752231.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
