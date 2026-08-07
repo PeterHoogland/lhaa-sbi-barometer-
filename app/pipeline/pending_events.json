@@ -43837,5 +43837,32 @@
     "link": "https://businessam.be/bnode-verlaagt-winstprognose-voor-2026-na-verliezen-door-staking-bpost/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "Moederbedrijf bpost verlaagt winstverwachting na staking, aandeel zakt tot 10 procent",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/05/06/2c76a0b3-6f72-43c4-8c55-8b1ffc5ac10d.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "14-jarige doodt 7 mensen in Thailand, onder wie zijn grootouders en 5 leerkrachten",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/07/21f8c379-44e3-46cc-a75d-20360816b000.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "LIVE HITTE. Brandweerman zwaargewond bij duinbrand Nederland - Noodweer in Oostenrijk: videobeelden tonen hoe stortvloed door straten trekt",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live-hitte.-brandweerman-zwaargewond-bij-duinbrand-nederland-noodweer-in-oostenrijk-videobeelden-tonen-hoe-stortvloed-door-straten-trekt/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
