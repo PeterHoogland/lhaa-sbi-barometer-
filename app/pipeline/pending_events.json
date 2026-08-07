@@ -43657,5 +43657,59 @@
     "link": "https://www.tvoost.be/nieuws/jonge-autobestuurder-aan-verwondingen-overleden-na-ongeval-in-sint-lievens-houtem-212986",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "Schietpartij op school in Thailand: leerling opent vuur op medeleerlingen en leerkrachten, minstens 6 dodelijke slachtoffers",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/07/afb02287-5599-49e6-aab1-e0b6de4421c3.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "Schietpartij op school in Thailand: “Drie leraren en drie leerlingen omgekomen”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/schietpartij-op-school-in-thailand-drie-leraren-en-drie-leerlingen-omgekomen~a04d8d74/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 5,
+    "title": "Meer details bekend over verijdelde aanslag Leipzig: drone was uitgerust met twee simkaarten, bom zat in een conservenblik",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/meer-details-bekend-over-verijdelde-aanslag-leipzig-drone-was-uitgerust-met-twee-simkaarten-bom-zat-in-een-conservenblik~ac3c82ac/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "Staking weegt zwaar op resultaten Bnode",
+    "source": "Trends",
+    "link": "https://trends.knack.be/beleggen/beursnieuws/staking-weegt-zwaar-op-resultaten-bnode/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "Minstens zeven doden na schietpartij op school in Thailand: drie leerkrachten en drie leerlingen onder slachtoffers",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/minstens-zeven-doden-na-schietpartij-op-school-in-thailand-drie-leerkrachten-en-drie-leerlingen-onder-slachtoffers/159719148.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-07",
+    "magnitude": 1,
+    "title": "LIVE HITTE. Nooit zoveel airco’s verkocht als dit jaar - Op naar derde hittegolf? - Zeewater bij Mallorca bereikt maar liefst 33,02 graden",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live-hitte.-nooit-zoveel-aircos-verkocht-als-dit-jaar-op-naar-derde-hittegolf-zeewater-bij-mallorca-bereikt-maar-liefst-3302-graden/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
