@@ -44494,5 +44494,32 @@
     "link": "https://www.nieuwsblad.be/binnenland/live-hitte.-kmi-kondigt-vanaf-vandaag-opnieuw-code-geel-af-voor-hitte/152287959.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-08",
+    "magnitude": 1,
+    "title": "Verdachten opgepakt voor afpersing minderjarigen in Tielt",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/08/b1de06e0-0503-43d3-9741-7512230a331a.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-08",
+    "magnitude": 5,
+    "title": "\"Laat het, naast een protest, ook een groot feest zijn\": LGBTQ+-gemeenschap hoopt op massale aanwezigheid op parade Antwerp Pride",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2025/10/14/174d222e-cff3-4623-9d56-03eb533d2224.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-08",
+    "magnitude": 1,
+    "title": "Drie verdachten aangehouden na dood van Hamza (7) in Merchtem: oom geeft ‘pedagogische tik’ toe, maar ontkent intentie om te doden",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/merchtem/drie-verdachten-aangehouden-na-dood-van-hamza-7-in-merchtem-oom-geeft-pedagogische-tik-toe-maar-ontkent-intentie-om-te-doden~a35f107e/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
