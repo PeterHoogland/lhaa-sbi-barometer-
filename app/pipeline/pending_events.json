@@ -45187,5 +45187,41 @@
     "link": "https://www.nieuwsblad.be/regio/vlaams-brabant/bestuurster-botst-tegen-geparkeerd-voertuig/159788057.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-09",
+    "magnitude": 3,
+    "title": "Noodtoestand afgekondigd voor bosbrand in westen van Canada, \"mogelijk dodelijk slachtoffer\"",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/09/6b2a62a2-d93c-49b7-a40f-20f468b8f865.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-09",
+    "magnitude": 1,
+    "title": "Ex-topman Belfius trekt aan alarmbel over phishing: “Kijk hoeveel winst banken maken, terwijl de burger bang is voor wat er met zijn spaarcenten kan gebeuren”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/ex-topman-belfius-trekt-aan-alarmbel-over-phishing-kijk-hoeveel-winst-banken-maken-terwijl-de-burger-bang-is-voor-wat-er-met-zijn-spaarcenten-kan-gebeuren~a406915f/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-09",
+    "magnitude": 1,
+    "title": "Bestuurder onder invloed van drugs mist bocht en rijdt man op step aan: slachtoffer tijdlang in levensgevaar",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/gent/bestuurder-onder-invloed-van-drugs-mist-bocht-en-rijdt-man-op-step-aan-slachtoffer-tijdlang-in-levensgevaar/159788969.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-09",
+    "magnitude": 1,
+    "title": "VIDEO. Ze schrokken zich (letterlijk) een ongeluk: bal eindigt op snelweg en veroorzaakt accident tijdens Uruguayaanse voetbalmatch",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/sport/voetbal/video.-ze-schrokken-zich-letterlijk-een-ongeluk-bal-eindigt-op-snelweg-en-veroorzaakt-accident-tijdens-uruguayaanse-voetbalmatch/159790152.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
