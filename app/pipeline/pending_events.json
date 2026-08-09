@@ -45115,5 +45115,32 @@
     "link": "https://www.tvoost.be/nieuws/dode-en-twee-zwaargewonden-na-zware-crash-in-kallo-213046",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-09",
+    "magnitude": 1,
+    "title": "Italiaanse premier Meloni niet te spreken over vakbondsactie bij herdenking mijnramp Marcinelle",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/italiaanse-premier-meloni-niet-te-spreken-over-vakbondsactie-bij-herdenking-mijnramp-marcinelle~a7acebdd/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-09",
+    "magnitude": 3,
+    "title": "Noodtoestand afgekondigd voor bosbrand in westen van Canada: meer dan 20.000 inwoners geëvacueerd",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/noodtoestand-afgekondigd-voor-bosbrand-in-westen-van-canada-meer-dan-20-000-inwoners-geevacueerd~aeee5a3c/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-09",
+    "magnitude": 3,
+    "title": "LIVE HITTE. Noodtoestand afgekondigd in westen van Canada vanwege enorme bosbrand, al 20.000 inwoners geëvacueerd",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live-hitte.-noodtoestand-afgekondigd-in-westen-van-canada-vanwege-enorme-bosbrand-al-20.000-inwoners-geevacueerd/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
