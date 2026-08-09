@@ -45340,5 +45340,23 @@
     "link": "https://www.nieuwsblad.be/binnenland/live-hitte.-grote-natuurbrand-rukt-op-richting-sevilla-honderden-geevacueerd/152287959.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-09",
+    "magnitude": 1,
+    "title": "2 gewonden bij verkeersongeval in het Zoniënwoud in Ukkel",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/09/e79a6800-fc66-4b36-830e-20e4ca667bb2.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-09",
+    "magnitude": 1,
+    "title": "Bestuurder in “zorgwekkende” toestand afgevoerd na botsing tussen twee auto’s en bestelwagen in Ukkel",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/bestuurder-in-zorgwekkende-toestand-afgevoerd-na-botsing-tussen-twee-autos-en-bestelwagen-in-ukkel/159798768.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
