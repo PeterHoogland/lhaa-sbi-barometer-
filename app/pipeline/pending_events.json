@@ -45376,5 +45376,32 @@
     "link": "https://www.nieuwsblad.be/regio/limburg/hasselt/twee-ongevallen-in-hasselt-op-vrijdagnamiddag/159800066.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-09",
+    "magnitude": 1,
+    "title": "Vuurwerk belandt in publiek tijdens show in Spaanse badplaats Altea: 27 gewonden van wie 11 met brandwonden",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/09/0c5b3614-0aba-4a89-9b1d-8e98d5b3d4c6.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-09",
+    "magnitude": 1,
+    "title": "Drie fietsers gewond bij drie ongevallen in Genk",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/genk/drie-fietsers-gewond-bij-drie-ongevallen-in-genk/159801388.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-09",
+    "magnitude": 1,
+    "title": "Man gewond bij ongeval in Houthalen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/houthalen-helchteren/man-gewond-bij-ongeval-in-houthalen/159801350.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
