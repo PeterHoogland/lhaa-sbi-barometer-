@@ -46681,5 +46681,32 @@
     "link": "https://www.nieuwsblad.be/regio/limburg/hasselt/vrouw-20-uit-hasselt-raakt-gewond-na-ongeval-met-elektrische-step/159890574.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-11",
+    "magnitude": 1,
+    "title": "Rusthuisbewoonster (96) overleden na val in kanaal in Brecht",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/11/de81f483-8556-4154-9ffc-a87ea20ad9a2.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-11",
+    "magnitude": 1,
+    "title": "Fauconniersmolen in Oordegem krijgt opfrissing tijdens restauratiewerken",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/fauconniersmolen-in-oordegem-krijgt-opfrissing-tijdens-restauratiewerken-213173",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-11",
+    "magnitude": 1,
+    "title": "Bestuurder zwaargewond na klap tegen paardentrailer en crash in gracht in Sinaai",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/bestuurder-zwaargewond-na-klap-tegen-paardentrailer-en-crash-in-gracht-in-sinaai-213168",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
