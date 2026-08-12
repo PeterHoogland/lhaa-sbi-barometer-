@@ -46996,5 +46996,23 @@
     "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/westerlo/twee-gewonden-bij-ongeval-in-snelwegstraat-in-oevel/159914153.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Man overleden tijdens sleutelen aan auto in Beveren: echtgenote doet vreselijke ontdekking",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/beveren-kruibeke-zwijndrecht/man-overleden-tijdens-sleutelen-aan-auto-in-beveren-echtgenote-doet-vreselijke-ontdekking~a4b23f00/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Twee gewonden bij ongeval op kruispunt",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/denderregio/erpe-mere/twee-gewonden-bij-ongeval-op-kruispunt/159915597.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
