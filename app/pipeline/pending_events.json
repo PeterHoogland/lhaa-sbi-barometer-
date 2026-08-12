@@ -47284,5 +47284,68 @@
     "link": "https://www.tvoost.be/nieuws/trein-ramt-vrachtwagen-in-verrebroek-213208",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Dodelijk ongeval in Niel: Matenstraat tijdelijk afgesloten",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2019/02/07/a5406145-2ace-11e9-abcc-02b7b76bf47f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Vrouw (89) uit Genk overlijdt nadat ze onder eigen auto belandt, parket start onderzoek",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2025/01/28/82a7affe-eabc-4e53-8d2d-501d54cda88b.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Limburgse amateurclubs passen zich aan door zonsverduistering tijdens oefenwedstrijden",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2022/04/06/a287a460-b567-11ec-b07d-02b7b76bf47f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Gepensioneerden grootste slachtoffer van nieuwe centenindex: zij betalen de rekening van een half miljard",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/gepensioneerden-grootste-slachtoffer-van-nieuwe-centenindex-zij-betalen-de-rekening-van-een-half-miljard~a80efa25/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Vlaamse kunstenares Sarah Van der Meiren (36) overleden na scooterongeval in Spanje: “We hadden nog zo veel plannen”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/vlaamse-kunstenares-sarah-van-der-meiren-36-overleden-na-scooterongeval-in-spanje-we-hadden-nog-zo-veel-plannen/159951820.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "LIVE BOSBRANDEN. Meer dan duizend kampeerders in Noord-Frankrijk geëvacueerd wegens duinbranden",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live-bosbranden.-meer-dan-duizend-kampeerders-in-noord-frankrijk-geevacueerd-wegens-duinbranden/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Antwerpse kunstenares Sarah Van der Meiren (36) overlijdt na scooterongeval in Spanje: “We hadden nog zo veel plannen”",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/antwerpse-kunstenares-sarah-van-der-meiren-36-overlijdt-na-scooterongeval-in-spanje-we-hadden-nog-zo-veel-plannen/159951586.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
