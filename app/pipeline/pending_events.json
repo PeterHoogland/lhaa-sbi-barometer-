@@ -47050,5 +47050,41 @@
     "link": "https://www.tvoost.be/nieuws/man-komt-om-het-leven-tijdens-klussen-aan-de-auto-in-beveren-213188",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Man (87) zwaargewond na aanrijding door kusttram in Blankenberge",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/blankenberge/man-87-zwaargewond-na-aanrijding-door-kusttram-in-blankenberge~aca922aa/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "EU belooft 2 miljoen euro aan hulp na dodelijke aardbeving in Colombia",
+    "source": "Business AM",
+    "link": "https://businessam.be/eu-belooft-2-miljoen-euro-aan-hulp-na-dodelijke-aardbeving-in-colombia/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Beelden tonen hoe mannen en vrouwen beginnen te vechten na verkeersongeval aan Dampoort",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/gent/beelden-tonen-hoe-mannen-en-vrouwen-beginnen-te-vechten-na-verkeersongeval-aan-dampoort/159921315.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 5,
+    "title": "Seksverslaafde narcist en controlefreak terroriseerde jarenlang zijn ex: “Je hebt me niet klein gekregen”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/midwest/roeselare/seksverslaafde-narcist-en-controlefreak-terroriseerde-jarenlang-zijn-ex-je-hebt-me-niet-klein-gekregen/159912946.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
