@@ -47014,5 +47014,41 @@
     "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/denderregio/erpe-mere/twee-gewonden-bij-ongeval-op-kruispunt/159915597.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Man (68) overleden tijdens sleutelen aan auto in Beveren: echtgenote doet vreselijke ontdekking",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/beveren-kruibeke-zwijndrecht/man-68-overleden-tijdens-sleutelen-aan-auto-in-beveren-echtgenote-doet-vreselijke-ontdekking~a4b23f00/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Man (72) verongelukt tijdens sleutelen aan auto, wellicht nadat krik omviel",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/beveren-kruibeke-zwijndrecht/man-72-verongelukt-tijdens-sleutelen-aan-auto-wellicht-nadat-krik-omviel/159918976.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Man (72) verongelukt tijdens sleutelen aan auto in Beveren, wellicht nadat krik omviel",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/regio/oost-vlaanderen/waasland/beveren-kruibeke-zwijndrecht/man-72-verongelukt-tijdens-sleutelen-aan-auto-in-beveren-wellicht-nadat-krik-omviel/159920256.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-12",
+    "magnitude": 1,
+    "title": "Man komt om het leven tijdens klussen aan de auto in Beveren",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/man-komt-om-het-leven-tijdens-klussen-aan-de-auto-in-beveren-213188",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
