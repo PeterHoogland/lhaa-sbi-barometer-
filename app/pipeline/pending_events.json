@@ -47734,5 +47734,41 @@
     "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/file-op-antwerpse-ring-richting-gent-na-ongeval-op-e17-twee-rijstroken-versperd/159962351.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-13",
+    "magnitude": 1,
+    "title": "Eén jaar na moord op OCMW-medewerker in Gent: wat is er (niet) veranderd?",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/12/93b03563-10ba-48e0-bd7f-8220fd4fbc8f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-13",
+    "magnitude": 1,
+    "title": "BMW belandt in gracht na frontale botsing met lijnbusje tijdens inhaalmanoeuvre in Lokeren",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/lokeren/bmw-belandt-in-gracht-na-frontale-botsing-met-lijnbusje-tijdens-inhaalmanoeuvre-in-lokeren~a5a31c2a/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-13",
+    "magnitude": 1,
+    "title": "Twee gewonden bij ongeval op E17 ter hoogte van Antwerpen-West",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/twee-gewonden-bij-ongeval-op-e17-ter-hoogte-van-antwerpen-west/159962351.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-13",
+    "magnitude": 5,
+    "title": "L'ambassadeur américain en Israël dénonce un \"acte de terreur\" après le siège des maisons palestiniennes",
+    "source": "La Libre",
+    "link": "https://www.lalibre.be/international/moyen-orient/2026/08/13/lambassadeur-americain-en-israel-denonce-un-acte-de-terreur-apres-le-siege-des-maisons-palestiniennes-PW432HJGLRHXNDB4V564WMI7TQ/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
