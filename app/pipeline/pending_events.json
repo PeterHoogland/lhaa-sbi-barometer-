@@ -48049,5 +48049,41 @@
     "link": "https://www.tvoost.be/nieuws/zes-gewonden-bij-kop-staartaanrijding-op-n41-in-hamme-213243",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-13",
+    "magnitude": 1,
+    "title": "Trein ontspoord in Zuidoost-Engeland, nog geen duidelijkheid over slachtoffers",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/13/4ca75264-b842-4ec5-a264-7026bdc3eb1c.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-13",
+    "magnitude": 1,
+    "title": "Oude vriend vreest dat eigenaar van verwoeste chalets omkwam bij brand in Bouwel: “Ik heb hem woensdagavond nog zien aankomen”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/grobbendonk/oude-vriend-vreest-dat-eigenaar-van-verwoeste-chalets-omkwam-bij-brand-in-bouwel-ik-heb-hem-woensdagavond-nog-zien-aankomen/159993499.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-13",
+    "magnitude": 1,
+    "title": "LIVE BOSBRANDEN. Grote natuurbrand slaat over op woonwijk in VK: zes huizen in lichterlaaie - Toeristen geëvacueerd voor grote natuurbrand op Grieks schiereiland Chalkidiki",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live-bosbranden.-grote-natuurbrand-slaat-over-op-woonwijk-in-vk-zes-huizen-in-lichterlaaie-toeristen-geevacueerd-voor-grote-natuurbrand-op-grieks-schiereiland-chalkidiki/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-13",
+    "magnitude": 1,
+    "title": "Brandweerwagen onderweg naar brand botst met auto in Hechtel",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/hechtel-eksel/brandweerwagen-onderweg-naar-brand-botst-met-auto-in-hechtel/160010230.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
