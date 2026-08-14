@@ -48742,5 +48742,41 @@
     "link": "https://www.nieuwsblad.be/mobiliteit/straatrace-app-triprank-is-levensgevaarlijk-mensen-zoals-jij-en-ik-kunnen-daar-slachtoffer-van-worden/160035407.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-14",
+    "magnitude": 1,
+    "title": "Brandweerman omgekomen bij gasexplosies in gebouw in centrum van Brussel, 3 anderen zwaargewond",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/14/ffe93134-d535-4794-9fc6-a3740d6d1c6d.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-14",
+    "magnitude": 1,
+    "title": "Brandweerman omgekomen bij gasexplosies vlak bij station Brussel-Centraal",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/snelnieuws/brandweerman-omgekomen-bij-gasexplosies-vlak-bij-station-brussel-centraal~b0f35cb3/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-14",
+    "magnitude": 5,
+    "title": "Van geheime trein tot identieke kantoren: truc van Trump verbleekt bij wat Poetin doet om te verbergen waar hij is",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/van-geheime-trein-tot-identieke-kantoren-truc-van-trump-verbleekt-bij-wat-poetin-doet-om-te-verbergen-waar-hij-is~a8fb535b/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-14",
+    "magnitude": 1,
+    "title": "Brandweerman omgekomen bij gasexplosies in gebouw in centrum van Brussel, drie gewonden",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/brussel/brussel/brandweerman-omgekomen-bij-gasexplosies-in-gebouw-in-centrum-van-brussel-drie-gewonden/160033682.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
