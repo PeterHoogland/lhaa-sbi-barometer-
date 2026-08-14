@@ -48472,5 +48472,23 @@
     "link": "https://www.nieuwsblad.be/buitenland/twaalf-gewonden-bij-ongeval-met-catamaran-op-bodenmeer/160028640.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-14",
+    "magnitude": 1,
+    "title": "Vrouw sluit zichzelf buiten en valt daarna van terras van appartement op derde verdieping naar beneden",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/sint-niklaas/vrouw-sluit-zichzelf-buiten-en-valt-daarna-van-terras-van-appartement-op-derde-verdieping-naar-beneden~a64c910b/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-14",
+    "magnitude": 1,
+    "title": "Wagen belandt op flank bij ongeval",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/denderregio/erpe-mere/wagen-belandt-op-flank-bij-ongeval/160027957.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
