@@ -49165,5 +49165,41 @@
     "link": "https://www.nieuwsblad.be/binnenland/live-bosbranden.-al-850-hectare-van-hoge-venen-afgebrand-gouverneur-roept-op-omgeving-te-vermijden-limburgse-brandweer-stuurt-versterking/152287959.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-15",
+    "magnitude": 1,
+    "title": "Vrouw slachtoffer van kettingdiefstal in Dworp, verdachten opgepakt",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/05/27/4eb1f4fd-239b-4f4a-b576-967a45bd89e1.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-15",
+    "magnitude": 1,
+    "title": "Vrouw overleden nadat auto aan brug in Nieuwpoort in de IJzer was beland",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/15/a31b6231-6640-4424-8807-ac45f03ec1f0.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-15",
+    "magnitude": 1,
+    "title": "Jonge vrouw (20) overleden bij zware nachtelijke crash in Nieuwpoort",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/nieuwpoort/jonge-vrouw-20-overleden-bij-zware-nachtelijke-crash-in-nieuwpoort~ae7fdb99/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-15",
+    "magnitude": 1,
+    "title": "Jonge vrouw overleden nadat ze met auto in de IJzer belandt aan brug in Nieuwpoort",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/jonge-vrouw-overleden-nadat-ze-met-auto-in-de-ijzer-belandt-aan-brug-in-nieuwpoort/160062967.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
