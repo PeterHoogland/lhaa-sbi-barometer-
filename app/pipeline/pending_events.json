@@ -49201,5 +49201,41 @@
     "link": "https://www.nieuwsblad.be/binnenland/jonge-vrouw-overleden-nadat-ze-met-auto-in-de-ijzer-belandt-aan-brug-in-nieuwpoort/160062967.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-15",
+    "magnitude": 1,
+    "title": "Man (49) dood aangetroffen in tunnel onder perron aan station Beernem",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/beernem/man-49-dood-aangetroffen-in-tunnel-onder-perron-aan-station-beernem~a8149c5c/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-15",
+    "magnitude": 1,
+    "title": "Persoon gewond naar ziekenhuis na zwaar ongeval",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/denderregio/erpe-mere/persoon-gewond-naar-ziekenhuis-na-zwaar-ongeval/160065179.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-15",
+    "magnitude": 1,
+    "title": "LIVE BOSBRANDEN. Grote natuurbrand in Hoge Venen “breidt nog steeds uit”, turfbodem bemoeilijkt blussen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live-bosbranden.-grote-natuurbrand-in-hoge-venen-breidt-nog-steeds-uit-turfbodem-bemoeilijkt-blussen/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-15",
+    "magnitude": 1,
+    "title": "Jonge vrouw (20) overleden nadat ze met auto in de IJzer belandt aan brug in Nieuwpoort",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/jonge-vrouw-20-overleden-nadat-ze-met-auto-in-de-ijzer-belandt-aan-brug-in-nieuwpoort/160062967.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
