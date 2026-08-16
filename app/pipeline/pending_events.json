@@ -50119,5 +50119,41 @@
     "link": "https://www.bruzz.be/actua/mobiliteit/stepper-gewond-na-ongeval-met-tram-molenbeek-2026-08-16",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-16",
+    "magnitude": 3,
+    "title": "Tragedie in Cambridge: hoe Jason Arday verstrikt raakte in een web van leugens",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/tragedie-in-cambridge-hoe-jason-arday-verstrikt-raakte-in-een-web-van-leugens~b7828885/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-16",
+    "magnitude": 1,
+    "title": "Man (55) overlijdt na beet van Duitse herder op wandelroute in Engeland: baasje opgepakt voor moord",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/man-55-overlijdt-na-beet-van-duitse-herder-op-wandelroute-in-engeland-baasje-opgepakt-voor-moord~a7fbe9809/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-16",
+    "magnitude": 1,
+    "title": "LIVE. Bütgenbach vraagt boeren om niet meer spontaan te komen helpen: “Ongecoördineerde hulp bemoeilijkt werk van de hulpdiensten”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live.-butgenbach-vraagt-boeren-om-niet-meer-spontaan-te-komen-helpen-ongecoordineerde-hulp-bemoeilijkt-werk-van-de-hulpdiensten/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-16",
+    "magnitude": 3,
+    "title": "Droogte bedreigt voortbestaan van natuurgebied Blokkersdijk aan Zwijndrecht",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/droogte-bedreigt-voortbestaan-van-natuurgebied-blokkersdijk-aan-zwijndrecht-213310",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
