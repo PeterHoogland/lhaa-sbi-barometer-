@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:00:32.119945",
+    "fetched_at": "2026-08-16T15:24:53.408328",
     "observation_date": "2026-08-16",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.84
+    "value": 0.855
   },
   "I-D1-009": {
     "date": "2026-08-15",
-    "fetched_at": "2026-08-16T15:00:55.791608",
+    "fetched_at": "2026-08-16T15:25:14.801648",
     "observation_date": "2026-08-15",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 5.24
   },
   "I-D1-010": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:00:56.173056",
+    "fetched_at": "2026-08-16T15:25:15.202335",
     "observation_date": "2026-08-16",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 5.879166666666667
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:06:07.638406",
+    "fetched_at": "2026-08-16T15:28:37.425385",
     "observation_date": "2026-08-16",
-    "source": "Verkeerscentrum DATEX II v3 — 13 files, 33.12 km totale filelengte (langste 5.18 km), snapshot 2026-08-16",
-    "value": 33.12
+    "source": "Verkeerscentrum DATEX II v3 — 13 files, 41.69 km totale filelengte (langste 12.54 km), snapshot 2026-08-16",
+    "value": 41.69
   },
   "I-D2-009": {
     "date": "2026-08-15",
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:05:31.356826",
+    "fetched_at": "2026-08-16T15:28:02.456264",
     "observation_date": "2026-08-16",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 3 ongepland)",
-    "value": 3.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 4 ongepland)",
+    "value": 4.0
   },
   "I-D2-delijn": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:06:09.440955",
+    "fetched_at": "2026-08-16T15:28:39.370783",
     "observation_date": "2026-08-16",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 140 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
-    "value": 140.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 266 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
+    "value": 266.0
   },
   "I-D2-stib": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:06:08.407486",
+    "fetched_at": "2026-08-16T15:28:38.231314",
     "observation_date": "2026-08-16",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 494 actieve items; CC BY 4.0)",
-    "value": 494.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 493 actieve items; CC BY 4.0)",
+    "value": 493.0
   },
   "I-D3-001": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:00:58.241249",
+    "fetched_at": "2026-08-16T15:25:17.277317",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.5
   },
   "I-D3-002": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:00:59.138805",
+    "fetched_at": "2026-08-16T15:25:18.224559",
     "observation_date": "2026-08-16",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 135.10897727272723
   },
   "I-D3-003": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:01:00.240589",
+    "fetched_at": "2026-08-16T15:25:18.800600",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:06:06.126934",
+    "fetched_at": "2026-08-16T15:28:36.050575",
     "observation_date": "2026-08-16",
     "source": "Ontslag-radar: 5 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~47590 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 5.0
   },
   "I-D3-005": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:01:00.934657",
+    "fetched_at": "2026-08-16T15:25:19.500647",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:01:02.393356",
+    "fetched_at": "2026-08-16T15:25:20.024377",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:01:03.774492",
+    "fetched_at": "2026-08-16T15:25:21.310099",
     "observation_date": "2026-07",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -15.9
   },
   "I-D3-009": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:01:03.443792",
+    "fetched_at": "2026-08-16T15:25:20.962579",
     "observation_date": "2026-08-16",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0171091863535928
   },
   "I-D5-001": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T14:02:06.051798",
+    "fetched_at": "2026-08-16T15:26:35.067495",
     "observation_date": "2026-08-16",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1020/1080 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.48 / midden +0.40 / ouder +0.40. Negatiefste headlines: «Dodental aardbeving op Indonesisch eiland Flores loopt op tot 51, mogelijk meer slachtoffers · Twaalf doden bij zwaar ongeval met toeristenbus in Hongarije: chauffeur opgepakt · 1 maand na dodelijke brand in Oxy-gebouw blijft oorzaak onduidelijk Precies 1 maand na de dodelijke brand in het Oxy-geb»; emotie-profiel headlines (matches/100 woorden): woede 0.06 / angst 0.14 / verdriet 0.12 / walging 0.02 (dominant: angst)",
-    "value": 1.2935
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1024/1080 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.40 / midden +0.32 / ouder +0.30. Negatiefste headlines: «Dodental aardbeving op Indonesisch eiland Flores loopt op tot 51, mogelijk meer slachtoffers · 1 maand na dodelijke brand in Oxy-gebouw blijft oorzaak onduidelijk Precies 1 maand na de dodelijke brand in het Oxy-geb · Aardbeving Colombia: dodental stijgt tot 240 <h6 class=\"MuiTypography-root MuiTypography-heading06 css-chpcqc\">Bij de aa»; emotie-profiel headlines (matches/100 woorden): woede 0.05 / angst 0.15 / verdriet 0.13 / walging 0.02 (dominant: angst)",
+    "value": 1.275
   },
   "I-D5-002": {
     "date": "2026-08-13",
-    "fetched_at": "2026-08-16T15:02:54.868562",
+    "fetched_at": "2026-08-16T15:26:35.418379",
     "observation_date": "2026-08-13",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 20.828
   },
   "I-D5-003": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:04:52.558511",
+    "fetched_at": "2026-08-16T15:27:29.716404",
     "observation_date": "2026-08-16",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 33 RSS-kandidaten naar pending voor menselijke review",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 34 RSS-kandidaten naar pending voor menselijke review",
     "value": 0.076467
   },
   "I-D5-006S": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:05:31.114845",
+    "fetched_at": "2026-08-16T15:28:01.348957",
     "observation_date": "2026-08-16",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.04093532254978323
+    "value": 0.03104239916903211
   },
   "I-D5-mastodon": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:05:32.463742",
+    "fetched_at": "2026-08-16T15:28:03.819564",
     "observation_date": "2026-08-16",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.4996752384745801
   },
   "I-D5-trends": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-16T15:06:06.385610",
+    "fetched_at": "2026-08-16T15:28:36.440777",
     "observation_date": "2026-08-16",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.01 (stress-trends: zeebrugge, strombeek-bever)",
-    "value": 0.0078
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.05 (stress-trends: zeebrugge)",
+    "value": 0.0526
   }
 }
