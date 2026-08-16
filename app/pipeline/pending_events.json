@@ -49849,5 +49849,50 @@
     "link": "https://www.nieuwsblad.be/buitenland/dode-en-twaalf-gewonden-bij-ongeval-met-paardenkoets-in-zwitserland/160081864.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-16",
+    "magnitude": 1,
+    "title": "Twaalf doden bij busongeluk in Hongarije",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/16/4b9a9a43-21e4-4ade-9f97-3c57039da461.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-16",
+    "magnitude": 1,
+    "title": "Twaalf doden bij zwaar ongeval met toeristenbus in Hongarije: chauffeur opgepakt",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/twaalf-doden-bij-zwaar-ongeval-met-toeristenbus-in-hongarije-chauffeur-opgepakt~ba0c1845/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-16",
+    "magnitude": 1,
+    "title": "Twaalf doden bij busongeval in Hongarije, chauffeur wellicht in slaap gevallen",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/twaalf-doden-bij-busongeval-in-hongarije-chauffeur-wellicht-in-slaap-gevallen~a12c183e/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-16",
+    "magnitude": 1,
+    "title": "Bus met Poolse pelgrims belandt in gracht in Hongarije: twaalf doden en negen zwaargewonden",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/bus-met-poolse-pelgrims-belandt-in-gracht-in-hongarije-twaalf-doden-en-negen-zwaargewonden/160082306.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-16",
+    "magnitude": 1,
+    "title": "LIVE. Al meer dan 3000 hectare afgebrand in Hoge Venen, wind trekt aan vanaf namiddag",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live.-al-meer-dan-3000-hectare-afgebrand-in-hoge-venen-wind-trekt-aan-vanaf-namiddag/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
