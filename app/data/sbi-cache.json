@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:29:18.528390",
+    "fetched_at": "2026-08-17T18:00:31.759720",
     "observation_date": "2026-08-17",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 1.0122
   },
   "I-D1-009": {
     "date": "2026-08-16",
-    "fetched_at": "2026-08-17T17:29:21.756673",
+    "fetched_at": "2026-08-17T18:00:35.066332",
     "observation_date": "2026-08-16",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 5.3
   },
   "I-D1-010": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:29:22.385129",
+    "fetched_at": "2026-08-17T18:00:35.510469",
     "observation_date": "2026-08-17",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 4.920833333333333
@@ -35,102 +35,102 @@
     "value": 4.71
   },
   "I-D2-009": {
-    "date": "2026-08-16",
-    "fetched_at": "2026-08-16T18:33:30.689539",
-    "observation_date": "2026-08-16",
-    "source": "Infrabel stiptheid-van-vandaag-per-uur (2197 metingen, 15 uren, dag tot 20u)",
-    "value": 4.233045061447427
+    "date": "2026-08-17",
+    "fetched_at": "2026-08-17T18:00:37.169055",
+    "observation_date": "2026-08-17",
+    "source": "Infrabel stiptheid-van-vandaag-per-uur (3084 metingen, 16 uren, dag tot 20u)",
+    "value": 6.809338521400776
   },
   "I-D2-009S": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:35:06.320093",
+    "fetched_at": "2026-08-17T18:06:04.045673",
     "observation_date": "2026-08-17",
     "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
     "value": 2.0
   },
   "I-D2-delijn": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:35:52.251283",
+    "fetched_at": "2026-08-17T18:06:46.542462",
     "observation_date": "2026-08-17",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 352 vertraagd (≥3min), 10 service-alerts (Vlaanderen)",
-    "value": 352.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 293 vertraagd (≥3min), 10 service-alerts (Vlaanderen)",
+    "value": 293.0
   },
   "I-D2-stib": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:35:50.500440",
+    "fetched_at": "2026-08-17T18:06:45.354275",
     "observation_date": "2026-08-17",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 475 actieve items; CC BY 4.0)",
-    "value": 475.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 471 actieve items; CC BY 4.0)",
+    "value": 471.0
   },
   "I-D3-001": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:29:30.453074",
+    "fetched_at": "2026-08-17T18:00:37.669020",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.5
   },
   "I-D3-002": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:29:31.258835",
+    "fetched_at": "2026-08-17T18:00:38.309397",
     "observation_date": "2026-08-17",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 176.45568181818177
   },
   "I-D3-003": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:29:32.152524",
+    "fetched_at": "2026-08-17T18:00:39.519665",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:35:47.383558",
+    "fetched_at": "2026-08-17T18:06:42.743380",
     "observation_date": "2026-08-17",
     "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 3.0
   },
   "I-D3-005": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:29:32.965582",
+    "fetched_at": "2026-08-17T18:00:40.271829",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:29:33.757230",
+    "fetched_at": "2026-08-17T18:00:40.878291",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:29:35.228011",
+    "fetched_at": "2026-08-17T18:00:42.231425",
     "observation_date": "2026-07",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -15.9
   },
   "I-D3-009": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:29:34.716099",
+    "fetched_at": "2026-08-17T18:00:41.879438",
     "observation_date": "2026-08-17",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9986780968207132
   },
   "I-D5-001": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:31:49.259150",
+    "fetched_at": "2026-08-17T18:02:45.684373",
     "observation_date": "2026-08-17",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1022/1072 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.38 / midden +0.35 / ouder +0.39. Negatiefste headlines: «Na de tragische dood van Jason Arday ligt de Britse pers nu zelf onder vuur · 1 maand na dodelijke brand in Oxy-gebouw blijft oorzaak onduidelijk Precies 1 maand na de dodelijke brand in het Oxy-geb · Accident mortel de Oizy (Bièvre) : le conducteur impliqué a été remis en liberté La voiture a percuté un piéton, qui n’a»; emotie-profiel headlines (matches/100 woorden): woede 0.04 / angst 0.17 / verdriet 0.17 / walging 0.02 (dominant: verdriet)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1016/1071 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.42 / midden +0.41 / ouder +0.45. Negatiefste headlines: «1 maand na dodelijke brand in Oxy-gebouw blijft oorzaak onduidelijk Precies 1 maand na de dodelijke brand in het Oxy-geb · Rusland meldt aanval op 2 schepen die wapens naar Oekraïne vervoerden · Accident mortel de Oizy (Bièvre) : le conducteur impliqué a été remis en liberté La voiture a percuté un piéton, qui n’a»; emotie-profiel headlines (matches/100 woorden): woede 0.04 / angst 0.17 / verdriet 0.17 / walging 0.02 (dominant: angst)",
     "value": 1.432
   },
   "I-D5-002": {
-    "date": "2026-08-13",
-    "fetched_at": "2026-08-17T17:31:49.898925",
-    "observation_date": "2026-08-13",
+    "date": "2026-08-16",
+    "fetched_at": "2026-08-17T18:02:46.257956",
+    "observation_date": "2026-08-16",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
-    "value": 20.828
+    "value": 21.167
   },
   "I-D5-003": {
     "date": "2026-08-17",
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:35:05.919594",
+    "fetched_at": "2026-08-17T18:06:03.035829",
     "observation_date": "2026-08-17",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.1012283778539826
+    "value": 0.09365262027822503
   },
   "I-D5-mastodon": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:35:08.340821",
+    "fetched_at": "2026-08-17T18:06:05.385903",
     "observation_date": "2026-08-17",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.06877820571099369
   },
   "I-D5-trends": {
     "date": "2026-08-17",
-    "fetched_at": "2026-08-17T17:35:47.792369",
+    "fetched_at": "2026-08-17T18:06:43.227030",
     "observation_date": "2026-08-17",
-    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.62 (stress-trends: theo francken, ongeval, andalusië)",
-    "value": 0.6164
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.50 (stress-trends: dodentocht bornem, ongeval)",
+    "value": 0.5
   }
 }
