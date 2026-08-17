@@ -50686,5 +50686,32 @@
     "link": "https://www.bruzz.be/actua/veiligheid/onderzoek-naar-explosie-aan-treurenberg-levert-eerste-nuttige-vaststellingen-op-2026-08-17",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-17",
+    "magnitude": 1,
+    "title": "Brusselse binnenring vrijgemaakt na ongeval ter hoogte van Leonardkruispunt",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/mobiliteit/brusselse-binnenring-versperd-na-ongeval-ter-hoogte-van-leonardkruispunt-2026-08-17",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-17",
+    "magnitude": 1,
+    "title": "Telefonische oplichters misbruiken naam van de politie",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/vlaams-brabant/telefonische-oplichters-misbruiken-naam-van-de-politie/160107978.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-17",
+    "magnitude": 1,
+    "title": "LIVE. Onze reporter ter plaatse: “De rook hangt hier als dikke smog boven de grond”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live.-onze-reporter-ter-plaatse-de-rook-hangt-hier-als-dikke-smog-boven-de-grond/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
