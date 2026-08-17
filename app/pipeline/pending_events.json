@@ -50515,5 +50515,41 @@
     "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/middenkust/ichtegem/bestuurder-kantelt-met-auto-na-aanrijding-geparkeerde-wagen-voertuig-vernield-ook-gevel-deelt-in-de-brokken/160105462.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-17",
+    "magnitude": 1,
+    "title": "Zware brand vernielt kantine aan visput in Bevel",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/17/53ebea17-b246-4347-8063-3e0c40fa4ee1.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-17",
+    "magnitude": 3,
+    "title": "Te hoog gestuwd door diversiteitsbeleid of slachtoffer van racistische heksenjacht? Hoe succesverhaal van professor Jason Arday eindigt in tragedie",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/te-hoog-gestuwd-door-diversiteitsbeleid-of-slachtoffer-van-racistische-heksenjacht-hoe-succesverhaal-van-professor-jason-arday-eindigt-in-tragedie~af8f3855/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-17",
+    "magnitude": 1,
+    "title": "KIJK. Hotelgast Nico (36) helpt man aan vuurtje in Botanic Sanctuary, en dan blijkt zijn Rolex gestolen: “Hij leidde mij af met een dansje”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/antwerpen/kijk-hotelgast-nico-36-helpt-man-aan-vuurtje-in-botanic-sanctuary-en-dan-blijkt-zijn-rolex-gestolen-hij-leidde-mij-af-met-een-dansje~va6818a96/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-17",
+    "magnitude": 1,
+    "title": "LIVE. “Regen in Hoge Venen brengt tijdelijke verlichting, maar morgen wakkert wind opnieuw aan” - Koning bezoekt crisiscentrum",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live.-regen-in-hoge-venen-brengt-tijdelijke-verlichting-maar-morgen-wakkert-wind-opnieuw-aan-koning-bezoekt-crisiscentrum/152287959.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
