@@ -51379,5 +51379,32 @@
     "link": "https://www.tvoost.be/nieuws/twee-gewonden-na-botsing-op-kruispunt-in-wetteren-213344",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-18",
+    "magnitude": 1,
+    "title": "Twee gewonden bij nachtelijk ongeval tussen 2 auto's op kruispunt in Wetteren",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/18/ed4d36d5-8977-469c-98de-3b53cbeb70c5.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-18",
+    "magnitude": 1,
+    "title": "Vader van Dutroux-slachtoffer Julie Lejeune in emotioneel bericht: “Er is nog heel, heel veel werk om kinderen beter te beschermen”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/vader-van-dutroux-slachtoffer-julie-lejeune-in-emotioneel-bericht-er-is-nog-heel-heel-veel-werk-om-kinderen-beter-te-beschermen~a4ed3ba6/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-18",
+    "magnitude": 1,
+    "title": "Langdurige droogte speelt botenclub parten: “Pleziervaart is stilgevallen”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/denderregio/geraardsbergen/langdurige-droogte-speelt-botenclub-parten-pleziervaart-is-stilgevallen/160157387.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
