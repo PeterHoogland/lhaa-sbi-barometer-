@@ -52216,5 +52216,32 @@
     "link": "https://www.nieuwsblad.be/regio/limburg/gingelom/auto-gaat-over-de-kop-bij-ongeval-in-gingelom-truienaar-26-raakt-gewond/160233887.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Uitzonderlijke avondspits op Vlaamse hoofdwegen: 300 kilometer file door zomervakantie, regen en ongevallen",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/uitzonderlijke-avondspits-op-vlaamse-hoofdwegen-300-kilometer-file-door-zomervakantie-regen-en-ongevallen~b22906d5/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Uitzonderlijke drukte met maar liefst 300 kilometer file op Vlaamse hoofdwegen: “Veel ongevallen door de regen”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/regio/uitzonderlijke-drukte-met-maar-liefst-300-kilometer-file-op-vlaamse-hoofdwegen-veel-ongevallen-door-de-regen~a22906d5/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Bumperkleven oorzaak van bijna 1.000 ongevallen per jaar",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/bumperkleven-oorzaak-van-bijna-1000-ongevallen-per-jaar-213394",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
