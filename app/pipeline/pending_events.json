@@ -52027,5 +52027,41 @@
     "link": "https://www.gva.be/weer/live.-vuur-nog-niet-onder-controle-in-noorden-en-oosten-van-hoge-venen-inwoners-van-butgenbach-mogen-nog-niet-terug-naar-huis/152288454.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Man (38) die slachtoffer werd van zwaar geweld in Zele is buiten levensgevaar",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2025/02/01/d0a6baa3-6a87-4833-b497-1a71f9068761.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Staking breekt zuur op voor bpost",
+    "source": "Trends",
+    "link": "https://trends.knack.be/beleggen/brusselse-aandelen/dure-staking-voor-bpost/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Jongen (16) opgepakt na geweld in Zele: slachtoffer buiten levensgevaar",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/denderregio/zele/jongen-16-opgepakt-na-geweld-in-zele-slachtoffer-buiten-levensgevaar/160217819.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Drie bedrijven kort stilgelegd door gaslek in industriepark",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/lokeren/drie-bedrijven-kort-stilgelegd-door-gaslek-in-industriepark/160217190.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
