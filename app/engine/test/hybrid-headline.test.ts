@@ -80,7 +80,10 @@ describe("computeHybridHeadline", () => {
     const hot = computeHybridHeadline(BROAD, traffic(TRAFFIC_TODAY)).score!;
     const calm = computeHybridHeadline(calmBroad, traffic(2.0)).score!;
     expect(calm).toBeLessThan(hot);
-    expect(calm).toBeGreaterThanOrEqual(70);
+    // Sinds §4.1.19 (w_fast 0,50) weegt de dag zwaarder: een kalme dag ademt lager en mag
+    // net onder de VERHOOGD-grens (70) zakken (hier ~68). Het structurele anker houdt 'm
+    // wel duidelijk boven normaal (50). Vroeger (w_fast 0,40) bleef dit >= 70.
+    expect(calm).toBeGreaterThanOrEqual(64);
   });
 
   it("verkeer-spike duwt de kop omhoog t.o.v. een rustige filedag", () => {

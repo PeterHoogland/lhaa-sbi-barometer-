@@ -132,7 +132,7 @@ import {
 // lag 27% lager door lage industriele vraag + zon; dat gaf kop-sprongen tot 15 punten),
 // (2) §4.1.18 ademknop w_fast 0,30 -> 0,40 nu de valse beweging weg is, (3) bugfixes:
 // lookahead in de omgevings-dagsignalen + weer-baseline op de KMI-bronmaat.
-const METHODOLOGY_VERSION = "0.4.3";
+const METHODOLOGY_VERSION = "0.4.4";
 const PIPELINE_VERSION = "0.2.0-mvp";
 
 export interface DailyComputeInput {

@@ -6,6 +6,12 @@ Eerlijke noot bij de start van dit logboek: dit bestand is aangemaakt op 2026-06
 
 ---
 
+## 2026-08-18 — Ademknop naar 0,50 (§4.1.19): het cijfer levendiger, meer voelbare dagbeweging
+
+**Aanleiding:** Peter merkte dat het hoofdcijfer dag-tot-dag in een smalle band (~80-86) bewoog en daardoor statisch oogde ("blijft steeds staan"). De 30-daagse reeks bevestigde echte maar kleine bewegingen (spreiding 75-92, met een piek naar 91 op 14/8). Peter GO: "levendiger maken."
+
+**Beslissing:** **§4.1.19** — `HYBRID_W_FAST` 0,40 → **0,50** (methodology 0.4.4). De dagelijkse beweging (z_fast: weer, nieuws, pollen, lucht, verkeer/OV) krijgt nu evenveel gewicht als het structurele anker z_slow (kosten van levensonderhoud + energie): 50/50. Gevolg: grotere swings beide kanten op — stressvolle dagen lezen hoger, kalme dagen lager. **Bewuste afweging:** de eerdere 61-daagse analyse (§4.1.18) verwierp 0,50 nog als "te grillig" (12 dagsprongen ≥5 punten tegen 7 bij 0,40); die extra grilligheid is nu juist het doel, en Peter accepteert de grotere uitslagen expliciet. Het structurele anker draagt nog de helft, dus de index blijft "vs normale tijden" meten; hoger dan 0,50 zou dat anker laten ondersneeuwen (aparte beslissing). Randvoorwaarde §4.1.17 (weekcyclus uit de energieprijs) blijft gelden, anders zou 0,50 een marktartefact versterken. **Zichtbaar neveneffect:** op kalme dagen kan de kop nu net in de NORMAAL-band (50-70) zakken i.p.v. altijd VERHOOGD. Formele pre-registratie-amendementen §4.1.16-19 blijven een gebatchte follow-up in `00_Pre-Registratie.md`. Tests: engine 213/213 (kalibratie-ondergrens "kalme dag" 70 → 64, want die ademt nu lager). Code: `hybrid-headline.ts` (HYBRID_W_FAST) + `runtime.ts` (METHODOLOGY_VERSION 0.4.4).
+
 ## 2026-08-03 — Onafhankelijke monitor escaleert nu aanhoudende staleness (blinde vlek van de dode deploytoken)
 
 **Aanleiding:** Op 3/8 was de Cloudflare-deploytoken (secret `LESHAUTES`) ongeldig geworden (`Invalid access token [9109]` / `Authentication error [10000]`); elke dagrun bouwde correct maar faalde op de deploy-stap, waardoor de live data ~een halve dag bevroren bleef op de vorige waarde. De onafhankelijke `monitor.yml` bleef daily.yml wél hertriggeren, maar alarmeerde niet: in `agentic_monitor.decide()` was staleness bewust NOOIT een "hard probleem" (`hard = [p for p in problems if "oud" not in p]`), alleen een reden tot hertrigger. Zo bleef een structurele, niet-zelf-herstelbare storing onzichtbaar tot ze handmatig werd opgemerkt.
