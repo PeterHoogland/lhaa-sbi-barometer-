@@ -52189,5 +52189,32 @@
     "link": "https://www.nieuwsblad.be/buitenland/zeker-21-doden-bij-botsing-tussen-bus-en-vrachtwagen-in-brazilie/160226138.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Man opgepakt na reeks oplichtingen in Hasselt en Sint-Niklaas: gestolen bankkaarten teruggevonden",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2025/03/20/50501275-65a3-40b1-9aea-933687d8a817.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Auto stort tien meter naar beneden in NMBS-parking Gent-Sint-Pieters: bestuurder slechts lichtgewond, takeloperatie afgerond",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/gent/auto-stort-tien-meter-naar-beneden-in-nmbs-parking-gent-sint-pieters-bestuurder-slechts-lichtgewond-takeloperatie-afgerond~aa925079/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Auto gaat over de kop bij ongeval in Gingelom: Truienaar (26) raakt gewond",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/gingelom/auto-gaat-over-de-kop-bij-ongeval-in-gingelom-truienaar-26-raakt-gewond/160233887.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
