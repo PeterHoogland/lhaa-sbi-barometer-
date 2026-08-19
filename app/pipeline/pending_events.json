@@ -52072,5 +52072,41 @@
     "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/lokeren/drie-bedrijven-korte-tijd-stilgelegd-door-gaslek-in-industriepark/160217190.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Cyberaanval treft meubelgigant WEBA: klantgegevens gestolen",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/tech/cyberaanval-treft-meubelgigant-weba-klantgegevens-gestolen~a318dde7/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Man (21) slaat ruiten in bij 30-tal auto’s in ondergrondse parking in Mechelen, slachtoffer Han (58) getuigt: “Het glas ligt overal”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/mechelen/man-21-slaat-ruiten-in-bij-30-tal-autos-in-ondergrondse-parking-in-mechelen-slachtoffer-han-58-getuigt-het-glas-ligt-overal~a259d93f/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Jongen (16) opgepakt na geweld op speelplein in Zele: slachtoffer (38) niet langer in levensgevaar",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/zele/jongen-16-opgepakt-na-geweld-op-speelplein-in-zele-slachtoffer-38-niet-langer-in-levensgevaar~a01dd15a/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-19",
+    "magnitude": 1,
+    "title": "Werken aan nieuwe fiets- en wandelbrug in Ekeren gestart: “Treinverkeer moet enkele weekends worden stilgelegd”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/ekeren/werken-aan-nieuwe-fiets-en-wandelbrug-in-ekeren-gestart-treinverkeer-moet-enkele-weekends-worden-stilgelegd/160221761.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
