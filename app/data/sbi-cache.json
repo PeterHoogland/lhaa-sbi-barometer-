@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:00:58.008197",
+    "fetched_at": "2026-08-20T05:33:48.527630",
     "observation_date": "2026-08-20",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.852
+    "value": 0.8333
   },
   "I-D1-009": {
     "date": "2026-08-19",
-    "fetched_at": "2026-08-20T05:01:00.055175",
+    "fetched_at": "2026-08-20T05:33:51.469470",
     "observation_date": "2026-08-19",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 11.09
   },
   "I-D1-010": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:01:00.434921",
+    "fetched_at": "2026-08-20T05:33:51.850004",
     "observation_date": "2026-08-20",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 1.3708333333333338
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:05:58.118985",
+    "fetched_at": "2026-08-20T05:39:06.361311",
     "observation_date": "2026-08-20",
-    "source": "Verkeerscentrum DATEX II v3 — 15 files, 31.81 km totale filelengte (langste 4.15 km), snapshot 2026-08-20",
-    "value": 31.81
+    "source": "Verkeerscentrum DATEX II v3 — 17 files, 34.68 km totale filelengte (langste 5.41 km), snapshot 2026-08-20",
+    "value": 34.68
   },
   "I-D2-009": {
     "date": "2026-08-19",
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:05:22.044006",
+    "fetched_at": "2026-08-20T05:38:29.561597",
     "observation_date": "2026-08-20",
     "source": "iRail API (NMBS/SNCB-verstoringen, 5 ongepland)",
     "value": 5.0
   },
   "I-D2-delijn": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:06:00.398128",
+    "fetched_at": "2026-08-20T05:39:08.456284",
     "observation_date": "2026-08-20",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 428 vertraagd (≥3min), 11 service-alerts (Vlaanderen)",
-    "value": 428.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 480 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
+    "value": 480.0
   },
   "I-D2-stib": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:05:58.862715",
+    "fetched_at": "2026-08-20T05:39:07.111800",
     "observation_date": "2026-08-20",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 469 actieve items; CC BY 4.0)",
-    "value": 469.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 468 actieve items; CC BY 4.0)",
+    "value": 468.0
   },
   "I-D3-001": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:01:02.589137",
+    "fetched_at": "2026-08-20T05:33:54.520590",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.6
   },
   "I-D3-002": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:01:03.385111",
+    "fetched_at": "2026-08-20T05:33:55.471309",
     "observation_date": "2026-08-20",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 144.7561363636364
   },
   "I-D3-003": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:01:04.046132",
+    "fetched_at": "2026-08-20T05:33:56.035458",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:05:56.333143",
+    "fetched_at": "2026-08-20T05:39:04.966894",
     "observation_date": "2026-08-20",
     "source": "Ontslag-radar: 5 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 5.0
   },
   "I-D3-005": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:01:04.587581",
+    "fetched_at": "2026-08-20T05:33:56.799198",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:01:05.274878",
+    "fetched_at": "2026-08-20T05:33:57.315623",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:01:07.040461",
+    "fetched_at": "2026-08-20T05:33:59.053512",
     "observation_date": "2026-07",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -15.9
   },
   "I-D3-009": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:01:06.711081",
+    "fetched_at": "2026-08-20T05:33:58.725615",
     "observation_date": "2026-08-20",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9884541366013607
   },
   "I-D5-001": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:02:03.925383",
+    "fetched_at": "2026-08-20T05:35:24.328352",
     "observation_date": "2026-08-20",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1004/1081 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.82 / midden +0.80 / ouder +0.87. Negatiefste headlines: «Doden en gewonden door nachtelijke Russische aanval met ballistische raketten op Kiev Volg alle ontwikkelingen over de o · Medewerkers Seppe Nobels ondervraagd in onderzoek naar mensenhandel · Oekraïense hoofdstad Kiev opnieuw doelwit van Russische aanval met ballistische raketten»; emotie-profiel headlines (matches/100 woorden): woede 0.06 / angst 0.14 / verdriet 0.15 / walging 0.02 (dominant: verdriet)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1006/1080 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.81 / midden +0.77 / ouder +0.85. Negatiefste headlines: «Doden en gewonden door nachtelijke Russische aanval met ballistische raketten op Kiev Volg alle ontwikkelingen over de o · Medewerkers Seppe Nobels ondervraagd in onderzoek naar mensenhandel · Oekraïense hoofdstad Kiev opnieuw doelwit van Russische aanval met ballistische raketten»; emotie-profiel headlines (matches/100 woorden): woede 0.07 / angst 0.14 / verdriet 0.12 / walging 0.02 (dominant: angst)",
     "value": 1.545
   },
   "I-D5-002": {
     "date": "2026-08-19",
-    "fetched_at": "2026-08-20T05:02:04.278230",
+    "fetched_at": "2026-08-20T05:35:25.229623",
     "observation_date": "2026-08-19",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 23.078
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:05:21.682808",
+    "fetched_at": "2026-08-20T05:38:29.394460",
     "observation_date": "2026-08-20",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.5706559022015685
+    "value": 0.17860654393077324
   },
   "I-D5-mastodon": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:05:23.490122",
+    "fetched_at": "2026-08-20T05:38:30.551266",
     "observation_date": "2026-08-20",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.40577385190346427
   },
   "I-D5-trends": {
     "date": "2026-08-20",
-    "fetched_at": "2026-08-20T05:05:56.845977",
+    "fetched_at": "2026-08-20T05:39:05.469263",
     "observation_date": "2026-08-20",
-    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.12 (stress-trends: faillissement)",
-    "value": 0.1176
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.19 (stress-trends: oorlog, hava durumu, faillissement)",
+    "value": 0.1852
   }
 }
