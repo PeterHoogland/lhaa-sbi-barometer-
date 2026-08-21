@@ -53431,5 +53431,50 @@
     "link": "https://images.vrt.be/vrtnws_share/2026/08/21/4c9d005c-3c47-493a-b0e3-085791f05205.jpg",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-21",
+    "magnitude": 1,
+    "title": "Slachtoffer ongeval Van Praetlaan in Brussel overleden, andere bestuurder was onder invloed",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/21/ec2f4fe0-8991-4bb6-835d-0d11143d996b.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-21",
+    "magnitude": 1,
+    "title": "Zeker één gewonde nadat auto door voetgangerszone rijdt in Duitsland",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/zeker-een-gewonde-nadat-auto-door-voetgangerszone-rijdt-in-duitsland/160326549.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-21",
+    "magnitude": 1,
+    "title": "Auto knalt tegen betonblok",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/denderregio/berlare/auto-knalt-tegen-betonblok/160318752.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-21",
+    "magnitude": 1,
+    "title": "Slachtoffer hangt 11 (!) uur aan de lijn met oplichters en raakt 20.000 euro kwijt: twee verdachten gearresteerd",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/slachtoffer-hangt-11-uur-aan-de-lijn-met-oplichters-en-raakt-20.000-euro-kwijt-twee-verdachten-gearresteerd/160326411.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-21",
+    "magnitude": 1,
+    "title": "File op Antwerpse Ring richting Nederland na ongeval: weg snel vrijgemaakt",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/file-op-antwerpse-ring-richting-nederland-na-ongeval-weg-snel-vrijgemaakt/160325092.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
