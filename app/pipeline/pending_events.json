@@ -53629,5 +53629,32 @@
     "link": "https://www.nieuwsblad.be/regio/vlaams-brabant/halle-vilvoorde/halle/woning-onbewoonbaar-na-aanslag-met-brandbom/160342249.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-21",
+    "magnitude": 1,
+    "title": "Zwemmen in Leuvense Vaart kan dit weekend: \"Bootverkeer wordt stilgelegd\"",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/07/24/947df495-f259-4f29-b5cd-f3582e3e0962.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-21",
+    "magnitude": 1,
+    "title": "Bezorgdheid rond “dodelijke” deurhendels leidt tot grootste terugroepactie uit Chinese autogeschiedenis: Tesla roept alleen al bijna drie miljoen wagens terug",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/auto/bezorgdheid-rond-dodelijke-deurhendels-leidt-tot-grootste-terugroepactie-uit-chinese-autogeschiedenis-tesla-roept-alleen-al-bijna-drie-miljoen-wagens-terug~a16ce09d/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-21",
+    "magnitude": 5,
+    "title": "Woning onbewoonbaar na aanslag met brandbom in Buizingen: “Snel duidelijk dat dit opzettelijk was”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/woning-onbewoonbaar-na-aanslag-met-brandbom-in-buizingen-snel-duidelijk-dat-dit-opzettelijk-was/160342249.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
