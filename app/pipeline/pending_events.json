@@ -54187,5 +54187,23 @@
     "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/berchem/bewoonster-omgekomen-bij-brand-in-appartementsgebouw-in-berchem/160372319.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-22",
+    "magnitude": 1,
+    "title": "Bewoonster (64) omgekomen bij brand in appartementsgebouw in Berchem",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/bewoonster-64-omgekomen-bij-brand-in-appartementsgebouw-in-berchem/160372603.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-22",
+    "magnitude": 1,
+    "title": "Zeven doden bij ongeval tijdens politieachtervolging in Engeland",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/buitenland/zeven-doden-bij-ongeval-tijdens-politieachtervolging-in-engeland/160368756.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
