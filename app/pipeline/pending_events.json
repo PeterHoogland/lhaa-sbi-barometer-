@@ -54565,5 +54565,41 @@
     "link": "https://www.gva.be/buitenland/duitse-tiener-overleden-bij-val-van-40-meter-hoogte-in-klimpark-in-oostenrijk/160391017.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-23",
+    "magnitude": 1,
+    "title": "Wegen in Brussel maandagochtend afgesloten voor rouwstoet van omgekomen brandweerman Olivier Francotte",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/23/61f212a8-61b2-48bb-b11a-f6f40532bc80.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-23",
+    "magnitude": 1,
+    "title": "Australië bevestigt eerste geval van H5-vogelgriep bij zoogdier op vasteland",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/dieren/australie-bevestigt-eerste-geval-van-h5-vogelgriep-bij-zoogdier-op-vasteland~add89d1b/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-23",
+    "magnitude": 1,
+    "title": "Tiener overleden na val van 40 meter in Oostenrijks klimpark",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/tiener-overleden-na-val-van-40-meter-in-oostenrijks-klimpark~ac3043de/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-23",
+    "magnitude": 1,
+    "title": "Man gewond na schietpartij in Sint-Gillis, verdachte 'wordt actief opgespoord'",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/veiligheid/man-gewond-na-schietpartij-sint-gillis-vermoedelijk-link-met-drugsmilieu-2026-08-23",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
