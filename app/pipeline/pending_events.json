@@ -54646,5 +54646,23 @@
     "link": "https://www.nieuwsblad.be/sport/sportregio/video.-max-verstappen-ongedeerd-na-zware-crash-in-openingsronde-in-zandvoort-race-tijdlang-stilgelegd/160395742.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-23",
+    "magnitude": 1,
+    "title": "Jongen van 19 uit Duitsland sterft bij val van 40 meter in klimpark in Oostenrijk",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/23/e98b0743-baaa-4ca5-8bcb-d28687ef354b.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-23",
+    "magnitude": 1,
+    "title": "VIDEO. Max Verstappen ongedeerd na zware crash in openingsronde, Lando Norris wint in Zandvoort",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/sport/sportregio/video.-max-verstappen-ongedeerd-na-zware-crash-in-openingsronde-lando-norris-wint-in-zandvoort/160395742.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
