@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:01:12.475196",
+    "fetched_at": "2026-08-23T11:22:57.023870",
     "observation_date": "2026-08-23",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.8764
+    "value": 0.86
   },
   "I-D1-009": {
     "date": "2026-08-22",
-    "fetched_at": "2026-08-23T11:01:15.521491",
+    "fetched_at": "2026-08-23T11:23:00.486665",
     "observation_date": "2026-08-22",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 12.9
   },
   "I-D1-010": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:01:15.929463",
+    "fetched_at": "2026-08-23T11:23:00.912527",
     "observation_date": "2026-08-23",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 1.970833333333333
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:06:16.030954",
+    "fetched_at": "2026-08-23T11:26:54.394486",
     "observation_date": "2026-08-23",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
-    "value": 2.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
+    "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:06:56.535336",
+    "fetched_at": "2026-08-23T11:28:25.870148",
     "observation_date": "2026-08-23",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 263 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
-    "value": 263.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 283 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
+    "value": 283.0
   },
   "I-D2-stib": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:06:55.304959",
+    "fetched_at": "2026-08-23T11:28:24.618340",
     "observation_date": "2026-08-23",
     "source": "STIB/MIVB TravellersInformation (Brussel, 410 actieve items; CC BY 4.0)",
     "value": 410.0
   },
   "I-D3-001": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:01:18.151497",
+    "fetched_at": "2026-08-23T11:23:05.048159",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.6
   },
   "I-D3-002": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:01:19.104729",
+    "fetched_at": "2026-08-23T11:23:06.379503",
     "observation_date": "2026-08-23",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 82.93909090909092
   },
   "I-D3-003": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:01:19.842923",
+    "fetched_at": "2026-08-23T11:23:07.028351",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:06:53.261187",
+    "fetched_at": "2026-08-23T11:27:29.201490",
     "observation_date": "2026-08-23",
     "source": "Ontslag-radar: 1 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 1.0
   },
   "I-D3-005": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:01:20.326313",
+    "fetched_at": "2026-08-23T11:23:07.556472",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:01:20.776520",
+    "fetched_at": "2026-08-23T11:23:08.212587",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:01:22.370265",
+    "fetched_at": "2026-08-23T11:23:09.545492",
     "observation_date": "2026-07",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -15.9
   },
   "I-D3-009": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:01:22.041198",
+    "fetched_at": "2026-08-23T11:23:09.175209",
     "observation_date": "2026-08-23",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9519975634058837
   },
   "I-D5-001": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T10:03:23.172743",
+    "fetched_at": "2026-08-23T11:24:28.625974",
     "observation_date": "2026-08-23",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1016/1088 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.55 / midden +0.57 / ouder +0.61. Negatiefste headlines: «Tientallen gewonden na nachtelijke aardbeving met kracht van 5,9 bij Tokio: Japan waarschuwt voor nieuwe krachtige schok · Live - Opnieuw enkele opflakkeringen in de Hoge Venen afgelopen nacht • Duizend mensen geëvacueerd in Valencia na bosbra · Man gewond na schietpartij in Sint-Gillis, vermoedelijk link met drugsmilieu In Sint-Gillis is een man gewond geraakt bi»; emotie-profiel headlines (matches/100 woorden): woede 0.08 / angst 0.18 / verdriet 0.12 / walging 0.03 (dominant: angst)",
-    "value": 1.7703
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1013/1087 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.58 / midden +0.60 / ouder +0.65. Negatiefste headlines: «Tientallen gewonden na nachtelijke aardbeving met kracht van 5,9 bij Tokio: Japan waarschuwt voor nieuwe krachtige schok · Live - Opnieuw enkele opflakkeringen in de Hoge Venen afgelopen nacht • Duizend mensen geëvacueerd in Valencia na bosbra · Man gewond na schietpartij in Sint-Gillis, vermoedelijk link met drugsmilieu In Sint-Gillis is een man gewond geraakt bi»; emotie-profiel headlines (matches/100 woorden): woede 0.08 / angst 0.17 / verdriet 0.13 / walging 0.03 (dominant: angst)",
+    "value": 1.8366
   },
   "I-D5-002": {
     "date": "2026-08-22",
-    "fetched_at": "2026-08-23T11:03:11.245199",
+    "fetched_at": "2026-08-23T11:24:29.170118",
     "observation_date": "2026-08-22",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 24.745
   },
   "I-D5-003": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T08:44:51.391193",
+    "fetched_at": "2026-08-23T11:26:16.628351",
     "observation_date": "2026-08-23",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 23 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.073033
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 24 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.081467
   },
   "I-D5-006S": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:06:15.769407",
+    "fetched_at": "2026-08-23T11:26:54.088343",
     "observation_date": "2026-08-23",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.5039239025184556
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": -0.005182628366567315
   },
   "I-D5-mastodon": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:06:17.340050",
+    "fetched_at": "2026-08-23T11:26:56.076692",
     "observation_date": "2026-08-23",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.15501474585100108
   },
   "I-D5-trends": {
     "date": "2026-08-23",
-    "fetched_at": "2026-08-23T11:06:53.633806",
+    "fetched_at": "2026-08-23T11:27:29.677093",
     "observation_date": "2026-08-23",
-    "source": "Google Trends trending RSS (geo=BE) — 4/10 trends stress-relevant, aandeel zoekvolume 0.50 (stress-trends: temperatuur, f1 zandvoort, sint-gillis, ruth beeckmans)",
-    "value": 0.5
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.44 (stress-trends: temperatuur, f1 zandvoort, sint-gillis)",
+    "value": 0.4375
   }
 }
