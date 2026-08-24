@@ -55231,5 +55231,23 @@
     "link": "https://www.knack.be/nieuws/wereld/het-allesverslindende-monster/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Motorrijder (28) sterft bij ongeval op E17 in Deerlijk, ook taxichauffeur (64) raakt zwaargewond toen hij hulp bood",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/24/9033e300-558b-4d35-9b21-3edf7c28d8ff.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Britse regering eist verwijdering van video's met gevaarlijk rijgedrag op TikTok",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/britse-regering-eist-verwijdering-van-videos-met-gevaarlijk-rijgedrag-op-tiktok/160427076.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
