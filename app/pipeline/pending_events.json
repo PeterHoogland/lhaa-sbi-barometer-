@@ -55132,5 +55132,41 @@
     "link": "https://newsmonkey.be/belgie-waarschuwt-voor-oplichters-met-nep-ai-via-whatsapp/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Europa keurt 6,1 miljard euro aan steun goed, kinderen omgekomen bij Oekraïense droneaanval",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/24/4544fb47-6010-4504-8ce9-579cc80acb3e.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Acht gewonden naar ziekenhuis na ongeval met touringcar vol scholieren in Nederland",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/24/6a60a0e6-d89f-4c1e-800b-42da0524f67e.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Fietsertje (6) loopt lichte verwondingen op bij aanrijding",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/rivierenland/mechelen/fietsertje-6-loopt-lichte-verwondingen-op-bij-aanrijding/160413088.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Acht gewonden naar ziekenhuis gebracht na zwaar ongeval met bus vol scholieren in Nederland",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/acht-gewonden-naar-ziekenhuis-gebracht-na-zwaar-ongeval-met-bus-vol-scholieren-in-nederland/160411853.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
