@@ -55186,5 +55186,41 @@
     "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/beerse/fietser-raakt-gewond-bij-botsing/160417963.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Derde schietpartij in een weekend in Sint-Gillis: slachtoffer naar ziekenhuis, twee verdachten opgepakt",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/derde-schietpartij-in-een-weekend-in-sint-gillis-slachtoffer-naar-ziekenhuis-twee-verdachten-opgepakt~b3f6a3aa/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Motorrijder (28) komt om het leven na aanrijding met taxi op E17 in Deerlijk, chauffeur stapt uit en wordt zelf aangereden",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/deerlijk/motorrijder-28-komt-om-het-leven-na-aanrijding-met-taxi-op-e17-in-deerlijk-chauffeur-stapt-uit-en-wordt-zelf-aangereden~ac58a599/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Twaalf doden voor Tiktok-likes: de gezichten achter de macabere ‘wrong-way-driving challenge’",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/twaalf-doden-voor-tiktok-likes-de-gezichten-achter-de-macabere-wrong-way-driving-challenge/160414602.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Motorrijder (28) overleden na ongeval met taxi: chauffeur (64) die was uitgestapt raakt zelf zwaargewond bij nieuwe aanrijding",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/binnenland/motorrijder-28-overleden-na-ongeval-met-taxi-chauffeur-64-die-was-uitgestapt-raakt-zelf-zwaargewond-bij-nieuwe-aanrijding/160419782.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
