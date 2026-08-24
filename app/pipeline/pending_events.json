@@ -55060,5 +55060,50 @@
     "link": "https://www.tvoost.be/nieuws/tv-oost-nieuws-van-woensdag-19082026-213402",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Meerdere gewonden bij ernstig ongeval met touringcar vol scholieren in Nederland",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/24/6a60a0e6-d89f-4c1e-800b-42da0524f67e.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Dertig doden nadat vuilnisbelt instort in Guinee",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/dertig-doden-nadat-vuilnisbelt-instort-in-guinee~abf8fe49/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Drie kwartier file op Antwerpse Ring richting Nederland vanaf Antwerpen-West: rijstrook versperd ter hoogte van Deurne",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/deurne/drie-kwartier-file-op-antwerpse-ring-richting-nederland-vanaf-antwerpen-west-rijstrook-versperd-ter-hoogte-van-deurne~a5c8e827/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Ochtendspits verstoord op Antwerpse ring na ongeval in Deurne",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/ochtendspits-verstoord-op-antwerpse-ring-na-ongeval-in-deurne/160411931.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "“Meerdere gewonden” bij ernstig ongeval met bus met Duitse scholieren in Nederland",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/meerdere-gewonden-bij-ernstig-ongeval-met-bus-met-duitse-scholieren-in-nederland/160411853.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
