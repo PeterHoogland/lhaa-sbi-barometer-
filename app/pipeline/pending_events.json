@@ -55168,5 +55168,23 @@
     "link": "https://www.nieuwsblad.be/buitenland/acht-gewonden-naar-ziekenhuis-gebracht-na-zwaar-ongeval-met-bus-vol-scholieren-in-nederland/160411853.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Weer Oekraïense aanval op Russische webwinkel Ozon, twee kinderen zouden zijn omgekomen door brokstukken drone",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/weer-oekraiense-aanval-op-russische-webwinkel-ozon-twee-kinderen-zouden-zijn-omgekomen-door-brokstukken-drone~a93df6b5/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Fietser raakt gewond bij botsing",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/beerse/fietser-raakt-gewond-bij-botsing/160417963.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
