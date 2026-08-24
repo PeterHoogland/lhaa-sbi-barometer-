@@ -55105,5 +55105,32 @@
     "link": "https://www.nieuwsblad.be/buitenland/meerdere-gewonden-bij-ernstig-ongeval-met-bus-met-duitse-scholieren-in-nederland/160411853.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Meerdere gewonden bij ongeval met touringcar vol scholieren in Nederland: \"Enkele mensen zijn er slecht aan toe\"",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/24/6a60a0e6-d89f-4c1e-800b-42da0524f67e.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "Touringcar vol Duitse middelbare scholieren gaat overkop na botsing met bestelwagen in Nederland: acht gewonden naar het ziekenhuis",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/touringcar-vol-duitse-middelbare-scholieren-gaat-overkop-na-botsing-met-bestelwagen-in-nederland-acht-gewonden-naar-het-ziekenhuis~a7956557/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-24",
+    "magnitude": 1,
+    "title": "België waarschuwt voor oplichters met nep-AI via WhatsApp",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/belgie-waarschuwt-voor-oplichters-met-nep-ai-via-whatsapp/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
