@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:01:04.466796",
+    "fetched_at": "2026-08-25T05:34:10.635837",
     "observation_date": "2026-08-25",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.655
   },
   "I-D1-009": {
     "date": "2026-08-24",
-    "fetched_at": "2026-08-25T05:01:07.895653",
+    "fetched_at": "2026-08-25T05:34:14.887058",
     "observation_date": "2026-08-24",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 7.32
   },
   "I-D1-010": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:01:08.459447",
+    "fetched_at": "2026-08-25T05:34:15.459804",
     "observation_date": "2026-08-25",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 2.4541666666666666
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:06:30.035087",
+    "fetched_at": "2026-08-25T05:39:15.781135",
     "observation_date": "2026-08-25",
-    "source": "Verkeerscentrum DATEX II v3 — 24 files, 47.79 km totale filelengte (langste 5.52 km), snapshot 2026-08-25",
-    "value": 47.79
+    "source": "Verkeerscentrum DATEX II v3 — 27 files, 63.71 km totale filelengte (langste 7.36 km), snapshot 2026-08-25",
+    "value": 63.71
   },
   "I-D2-009": {
     "date": "2026-08-24",
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:05:52.166349",
+    "fetched_at": "2026-08-25T05:38:02.456260",
     "observation_date": "2026-08-25",
     "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
     "value": 2.0
   },
   "I-D2-delijn": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:06:32.651272",
+    "fetched_at": "2026-08-25T05:39:18.908017",
     "observation_date": "2026-08-25",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 409 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
-    "value": 409.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 457 vertraagd (≥3min), 10 service-alerts (Vlaanderen)",
+    "value": 457.0
   },
   "I-D2-stib": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:06:30.982659",
+    "fetched_at": "2026-08-25T05:39:17.134389",
     "observation_date": "2026-08-25",
     "source": "STIB/MIVB TravellersInformation (Brussel, 404 actieve items; CC BY 4.0)",
     "value": 404.0
   },
   "I-D3-001": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:01:11.311588",
+    "fetched_at": "2026-08-25T05:34:17.762660",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.6
   },
   "I-D3-002": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:01:12.562051",
+    "fetched_at": "2026-08-25T05:34:18.618380",
     "observation_date": "2026-08-25",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 158.17363636363638
   },
   "I-D3-003": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:01:13.658042",
+    "fetched_at": "2026-08-25T05:34:19.443861",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:06:28.203984",
+    "fetched_at": "2026-08-25T05:38:43.760169",
     "observation_date": "2026-08-25",
     "source": "Ontslag-radar: 1 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 1.0
   },
   "I-D3-005": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:01:14.309987",
+    "fetched_at": "2026-08-25T05:34:20.274071",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:01:14.905007",
+    "fetched_at": "2026-08-25T05:34:20.942865",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:01:16.537769",
+    "fetched_at": "2026-08-25T05:34:22.791323",
     "observation_date": "2026-07",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -15.9
   },
   "I-D3-009": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:01:16.020598",
+    "fetched_at": "2026-08-25T05:34:22.268960",
     "observation_date": "2026-08-25",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9711156103058864
   },
   "I-D5-001": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:02:34.241509",
+    "fetched_at": "2026-08-25T05:36:15.726152",
     "observation_date": "2026-08-25",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1032/1081 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.46 / midden +0.42 / ouder +0.42. Negatiefste headlines: «Dode bij Russische aanvallen op Oekraïne tijdens Onafhankelijkheidsdag Volg alle ontwikkelingen over de oorlog in Oekraï · Man gewond na schietpartij in Sint-Gillis, verdachte 'wordt actief opgespoord' In Sint-Gillis is zaterdagavond een man g · ▶ Tornado raast door de regio rond Franse stad Carcassonne: 26 gewonden, honderd huizen getroffen»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.17 / verdriet 0.12 / walging 0.02 (dominant: angst)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1029/1078 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.50 / midden +0.46 / ouder +0.46. Negatiefste headlines: «Dode bij Russische aanvallen op Oekraïne tijdens Onafhankelijkheidsdag Volg alle ontwikkelingen over de oorlog in Oekraï · Man gewond na schietpartij in Sint-Gillis, verdachte 'wordt actief opgespoord' In Sint-Gillis is zaterdagavond een man g · ▶ Tornado raast door de regio rond Franse stad Carcassonne: 41 gewonden, 300 huizen getroffen»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.17 / verdriet 0.12 / walging 0.02 (dominant: angst)",
     "value": 2.1771
   },
   "I-D5-002": {
     "date": "2026-08-24",
-    "fetched_at": "2026-08-25T05:02:35.400491",
+    "fetched_at": "2026-08-25T05:36:16.241867",
     "observation_date": "2026-08-24",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 24.43
   },
   "I-D5-003": {
-    "date": "2026-08-24",
-    "fetched_at": "2026-08-24T18:05:09.317396",
-    "observation_date": "2026-08-24",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 35 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.086567
+    "date": "2026-08-25",
+    "fetched_at": "2026-08-25T05:37:19.895064",
+    "observation_date": "2026-08-25",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 31 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.0806
   },
   "I-D5-006S": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:05:51.422403",
+    "fetched_at": "2026-08-25T05:38:01.577241",
     "observation_date": "2026-08-25",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 1.0965459586887072
+    "value": -0.13366134218586048
   },
   "I-D5-mastodon": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:05:53.135750",
+    "fetched_at": "2026-08-25T05:38:04.869795",
     "observation_date": "2026-08-25",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.6246267168134692
   },
   "I-D5-trends": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T05:06:28.641945",
+    "fetched_at": "2026-08-25T05:38:44.387976",
     "observation_date": "2026-08-25",
-    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.17 (stress-trends: omroep brabant, maasmechelen, energiecrisis)",
-    "value": 0.1739
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.22 (stress-trends: aardgas, omroep brabant, maasmechelen)",
+    "value": 0.2222
   }
 }
