@@ -55933,5 +55933,23 @@
     "link": "https://newsmonkey.be/vier-aangehouden-na-moord-op-voormalig-bokskampioen-zolani-tete/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-25",
+    "magnitude": 5,
+    "title": "Onderzoekers vinden nog een drone en explosieven na verijdelde aanslag op luchthaven Leipzig",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/onderzoekers-vinden-nog-een-drone-en-explosieven-na-verijdelde-aanslag-op-luchthaven-leipzig~aae99dbb/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-25",
+    "magnitude": 5,
+    "title": "”Nuit de terreur” en Haïti : une quarantaine de personnes tuées dans une attaque de gangs près de la capitale",
+    "source": "L'Avenir",
+    "link": "https://www.lavenir.net/actu/societe/faitsdivers/2026/08/25/nuit-de-terreur-en-haiti-une-quarantaine-de-personnes-tuees-dans-une-attaque-de-gangs-pres-de-la-capitale-5LMFVNZQTNBBRPMMDZWXU75UO4/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
