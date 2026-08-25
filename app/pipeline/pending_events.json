@@ -56158,5 +56158,23 @@
     "link": "https://www.nieuwsblad.be/binnenland/live-brand-hoge-venen.-brand-mogelijk-veroorzaakt-door-landbouwmachines/152287959.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-25",
+    "magnitude": 1,
+    "title": "Meerdere gewonden bij frontale botsing tussen twee auto’s in Grembergen",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/dendermonde/meerdere-gewonden-bij-frontale-botsing-tussen-twee-autos-in-grembergen~a711d6eb/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-25",
+    "magnitude": 1,
+    "title": "Bestuurder gewond bij botsing tussen twee auto’s op Zeelsebaan",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/denderregio/dendermonde/bestuurder-gewond-bij-botsing-tussen-twee-autos-op-zeelsebaan/160493645.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
