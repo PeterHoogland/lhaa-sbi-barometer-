@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:01:05.851898",
+    "fetched_at": "2026-08-25T15:45:16.616777",
     "observation_date": "2026-08-25",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.925
+    "value": 0.98
   },
   "I-D1-009": {
     "date": "2026-08-24",
-    "fetched_at": "2026-08-25T15:01:09.112057",
+    "fetched_at": "2026-08-25T15:45:20.342371",
     "observation_date": "2026-08-24",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 7.32
   },
   "I-D1-010": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:01:09.682794",
+    "fetched_at": "2026-08-25T15:45:20.988999",
     "observation_date": "2026-08-25",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 3.2416666666666667
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:06:53.331489",
+    "fetched_at": "2026-08-25T15:50:26.708467",
     "observation_date": "2026-08-25",
-    "source": "Verkeerscentrum DATEX II v3 — 59 files, 120.46 km totale filelengte (langste 10.52 km), snapshot 2026-08-25",
-    "value": 120.46
+    "source": "Verkeerscentrum DATEX II v3 — 53 files, 143.62 km totale filelengte (langste 11.43 km), snapshot 2026-08-25",
+    "value": 143.62
   },
   "I-D2-009": {
     "date": "2026-08-24",
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:06:13.246099",
+    "fetched_at": "2026-08-25T15:49:47.583577",
     "observation_date": "2026-08-25",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 3 ongepland)",
-    "value": 3.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 5 ongepland)",
+    "value": 5.0
   },
   "I-D2-delijn": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:06:56.159690",
+    "fetched_at": "2026-08-25T15:50:29.994069",
     "observation_date": "2026-08-25",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 791 vertraagd (≥3min), 15 service-alerts (Vlaanderen)",
-    "value": 791.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 817 vertraagd (≥3min), 13 service-alerts (Vlaanderen)",
+    "value": 817.0
   },
   "I-D2-stib": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:06:54.305248",
+    "fetched_at": "2026-08-25T15:50:27.944499",
     "observation_date": "2026-08-25",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 401 actieve items; CC BY 4.0)",
-    "value": 401.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 400 actieve items; CC BY 4.0)",
+    "value": 400.0
   },
   "I-D3-001": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:01:12.261802",
+    "fetched_at": "2026-08-25T15:45:23.289593",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.6
   },
   "I-D3-002": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:01:13.145553",
+    "fetched_at": "2026-08-25T15:45:24.103533",
     "observation_date": "2026-08-25",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 158.17363636363638
   },
   "I-D3-003": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:01:14.069357",
+    "fetched_at": "2026-08-25T15:45:24.890383",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:06:51.367627",
+    "fetched_at": "2026-08-25T15:50:24.513364",
     "observation_date": "2026-08-25",
-    "source": "Ontslag-radar: 2 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~140000 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 2.0
+    "source": "Ontslag-radar: 7 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~140000 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 7.0
   },
   "I-D3-005": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:01:14.868209",
+    "fetched_at": "2026-08-25T15:45:25.604218",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:01:15.642135",
+    "fetched_at": "2026-08-25T15:45:26.312955",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:01:17.163763",
+    "fetched_at": "2026-08-25T15:45:27.805554",
     "observation_date": "2026-07",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -15.9
   },
   "I-D3-009": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:01:16.694227",
+    "fetched_at": "2026-08-25T15:45:27.299333",
     "observation_date": "2026-08-25",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9779702074425668
   },
   "I-D5-001": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:02:39.783931",
+    "fetched_at": "2026-08-25T15:46:40.481969",
     "observation_date": "2026-08-25",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1029/1075 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.33 / midden +0.30 / ouder +0.36. Negatiefste headlines: «Tornado leidt in Frankrijk tot tientallen gewonden. Waarom treft zo’n gewelddadig fenomeen plots Europa? · Fietsster (59) uit Bocholt gewond bij aanrijding · Man gewond na schietpartij in Sint-Gillis, verdachte 'wordt actief opgespoord' In Sint-Gillis is zaterdagavond een man g»; emotie-profiel headlines (matches/100 woorden): woede 0.11 / angst 0.16 / verdriet 0.11 / walging 0.02 (dominant: angst)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1022/1074 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.26 / midden +0.26 / ouder +0.34. Negatiefste headlines: «Tornado leidt in Frankrijk tot tientallen gewonden. Waarom treft zo’n gewelddadig fenomeen plots Europa? · Un blessé dans un accident frontal à Courcelles La collision a fait un blessé et a causé des embarras de circulation. .. · Fietsster (59) uit Bocholt gewond bij aanrijding»; emotie-profiel headlines (matches/100 woorden): woede 0.11 / angst 0.17 / verdriet 0.13 / walging 0.02 (dominant: angst)",
     "value": 1.4701
   },
   "I-D5-002": {
     "date": "2026-08-24",
-    "fetched_at": "2026-08-25T15:02:40.984024",
+    "fetched_at": "2026-08-25T15:46:41.172039",
     "observation_date": "2026-08-24",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 24.43
   },
   "I-D5-003": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:05:39.815863",
+    "fetched_at": "2026-08-25T15:49:09.271553",
     "observation_date": "2026-08-25",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 30 RSS-kandidaten naar pending voor menselijke review",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 27 RSS-kandidaten naar pending voor menselijke review",
     "value": 0.1039
   },
   "I-D5-006S": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:06:12.746612",
+    "fetched_at": "2026-08-25T15:49:47.188579",
     "observation_date": "2026-08-25",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.06401134846888883
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.8312275313474856
   },
   "I-D5-mastodon": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:06:15.023533",
+    "fetched_at": "2026-08-25T15:49:49.501167",
     "observation_date": "2026-08-25",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.5159310646395562
   },
   "I-D5-trends": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-25T15:06:51.842614",
+    "fetched_at": "2026-08-25T15:50:25.036775",
     "observation_date": "2026-08-25",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.12 (stress-trends: tom waes, oostende)",
-    "value": 0.1186
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.09 (stress-trends: tom waes, nicolas orye, oostende)",
+    "value": 0.0899
   }
 }
