@@ -56500,5 +56500,23 @@
     "link": "https://www.tvoost.be/nieuws/dieven-slaan-toe-aan-gemeentelijk-magazijn-erpe-mere-vier-voertuigen-leeggeroofd-213495",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-26",
+    "magnitude": 1,
+    "title": "Onderzoekers ontwikkelen ballon die biologisch afbreekt",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/onderzoekers-ontwikkelen-ballon-die-biologisch-afbreekt/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-26",
+    "magnitude": 1,
+    "title": "Vijftien pasgeboren baby's overleden bij brand in ziekenhuis in Pakistan",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/vijftien-pasgeboren-babys-overleden-bij-brand-in-ziekenhuis-in-pakistan/160514569.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
