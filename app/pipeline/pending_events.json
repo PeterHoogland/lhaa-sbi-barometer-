@@ -56788,5 +56788,23 @@
     "link": "https://www.tvoost.be/nieuws/aftrap-campagne-modder-op-de-weg-samen-alert-213586",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-26",
+    "magnitude": 1,
+    "title": "Lawine en vloedgolf in Nepal en Tibet: zeker 98 doden en honderden vermisten, onder wie 391 toeristen",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/26/ec0e6635-36fc-43c6-af1b-e845c32e11c8.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-26",
+    "magnitude": 1,
+    "title": "Vorig jaar 75 ongevallen door modder op de weg, provincie start sensibileringscampagne",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/vorig-jaar-75-ongevallen-door-modder-op-de-weg-provincie-start-sensibileringscampagne-213586",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
