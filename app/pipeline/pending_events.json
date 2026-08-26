@@ -56590,5 +56590,32 @@
     "link": "https://www.nieuwsblad.be/buitenland/modderstroom-eist-veel-levens-in-tibet-en-nepal/160523469.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-26",
+    "magnitude": 1,
+    "title": "Vorig jaar 75 ongevallen door modder op de weg in Oost-Vlaanderen: provincie start sensibileringscampagne",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/26/0ed92c82-90b6-4669-ae6f-c53767171ed9.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-26",
+    "magnitude": 1,
+    "title": "Westnijlvirus eist dodelijk slachtoffer in Utrecht: infectie werd in Nederland opgelopen",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/westnijlvirus-eist-dodelijk-slachtoffer-in-utrecht-infectie-werd-in-nederland-opgelopen~bbd61368/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-26",
+    "magnitude": 1,
+    "title": "Procureur vraagt tot drie jaar celstraf voor jongeren betrokken bij oplichting van 88-jarige man: “Hij voelt zich sindsdien nog onveiliger”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/gent/procureur-vraagt-tot-drie-jaar-celstraf-voor-jongeren-betrokken-bij-oplichting-van-88-jarige-man-hij-voelt-zich-sindsdien-nog-onveiliger/160524710.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
