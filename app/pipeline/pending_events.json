@@ -56536,5 +56536,41 @@
     "link": "https://images.vrt.be/vrtnws_share/2026/08/26/6174e21b-3965-4155-a801-44d6b2a5cd7b.jpg",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-26",
+    "magnitude": 1,
+    "title": "Oekraïense commandant racet over ‘killzone’ om zijn soldaten te redden en wordt geëerd als volksheld",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/oekraiense-commandant-racet-over-killzone-om-zijn-soldaten-te-redden-en-wordt-geeerd-als-volksheld~acd9bf1b/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-26",
+    "magnitude": 1,
+    "title": "Tweede verdachte van dodelijke aanval op Zweedse school aangehouden",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/tweede-verdachte-van-dodelijke-aanval-op-zweedse-school-aangehouden~a8485be4/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-26",
+    "magnitude": 1,
+    "title": "Fietser (85) raakt gewond na aanrijding",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/westerlo/fietser-85-raakt-gewond-na-aanrijding/160520755.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-26",
+    "magnitude": 1,
+    "title": "Kasterlee kant zich niet tegen tractorsluis vlak bij Kraanschot: “We kunnen niet wachten tot ernstig ongeval gebeurt”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/kasterlee/kasterlee-kant-zich-niet-tegen-tractorsluis-vlak-bij-kraanschot-we-kunnen-niet-wachten-tot-ernstig-ongeval-gebeurt/160519479.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
