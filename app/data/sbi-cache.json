@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:01:03.379069",
+    "fetched_at": "2026-08-27T18:01:02.935350",
     "observation_date": "2026-08-27",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 1.105
   },
   "I-D1-009": {
     "date": "2026-08-25",
-    "fetched_at": "2026-08-27T17:01:06.190371",
+    "fetched_at": "2026-08-27T18:01:17.871527",
     "observation_date": "2026-08-25",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 6.9
   },
   "I-D1-010": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:01:06.770054",
+    "fetched_at": "2026-08-27T18:01:18.297590",
     "observation_date": "2026-08-27",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 2.0375000000000005
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:06:48.053745",
+    "fetched_at": "2026-08-27T18:06:42.933723",
     "observation_date": "2026-08-27",
-    "source": "Verkeerscentrum DATEX II v3 — 18 files, 37.35 km totale filelengte (langste 7.47 km), snapshot 2026-08-27",
-    "value": 37.35
+    "source": "Verkeerscentrum DATEX II v3 — 2 files, 1.82 km totale filelengte (langste 1.29 km), snapshot 2026-08-27",
+    "value": 1.82
   },
   "I-D2-009": {
     "date": "2026-08-26",
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:06:11.190213",
+    "fetched_at": "2026-08-27T18:06:03.904552",
     "observation_date": "2026-08-27",
     "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
     "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:06:50.785024",
+    "fetched_at": "2026-08-27T18:06:44.977544",
     "observation_date": "2026-08-27",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 499 vertraagd (≥3min), 16 service-alerts (Vlaanderen)",
-    "value": 499.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 321 vertraagd (≥3min), 16 service-alerts (Vlaanderen)",
+    "value": 321.0
   },
   "I-D2-stib": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:06:48.963813",
+    "fetched_at": "2026-08-27T18:06:43.700481",
     "observation_date": "2026-08-27",
     "source": "STIB/MIVB TravellersInformation (Brussel, 396 actieve items; CC BY 4.0)",
     "value": 396.0
   },
   "I-D3-001": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:01:19.162761",
+    "fetched_at": "2026-08-27T18:01:30.416777",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.6
   },
   "I-D3-002": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:01:20.335397",
+    "fetched_at": "2026-08-27T18:01:31.604035",
     "observation_date": "2026-08-27",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 163.13124999999994
   },
   "I-D3-003": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:01:22.240943",
+    "fetched_at": "2026-08-27T18:01:33.321453",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:06:45.932121",
+    "fetched_at": "2026-08-27T18:06:41.114862",
     "observation_date": "2026-08-27",
-    "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~140000 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 6.0
+    "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 4.0
   },
   "I-D3-005": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:01:22.889257",
+    "fetched_at": "2026-08-27T18:01:35.025829",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:01:23.439608",
+    "fetched_at": "2026-08-27T18:01:36.118448",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:01:25.050103",
+    "fetched_at": "2026-08-27T18:01:37.538904",
     "observation_date": "2026-07",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -15.9
   },
   "I-D3-009": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:01:24.643546",
+    "fetched_at": "2026-08-27T18:01:37.183058",
     "observation_date": "2026-08-27",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.00402342509895
   },
   "I-D5-001": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:03:46.831584",
+    "fetched_at": "2026-08-27T18:04:18.711438",
     "observation_date": "2026-08-27",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1013/1074 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.43 / midden +0.35 / ouder +0.34. Negatiefste headlines: «Eén goederentrein veroorzaakte vier branden: vonken langs het spoor vatten vaker dan ooit vuur · Man gewond na schietpartij in Sint-Gillis, verdachte 'wordt actief opgespoord' In Sint-Gillis is zaterdagavond een man g · Norvège : l'état de santé du roi Harald, 89 ans, est \"extrêmement grave\" Le roi Harald de Norvège est hospitalisé, et se»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.20 / verdriet 0.16 / walging 0.03 (dominant: angst)",
-    "value": 1.8714
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 909/976 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.47 / midden +0.42 / ouder +0.41. Negatiefste headlines: «Eén goederentrein veroorzaakte vier branden: vonken langs het spoor vatten vaker dan ooit vuur · Man gewond na schietpartij in Sint-Gillis, verdachte 'wordt actief opgespoord' In Sint-Gillis is zaterdagavond een man g · Norvège : l'état de santé du roi Harald, 89 ans, est \"extrêmement grave\" Le roi Harald de Norvège est hospitalisé, et se»; emotie-profiel headlines (matches/100 woorden): woede 0.12 / angst 0.20 / verdriet 0.17 / walging 0.05 (dominant: angst)",
+    "value": 1.859
   },
   "I-D5-002": {
     "date": "2026-08-26",
-    "fetched_at": "2026-08-27T17:03:47.518165",
+    "fetched_at": "2026-08-27T18:04:19.281642",
     "observation_date": "2026-08-26",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 25.188
   },
   "I-D5-003": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:05:38.051783",
+    "fetched_at": "2026-08-27T18:05:25.323712",
     "observation_date": "2026-08-27",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 39 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.083867
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 37 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.080067
   },
   "I-D5-006S": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:06:10.626214",
+    "fetched_at": "2026-08-27T18:06:03.529328",
     "observation_date": "2026-08-27",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.04349543803718885
+    "value": -0.011893816885003398
   },
   "I-D5-mastodon": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:06:12.818232",
+    "fetched_at": "2026-08-27T18:06:05.351535",
     "observation_date": "2026-08-27",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.7304074994267895
   },
   "I-D5-trends": {
     "date": "2026-08-27",
-    "fetched_at": "2026-08-27T17:06:46.625450",
+    "fetched_at": "2026-08-27T18:06:41.807440",
     "observation_date": "2026-08-27",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.12 (stress-trends: kop-staart-botsing, jongen)",
-    "value": 0.1176
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.17 (stress-trends: ajax - sion)",
+    "value": 0.1667
   }
 }
