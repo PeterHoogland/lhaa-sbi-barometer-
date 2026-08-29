@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:01:07.988245",
+    "fetched_at": "2026-08-29T17:01:07.642120",
     "observation_date": "2026-08-29",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.635
   },
   "I-D1-009": {
     "date": "2026-08-28",
-    "fetched_at": "2026-08-29T15:01:11.385646",
+    "fetched_at": "2026-08-29T17:01:11.403092",
     "observation_date": "2026-08-28",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 8.5
   },
   "I-D1-010": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:01:11.981427",
+    "fetched_at": "2026-08-29T17:01:12.020367",
     "observation_date": "2026-08-29",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.9666666666666667
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:08:05.517393",
+    "fetched_at": "2026-08-29T17:07:48.750918",
     "observation_date": "2026-08-29",
-    "source": "Verkeerscentrum DATEX II v3 — 13 files, 19.72 km totale filelengte (langste 3.3 km), snapshot 2026-08-29",
-    "value": 19.72
+    "source": "Verkeerscentrum DATEX II v3 — 4 files, 6.65 km totale filelengte (langste 3.69 km), snapshot 2026-08-29",
+    "value": 6.65
   },
   "I-D2-009": {
     "date": "2026-08-26",
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:06:31.938379",
+    "fetched_at": "2026-08-29T17:07:06.931300",
     "observation_date": "2026-08-29",
     "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
     "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:08:08.652927",
+    "fetched_at": "2026-08-29T17:07:51.623151",
     "observation_date": "2026-08-29",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 424 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
-    "value": 424.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 361 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
+    "value": 361.0
   },
   "I-D2-stib": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:08:06.553307",
+    "fetched_at": "2026-08-29T17:07:49.771641",
     "observation_date": "2026-08-29",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 366 actieve items; CC BY 4.0)",
-    "value": 366.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 368 actieve items; CC BY 4.0)",
+    "value": 368.0
   },
   "I-D3-001": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:01:24.855338",
+    "fetched_at": "2026-08-29T17:01:25.026947",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.6
   },
   "I-D3-002": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:01:26.514247",
+    "fetched_at": "2026-08-29T17:01:26.651159",
     "observation_date": "2026-08-29",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 79.46511363636365
   },
   "I-D3-003": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:01:27.796495",
+    "fetched_at": "2026-08-29T17:01:27.856168",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:07:14.053322",
+    "fetched_at": "2026-08-29T17:07:46.805781",
     "observation_date": "2026-08-29",
     "source": "Ontslag-radar: 2 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 2.0
   },
   "I-D3-005": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:01:28.442023",
+    "fetched_at": "2026-08-29T17:01:28.589582",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:01:29.288043",
+    "fetched_at": "2026-08-29T17:01:29.317333",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:01:31.598055",
+    "fetched_at": "2026-08-29T17:01:31.945079",
     "observation_date": "2026-08",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.3
   },
   "I-D3-009": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:01:31.092719",
+    "fetched_at": "2026-08-29T17:01:31.409209",
     "observation_date": "2026-08-29",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9885246799123516
   },
   "I-D5-001": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:04:37.856404",
+    "fetched_at": "2026-08-29T17:02:44.782452",
     "observation_date": "2026-08-29",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1016/1079 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.40 / midden +0.41 / ouder +0.43. Negatiefste headlines: «Dodental loopt op tot 682, risico op nieuwe ramp door volgelopen bergmeer lijkt te verminderen · Live - Zeker 37 doden en tientallen gewonden na Russische aanval op magazijn nabij Kiev · Live - Risico op nieuwe ramp door volgelopen bergmeer lijkt te verminderen»; emotie-profiel headlines (matches/100 woorden): woede 0.08 / angst 0.17 / verdriet 0.15 / walging 0.01 (dominant: angst)",
-    "value": 1.9218
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1017/1081 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.50 / midden +0.45 / ouder +0.43. Negatiefste headlines: «Dodental loopt op tot 682, risico op nieuwe ramp door volgelopen bergmeer lijkt te verminderen · Live - Risico op nieuwe ramp door volgelopen bergmeer lijkt te verminderen · Eén goederentrein veroorzaakte vier branden: vonken langs het spoor vatten vaker dan ooit vuur»; emotie-profiel headlines (matches/100 woorden): woede 0.07 / angst 0.16 / verdriet 0.15 / walging 0.01 (dominant: angst)",
+    "value": 1.8458
   },
   "I-D5-002": {
     "date": "2026-08-28",
-    "fetched_at": "2026-08-29T15:04:39.023421",
+    "fetched_at": "2026-08-29T17:02:45.502298",
     "observation_date": "2026-08-28",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 24.51
@@ -141,21 +141,21 @@
   },
   "I-D5-006S": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:06:31.247838",
+    "fetched_at": "2026-08-29T17:07:06.549751",
     "observation_date": "2026-08-29",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.3846411127543095
+    "value": -0.11404019092951169
   },
   "I-D5-mastodon": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:06:33.642302",
+    "fetched_at": "2026-08-29T17:07:09.504752",
     "observation_date": "2026-08-29",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.7671423948929991
   },
   "I-D5-trends": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-29T15:07:14.503682",
+    "fetched_at": "2026-08-29T17:07:47.249829",
     "observation_date": "2026-08-29",
     "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
     "value": 0.0
