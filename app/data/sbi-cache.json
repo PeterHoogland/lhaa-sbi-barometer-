@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T09:53:39.143321",
+    "fetched_at": "2026-08-30T10:21:31.988994",
     "observation_date": "2026-08-30",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.695
   },
   "I-D1-009": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-30T09:53:42.482645",
+    "fetched_at": "2026-08-30T10:21:35.579086",
     "observation_date": "2026-08-29",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 7.57
   },
   "I-D1-010": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T09:53:42.930703",
+    "fetched_at": "2026-08-30T10:21:36.169196",
     "observation_date": "2026-08-30",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.7791666666666666
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T10:02:15.882526",
+    "fetched_at": "2026-08-30T10:26:12.041407",
     "observation_date": "2026-08-30",
-    "source": "Verkeerscentrum DATEX II v3 — 4 files, 3.34 km totale filelengte (langste 1.09 km), snapshot 2026-08-30",
-    "value": 3.34
+    "source": "Verkeerscentrum DATEX II v3 — 7 files, 6.27 km totale filelengte (langste 2.11 km), snapshot 2026-08-30",
+    "value": 6.27
   },
   "I-D2-009": {
     "date": "2026-08-26",
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T10:01:38.300237",
+    "fetched_at": "2026-08-30T10:25:32.784060",
     "observation_date": "2026-08-30",
     "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
     "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T10:02:17.831911",
+    "fetched_at": "2026-08-30T10:26:14.475101",
     "observation_date": "2026-08-30",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 250 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
-    "value": 250.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 289 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
+    "value": 289.0
   },
   "I-D2-stib": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T10:02:16.776828",
+    "fetched_at": "2026-08-30T10:26:13.003786",
     "observation_date": "2026-08-30",
     "source": "STIB/MIVB TravellersInformation (Brussel, 378 actieve items; CC BY 4.0)",
     "value": 378.0
   },
   "I-D3-001": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T09:53:55.152750",
+    "fetched_at": "2026-08-30T10:21:49.220892",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.6
   },
   "I-D3-002": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T09:53:56.371135",
+    "fetched_at": "2026-08-30T10:21:50.649763",
     "observation_date": "2026-08-30",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 72.28568181818181
   },
   "I-D3-003": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T09:53:58.686185",
+    "fetched_at": "2026-08-30T10:21:51.696792",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T10:02:14.330558",
+    "fetched_at": "2026-08-30T10:26:10.375746",
     "observation_date": "2026-08-30",
     "source": "Ontslag-radar: 1 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 1.0
   },
   "I-D3-005": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T09:54:00.243108",
+    "fetched_at": "2026-08-30T10:21:52.918535",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T09:54:01.752550",
+    "fetched_at": "2026-08-30T10:21:53.703807",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T09:54:03.078351",
+    "fetched_at": "2026-08-30T10:21:55.454525",
     "observation_date": "2026-08",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.3
   },
   "I-D3-009": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T09:54:02.716604",
+    "fetched_at": "2026-08-30T10:21:54.947991",
     "observation_date": "2026-08-30",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0237956948398366
   },
   "I-D5-001": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T09:57:23.183567",
+    "fetched_at": "2026-08-30T10:23:17.137148",
     "observation_date": "2026-08-30",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1026/1088 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.33 / midden +0.30 / ouder +0.28. Negatiefste headlines: «Eén dode en meerdere gewonden bij schietincident in Zwitserland tijdens een rave · Inondations au Népal: le bilan provisoire est passé à 734 morts et près de 2500 disparus La Chine a annoncé un bilan de  · Dode en vijf gewonden bij schietpartij op technorave in Zwitsere Aarau Bij een schietincident op een rave in het noorden»; emotie-profiel headlines (matches/100 woorden): woede 0.07 / angst 0.13 / verdriet 0.15 / walging 0.01 (dominant: verdriet)",
-    "value": 1.4918
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1024/1088 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.33 / midden +0.29 / ouder +0.28. Negatiefste headlines: «Eén dode en meerdere gewonden bij schietincident in Zwitserland tijdens een rave · Inondations au Népal: le bilan provisoire est passé à 734 morts et près de 2500 disparus La Chine a annoncé un bilan de  · Dode en vijf gewonden bij schietpartij op technorave in Zwitsere Aarau Bij een schietincident op een rave in het noorden»; emotie-profiel headlines (matches/100 woorden): woede 0.07 / angst 0.13 / verdriet 0.15 / walging 0.01 (dominant: verdriet)",
+    "value": 1.5873
   },
   "I-D5-002": {
     "date": "2026-08-29",
-    "fetched_at": "2026-08-30T09:57:23.844630",
+    "fetched_at": "2026-08-30T10:23:18.847234",
     "observation_date": "2026-08-29",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 24.514
   },
   "I-D5-003": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T10:01:00.640884",
+    "fetched_at": "2026-08-30T10:24:58.736420",
     "observation_date": "2026-08-30",
     "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 42 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.097967
+    "value": 0.092367
   },
   "I-D5-006S": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T10:01:38.031681",
+    "fetched_at": "2026-08-30T10:25:32.106677",
     "observation_date": "2026-08-30",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.10148323812394879
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.14818426861205303
   },
   "I-D5-mastodon": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T10:01:40.154486",
+    "fetched_at": "2026-08-30T10:25:35.048215",
     "observation_date": "2026-08-30",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -1.044920172670777
   },
   "I-D5-trends": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-30T10:02:14.809205",
+    "fetched_at": "2026-08-30T10:26:10.739150",
     "observation_date": "2026-08-30",
-    "source": "Google Trends trending RSS (geo=BE) — 4/10 trends stress-relevant, aandeel zoekvolume 0.37 (stress-trends: live timing zolder, explosie, midden-oosten, nederland)",
-    "value": 0.3667
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.24 (stress-trends: explosie, midden-oosten, nederland)",
+    "value": 0.2368
   }
 }
