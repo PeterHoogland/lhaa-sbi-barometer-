@@ -59722,5 +59722,23 @@
     "link": "https://images.vrt.be/vrtnws_share/2026/08/30/7ce1ee48-bfb7-4b5d-be78-43d4f6151e30.jpg",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-30",
+    "magnitude": 1,
+    "title": "8 doden en 17 vermisten na ramp met veerboot in Noord-Cyprus, bemanning opgepakt",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/30/e0ec90cf-4e7a-46e0-8138-9ba5defdf1a2.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-30",
+    "magnitude": 1,
+    "title": "Drie gewonden bij zwaar ongeval met bestelwagens op E17",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/drie-gewonden-bij-zwaar-ongeval-met-bestelwagens-op-e17-213699",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
