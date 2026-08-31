@@ -60334,5 +60334,32 @@
     "link": "https://www.tvoost.be/nieuws/zestigjarige-man-uit-ninove-in-coma-na-aanval-van-zwerm-aziatische-hoornaars-213725",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-31",
+    "magnitude": 1,
+    "title": "Drie zussen sterven bij dramatisch ongeval op “bijzonder gevaarlijk” kruispunt in Wallonië",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/drie-zussen-sterven-bij-dramatisch-ongeval-op-bijzonder-gevaarlijk-kruispunt-in-wallonie~a7a52d7d/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-31",
+    "magnitude": 1,
+    "title": "Drie zussen omgekomen bij zwaar verkeersongeval in Charleroi",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/drie-zussen-omgekomen-bij-zwaar-verkeersongeval-in-charleroi/160778313.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-31",
+    "magnitude": 1,
+    "title": "Voetbalpartijtje tussen kinderen in park escaleert en eindigt met dodelijk schot van politieman: vader voor ogen van kinderen doodgeschoten",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/crimi/voetbalpartijtje-tussen-kinderen-in-park-escaleert-en-eindigt-met-dodelijk-schot-van-politieman-vader-voor-ogen-van-kinderen-doodgeschoten/160752459.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
