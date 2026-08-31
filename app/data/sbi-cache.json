@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:01:20.071722",
+    "fetched_at": "2026-08-31T10:01:23.682492",
     "observation_date": "2026-08-31",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.57
   },
   "I-D1-009": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-31T06:01:23.516874",
+    "fetched_at": "2026-08-31T10:01:29.356317",
     "observation_date": "2026-08-30",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 8.56
   },
   "I-D1-010": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:01:24.066790",
+    "fetched_at": "2026-08-31T10:01:29.802805",
     "observation_date": "2026-08-31",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.5583333333333335
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:06:14.951081",
+    "fetched_at": "2026-08-31T10:07:46.740466",
     "observation_date": "2026-08-31",
-    "source": "Verkeerscentrum DATEX II v3 — 42 files, 97.87 km totale filelengte (langste 10.15 km), snapshot 2026-08-31",
-    "value": 97.87
+    "source": "Verkeerscentrum DATEX II v3 — 30 files, 43.75 km totale filelengte (langste 4.01 km), snapshot 2026-08-31",
+    "value": 43.75
   },
   "I-D2-009": {
     "date": "2026-08-26",
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:05:32.303784",
+    "fetched_at": "2026-08-31T10:07:10.033884",
     "observation_date": "2026-08-31",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
-    "value": 1.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 3 ongepland)",
+    "value": 3.0
   },
   "I-D2-delijn": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:06:17.840358",
+    "fetched_at": "2026-08-31T10:07:48.986758",
     "observation_date": "2026-08-31",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 473 vertraagd (≥3min), 10 service-alerts (Vlaanderen)",
-    "value": 473.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 462 vertraagd (≥3min), 12 service-alerts (Vlaanderen)",
+    "value": 462.0
   },
   "I-D2-stib": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:06:15.873516",
+    "fetched_at": "2026-08-31T10:07:47.628505",
     "observation_date": "2026-08-31",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 368 actieve items; CC BY 4.0)",
-    "value": 368.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 371 actieve items; CC BY 4.0)",
+    "value": 371.0
   },
   "I-D3-001": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:01:37.105423",
+    "fetched_at": "2026-08-31T10:01:42.894464",
     "observation_date": "2026-07",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 3.6
   },
   "I-D3-002": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:01:38.837070",
+    "fetched_at": "2026-08-31T10:01:44.311103",
     "observation_date": "2026-08-31",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 102.92977272727272
   },
   "I-D3-003": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:01:41.241280",
+    "fetched_at": "2026-08-31T10:01:46.020623",
     "observation_date": "2026-06",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.00pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:06:12.458908",
+    "fetched_at": "2026-08-31T10:07:45.101476",
     "observation_date": "2026-08-31",
-    "source": "Ontslag-radar: 2 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 2.0
+    "source": "Ontslag-radar: 1 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 1.0
   },
   "I-D3-005": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:01:41.911181",
+    "fetched_at": "2026-08-31T10:01:47.376243",
     "observation_date": "2026-06",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.3
   },
   "I-D3-006": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:01:42.703244",
+    "fetched_at": "2026-08-31T10:01:48.229741",
     "observation_date": "2026-06",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.59
   },
   "I-D3-007": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:01:44.299572",
+    "fetched_at": "2026-08-31T10:01:50.315221",
     "observation_date": "2026-08",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.3
   },
   "I-D3-009": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:01:43.758194",
+    "fetched_at": "2026-08-31T10:01:49.945955",
     "observation_date": "2026-08-31",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 0.9935535506885244
+    "value": 0.9910069760572279
   },
   "I-D5-001": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:03:03.877844",
+    "fetched_at": "2026-08-31T10:03:05.800960",
     "observation_date": "2026-08-31",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1019/1077 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.46 / midden +0.42 / ouder +0.44. Negatiefste headlines: «Zeker één dode door overstromingen Grand Canyon · Le bilan de la crue au Népal passe à 734 morts et 2.498 disparus Le bilan s'alourdit. ... · Modderstroom verrast wandelaars in Grand Canyon: zeker 1 dode en 14 vermisten Minstens 1 dodelijk slachtoffer en 14 verm»; emotie-profiel headlines (matches/100 woorden): woede 0.07 / angst 0.12 / verdriet 0.14 / walging 0.01 (dominant: verdriet)",
-    "value": 1.1943
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1035/1077 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.46 / midden +0.47 / ouder +0.51. Negatiefste headlines: «Le bilan de la crue au Népal passe à 734 morts et 2.498 disparus Le bilan s'alourdit. ... · ‘Iedereen zal gevolgen voelen’ van besparingen, waarschuwt De Wever <p>Volg hier alle updates over de federale regering. · Modderstroom verrast wandelaars in Grand Canyon: zeker 1 dode en 15 vermisten Minstens 1 dodelijk slachtoffer en 15 verm»; emotie-profiel headlines (matches/100 woorden): woede 0.05 / angst 0.15 / verdriet 0.15 / walging 0.01 (dominant: angst)",
+    "value": 1.6977
   },
   "I-D5-002": {
     "date": "2026-08-30",
-    "fetched_at": "2026-08-31T06:03:04.594249",
+    "fetched_at": "2026-08-31T10:03:06.471963",
     "observation_date": "2026-08-30",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 23.961
   },
   "I-D5-003": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:04:52.044077",
+    "fetched_at": "2026-08-31T10:06:41.018933",
     "observation_date": "2026-08-31",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 33 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.070667
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 30 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.086433
   },
   "I-D5-006S": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:05:31.836843",
+    "fetched_at": "2026-08-31T10:07:09.806920",
     "observation_date": "2026-08-31",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.27948583327475246
+    "value": -0.060231898595314845
   },
   "I-D5-mastodon": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:05:34.311415",
+    "fetched_at": "2026-08-31T10:07:11.326155",
     "observation_date": "2026-08-31",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -1.074414636540241
+    "value": -1.3799701920957965
   },
   "I-D5-trends": {
     "date": "2026-08-31",
-    "fetched_at": "2026-08-31T06:06:13.144346",
+    "fetched_at": "2026-08-31T10:07:45.671471",
     "observation_date": "2026-08-31",
-    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.04 (stress-trends: ziekte, aalst, explosie)",
-    "value": 0.0352
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.45 (stress-trends: vrouw, mol, bart de wever)",
+    "value": 0.4464
   }
 }
