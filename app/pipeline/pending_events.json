@@ -60226,5 +60226,32 @@
     "link": "https://www.gva.be/regio/antwerpen/rivierenland/mechelen/dieven-slaan-tijdens-weekend-op-drie-plaatsen-toe-in-mechelen/160753968.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-08-31",
+    "magnitude": 3,
+    "title": "Schietpartij op rave in Zwitserland: man aangehouden na zes gewonden en één dode",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/schietpartij-op-rave-in-zwitserland-man-aangehouden-na-zes-gewonden-en-een-dode/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-31",
+    "magnitude": 1,
+    "title": "Fietsster gewond bij ongeval in Meeuwen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/oudsbergen/fietsster-gewond-bij-ongeval-in-meeuwen/160768347.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-08-31",
+    "magnitude": 1,
+    "title": "Politie zoekt man die horloge van slachtoffer rukt in Antwerpen",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/politie-zoekt-man-die-horloge-van-slachtoffer-rukt-in-antwerpen/160762556.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
