@@ -61108,5 +61108,41 @@
     "link": "https://www.tvoost.be/nieuws/veertiger-uit-temse-riskeert-13-jaar-cel-voor-verkrachting-en-poging-doodslag-213765",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-01",
+    "magnitude": 5,
+    "title": "Schade na aanslag op lijn van hoogspanningsgroep Elia : 'Dit was geen kwajongensstreek'",
+    "source": "De Tijd",
+    "link": "https://www.tijd.be/r/t/1/id/10684315",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-01",
+    "magnitude": 1,
+    "title": "Vakbonden kondigen vijf dagen lange staking in gevangenissen aan",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/vakbonden-kondigen-vijf-dagen-lange-staking-in-gevangenissen-aan/160834356.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-01",
+    "magnitude": 5,
+    "title": "LIVE OORLOG IN OEKRAÏNE. Minister Prévot roept Russische ambassadeur op matje na Duitse beschuldigingen van Russische betrokkenheid bij aanslag Leipzig",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/buitenland/live-oorlog-in-oekraine.-minister-prevot-roept-russische-ambassadeur-op-matje-na-duitse-beschuldigingen-van-russische-betrokkenheid-bij-aanslag-leipzig/76695337.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-01",
+    "magnitude": 1,
+    "title": "Ook Belgen opgepakt na dodelijke schietpartij in Nederland die gelinkt wordt aan ‘Bolle Jos’: politie roept inwoners op om binnen te blijven",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/buitenland/ook-belgen-opgepakt-na-dodelijke-schietpartij-in-nederland-die-gelinkt-wordt-aan-bolle-jos-politie-roept-inwoners-op-om-binnen-te-blijven/160800763.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
