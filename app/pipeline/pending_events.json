@@ -60784,5 +60784,41 @@
     "link": "https://www.gva.be/regio/antwerpen/kempen/geel/fietser-raakt-gewond-bij-ongeval-met-vrachtwagen-in-geel/160790162.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-01",
+    "magnitude": 5,
+    "title": "Echtgenote Netanyahu beschuldigt oppositieleider van voorkennis over aanslag 7 oktober",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/echtgenote-netanyahu-beschuldigt-oppositieleider-van-voorkennis-over-aanslag-7-oktober~a86527201/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-01",
+    "magnitude": 1,
+    "title": "Vrouw steekt twee mensen neer op Times Square en wordt doodgeschoten",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/vrouw-steekt-twee-mensen-neer-op-times-square-en-wordt-doodgeschoten/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-01",
+    "magnitude": 1,
+    "title": "Bestuurder (37) uit Scherpenheuvel-Zichem komt om bij ongeval tegen brug in Rillaar",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/vlaams-brabant/oost-brabant/aarschot/bestuurder-37-uit-scherpenheuvel-zichem-komt-om-bij-ongeval-tegen-brug-in-rillaar/160796067.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-01",
+    "magnitude": 1,
+    "title": "Man (22) kent straf bijna drie jaar na vechtpartij aan McDonald’s: “Hij trok zijn bovenkledij uit om zich ‘sterk’ te tonen”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/westhoek/koksijde/man-22-kent-straf-bijna-drie-jaar-na-vechtpartij-aan-mcdonalds-hij-trok-zijn-bovenkledij-uit-om-zich-sterk-te-tonen/160732496.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
