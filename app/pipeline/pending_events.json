@@ -61144,5 +61144,32 @@
     "link": "https://www.gva.be/buitenland/ook-belgen-opgepakt-na-dodelijke-schietpartij-in-nederland-die-gelinkt-wordt-aan-bolle-jos-politie-roept-inwoners-op-om-binnen-te-blijven/160800763.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-01",
+    "magnitude": 1,
+    "title": "Vakbonden kondigen vijfdaagse staking aan na mislukt overleg met minister Verlinden",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2025/04/17/65ca5fc3-02b5-4779-b35a-71e8af7dc5f4.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-01",
+    "magnitude": 5,
+    "title": "Schade na aanslag op lijn van hoogspanningsgroep Elia: 'Dit was geen kwajongensstreek'",
+    "source": "De Tijd",
+    "link": "https://www.tijd.be/r/t/1/id/10684315",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-01",
+    "magnitude": 1,
+    "title": "“Ze reden vijftig minuten al toeterend rond met de grasmaaier over onze velden”: Boechoutse voetbalclub opnieuw slachtoffer van vandalen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/boechout/ze-reden-vijftig-minuten-al-toeterend-rond-met-de-grasmaaier-over-onze-velden-boechoutse-voetbalclub-opnieuw-slachtoffer-van-vandalen/160835015.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
