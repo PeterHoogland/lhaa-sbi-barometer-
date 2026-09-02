@@ -61558,5 +61558,32 @@
     "link": "https://newsmonkey.be/ryanair-boeing-737-trappen-in-verband-gebracht-met-hoog-aantal-valincidenten-bij-passagiers/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-02",
+    "magnitude": 1,
+    "title": "Spectaculair ongeval in Antwerpse haven: vrachtwagen kantelt op auto na botsing met goederentrein",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/02/b685794d-342d-4071-9467-7d56dfb21816.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-02",
+    "magnitude": 1,
+    "title": "Opnieuw sabotage aan stroomnet in Duitsland: 4.200 megawatt van het net gehaald na reeks knallen en flitsen",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/02/7c54c1a7-083d-4101-80b6-4da1752765e5.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-02",
+    "magnitude": 1,
+    "title": "Twee Belgische toeristen (18) overvallen op straat in Napels, één van hen met mes in buik gestoken",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/twee-belgische-toeristen-18-overvallen-op-straat-in-napels-een-van-hen-met-mes-in-buik-gestoken/160853366.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
