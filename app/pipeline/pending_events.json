@@ -62170,5 +62170,23 @@
     "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/discussie.-steeds-meer-jongeren-slachtoffer-in-het-verkeer-in-antwerpen-welke-maatregelen-kunnen-we-nemen/160907745.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-03",
+    "magnitude": 1,
+    "title": "Spaanse premier roept koning Felipe op tot bezoek aan Ceuta en Melilla",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/spaanse-premier-roept-koning-felipe-op-tot-bezoek-aan-ceuta-en-melilla~ad9f534b/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-03",
+    "magnitude": 5,
+    "title": "Politie onderzoekt poging tot aanslag op Duits wapenbedrijf in München",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/politie-onderzoekt-poging-tot-aanslag-op-duits-wapenbedrijf-in-munchen~ad3f97f4/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
