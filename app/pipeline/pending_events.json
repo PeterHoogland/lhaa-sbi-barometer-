@@ -62458,5 +62458,41 @@
     "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/westhoek/koksijde/straat-tijdje-afgesloten-na-ongeval-met-89-jarige-man/160937482.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-03",
+    "magnitude": 1,
+    "title": "MR bevriest 131 miljoen euro voor Brusselse sociale huisvesting na herverkiezing omstreden PS-voorzitter",
+    "source": "Business AM",
+    "link": "https://businessam.be/mr-bevriest-131-miljoen-euro-voor-brusselse-sociale-huisvesting-na-herverkiezing-omstreden-ps-voorzitter/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-03",
+    "magnitude": 5,
+    "title": "Zijn zware zak viel op: twintiger verstopte geladen kalasjnikov tussen babykleren in Zuidstation in Brussel",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/crimi/zijn-zware-zak-viel-op-twintiger-verstopte-geladen-kalasjnikov-tussen-babykleren-in-zuidstation-in-brussel/160934190.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-03",
+    "magnitude": 1,
+    "title": "Opnieuw brute aanval op politieke vluchteling Claude Pero Luwara op klaarlichte dag in hartje Tienen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/vlaams-brabant/oost-brabant/tienen/opnieuw-brute-aanval-op-politieke-vluchteling-claude-pero-luwara-op-klaarlichte-dag-in-hartje-tienen/160947436.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-03",
+    "magnitude": 1,
+    "title": "Anuja organiseert benefiet in Sint-Niklaas voor slachtoffers overstroming in thuisland Nepal",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/anuja-organiseert-benefiet-in-sint-niklaas-voor-slachtoffers-overstroming-in-thuisland-nepal-213825",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
