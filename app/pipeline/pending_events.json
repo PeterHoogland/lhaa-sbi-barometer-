@@ -63313,5 +63313,23 @@
     "link": "https://newsmonkey.be/zo-halen-oplichters-je-bankrekening-leeg-zonder-die-te-hacken/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-05",
+    "magnitude": 1,
+    "title": "Vier fietsongevallen in 24 uur tijd",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/stekene/vier-fietsongevallen-in-24-uur-tijd/161022343.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-05",
+    "magnitude": 1,
+    "title": "Slachtoffer van mishandeling springt uit raam om te ontsnappen, net op dat moment rijdt politie voorbij",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/slachtoffer-van-mishandeling-springt-uit-raam-om-te-ontsnappen-net-op-dat-moment-rijdt-politie-voorbij/161021121.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
