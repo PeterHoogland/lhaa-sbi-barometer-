@@ -63997,5 +63997,23 @@
     "link": "https://images.vrt.be/vrtnws_share/2026/09/02/5545d311-bcc6-42ba-9ab0-53333abcd54e.jpg",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-06",
+    "magnitude": 1,
+    "title": "Hydraulische schaar gestolen in brandweerkazerne van Helchteren: \"Voor specifiek doel gestolen\"",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/06/cc44cf3d-5644-4c36-bc6e-4d1c78ae5a57.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-06",
+    "magnitude": 1,
+    "title": "Beringenaar gewond bij ongeval in Lummen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/lummen/beringenaar-gewond-bij-ongeval-in-lummen/161059752.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
