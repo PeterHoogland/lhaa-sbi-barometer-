@@ -63817,5 +63817,23 @@
     "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/brecht/na-ongeval-met-gymnasten-in-sint-job-nog-een-jong-slachtoffer-in-ziekenhuis/161039752.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-06",
+    "magnitude": 1,
+    "title": "Motorrijder levensgevaarlijk gewond bij ongeval op E17 in Waasmunster",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/06/09fd1a44-b68b-4b3f-a7e9-d6f429138c6b.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-06",
+    "magnitude": 1,
+    "title": "Motard in levensgevaar na ongeval op E17 in Waasmunster",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/waasmunster/motard-in-levensgevaar-na-ongeval-op-e17-in-waasmunster/161042795.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
