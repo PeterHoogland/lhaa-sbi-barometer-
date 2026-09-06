@@ -63889,5 +63889,32 @@
     "link": "https://www.nieuwsblad.be/sport/sportregio/slachtoffers-van-horrorcrash-in-24-uur-van-zolder-doen-hun-verhaal-ik-dacht-eerst-dat-er-een-auto-op-me-lag/161016531.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-06",
+    "magnitude": 1,
+    "title": "Luchtverkeersleiders te vroeg naar huis vertrokken op dag van dodelijke crash op LaGuardia-luchthaven New York",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/luchtverkeersleiders-te-vroeg-naar-huis-vertrokken-op-dag-van-dodelijke-crash-op-laguardia-luchthaven-new-york~b0b7e374/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-06",
+    "magnitude": 5,
+    "title": "Herdenkingsplaats voor Pride-aanslag in Berlijn opnieuw vernield: na kapotgerukte regenboogbank, nu boom ontworteld",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/herdenkingsplaats-voor-pride-aanslag-in-berlijn-opnieuw-vernield-na-kapotgerukte-regenboogbank-nu-boom-ontworteld~a61f833b/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-06",
+    "magnitude": 1,
+    "title": "Twee fietsers komen ten val in Wechelderzande",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/lille/twee-fietsers-komen-ten-val-in-wechelderzande/161050155.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
