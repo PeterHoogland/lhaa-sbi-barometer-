@@ -63871,5 +63871,23 @@
     "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/zuid-west-vlaanderen/lendelede/fietser-86-zwaargewond-na-aanrijding-met-auto/161045238.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-06",
+    "magnitude": 1,
+    "title": "Zware crash veroorzaakt opschudding in Monza: Charles Leclerc knalt in bandenmuur, rode vlag legt race stil",
+    "source": "Sporza",
+    "link": "https://images.vrt.be/width1280/2026/09/06/985bcb2f-b76e-4d9e-bf98-1f6f142ed408.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-06",
+    "magnitude": 1,
+    "title": "Slachtoffers van horrorcrash in 24 uur van Zolder doen hun verhaal: “Ik dacht eerst dat er een auto op me lag”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/sport/sportregio/slachtoffers-van-horrorcrash-in-24-uur-van-zolder-doen-hun-verhaal-ik-dacht-eerst-dat-er-een-auto-op-me-lag/161016531.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
