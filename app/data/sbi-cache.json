@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:36:14.882946",
+    "fetched_at": "2026-09-06T09:12:30.611266",
     "observation_date": "2026-09-06",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.6822
   },
   "I-D1-009": {
     "date": "2026-09-05",
-    "fetched_at": "2026-09-06T08:36:18.263376",
+    "fetched_at": "2026-09-06T09:12:34.100748",
     "observation_date": "2026-09-05",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 7.42
   },
   "I-D1-010": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:36:18.874455",
+    "fetched_at": "2026-09-06T09:12:34.579487",
     "observation_date": "2026-09-06",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.8791666666666667
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:43:04.583567",
+    "fetched_at": "2026-09-06T09:17:41.035763",
     "observation_date": "2026-09-06",
-    "source": "Verkeerscentrum DATEX II v3 — 2 files, 7.21 km totale filelengte (langste 4.71 km), snapshot 2026-09-06",
-    "value": 7.21
+    "source": "Verkeerscentrum DATEX II v3 — 1 files, 4.54 km totale filelengte (langste 4.54 km), snapshot 2026-09-06",
+    "value": 4.54
   },
   "I-D2-009": {
     "date": "2026-09-05",
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:42:24.483579",
+    "fetched_at": "2026-09-06T09:16:58.165354",
     "observation_date": "2026-09-06",
     "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
     "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:43:06.736529",
+    "fetched_at": "2026-09-06T09:17:43.136747",
     "observation_date": "2026-09-06",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 211 vertraagd (≥3min), 7 service-alerts (Vlaanderen)",
-    "value": 211.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 244 vertraagd (≥3min), 7 service-alerts (Vlaanderen)",
+    "value": 244.0
   },
   "I-D2-stib": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:43:05.266143",
+    "fetched_at": "2026-09-06T09:17:41.685707",
     "observation_date": "2026-09-06",
     "source": "STIB/MIVB TravellersInformation (Brussel, 364 actieve items; CC BY 4.0)",
     "value": 364.0
   },
   "I-D3-001": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:37:20.036676",
+    "fetched_at": "2026-09-06T09:12:37.037954",
     "observation_date": "2026-08",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.2
   },
   "I-D3-002": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:37:21.062548",
+    "fetched_at": "2026-09-06T09:12:38.466268",
     "observation_date": "2026-09-06",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 108.95136363636358
   },
   "I-D3-003": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:37:22.323468",
+    "fetched_at": "2026-09-06T09:12:39.043895",
     "observation_date": "2026-07",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.30pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:43:03.077892",
+    "fetched_at": "2026-09-06T09:17:39.219724",
     "observation_date": "2026-09-06",
     "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~688 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 3.0
   },
   "I-D3-005": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:37:23.097068",
+    "fetched_at": "2026-09-06T09:13:03.131580",
     "observation_date": "2026-07",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.0
   },
   "I-D3-006": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:37:23.876179",
+    "fetched_at": "2026-09-06T09:13:03.683703",
     "observation_date": "2026-07",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.64
   },
   "I-D3-007": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:37:27.395408",
+    "fetched_at": "2026-09-06T09:13:05.124116",
     "observation_date": "2026-08",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.3
   },
   "I-D3-009": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:37:25.203111",
+    "fetched_at": "2026-09-06T09:13:04.712340",
     "observation_date": "2026-09-06",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 0.977258831280474
+    "value": 0.9896531109416169
   },
   "I-D5-001": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T06:03:17.160279",
+    "fetched_at": "2026-09-06T09:14:54.895145",
     "observation_date": "2026-09-06",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1026/1087 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong -0.05 / midden -0.05 / ouder -0.07. Negatiefste headlines: «Start gerechtelijk jaar: 'Rechterlijke macht onder vuur, onafhankelijkheid in gevaar' Zowel in België als internationaal · ‘Lach niet om elke mop’: vijf fouten die je eerste date nodeloos ingewikkeld maken · Moeder (67) sterft bij zware woningbrand in Niel, dochter gewond naar ziekenhuis In de Wirixstraat in Niel is vanmorgen »; emotie-profiel headlines (matches/100 woorden): woede 0.10 / angst 0.18 / verdriet 0.17 / walging 0.02 (dominant: angst)",
-    "value": 2.0175
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1020/1085 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.04 / midden +0.04 / ouder +0.01. Negatiefste headlines: «Start gerechtelijk jaar: 'Rechterlijke macht onder vuur, onafhankelijkheid in gevaar' Zowel in België als internationaal · ‘Lach niet om elke mop’: vijf fouten die je eerste date nodeloos ingewikkeld maken · Moeder (67) sterft bij zware woningbrand in Niel, dochter gewond naar ziekenhuis In de Wirixstraat in Niel is vanmorgen »; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.17 / verdriet 0.17 / walging 0.03 (dominant: verdriet)",
+    "value": 1.6835
   },
   "I-D5-002": {
     "date": "2026-09-05",
-    "fetched_at": "2026-09-06T08:39:14.386060",
+    "fetched_at": "2026-09-06T09:14:55.544513",
     "observation_date": "2026-09-05",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 24.343
   },
   "I-D5-003": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T06:04:35.935284",
+    "fetched_at": "2026-09-06T09:16:19.268895",
     "observation_date": "2026-09-06",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 25 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.082067
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 28 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.0781
   },
   "I-D5-006S": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:42:23.927477",
+    "fetched_at": "2026-09-06T09:16:57.511859",
     "observation_date": "2026-09-06",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.13075314173913713
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": -0.21483054141125607
   },
   "I-D5-mastodon": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:42:26.442775",
+    "fetched_at": "2026-09-06T09:17:00.559852",
     "observation_date": "2026-09-06",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.7886678856398283
   },
   "I-D5-trends": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-06T08:43:03.472465",
+    "fetched_at": "2026-09-06T09:17:39.856862",
     "observation_date": "2026-09-06",
     "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.02 (stress-trends: expeditie robinson)",
-    "value": 0.0222
+    "value": 0.0217
   }
 }
