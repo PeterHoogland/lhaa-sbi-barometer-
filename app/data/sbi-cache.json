@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:00:20.737987",
+    "fetched_at": "2026-09-07T11:01:31.185840",
     "observation_date": "2026-09-07",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 1.124
+    "value": 1.12
   },
   "I-D1-009": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-07T10:00:23.746486",
+    "fetched_at": "2026-09-07T11:01:34.417950",
     "observation_date": "2026-09-06",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 6.88
   },
   "I-D1-010": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:00:24.421590",
+    "fetched_at": "2026-09-07T11:01:35.026082",
     "observation_date": "2026-09-07",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 1.175
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:05:33.288220",
+    "fetched_at": "2026-09-07T11:06:42.754857",
     "observation_date": "2026-09-07",
-    "source": "Verkeerscentrum DATEX II v3 — 19 files, 55.72 km totale filelengte (langste 11.78 km), snapshot 2026-09-07",
-    "value": 55.72
+    "source": "Verkeerscentrum DATEX II v3 — 28 files, 82.84 km totale filelengte (langste 12.16 km), snapshot 2026-09-07",
+    "value": 82.84
   },
   "I-D2-009": {
     "date": "2026-09-06",
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:04:53.254498",
+    "fetched_at": "2026-09-07T11:06:03.361503",
     "observation_date": "2026-09-07",
     "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
     "value": 2.0
   },
   "I-D2-delijn": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:05:35.209267",
+    "fetched_at": "2026-09-07T11:06:44.905404",
     "observation_date": "2026-09-07",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 424 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
-    "value": 424.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 463 vertraagd (≥3min), 15 service-alerts (Vlaanderen)",
+    "value": 463.0
   },
   "I-D2-stib": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:05:33.777053",
+    "fetched_at": "2026-09-07T11:06:43.377984",
     "observation_date": "2026-09-07",
     "source": "STIB/MIVB TravellersInformation (Brussel, 358 actieve items; CC BY 4.0)",
     "value": 358.0
   },
   "I-D3-001": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:00:26.851213",
+    "fetched_at": "2026-09-07T11:01:38.597560",
     "observation_date": "2026-08",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.2
   },
   "I-D3-002": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:00:27.870382",
+    "fetched_at": "2026-09-07T11:01:39.453636",
     "observation_date": "2026-09-07",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 166.56613636363633
   },
   "I-D3-003": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:00:28.624817",
+    "fetched_at": "2026-09-07T11:01:40.032159",
     "observation_date": "2026-07",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.30pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:05:31.802677",
+    "fetched_at": "2026-09-07T11:06:40.804624",
     "observation_date": "2026-09-07",
-    "source": "Ontslag-radar: 7 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 7.0
+    "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 6.0
   },
   "I-D3-005": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:00:29.094591",
+    "fetched_at": "2026-09-07T11:01:40.581599",
     "observation_date": "2026-07",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.0
   },
   "I-D3-006": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:00:29.590293",
+    "fetched_at": "2026-09-07T11:01:41.113667",
     "observation_date": "2026-07",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.64
   },
   "I-D3-007": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:00:31.446187",
+    "fetched_at": "2026-09-07T11:01:42.957261",
     "observation_date": "2026-08",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.3
   },
   "I-D3-009": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:00:31.110416",
+    "fetched_at": "2026-09-07T11:01:42.541210",
     "observation_date": "2026-09-07",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0419617698307233
   },
   "I-D5-001": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T09:16:39.148891",
+    "fetched_at": "2026-09-07T11:03:55.313264",
     "observation_date": "2026-09-07",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1032/1077 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.32 / midden +0.34 / ouder +0.41. Negatiefste headlines: «Egyptische televisie- en internetpersoonlijkheid Sarah Khalifa ter dood veroordeeld door ophanging voor drugshandel · ‘Lach niet om elke mop’: vijf fouten die je eerste date nodeloos ingewikkeld maken · Elf doden bij brand op markt in Indonesië, onder wie zes kinderen Elf personen, onder wie zes kinderen, zijn omgekomen b»; emotie-profiel headlines (matches/100 woorden): woede 0.08 / angst 0.14 / verdriet 0.19 / walging 0.03 (dominant: verdriet)",
-    "value": 1.6809
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1030/1074 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.27 / midden +0.29 / ouder +0.37. Negatiefste headlines: «Egyptische televisie- en internetpersoonlijkheid Sarah Khalifa ter dood veroordeeld door ophanging voor drugshandel · ‘Lach niet om elke mop’: vijf fouten die je eerste date nodeloos ingewikkeld maken · Live - Hulpverlening Gaza op kritiek dieptepunt: ‘Medicijnen, voedsel en brandstof raken op’ • Palestijnse student doodg»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.14 / verdriet 0.16 / walging 0.03 (dominant: verdriet)",
+    "value": 1.6283
   },
   "I-D5-002": {
     "date": "2026-09-06",
-    "fetched_at": "2026-09-07T10:02:20.052267",
+    "fetched_at": "2026-09-07T11:03:55.973764",
     "observation_date": "2026-09-06",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 24.811
   },
   "I-D5-003": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:04:15.528831",
+    "fetched_at": "2026-09-07T11:05:29.905385",
     "observation_date": "2026-09-07",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 22 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.0752
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 25 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.074333
   },
   "I-D5-006S": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:04:52.649443",
+    "fetched_at": "2026-09-07T11:06:02.707972",
     "observation_date": "2026-09-07",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.7423199982170244
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.3844187552837594
   },
   "I-D5-mastodon": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:04:56.703064",
+    "fetched_at": "2026-09-07T11:06:04.910517",
     "observation_date": "2026-09-07",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -1.443618148961824
   },
   "I-D5-trends": {
     "date": "2026-09-07",
-    "fetched_at": "2026-09-07T10:05:32.263719",
+    "fetched_at": "2026-09-07T11:06:41.412529",
     "observation_date": "2026-09-07",
-    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.05 (stress-trends: antwerpen)",
-    "value": 0.0488
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.01 (stress-trends: victoria van zweden)",
+    "value": 0.0086
   }
 }
