@@ -64411,5 +64411,59 @@
     "link": "https://www.tvoost.be/nieuws/onderzoek-naar-gevecht-met-boksbeugel-op-crammerock-213917",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 1,
+    "title": "5-daagse staking in gevangenissen tegen overbevolking en personeelstekort: 80 procent van het personeel voert actie",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/07/d670a322-dc18-403b-91e8-56f7fb9a1bcf.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 1,
+    "title": "26-jarige Belg opgepakt in onderzoek drugsraid Overasselt blijft veertien dagen langer vast",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/26-jarige-belg-opgepakt-in-onderzoek-drugsraid-overasselt-blijft-veertien-dagen-langer-vast~a628ae1d/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 1,
+    "title": "Dubbel zoveel klachten over phishing dit jaar. Geld kwijt? Advocate legt in 3 stappen uit hoe je het terugvordert van je bank",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/mijn-geld/dubbel-zoveel-klachten-over-phishing-dit-jaar-geld-kwijt-advocate-legt-in-3-stappen-uit-hoe-je-het-terugvordert-van-je-bank~a8619a6d/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 1,
+    "title": "Jonge helpdeskfraudeurs pluimen 82-jarige Hasseltse met list: “Ik ga liever naar de gevangenis dan het slachtoffer te vergoeden”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/hasselt/jonge-helpdeskfraudeurs-pluimen-82-jarige-hasseltse-met-list-ik-ga-liever-naar-de-gevangenis-dan-het-slachtoffer-te-vergoeden/161106480.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 1,
+    "title": "26-jarige Belg, opgepakt in zaak rond dodelijke schietpartij in Overasselt, moet veertien dagen langer in cel blijven",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/26-jarige-belg-opgepakt-in-zaak-rond-dodelijke-schietpartij-in-overasselt-moet-veertien-dagen-langer-in-cel-blijven/161101790.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 1,
+    "title": "56-jarige Genkse gewond na ongeval op rotonde",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/genk/56-jarige-genkse-gewond-na-ongeval-op-rotonde/161100393.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
