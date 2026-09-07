@@ -64258,5 +64258,41 @@
     "link": "https://www.nieuwsblad.be/buitenland/gebouw-ingestort-in-new-delhi-zes-doden-zoektocht-naar-slachtoffers-gaat-voort/161068163.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 3,
+    "title": "Nepal rouwt om meer dan 1.300 doden na verwoestende overstromingen",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/nepal-rouwt-om-meer-dan-1-300-doden-na-verwoestende-overstromingen/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 1,
+    "title": "Motorrijder (69) raakt zwaargewond bij ongeval op R6",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/rivierenland/mechelen/motorrijder-69-raakt-zwaargewond-bij-ongeval-op-r6/161076076.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 1,
+    "title": "Elf doden bij brand op markt in Indonesië, onder wie zes kinderen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/elf-doden-bij-brand-op-markt-in-indonesie-onder-wie-zes-kinderen/161071841.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 1,
+    "title": "Vakbond over staking in gevangenissen: “Noodmaatregelen helpen ons niet vooruit”",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/binnenland/vakbond-over-staking-in-gevangenissen-noodmaatregelen-helpen-ons-niet-vooruit/161069006.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
