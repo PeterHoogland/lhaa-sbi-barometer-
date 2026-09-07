@@ -64231,5 +64231,32 @@
     "link": "https://www.tvoost.be/nieuws/jonge-bromfietser-komt-onder-vrachtwagen-terecht-in-wichelen-213849",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 1,
+    "title": "Cipiers staken 5 dagen lang vanwege overbevolking en personeelstekort",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/07/f6588359-8d77-49f0-bd8a-7cc3e816f120.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 1,
+    "title": "Inzamelacties gestart na dodelijke brand in Niel: \"Onze buurt is heel solidair\"",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/07/d66d1918-7243-4786-8e7d-12cc1d775d93.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-07",
+    "magnitude": 1,
+    "title": "Gebouw ingestort in New Delhi: zes doden, zoektocht naar slachtoffers gaat voort",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/gebouw-ingestort-in-new-delhi-zes-doden-zoektocht-naar-slachtoffers-gaat-voort/161068163.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
