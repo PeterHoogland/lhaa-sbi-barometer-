@@ -65140,5 +65140,32 @@
     "link": "https://www.nieuwsblad.be/regio/limburg/lommel/verkeershinder-na-ongeval-op-ringlaan-in-lommel/161153180.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-08",
+    "magnitude": 1,
+    "title": "8 slachtoffers verliezen ruim 1 miljoen euro: 2 mannen aangehouden voor vriendschapsfraude",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/04/07/84d144b7-e20f-409d-996b-c553487e8259.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-08",
+    "magnitude": 1,
+    "title": "Netanyahu onder vuur na explosief rapport dat zegt dat hij anderhalve week voor aanval 7 oktober gewaarschuwd werd en er niets mee deed",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/netanyahu-onder-vuur-na-explosief-rapport-dat-zegt-dat-hij-anderhalve-week-voor-aanval-7-oktober-gewaarschuwd-werd-en-er-niets-mee-deed~a2033929/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-08",
+    "magnitude": 5,
+    "title": "Amper een jaar na spectaculaire Louvre-roof opnieuw voor miljoenen gestolen uit Frans museum: “Aanslag op deel van de geschiedenis”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/crimi/amper-een-jaar-na-spectaculaire-louvre-roof-opnieuw-voor-miljoenen-gestolen-uit-frans-museum-aanslag-op-deel-van-de-geschiedenis/161130037.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
