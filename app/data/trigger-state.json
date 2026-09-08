@@ -10,15 +10,10 @@
     "indicator.red:I-D1-003": "2026-06-04T11:46:59.582Z",
     "indicator.red:I-D5-001": "2026-09-07T11:08:59.696Z",
     "indicator.spike:I-D5-001": "2026-09-05T10:08:30.516Z",
-    "emotie.spike": "2026-09-05T08:25:29.893Z",
+    "emotie.spike": "2026-09-08T05:09:51.587Z",
     "indicator.spike:I-D5-003": "2026-08-07T17:57:10.599Z"
   },
   "recent": [
-    {
-      "key": "indicator.spike:I-D5-001",
-      "fired_at": "2026-08-07T06:08:24.405Z",
-      "severity": "hoog"
-    },
     {
       "key": "indicator.spike:I-D5-003",
       "fired_at": "2026-08-07T17:57:10.599Z",
@@ -263,6 +258,11 @@
       "key": "composite.red:composite",
       "fired_at": "2026-09-07T16:27:28.810Z",
       "severity": "hoog"
+    },
+    {
+      "key": "emotie.spike:I-D5-emotie",
+      "fired_at": "2026-09-08T05:09:51.587Z",
+      "severity": "let_op"
     }
   ]
 }
