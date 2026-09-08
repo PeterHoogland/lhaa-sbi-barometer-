@@ -64879,5 +64879,50 @@
     "link": "https://www.hln.be/mobiliteit/vanaf-het-moment-dat-je-met-je-nieuwe-wagen-wegrijdt-bij-de-garagist-is-hij-35-minder-waard-klopt-dat~aa79c485/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-08",
+    "magnitude": 3,
+    "title": "Dag van nationale rouw in Nepal",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/07/41bcbb6c-7708-4783-94be-108fa79002ca.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-08",
+    "magnitude": 1,
+    "title": "‘Wat ik me vooral herinner, is hoe gratuit en heftig het geweld was’: oud-slachtoffers kijken anders naar heldenstatus voor Lenoci",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/wat-ik-me-vooral-herinner-is-hoe-gratuit-en-heftig-het-geweld-was-oud-slachtoffers-kijken-anders-naar-heldenstatus-voor-lenoci~b76c6470/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-08",
+    "magnitude": 1,
+    "title": "Eiffeltoren weer open: personeel hervat werk na staking om wegsturen vrouwelijke medewerkers bij hindoeïstisch bezoek",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/eiffeltoren-weer-open-personeel-hervat-werk-na-staking-om-wegsturen-vrouwelijke-medewerkers-bij-hindoeistisch-bezoek~a3a12f9ed/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-08",
+    "magnitude": 1,
+    "title": "Van ‘soldaten’ aansturen bij aanslagen in Antwerpen tot gewelddadige gijzeling: wie zijn verdachten van dodelijke raid in Overasselt?",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/van-soldaten-aansturen-bij-aanslagen-in-antwerpen-tot-gewelddadige-gijzeling-wie-zijn-verdachten-van-dodelijke-raid-in-overasselt~a8248a64/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-08",
+    "magnitude": 1,
+    "title": "Politie focust op e-steps na 83 pv’s en 13 ongevallen:  “We controleren op snelheid en dragen van helm”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/lokeren/politie-focust-op-e-steps-na-83-pvs-en-13-ongevallen-we-controleren-op-snelheid-en-dragen-van-helm/161123936.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
