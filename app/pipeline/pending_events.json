@@ -65833,5 +65833,50 @@
     "link": "https://www.tvoost.be/nieuws/kettingbotsing-op-e17-in-kalken-veroorzaakt-verkeerschaos-213975",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Meerdere \"goed verborgen\" wapens gevonden bij basisschool in Overasselt, iets meer dan week na dodelijke strafexpeditie",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/09/c9b1c9c1-913f-433b-8e01-fcbbab5a413b.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Manifestatie op zwart kruispunt in Herent: ‘Ze was niet alleen voor ons een moeder uit de duizend’",
+    "source": "Knack",
+    "link": "https://www.knack.be/nieuws/belgie/manifestatie-op-zwart-kruispunt-in-herent-ze-was-niet-alleen-voor-ons-een-moeder-uit-de-duizend/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Vijftiger in levensgevaar na ongeval met speed pedelec op Antwerpse Zuid",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/vijftiger-in-levensgevaar-na-ongeval-met-speed-pedelec-op-antwerpse-zuid/161209187.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Politie Regio West-Limburg waarschuwt voor urban exploring: “Het is verboden en gevaarlijk”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/beringen/politie-regio-west-limburg-waarschuwt-voor-urban-exploring-het-is-verboden-en-gevaarlijk/161210073.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Vijftiger in levensgevaar na ongeval met speed pedelec",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/vijftiger-in-levensgevaar-na-ongeval-met-speed-pedelec/161208671.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
