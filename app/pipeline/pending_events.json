@@ -65725,5 +65725,50 @@
     "link": "https://www.gva.be/buitenland/live.-straten-oslo-steeds-drukker-koningin-mette-marit-kan-er-toch-bij-zijn-volg-de-begrafenis-hier/161179533.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Terugbetaling van medische kosten van de politie een jaar vertraagd",
+    "source": "Business AM",
+    "link": "https://businessam.be/terugbetaling-van-medische-kosten-van-de-politie-een-jaar-vertraagd/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Ouders van Benten (18) organiseren herdenking jaar na dodelijke steekpartij: “Eerste keer dat ik daar terugkom”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/ouders-van-benten-18-organiseren-herdenking-jaar-na-dodelijke-steekpartij-eerste-keer-dat-ik-daar-terugkom/161193614.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Drie mannen in de cel voor zware home-invasion in Huldenberg, bewoner ernstig toegetakeld",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/crimi/drie-mannen-in-de-cel-voor-zware-home-invasion-in-huldenberg-bewoner-ernstig-toegetakeld/161185009.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Jaar na dodelijke steekpartij organiseren ouders van Benten (18) herdenking in Corbiestraat in Mol: “Eerste keer dat ik daar terugkom”",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/regio/antwerpen/kempen/mol/jaar-na-dodelijke-steekpartij-organiseren-ouders-van-benten-18-herdenking-in-corbiestraat-in-mol-eerste-keer-dat-ik-daar-terugkom/161181447.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 3,
+    "title": "LIVE. Kist Harald V overgebracht naar kathedraal, koningin Mette-Marit kan toch bij uitvaart zijn: volg alles hier live",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/buitenland/live.-kist-harald-v-overgebracht-naar-kathedraal-koningin-mette-marit-kan-toch-bij-uitvaart-zijn-volg-alles-hier-live/161179533.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
