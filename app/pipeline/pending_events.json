@@ -65527,5 +65527,50 @@
     "link": "https://www.tvoost.be/nieuws/motard-kritiek-na-val-tegen-hoge-snelheid-op-e17-213878",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Meerdere ongevallen sturen ochtendspits op Vlaamse snelwegen in de war",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/antwerpen/meerdere-ongevallen-sturen-ochtendspits-op-vlaamse-snelwegen-in-de-war~af8ab000/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Brand in appartementsgebouw op Louizalaan in Brussel onder controle, zoekactie naar mogelijke slachtoffers nog bezig",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/brussel/brand-in-appartementsgebouw-op-louizalaan-in-brussel-onder-controle-zoekactie-naar-mogelijke-slachtoffers-nog-bezig~a075916b/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Burning Man reageert voor het eerst over sterfgevallen op festival",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/burning-man-reageert-voor-het-eerst-over-sterfgevallen-op-festival/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Moeizame ochtendspits door ongeval en defecte vrachtwagen op Ring rond Antwerpen en Brussel",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/moeizame-ochtendspits-door-ongeval-en-defecte-vrachtwagen-op-ring-rond-antwerpen-en-brussel/161179605.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Twee rijstroken versperd: ongeval aan ingang Kennedytunnel zorgt voor moeizame ochtendspits",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/twee-rijstroken-versperd-ongeval-aan-ingang-kennedytunnel-zorgt-voor-moeizame-ochtendspits/161179522.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
