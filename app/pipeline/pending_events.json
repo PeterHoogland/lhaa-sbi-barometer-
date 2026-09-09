@@ -65878,5 +65878,50 @@
     "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/antwerpen/vijftiger-in-levensgevaar-na-ongeval-met-speed-pedelec/161208671.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Man (52) in levensgevaar na ongeval met speedpedelec in Antwerpen",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/03/218a1777-88ca-4cbd-af48-ac63cfdbf94e.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 3,
+    "title": "LIVE. Nieuwe Koning Haakon VIII verschijnt op balkon - Noren massaal aanwezig voor koninklijk paleis",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/live.-nieuwe-koning-haakon-viii-verschijnt-op-balkon-noren-massaal-aanwezig-voor-koninklijk-paleis/161179158.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Vrouw op speedpedelec gewond na ongeval in Lummen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/lummen/vrouw-op-speedpedelec-gewond-na-ongeval-in-lummen/161214985.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Twee fietsers gewond bij ongeval in Opitter",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/bree/twee-fietsers-gewond-bij-ongeval-in-opitter/161213911.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-09",
+    "magnitude": 1,
+    "title": "Fietser uit Beringen gewond bij ongeval in Houthalen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/houthalen-helchteren/fietser-uit-beringen-gewond-bij-ongeval-in-houthalen/161213741.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
