@@ -66571,5 +66571,23 @@
     "link": "https://www.dewereldmorgen.be/artikel/2026/09/07/vijfdaagse-staking-in-belgische-gevangenissen-iedereen-met-expertise-zegt-dat-deze-maatregelen-niet",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-10",
+    "magnitude": 1,
+    "title": "Zeven doden bij nieuwe Russische aanvalsgolf op Oekraïne",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/zeven-doden-bij-nieuwe-russische-aanvalsgolf-op-oekraine/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-10",
+    "magnitude": 1,
+    "title": "Burgemeester van Willebroek vraagt meer blauw op straat na dodelijke steekpartij: “Ik neem dit signaal zeer ernstig”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/rivierenland/willebroek/burgemeester-van-willebroek-vraagt-meer-blauw-op-straat-na-dodelijke-steekpartij-ik-neem-dit-signaal-zeer-ernstig/161266351.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
