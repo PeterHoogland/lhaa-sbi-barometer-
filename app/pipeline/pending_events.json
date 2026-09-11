@@ -66967,5 +66967,32 @@
     "link": "https://www.tvoost.be/nieuws/vrachtwagen-vat-vuur-na-aanrijding-met-goederentrein-in-verrebroek-213941",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-11",
+    "magnitude": 1,
+    "title": "Extra politie op straat in Willebroek na dodelijke steekpartij: \"Burgers voelen zich onveilig\"",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/10/d483273f-c248-47af-a193-d85b94ba2951.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-11",
+    "magnitude": 5,
+    "title": "Droneshow brengt Twin Towers voor even terug in New York als eerbetoon aan slachtoffers 9/11",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/droneshow-brengt-twin-towers-voor-even-terug-in-new-york-als-eerbetoon-aan-slachtoffers-911/161264618.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-11",
+    "magnitude": 1,
+    "title": "Motorrijder afgevoerd na zwaar ongeval in Veldwezelt",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/lanaken/motorrijder-afgevoerd-na-zwaar-ongeval-in-veldwezelt/161292128.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
