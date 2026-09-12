@@ -67831,5 +67831,50 @@
     "link": "https://www.nieuwsblad.be/binnenland/bejaard-koppel-raakt-zwaargewond-en-moet-bevrijd-worden-na-botsing-tussen-twee-autos-op-e313-in-hasselt/161350653.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-12",
+    "magnitude": 1,
+    "title": "Bijna uur file op E17 na zwaar ongeval richting Gent",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2015/05/22/479cc2e1-008e-11e5-8a1a-00163edf48dd.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-12",
+    "magnitude": 1,
+    "title": "1 op de 10 werknemers blijvend arbeidsongeschikt na ongeval met speedpedelec of e-step: verzekeraars lanceren campagne",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2025/07/22/024196e2-6f51-4648-97f5-017bd2dfdc92.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-12",
+    "magnitude": 1,
+    "title": "E17 richting Gent terug vrij na ongeval in Lokeren: nog kwartier aanschuiven",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/lokeren/e17-richting-gent-terug-vrij-na-ongeval-in-lokeren-nog-kwartier-aanschuiven~a8d8312c/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-12",
+    "magnitude": 1,
+    "title": "Drie gewonden nadat auto dwars op E17 belandt en wordt aangereden: snelweg tijdelijk afgesloten",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/lokeren/drie-gewonden-nadat-auto-dwars-op-e17-belandt-en-wordt-aangereden-snelweg-tijdelijk-afgesloten/161351325.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-12",
+    "magnitude": 1,
+    "title": "Twee fietssters raken gewond bij aanrijdingen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/rivierenland/mechelen/twee-fietssters-raken-gewond-bij-aanrijdingen/161351269.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
