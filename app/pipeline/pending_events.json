@@ -68074,5 +68074,356 @@
     "link": "https://www.nieuwsblad.be/binnenland/luchtverkeerleider-skeyes-bevestigt-aanwezigheid-van-drone-op-brussels-airport-waardoor-vliegverkeer-kort-werd-stilgelegd-kunnen-geen-risicos-nemen/161361812.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Onderzoek naar ontspoorde trein in Frankrijk: parket heeft geen aanwijzing van kwaad opzet",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/12/1e1a70fd-095c-44a0-aec4-c6f0b415c7fc.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Brand onder controle na vuurwerkincident vliegshow in Hechtel-Eksel",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/12/6d803fb2-0a9f-48bc-8a8c-f5e826062ede.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Fietser overleden na val op terugweg van Hopduvelfeesten in Asse",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/02/4bbf155c-f66f-4f93-b476-fa97731c8682.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Al 76 dodelijke slachtoffers na brand op ferry in Filipijnen",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/12/83753c12-b383-4a62-b632-8a1555280882.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Slachtoffers busongeval Zwitserland zijn 4 vrouwen en 1 man, allemaal ouder dan 70",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/12/f40bc63f-8103-45e4-8ef5-fe5e94124fd5.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "3 gewonden na ongeval op E17, weg richting Gent weer vrijgemaakt",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/12/43c0e432-3398-4125-a28e-1dc7884ee9a6.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Vliegshow in Hechtel-Eksel stilgelegd nadat er brand uitbreekt door vuurwerk",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/vliegshow-in-hechtel-eksel-stilgelegd-nadat-er-brand-uitbreekt-door-vuurwerk~b8837359/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Honderden arrestaties bij herdenking slachtoffers regime Pinochet in Chili",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/honderden-arrestaties-bij-herdenking-slachtoffers-regime-pinochet-in-chili~a078d955/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Ingenieur maakt dodelijke val uit eerste verdieping in Brasschaat",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/brasschaat/ingenieur-maakt-dodelijke-val-uit-eerste-verdieping-in-brasschaat~a2960c27/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Man sterft op weg naar huwelijk: “Zijn getuige verloor controle over het stuur”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/man-sterft-op-weg-naar-huwelijk-zijn-getuige-verloor-controle-over-het-stuur~a1d48b30/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 5,
+    "title": "Treinontsporing Frankrijk: parket heeft geen enkele aanwijzing voor aanslag",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/treinontsporing-frankrijk-parket-heeft-geen-enkele-aanwijzing-voor-aanslag~a0f339d8/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Slachtoffer van aanrijding met tram 8 zwaargewond naar het ziekenhuis",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/samenleving/slachtoffer-van-aanrijding-met-tram-8-zwaargewond-naar-het-ziekenhuis-2026-09-11",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Brusselse regering komt met 'Nieuwe start'-pakket voor slachtoffers van huiselijk geweld",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/samenleving/brusselse-regering-komt-met-nieuwe-start-pakket-voor-slachtoffers-van-huiselijk-geweld-2026-09-11",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Betogers eisen evacuatie van Palestijnse gezinnen en studenten uit Gaza",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/samenleving/betogers-eisen-evacuatie-van-palestijnse-gezinnen-en-studenten-uit-gaza-2026-09-10",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Ook woensdag personeel opgevorderd in gevangenissen",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/veiligheid/ook-woensdag-personeel-opgevorderd-gevangenissen-2026-09-09",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Mobiliteits­expert Dirk Lauwers: 'Verbied de privéstep, niet de deelstep'",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/opinie/mobiliteitsexpert-dirk-lauwers-verbied-de-privestep-niet-de-deelstep-2026-09-09",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Toenemende druk en economische problemen: dwingt Donald Trump Iran dan toch tot toegevingen?",
+    "source": "Knack",
+    "link": "https://www.knack.be/nieuws/wereld/toenemende-druk-en-iraanse-economische-problemen-dwingt-donald-trump-iran-dan-toch-tot-toegevingen/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Manifestatie op zwart kruispunt in Herent: ‘Ze was niet alleen voor ons een moeder uit de duizend’",
+    "source": "Knack",
+    "link": "https://www.knack.be/nieuws/belgie/manifestatie-op-zwart-kruispunt-in-herent-ze-was-niet-alleen-voor-ons-een-moeder-uit-de-duizend/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Saoedi-Arabië sluit cruciale oliepijpleiding",
+    "source": "Trends",
+    "link": "https://trends.knack.be/beleggen/beursnieuws/saoedi-arabie-sluit-cruciale-oliepijpleiding/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 3,
+    "title": "Trump wil als bemiddelaar optreden als spanningen rond Falklandeilanden verder oplopen",
+    "source": "Business AM",
+    "link": "https://businessam.be/trump-wil-als-bemiddelaar-optreden-als-spanningen-rond-falklandeilanden-verder-oplopen/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 3,
+    "title": "Beleid van China hielp wereldwijde explosie van de olieprijs voorkomen, maar het ergste moet nog komen",
+    "source": "Business AM",
+    "link": "https://businessam.be/beleid-van-china-hielp-wereldwijde-explosie-van-de-olieprijs-voorkomen-maar-het-ergste-moet-nog-komen/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Indonesië wil vijf baby-orang-oetans uit India terughalen",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/indonesie-wil-vijf-baby-orang-oetans-uit-india-terughalen/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Nederlandse militairen krijgen disciplinaire maatregelen na seksistische online aanvallen",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/nederlandse-militairen-krijgen-disciplinaire-maatregelen-na-seksistische-online-aanvallen/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Vijf doden bij ongeval met Nederlandse tourbus in Zwitserland",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/vijf-doden-bij-ongeval-met-nederlandse-tourbus-in-zwitserland/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 5,
+    "title": "25 jaar na 9/11 blijft aanslag diep in Amerikaans bewustzijn",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/25-jaar-na-9-11-wachten-hoofdverdachten-nog-altijd-op-proces/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "25 doden bij brand op vrachtschip in Chinese haven",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/25-doden-bij-brand-op-vrachtschip-in-chinese-haven/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Griekenland roept bevolking op zich te beschermen tegen muggen",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/griekenland-roept-bevolking-op-zich-te-beschermen-tegen-muggen/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Vijf doden en 86 vermisten na brand op Filipijnse veerboot",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/vijf-doden-en-86-vermisten-na-brand-op-filipijnse-veerboot/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Zeven doden bij nieuwe Russische aanvalsgolf op Oekraïne",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/zeven-doden-bij-nieuwe-russische-aanvalsgolf-op-oekraine/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Bijna 300 arrestaties in Chili tijdens betogingen voor herdenking staatsgreep Pinochet",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/bijna-300-arrestaties-in-chili-tijdens-betogingen-voor-herdenking-staatsgreep-pinochet/161369000.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Dertien betrokkenen busongeluk Zwitserland terug naar Nederland",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/dertien-betrokkenen-busongeluk-zwitserland-terug-naar-nederland/161369026.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Vrienden en familie houden aangrijpende wake voor doodgestoken David (30): “Waarom is hij van ons afgepakt?”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/rivierenland/willebroek/vrienden-en-familie-houden-aangrijpende-wake-voor-doodgestoken-david-30-waarom-is-hij-van-ons-afgepakt/161368351.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Tweede dag op rij: opnieuw drone gespot op Brussels Airport",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/tweede-dag-op-rij-opnieuw-drone-gespot-op-brussels-airport/161367394.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Man komt in Libin om het leven op weg naar zijn huwelijk",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/binnenland/man-komt-in-libin-om-het-leven-op-weg-naar-zijn-huwelijk/161367636.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "De plannen van de regering De Wever",
+    "source": "De Wereld Morgen",
+    "link": "https://www.dewereldmorgen.be/dossiers/de-plannen-van-de-regering-de-wever-0",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Bestuurder wil rechtsomkeer maken op E17 in Lokeren: 3 lichtgewonden, snelweg afgesloten",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/bestuurder-wil-rechtsomkeer-maken-op-e17-in-lokeren-3-lichtgewonden-snelweg-afgesloten-214054",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "25 jaar na 9/11 is herdenkingsmoment in Kruibeke een mooie traditie geworden",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/25-jaar-na-911-is-herdenkingsmoment-in-kruibeke-een-mooie-traditie-geworden-214043",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 3,
+    "title": "ABVV en ACV organiseren nationale actie tegen besparingsbeleid op 9 oktober",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/abvv-en-acv-organiseren-nationale-actie-tegen-besparingsbeleid-op-9-oktober-213989",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Motard zwaargewond bij val op Westelijk tangent in Belsele",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/motard-zwaargewond-bij-val-op-westelijk-tangent-in-belsele-213976",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
