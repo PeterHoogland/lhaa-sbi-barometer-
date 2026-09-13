@@ -68497,5 +68497,32 @@
     "link": "https://www.hln.be/buitenland/treinontsporing-frankrijk-behalve-gerechtelijk-ook-technisch-onderzoek-gestart-parket-heeft-geen-enkele-aanwijzing-voor-aanslag~a0f339d8/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Bruidegom sterft bij ongeval op weg naar de kerk",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/08/20/3dafffdf-3c55-4abf-a8e2-70fa424f7062.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Twee zwaargewonde bestuursters (35) en baby naar ziekenhuis gebracht na ongeval in Herk-de-Stad",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/herk-de-stad/twee-zwaargewonde-bestuursters-35-en-baby-naar-ziekenhuis-gebracht-na-ongeval-in-herk-de-stad/161340716.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-13",
+    "magnitude": 1,
+    "title": "Honderden gezinnen trotseren slecht weer: opendeurdag brandweer wordt opnieuw een spektakel",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/vlaams-brabant/halle-vilvoorde/halle/honderden-gezinnen-trotseren-slecht-weer-opendeurdag-brandweer-wordt-opnieuw-een-spektakel/161309110.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
