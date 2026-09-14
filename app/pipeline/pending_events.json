@@ -69217,5 +69217,23 @@
     "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/gent/zijn-vrienden-verantwoordelijk-voor-dood-van-man-die-stierf-na-overdosis-heel-tragisch-dossier/161438162.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-14",
+    "magnitude": 3,
+    "title": "Hoe oprecht is de angst voor een AI-catastrofe?",
+    "source": "De Tijd",
+    "link": "https://www.tijd.be/r/t/1/id/10685915",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-14",
+    "magnitude": 1,
+    "title": "Vijf gewonden bij ongeval met paardenkoetsen in Oudsbergen: “Paarden sloegen op hol”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/oudsbergen/vijf-gewonden-bij-ongeval-met-paardenkoetsen-in-oudsbergen-paarden-sloegen-op-hol/161436699.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
