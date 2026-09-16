@@ -70675,5 +70675,23 @@
     "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/vlaamse-ardennen/brakel/dubbele-ingreep-moet-overstroming-van-steevast-zwaar-getroffen-straten-voorkomen/161538301.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-16",
+    "magnitude": 1,
+    "title": "Minstens 67 doden bij instorting van goudmijn in Soedan",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/minstens-67-doden-bij-instorting-van-goudmijn-in-soedan/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-16",
+    "magnitude": 1,
+    "title": "Russische reactor van omstreden Tsjechische kerncentrale stilgelegd en van elektriciteitsnet gekoppeld na onverwacht probleem",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/russische-reactor-van-omstreden-tsjechische-kerncentrale-stilgelegd-en-van-elektriciteitsnet-gekoppeld-na-onverwacht-probleem/161558411.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
