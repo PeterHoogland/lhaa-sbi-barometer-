@@ -70306,5 +70306,41 @@
     "link": "https://www.nieuwsblad.be/buitenland/helikopter-van-tv-station-uit-los-angeles-stort-neer-tijdens-uitzending-drie-doden-en-een-gewonde/161508541.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-16",
+    "magnitude": 1,
+    "title": "Verdachte aangehouden na steekpartij in Eeklo, slachtoffer nog altijd in levensgevaar",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2020/01/21/3a8002cc-3c41-11ea-aae0-02b7b76bf47f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-16",
+    "magnitude": 1,
+    "title": "14-jarige lichtgewond na vechtpartij met zelfgemaakt mes op school in Sint-Niklaas: 13-jarige dader gearresteerd",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/sint-niklaas/14-jarige-lichtgewond-na-vechtpartij-met-zelfgemaakt-mes-op-school-in-sint-niklaas-13-jarige-dader-gearresteerd~a6da3a510/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-16",
+    "magnitude": 1,
+    "title": "Zes minderjarigen beschuldigen bestuurslid Oostendse voetbalclub van grensoverschrijdend gedrag, maar die gaat in tegenaanval: “Ik ben slachtoffer en geen dader”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/oostende/zes-minderjarigen-beschuldigen-bestuurslid-oostendse-voetbalclub-van-grensoverschrijdend-gedrag-maar-die-gaat-in-tegenaanval-ik-ben-slachtoffer-en-geen-dader~a46fe03c/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-16",
+    "magnitude": 1,
+    "title": "Zeker zestig doden bij instorting van goudmijn in Soedan",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/zeker-zestig-doden-bij-instorting-van-goudmijn-in-soedan/161514765.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
