@@ -71242,5 +71242,32 @@
     "link": "https://www.nieuwsblad.be/binnenland/totnogtoe-vier-lichte-ongevallen-met-zelfrijdende-teslas-op-belgische-wegen/161617502.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-17",
+    "magnitude": 1,
+    "title": "Russen blokkeren Oekraïens frontstadje Olesjky: ‘De stad is veranderd in een dodelijke val’",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/russen-blokkeren-oekraiens-frontstadje-olesjky-de-stad-is-veranderd-in-een-dodelijke-val~becdca98/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-17",
+    "magnitude": 1,
+    "title": "Veertigtal vluchten geschrapt vrijdag door staking bij Skeyes Charleroi",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/veertigtal-vluchten-geschrapt-vrijdag-door-staking-bij-skeyes-charleroi/161621363.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-17",
+    "magnitude": 1,
+    "title": "Twee gewonden bij frontale botsing",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/denderregio/dendermonde/twee-gewonden-bij-frontale-botsing/161620397.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
