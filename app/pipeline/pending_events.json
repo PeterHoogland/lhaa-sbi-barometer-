@@ -71728,5 +71728,41 @@
     "link": "https://www.hln.be/nieuws/europol-identificeert-18-misbruikte-kinderen-tijdens-internationale-actie-met-28-landen~a0962202/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-18",
+    "magnitude": 1,
+    "title": "Schoolbusje kantelt na botsing met politievoertuig in Noordwijk Brussel",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/18/0c8486f0-fa65-449c-96dd-e1938b5fda53.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-18",
+    "magnitude": 1,
+    "title": "E34 richting Nederland volledig versperd door ongeval bij Turnhout-West: 20 minuten file",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/turnhout/e34-richting-nederland-volledig-versperd-door-ongeval-bij-turnhout-west-20-minuten-file~ac408953/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-18",
+    "magnitude": 1,
+    "title": "Schoolbusje kantelt na botsing met politievoertuig aan Masui",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/samenleving/schoolbusje-kantelt-na-botsing-met-politievoertuig-aan-masui-2026-09-18",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-18",
+    "magnitude": 1,
+    "title": "E34 volledig versperd na ongeval in Turnhout: bijna een uur file",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/turnhout/e34-volledig-versperd-na-ongeval-in-turnhout-bijna-een-uur-file/161666287.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
