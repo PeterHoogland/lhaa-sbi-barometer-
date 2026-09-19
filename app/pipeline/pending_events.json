@@ -72178,5 +72178,23 @@
     "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/borgerhout/botsing-tussen-tesla-en-lijnbus-veroorzaakt-hinder-op-e313-in-borgerhout/161683830.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Landbouwvoertuig belandt in de gracht",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/beveren-kruibeke-zwijndrecht/landbouwvoertuig-belandt-in-de-gracht/161684979.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Botsing tussen Tesla en lijnbus veroorzaakte tijdlang hinder op E313 in Borgerhout",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/borgerhout/botsing-tussen-tesla-en-lijnbus-veroorzaakte-tijdlang-hinder-op-e313-in-borgerhout/161683830.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
