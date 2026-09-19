@@ -72304,5 +72304,32 @@
     "link": "https://www.knack.be/nieuws/wereld/europa/rellen-bij-extreemrechtse-betoging-in-den-haag/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Nederlandse minister van Justitie spreekt van \"walgelijke beelden\" na rellen in Den Haag, rust is intussen teruggekeerd",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/19/0e830b86-c5e5-468e-ba57-329b1b60774b.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "100-tal actievoerders aangehouden na blokkade snelweg door Extinction Rebellion in Nederland",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/100-tal-actievoerders-aangehouden-na-blokkade-snelweg-door-extinction-rebellion-in-nederland~a6653ceb/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Extreemrechtse betoging in Den Haag loopt zwaar uit de hand, agenten bekogeld met vuurwerk en verkeersborden",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/extreemrechtse-betoging-in-den-haag-loopt-zwaar-uit-de-hand-agenten-bekogeld-met-vuurwerk-en-verkeersborden/161690841.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
