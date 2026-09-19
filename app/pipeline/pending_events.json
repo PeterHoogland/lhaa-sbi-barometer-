@@ -72232,5 +72232,23 @@
     "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/herselt/politiecombi-botst-met-auto-in-herselt-chauffeur-raakt-zwaargewond/161685378.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Noord-Koreaanse hacker infiltreert IT-consultant van Vlaamse overheid via neprecruiter op LinkedIn",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/tech/noord-koreaanse-hacker-infiltreert-it-consultant-van-vlaamse-overheid-via-neprecruiter-op-linkedin~afa82368/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Landbouwvoertuig belandt in gracht, wegdek over honderden meters besmeurd met olie",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/beveren-kruibeke-zwijndrecht/landbouwvoertuig-belandt-in-gracht-wegdek-over-honderden-meters-besmeurd-met-olie/161684979.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
