@@ -71881,5 +71881,230 @@
     "link": "https://www.nieuwsblad.be/binnenland/politieachtervolging-vanuit-berchem-eindigt-met-ongeval-en-twee-arrestaties-op-e34-in-turnhout-snelweg-tijdlang-versperd/161666287.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Europol identificeert 70 mogelijke slachtoffers van mensensmokkel in Indiase restaurants in 5 Europese landen",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/18/d1dbcb24-1e1c-442b-918c-dd6e19d3f1fa.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 5,
+    "title": "Zeker 31 doden bij aanslag politiecomplex Pakistan",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/zeker-31-doden-bij-aanslag-politiecomplex-pakistan~a99a21df/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Leeg schoolbusje kantelt na botsing met politievoertuig aan Masui",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/samenleving/schoolbusje-kantelt-na-botsing-met-politievoertuig-aan-masui-2026-09-18",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Tweehonderd betogers eisen gerechtigheid voor queer gemeenschap in Turkije",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/samenleving/tweehonderdtal-betogers-eist-gerechtigheid-voor-queer-gemeenschap-turkije-2026-09-18",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Vakbonden bevestigen staking in alle gevangenissen op 25 september",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/veiligheid/vakbonden-bevestigen-staking-alle-gevangenissen-op-25-september-2026-09-17",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Brandweer Brussel snakt naar versterking: 'Geen tijd meer voor mentale rust'",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/samenleving/brandweer-brussel-snakt-naar-versterking-geen-tijd-meer-voor-mentale-rust-2026-09-16",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "BRUZZ 24 over de staking van Casino Viage en de werken aan Metro 3",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/videoreeks/journaal-bruzz-24/video-bruzz-24-over-de-staking-van-casino-viage-en-de-werken-aan-metro-3",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Wail Sarouyenne Fallaoui veroordeeld tot 17 jaar cel voor doodslag in Peterbospark",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/justitie/wail-sarouyenne-fallaoui-schuldig-bovenden-aan-doodslag-peterbospark-door-assisenjury-2026-09-15",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Equinor grijpt kans op lng-markt na blokkade Straat van Hormuz",
+    "source": "Business AM",
+    "link": "https://businessam.be/equinor-grijpt-kans-op-lng-markt-na-blokkade-straat-van-hormuz/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Duitsland evalueert ziekenhuizen en medische paraatheid om klaar te zijn voor een eventuele oorlog",
+    "source": "Business AM",
+    "link": "https://businessam.be/duitsland-evalueert-ziekenhuizen-en-medische-paraatheid-om-klaar-te-zijn-voor-een-eventuele-oorlog/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Ierland trekt zich opnieuw terug uit Eurovisiesongfestival",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/ierland-trekt-zich-opnieuw-terug-uit-eurovisiesongfestival/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Buckingham Palace doorbreekt stilzwijgen na beschuldigingen over Diana",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/buckingham-palace-doorbreekt-stilzwijgen-na-beschuldigingen-over-diana/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 3,
+    "title": "Fiji roept nationale noodtoestand uit door explosieve hiv-stijging",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/fiji-roept-nationale-noodtoestand-uit-door-explosieve-hiv-stijging/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 3,
+    "title": "Klimaatopwarming speelde grote rol bij dodelijke ramp in Himalaya",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/klimaatopwarming-speelde-grote-rol-bij-dodelijke-ramp-in-himalaya/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Aantal dodelijke slachtoffers in de luchtvaart in de EU stijgt in 2025, blijkt uit Eurostat-gegevens",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/aantal-dodelijke-slachtoffers-in-de-luchtvaart-in-de-eu-stijgt-in-2025-blijkt-uit-eurostat-gegevens/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Minstens 67 doden bij instorting van goudmijn in Soedan",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/minstens-67-doden-bij-instorting-van-goudmijn-in-soedan/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Russische drone-aanval op Oekraïense minibus eist 5 slachtoffers",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/russische-drone-aanval-op-oekraiense-minibus-eist-5-slachtoffers/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Amerikaanse nieuwshelikopter stort neer in Californië",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/amerikaanse-nieuwshelikopter-stort-neer-in-californie/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Stranden aan westkust van Australië blijven gesloten na dodelijke haaienaanval",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/stranden-aan-westkust-van-australie-blijven-gesloten-na-dodelijke-haaienaanval/161682303.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Familieruzie eindigt in drama nadat zevenjarig Frans kind zijn tante met mes in hals steekt",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/familieruzie-eindigt-in-drama-nadat-zevenjarig-frans-kind-zijn-tante-met-mes-in-hals-steekt/161681900.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Tot drie jaar celstraf voor jongeren betrokken bij oplichting van 88-jarige man: “Hij voelt zich sindsdien nog onveiliger”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/gent/tot-drie-jaar-celstraf-voor-jongeren-betrokken-bij-oplichting-van-88-jarige-man-hij-voelt-zich-sindsdien-nog-onveiliger/161665009.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "Zelfrijdende Tesla’s bij minder ongevallen betrokken dan als er wél chauffeur aan het stuur zit",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/zelfrijdende-teslas-bij-minder-ongevallen-betrokken-dan-als-er-wel-chauffeur-aan-het-stuur-zit/161645057.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "De plannen van de regering De Wever",
+    "source": "De Wereld Morgen",
+    "link": "https://www.dewereldmorgen.be/dossiers/de-plannen-van-de-regering-de-wever-0",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 1,
+    "title": "E34 versperd na zwaar verkeersongeval ter hoogte van Kemzeke",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/e34-versperd-na-zwaar-verkeersongeval-ter-hoogte-van-kemzeke-214218",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-19",
+    "magnitude": 5,
+    "title": "Il aurait fait vivre ses enfants dans la terreur et aurait abusé sexuellement certains, mais aussi de leurs petites amies et de la fille d’un ami",
+    "source": "La DH",
+    "link": "https://www.dhnet.be/regions/liege/2026/09/18/il-aurait-fait-vivre-ses-enfants-dans-la-terreur-et-aurait-abuse-sexuellement-certains-mais-aussi-de-leurs-petites-amies-et-de-la-fille-dun-ami-CFMGREUTNJG7DKP6I6ZOHCPJBU/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
