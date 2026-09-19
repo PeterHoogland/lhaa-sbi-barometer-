@@ -1,24 +1,24 @@
 {
   "I-D1-004": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:00:38.636163",
+    "fetched_at": "2026-09-19T12:42:14.952505",
     "observation_date": "2026-09-19",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.61
+    "value": 0.615
   },
   "I-D1-009": {
     "date": "2026-09-18",
-    "fetched_at": "2026-09-19T11:00:42.911242",
+    "fetched_at": "2026-09-19T12:42:19.365602",
     "observation_date": "2026-09-18",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 5.67
   },
   "I-D1-010": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:00:43.514981",
+    "fetched_at": "2026-09-19T12:42:19.991167",
     "observation_date": "2026-09-19",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
-    "value": 0.7083333333333333
+    "value": 0.6791666666666667
   },
   "I-D1-010-sci": {
     "date": "2026-06-18",
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:06:06.326198",
+    "fetched_at": "2026-09-19T12:47:23.234118",
     "observation_date": "2026-09-19",
-    "source": "Verkeerscentrum DATEX II v3 — 10 files, 12.98 km totale filelengte (langste 3.74 km), snapshot 2026-09-19",
-    "value": 12.98
+    "source": "Verkeerscentrum DATEX II v3 — 11 files, 15.61 km totale filelengte (langste 6.81 km), snapshot 2026-09-19",
+    "value": 15.61
   },
   "I-D2-009": {
     "date": "2026-09-18",
@@ -43,119 +43,119 @@
   },
   "I-D2-009S": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:05:25.987793",
+    "fetched_at": "2026-09-19T12:46:44.903892",
     "observation_date": "2026-09-19",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D2-delijn": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:06:08.772934",
+    "fetched_at": "2026-09-19T12:47:25.860743",
     "observation_date": "2026-09-19",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 437 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
-    "value": 437.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 513 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
+    "value": 513.0
   },
   "I-D2-stib": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:06:07.124043",
+    "fetched_at": "2026-09-19T12:47:23.986838",
     "observation_date": "2026-09-19",
     "source": "STIB/MIVB TravellersInformation (Brussel, 400 actieve items; CC BY 4.0)",
     "value": 400.0
   },
   "I-D3-001": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:00:49.485299",
+    "fetched_at": "2026-09-19T12:42:22.712022",
     "observation_date": "2026-08",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.2
   },
   "I-D3-002": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:00:51.062057",
+    "fetched_at": "2026-09-19T12:42:24.212378",
     "observation_date": "2026-09-19",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 43.37397727272727
   },
   "I-D3-003": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:00:52.489677",
+    "fetched_at": "2026-09-19T12:42:24.994967",
     "observation_date": "2026-07",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.30pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:06:04.517145",
+    "fetched_at": "2026-09-19T12:47:21.264360",
     "observation_date": "2026-09-19",
     "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen, ~100000 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 3.0
   },
   "I-D3-005": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:00:53.426271",
+    "fetched_at": "2026-09-19T12:42:25.782721",
     "observation_date": "2026-07",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.0
   },
   "I-D3-006": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:00:54.340625",
+    "fetched_at": "2026-09-19T12:42:26.584361",
     "observation_date": "2026-07",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.64
   },
   "I-D3-007": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:00:56.293091",
+    "fetched_at": "2026-09-19T12:42:28.147424",
     "observation_date": "2026-08",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.3
   },
   "I-D3-009": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:00:55.810627",
+    "fetched_at": "2026-09-19T12:42:27.630633",
     "observation_date": "2026-09-19",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0413336451567152
   },
   "I-D5-001": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T10:02:25.858348",
+    "fetched_at": "2026-09-19T12:44:15.275247",
     "observation_date": "2026-09-19",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1001/1075 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.65 / midden +0.68 / ouder +0.76. Negatiefste headlines: «Encore un fait de violence à Bruxelles: un blessé grave lors d’une agression au couteau à Anderlecht À Anderlecht, une p · Helpt een zwaartedeken tegen nachtelijke angst? · Un motard blessé à Saint-Georges dans une collision avec une voiture Un accident a fait un blessé ce vendredi 18 septemb»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.18 / verdriet 0.18 / walging 0.01 (dominant: verdriet)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1010/1078 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.38 / midden +0.38 / ouder +0.42. Negatiefste headlines: «Encore un fait de violence à Bruxelles: un blessé grave lors d’une agression au couteau à Anderlecht À Anderlecht, une p · Helpt een zwaartedeken tegen nachtelijke angst? · Un motard blessé à Saint-Georges dans une collision avec une voiture Un accident a fait un blessé ce vendredi 18 septemb»; emotie-profiel headlines (matches/100 woorden): woede 0.10 / angst 0.17 / verdriet 0.17 / walging 0.02 (dominant: angst)",
     "value": 1.4981
   },
   "I-D5-002": {
     "date": "2026-09-18",
-    "fetched_at": "2026-09-19T11:02:53.193232",
+    "fetched_at": "2026-09-19T12:44:15.547350",
     "observation_date": "2026-09-18",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 25.985
   },
   "I-D5-003": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:04:46.185952",
+    "fetched_at": "2026-09-19T12:46:06.329853",
     "observation_date": "2026-09-19",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 26 RSS-kandidaten naar pending voor menselijke review",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 25 RSS-kandidaten naar pending voor menselijke review",
     "value": 0.083933
   },
   "I-D5-006S": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:05:25.306697",
+    "fetched_at": "2026-09-19T12:46:44.402441",
     "observation_date": "2026-09-19",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.39903707430838475
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.33570319320155717
   },
   "I-D5-mastodon": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:05:27.552719",
+    "fetched_at": "2026-09-19T12:46:46.714023",
     "observation_date": "2026-09-19",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.07389662584278511
+    "value": 0.29448486113690275
   },
   "I-D5-trends": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-19T11:06:04.957003",
+    "fetched_at": "2026-09-19T12:47:21.703196",
     "observation_date": "2026-09-19",
     "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
     "value": 0.0
