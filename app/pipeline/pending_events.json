@@ -72583,5 +72583,32 @@
     "link": "https://www.hln.be/brugge/auto-belandt-op-dak-in-bocht-langs-brugse-reien~a72d9bb6/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-20",
+    "magnitude": 1,
+    "title": "15-jarige onder invloed van drugs crasht met geseinde bromfiets na vlucht voor politie: passagier (18) in levensgevaar",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/lievegem/15-jarige-onder-invloed-van-drugs-crasht-met-geseinde-bromfiets-na-vlucht-voor-politie-passagier-18-in-levensgevaar~a676b0f8/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-20",
+    "magnitude": 1,
+    "title": "Duo rijdt met fatbike tegen geparkeerde auto: één jongere bewusteloos",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/duo-rijdt-met-fatbike-tegen-geparkeerde-auto-een-jongere-bewusteloos/161704768.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-20",
+    "magnitude": 1,
+    "title": "LIVE MIDDEN-OOSTEN. Tien doden en zestig vermisten na instorting van flatgebouw in Gaza-Stad: “Ook kinderen bij slachtoffers”",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/buitenland/live-midden-oosten.-tien-doden-en-zestig-vermisten-na-instorting-van-flatgebouw-in-gaza-stad-ook-kinderen-bij-slachtoffers/76854338.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
