@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:00:36.406545",
+    "fetched_at": "2026-09-20T15:00:33.672514",
     "observation_date": "2026-09-20",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.575
+    "value": 0.625
   },
   "I-D1-009": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-20T14:00:39.931511",
+    "fetched_at": "2026-09-20T15:00:37.299568",
     "observation_date": "2026-09-19",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 5.65
   },
   "I-D1-010": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:00:40.380193",
+    "fetched_at": "2026-09-20T15:00:37.683303",
     "observation_date": "2026-09-20",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.24583333333333335
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:06:21.004024",
+    "fetched_at": "2026-09-20T15:05:55.884570",
     "observation_date": "2026-09-20",
-    "source": "Verkeerscentrum DATEX II v3 — 4 files, 5.49 km totale filelengte (langste 2.35 km), snapshot 2026-09-20",
-    "value": 5.49
+    "source": "Verkeerscentrum DATEX II v3 — 9 files, 20.62 km totale filelengte (langste 4.73 km), snapshot 2026-09-20",
+    "value": 20.62
   },
   "I-D2-009": {
     "date": "2026-09-19",
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:05:41.783602",
+    "fetched_at": "2026-09-20T15:05:21.849830",
     "observation_date": "2026-09-20",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D2-delijn": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:06:22.701615",
+    "fetched_at": "2026-09-20T15:05:57.533316",
     "observation_date": "2026-09-20",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 303 vertraagd (≥3min), 11 service-alerts (Vlaanderen)",
-    "value": 303.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 328 vertraagd (≥3min), 11 service-alerts (Vlaanderen)",
+    "value": 328.0
   },
   "I-D2-stib": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:06:21.565816",
+    "fetched_at": "2026-09-20T15:05:56.339284",
     "observation_date": "2026-09-20",
     "source": "STIB/MIVB TravellersInformation (Brussel, 342 actieve items; CC BY 4.0)",
     "value": 342.0
   },
   "I-D3-001": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:00:42.533124",
+    "fetched_at": "2026-09-20T15:00:39.475767",
     "observation_date": "2026-08",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.2
   },
   "I-D3-002": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:00:43.361358",
+    "fetched_at": "2026-09-20T15:00:40.014242",
     "observation_date": "2026-09-20",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 71.58784090909091
   },
   "I-D3-003": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:00:44.250527",
+    "fetched_at": "2026-09-20T15:00:40.761218",
     "observation_date": "2026-07",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.30pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:06:19.292313",
+    "fetched_at": "2026-09-20T15:05:54.395484",
     "observation_date": "2026-09-20",
     "source": "Ontslag-radar: 1 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 1.0
   },
   "I-D3-005": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:00:44.916028",
+    "fetched_at": "2026-09-20T15:00:41.225797",
     "observation_date": "2026-07",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.0
   },
   "I-D3-006": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:00:45.844868",
+    "fetched_at": "2026-09-20T15:00:41.793880",
     "observation_date": "2026-07",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.64
   },
   "I-D3-007": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:00:47.200775",
+    "fetched_at": "2026-09-20T15:00:43.275126",
     "observation_date": "2026-08",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.3
   },
   "I-D3-009": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:00:46.841598",
+    "fetched_at": "2026-09-20T15:00:42.952487",
     "observation_date": "2026-09-20",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0106763992928391
   },
   "I-D5-001": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T13:38:48.689123",
+    "fetched_at": "2026-09-20T15:02:14.285780",
     "observation_date": "2026-09-20",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1024/1080 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.07 / midden +0.09 / ouder +0.08. Negatiefste headlines: «Noord-Korea lanceert opnieuw ballistische raketten · \"Grootste Oekraïense droneaanval op Moskou ooit\", doden bij Russische aanval op Kiev · Helpt een zwaartedeken tegen nachtelijke angst?»; emotie-profiel headlines (matches/100 woorden): woede 0.10 / angst 0.14 / verdriet 0.11 / walging 0.01 (dominant: angst)",
-    "value": 1.4313
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1025/1083 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.23 / midden +0.25 / ouder +0.25. Negatiefste headlines: «Noord-Korea lanceert opnieuw ballistische raketten · \"Grootste Oekraïense droneaanval op Moskou ooit\", doden bij Russische aanval op Kiev · Helpt een zwaartedeken tegen nachtelijke angst?»; emotie-profiel headlines (matches/100 woorden): woede 0.11 / angst 0.15 / verdriet 0.11 / walging 0.02 (dominant: angst)",
+    "value": 1.4818
   },
   "I-D5-002": {
     "date": "2026-09-19",
-    "fetched_at": "2026-09-20T14:02:39.446945",
+    "fetched_at": "2026-09-20T15:02:14.732092",
     "observation_date": "2026-09-19",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 25.698
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:05:41.475293",
+    "fetched_at": "2026-09-20T15:05:21.572209",
     "observation_date": "2026-09-20",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.2081163181002292
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.2511211008762002
   },
   "I-D5-mastodon": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:05:43.219392",
+    "fetched_at": "2026-09-20T15:05:23.234213",
     "observation_date": "2026-09-20",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.24327912243116412
   },
   "I-D5-trends": {
     "date": "2026-09-20",
-    "fetched_at": "2026-09-20T14:06:19.942417",
+    "fetched_at": "2026-09-20T15:05:54.972734",
     "observation_date": "2026-09-20",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.58 (stress-trends: oorlog rusland, buienradar)",
-    "value": 0.5833
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.61 (stress-trends: oorlog rusland, buienradar)",
+    "value": 0.6111
   }
 }
