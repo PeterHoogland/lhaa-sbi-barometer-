@@ -73654,5 +73654,41 @@
     "link": "https://www.tvoost.be/nieuws/motorrijder-en-auto-botsen-op-elkaar-in-schoonaarde-motard-in-kritieke-toestand-naar-ziekenhuis-214319",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-22",
+    "magnitude": 1,
+    "title": "Vliegverkeer op luchthaven Luxemburg opnieuw stilgelegd nadat er drones worden gespot",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/vliegverkeer-op-luchthaven-luxemburg-opnieuw-stilgelegd-nadat-er-drones-worden-gespot~a69318a4/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-22",
+    "magnitude": 1,
+    "title": "Motorrijder (27) zwaargewond nadat hij op file inrijdt: “Verkeert niet in levensgevaar”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/regio-brugge/zedelgem/motorrijder-27-zwaargewond-nadat-hij-op-file-inrijdt-verkeert-niet-in-levensgevaar/161865171.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-22",
+    "magnitude": 1,
+    "title": "Hinder op de Expresweg tijdens de ochtendspits door verkeersongeval",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/regio-brugge/brugge/hinder-op-de-expresweg-tijdens-de-ochtendspits-door-verkeersongeval/161857414.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-22",
+    "magnitude": 1,
+    "title": "Huisgenoot (47) bekent betrokkenheid bij dood van Dorine V. (62): “Geen sprake van voorbedachtheid”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/middenkust/oostende/huisgenoot-47-bekent-betrokkenheid-bij-dood-van-dorine-v.-62-geen-sprake-van-voorbedachtheid/161841351.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
