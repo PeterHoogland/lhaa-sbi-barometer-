@@ -73555,5 +73555,32 @@
     "link": "https://www.tvoost.be/nieuws/motard-in-levensgevaar-na-aanrijding-in-haasdonk-214317",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-22",
+    "magnitude": 5,
+    "title": "Twee explosies na elkaar in Antwerpen-Noord: huizen beschadigd, geen gewonden",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/22/bc29331d-8924-4ead-a32f-e72e09833e93.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-22",
+    "magnitude": 5,
+    "title": "Twee explosies in Antwerpen-Noord: tot acht jaar cel veroordeelde drugscrimineel Xavier P. opnieuw doelwit van aanslag",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/antwerpen/twee-explosies-in-antwerpen-noord-tot-acht-jaar-cel-veroordeelde-drugscrimineel-xavier-p-opnieuw-doelwit-van-aanslag~a6fa9473/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-22",
+    "magnitude": 1,
+    "title": "Franse minister: vrijlating brein aanslagen Parijs 'zou belediging voor slachtoffers zijn'",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/veiligheid/franse-minister-vrijlating-brein-aanslagen-parijs-zou-belediging-voor-slachtoffers-zijn-2026-09-22",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
