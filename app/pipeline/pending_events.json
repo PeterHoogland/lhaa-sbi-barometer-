@@ -74167,5 +74167,32 @@
     "link": "https://www.gva.be/buitenland/elf-doden-bij-schietpartij-in-zuid-afrika-ook-zwangere-vrouw-bij-slachtoffers/161938076.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-23",
+    "magnitude": 1,
+    "title": "Gewapende mannen openen vuur op feestje in Zuid-Afrika: 11 doden",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/23/f244689a-e088-4ee8-aa60-c739bf34f222.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-23",
+    "magnitude": 3,
+    "title": "Elf doden bij gewapende aanval op woning in Zuid-Afrika",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/elf-doden-bij-gewapende-aanval-op-woning-in-zuid-afrika/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-23",
+    "magnitude": 1,
+    "title": "Dodelijke brand in Frans vakantieverblijf waarschijnlijk veroorzaakt door kaars, toch wil parket uitbaatster vervolgen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/nieuws/dodelijke-brand-in-frans-vakantieverblijf-waarschijnlijk-veroorzaakt-door-kaars-toch-wil-parket-uitbaatster-vervolgen/161951642.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
