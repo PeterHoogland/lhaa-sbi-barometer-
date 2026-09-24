@@ -74860,5 +74860,41 @@
     "link": "https://www.hln.be/antwerpen/jongetje-2-gewond-na-aanrijding-door-auto-in-merksem~a14fcb99/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-24",
+    "magnitude": 1,
+    "title": "Vrouw van 61 aangehouden voor moord na dodelijke brand in Roeselare",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/23/c0957109-a37c-4091-84cc-4d0920ddb40f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-24",
+    "magnitude": 1,
+    "title": "Na dodelijke brand in Roeselare: Els G. (61) aangehouden voor moord op echtgenoot Geert (60), die werd overgoten met benzine",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/roeselare/na-dodelijke-brand-in-roeselare-els-g-61-aangehouden-voor-moord-op-echtgenoot-geert-60-die-werd-overgoten-met-benzine~a37fac8a/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-24",
+    "magnitude": 1,
+    "title": "Politievakbonden dreigen met staking door risico's van de strijd tegen drugsbendes",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/veiligheid/politievakbonden-dreigen-met-staking-door-risicos-van-de-strijd-tegen-drugsbendes-2026-09-24",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-24",
+    "magnitude": 1,
+    "title": "Naast staking hebben VRT-bonden nog een andere optie om uitzending van Songfestival tegen te houden, al is die niet zonder risico",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/naast-staking-hebben-vrt-bonden-nog-een-andere-optie-om-uitzending-van-songfestival-tegen-te-houden-al-is-die-niet-zonder-risico/162061400.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
