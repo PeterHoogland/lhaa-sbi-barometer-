@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:00:33.164596",
+    "fetched_at": "2026-09-25T11:00:58.232883",
     "observation_date": "2026-09-25",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 1.102
+    "value": 1.1164
   },
   "I-D1-009": {
     "date": "2026-09-24",
-    "fetched_at": "2026-09-25T10:00:35.564805",
+    "fetched_at": "2026-09-25T11:01:01.298704",
     "observation_date": "2026-09-24",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 5.7
   },
   "I-D1-010": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:00:35.948659",
+    "fetched_at": "2026-09-25T11:01:01.850618",
     "observation_date": "2026-09-25",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.6416666666666666
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:06:02.428917",
+    "fetched_at": "2026-09-25T11:05:59.369469",
     "observation_date": "2026-09-25",
-    "source": "Verkeerscentrum DATEX II v3 — 17 files, 32.36 km totale filelengte (langste 7.15 km), snapshot 2026-09-25",
-    "value": 32.36
+    "source": "Verkeerscentrum DATEX II v3 — 27 files, 49.54 km totale filelengte (langste 7.47 km), snapshot 2026-09-25",
+    "value": 49.54
   },
   "I-D2-009": {
     "date": "2026-09-24",
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:05:30.580093",
+    "fetched_at": "2026-09-25T11:05:20.343442",
     "observation_date": "2026-09-25",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
-    "value": 2.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
+    "value": 0.0
   },
   "I-D2-delijn": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:06:04.460534",
+    "fetched_at": "2026-09-25T11:06:01.815004",
     "observation_date": "2026-09-25",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 475 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
-    "value": 475.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 542 vertraagd (≥3min), 17 service-alerts (Vlaanderen)",
+    "value": 542.0
   },
   "I-D2-stib": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:06:02.893854",
+    "fetched_at": "2026-09-25T11:06:00.057210",
     "observation_date": "2026-09-25",
     "source": "STIB/MIVB TravellersInformation (Brussel, 315 actieve items; CC BY 4.0)",
     "value": 315.0
   },
   "I-D3-001": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:00:38.779384",
+    "fetched_at": "2026-09-25T11:01:04.908268",
     "observation_date": "2026-08",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.2
   },
   "I-D3-002": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:00:39.399065",
+    "fetched_at": "2026-09-25T11:01:06.792605",
     "observation_date": "2026-09-25",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 171.1813636363636
   },
   "I-D3-003": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:00:40.067736",
+    "fetched_at": "2026-09-25T11:01:07.598954",
     "observation_date": "2026-07",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.30pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:06:00.902951",
+    "fetched_at": "2026-09-25T11:05:57.799717",
     "observation_date": "2026-09-25",
     "source": "Ontslag-radar: 2 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 2.0
   },
   "I-D3-005": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:00:40.554142",
+    "fetched_at": "2026-09-25T11:01:08.238533",
     "observation_date": "2026-07",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.0
   },
   "I-D3-006": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:00:41.079045",
+    "fetched_at": "2026-09-25T11:01:08.934084",
     "observation_date": "2026-07",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.64
   },
   "I-D3-007": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:00:42.171715",
+    "fetched_at": "2026-09-25T11:01:10.483671",
     "observation_date": "2026-08",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.3
   },
   "I-D3-009": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:00:41.821766",
+    "fetched_at": "2026-09-25T11:01:09.991790",
     "observation_date": "2026-09-25",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9837555127586345
   },
   "I-D5-001": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:02:22.622256",
+    "fetched_at": "2026-09-25T11:02:15.352843",
     "observation_date": "2026-09-25",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1023/1074 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.29 / midden +0.27 / ouder +0.27. Negatiefste headlines: «Waarom het tijd is om moord en brand te schreeuwen over AI · Live - Amnesty pleit voor afschaffing Amerikaanse immigratiedienst ICE • Man die gewond raakte bij aanslag op Trump in 2 · Benzine, diesel en stookolie worden morgen duurder»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.17 / verdriet 0.13 / walging 0.02 (dominant: angst)",
-    "value": 1.5958
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1037/1082 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.29 / midden +0.27 / ouder +0.26. Negatiefste headlines: «Waarom het tijd is om moord en brand te schreeuwen over AI · Live - Amnesty pleit voor afschaffing Amerikaanse immigratiedienst ICE • Man die gewond raakte bij aanslag op Trump in 2 · Benzine, diesel en stookolie worden morgen duurder»; emotie-profiel headlines (matches/100 woorden): woede 0.10 / angst 0.16 / verdriet 0.15 / walging 0.02 (dominant: angst)",
+    "value": 1.589
   },
   "I-D5-002": {
     "date": "2026-09-24",
-    "fetched_at": "2026-09-25T10:02:23.037981",
+    "fetched_at": "2026-09-25T11:02:16.537578",
     "observation_date": "2026-09-24",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 24.618
@@ -141,21 +141,21 @@
   },
   "I-D5-006S": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:05:30.142745",
+    "fetched_at": "2026-09-25T11:05:19.620392",
     "observation_date": "2026-09-25",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.9724687973222993
+    "value": 0.45375770124312775
   },
   "I-D5-mastodon": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:05:31.972283",
+    "fetched_at": "2026-09-25T11:05:21.979604",
     "observation_date": "2026-09-25",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.5674012476620163
+    "value": -0.5456621172272336
   },
   "I-D5-trends": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T10:06:01.390382",
+    "fetched_at": "2026-09-25T11:05:58.174278",
     "observation_date": "2026-09-25",
     "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
     "value": 0.0
