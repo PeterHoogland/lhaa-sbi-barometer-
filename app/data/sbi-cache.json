@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:32:54.932755",
+    "fetched_at": "2026-09-25T10:00:33.164596",
     "observation_date": "2026-09-25",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 1.102
   },
   "I-D1-009": {
     "date": "2026-09-24",
-    "fetched_at": "2026-09-25T09:32:58.959441",
+    "fetched_at": "2026-09-25T10:00:35.564805",
     "observation_date": "2026-09-24",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 5.7
   },
   "I-D1-010": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:32:59.644252",
+    "fetched_at": "2026-09-25T10:00:35.948659",
     "observation_date": "2026-09-25",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.6416666666666666
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:39:04.234052",
+    "fetched_at": "2026-09-25T10:06:02.428917",
     "observation_date": "2026-09-25",
-    "source": "Verkeerscentrum DATEX II v3 — 22 files, 34.0 km totale filelengte (langste 7.15 km), snapshot 2026-09-25",
-    "value": 34.0
+    "source": "Verkeerscentrum DATEX II v3 — 17 files, 32.36 km totale filelengte (langste 7.15 km), snapshot 2026-09-25",
+    "value": 32.36
   },
   "I-D2-009": {
     "date": "2026-09-24",
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:38:23.073680",
+    "fetched_at": "2026-09-25T10:05:30.580093",
     "observation_date": "2026-09-25",
     "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
     "value": 2.0
   },
   "I-D2-delijn": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:39:07.050228",
+    "fetched_at": "2026-09-25T10:06:04.460534",
     "observation_date": "2026-09-25",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 496 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
-    "value": 496.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 475 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
+    "value": 475.0
   },
   "I-D2-stib": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:39:05.019908",
+    "fetched_at": "2026-09-25T10:06:02.893854",
     "observation_date": "2026-09-25",
     "source": "STIB/MIVB TravellersInformation (Brussel, 315 actieve items; CC BY 4.0)",
     "value": 315.0
   },
   "I-D3-001": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:33:02.544485",
+    "fetched_at": "2026-09-25T10:00:38.779384",
     "observation_date": "2026-08",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.2
   },
   "I-D3-002": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:33:03.809118",
+    "fetched_at": "2026-09-25T10:00:39.399065",
     "observation_date": "2026-09-25",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 171.1813636363636
   },
   "I-D3-003": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:33:05.740151",
+    "fetched_at": "2026-09-25T10:00:40.067736",
     "observation_date": "2026-07",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.30pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:39:02.239778",
+    "fetched_at": "2026-09-25T10:06:00.902951",
     "observation_date": "2026-09-25",
     "source": "Ontslag-radar: 2 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 2.0
   },
   "I-D3-005": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:33:07.504486",
+    "fetched_at": "2026-09-25T10:00:40.554142",
     "observation_date": "2026-07",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.0
   },
   "I-D3-006": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:33:08.249732",
+    "fetched_at": "2026-09-25T10:00:41.079045",
     "observation_date": "2026-07",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.64
   },
   "I-D3-007": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:33:10.367296",
+    "fetched_at": "2026-09-25T10:00:42.171715",
     "observation_date": "2026-08",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.3
   },
   "I-D3-009": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:33:09.857163",
+    "fetched_at": "2026-09-25T10:00:41.821766",
     "observation_date": "2026-09-25",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9837555127586345
   },
   "I-D5-001": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:35:06.103504",
+    "fetched_at": "2026-09-25T10:02:22.622256",
     "observation_date": "2026-09-25",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1022/1073 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.36 / midden +0.33 / ouder +0.33. Negatiefste headlines: «Waarom het tijd is om moord en brand te schreeuwen over AI · Live - Amnesty pleit voor afschaffing Amerikaanse immigratiedienst ICE • Man die gewond raakte bij aanslag op Trump in 2 · Benzine, diesel en stookolie worden morgen duurder»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.16 / verdriet 0.14 / walging 0.01 (dominant: angst)",
-    "value": 1.6716
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1023/1074 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.29 / midden +0.27 / ouder +0.27. Negatiefste headlines: «Waarom het tijd is om moord en brand te schreeuwen over AI · Live - Amnesty pleit voor afschaffing Amerikaanse immigratiedienst ICE • Man die gewond raakte bij aanslag op Trump in 2 · Benzine, diesel en stookolie worden morgen duurder»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.17 / verdriet 0.13 / walging 0.02 (dominant: angst)",
+    "value": 1.5958
   },
   "I-D5-002": {
     "date": "2026-09-24",
-    "fetched_at": "2026-09-25T09:35:06.815944",
+    "fetched_at": "2026-09-25T10:02:23.037981",
     "observation_date": "2026-09-24",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 24.618
@@ -141,21 +141,21 @@
   },
   "I-D5-006S": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:38:22.655551",
+    "fetched_at": "2026-09-25T10:05:30.142745",
     "observation_date": "2026-09-25",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.5961766883118106
+    "value": 0.9724687973222993
   },
   "I-D5-mastodon": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:38:24.966571",
+    "fetched_at": "2026-09-25T10:05:31.972283",
     "observation_date": "2026-09-25",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.5674012476620163
   },
   "I-D5-trends": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-25T09:39:02.567405",
+    "fetched_at": "2026-09-25T10:06:01.390382",
     "observation_date": "2026-09-25",
     "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
     "value": 0.0
