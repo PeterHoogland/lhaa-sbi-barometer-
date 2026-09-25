@@ -75517,5 +75517,23 @@
     "link": "https://www.nieuwsblad.be/buitenland/duikers-halen-vuurwapen-uit-water-na-dodelijke-schietpartij-in-amsterdam-verdachte-opgepakt/162175052.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-25",
+    "magnitude": 1,
+    "title": "Russische droneaanval richt zware schade aan in Kiev",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/russische-droneaanval-richt-zware-schade-aan-in-kiev/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-25",
+    "magnitude": 1,
+    "title": "Jonge bromfietser (16) gewond na aanrijding door auto op kruispunt in Koekelare",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/westhoek/koekelare/jonge-bromfietser-16-gewond-na-aanrijding-door-auto-op-kruispunt-in-koekelare/162187380.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
