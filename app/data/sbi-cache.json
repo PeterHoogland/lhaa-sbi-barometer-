@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:00:47.974211",
+    "fetched_at": "2026-09-26T17:00:43.765466",
     "observation_date": "2026-09-26",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.8729
+    "value": 0.8838
   },
   "I-D1-009": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-26T15:01:06.523654",
+    "fetched_at": "2026-09-26T17:00:56.446086",
     "observation_date": "2026-09-25",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 5.63
   },
   "I-D1-010": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:01:07.134813",
+    "fetched_at": "2026-09-26T17:00:56.939551",
     "observation_date": "2026-09-26",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.4666666666666667
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:06:43.701735",
+    "fetched_at": "2026-09-26T17:06:09.016778",
     "observation_date": "2026-09-26",
-    "source": "Verkeerscentrum DATEX II v3 — 8 files, 13.23 km totale filelengte (langste 3.62 km), snapshot 2026-09-26",
-    "value": 13.23
+    "source": "Verkeerscentrum DATEX II v3 — 7 files, 9.44 km totale filelengte (langste 2.47 km), snapshot 2026-09-26",
+    "value": 9.44
   },
   "I-D2-009": {
     "date": "2026-09-25",
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:06:01.293818",
+    "fetched_at": "2026-09-26T17:05:30.253426",
     "observation_date": "2026-09-26",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
-    "value": 0.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
+    "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:06:46.660761",
+    "fetched_at": "2026-09-26T17:06:11.342333",
     "observation_date": "2026-09-26",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 463 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
-    "value": 463.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 385 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
+    "value": 385.0
   },
   "I-D2-stib": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:06:44.463542",
+    "fetched_at": "2026-09-26T17:06:09.604388",
     "observation_date": "2026-09-26",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 345 actieve items; CC BY 4.0)",
-    "value": 345.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 348 actieve items; CC BY 4.0)",
+    "value": 348.0
   },
   "I-D3-001": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:01:09.654927",
+    "fetched_at": "2026-09-26T17:00:59.874029",
     "observation_date": "2026-08",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.2
   },
   "I-D3-002": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:01:10.691776",
+    "fetched_at": "2026-09-26T17:01:01.073497",
     "observation_date": "2026-09-26",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 149.39715909090907
   },
   "I-D3-003": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:01:11.560944",
+    "fetched_at": "2026-09-26T17:01:02.076437",
     "observation_date": "2026-07",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.30pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:06:41.991403",
+    "fetched_at": "2026-09-26T17:06:07.172966",
     "observation_date": "2026-09-26",
     "source": "Ontslag-radar: 0 artikels met collectief-ontslag-thema in 20 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 0.0
   },
   "I-D3-005": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:01:12.298619",
+    "fetched_at": "2026-09-26T17:01:02.618750",
     "observation_date": "2026-07",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.0
   },
   "I-D3-006": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:01:13.054459",
+    "fetched_at": "2026-09-26T17:01:03.185789",
     "observation_date": "2026-07",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.64
   },
   "I-D3-007": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:01:15.078721",
+    "fetched_at": "2026-09-26T17:01:04.856575",
     "observation_date": "2026-08",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -16.3
   },
   "I-D3-009": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:01:14.550696",
+    "fetched_at": "2026-09-26T17:01:04.451292",
     "observation_date": "2026-09-26",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9951641905924805
   },
   "I-D5-001": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:02:49.245981",
+    "fetched_at": "2026-09-26T17:02:27.195727",
     "observation_date": "2026-09-26",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1016/1080 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.10 / midden +0.06 / ouder +0.04. Negatiefste headlines: «Twee doden na ontploffing en instorting gebouw in centrum van Athene · ▶️ Hevige regenval en vulkanisch as van de Etna zorgen voor kolkende modderstroom in Sicilië · Bill Gates waarschuwt dat AI ‘miljard doden kan veroorzaken’ <p>Financieel-economische nieuws van vandaag in één oogopsl»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.14 / verdriet 0.11 / walging 0.01 (dominant: angst)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1031/1083 unieke artikels na dedup, 19 bronnen, poststratificatie): negativiteit jong +0.09 / midden +0.03 / ouder -0.00. Negatiefste headlines: «Twee doden na ontploffing en instorting gebouw in centrum van Athene · Deux blessés, dont un en danger de mort, lors du Cortège des Géants de Borgerhout Deux personnes ont été blessées samedi · ▶️ Hevige regenval en vulkanisch as van de Etna zorgen voor kolkende modderstroom in Sicilië»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.14 / verdriet 0.11 / walging 0.01 (dominant: angst)",
     "value": 1.589
   },
   "I-D5-002": {
     "date": "2026-09-25",
-    "fetched_at": "2026-09-26T15:02:49.994726",
+    "fetched_at": "2026-09-26T17:02:27.853888",
     "observation_date": "2026-09-25",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 26.661
@@ -141,21 +141,21 @@
   },
   "I-D5-006S": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:06:00.896092",
+    "fetched_at": "2026-09-26T17:05:29.562681",
     "observation_date": "2026-09-26",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.09376327832124615
+    "value": 0.809488450659154
   },
   "I-D5-mastodon": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:06:03.462188",
+    "fetched_at": "2026-09-26T17:05:32.120991",
     "observation_date": "2026-09-26",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.9543777874033502
+    "value": -0.8986085566341192
   },
   "I-D5-trends": {
     "date": "2026-09-26",
-    "fetched_at": "2026-09-26T15:06:42.462880",
+    "fetched_at": "2026-09-26T17:06:07.656028",
     "observation_date": "2026-09-26",
     "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
     "value": 0.0
