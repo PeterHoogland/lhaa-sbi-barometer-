@@ -75841,5 +75841,41 @@
     "link": "https://images.vrt.be/vrtnws_share/2026/04/09/4a591952-40cc-4fc4-97e9-0dc862401fd7.jpg",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-26",
+    "magnitude": 1,
+    "title": "Uitslaande woningbrand verwoest woning in Ham, 2 honden gestorven",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/26/afd41d1e-ff5c-4d7c-88f9-a75ad2198f31.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-26",
+    "magnitude": 1,
+    "title": "Gevangenissen hervatten normale werking na 24u-staking",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/gevangenissen-hervatten-normale-werking-na-24u-staking~aded1a075/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-26",
+    "magnitude": 1,
+    "title": "Twee doden en vier vermisten na zware explosie in toeristische wijk Plaka in Athene",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/twee-doden-en-vier-vermisten-na-zware-explosie-in-toeristische-wijk-plaka-in-athene~ab0a53e2/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-26",
+    "magnitude": 1,
+    "title": "PCC rijdt laatste keer door Antwerpen, gepaard met vakbondsactie: “Een loze belofte van minister De Ridder”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/pcc-rijdt-laatste-keer-door-antwerpen-gepaard-met-vakbondsactie-een-loze-belofte-van-minister-de-ridder/162197006.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
