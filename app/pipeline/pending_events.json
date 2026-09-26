@@ -75796,5 +75796,41 @@
     "link": "https://images.vrt.be/vrtnws_share/2026/09/26/8be7101e-dfc2-4d9b-9511-276b3dfd7830.jpg",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-26",
+    "magnitude": 1,
+    "title": "2 mensen opgepakt na schietincident in Aalst, slachtoffer niet in levensgevaar",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/04/06/984bd932-d771-4cff-9562-2a04e803cd84.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-26",
+    "magnitude": 1,
+    "title": "Een dode en vijf vermisten na zware explosie in toeristische wijk Plaka in Athene",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/een-dode-en-vijf-vermisten-na-zware-explosie-in-toeristische-wijk-plaka-in-athene~ab0a53e2/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-26",
+    "magnitude": 1,
+    "title": "Drie twintigers betrokken bij schietpartij op Houtmarkt in Aalst: slachtoffer (23) buiten levensgevaar",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/aalst/drie-twintigers-betrokken-bij-schietpartij-op-houtmarkt-in-aalst-slachtoffer-23-buiten-levensgevaar~a06af114d/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-26",
+    "magnitude": 1,
+    "title": "Schietpartij aan Houtmarkt in Aalst: 1 slachtoffer, 2 personen aangehouden",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/schietpartij-aan-houtmarkt-in-aalst-1-slachtoffer-2-personen-aangehouden-214434",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
