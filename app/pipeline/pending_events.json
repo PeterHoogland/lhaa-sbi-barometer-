@@ -76462,5 +76462,23 @@
     "link": "https://www.tvoost.be/nieuws/man-overleden-bij-uitslaande-woningbrand-in-haaltert-214448",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-27",
+    "magnitude": 1,
+    "title": "28-jarige man op boot krijgt schot in been aan kanaal van Vilvoorde",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/27/abc0f443-0f30-4b3a-990b-708d02264641.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-27",
+    "magnitude": 1,
+    "title": "Zes doden na explosie in toeristenwijk Athene: vier Amerikanen, Brit en Griekse vrouw geïdentificeerd",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/zes-doden-na-explosie-in-toeristenwijk-athene-vier-amerikanen-brit-en-griekse-vrouw-geidentificeerd~ab0a53e2/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
