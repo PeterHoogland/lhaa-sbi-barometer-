@@ -76534,5 +76534,41 @@
     "link": "https://www.nieuwsblad.be/regio/limburg/hasselt/twee-gewonden-na-ongeval-op-kuringersteenweg/162223266.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-27",
+    "magnitude": 1,
+    "title": "Luchthaven Catania nog altijd dicht door aswolk van Etna",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/27/39cc12ef-d03d-43ff-9147-3da37ad2e27f.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-27",
+    "magnitude": 1,
+    "title": "21-jarige man gewond na ongeval in Houthalen-Oost",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/houthalen-helchteren/21-jarige-man-gewond-na-ongeval-in-houthalen-oost/162227911.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-27",
+    "magnitude": 1,
+    "title": "Vrouw (43) gewond na ongeval in Zolder",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/heusden-zolder/vrouw-43-gewond-na-ongeval-in-zolder/162226528.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-27",
+    "magnitude": 1,
+    "title": "Man komt om het leven bij woningbrand in Haaltert",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/man-komt-om-het-leven-bij-woningbrand-in-haaltert-214456",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
