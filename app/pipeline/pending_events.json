@@ -77794,5 +77794,23 @@
     "link": "https://www.nieuwsblad.be/regio/vlaams-brabant/halle-vilvoorde/beersel/vrouw-met-voorlopig-rijbewijs-veroorzaakt-zware-crash-rechter-legt-vier-herstelexamens-op/162337947.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-29",
+    "magnitude": 5,
+    "title": "‘Een aanslag op gezinnen’: Vlaanderen bespaart op het kindergeld",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/een-aanslag-op-gezinnen-vlaanderen-bespaart-op-het-kindergeld~b4723d0e/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-29",
+    "magnitude": 1,
+    "title": "Waarom de vloer van deze Genkse kerk bezaaid ligt met honderdduizend kruisjes",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/genk/waarom-de-vloer-van-deze-genkse-kerk-bezaaid-ligt-met-honderdduizend-kruisjes/162343355.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
