@@ -78001,5 +78001,32 @@
     "link": "https://www.tvoost.be/nieuws/man-overleden-bij-uitslaande-woningbrand-in-haaltert-214448",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-30",
+    "magnitude": 5,
+    "title": "Verdachte van mogelijke aanslag op Britse luchtmachtbasis Fairford belde zelf politie, schrijven Britse media",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/30/75d6ecce-081d-4fcb-ad3c-dce8f8c21205.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-30",
+    "magnitude": 1,
+    "title": "“Zijn vriendin moest thuis naakt rondlopen en hem te pas en te onpas bevredigen”, toch gaat ‘agressieve partner’ (51) vol voor vrijspraak",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/mol/zijn-vriendin-moest-thuis-naakt-rondlopen-en-hem-te-pas-en-te-onpas-bevredigen-toch-gaat-agressieve-partner-51-vol-voor-vrijspraak~a66908eb/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-30",
+    "magnitude": 1,
+    "title": "Six Flags sluit wereldbefaamde rollercoaster na dodelijke incidenten en pretparkbezoekers met hersenschade",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/six-flags-sluit-wereldbefaamde-rollercoaster-na-dodelijke-incidenten-en-pretparkbezoekers-met-hersenschade/162353182.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
