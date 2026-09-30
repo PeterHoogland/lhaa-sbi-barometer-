@@ -78424,5 +78424,32 @@
     "link": "https://www.tvoost.be/nieuws/kandidaat-prins-kenny-stapt-naar-politie-na-meerdere-bedreigingen-214563",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-09-30",
+    "magnitude": 5,
+    "title": "Britse regering heeft \"sterke aanwijzingen\" dat Iran betrokken was bij mogelijke aanslag op luchtmachtbasis",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/30/75d6ecce-081d-4fcb-ad3c-dce8f8c21205.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-30",
+    "magnitude": 1,
+    "title": "Carina Huyghe (64) schuldig bevonden aan oudermoord op moeder Maria (81): “Zonder spuit geen comfortzorg, zonder comfortzorg geen overlijden”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/antwerpen/carina-huyghe-64-schuldig-bevonden-aan-oudermoord-op-moeder-maria-81-zonder-spuit-geen-comfortzorg-zonder-comfortzorg-geen-overlijden~a2205c79/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-09-30",
+    "magnitude": 5,
+    "title": "Britse premier Burnham meldt “sterke aanwijzingen voor betrokkenheid van Iran” bij mislukte aanslag op luchtmachtbasis",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/britse-premier-burnham-meldt-sterke-aanwijzingen-voor-betrokkenheid-van-iran-bij-mislukte-aanslag-op-luchtmachtbasis/162400567.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
