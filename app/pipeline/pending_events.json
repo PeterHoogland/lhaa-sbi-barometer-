@@ -79288,5 +79288,50 @@
     "link": "https://www.gva.be/media-en-cultuur/tv-en-radio/frustratie-op-vrt-bereikt-kookpunt-met-deze-besparingen-schroef-je-al-het-werk-terug/162481508.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-02",
+    "magnitude": 5,
+    "title": "Tweede verdachte (18) aangehouden voor aanslag met explosief aan Antwerps stadspark",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/09/30/95df2665-55a6-4351-90d2-d51997af1c25.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-02",
+    "magnitude": 1,
+    "title": "KIJK. Hevig noodweer treft ook Spanje: code rood in Catalonië en Valencia",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/weernieuws/kijk-hevig-noodweer-treft-ook-spanje-code-rood-in-catalonie-en-valencia~abd60b01/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-02",
+    "magnitude": 1,
+    "title": "Volgende vrijdag hinder op MIVB-net door vakbondsacties",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/mobiliteit/volgende-vrijdag-hinder-op-mivb-net-door-vakbondsacties-2026-10-02",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-02",
+    "magnitude": 1,
+    "title": "Yari (27) wil auto inhalen, maar dan wijkt die plots naar links uit: “Ik reed tegen een paaltje en de bestuurder reed gewoon door”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/vlaamse-ardennen/zwalm/yari-27-wil-auto-inhalen-maar-dan-wijkt-die-plots-naar-links-uit-ik-reed-tegen-een-paaltje-en-de-bestuurder-reed-gewoon-door/162483792.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-02",
+    "magnitude": 1,
+    "title": "Zwitserse Mara Winter wordt verrassend Europees kampioene bij de beloften, Tess Moerman beste Belgische: “Ik heb mezelf verbaasd”",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/sport/wielrennen/wegwielrennen/zwitserse-mara-winter-wordt-verrassend-europees-kampioene-bij-de-beloften-tess-moerman-beste-belgische-ik-heb-mezelf-verbaasd/162485057.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
