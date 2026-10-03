@@ -79972,5 +79972,41 @@
     "link": "https://www.tvoost.be/nieuws/een-lichtgewonde-bij-aanrijding-in-vrasene-214632",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-03",
+    "magnitude": 1,
+    "title": "Man (90) rijdt fietsster aan in Wevelgem: vrouw raakt zwaargewond",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2025/09/15/56adf61b-dc3b-4530-a8e6-695596cd89ff.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-03",
+    "magnitude": 1,
+    "title": "Russische laborante (28) overlijdt nadat reageerbuis met pestbacteriën breekt, 200 mensen in quarantaine",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2025/08/12/381bffc3-15ec-4e35-a08a-85126b057c84.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-03",
+    "magnitude": 1,
+    "title": "‘Ook wie hiernaar kijkt, doet een slachtoffer geweld aan’: duizenden beelden van seks met bewusteloze vrouwen aangetroffen",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/ook-wie-hiernaar-kijkt-doet-een-slachtoffer-geweld-aan-duizenden-beelden-van-seks-met-bewusteloze-vrouwen-aangetroffen~ba1dd79c/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-03",
+    "magnitude": 1,
+    "title": "Twee gewonden bij ongeval op Antwerpsesteenweg: “Voor verzorging naar het ziekenhuis”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/gent/twee-gewonden-bij-ongeval-op-antwerpsesteenweg-voor-verzorging-naar-het-ziekenhuis/162544259.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
