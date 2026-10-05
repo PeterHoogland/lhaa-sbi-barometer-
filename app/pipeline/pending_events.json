@@ -80620,5 +80620,23 @@
     "link": "https://www.tvoost.be/nieuws/bestuurster-botst-op-geparkeerde-auto-en-gaat-overkop-in-sinaai-214618",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-05",
+    "magnitude": 1,
+    "title": "Motorrijder (43) overleden na botsing met auto in Viersel",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/motorrijder-43-overleden-na-botsing-met-auto-in-viersel/162557971.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-05",
+    "magnitude": 1,
+    "title": "Motorrijder (43) overleden na zwaar ongeval in Viersel",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/zandhoven/motorrijder-43-overleden-na-zwaar-ongeval-in-viersel/162557917.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
