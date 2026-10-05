@@ -80719,5 +80719,41 @@
     "link": "https://www.gva.be/regio/antwerpen/regio-antwerpen/kontich/e19-vrijgemaakt-na-kettingbotsing-met-negen-voertuigen-aanschuiven-op-en-rond-antwerpse-ring-na-ongeval-op-nieuwe-bypass/162578896.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-05",
+    "magnitude": 1,
+    "title": "Twee doden en twee zwaargewonden bij oversteek van Kanaal",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/twee-doden-en-twee-zwaargewonden-bij-oversteek-van-kanaal~ace61b44/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-05",
+    "magnitude": 1,
+    "title": "Hackers zetten gestolen persoonsgegevens van 700.000 mensen online na cyberaanval op Waalse opleidingsorganisatie IFAPME",
+    "source": "Business AM",
+    "link": "https://businessam.be/hackers-zetten-gestolen-persoonsgegevens-van-700-000-mensen-online-na-cyberaanval-op-waalse-opleidingsorganisatie-ifapme/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-05",
+    "magnitude": 1,
+    "title": "“Ik heb hem willen beschermen”: BMW-eigenaar krijgt straf voor ongeval dat hij niet veroorzaakte",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/beveren-kruibeke-zwijndrecht/ik-heb-hem-willen-beschermen-bmw-eigenaar-krijgt-straf-voor-ongeval-dat-hij-niet-veroorzaakte/162594284.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-05",
+    "magnitude": 1,
+    "title": "Automobilist (32) rijongeschikt verklaard na zware aanrijding met motard: “Zijn droom is in het water gevallen”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/middenkust/oudenburg/automobilist-32-rijongeschikt-verklaard-na-zware-aanrijding-met-motard-zijn-droom-is-in-het-water-gevallen/162580851.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
