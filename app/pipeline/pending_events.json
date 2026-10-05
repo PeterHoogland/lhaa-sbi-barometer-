@@ -81043,5 +81043,23 @@
     "link": "https://www.tvoost.be/nieuws/motorrijder-kritiek-na-botsing-met-auto-op-n70-in-lokeren-214696",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-05",
+    "magnitude": 5,
+    "title": "Flydubai-copiloot zag in juli nog af van geplande crash omdat bevriend bemanningslid aan boord was",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/flydubai-copiloot-zag-in-juli-nog-af-van-geplande-crash-omdat-bevriend-bemanningslid-aan-boord-was~a0238228/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-05",
+    "magnitude": 1,
+    "title": "Half uur file op E313 en E34 na ongeval in Ranst",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/half-uur-file-op-e313-en-e34-na-ongeval-in-ranst/162616995.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
