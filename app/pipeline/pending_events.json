@@ -81304,5 +81304,32 @@
     "link": "https://www.tvoost.be/nieuws/motorrijder-kritiek-na-botsing-met-auto-op-n70-in-lokeren-214696",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 1,
+    "title": "Man krijgt 3 jaar cel voor diefstal en bedreiging met alarmpistool in Leuven",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2023/07/02/2c1c65da-18e5-11ee-91d7-02b7b76bf47f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 3,
+    "title": "Amerikaanse staat New York roept noodtoestand uit vanwege mazelenuitbraak",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/amerikaanse-staat-new-york-roept-noodtoestand-uit-vanwege-mazelenuitbraak~a084f4a9/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 1,
+    "title": "Brusselse begroting: sociale onrust bij de ambtenaren stijgt",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/politiek/brusselse-begroting-sociale-onrust-bij-de-ambtenaren-stijgt-2026-10-06",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
