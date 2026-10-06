@@ -81331,5 +81331,104 @@
     "link": "https://www.bruzz.be/actua/politiek/brusselse-begroting-sociale-onrust-bij-de-ambtenaren-stijgt-2026-10-06",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 1,
+    "title": "Meerdere fietsongevallen door kilometerslang oliespoor in centrum van Lier",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/10/06/4fc951b3-8451-44b2-8281-76bf1fce646b.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 5,
+    "title": "Nederlander (21) aangehouden voor aanslag met zwaar vuurwerk in Berchem",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/05/16/a391e308-010e-4ffb-a799-fce1df045361.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 1,
+    "title": "Klanten krijgen bizar en dreigend pushbericht: namen hackers ASOS-app over?",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/tech/klanten-krijgen-bizar-en-dreigend-pushbericht-namen-hackers-asos-app-over~aedca01d/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 1,
+    "title": "Belgische vrouw zwaargewond na lelijke val in Spaanse bergen",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/nieuws/belgische-vrouw-zwaargewond-na-lelijke-val-in-spaanse-bergen~a96a2b65/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 1,
+    "title": "Cyberaanval bij Federatie Wallonië-Brussel",
+    "source": "Trends",
+    "link": "https://trends.knack.be/ai-en-tech/technieuws/cyberaanval-bij-federatie-wallonie-brussel/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 5,
+    "title": "Trump geeft toestemming voor executie door vuurpeloton voor Nidal Hasan",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/trump-geeft-toestemming-voor-executie-door-vuurpeloton-voor-nidal-hasan/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 1,
+    "title": "Amerikaanse rechter vernietigt veroordeling na gebruik van AI-video in rechtszaal",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/amerikaanse-rechter-vernietigt-veroordeling-na-gebruik-van-ai-video-in-rechtszaal/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 1,
+    "title": "Bestuurder lichtgewond na aanrijding aan Drieschouwen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/stekene/bestuurder-lichtgewond-na-aanrijding-aan-drieschouwen/162646767.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 1,
+    "title": "Ex-partner vermiste Jean Vercarre veroordeeld tot vier jaar cel voor ontvoering nieuwe partner",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/wetteren/ex-partner-vermiste-jean-vercarre-veroordeeld-tot-vier-jaar-cel-voor-ontvoering-nieuwe-partner/162640693.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 1,
+    "title": "Oplichters kunnen buit maken bij twee 70-plussers: “Blijf waakzaam”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/vlaams-brabant/oost-brabant/leuven/oplichters-kunnen-buit-maken-bij-twee-70-plussers-blijf-waakzaam/162640879.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-06",
+    "magnitude": 1,
+    "title": "Hij zat ooit in de finale van ‘So you think you can dance’, nu is dansleraar (32) veroordeeld voor ongepaste berichten aan leerlingen",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/binnenland/hij-zat-ooit-in-de-finale-van-so-you-think-you-can-dance-nu-is-dansleraar-32-veroordeeld-voor-ongepaste-berichten-aan-leerlingen/162641036.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
