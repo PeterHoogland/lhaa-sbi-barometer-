@@ -82015,5 +82015,50 @@
     "link": "https://www.tijd.be/r/t/1/id/10694520",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-07",
+    "magnitude": 1,
+    "title": "Ongeval met 4 wagens in Rumbeke veroorzaakt veel verkeershinder",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/10/07/93db9961-6cfa-44f8-b88c-9987a791391e.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-07",
+    "magnitude": 1,
+    "title": "‘EU bereidt zich in stilte voor op nachtmerriescenario van hybride aanval met veel slachtoffers’",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/eu-bereidt-zich-in-stilte-voor-op-nachtmerriescenario-van-hybride-aanval-met-veel-slachtoffers~b7b588c79/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-07",
+    "magnitude": 1,
+    "title": "Jobmotor Belgische arbeidsmarkt viel eind 2025 stil door minder aanwervingen",
+    "source": "Trends",
+    "link": "https://trends.knack.be/nieuws/macro-economie-beleid/jobmotor-belgische-arbeidsmarkt-viel-eind-2025-stil-door-minder-aanwervingen/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-07",
+    "magnitude": 5,
+    "title": "Hoe Israël veranderde sinds aanslag van 7 oktober: “Enorme verharding en radicalisering”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/hoe-israel-veranderde-sinds-aanslag-van-7-oktober-enorme-verharding-en-radicalisering/162695996.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-07",
+    "magnitude": 1,
+    "title": "Twee gewonden na zwaar ongeval met vier wagens in Rumbeke: bestelwagen belandt op zijkant",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/midwest/roeselare/twee-gewonden-na-zwaar-ongeval-met-vier-wagens-in-rumbeke-bestelwagen-belandt-op-zijkant/162702595.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
