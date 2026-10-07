@@ -82060,5 +82060,50 @@
     "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/midwest/roeselare/twee-gewonden-na-zwaar-ongeval-met-vier-wagens-in-rumbeke-bestelwagen-belandt-op-zijkant/162702595.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-07",
+    "magnitude": 1,
+    "title": "Vrouw dood aangetroffen in appartement in Sint-Gillis, slachtoffer met geweld om het leven gebracht",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/10/07/4a1ad07d-ca6d-453a-ab3f-1d80f9c7bfd5.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-07",
+    "magnitude": 1,
+    "title": "Moet het proces Ullens overgedaan worden? Onze assisenverslaggever duidt waarom zaak is stilgelegd op dag dat Nicolas zijn straf zou kennen voor moord op stiefmoeder Mimi",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/moet-het-proces-ullens-overgedaan-worden-onze-assisenverslaggever-duidt-waarom-zaak-is-stilgelegd-op-dag-dat-nicolas-zijn-straf-zou-kennen-voor-moord-op-stiefmoeder-mimi~a5f81e71/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-07",
+    "magnitude": 1,
+    "title": "Mesaanval op school in Polen: mogelijk 7 gewonden, 19-jarige verdachte opgepakt na klopjacht",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/mesaanval-op-school-in-polen-mogelijk-7-gewonden-19-jarige-verdachte-opgepakt-na-klopjacht~a6b2a644/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-07",
+    "magnitude": 1,
+    "title": "Twee gewonden bij botsing tussen vier voertuigen op drukke Rijksweg in Rumbeke",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/roeselare/twee-gewonden-bij-botsing-tussen-vier-voertuigen-op-drukke-rijksweg-in-rumbeke~a97129c9/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-07",
+    "magnitude": 1,
+    "title": "Vrouw dood aangetroffen in appartement in Sint-Gillis: school slaat alarm nadat kinderen niet opgehaald worden",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/crimi/vrouw-dood-aangetroffen-in-appartement-in-sint-gillis-school-slaat-alarm-nadat-kinderen-niet-opgehaald-worden/162701272.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
