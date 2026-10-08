@@ -82915,5 +82915,41 @@
     "link": "https://www.tvoost.be/nieuws/bestuurder-onder-invloed-rijdt-nieuwe-luxeauto-in-woninggevel-in-buggenhout-214771",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-08",
+    "magnitude": 1,
+    "title": "Man uit Sint-Pieters-Leeuw vrijgesproken voor vluchtmisdrijf na acute buikloop",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2020/03/10/474d122c-62e4-11ea-aae0-02b7b76bf47f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-08",
+    "magnitude": 1,
+    "title": "Voetganger sterft na aanrijding aan tankstation in Lommel",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/lommel/voetganger-sterft-na-aanrijding-aan-tankstation-in-lommel~aab14f3f/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-08",
+    "magnitude": 1,
+    "title": "Politie en parket zoeken jongeman met opvallende oranje Bayern München-jas na oplichting in Lievegem",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/politie-en-parket-zoeken-jongeman-met-opvallende-oranje-bayern-munchen-jas-na-oplichting-in-lievegem/162769472.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-08",
+    "magnitude": 1,
+    "title": "“Dacht dat ik verlamd was”: zwemmer duwt redsters omdat hij glijbaan niet op mag",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/zuid-west-vlaanderen/kortrijk/dacht-dat-ik-verlamd-was-zwemmer-duwt-redsters-omdat-hij-glijbaan-niet-op-mag/162766301.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
