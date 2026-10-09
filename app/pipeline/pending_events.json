@@ -83716,5 +83716,41 @@
     "link": "https://www.hln.be/menen/verdacht-echtpaar-en-slachtoffer-van-koffermoord-in-menen-kenden-elkaar-we-verzetten-ons-niet-tegen-haar-verdere-aanhouding~aed95dd4/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-09",
+    "magnitude": 1,
+    "title": "Politie telt 30.000 betogers in Brussel, vakbonden 50.000",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/samenleving/politie-telt-30000-deelnemers-vakbonden-50000-2026-10-09",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-09",
+    "magnitude": 1,
+    "title": "Actiedag in Brussel: zware rellen aan Brussel-Centraal, politie telt 30.000 betogers",
+    "source": "Knack",
+    "link": "https://www.knack.be/nieuws/belgie/actiedag-in-brussel-zware-rellen-aan-brussel-centraal-abvv-dreigt-met-algemene-staking-in-november/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-09",
+    "magnitude": 1,
+    "title": "Auto komt in voortuin tot stilstand na botsing met vrachtwagen: bestuurster (60) gewond naar ziekenhuis",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/westhoek/lo-reninge/auto-komt-in-voortuin-tot-stilstand-na-botsing-met-vrachtwagen-bestuurster-60-gewond-naar-ziekenhuis/162835864.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-09",
+    "magnitude": 1,
+    "title": "LIVE. Vernielingen in Brussel nadat jongeren betoging kapen: “Geweld is de enige manier, anders luisteren ze niet”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live.-vernielingen-in-brussel-nadat-jongeren-betoging-kapen-geweld-is-de-enige-manier-anders-luisteren-ze-niet/162813869.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
