@@ -84508,5 +84508,41 @@
     "link": "https://www.tvoost.be/nieuws/drie-wagens-betrokken-bij-kop-staartaanrijding-op-n16-in-temse-bestuurder-gewond-214836",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-10",
+    "magnitude": 1,
+    "title": "Waar kan je maandag hinder ondervinden door de staking?",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/10/10/7465ea0e-6752-4f5d-bd76-859f16038aaf.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-10",
+    "magnitude": 1,
+    "title": "TUI onderzoekt datalek nadat klanten phishingberichten melden met naam, hotel en reisdatum",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/tui-onderzoekt-datalek-nadat-klanten-phishingberichten-melden-met-naam-hotel-en-reisdatum~a9c59463/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-10",
+    "magnitude": 1,
+    "title": "Hinder op Nederlandse sporen door brandstichting: smeulende kabels en een opengeslepen deur bij spoorbrug",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/nieuws/hinder-op-nederlandse-sporen-door-brandstichting-smeulende-kabels-en-een-opengeslepen-deur-bij-spoorbrug/162875705.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-10",
+    "magnitude": 1,
+    "title": "Voetganger (10) en fietser (60) raken lichtgewond bij verkeersongevallen in Mechelen-Noord",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/rivierenland/mechelen/voetganger-10-en-fietser-60-raken-lichtgewond-bij-verkeersongevallen-in-mechelen-noord/162877078.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
