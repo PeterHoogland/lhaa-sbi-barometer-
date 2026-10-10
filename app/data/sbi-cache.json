@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:01:09.620085",
+    "fetched_at": "2026-10-10T15:57:52.628386",
     "observation_date": "2026-10-10",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.595
+    "value": 0.625
   },
   "I-D1-009": {
     "date": "2026-10-09",
-    "fetched_at": "2026-10-10T15:01:23.061359",
+    "fetched_at": "2026-10-10T15:57:55.928387",
     "observation_date": "2026-10-09",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 9.31
   },
   "I-D1-010": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:01:23.442403",
+    "fetched_at": "2026-10-10T15:57:56.544563",
     "observation_date": "2026-10-10",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.0
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:07:28.561891",
+    "fetched_at": "2026-10-10T16:01:34.895399",
     "observation_date": "2026-10-10",
-    "source": "Verkeerscentrum DATEX II v3 — 10 files, 10.72 km totale filelengte (langste 2.44 km), snapshot 2026-10-10",
-    "value": 10.72
+    "source": "Verkeerscentrum DATEX II v3 — 10 files, 14.2 km totale filelengte (langste 2.48 km), snapshot 2026-10-10",
+    "value": 14.2
   },
   "I-D2-009": {
     "date": "2026-10-09",
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:06:39.946441",
+    "fetched_at": "2026-10-10T16:00:42.487614",
     "observation_date": "2026-10-10",
     "source": "iRail API (NMBS/SNCB-verstoringen, 4 ongepland)",
     "value": 4.0
   },
   "I-D2-delijn": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:07:31.266352",
+    "fetched_at": "2026-10-10T16:01:38.545795",
     "observation_date": "2026-10-10",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 470 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
-    "value": 470.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 443 vertraagd (≥3min), 9 service-alerts (Vlaanderen)",
+    "value": 443.0
   },
   "I-D2-stib": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:07:29.058508",
+    "fetched_at": "2026-10-10T16:01:35.648611",
     "observation_date": "2026-10-10",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 391 actieve items; CC BY 4.0)",
-    "value": 391.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 387 actieve items; CC BY 4.0)",
+    "value": 387.0
   },
   "I-D3-001": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:01:25.605798",
+    "fetched_at": "2026-10-10T15:57:59.413121",
     "observation_date": "2026-09",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.6
   },
   "I-D3-002": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:01:26.631796",
+    "fetched_at": "2026-10-10T15:58:00.363610",
     "observation_date": "2026-10-10",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 55.22715909090911
   },
   "I-D3-003": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:01:27.314409",
+    "fetched_at": "2026-10-10T15:58:01.279187",
     "observation_date": "2026-08",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.10pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:07:26.883343",
+    "fetched_at": "2026-10-10T16:01:32.926839",
     "observation_date": "2026-10-10",
     "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 19 BE-nieuwsbronnen, ~1600 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 4.0
   },
   "I-D3-005": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:01:27.997933",
+    "fetched_at": "2026-10-10T15:58:02.064686",
     "observation_date": "2026-08",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 5.9
   },
   "I-D3-006": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:01:28.486800",
+    "fetched_at": "2026-10-10T15:58:02.825449",
     "observation_date": "2026-08",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.7
   },
   "I-D3-007": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:01:30.129221",
+    "fetched_at": "2026-10-10T15:58:04.741684",
     "observation_date": "2026-09",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -18.2
   },
   "I-D3-009": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:01:29.790128",
+    "fetched_at": "2026-10-10T15:58:04.217144",
     "observation_date": "2026-10-10",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0052345229345014
   },
   "I-D5-001": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T14:03:36.183959",
+    "fetched_at": "2026-10-10T15:59:03.203282",
     "observation_date": "2026-10-10",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1014/1070 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.38 / midden +0.34 / ouder +0.33. Negatiefste headlines: «Asielzoekers en irreguliere migranten in België zijn kwetsbaar voor mensenhandel België heeft de voorbije jaren stappen  · Neufvilles : 50 ans après le déraillement qui avait fait 11 morts, Soignies rend hommage aux victimes Le 27 juin 1976, u · Conflit au Moyen-Orient: l'aéroport de Ryad évacué, que se passe-t-il? Un témoin a déclaré avoir entendu une explosion. »; emotie-profiel headlines (matches/100 woorden): woede 0.19 / angst 0.15 / verdriet 0.10 / walging 0.01 (dominant: woede)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1027/1073 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.44 / midden +0.39 / ouder +0.38. Negatiefste headlines: «Live - Luchthaven Riyad geëvacueerd na raketaanval Houthi’s · Neufvilles : 50 ans après le déraillement qui avait fait 11 morts, Soignies rend hommage aux victimes Le 27 juin 1976, u · Man zwaargewond na steekpartij op Baraplein Een man is woensdagavond zwaargewond geraakt op het Baraplein in Anderlecht.»; emotie-profiel headlines (matches/100 woorden): woede 0.19 / angst 0.14 / verdriet 0.08 / walging 0.01 (dominant: woede)",
     "value": 2.0928
   },
   "I-D5-002": {
     "date": "2026-10-09",
-    "fetched_at": "2026-10-10T15:03:24.269312",
+    "fetched_at": "2026-10-10T15:59:03.982090",
     "observation_date": "2026-10-09",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 27.835
   },
   "I-D5-003": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T14:04:48.377915",
+    "fetched_at": "2026-10-10T16:00:04.255873",
     "observation_date": "2026-10-10",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 35 RSS-kandidaten naar pending voor menselijke review",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 29 RSS-kandidaten naar pending voor menselijke review",
     "value": 0.115167
   },
   "I-D5-006S": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:06:39.524250",
+    "fetched_at": "2026-10-10T16:00:42.212757",
     "observation_date": "2026-10-10",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 1.0434561886855507
+    "value": 1.0485332780637153
   },
   "I-D5-mastodon": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:06:41.515709",
+    "fetched_at": "2026-10-10T16:00:44.433036",
     "observation_date": "2026-10-10",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.2674152522081583
   },
   "I-D5-trends": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-10T15:07:27.387324",
+    "fetched_at": "2026-10-10T16:01:33.404813",
     "observation_date": "2026-10-10",
-    "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
-    "value": 0.0
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.27 (stress-trends: vuur, paul seixas)",
+    "value": 0.2727
   }
 }
