@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:01:15.441472",
+    "fetched_at": "2026-10-11T10:01:26.672341",
     "observation_date": "2026-10-11",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.528
+    "value": 0.5289
   },
   "I-D1-009": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-11T06:01:18.544828",
+    "fetched_at": "2026-10-11T10:01:29.522046",
     "observation_date": "2026-10-10",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 9.22
   },
   "I-D1-010": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:01:19.111914",
+    "fetched_at": "2026-10-11T10:01:29.905896",
     "observation_date": "2026-10-11",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.0
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:06:03.574598",
+    "fetched_at": "2026-10-11T10:05:58.104731",
     "observation_date": "2026-10-11",
     "source": "iRail API (NMBS/SNCB-verstoringen, 3 ongepland)",
     "value": 3.0
   },
   "I-D2-delijn": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:06:50.681958",
+    "fetched_at": "2026-10-11T10:07:34.709346",
     "observation_date": "2026-10-11",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 104 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
-    "value": 104.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 260 vertraagd (≥3min), 7 service-alerts (Vlaanderen)",
+    "value": 260.0
   },
   "I-D2-stib": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:06:48.685684",
+    "fetched_at": "2026-10-11T10:07:32.745734",
     "observation_date": "2026-10-11",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 346 actieve items; CC BY 4.0)",
-    "value": 346.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 345 actieve items; CC BY 4.0)",
+    "value": 345.0
   },
   "I-D3-001": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:01:22.318198",
+    "fetched_at": "2026-10-11T10:01:32.091824",
     "observation_date": "2026-09",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.6
   },
   "I-D3-002": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:01:23.855370",
+    "fetched_at": "2026-10-11T10:01:33.191276",
     "observation_date": "2026-10-11",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 127.04829545454545
   },
   "I-D3-003": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:01:27.011587",
+    "fetched_at": "2026-10-11T10:01:35.111636",
     "observation_date": "2026-08",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.10pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:06:46.562636",
+    "fetched_at": "2026-10-11T10:06:37.671450",
     "observation_date": "2026-10-11",
     "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 19 BE-nieuwsbronnen, ~1600 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 3.0
   },
   "I-D3-005": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:01:27.820985",
+    "fetched_at": "2026-10-11T10:01:36.484397",
     "observation_date": "2026-08",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 5.9
   },
   "I-D3-006": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:01:28.563745",
+    "fetched_at": "2026-10-11T10:01:37.079653",
     "observation_date": "2026-08",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.7
   },
   "I-D3-007": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:01:30.366684",
+    "fetched_at": "2026-10-11T10:01:38.630723",
     "observation_date": "2026-09",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -18.2
   },
   "I-D3-009": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:01:29.890793",
+    "fetched_at": "2026-10-11T10:01:38.299013",
     "observation_date": "2026-10-11",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 1.0151551990870356
+    "value": 1.0162921916130327
   },
   "I-D5-001": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:03:32.915912",
+    "fetched_at": "2026-10-11T10:02:40.169065",
     "observation_date": "2026-10-11",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 997/1071 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.37 / midden +0.33 / ouder +0.33. Negatiefste headlines: «12 doden en 309 gewonden bij raketaanval op luchthaven Riyad, dodelijkste aanval op Saudi-Arabië in meer dan 10 jaar · Accident tragique ce samedi sur nos routes: une jeune maman de 18 ans est décédée L'accident s'est produit vers 16h00 à  · Neufvilles : 50 ans après le déraillement qui avait fait 11 morts, Soignies rend hommage aux victimes Le 27 juin 1976, u»; emotie-profiel headlines (matches/100 woorden): woede 0.18 / angst 0.11 / verdriet 0.08 / walging 0.01 (dominant: woede)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1013/1073 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.28 / midden +0.29 / ouder +0.33. Negatiefste headlines: «Live - Inlichtingendiensten vrezen voor Russische aanslagen op bazen van westerse defensiebedrijven · 12 doden en 309 gewonden bij raketaanval op luchthaven Riyad, dodelijkste aanval op Saudi-Arabië in meer dan 10 jaar · Zeker 12 doden en meer dan 300 gewonden bij Houthi-aanval op luchthaven Riyad, dodelijkste aanval op Saudi-Arabië in mee»; emotie-profiel headlines (matches/100 woorden): woede 0.20 / angst 0.11 / verdriet 0.09 / walging 0.01 (dominant: woede)",
     "value": 2.0928
   },
   "I-D5-002": {
     "date": "2026-10-10",
-    "fetched_at": "2026-10-11T06:03:34.148467",
+    "fetched_at": "2026-10-11T10:02:40.608852",
     "observation_date": "2026-10-10",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 27.231
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:06:02.852349",
+    "fetched_at": "2026-10-11T10:05:57.830918",
     "observation_date": "2026-10-11",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.1856527101466362
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.9793665039871087
   },
   "I-D5-mastodon": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:06:05.512184",
+    "fetched_at": "2026-10-11T10:05:59.438540",
     "observation_date": "2026-10-11",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.5101952791987118
+    "value": 0.4303440887225213
   },
   "I-D5-trends": {
     "date": "2026-10-11",
-    "fetched_at": "2026-10-11T06:06:46.967966",
+    "fetched_at": "2026-10-11T10:06:38.250029",
     "observation_date": "2026-10-11",
-    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.36 (stress-trends: stand zulte-waregem - kaa gent)",
-    "value": 0.3571
+    "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
+    "value": 0.0
   }
 }
