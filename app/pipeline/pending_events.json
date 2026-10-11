@@ -85111,5 +85111,59 @@
     "link": "https://www.nieuwsblad.be/binnenland/jonge-bestuurder-23-overleden-nadat-hij-met-auto-tegen-vier-geparkeerde-wagens-en-elektriciteitspaal-rijdt-in-testelt/162901971.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-11",
+    "magnitude": 1,
+    "title": "Minstens 139 migranten omgekomen na schipbreuk voor kust van Djibouti",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/10/11/c00d56f8-6016-4c6e-b05d-3f2581024663.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-11",
+    "magnitude": 1,
+    "title": "ABVV-baas Bert Engelaar (46) na de rellen: “De betoging van vrijdag was een waarschuwing, een schot voor de boeg”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/abvv-baas-bert-engelaar-46-na-de-rellen-de-betoging-van-vrijdag-was-een-waarschuwing-een-schot-voor-de-boeg~a561c944/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-11",
+    "magnitude": 1,
+    "title": "Duizenden betogers eisen ambitieuzer klimaatbeleid in Brussel: “De Hoge Venen zijn afgebrand, dat is een duidelijk signaal”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/brussel/duizenden-betogers-eisen-ambitieuzer-klimaatbeleid-in-brussel-de-hoge-venen-zijn-afgebrand-dat-is-een-duidelijk-signaal~aedff00e/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-11",
+    "magnitude": 1,
+    "title": "Dorpen geëvacueerd in Nepal na nieuwe vloedgolf, meerdere huizen verwoest",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/nieuws/dorpen-geevacueerd-in-nepal-na-nieuwe-vloedgolf-meerdere-huizen-verwoest/162896717.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-11",
+    "magnitude": 1,
+    "title": "Motard van 26 uit Diest gewond na botsing met bestelwagen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/vlaams-brabant/oost-brabant/bekkevoort/motard-van-26-uit-diest-gewond-na-botsing-met-bestelwagen/162908346.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-11",
+    "magnitude": 1,
+    "title": "Jonge bestuurder (23) overleden na zwaar ongeval in Testelt, buurtbewoners spreken over “straatrace met muziek”",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/binnenland/jonge-bestuurder-23-overleden-na-zwaar-ongeval-in-testelt-buurtbewoners-spreken-over-straatrace-met-muziek/162903771.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
