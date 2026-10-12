@@ -85606,5 +85606,41 @@
     "link": "https://www.tvoost.be/nieuws/restauratiewerken-sint-martinuskerk-onkerzele-hervat-fietskerk-krijgt-verder-vorm-214825",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-12",
+    "magnitude": 1,
+    "title": "Auto met 3 inzittenden botst tegen verlichtingspaal in Wuustwezel",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/10/12/c7fb0b2e-f7e1-46db-90a9-865cd80ac49d.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-12",
+    "magnitude": 1,
+    "title": "Voormalig voetbaltalent (26) uit Vilvoorde ronselde volgens politie ‘soldaten’ voor raid in Overasselt: “Zeg die boys krijgen 5K extra”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/vilvoorde/voormalig-voetbaltalent-26-uit-vilvoorde-ronselde-volgens-politie-soldaten-voor-raid-in-overasselt-zeg-die-boys-krijgen-5k-extra~a640ffd7/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-12",
+    "magnitude": 1,
+    "title": "Staking bij openbare diensten: treinen en trams rijden niet, afvalophaling verstoord",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/samenleving/heel-wat-hinder-verwacht-door-staking-bij-openbare-diensten-2026-10-12",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-12",
+    "magnitude": 1,
+    "title": "LIVE. Staking verstoort vandaag openbaar vervoer en VRT-uitzendingen, ook bij scholen mogelijk gevolgen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/live.-staking-verstoort-vandaag-openbaar-vervoer-en-vrt-uitzendingen-ook-bij-scholen-mogelijk-gevolgen/162924365.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
