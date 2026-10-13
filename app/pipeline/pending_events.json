@@ -86479,5 +86479,41 @@
     "link": "https://www.tvoost.be/nieuws/man-rijdt-met-porsche-tandartsenpraktijk-in-stekene-binnen-214884",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-13",
+    "magnitude": 1,
+    "title": "Ongeval met vijf wagens in Aalter: nog ruim een uur file op E40",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/aalter/ongeval-met-vijf-wagens-in-aalter-nog-ruim-een-uur-file-op-e40~a90c2e33/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-13",
+    "magnitude": 1,
+    "title": "Politieagent omgekomen na achtervolging tijdens carjacking in Jette, ook dode bij schietpartij in Elsene",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/brussel/politieagent-omgekomen-na-achtervolging-tijdens-carjacking-in-jette-ook-dode-bij-schietpartij-in-elsene~a11e331d/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-13",
+    "magnitude": 1,
+    "title": "Brussel krijgt tweede zorgcentrum na seksueel geweld: 'Voor mij was deze hulp cruciaal'",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/gezondheid/brussel-krijgt-tweede-zorgcentrum-na-seksueel-geweld-voor-mij-was-deze-hulp-cruciaal-2026-10-13",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-13",
+    "magnitude": 1,
+    "title": "E40 van kust naar Gent tijdlang volledig versperd na zwaar verkeersongeval met vijf wagens",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/regio-gent/aalter/e40-van-kust-naar-gent-tijdlang-volledig-versperd-na-zwaar-verkeersongeval-met-vijf-wagens/162979864.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
