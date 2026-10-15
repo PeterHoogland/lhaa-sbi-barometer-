@@ -88252,5 +88252,41 @@
     "link": "https://www.tvoost.be/nieuws/drenkeling-aangetroffen-in-dender-in-aalst-hulp-kon-niet-meer-baten-214980",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-15",
+    "magnitude": 1,
+    "title": "Live-uitzending van executie door vuurpeloton in Texas gaat niet door, zegt Trump",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/10/06/9ce1a588-3efd-4f44-a1b7-bf54c10b13cb.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-15",
+    "magnitude": 1,
+    "title": "24-jarige vrouw gewond na ongeval in Genk",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/genk/24-jarige-vrouw-gewond-na-ongeval-in-genk/163128139.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-15",
+    "magnitude": 1,
+    "title": "Geen celstraf voor verpleegster na cafégevecht met zware gevolgen: “Ze heeft zich enkel verweerd”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/middenkust/ichtegem/geen-celstraf-voor-verpleegster-na-cafegevecht-met-zware-gevolgen-ze-heeft-zich-enkel-verweerd/163091071.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-15",
+    "magnitude": 1,
+    "title": "Autobestuurder (44) naar ziekenhuis na ongeval met vrachtwagen: “Zijn verwondingen zijn niet levensbedreigend”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/westhoek/poperinge/autobestuurder-44-naar-ziekenhuis-na-ongeval-met-vrachtwagen-zijn-verwondingen-zijn-niet-levensbedreigend/163125072.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
