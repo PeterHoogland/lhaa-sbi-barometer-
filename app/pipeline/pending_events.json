@@ -89800,5 +89800,50 @@
     "link": "https://www.gva.be/binnenland/phishing-slachtoffers-krijgen-meer-rechten-maar-banken-blijven-trucs-gebruiken-om-terugbetaling-te-vermijden/163203893.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "E25-autosnelweg in beide richtingen versperd in Sprimont door gewapende chauffeur",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/10/17/90407426-6189-4771-a404-853ed9108216.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "Incident op E25-snelweg bij Sprimont: man dreigt er na ongeval mee explosieven te laten ontploffen",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/incident-op-e25-snelweg-bij-sprimont-man-dreigt-er-na-ongeval-mee-explosieven-te-laten-ontploffen~bed89ced/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "Chaos op snelweg in Wallonië: “politieagent” dreigt er na ongeval mee explosieven te laten ontploffen, DOVO is ter plaatse",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/chaos-op-snelweg-in-wallonie-politieagent-dreigt-er-na-ongeval-mee-explosieven-te-laten-ontploffen-dovo-is-ter-plaatse~aed89ced/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "Betoging in Brussel ontaardt in rellen: politie zet traangas en waterkanon in - Franse politie gebruikt traangas in Lyon",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/betoging-in-brussel-ontaardt-in-rellen-politie-zet-traangas-en-waterkanon-in-franse-politie-gebruikt-traangas-in-lyon~a2483eff/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "Incident op Waalse snelweg: na ongeval dreigt betrokken man plots met explosieven, weg volledig afgesloten",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/incident-op-waalse-snelweg-na-ongeval-dreigt-betrokken-man-plots-met-explosieven-weg-volledig-afgesloten/163211921.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
