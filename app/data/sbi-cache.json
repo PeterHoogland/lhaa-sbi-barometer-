@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:29:04.060140",
+    "fetched_at": "2026-10-17T09:04:32.850884",
     "observation_date": "2026-10-17",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.9525
   },
   "I-D1-009": {
     "date": "2026-10-16",
-    "fetched_at": "2026-10-17T08:29:08.020524",
+    "fetched_at": "2026-10-17T09:04:36.972558",
     "observation_date": "2026-10-16",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 7.04
   },
   "I-D1-010": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:29:08.666479",
+    "fetched_at": "2026-10-17T09:04:37.644854",
     "observation_date": "2026-10-17",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.0
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:33:35.025661",
+    "fetched_at": "2026-10-17T09:09:22.782939",
     "observation_date": "2026-10-17",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D2-delijn": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:36:31.758205",
+    "fetched_at": "2026-10-17T09:12:20.809025",
     "observation_date": "2026-10-17",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 371 vertraagd (≥3min), 13 service-alerts (Vlaanderen)",
-    "value": 371.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 430 vertraagd (≥3min), 16 service-alerts (Vlaanderen)",
+    "value": 430.0
   },
   "I-D2-stib": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:36:28.664248",
+    "fetched_at": "2026-10-17T09:12:19.033363",
     "observation_date": "2026-10-17",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 321 actieve items; CC BY 4.0)",
-    "value": 321.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 324 actieve items; CC BY 4.0)",
+    "value": 324.0
   },
   "I-D3-001": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:29:11.399439",
+    "fetched_at": "2026-10-17T09:04:39.892302",
     "observation_date": "2026-09",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.5
   },
   "I-D3-002": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:29:12.228350",
+    "fetched_at": "2026-10-17T09:04:40.885294",
     "observation_date": "2026-10-17",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 160.54113636363638
   },
   "I-D3-003": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:29:14.196829",
+    "fetched_at": "2026-10-17T09:04:41.771624",
     "observation_date": "2026-08",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.10pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:34:31.328318",
+    "fetched_at": "2026-10-17T09:10:21.611709",
     "observation_date": "2026-10-17",
     "source": "Ontslag-radar: 8 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen, ~8941 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 8.0
   },
   "I-D3-005": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:29:15.905290",
+    "fetched_at": "2026-10-17T09:04:42.614433",
     "observation_date": "2026-08",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 5.9
   },
   "I-D3-006": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:29:17.297842",
+    "fetched_at": "2026-10-17T09:04:43.331133",
     "observation_date": "2026-08",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.7
   },
   "I-D3-007": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:29:19.216501",
+    "fetched_at": "2026-10-17T09:04:45.155840",
     "observation_date": "2026-09",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -18.2
   },
   "I-D3-009": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:29:18.704111",
+    "fetched_at": "2026-10-17T09:04:44.655116",
     "observation_date": "2026-10-17",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 1.0219530695437362
+    "value": 1.0248593582893142
   },
   "I-D5-001": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T06:02:23.139461",
+    "fetched_at": "2026-10-17T09:06:04.763986",
     "observation_date": "2026-10-17",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1012/1068 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.43 / midden +0.37 / ouder +0.36. Negatiefste headlines: «Dave De Kock schuldig aan doodslag en ontvoering kleuter Dean, Romy W. vrijgesproken voor ontvoering · Gewonde bij steekpartij in Sint-Joost In Sint-Joost-ten-Node is afgelopen nacht een gewonde gevallen bij een steekpartij · BRUZZ 24 over de doodgeschoten agent Nordine: ‘Dit komt zwaar binnen in het korps’ Afgelopen nacht werd de 41-jarige pol»; emotie-profiel headlines (matches/100 woorden): woede 0.14 / angst 0.16 / verdriet 0.12 / walging 0.02 (dominant: angst)",
-    "value": 1.7171
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1014/1072 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.56 / midden +0.50 / ouder +0.51. Negatiefste headlines: «Dave De Kock schuldig aan doodslag en ontvoering kleuter Dean, Romy W. vrijgesproken voor ontvoering · Gewonde bij steekpartij in Sint-Joost In Sint-Joost-ten-Node is afgelopen nacht een gewonde gevallen bij een steekpartij · Bel20 sluit positieve week behoudend af na koersval argenx <p>Financieel-economische nieuws van vandaag in één oogopslag»; emotie-profiel headlines (matches/100 woorden): woede 0.16 / angst 0.15 / verdriet 0.16 / walging 0.01 (dominant: verdriet)",
+    "value": 1.3117
   },
   "I-D5-002": {
     "date": "2026-10-15",
-    "fetched_at": "2026-10-17T08:31:37.367765",
+    "fetched_at": "2026-10-17T09:06:05.552762",
     "observation_date": "2026-10-15",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 26.51
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:33:34.535774",
+    "fetched_at": "2026-10-17T09:09:22.380235",
     "observation_date": "2026-10-17",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.6119186780055202
+    "value": 0.28636724779450234
   },
   "I-D5-mastodon": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:33:36.676885",
+    "fetched_at": "2026-10-17T09:09:24.616439",
     "observation_date": "2026-10-17",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.502440294930594
   },
   "I-D5-trends": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-17T08:34:31.752226",
+    "fetched_at": "2026-10-17T09:10:22.048615",
     "observation_date": "2026-10-17",
-    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.18 (stress-trends: marathon antwerpen, maarten spanjer, snelheidsovertreding)",
-    "value": 0.1786
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.35 (stress-trends: marathon antwerpen, maarten spanjer, snelheidsovertreding)",
+    "value": 0.3478
   }
 }
