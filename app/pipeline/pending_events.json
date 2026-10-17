@@ -89908,5 +89908,41 @@
     "link": "https://www.nieuwsblad.be/binnenland/man-die-na-autocrash-op-waalse-snelweg-dreigde-auto-te-laten-ontploffen-met-bom-heeft-zich-overgegeven/163211921.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "Nieuwe anti-phishingwet verplicht banken slachtoffers terug te betalen (maar in deze gevallen ben je je geld nog altijd kwijt)",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/nieuwe-anti-phishingwet-verplicht-banken-slachtoffers-terug-te-betalen-maar-in-deze-gevallen-ben-je-je-geld-nog-altijd-kwijt~a45e8129/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "Waalse snelweg weer open na ontruiming: man die dreigde om zijn wagen op te blazen geeft zich over aan politie",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/waalse-snelweg-weer-open-na-ontruiming-man-die-dreigde-om-zijn-wagen-op-te-blazen-geeft-zich-over-aan-politie~aed89ced/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "Passagier zwaargewond nadat bestelwagen is ingereden op vrachtwagen, bestuurder lichtgewond",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/passagier-zwaargewond-nadat-bestelwagen-is-ingereden-op-vrachtwagen-bestuurder-lichtgewond/163213143.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "Vlaamse getuigt nadat iemand dreigde auto te laten ontploffen op Waalse snelweg, man heeft zich overgegeven aan politie",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/vlaamse-getuigt-nadat-iemand-dreigde-auto-te-laten-ontploffen-op-waalse-snelweg-man-heeft-zich-overgegeven-aan-politie/163211921.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
