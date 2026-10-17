@@ -89764,5 +89764,41 @@
     "link": "https://www.nieuwsblad.be/binnenland/jongeren-verzamelen-aan-brussels-centraal-station-veel-politie-aanwezig/163210207.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "Man (22) zit uur gekneld in wrak in Langemark tot voorbijganger hem opmerkt en hulpdiensten belt",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/10/17/3e785981-1bbc-46ff-a5da-8f56b4934d61.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "Chaos op snelweg in Wallonië: man dreigt er na ongeval mee explosieven te laten ontploffen",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/chaos-op-snelweg-in-wallonie-man-dreigt-er-na-ongeval-mee-explosieven-te-laten-ontploffen~aed89ced/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "Fietser gewond na aanrijding met auto",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/beveren-kruibeke-zwijndrecht/fietser-gewond-na-aanrijding-met-auto/163211497.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-17",
+    "magnitude": 1,
+    "title": "Phishing-slachtoffers krijgen meer rechten, maar banken blijven “trucs gebruiken” om terugbetaling te vermijden",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/binnenland/phishing-slachtoffers-krijgen-meer-rechten-maar-banken-blijven-trucs-gebruiken-om-terugbetaling-te-vermijden/163203893.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
