@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:00:59.389430",
+    "fetched_at": "2026-10-18T09:23:00.627029",
     "observation_date": "2026-10-18",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 1.2133
+    "value": 0.978
   },
   "I-D1-009": {
     "date": "2026-10-17",
-    "fetched_at": "2026-10-18T06:01:11.737593",
+    "fetched_at": "2026-10-18T09:23:04.200734",
     "observation_date": "2026-10-17",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 7.59
   },
   "I-D1-010": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:01:12.145561",
+    "fetched_at": "2026-10-18T09:23:04.795454",
     "observation_date": "2026-10-18",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.0
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:04:51.253532",
+    "fetched_at": "2026-10-18T09:28:10.748446",
     "observation_date": "2026-10-18",
     "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
     "value": 0.0
   },
   "I-D2-delijn": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:07:41.510155",
+    "fetched_at": "2026-10-18T09:31:06.478293",
     "observation_date": "2026-10-18",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 123 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
-    "value": 123.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 234 vertraagd (≥3min), 8 service-alerts (Vlaanderen)",
+    "value": 234.0
   },
   "I-D2-stib": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:07:40.540672",
+    "fetched_at": "2026-10-18T09:31:04.727194",
     "observation_date": "2026-10-18",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 325 actieve items; CC BY 4.0)",
-    "value": 325.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 324 actieve items; CC BY 4.0)",
+    "value": 324.0
   },
   "I-D3-001": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:01:14.798562",
+    "fetched_at": "2026-10-18T09:23:07.101317",
     "observation_date": "2026-09",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.5
   },
   "I-D3-002": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:01:15.421163",
+    "fetched_at": "2026-10-18T09:23:08.680847",
     "observation_date": "2026-10-18",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 190.74795454545458
   },
   "I-D3-003": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:01:15.889083",
+    "fetched_at": "2026-10-18T09:23:10.872942",
     "observation_date": "2026-08",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.10pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:05:44.257553",
+    "fetched_at": "2026-10-18T09:29:07.637260",
     "observation_date": "2026-10-18",
     "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 4.0
   },
   "I-D3-005": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:01:16.419728",
+    "fetched_at": "2026-10-18T09:23:12.701341",
     "observation_date": "2026-08",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 5.9
   },
   "I-D3-006": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:01:16.954017",
+    "fetched_at": "2026-10-18T09:23:13.781920",
     "observation_date": "2026-08",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.7
   },
   "I-D3-007": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:01:18.384470",
+    "fetched_at": "2026-10-18T09:23:15.320379",
     "observation_date": "2026-09",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -18.2
   },
   "I-D3-009": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:01:18.045274",
+    "fetched_at": "2026-10-18T09:23:14.845596",
     "observation_date": "2026-10-18",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 1.0203095409012193
+    "value": 1.0207091860726913
   },
   "I-D5-001": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:02:37.049917",
+    "fetched_at": "2026-10-18T09:24:54.364917",
     "observation_date": "2026-10-18",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1029/1074 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.29 / midden +0.26 / ouder +0.28. Negatiefste headlines: «Dave De Kock schuldig aan doodslag en ontvoering kleuter Dean, Romy W. vrijgesproken voor ontvoering · Doden en gewonden door ‘ernstig incident’ op militaire basis in Canada · Mairies attaquées, pillages, violences urbaines: retour sur une journée de chaos en France»; emotie-profiel headlines (matches/100 woorden): woede 0.13 / angst 0.15 / verdriet 0.15 / walging 0.01 (dominant: angst)",
-    "value": 0.6383
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1005/1075 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.69 / midden +0.64 / ouder +0.67. Negatiefste headlines: «Dave De Kock schuldig aan doodslag en ontvoering kleuter Dean, Romy W. vrijgesproken voor ontvoering · Incendie de la mairie de Limoges: “Le feu est circonscrit” · \"Zeker 7 doden en tientallen gewonden\" na explosie en brand op Canadese legerbasis Bij een explosie en de daaropvolgende»; emotie-profiel headlines (matches/100 woorden): woede 0.14 / angst 0.16 / verdriet 0.16 / walging 0.02 (dominant: angst)",
+    "value": 1.0092
   },
   "I-D5-002": {
     "date": "2026-10-15",
-    "fetched_at": "2026-10-18T06:02:37.493549",
+    "fetched_at": "2026-10-18T09:24:55.416582",
     "observation_date": "2026-10-15",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 26.51
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:04:50.976586",
+    "fetched_at": "2026-10-18T09:28:10.330960",
     "observation_date": "2026-10-18",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.1207314021366229
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": -0.14024207457389362
   },
   "I-D5-mastodon": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:04:52.864718",
+    "fetched_at": "2026-10-18T09:28:12.484885",
     "observation_date": "2026-10-18",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.4955960326355119
+    "value": 0.12940396736448814
   },
   "I-D5-trends": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-18T06:05:44.587262",
+    "fetched_at": "2026-10-18T09:29:08.086834",
     "observation_date": "2026-10-18",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.17 (stress-trends: lucinda brand, politie)",
-    "value": 0.1667
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.21 (stress-trends: canadese legerbasis, boete)",
+    "value": 0.2105
   }
 }
