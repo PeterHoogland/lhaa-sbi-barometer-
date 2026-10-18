@@ -90619,5 +90619,23 @@
     "link": "https://www.nieuwsblad.be/regio/antwerpen/rivierenland/mechelen/ongeval-met-mobilhome-op-e19-in-mechelen-noord-zorgt-tijdlang-voor-file/163250525.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-18",
+    "magnitude": 1,
+    "title": "Vier doden en tientallen gewonden na zware brand bij militaire basis in Canada",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/vier-doden-en-tientallen-gewonden-na-zware-brand-bij-militaire-basis-in-canada~aaa661a0/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-18",
+    "magnitude": 1,
+    "title": "Wagen ramt geparkeerde auto’s en belandt op dak: bestuurder en hond gekneld",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/wagen-ramt-geparkeerde-autos-en-belandt-op-dak-bestuurder-en-hond-gekneld/163250691.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
