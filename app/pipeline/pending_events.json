@@ -90592,5 +90592,32 @@
     "link": "https://www.nieuwsblad.be/regio/limburg/tongeren-borgloon/twee-veertigers-lichtgewond-na-ongeval-met-quad-in-hoepertingen/163249121.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-18",
+    "magnitude": 1,
+    "title": "Vrachtwagen knikkert bestelwagentje in de dieperik naast E17 in Waregem: twee inzittenden raken gewond",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/waregem/vrachtwagen-knikkert-bestelwagentje-in-de-dieperik-naast-e17-in-waregem-twee-inzittenden-raken-gewond~ae3368f8/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-18",
+    "magnitude": 1,
+    "title": "Motorrijder aangereden op kruispunt Natiënlaan, Nederlands koppel rijdt in op file",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/regio-brugge/damme/motorrijder-aangereden-op-kruispunt-natienlaan-nederlands-koppel-rijdt-in-op-file/163250688.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-18",
+    "magnitude": 1,
+    "title": "Ongeval met mobilhome op E19 in Mechelen-Noord zorgt tijdlang voor file",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/rivierenland/mechelen/ongeval-met-mobilhome-op-e19-in-mechelen-noord-zorgt-tijdlang-voor-file/163250525.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
