@@ -90493,5 +90493,59 @@
     "link": "https://www.nieuwsblad.be/regio/oost-vlaanderen/waasland/sint-gillis-waas/fietser-zwaargewond-na-aanrijding-met-auto-in-meerdonk/163236595.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-18",
+    "magnitude": 1,
+    "title": "Persoon overleden na brand in café in Evere, 2e persoon in levensgevaar",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/10/18/be6dad20-f841-40d1-bfa6-1da3f7ae5acf.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-18",
+    "magnitude": 1,
+    "title": "Man overleden bij brand in café in Evere, tweede slachtoffer in levensgevaar",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/brussel/man-overleden-bij-brand-in-cafe-in-evere-tweede-slachtoffer-in-levensgevaar~ae6321dd/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-18",
+    "magnitude": 1,
+    "title": "Dronken man vlucht na ongeval naar vlakbij gelegen woning",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/midwest/wingene/dronken-man-vlucht-na-ongeval-naar-vlakbij-gelegen-woning/163241820.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-18",
+    "magnitude": 1,
+    "title": "Dode en zwaargewonde bij cafébrand in Evere, twee weken geleden werd er al vuurwerkbom tegen gevel gegooid",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/nieuws/dode-en-zwaargewonde-bij-cafebrand-in-evere-twee-weken-geleden-werd-er-al-vuurwerkbom-tegen-gevel-gegooid/163238687.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-18",
+    "magnitude": 1,
+    "title": "Ongeval in Alken, 32-jarige man raakt gewond",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/alken/ongeval-in-alken-32-jarige-man-raakt-gewond/163240092.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-18",
+    "magnitude": 5,
+    "title": "16-jarige Dries Van Langendonck is kampioen in Formule 4: “Ik laat Max Verstappen zoveel mogelijk met rust”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/sport/racesporten/16-jarige-dries-van-langendonck-is-kampioen-in-formule-4-ik-laat-max-verstappen-zoveel-mogelijk-met-rust/162425589.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
