@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:01:01.715722",
+    "fetched_at": "2026-10-19T06:01:12.512522",
     "observation_date": "2026-10-19",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.536
+    "value": 0.5733
   },
   "I-D1-009": {
     "date": "2026-10-18",
-    "fetched_at": "2026-10-19T05:01:05.063282",
+    "fetched_at": "2026-10-19T06:01:15.721243",
     "observation_date": "2026-10-18",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 7.76
   },
   "I-D1-010": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:01:05.705170",
+    "fetched_at": "2026-10-19T06:01:16.284538",
     "observation_date": "2026-10-19",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.0
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:06:57.850351",
+    "fetched_at": "2026-10-19T06:06:57.704419",
     "observation_date": "2026-10-19",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
-    "value": 1.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
+    "value": 2.0
   },
   "I-D2-delijn": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:09:55.303704",
+    "fetched_at": "2026-10-19T06:09:56.782925",
     "observation_date": "2026-10-19",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 572 vertraagd (≥3min), 14 service-alerts (Vlaanderen)",
-    "value": 572.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 1264 vertraagd (≥3min), 15 service-alerts (Vlaanderen)",
+    "value": 1264.0
   },
   "I-D2-stib": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:09:53.419801",
+    "fetched_at": "2026-10-19T06:09:54.770717",
     "observation_date": "2026-10-19",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 309 actieve items; CC BY 4.0)",
-    "value": 309.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 315 actieve items; CC BY 4.0)",
+    "value": 315.0
   },
   "I-D3-001": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:01:08.589304",
+    "fetched_at": "2026-10-19T06:01:29.161915",
     "observation_date": "2026-09",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.5
   },
   "I-D3-002": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:01:10.200994",
+    "fetched_at": "2026-10-19T06:01:30.755797",
     "observation_date": "2026-10-19",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 225.16454545454542
   },
   "I-D3-003": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:01:10.967996",
+    "fetched_at": "2026-10-19T06:01:32.772314",
     "observation_date": "2026-08",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.10pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:07:56.446533",
+    "fetched_at": "2026-10-19T06:07:57.951592",
     "observation_date": "2026-10-19",
     "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 4.0
   },
   "I-D3-005": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:01:11.726244",
+    "fetched_at": "2026-10-19T06:01:33.449447",
     "observation_date": "2026-08",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 5.9
   },
   "I-D3-006": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:01:12.490278",
+    "fetched_at": "2026-10-19T06:01:34.104162",
     "observation_date": "2026-08",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.7
   },
   "I-D3-007": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:01:14.342435",
+    "fetched_at": "2026-10-19T06:01:35.676564",
     "observation_date": "2026-09",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -18.2
   },
   "I-D3-009": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:01:13.836581",
+    "fetched_at": "2026-10-19T06:01:35.186210",
     "observation_date": "2026-10-19",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0183343234669304
   },
   "I-D5-001": {
-    "date": "2026-10-18",
-    "fetched_at": "2026-10-18T18:03:47.794998",
-    "observation_date": "2026-10-18",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1033/1075 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.28 / midden +0.23 / ouder +0.20. Negatiefste headlines: «Live - Houthi’s: negen doden bij nieuwe aanvallen van Saudi-Arabië · \"C'est un désastre\": un incendie fait des morts et des blessés sur une base militaire au Canada, les médecins dépassés P · Steven Decraene: \"Gevoel van woede, droefheid en angst leeft hier in Frankrijk\"»; emotie-profiel headlines (matches/100 woorden): woede 0.14 / angst 0.17 / verdriet 0.16 / walging 0.01 (dominant: angst)",
-    "value": 1.579
+    "date": "2026-10-19",
+    "fetched_at": "2026-10-19T06:03:18.274536",
+    "observation_date": "2026-10-19",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1010/1070 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.55 / midden +0.54 / ouder +0.58. Negatiefste headlines: «\"C'est un désastre\": un incendie fait des morts et des blessés sur une base militaire au Canada, les médecins dépassés P · Nog negentien gewonden kritiek na brand die vier militairen doodde op Canadese basis Negentien mensen verkeren nog in kr · Namur : un cheval qui s’était échappé de son pré tué dans un accident à Malonne L’équidé a été percuté par un véhicule e»; emotie-profiel headlines (matches/100 woorden): woede 0.15 / angst 0.16 / verdriet 0.15 / walging 0.03 (dominant: angst)",
+    "value": 1.3257
   },
   "I-D5-002": {
     "date": "2026-10-15",
-    "fetched_at": "2026-10-19T05:03:29.236600",
+    "fetched_at": "2026-10-19T06:03:19.351985",
     "observation_date": "2026-10-15",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 26.51
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:06:56.862677",
+    "fetched_at": "2026-10-19T06:06:57.268838",
     "observation_date": "2026-10-19",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.07979012208779904
+    "value": 0.08656607837195203
   },
   "I-D5-mastodon": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:06:59.358922",
+    "fetched_at": "2026-10-19T06:06:59.363842",
     "observation_date": "2026-10-19",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.009547260379634659
   },
   "I-D5-trends": {
     "date": "2026-10-19",
-    "fetched_at": "2026-10-19T05:07:56.699795",
+    "fetched_at": "2026-10-19T06:07:58.269408",
     "observation_date": "2026-10-19",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.16 (stress-trends: paard, nieuwpoort)",
-    "value": 0.1579
+    "source": "Google Trends trending RSS (geo=BE) — 5/10 trends stress-relevant, aandeel zoekvolume 0.30 (stress-trends: leefloon, het nieuwsblad, paard, pmd, zoon cindy crawford)",
+    "value": 0.3
   }
 }
