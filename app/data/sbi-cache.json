@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:01:22.188244",
+    "fetched_at": "2026-10-21T18:56:05.818989",
     "observation_date": "2026-10-21",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.7167
+    "value": 0.7211
   },
   "I-D1-009": {
     "date": "2026-10-20",
-    "fetched_at": "2026-10-21T18:01:26.056050",
+    "fetched_at": "2026-10-21T18:56:08.987585",
     "observation_date": "2026-10-20",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 7.21
   },
   "I-D1-010": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:01:26.638660",
+    "fetched_at": "2026-10-21T18:56:09.370614",
     "observation_date": "2026-10-21",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.0
@@ -29,135 +29,135 @@
   },
   "I-D2-001-rt": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:07:46.480531",
+    "fetched_at": "2026-10-21T19:00:21.563241",
     "observation_date": "2026-10-21",
-    "source": "Verkeerscentrum DATEX II v3 — 1 files, 1.75 km totale filelengte (langste 1.75 km), snapshot 2026-10-21",
-    "value": 1.75
+    "source": "Verkeerscentrum DATEX II v3 — 1 files, 1.53 km totale filelengte (langste 1.53 km), snapshot 2026-10-21",
+    "value": 1.53
   },
   "I-D2-009": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:01:28.392079",
+    "fetched_at": "2026-10-21T18:56:10.970038",
     "observation_date": "2026-10-21",
-    "source": "Infrabel stiptheid-van-vandaag-per-uur (3475 metingen, 16 uren, dag tot 20u)",
-    "value": 7.7410071942446095
+    "source": "Infrabel stiptheid-van-vandaag-per-uur (3539 metingen, 16 uren, dag tot 20u)",
+    "value": 7.91183950268437
   },
   "I-D2-009S": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:06:50.755130",
+    "fetched_at": "2026-10-21T18:59:28.788928",
     "observation_date": "2026-10-21",
     "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
     "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:07:49.210690",
+    "fetched_at": "2026-10-21T19:00:23.531545",
     "observation_date": "2026-10-21",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 314 vertraagd (≥3min), 15 service-alerts (Vlaanderen)",
-    "value": 314.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 263 vertraagd (≥3min), 15 service-alerts (Vlaanderen)",
+    "value": 263.0
   },
   "I-D2-stib": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:07:47.322602",
+    "fetched_at": "2026-10-21T19:00:22.146734",
     "observation_date": "2026-10-21",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 329 actieve items; CC BY 4.0)",
-    "value": 329.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 330 actieve items; CC BY 4.0)",
+    "value": 330.0
   },
   "I-D3-001": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:01:28.955293",
+    "fetched_at": "2026-10-21T18:56:11.405251",
     "observation_date": "2026-09",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.5
   },
   "I-D3-002": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:01:30.681786",
+    "fetched_at": "2026-10-21T18:56:12.270037",
     "observation_date": "2026-10-21",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 197.90420454545455
   },
   "I-D3-003": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:01:32.530836",
+    "fetched_at": "2026-10-21T18:56:13.168779",
     "observation_date": "2026-08",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.10pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:07:45.105454",
+    "fetched_at": "2026-10-21T19:00:20.303992",
     "observation_date": "2026-10-21",
-    "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen, ~196 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 3.0
+    "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen, ~196 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 4.0
   },
   "I-D3-005": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:01:34.114964",
+    "fetched_at": "2026-10-21T18:56:13.707614",
     "observation_date": "2026-08",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 5.9
   },
   "I-D3-006": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:01:36.192715",
+    "fetched_at": "2026-10-21T18:56:14.314556",
     "observation_date": "2026-08",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.7
   },
   "I-D3-007": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:01:43.020359",
+    "fetched_at": "2026-10-21T18:56:15.930591",
     "observation_date": "2026-09",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -18.2
   },
   "I-D3-009": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:01:42.527404",
+    "fetched_at": "2026-10-21T18:56:15.529965",
     "observation_date": "2026-10-21",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.007588812747316
   },
   "I-D5-001": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:03:25.374015",
+    "fetched_at": "2026-10-21T18:57:42.903189",
     "observation_date": "2026-10-21",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 923/968 unieke artikels na dedup, 16 bronnen, poststratificatie): negativiteit jong +0.51 / midden +0.50 / ouder +0.53. Negatiefste headlines: «Italië neemt strenge maatregelen tegen rellen en stuurt 500 militairen naar Milaan · Ook Russische schaaklegende en Poetin-criticus Kasparov geëvacueerd na zware brand in luxehotel Botanic Sanctuary in Ant · L’agriculteur piétiné par un taureau, à Jalhay, est malheureusement décédé Ce mercredi 21 octobre 2026 en matinée, un dr»; emotie-profiel headlines (matches/100 woorden): woede 0.19 / angst 0.18 / verdriet 0.17 / walging 0.01 (dominant: woede)",
-    "value": 1.5043
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 968/1018 unieke artikels na dedup, 17 bronnen, poststratificatie): negativiteit jong +0.37 / midden +0.34 / ouder +0.37. Negatiefste headlines: «Ook Russische schaaklegende en Poetin-criticus Kasparov geëvacueerd na zware brand in luxehotel Botanic Sanctuary in Ant · L’agriculteur piétiné par un taureau, à Jalhay, est malheureusement décédé Ce mercredi 21 octobre 2026 en matinée, un dr · Fosses-la-Ville : blessé après avoir percuté un sanglier avec sa voiture L’accident s’est produit de nuit, à Aisemont. .»; emotie-profiel headlines (matches/100 woorden): woede 0.17 / angst 0.18 / verdriet 0.16 / walging 0.01 (dominant: angst)",
+    "value": 1.5314
   },
   "I-D5-002": {
     "date": "2026-10-20",
-    "fetched_at": "2026-10-21T18:03:26.434976",
+    "fetched_at": "2026-10-21T18:57:43.284966",
     "observation_date": "2026-10-20",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 24.778
   },
   "I-D5-003": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T17:05:38.375885",
+    "fetched_at": "2026-10-21T18:58:50.406290",
     "observation_date": "2026-10-21",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 33 RSS-kandidaten naar pending voor menselijke review",
-    "value": 0.084533
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 30 RSS-kandidaten naar pending voor menselijke review",
+    "value": 0.0875
   },
   "I-D5-006S": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:06:50.490263",
+    "fetched_at": "2026-10-21T18:59:28.505973",
     "observation_date": "2026-10-21",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.555861853612916
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.7812645747912071
   },
   "I-D5-mastodon": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:06:52.281803",
+    "fetched_at": "2026-10-21T18:59:30.157271",
     "observation_date": "2026-10-21",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.024349244764062687
   },
   "I-D5-trends": {
     "date": "2026-10-21",
-    "fetched_at": "2026-10-21T18:07:45.367569",
+    "fetched_at": "2026-10-21T19:00:20.535795",
     "observation_date": "2026-10-21",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.38 (stress-trends: parijs, wateroverlast)",
-    "value": 0.3818
+    "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
+    "value": 0.0
   }
 }
