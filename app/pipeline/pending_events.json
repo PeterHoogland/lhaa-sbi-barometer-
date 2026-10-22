@@ -93292,5 +93292,68 @@
     "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/turnhout/valse-bankmedewerkers-maken-80.000-euro-buit-bij-danssport-vlaanderen-celstraffen-tot-een-jaar-uitgesproken/163445967.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-22",
+    "magnitude": 1,
+    "title": "\"Te veel auto's tussen wandelaars\": district Antwerpen gaat verkeer tellen in Lange Koepoortstraat na klachten",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/10/22/9bd47fc0-287d-4663-a1f4-83fcc2c28990.png",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-22",
+    "magnitude": 1,
+    "title": "Italië en Spanje heffen wederzijdse grenscontroles op na maandenlang migratieconflict",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/italie-en-spanje-heffen-wederzijdse-grenscontroles-op-na-maandenlang-migratieconflict~ad9f534b/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-22",
+    "magnitude": 1,
+    "title": "Kwart minder ongevallen met tram in Brussel, maar nog altijd meer dan twee per dag",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/mobiliteit/kwart-minder-ongevallen-met-tram-brussel-maar-nog-altijd-meer-dan-twee-dag-2026-10-22",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-22",
+    "magnitude": 1,
+    "title": "NAVO staat voor gevaarlijk dilemma nu dodelijke aanvallen van Rusland steeds dichter bij eigen grondgebied plaatsvinden",
+    "source": "Business AM",
+    "link": "https://businessam.be/navo-staat-voor-gevaarlijk-dilemma-nu-dodelijke-aanvallen-van-rusland-steeds-dichter-bij-eigen-grondgebied-plaatsvinden/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-22",
+    "magnitude": 1,
+    "title": "Politierechter buigt zich over dodelijk ongeval met jonge wielrenner: “Jonas stond in de startblokken van zijn leven”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/merksplas/politierechter-buigt-zich-over-dodelijk-ongeval-met-jonge-wielrenner-jonas-stond-in-de-startblokken-van-zijn-leven/163465534.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-22",
+    "magnitude": 1,
+    "title": "Bestuurster getuigt in tranen over dodelijk ongeval met openslaand portier: “Ik zag niemand, maar plots hoorde ik die slag”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/bestuurster-getuigt-in-tranen-over-dodelijk-ongeval-met-openslaand-portier-ik-zag-niemand-maar-plots-hoorde-ik-die-slag/163457927.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-22",
+    "magnitude": 5,
+    "title": "Tempête annoncée : Manage ferme la Drève de Mariemont et le parc des Jésuites par précaution dès vendredi, Estinnes annule sa Marche de la Terreur",
+    "source": "La DH",
+    "link": "https://www.dhnet.be/regions/centre/2026/10/22/tempete-annoncee-manage-ferme-la-dreve-de-mariemont-et-le-parc-des-jesuites-par-precaution-des-vendredi-45VFYHGVBBBU7J7TDH4U2DZGSI/",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
