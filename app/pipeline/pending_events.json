@@ -93994,5 +93994,41 @@
     "link": "https://www.nieuwsblad.be/binnenland/live-storm-austen.-scheepsverkeer-in-havens-van-antwerpen-en-brugge-stilgelegd-grote-boom-breekt-af-door-storm-in-gents-park/163433280.html",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-23",
+    "magnitude": 1,
+    "title": "17-jarige Oekraïense verstuurt dodelijke gifpakketjes naar soldaten in opdracht van Rusland",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/17-jarige-oekraiense-verstuurt-dodelijke-gifpakketjes-naar-soldaten-in-opdracht-van-rusland~aeffa3c9/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-23",
+    "magnitude": 1,
+    "title": "Hele Nieuwstraat kleurt bruin: Brusselse handelaars wapenen zich tegen plunderingen bij nieuwe betoging zaterdag",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/hele-nieuwstraat-kleurt-bruin-brusselse-handelaars-wapenen-zich-tegen-plunderingen-bij-nieuwe-betoging-zaterdag/163510582.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-23",
+    "magnitude": 1,
+    "title": "Storm Austen gooit roet in het eten: wedstrijd tussen KV Kortrijk en KV Mechelen afgelast door noodweer",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/sport/voetbal/storm-austen-gooit-roet-in-het-eten-wedstrijd-tussen-kv-kortrijk-en-kv-mechelen-afgelast-door-noodweer/163507240.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-23",
+    "magnitude": 1,
+    "title": "Zeker één dode en vier gewonden bij dubbele schietpartij nabij Parijs: schutter opgepakt, meisje van 12 onder gewonden",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/zeker-een-dode-en-vier-gewonden-bij-dubbele-schietpartij-nabij-parijs-schutter-opgepakt-meisje-van-12-onder-gewonden/163506066.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
