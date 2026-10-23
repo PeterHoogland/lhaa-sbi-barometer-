@@ -93958,5 +93958,23 @@
     "link": "https://www.tvoost.be/nieuws/verschillende-ongevallen-veroorzaken-moeizame-avondspits-op-e17-rond-lokeren-215218",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-23",
+    "magnitude": 1,
+    "title": "KIJK. Tyfoon Champi treft Taiwan: één dode, 171 gewonden en meer dan 1.200 mensen geëvacueerd",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/kijk-tyfoon-champi-treft-taiwan-een-dode-171-gewonden-en-meer-dan-1-200-mensen-geevacueerd~a8b5c74b/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-23",
+    "magnitude": 1,
+    "title": "Zeker één dode en bijna 200 gewonden door tyfoon op Taiwan",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/zeker-een-dode-en-bijna-200-gewonden-door-tyfoon-op-taiwan/163492158.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
