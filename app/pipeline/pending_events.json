@@ -94462,5 +94462,41 @@
     "link": "https://www.tvoost.be/nieuws/werken-aan-kruispunt-mechelsesteenwegn41-in-dendermonde-vroeger-klaar-dan-gepland-215175",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-24",
+    "magnitude": 1,
+    "title": "Dronken bestuurder rijdt wagen aan op E34 in Kallo: Duitse vrouw (50) komt om het leven",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/10/24/cf500530-f14e-44e6-a3d0-72297f30de31.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-24",
+    "magnitude": 1,
+    "title": "Duitse vrouw overleden bij zware crash op E34 bij Kallo: bestuurder van Porsche test positief op alcohol",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/beveren-kruibeke-zwijndrecht/duitse-vrouw-overleden-bij-zware-crash-op-e34-bij-kallo-bestuurder-van-porsche-test-positief-op-alcohol~af46a3e4/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-24",
+    "magnitude": 1,
+    "title": "Vrouw overleden bij ongeval op E34, bestuurder van Porsche gearresteerd na positieve ademtest",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/vrouw-overleden-bij-ongeval-op-e34-bestuurder-van-porsche-gearresteerd-na-positieve-ademtest/163554067.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-24",
+    "magnitude": 1,
+    "title": "Dode na zware botsing op E34 in Kallo, andere bestuurder onder invloed",
+    "source": "TV Oost",
+    "link": "https://www.tvoost.be/nieuws/dode-na-zware-botsing-op-e34-in-kallo-andere-bestuurder-onder-invloed-215251",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
