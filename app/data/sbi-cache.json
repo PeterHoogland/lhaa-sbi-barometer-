@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:30:03.099424",
+    "fetched_at": "2026-10-28T11:06:58.795653",
     "observation_date": "2026-10-28",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 1.1636
   },
   "I-D1-009": {
     "date": "2026-10-27",
-    "fetched_at": "2026-10-28T10:30:06.279965",
+    "fetched_at": "2026-10-28T11:07:02.561424",
     "observation_date": "2026-10-27",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 18.24
   },
   "I-D1-010": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:30:06.764066",
+    "fetched_at": "2026-10-28T11:07:03.150360",
     "observation_date": "2026-10-28",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.0
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:36:59.129536",
+    "fetched_at": "2026-10-28T11:12:04.387053",
     "observation_date": "2026-10-28",
-    "source": "Verkeerscentrum DATEX II v3 — 21 files, 49.15 km totale filelengte (langste 7.38 km), snapshot 2026-10-28",
-    "value": 49.15
+    "source": "Verkeerscentrum DATEX II v3 — 19 files, 42.9 km totale filelengte (langste 7.29 km), snapshot 2026-10-28",
+    "value": 42.9
   },
   "I-D2-009": {
     "date": "2026-10-25",
@@ -43,121 +43,121 @@
   },
   "I-D2-009S": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:36:00.060758",
+    "fetched_at": "2026-10-28T11:11:03.015265",
     "observation_date": "2026-10-28",
     "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
     "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:37:01.720877",
+    "fetched_at": "2026-10-28T11:12:06.877392",
     "observation_date": "2026-10-28",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 519 vertraagd (≥3min), 12 service-alerts (Vlaanderen)",
-    "value": 519.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 745 vertraagd (≥3min), 12 service-alerts (Vlaanderen)",
+    "value": 745.0
   },
   "I-D2-stib": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:36:59.865541",
+    "fetched_at": "2026-10-28T11:12:05.190280",
     "observation_date": "2026-10-28",
     "source": "STIB/MIVB TravellersInformation (Brussel, 330 actieve items; CC BY 4.0)",
     "value": 330.0
   },
   "I-D3-001": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:30:10.473581",
+    "fetched_at": "2026-10-28T11:07:05.634993",
     "observation_date": "2026-09",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 4.5
   },
   "I-D3-002": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:30:11.252375",
+    "fetched_at": "2026-10-28T11:07:06.384882",
     "observation_date": "2026-10-28",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 251.8617391304348
   },
   "I-D3-003": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:30:26.242950",
+    "fetched_at": "2026-10-28T11:07:07.733858",
     "observation_date": "2026-08",
     "source": "ECB LFSI werkloosheidsrate-delta (-0.10pp, ~0 werkzoekenden, proxy voor ontslagen)",
     "value": 0.0
   },
   "I-D3-003S": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:36:56.954158",
+    "fetched_at": "2026-10-28T11:12:02.525515",
     "observation_date": "2026-10-28",
-    "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen, ~70 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 6.0
+    "source": "Ontslag-radar: 7 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen, ~70 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 7.0
   },
   "I-D3-005": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:31:01.445989",
+    "fetched_at": "2026-10-28T11:07:08.370395",
     "observation_date": "2026-08",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 5.9
   },
   "I-D3-006": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:31:02.071046",
+    "fetched_at": "2026-10-28T11:07:09.157995",
     "observation_date": "2026-08",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.7
   },
   "I-D3-007": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:31:04.915788",
+    "fetched_at": "2026-10-28T11:07:11.297279",
     "observation_date": "2026-09",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -18.2
   },
   "I-D3-009": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:31:04.500796",
+    "fetched_at": "2026-10-28T11:07:10.821036",
     "observation_date": "2026-10-28",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0113966318077723
   },
   "I-D5-001": {
-    "date": "2026-10-27",
-    "fetched_at": "2026-10-27T16:17:27.891135",
-    "observation_date": "2026-10-27",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1023/1069 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.34 / midden +0.29 / ouder +0.32. Negatiefste headlines: «Vrouwen hebben meer pijn, overal in het lichaam en overal ter wereld: ‘De klachten worden onvoldoende ernstig genomen’ · Negentienjarige uit As gewond bij ongeval · Negen aanhoudingen na betoging Artikel met liveblog»; emotie-profiel headlines (matches/100 woorden): woede 0.12 / angst 0.12 / verdriet 0.18 / walging 0.02 (dominant: verdriet)",
+    "date": "2026-10-28",
+    "fetched_at": "2026-10-28T11:08:41.939897",
+    "observation_date": "2026-10-28",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1023/1067 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.45 / midden +0.39 / ouder +0.40. Negatiefste headlines: «Vrouwen hebben meer pijn, overal in het lichaam en overal ter wereld: ‘De klachten worden onvoldoende ernstig genomen’ · DIRECT- Tragédie ferroviaire en Espagne : un grave accident de train fait au moins 50 morts Un grave accident de train a · Accident près d’Éghezée : un blessé Une voiture a percuté un panneau de signalisation, ce mardi 27 octobre. ...»; emotie-profiel headlines (matches/100 woorden): woede 0.11 / angst 0.11 / verdriet 0.15 / walging 0.02 (dominant: verdriet)",
     "value": 2.7075
   },
   "I-D5-002": {
     "date": "2026-10-27",
-    "fetched_at": "2026-10-28T10:33:09.061803",
+    "fetched_at": "2026-10-28T11:08:42.879017",
     "observation_date": "2026-10-27",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 28.631
   },
   "I-D5-003": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:35:22.006733",
+    "fetched_at": "2026-10-28T11:10:23.565032",
     "observation_date": "2026-10-28",
-    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 25 RSS-kandidaten naar pending voor menselijke review",
+    "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 23 RSS-kandidaten naar pending voor menselijke review",
     "value": 0.0868
   },
   "I-D5-006S": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:35:59.631438",
+    "fetched_at": "2026-10-28T11:11:02.368364",
     "observation_date": "2026-10-28",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.8849734460452285
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.422335501158301
   },
   "I-D5-mastodon": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:36:01.398662",
+    "fetched_at": "2026-10-28T11:11:04.896393",
     "observation_date": "2026-10-28",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.17671586252206858
   },
   "I-D5-trends": {
     "date": "2026-10-28",
-    "fetched_at": "2026-10-28T10:36:57.928813",
+    "fetched_at": "2026-10-28T11:12:03.034826",
     "observation_date": "2026-10-28",
-    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.14 (stress-trends: fietssnelweg)",
-    "value": 0.1351
+    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.21 (stress-trends: toledo spanje, onderwijs, fietssnelweg)",
+    "value": 0.2051
   }
 }
