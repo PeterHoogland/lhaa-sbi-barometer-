@@ -97531,5 +97531,23 @@
     "link": "https://www.tvoost.be/nieuws/temse-ondertekent-save-charter-samen-met-efua-de-mama-van-francis-215419",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-10-31",
+    "magnitude": 1,
+    "title": "E40 in Nevele weer vrijgemaakt na ongeval met brandende vrachtwagen",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/nieuws/e40-in-nevele-weer-vrijgemaakt-na-ongeval-met-brandende-vrachtwagen~baf747b9/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-10-31",
+    "magnitude": 1,
+    "title": "Grote brand in opslagplaats in Molenbeek: persoon raakt zwaargewond door rookintoxicatie",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/binnenland/grote-brand-in-opslagplaats-in-molenbeek-persoon-raakt-zwaargewond-door-rookintoxicatie/163891382.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
