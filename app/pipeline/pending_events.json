@@ -98611,5 +98611,32 @@
     "link": "https://www.lavenir.net/regions/verviers/verviers/2026/11/02/un-management-de-terreur-au-chr-de-verviers-4AP2HAYZQJDGDOUJGOP2AQVEY4/",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-11-03",
+    "magnitude": 1,
+    "title": "Cyberaanvallen treffen koelsystemen van Europese supermarkten",
+    "source": "Newsmonkey",
+    "link": "https://newsmonkey.be/cyberaanvallen-treffen-koelsystemen-van-europese-supermarkten/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-03",
+    "magnitude": 1,
+    "title": "Man (53) bedreigt drie bewakingsagenten van OPZ Geel met mes: één slachtoffer raakt gewond aan beide handen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/kempen/geel/man-53-bedreigt-drie-bewakingsagenten-van-opz-geel-met-mes-een-slachtoffer-raakt-gewond-aan-beide-handen/164014532.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-03",
+    "magnitude": 1,
+    "title": "Jong miljonairsgezin met nanny en bevriend koppel: dit weten we al over slachtoffers van dodelijke vliegcrash in Florida",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/nieuws/jong-miljonairsgezin-met-nanny-en-bevriend-koppel-dit-weten-we-al-over-slachtoffers-van-dodelijke-vliegcrash-in-florida/164005017.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
