@@ -2,39 +2,19 @@
   "last_fired": {
     "indicator.spike:I-D3-002": "2026-10-26T10:08:02.500Z",
     "indicator.red:I-D3-002": "2026-06-01T11:56:09.597Z",
-    "composite.red": "2026-10-31T15:56:20.208Z",
+    "composite.red": "2026-11-03T11:59:46.543Z",
     "composite.amber": "2026-11-01T11:19:33.829Z",
     "indicator.spike:I-D1-002": "2026-08-12T14:08:33.543Z",
     "indicator.spike:I-D1-003": "2026-06-04T11:46:59.582Z",
     "indicator.red:I-D1-002": "2026-08-12T14:08:33.543Z",
     "indicator.red:I-D1-003": "2026-06-04T11:46:59.582Z",
-    "indicator.red:I-D5-001": "2026-10-31T15:56:20.208Z",
+    "indicator.red:I-D5-001": "2026-11-03T11:59:46.543Z",
     "indicator.spike:I-D5-001": "2026-10-27T09:51:58.161Z",
     "emotie.spike": "2026-10-24T16:52:58.930Z",
-    "indicator.spike:I-D5-003": "2026-10-17T15:10:26.457Z",
-    "indicator.red:I-D5-003": "2026-10-15T14:10:13.091Z"
+    "indicator.spike:I-D5-003": "2026-11-03T11:59:46.543Z",
+    "indicator.red:I-D5-003": "2026-11-03T11:59:46.543Z"
   },
   "recent": [
-    {
-      "key": "composite.amber:composite",
-      "fired_at": "2026-10-01T11:09:41.035Z",
-      "severity": "let_op"
-    },
-    {
-      "key": "composite.amber:composite",
-      "fired_at": "2026-10-03T14:08:27.137Z",
-      "severity": "let_op"
-    },
-    {
-      "key": "composite.amber:composite",
-      "fired_at": "2026-10-05T14:09:00.360Z",
-      "severity": "let_op"
-    },
-    {
-      "key": "composite.red:composite",
-      "fired_at": "2026-10-06T05:09:18.206Z",
-      "severity": "hoog"
-    },
     {
       "key": "emotie.spike:I-D5-emotie",
       "fired_at": "2026-10-06T10:09:57.622Z",
@@ -264,6 +244,26 @@
       "key": "composite.amber:composite",
       "fired_at": "2026-11-01T11:19:33.829Z",
       "severity": "let_op"
+    },
+    {
+      "key": "indicator.spike:I-D5-003",
+      "fired_at": "2026-11-03T11:59:46.543Z",
+      "severity": "hoog"
+    },
+    {
+      "key": "indicator.red:I-D5-001",
+      "fired_at": "2026-11-03T11:59:46.543Z",
+      "severity": "hoog"
+    },
+    {
+      "key": "indicator.red:I-D5-003",
+      "fired_at": "2026-11-03T11:59:46.543Z",
+      "severity": "hoog"
+    },
+    {
+      "key": "composite.red:composite",
+      "fired_at": "2026-11-03T11:59:46.543Z",
+      "severity": "hoog"
     }
   ]
 }
