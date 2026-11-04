@@ -98926,5 +98926,41 @@
     "link": "https://www.tvoost.be/nieuws/tv-oost-nieuws-van-zaterdag-31102026-215495",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-11-04",
+    "magnitude": 1,
+    "title": "\"Drama voor onze voetbalclub\": Ons Genoegen Vorselaar ziet hoge geldsommen van rekeningen verdwijnen door phishing",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/11/04/328d4b4a-7bfe-4303-b023-b2f949e9cd37.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-04",
+    "magnitude": 1,
+    "title": "Kremlin hoopt dat verkiezingsuitslag Trumps inspanningen voor Oekraïne niet dwarsboomt -  Dodentol na aanval op hulppunt loopt op tot 37",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/kremlin-hoopt-dat-verkiezingsuitslag-trumps-inspanningen-voor-oekraine-niet-dwarsboomt-dodentol-na-aanval-op-hulppunt-loopt-op-tot-37~a93df6b5/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-04",
+    "magnitude": 1,
+    "title": "Hackers vallen bank aan: mogelijk 118 miljoen euro gestolen bij moedergroep Keytrade Bank",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/economie/hackers-vallen-bank-aan-mogelijk-118-miljoen-euro-gestolen-bij-moedergroep-keytrade-bank~af35c7d1/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-04",
+    "magnitude": 1,
+    "title": "Koelinstallaties van Franse bloedbanken slachtoffer van cyberaanval",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/koelinstallaties-van-franse-bloedbanken-slachtoffer-van-cyberaanval/164074765.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]

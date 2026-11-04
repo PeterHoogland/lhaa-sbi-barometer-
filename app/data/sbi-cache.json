@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T11:59:44.766071",
+    "fetched_at": "2026-11-04T12:50:02.147054",
     "observation_date": "2026-11-04",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 0.75
+    "value": 0.7662
   },
   "I-D1-009": {
     "date": "2026-11-03",
-    "fetched_at": "2026-11-04T11:59:47.398758",
+    "fetched_at": "2026-11-04T12:50:06.151254",
     "observation_date": "2026-11-03",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 8.05
   },
   "I-D1-010": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T11:59:47.779298",
+    "fetched_at": "2026-11-04T12:50:06.840619",
     "observation_date": "2026-11-04",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.0
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:06:47.490599",
+    "fetched_at": "2026-11-04T12:55:55.922078",
     "observation_date": "2026-11-04",
-    "source": "Verkeerscentrum DATEX II v3 — 14 files, 30.77 km totale filelengte (langste 10.15 km), snapshot 2026-11-04",
-    "value": 30.77
+    "source": "Verkeerscentrum DATEX II v3 — 27 files, 70.29 km totale filelengte (langste 11.54 km), snapshot 2026-11-04",
+    "value": 70.29
   },
   "I-D2-009": {
     "date": "2026-11-03",
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:05:54.277755",
+    "fetched_at": "2026-11-04T12:54:58.675225",
     "observation_date": "2026-11-04",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 3 ongepland)",
-    "value": 3.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
+    "value": 2.0
   },
   "I-D2-delijn": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:06:49.424410",
+    "fetched_at": "2026-11-04T12:55:58.843187",
     "observation_date": "2026-11-04",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 504 vertraagd (≥3min), 20 service-alerts (Vlaanderen)",
-    "value": 504.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 575 vertraagd (≥3min), 20 service-alerts (Vlaanderen)",
+    "value": 575.0
   },
   "I-D2-stib": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:06:48.042469",
+    "fetched_at": "2026-11-04T12:55:56.850270",
     "observation_date": "2026-11-04",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 285 actieve items; CC BY 4.0)",
-    "value": 285.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 282 actieve items; CC BY 4.0)",
+    "value": 282.0
   },
   "I-D3-001": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:00:35.236362",
+    "fetched_at": "2026-11-04T12:50:09.403617",
     "observation_date": "2026-10",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 5.2
   },
   "I-D3-002": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:00:36.394287",
+    "fetched_at": "2026-11-04T12:50:10.543495",
     "observation_date": "2026-11-04",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 241.7151086956522
   },
   "I-D3-003": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:00:37.085194",
+    "fetched_at": "2026-11-04T12:50:11.433279",
     "observation_date": "2026-09",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.10pp, ~4999 werkzoekenden, proxy voor ontslagen)",
     "value": 8.5173931714189
   },
   "I-D3-003S": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:06:46.051922",
+    "fetched_at": "2026-11-04T12:55:54.079085",
     "observation_date": "2026-11-04",
     "source": "Ontslag-radar: 5 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen, ~7000 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 5.0
   },
   "I-D3-005": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:00:37.635181",
+    "fetched_at": "2026-11-04T12:50:12.192901",
     "observation_date": "2026-09",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.0
   },
   "I-D3-006": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:00:38.037761",
+    "fetched_at": "2026-11-04T12:50:13.216960",
     "observation_date": "2026-09",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.76
   },
   "I-D3-007": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:00:39.703056",
+    "fetched_at": "2026-11-04T12:50:15.174889",
     "observation_date": "2026-10",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -20.9
   },
   "I-D3-009": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:00:39.368326",
+    "fetched_at": "2026-11-04T12:50:14.644968",
     "observation_date": "2026-11-04",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0452782627642512
   },
   "I-D5-001": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:02:22.595203",
+    "fetched_at": "2026-11-04T12:51:35.964001",
     "observation_date": "2026-11-04",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1020/1069 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.20 / midden +0.22 / ouder +0.18. Negatiefste headlines: «Treinbegeleidster slachtoffer van agressie, verschillende mensen geïdentificeerd Een treinbegeleidster is zaterdagavond  · Spaanse minister van Transport neemt ontslag na dodelijke treinramp De Spaanse minister van Transport Óscar Puente heeft · Live - Opnieuw Russische aanvallen op Oekraïense elektriciteitscentrales • Brand bij magazijn van webwinkel in Rusland n»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.11 / verdriet 0.17 / walging 0.02 (dominant: verdriet)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1028/1071 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.28 / midden +0.27 / ouder +0.26. Negatiefste headlines: «Treinbegeleidster slachtoffer van agressie, verschillende mensen geïdentificeerd Een treinbegeleidster is zaterdagavond  · Spaanse minister van Transport neemt ontslag na dodelijke treinramp De Spaanse minister van Transport Óscar Puente heeft · Hevige brand in gebouw in Molenbeek: vuur geblust, schoonmaker gewond In een gebouw met feestzaal aan de Mariemontkaai i»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.11 / verdriet 0.17 / walging 0.01 (dominant: verdriet)",
     "value": 2.9521
   },
   "I-D5-002": {
     "date": "2026-11-03",
-    "fetched_at": "2026-11-04T12:02:22.869555",
+    "fetched_at": "2026-11-04T12:51:36.818769",
     "observation_date": "2026-11-03",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 26.4
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:05:53.908687",
+    "fetched_at": "2026-11-04T12:54:58.222301",
     "observation_date": "2026-11-04",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.3075913836313072
+    "value": 0.34611237091825187
   },
   "I-D5-mastodon": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:05:55.636105",
+    "fetched_at": "2026-11-04T12:55:00.934845",
     "observation_date": "2026-11-04",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.2540291803966312
   },
   "I-D5-trends": {
     "date": "2026-11-04",
-    "fetched_at": "2026-11-04T12:06:46.558298",
+    "fetched_at": "2026-11-04T12:55:54.334993",
     "observation_date": "2026-11-04",
-    "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
-    "value": 0.0
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.10 (stress-trends: vliegdekschip)",
+    "value": 0.0962
   }
 }
