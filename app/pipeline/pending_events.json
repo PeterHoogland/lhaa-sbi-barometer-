@@ -99232,5 +99232,41 @@
     "link": "https://www.tvoost.be/nieuws/motard-22-even-in-levensgevaar-na-zware-klap-tegen-auto-van-leerling-chauffeur-215498",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-11-05",
+    "magnitude": 1,
+    "title": "Live - Dodentol na Russische aanvallen op Oekraïense school loopt op tot 43, mogelijk nog tientallen lichamen onder puin • Poetin volgend jaar niet welkom bij G20-top in VK",
+    "source": "De Morgen",
+    "link": "https://www.demorgen.be/oorlog-in-oekraine/live-dodentol-na-russische-aanvallen-op-oekraiense-school-loopt-op-tot-43-mogelijk-nog-tientallen-lichamen-onder-puin-poetin-volgend-jaar-niet-welkom-bij-g20-top-in-vk~b38bed0a/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-05",
+    "magnitude": 1,
+    "title": "Fietser betrokken bij ongeval op Mechelsesteenweg in Hove, weg afgesloten richting Antwerpen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/hove/fietser-betrokken-bij-ongeval-op-mechelsesteenweg-in-hove-weg-afgesloten-richting-antwerpen/164133747.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-05",
+    "magnitude": 1,
+    "title": "Medisch labo Maenhout getroffen door hackerscollectief",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/zuid-west-vlaanderen/waregem/medisch-labo-maenhout-getroffen-door-hackerscollectief/164132101.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-05",
+    "magnitude": 1,
+    "title": "Phishingexpert roept penningmeesters op waakzaam te zijn na fraude bij voetbalclub uit Vorselaar",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/phishingexpert-roept-penningmeesters-op-waakzaam-te-zijn-na-fraude-bij-voetbalclub-uit-vorselaar/164126362.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
