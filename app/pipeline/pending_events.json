@@ -99520,5 +99520,50 @@
     "link": "https://www.tvoost.be/nieuws/al-twintigtal-klachten-tegen-therapeut-uit-erpe-mere-215545",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-11-06",
+    "magnitude": 1,
+    "title": "Zeker 2 doden na busongeval in Franse gemeente Lent",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2026/11/06/06225b72-a60a-48e8-b4b7-2402a1e06536.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-06",
+    "magnitude": 5,
+    "title": "Dodental na antisemitische aanslag op Bondi Beach loopt elf maanden later op tot zestien na overlijden van Eva Geller (90)",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/dodental-na-antisemitische-aanslag-op-bondi-beach-loopt-elf-maanden-later-op-tot-zestien-na-overlijden-van-eva-geller-90~a5d1fdc4/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-06",
+    "magnitude": 1,
+    "title": "Twee doden, onder wie een 7-jarig meisje, bij busongeval nabij Lyon: zestien gewonden",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/buitenland/twee-doden-onder-wie-een-7-jarig-meisje-bij-busongeval-nabij-lyon-zestien-gewonden~a7dc1bce/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-06",
+    "magnitude": 1,
+    "title": "18-jarige jongeman en meisje van 7 omgekomen bij ernstig ongeval met lijnbus vol schoolkinderen in Frankrijk: “Zijkant van de bus is eraf gerukt”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/buitenland/18-jarige-jongeman-en-meisje-van-7-omgekomen-bij-ernstig-ongeval-met-lijnbus-vol-schoolkinderen-in-frankrijk-zijkant-van-de-bus-is-eraf-gerukt/164174102.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-06",
+    "magnitude": 1,
+    "title": "Eddy Snelders (67) mag van rechtbank rest van celstraf met enkelband uitzitten, slachtoffer: “Dit voelt wrang”",
+    "source": "Gazet van Antwerpen",
+    "link": "https://www.gva.be/crimi/eddy-snelders-67-mag-van-rechtbank-rest-van-celstraf-met-enkelband-uitzitten-slachtoffer-dit-voelt-wrang/164183635.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
