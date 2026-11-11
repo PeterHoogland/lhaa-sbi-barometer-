@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:47:38.296140",
+    "fetched_at": "2026-11-11T12:30:31.895174",
     "observation_date": "2026-11-11",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 0.19
   },
   "I-D1-009": {
     "date": "2026-11-10",
-    "fetched_at": "2026-11-11T11:47:41.322065",
+    "fetched_at": "2026-11-11T12:30:35.356216",
     "observation_date": "2026-11-10",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 7.45
   },
   "I-D1-010": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:47:41.912537",
+    "fetched_at": "2026-11-11T12:30:35.783778",
     "observation_date": "2026-11-11",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.0
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:52:38.928369",
+    "fetched_at": "2026-11-11T12:35:30.441727",
     "observation_date": "2026-11-11",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
-    "value": 0.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
+    "value": 1.0
   },
   "I-D2-delijn": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:53:39.014442",
+    "fetched_at": "2026-11-11T12:36:25.892051",
     "observation_date": "2026-11-11",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 252 vertraagd (≥3min), 4 service-alerts (Vlaanderen)",
-    "value": 252.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 247 vertraagd (≥3min), 4 service-alerts (Vlaanderen)",
+    "value": 247.0
   },
   "I-D2-stib": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:53:37.420407",
+    "fetched_at": "2026-11-11T12:36:24.949338",
     "observation_date": "2026-11-11",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 305 actieve items; CC BY 4.0)",
-    "value": 305.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 306 actieve items; CC BY 4.0)",
+    "value": 306.0
   },
   "I-D3-001": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:47:44.595744",
+    "fetched_at": "2026-11-11T12:30:37.881886",
     "observation_date": "2026-10",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 5.2
   },
   "I-D3-002": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:47:46.083579",
+    "fetched_at": "2026-11-11T12:30:38.909600",
     "observation_date": "2026-11-11",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 302.5596739130435
   },
   "I-D3-003": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:47:47.444364",
+    "fetched_at": "2026-11-11T12:30:40.828342",
     "observation_date": "2026-09",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.10pp, ~4999 werkzoekenden, proxy voor ontslagen)",
     "value": 8.5173931714189
   },
   "I-D3-003S": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:53:35.275049",
+    "fetched_at": "2026-11-11T12:36:23.182608",
     "observation_date": "2026-11-11",
-    "source": "Ontslag-radar: 7 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen, ~1200 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 7.0
+    "source": "Ontslag-radar: 6 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen, ~600 expliciet genoemde jobs; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 6.0
   },
   "I-D3-005": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:47:48.793224",
+    "fetched_at": "2026-11-11T12:30:42.027177",
     "observation_date": "2026-09",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.0
   },
   "I-D3-006": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:47:49.425956",
+    "fetched_at": "2026-11-11T12:30:42.591202",
     "observation_date": "2026-09",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.76
   },
   "I-D3-007": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:47:51.256582",
+    "fetched_at": "2026-11-11T12:30:45.247048",
     "observation_date": "2026-10",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -20.9
   },
   "I-D3-009": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:47:50.763662",
+    "fetched_at": "2026-11-11T12:30:44.889986",
     "observation_date": "2026-11-11",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 0.9974552875394478
   },
   "I-D5-001": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:49:14.429593",
+    "fetched_at": "2026-11-11T12:32:06.809874",
     "observation_date": "2026-11-11",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1003/1066 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.36 / midden +0.29 / ouder +0.29. Negatiefste headlines: «Persoon gewond bij schietincident aan Fontainasplein Bij een schietincident op het Fontainasplein raakte één persoon gew · Red Oekraïne, stop de oorlog · Incendie d’un appartement près du Cimetière d’Ixelles : un blessé à déplorer Le sinistre a eu lieu avenue Pierre et Mari»; emotie-profiel headlines (matches/100 woorden): woede 0.10 / angst 0.11 / verdriet 0.13 / walging 0.02 (dominant: verdriet)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 999/1066 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.41 / midden +0.35 / ouder +0.36. Negatiefste headlines: «Persoon gewond bij schietincident aan Fontainasplein Bij een schietincident op het Fontainasplein raakte één persoon gew · Red Oekraïne, stop de oorlog · Twee gewonden bij steekpartij in Overpoort: “Nog geen arrestaties” In de Overpoortstraat is woensdagmorgen een steekpart»; emotie-profiel headlines (matches/100 woorden): woede 0.09 / angst 0.11 / verdriet 0.14 / walging 0.02 (dominant: verdriet)",
     "value": 2.0346
   },
   "I-D5-002": {
     "date": "2026-11-10",
-    "fetched_at": "2026-11-11T11:49:15.456287",
+    "fetched_at": "2026-11-11T12:32:07.261821",
     "observation_date": "2026-11-10",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 21.906
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:52:38.361403",
+    "fetched_at": "2026-11-11T12:35:30.151956",
     "observation_date": "2026-11-11",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.062296931891602576
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.24030795449055947
   },
   "I-D5-mastodon": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:52:40.395079",
+    "fetched_at": "2026-11-11T12:35:31.745547",
     "observation_date": "2026-11-11",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.24779132500110132
   },
   "I-D5-trends": {
     "date": "2026-11-11",
-    "fetched_at": "2026-11-11T11:53:35.695804",
+    "fetched_at": "2026-11-11T12:36:23.563164",
     "observation_date": "2026-11-11",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.23 (stress-trends: eddy snelders, eli iserbyt)",
-    "value": 0.2273
+    "source": "Google Trends trending RSS (geo=BE) — 4/10 trends stress-relevant, aandeel zoekvolume 0.35 (stress-trends: veldrijden vandaag op tv, eddy snelders, klooster, eli iserbyt)",
+    "value": 0.35
   }
 }
