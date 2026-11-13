@@ -101896,5 +101896,32 @@
     "link": "https://www.tvoost.be/nieuws/ninove-onderzoekt-de-cyberweerbaarheid-van-haar-inwoners-215725",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-11-13",
+    "magnitude": 1,
+    "title": "“Donkerste hoofdstuk in wereldsport”: Duitse docureeks onthult schokkende bewijzen over kinderdoping",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/meer-sport/donkerste-hoofdstuk-in-wereldsport-duitse-docureeks-onthult-schokkende-bewijzen-over-kinderdoping~a0301faa/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-13",
+    "magnitude": 1,
+    "title": "Asielzoeker bidt tijdens proces en vraagt Berings slachtoffer om knuffel na steekpartij: 12 jaar cel gevraagd",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/limburg/beringen/asielzoeker-bidt-tijdens-proces-en-vraagt-berings-slachtoffer-om-knuffel-na-steekpartij-12-jaar-cel-gevraagd/164512896.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-13",
+    "magnitude": 3,
+    "title": "Gasexplosie in restaurant nipt vermeden nadat uitbater (23) de gaskraan opendraaide: “Probeerde verzekering op te lichten”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/west-vlaanderen/regio-brugge/brugge/gasexplosie-in-restaurant-nipt-vermeden-nadat-uitbater-23-de-gaskraan-opendraaide-probeerde-verzekering-op-te-lichten/164504717.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
