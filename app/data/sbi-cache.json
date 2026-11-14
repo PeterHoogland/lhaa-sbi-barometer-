@@ -1,22 +1,22 @@
 {
   "I-D1-004": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:32:58.220574",
-    "observation_date": "2026-11-13",
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:22:12.507175",
+    "observation_date": "2026-11-14",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
-    "value": 1.729
+    "value": 1.6582
   },
   "I-D1-009": {
-    "date": "2026-11-12",
-    "fetched_at": "2026-11-13T19:33:01.321451",
-    "observation_date": "2026-11-12",
+    "date": "2026-11-13",
+    "fetched_at": "2026-11-14T11:22:15.837994",
+    "observation_date": "2026-11-13",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
-    "value": 12.62
+    "value": 9.94
   },
   "I-D1-010": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:33:01.714704",
-    "observation_date": "2026-11-13",
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:22:16.246881",
+    "observation_date": "2026-11-14",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.0
   },
@@ -28,11 +28,11 @@
     "value": 164.0
   },
   "I-D2-001-rt": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:39:07.149721",
-    "observation_date": "2026-11-13",
-    "source": "Verkeerscentrum DATEX II v3 — 1 files, 1.34 km totale filelengte (langste 1.34 km), snapshot 2026-11-13",
-    "value": 1.34
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:28:43.317722",
+    "observation_date": "2026-11-14",
+    "source": "Verkeerscentrum DATEX II v3 — 10 files, 19.53 km totale filelengte (langste 4.21 km), snapshot 2026-11-14",
+    "value": 19.53
   },
   "I-D2-009": {
     "date": "2026-11-13",
@@ -42,95 +42,95 @@
     "value": 9.109080525414049
   },
   "I-D2-009S": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:38:10.153034",
-    "observation_date": "2026-11-13",
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:27:47.049260",
+    "observation_date": "2026-11-14",
     "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
     "value": 1.0
   },
   "I-D2-delijn": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:39:08.833379",
-    "observation_date": "2026-11-13",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 300 vertraagd (≥3min), 17 service-alerts (Vlaanderen)",
-    "value": 300.0
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:28:46.135295",
+    "observation_date": "2026-11-14",
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 470 vertraagd (≥3min), 15 service-alerts (Vlaanderen)",
+    "value": 470.0
   },
   "I-D2-stib": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:39:07.690196",
-    "observation_date": "2026-11-13",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 301 actieve items; CC BY 4.0)",
-    "value": 301.0
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:28:43.864310",
+    "observation_date": "2026-11-14",
+    "source": "STIB/MIVB TravellersInformation (Brussel, 299 actieve items; CC BY 4.0)",
+    "value": 299.0
   },
   "I-D3-001": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:33:03.727329",
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:22:18.329898",
     "observation_date": "2026-10",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 5.2
   },
   "I-D3-002": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:33:04.325306",
-    "observation_date": "2026-11-13",
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:22:19.132347",
+    "observation_date": "2026-11-14",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
-    "value": 208.4836956521739
+    "value": 214.33402173913043
   },
   "I-D3-003": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:33:05.019945",
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:22:21.466895",
     "observation_date": "2026-09",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.10pp, ~4999 werkzoekenden, proxy voor ontslagen)",
     "value": 8.5173931714189
   },
   "I-D3-003S": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:39:06.037421",
-    "observation_date": "2026-11-13",
-    "source": "Ontslag-radar: 5 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 5.0
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:28:42.050514",
+    "observation_date": "2026-11-14",
+    "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 4.0
   },
   "I-D3-005": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:33:09.619417",
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:22:23.409221",
     "observation_date": "2026-09",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.0
   },
   "I-D3-006": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:33:12.012278",
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:22:27.918802",
     "observation_date": "2026-09",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.76
   },
   "I-D3-007": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:33:14.664876",
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:22:29.271464",
     "observation_date": "2026-10",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -20.9
   },
   "I-D3-009": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:33:13.290670",
-    "observation_date": "2026-11-13",
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:22:28.928707",
+    "observation_date": "2026-11-14",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
-    "value": 1.025769763511623
+    "value": 1.027708898231918
   },
   "I-D5-001": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:34:53.579924",
-    "observation_date": "2026-11-13",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1022/1068 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.37 / midden +0.35 / ouder +0.35. Negatiefste headlines: «Twee gewonden bij schietpartij op Antwerpsesteenweg Bij een schietpartij woensdagavond op de Antwerpsesteenweg in Brusse · Twee vrouwen aangeklaagd na dodelijke schietpartij nabij Hamburg Het Duitse Openbaar Ministerie heeft twee vrouwen aange · Incendie mortel à Marche : un homme a perdu la vie au camping Paola Ce vendredi 13 novembre 2026, le feu a pris dans une»; emotie-profiel headlines (matches/100 woorden): woede 0.10 / angst 0.14 / verdriet 0.14 / walging 0.02 (dominant: angst)",
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:24:28.922544",
+    "observation_date": "2026-11-14",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1010/1068 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.08 / midden +0.05 / ouder +0.04. Negatiefste headlines: «Twee gewonden bij schietpartij op Antwerpsesteenweg Bij een schietpartij woensdagavond op de Antwerpsesteenweg in Brusse · Incendie mortel à Marche : un homme a perdu la vie au camping Paola Ce vendredi 13 novembre 2026, le feu a pris dans une · ‘Minotaur’: ijzingwekkende Russische thriller verweeft overspel met oorlog ★★★★★»; emotie-profiel headlines (matches/100 woorden): woede 0.08 / angst 0.15 / verdriet 0.16 / walging 0.02 (dominant: verdriet)",
     "value": 1.8772
   },
   "I-D5-002": {
-    "date": "2026-11-12",
-    "fetched_at": "2026-11-13T19:34:54.587885",
-    "observation_date": "2026-11-12",
+    "date": "2026-11-13",
+    "fetched_at": "2026-11-14T11:24:29.247763",
+    "observation_date": "2026-11-13",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
-    "value": 24.66
+    "value": 22.9
   },
   "I-D5-003": {
     "date": "2026-11-13",
@@ -140,24 +140,24 @@
     "value": 0.022267
   },
   "I-D5-006S": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:38:09.892423",
-    "observation_date": "2026-11-13",
-    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.23814082131198705
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:27:46.799506",
+    "observation_date": "2026-11-14",
+    "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 25 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
+    "value": 0.6058888759911999
   },
   "I-D5-mastodon": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:38:11.469625",
-    "observation_date": "2026-11-13",
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:27:48.516486",
+    "observation_date": "2026-11-14",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": -0.5280316587414918
   },
   "I-D5-trends": {
-    "date": "2026-11-13",
-    "fetched_at": "2026-11-13T19:39:06.405817",
-    "observation_date": "2026-11-13",
-    "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
-    "value": 0.0
+    "date": "2026-11-14",
+    "fetched_at": "2026-11-14T11:28:42.483799",
+    "observation_date": "2026-11-14",
+    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.04 (stress-trends: anneleen van bossuyt, jan pijnenburg)",
+    "value": 0.0417
   }
 }
