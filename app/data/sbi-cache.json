@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:33:43.113743",
+    "fetched_at": "2026-11-15T18:44:51.272901",
     "observation_date": "2026-11-15",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 1.16
   },
   "I-D1-009": {
     "date": "2026-11-14",
-    "fetched_at": "2026-11-15T12:33:46.276344",
+    "fetched_at": "2026-11-15T18:44:54.401777",
     "observation_date": "2026-11-14",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 9.21
   },
   "I-D1-010": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:33:46.763346",
+    "fetched_at": "2026-11-15T18:44:54.782322",
     "observation_date": "2026-11-15",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.0
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:41:02.084332",
+    "fetched_at": "2026-11-15T18:52:01.600220",
     "observation_date": "2026-11-15",
-    "source": "Verkeerscentrum DATEX II v3 — 3 files, 2.92 km totale filelengte (langste 1.48 km), snapshot 2026-11-15",
-    "value": 2.92
+    "source": "Verkeerscentrum DATEX II v3 — 3 files, 6.02 km totale filelengte (langste 4.61 km), snapshot 2026-11-15",
+    "value": 6.02
   },
   "I-D2-009": {
     "date": "2026-11-13",
@@ -43,91 +43,91 @@
   },
   "I-D2-009S": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:40:01.425916",
+    "fetched_at": "2026-11-15T18:50:30.930811",
     "observation_date": "2026-11-15",
-    "source": "iRail API (NMBS/SNCB-verstoringen, 1 ongepland)",
-    "value": 1.0
+    "source": "iRail API (NMBS/SNCB-verstoringen, 0 ongepland)",
+    "value": 0.0
   },
   "I-D2-delijn": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:41:04.055312",
+    "fetched_at": "2026-11-15T18:52:03.218810",
     "observation_date": "2026-11-15",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 240 vertraagd (≥3min), 13 service-alerts (Vlaanderen)",
-    "value": 240.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 199 vertraagd (≥3min), 13 service-alerts (Vlaanderen)",
+    "value": 199.0
   },
   "I-D2-stib": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:41:02.792697",
+    "fetched_at": "2026-11-15T18:52:02.163968",
     "observation_date": "2026-11-15",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 300 actieve items; CC BY 4.0)",
-    "value": 300.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 289 actieve items; CC BY 4.0)",
+    "value": 289.0
   },
   "I-D3-001": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:33:49.132991",
+    "fetched_at": "2026-11-15T18:44:56.585753",
     "observation_date": "2026-10",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 5.2
   },
   "I-D3-002": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:33:50.510469",
+    "fetched_at": "2026-11-15T18:44:57.162199",
     "observation_date": "2026-11-15",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 131.7320652173913
   },
   "I-D3-003": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:33:52.443263",
+    "fetched_at": "2026-11-15T18:44:58.577291",
     "observation_date": "2026-09",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.10pp, ~4999 werkzoekenden, proxy voor ontslagen)",
     "value": 8.5173931714189
   },
   "I-D3-003S": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:41:00.577143",
+    "fetched_at": "2026-11-15T18:52:00.661464",
     "observation_date": "2026-11-15",
-    "source": "Ontslag-radar: 4 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
-    "value": 4.0
+    "source": "Ontslag-radar: 3 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
+    "value": 3.0
   },
   "I-D3-005": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:34:03.007292",
+    "fetched_at": "2026-11-15T18:44:59.591988",
     "observation_date": "2026-09",
-    "source": "Eurostat (BE werkloosheid, seizoens-gecorrigeerd)",
+    "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.0
   },
   "I-D3-006": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T11:53:23.599703",
+    "fetched_at": "2026-11-15T18:45:02.364602",
     "observation_date": "2026-09",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.76
   },
   "I-D3-007": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:34:34.884649",
+    "fetched_at": "2026-11-15T18:45:04.367417",
     "observation_date": "2026-10",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -20.9
   },
   "I-D3-009": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:34:34.488489",
+    "fetched_at": "2026-11-15T18:45:04.041084",
     "observation_date": "2026-11-15",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0349537910185276
   },
   "I-D5-001": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T11:54:38.546551",
+    "fetched_at": "2026-11-15T18:47:07.936247",
     "observation_date": "2026-11-15",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1016/1072 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.09 / midden +0.07 / ouder +0.11. Negatiefste headlines: «Twee gewonden bij schietpartij op Antwerpsesteenweg Bij een schietpartij woensdagavond op de Antwerpsesteenweg in Brusse · Brand uitgebroken op kerstmarkt in Maredsous na explosie in chalet: drie mensen lopen ernstige brandwonden op, evacuatie · Incendie mortel à Marche : un homme a perdu la vie au camping Paola Ce vendredi 13 novembre 2026, le feu a pris dans une»; emotie-profiel headlines (matches/100 woorden): woede 0.08 / angst 0.15 / verdriet 0.14 / walging 0.02 (dominant: angst)",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1040/1078 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong -0.06 / midden -0.10 / ouder -0.15. Negatiefste headlines: «Brand op kerstmarkt van Maredsous: vijf gewonden onder wie twee personen in kritieke toestand · Twee gewonden bij schietpartij op Antwerpsesteenweg Bij een schietpartij woensdagavond op de Antwerpsesteenweg in Brusse · 3 zwaargewonden, onder wie 2 kritiek, na ontploffing op kerstmarkt in Maredsous Bij een zware ontploffing op een kerstma»; emotie-profiel headlines (matches/100 woorden): woede 0.07 / angst 0.15 / verdriet 0.12 / walging 0.02 (dominant: angst)",
     "value": 1.3838
   },
   "I-D5-002": {
     "date": "2026-11-14",
-    "fetched_at": "2026-11-15T12:36:48.279722",
+    "fetched_at": "2026-11-15T18:47:08.151757",
     "observation_date": "2026-11-14",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 24.018
@@ -141,23 +141,23 @@
   },
   "I-D5-006S": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:40:00.841423",
+    "fetched_at": "2026-11-15T18:50:30.683033",
     "observation_date": "2026-11-15",
     "source": "Reddit (r/belgium, r/Vlaanderen, r/brussels, r/Antwerpen, r/BEFire) via Atom-feed, 50 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": 0.3580042432848026
+    "value": 0.6297017651624318
   },
   "I-D5-mastodon": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:40:03.063125",
+    "fetched_at": "2026-11-15T18:50:46.440727",
     "observation_date": "2026-11-15",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
-    "value": -0.6416680223778555
+    "value": -0.7805569112667443
   },
   "I-D5-trends": {
     "date": "2026-11-15",
-    "fetched_at": "2026-11-15T12:41:01.016824",
+    "fetched_at": "2026-11-15T18:52:00.846525",
     "observation_date": "2026-11-15",
-    "source": "Google Trends trending RSS (geo=BE) — 3/10 trends stress-relevant, aandeel zoekvolume 0.30 (stress-trends: lawine, oorlog, zaventem)",
-    "value": 0.3
+    "source": "Google Trends trending RSS (geo=BE) — 0/10 trends stress-relevant, aandeel zoekvolume 0.00 (stress-trends: geen)",
+    "value": 0.0
   }
 }
