@@ -11,15 +11,10 @@
     "indicator.red:I-D5-001": "2026-11-13T12:10:40.207Z",
     "indicator.spike:I-D5-001": "2026-11-11T11:55:33.680Z",
     "emotie.spike": "2026-11-05T13:07:17.286Z",
-    "indicator.spike:I-D5-003": "2026-11-03T11:59:46.543Z",
+    "indicator.spike:I-D5-003": "2026-11-15T11:59:10.269Z",
     "indicator.red:I-D5-003": "2026-11-05T12:16:37.026Z"
   },
   "recent": [
-    {
-      "key": "composite.amber:composite",
-      "fired_at": "2026-10-15T05:08:59.267Z",
-      "severity": "let_op"
-    },
     {
       "key": "indicator.red:I-D5-003",
       "fired_at": "2026-10-15T14:10:13.091Z",
@@ -263,6 +258,11 @@
     {
       "key": "indicator.red:I-D5-001",
       "fired_at": "2026-11-13T12:10:40.207Z",
+      "severity": "hoog"
+    },
+    {
+      "key": "indicator.spike:I-D5-003",
+      "fired_at": "2026-11-15T11:59:10.269Z",
       "severity": "hoog"
     }
   ]
