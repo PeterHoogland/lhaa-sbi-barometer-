@@ -102517,5 +102517,32 @@
     "link": "https://www.tvoost.be/nieuws/nooit-meer-oorlog-nieuwerkerken-beleeft-emotionele-wapenstilstand-215737",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-11-15",
+    "magnitude": 1,
+    "title": "Vrachtwagen rijdt tegen gevel van Maria-Magdalenakerk in Brussel",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/brussel/vrachtwagen-rijdt-tegen-gevel-van-maria-magdalenakerk-in-brussel~aa32754f/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-15",
+    "magnitude": 1,
+    "title": "Kerk aan de Putterie beschadigd na ongeval met vrachtwagen",
+    "source": "Bruzz",
+    "link": "https://www.bruzz.be/actua/stedenbouw/kerk-aan-de-putterie-beschadigd-na-ongeval-met-vrachtwagen-2026-11-15",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-15",
+    "magnitude": 1,
+    "title": "Badmintonclub in rouw na overlijden van geliefde jeugdtrainer Araü (18): “Veel spelers keken op naar hem”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/badmintonclub-in-rouw-na-overlijden-van-geliefde-jeugdtrainer-arau-18-veel-spelers-keken-op-naar-hem/164571763.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
