@@ -104380,5 +104380,32 @@
     "link": "https://www.tvoost.be/nieuws/bejaarde-vrouw-verdrinkt-in-vijver-achter-haar-huis-in-waasmunster-215937",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-11-22",
+    "magnitude": 3,
+    "title": "Minister Crucke komt met wetsontwerp om minimale dienstverlening bij stakingen te garanderen",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/binnenland/minister-crucke-komt-met-wetsontwerp-om-minimale-dienstverlening-bij-stakingen-te-garanderen~a4bab926/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-22",
+    "magnitude": 1,
+    "title": "Papa (38) van twee kinderen overleden na crash: “We zijn erg aangeslagen”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/binnenland/papa-38-van-twee-kinderen-overleden-na-crash-we-zijn-erg-aangeslagen/164914284.html",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-22",
+    "magnitude": 1,
+    "title": "“Puur racisme”: match in derde provinciale stopgezet: “Spelers wilden niet meer verder, hij zat te huilen in de kleedkamer”",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/sport/sportregio/puur-racisme-match-in-derde-provinciale-stopgezet-spelers-wilden-niet-meer-verder-hij-zat-te-huilen-in-de-kleedkamer/164924132.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]
