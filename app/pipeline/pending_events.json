@@ -105100,5 +105100,32 @@
     "link": "https://www.tvoost.be/nieuws/parket-van-oost-vlaanderen-onderzoekt-nu-ook-klacht-tegen-kamal-kharmach-over-mogelijk-grensoverschrijdend-gedrag-215999",
     "auto_detected": true,
     "review_status": "pending"
+  },
+  {
+    "date": "2026-11-24",
+    "magnitude": 1,
+    "title": "Man komt om bij arbeidsongeval tijdens afbraakwerken op Amerikalei in Antwerpen",
+    "source": "VRT NWS",
+    "link": "https://images.vrt.be/vrtnws_share/2023/03/09/4ec6e08e-be79-11ed-91d7-02b7b76bf47f.jpg",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-24",
+    "magnitude": 1,
+    "title": "Arbeider komt om het leven op werf aan Amerikalei in Antwerpen: “Reanimatie mocht niet meer baten”",
+    "source": "Het Laatste Nieuws",
+    "link": "https://www.hln.be/antwerpen/arbeider-komt-om-het-leven-op-werf-aan-amerikalei-in-antwerpen-reanimatie-mocht-niet-meer-baten~a2a380b0d/",
+    "auto_detected": true,
+    "review_status": "pending"
+  },
+  {
+    "date": "2026-11-24",
+    "magnitude": 1,
+    "title": "Arbeider overleden op bouwwerf aan de Amerikalei in Antwerpen",
+    "source": "Het Nieuwsblad",
+    "link": "https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/antwerpen/arbeider-overleden-op-bouwwerf-aan-de-amerikalei-in-antwerpen/165040355.html",
+    "auto_detected": true,
+    "review_status": "pending"
   }
 ]

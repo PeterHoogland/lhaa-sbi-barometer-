@@ -1,21 +1,21 @@
 {
   "I-D1-004": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:44:13.390897",
+    "fetched_at": "2026-11-24T15:37:07.535374",
     "observation_date": "2026-11-24",
     "source": "IRCELINE (Belgisch luchtmeetnet, Brussel: NO2/O3/PM10 tov WHO 2021)",
     "value": 1.3382
   },
   "I-D1-009": {
     "date": "2026-11-23",
-    "fetched_at": "2026-11-24T14:44:16.859915",
+    "fetched_at": "2026-11-24T15:37:11.242656",
     "observation_date": "2026-11-23",
     "source": "VMM (Waterinfo.be) + SPW (hydrometrie.wallonie.be) — som dag-debiet Vesdre, Ourthe, Dijle, Demer (m³/s)",
     "value": 43.45
   },
   "I-D1-010": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:44:17.409039",
+    "fetched_at": "2026-11-24T15:37:11.863290",
     "observation_date": "2026-11-24",
     "source": "Open-Meteo Air Quality (CAMS-pollen, 5/5 soorten; som korrels/m³)",
     "value": 0.0
@@ -29,10 +29,10 @@
   },
   "I-D2-001-rt": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:49:41.083387",
+    "fetched_at": "2026-11-24T15:42:06.831134",
     "observation_date": "2026-11-24",
-    "source": "Verkeerscentrum DATEX II v3 — 34 files, 90.29 km totale filelengte (langste 11.17 km), snapshot 2026-11-24",
-    "value": 90.29
+    "source": "Verkeerscentrum DATEX II v3 — 69 files, 178.13 km totale filelengte (langste 10.85 km), snapshot 2026-11-24",
+    "value": 178.13
   },
   "I-D2-009": {
     "date": "2026-11-22",
@@ -43,98 +43,98 @@
   },
   "I-D2-009S": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:48:43.655372",
+    "fetched_at": "2026-11-24T15:41:13.204988",
     "observation_date": "2026-11-24",
     "source": "iRail API (NMBS/SNCB-verstoringen, 2 ongepland)",
     "value": 2.0
   },
   "I-D2-delijn": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:49:43.552507",
+    "fetched_at": "2026-11-24T15:42:09.811155",
     "observation_date": "2026-11-24",
-    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 982 vertraagd (≥3min), 21 service-alerts (Vlaanderen)",
-    "value": 982.0
+    "source": "De Lijn GTFS-RT v3 — 0 geannuleerd + 1491 vertraagd (≥3min), 21 service-alerts (Vlaanderen)",
+    "value": 1491.0
   },
   "I-D2-stib": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:49:41.854164",
+    "fetched_at": "2026-11-24T15:42:07.744913",
     "observation_date": "2026-11-24",
-    "source": "STIB/MIVB TravellersInformation (Brussel, 352 actieve items; CC BY 4.0)",
-    "value": 352.0
+    "source": "STIB/MIVB TravellersInformation (Brussel, 357 actieve items; CC BY 4.0)",
+    "value": 357.0
   },
   "I-D3-001": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:44:20.266705",
+    "fetched_at": "2026-11-24T15:37:14.569390",
     "observation_date": "2026-10",
     "source": "Eurostat prc_hicp_minr (BE HICP yoy %, ECOICOP ver.2)",
     "value": 5.2
   },
   "I-D3-002": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:44:21.752078",
+    "fetched_at": "2026-11-24T15:37:15.915174",
     "observation_date": "2026-11-24",
     "source": "Energy-Charts (Fraunhofer ISE, BE day-ahead)",
     "value": 249.03293478260863
   },
   "I-D3-003": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:44:24.473831",
+    "fetched_at": "2026-11-24T15:37:18.069292",
     "observation_date": "2026-09",
     "source": "ECB LFSI werkloosheidsrate-delta (+0.10pp, ~4999 werkzoekenden, proxy voor ontslagen)",
     "value": 8.5173931714189
   },
   "I-D3-003S": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:49:39.696498",
+    "fetched_at": "2026-11-24T15:42:05.047220",
     "observation_date": "2026-11-24",
     "source": "Ontslag-radar: 2 artikels met collectief-ontslag-thema in 18 BE-nieuwsbronnen; SECUNDAIR, trefwoord-detectie, niet in composiet",
     "value": 2.0
   },
   "I-D3-005": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:44:25.455524",
+    "fetched_at": "2026-11-24T15:37:20.664752",
     "observation_date": "2026-09",
     "source": "ECB LFSI (BE werkloosheidsrate, seizoens-gecorrigeerd)",
     "value": 6.0
   },
   "I-D3-006": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:44:29.719997",
+    "fetched_at": "2026-11-24T15:37:25.906806",
     "observation_date": "2026-09",
     "source": "ECB MIR (BE hypotheekrente, nieuwe contracten)",
     "value": 3.76
   },
   "I-D3-007": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:44:31.982021",
+    "fetched_at": "2026-11-24T15:37:28.345761",
     "observation_date": "2026-10",
     "source": "Eurostat ei_bsco_m (EC consumentenvertrouwen BE, saldo, seizoens-gecorrigeerd)",
     "value": -20.9
   },
   "I-D3-009": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:44:31.486789",
+    "fetched_at": "2026-11-24T15:37:27.865211",
     "observation_date": "2026-11-24",
     "source": "Elia Open Data ods001 (gemeten/forecast totale netbelasting)",
     "value": 1.0302904418924264
   },
   "I-D5-001": {
-    "date": "2026-11-23",
-    "fetched_at": "2026-11-23T15:47:36.076575",
-    "observation_date": "2026-11-23",
-    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1016/1065 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.47 / midden +0.47 / ouder +0.49. Negatiefste headlines: «Ongeval aan Weg naar Zwartberg, vrouw gewond · Minstens 14 doden bij Russische aanvallen op regio Kiev · Agent (36) van speciale eenheden overleden die in 2024 zwaargewond raakte bij schietpartij in Lodelinsart»; emotie-profiel headlines (matches/100 woorden): woede 0.12 / angst 0.17 / verdriet 0.13 / walging 0.03 (dominant: angst)",
-    "value": 1.2341
+    "date": "2026-11-24",
+    "fetched_at": "2026-11-24T15:38:50.477109",
+    "observation_date": "2026-11-24",
+    "source": "GDELT DOC v2 timelinetone (gemiddelde nieuwstoon BE, sourcecountry:BE, 3d-venster); RSS-lexicon-controle (Pattern.nl 3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1, 1018/1068 unieke artikels na dedup, 18 bronnen, poststratificatie): negativiteit jong +0.39 / midden +0.33 / ouder +0.36. Negatiefste headlines: «Na prijsstijging in januari zullen dienstencheques opnieuw duurder worden: ‘Onvermijdelijk’ · Zij namen deel aan de nationale betoging: ‘Ik ben te bang om MyPension te checken’ · KMI waarschuwt voor gladheid: vannacht code geel Het KMI heeft zondag code geel afgekondigd voor gladheid in het hele la»; emotie-profiel headlines (matches/100 woorden): woede 0.13 / angst 0.18 / verdriet 0.15 / walging 0.03 (dominant: angst)",
+    "value": 1.5375
   },
   "I-D5-002": {
     "date": "2026-11-23",
-    "fetched_at": "2026-11-24T14:46:41.674677",
+    "fetched_at": "2026-11-24T15:38:51.128001",
     "observation_date": "2026-11-23",
     "source": "Wikipedia-pageviews (nl.wikipedia, 6 stress-artikels / totale NL-weergaven x1e6, agent=user, voortschrijdend 7d-gemiddelde)",
     "value": 26.551
   },
   "I-D5-003": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:47:56.282266",
+    "fetched_at": "2026-11-24T15:40:26.459879",
     "observation_date": "2026-11-24",
     "source": "GDELT DOC v2 timelinevol — intensiteit zware negatieve gebeurtenissen (oorlog/geweld/ramp/terreur, sourcecountry:BE, 3d-venster); 30 RSS-kandidaten naar pending voor menselijke review",
     "value": 0.033133
@@ -148,16 +148,16 @@
   },
   "I-D5-mastodon": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:48:45.082050",
+    "fetched_at": "2026-11-24T15:41:14.875352",
     "observation_date": "2026-11-24",
     "source": "Mastodon (mastodon.vlaanderen lokale timeline), 40 posts, NL valentie-lexicon (3233 woorden, pattern-nl-1.2+nieuws-overlay-1.1); SECUNDAIR, niet-representatief, niet in composiet",
     "value": 0.10813332066349043
   },
   "I-D5-trends": {
     "date": "2026-11-24",
-    "fetched_at": "2026-11-24T14:49:40.062919",
+    "fetched_at": "2026-11-24T15:42:05.383290",
     "observation_date": "2026-11-24",
-    "source": "Google Trends trending RSS (geo=BE) — 2/10 trends stress-relevant, aandeel zoekvolume 0.17 (stress-trends: bovenleiding, colruyt group)",
-    "value": 0.1667
+    "source": "Google Trends trending RSS (geo=BE) — 1/10 trends stress-relevant, aandeel zoekvolume 0.01 (stress-trends: bovenleiding)",
+    "value": 0.0125
   }
 }
